@@ -23,7 +23,7 @@
                 <thead>
                   <tr>
                     <th>Nombre</th>
-                    <th style="width: 90px">Opciones</th>    
+                    <th>Opciones</th>    
                   </tr>
                 </thead>
                 <tbody>
@@ -31,7 +31,7 @@
                   <tfoot>
                     <tr>
                       <th>Nombre</th>
-                      <th style="width: 90px">Opciones</th>  
+                      <th>Opciones</th>  
                     </tr>
                   </tfoot>
                   <tbody>
@@ -184,7 +184,6 @@ export default {
     hideForm() {
       this.edo = 1;
       this.listado = 1;
-      this.listData();
     },   
     listData() {
       let me = this;
@@ -222,7 +221,7 @@ export default {
       let me = this;
 
       axios
-        .put("/region/update", {
+        .put("/region/actualizar", {
           name: this.form.name.toUpperCase(),
           id: this.idReg
         })
@@ -252,8 +251,8 @@ export default {
         if (result.value) {
           let me = this;      
           axios
-            .post("/region/delete", {
-              id: data["id"],
+            .post("/region/eliminar", {
+              id: this.idReg
             })
             .then(function(response) {
               me.hideForm();

@@ -20,6 +20,7 @@ window.Vue = require('vue');
 
 
 Vue.component('region', require('./components/Regions.vue'));
+Vue.component('mpios', require('./components/Municipalities.vue'));
 
 
 const app = new Vue({
