@@ -9,6 +9,24 @@
             <template v-if="menu==1">
                 <region></region>
             </template>
+            <template v-if="menu==2">
+                <municipalities></municipalities>
+            </template>
+            <template v-if="menu==3">
+                <ports></ports>
+            </template>
+            <template v-if="menu==4">
+                <autofisher></autofisher>
+            </template>
+            <template v-if="menu==5">
+                <flags></flags>
+            </template>
+            <template v-if="menu==6">
+                <docks></docks>
+            </template>
+            <template v-if="menu==7">
+                <zarpe></zarpe>
+            </template>
 
            
    

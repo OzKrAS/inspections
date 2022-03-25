@@ -3,48 +3,58 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Region;
+use App\Ports;
 
-class RegionController extends Controller
+
+class PortsController extends Controller
 {
-    //
+
     public function index(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $region = Region::orderBy('name', 'asc')->get();
+        $port = Ports::orderBy('name', 'asc')->get();
 
         return [     
-            'data' => $region
+            'data' => $port
         ];
     }
-    public function selectRegion(Request $request)
+    public function selectPort(Request $request)
     {
-        $region = Region::select('id','name')
+        $port = Ports::select('id','name')
             ->orderBy('name', 'asc')->get();
         return [
-            'region' => $region
+            'port' => $port
         ];
     } 
     public function store(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $region = new Region();
-        $region->name = $request->name;    
-        $region->save();
+        $port = new Ports();
+        $port->name = $request->name;    
+        $port->save();
     }
-
     public function update(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $region = Region::findOrFail($request->id);
-        $region->name = $request->name;    
-        $region->save();
+        $port = Ports::findOrFail($request->id);
+        $port->name = $request->name;    
+        $port->save();
     }
-
     public function destroy(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $region = Region::findOrFail($request->id);
-        $region->delete();
+        $port = Ports::findOrFail($request->id);
+        $port->delete();
     }
+
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
 }

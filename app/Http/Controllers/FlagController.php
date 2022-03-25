@@ -3,48 +3,47 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Region;
+use App\Flag;
 
-class RegionController extends Controller
+class FlagController extends Controller
 {
-    //
     public function index(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $region = Region::orderBy('name', 'asc')->get();
+        $flag = Flag::orderBy('name', 'asc')->get();
 
         return [     
-            'data' => $region
+            'data' => $flag
         ];
     }
-    public function selectRegion(Request $request)
+    public function selectflag(Request $request)
     {
-        $region = Region::select('id','name')
+        $flag = Flag::select('id','name')
             ->orderBy('name', 'asc')->get();
         return [
-            'region' => $region
+            'flag' => $flag
         ];
     } 
     public function store(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $region = new Region();
-        $region->name = $request->name;    
-        $region->save();
+        $flag = new Flag();
+        $flag->name = $request->name;    
+        $flag->save();
     }
 
     public function update(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $region = Region::findOrFail($request->id);
-        $region->name = $request->name;    
-        $region->save();
+        $flag = Flag::findOrFail($request->id);
+        $flag->name = $request->name;    
+        $flag->save();
     }
 
     public function destroy(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $region = Region::findOrFail($request->id);
-        $region->delete();
+        $flag = Flag::findOrFail($request->id);
+        $flag->delete();
     }
 }

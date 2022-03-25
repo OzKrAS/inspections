@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Gestión de municipios</strong>          
+          <strong class="lead">Inspección a Embarcación Pesquera - Zarpe</strong>          
           <button
             v-if="edo"
             type="button"
@@ -23,7 +23,9 @@
                 <thead>
                   <tr>
                     <th>Nombre</th>
-                    <th>Región</th>
+                    <th>Puerto</th>
+                    <th>Arribo</th>
+                    <th>Zarpe</th>
                     <th>Opciones</th>    
                   </tr>
                 </thead>
@@ -32,7 +34,9 @@
                   <tfoot>
                     <tr>
                       <th>Nombre</th>
-                      <th>Región</th>
+                      <th>Puerto</th>
+                      <th>Arribo</th>
+                      <th>Zarpe</th>
                       <th>Opciones</th>  
                     </tr>
                   </tfoot>
@@ -49,30 +53,32 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <md-field md-clearable :class="getValidationClass('name')">
-                    <label for="first-name">Nombre</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.name"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.name.required"
-                    >Olvidaste ingresar un name para el municipio</span>
+                  <md-field md-clearable :class="getValidationClass('insNo')">
+                        <label for="first-name">Inspección No.</label>
+                        <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.insNo"
+                        :disabled="sending"
+                        />
+                        <span
+                            class="md-error"
+                            v-if="!$v.form.insNo.required"
+                        >Olvidaste ingresar el número de inspección para el Zarpe
+                        </span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
+                  </md-field> 
+
                   <div class="md-layout-item">
-											<label>Región</label>
-                      <multiselect v-model="arrayReg" :options="arrayRegion"
-                          placeholder="Seleccione una región"
-                          :custom-label="nameWithRegion"
+				           	<label>Puerto</label>
+                      <multiselect v-model="arrayPt" :options="arrayPort"
+                          placeholder="Seleccione un puerto"
+                          :custom-label="nameWithPort"
                           label="name"
                           track-by="name">
                       </multiselect>
-									</div>&nbsp;&nbsp;&nbsp;
+				         </div>&nbsp;&nbsp;&nbsp; 
                 </div>
               </md-card-content>
             </form>
@@ -151,14 +157,58 @@ export default {
 		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
 		let now = new Date();
     
-		return {      form: {
-        name: "",
+	  return {      form: {
+        
+        portArrival: "",
+        radioCall: "",
+        idOmi: "",
+        noResolution: "",
+        nameBoat: "",
+        noPatent: "",
+        representative: "",
+        business: "",
+        eyeMesh: "",
+        netWidth: "",
+        eyeFlake: "",
+        typeHook: "",
+        longNet: "",
+        materialArt: "",
+        equipDevi: "",
+        captain: "",
+        nacionality: "",
+        observation: "",
+        conclusions: "",
+        comments: "",
+        zoneAutFish: "",
       },
-      arrayMunicipalities: [],
-      id_municipalities: 0,
+
+      arrayZarpes: [],
+      id_zarpes: 0,
       arrayReg: {id:0, name:''},
-		  arrayRegion: [],
+	    arrayRegion: [],
       id_region: 0,
+      arrayPt: {id:0, name:''},
+	    arrayPort: [],
+      id_port: 0,
+      arrayFg: {id:0, name:''},
+	    arrayFlag: [],
+      id_flag: 0,
+      arrayNotification: [],
+      arrayFinalityZarpe: [],
+      arrayOrigin: [],
+      arrayDestination: [],
+      arrayNational: [],
+      arrayOrop: [],
+      arrayFlag: [],
+      arrayFishAut: [],
+      dateIns: 0,
+      dateScale: 0,
+      dateZarpe: 0,
+      dateResolution: 0,
+      dateValid: 0,
+      dateLatestArrival: 0,
+      dateValidityPat: 0,
+      
       edo: 1,
 
       tipoAccion: 1,
@@ -179,8 +229,74 @@ export default {
   validations: {
     form: {
       name: {
-        required
-      }
+      required
+      },
+      // insNo: {
+      // required
+      // },
+      // portArrival: {
+      //   required
+      // },
+      // radioCall: {
+      //   required
+      // },
+      // idOmi: {
+      //   required
+      // },
+      // noResolution: {
+      //   required
+      // },
+      // nameBoat: {
+      //   required
+      // },
+      // noPatent: {
+      //   required
+      // },
+      // representative: {
+      //   required
+      // },
+      // business: {
+      //   required
+      // },
+      // eyeMesh: {
+      //   required
+      // },
+      // netWidth: {
+      //   required
+      // },
+      // eyeFlake: {
+      //   required
+      // },
+      // typeHook: {
+      //   required
+      // },
+      // longNet: {
+      //   required
+      // },
+      // materialArt: {
+      //   required
+      // },
+      // equipDevi: {
+      //   required
+      // },
+      // captain: {
+      //   required
+      // },
+      // nacionality: {
+      //   required
+      // },
+      // observation: {
+      //   required
+      // },
+      // conclusions: {
+      //   required
+      // },
+      // comments: {
+      //   required
+      // },
+      // zoneAutFish: {
+      //   required
+      // },
     }
   },
 
@@ -207,21 +323,21 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.name = null;
-      this.arrayReg = {id:0, name:''};
+      this.arrayPt = {id:0, name:''};
     },
-    nameWithRegion ({ name }) {
+    nameWithPort ({ name }) {
             return `${name}`
     },
     listData() {
       let me = this;
       var url =
-        "/municipalities";
+        "/docks";
       axios
         .get(url)
         .then(function (response) {
           var respuesta = response.data;
-          me.arrayMunicipalities = respuesta.municipalities.data;
-          me.myTable(me.arrayMunicipalities);
+          me.arrayDocks = respuesta.docks.data;
+          me.myTable(me.arrayDocks);
     
 
         })
@@ -229,23 +345,23 @@ export default {
           console.log(error);
         });
     },
-    selectRegion() {
+    selectPort() {
             let me = this;
-            var url = "region/selectRegion";
+            var url = "ports/selectPorts";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
-                    me.arrayRegion = respuesta.region;
+                    me.arrayPort = respuesta.port;
                 }).catch(function (error) {
                     console.log(error);
             });
-        },
+    },
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
-      (this.id_municipalities = data["id"]);
+      (this.id_docks = data["id"]);
       this.form.name = data["name"];
-      this.arrayReg.id = data["id_region"];
-			this.arrayReg.name = data["nameReg"];
+      this.arrayPt.id = data["id_port"];
+	    this.arrayPt.name = data["namePort"];
     },
     showData() {
       this.clearForm();
@@ -261,9 +377,9 @@ export default {
     saveData() {
       let me = this;
       axios
-        .post("/municipalities/save", {
+        .post("/docks/save", {
           name: this.form.name.toUpperCase(),
-          'id_region': this.arrayReg.id,
+          'id_port': this.arrayPt.id,
         })
         .then(function(response) {
           me.hideForm();
@@ -277,10 +393,10 @@ export default {
     updateData() {
       let me = this;
       axios
-        .put("/municipalities/update", {
+        .put("/docks/update", {
           name: this.form.name.toUpperCase(),
-          id: this.id_municipalities,
-          'id_region': this.arrayReg.id,
+          id: this.id_docks,
+          'id_port': this.arrayPt.id,
         })
         .then(function(response) {
           me.hideForm();
@@ -293,7 +409,7 @@ export default {
     },
     deleteData(data = []) {
       swal({
-        title: "Esta seguro de Eliminar este municipio " + data["name"],
+        title: "Esta seguro de Eliminar este muelle " + data["name"],
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -308,8 +424,8 @@ export default {
         if (result.value) {
           let me = this;      
           axios
-            .post("/municipalities/delete", {
-              id: this.id_municipalities
+            .post("/docks/delete", {
+              id: this.id_docks
             })
             .then(function(response) {
               me.hideForm();
@@ -361,7 +477,8 @@ export default {
           "columns": [
 
             { "data": "name" },
-            { "data": "nameReg" },
+            { "data": "namePort" },    
+              
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
 
         ]
@@ -382,7 +499,7 @@ export default {
 
   mounted() {
     this.listData();
-    this.selectRegion();
+    this.selectPort();
   }
 };
 </script>

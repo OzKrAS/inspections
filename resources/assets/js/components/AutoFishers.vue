@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Gestión de municipios</strong>          
+          <strong class="lead">Gestión de Zonas Autorizadas</strong>          
           <button
             v-if="edo"
             type="button"
@@ -23,8 +23,8 @@
                 <thead>
                   <tr>
                     <th>Nombre</th>
-                    <th>Región</th>
-                    <th>Opciones</th>    
+                    <th>Estado</th>
+                    <th style="width: 90px">Opciones</th>    
                   </tr>
                 </thead>
                 <tbody>
@@ -32,8 +32,8 @@
                   <tfoot>
                     <tr>
                       <th>Nombre</th>
-                      <th>Región</th>
-                      <th>Opciones</th>  
+                      <th>Estado</th>
+                      <th style="width: 90px">Opciones</th>  
                     </tr>
                   </tfoot>
                   <tbody>
@@ -61,18 +61,9 @@
                     <span
                       class="md-error"
                       v-if="!$v.form.name.required"
-                    >Olvidaste ingresar un name para el municipio</span>
+                    >Olvidaste ingresar un nombre para el puerto</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
-                  <div class="md-layout-item">
-											<label>Región</label>
-                      <multiselect v-model="arrayReg" :options="arrayRegion"
-                          placeholder="Seleccione una región"
-                          :custom-label="nameWithRegion"
-                          label="name"
-                          track-by="name">
-                      </multiselect>
-									</div>&nbsp;&nbsp;&nbsp;
                 </div>
               </md-card-content>
             </form>
@@ -108,79 +99,51 @@
 </template>
 
 <script>
-
-    import { validationMixin } from "vuelidate";
-    import Multiselect from "vue-multiselect";
-    import Toasted from 'vue-toasted';
-    import vSelect from "vue-select";
-    import {
-		MdButton,  
-		MdContent,
-		MdField,
-		MdCard,
-		MdMenu,
-		MdSwitch,
-		MdDatepicker,
-		MdList
-    } from "vue-material/dist/components";
-
-    Vue.use(Toasted,  {
-        iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
-    });
-    Vue.use(MdButton);
-
-    Vue.use(MdContent);
-    Vue.use(MdField);
-    Vue.use(MdCard);
-    Vue.use(MdMenu);
-    Vue.use(MdSwitch);
-    Vue.use(MdList);
-    Vue.use(MdDatepicker);
-    import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
+import { validationMixin } from "vuelidate";
+import {
+  MdButton,
+  MdContent,
+  MdField,
+  MdCard,
+  MdMenu,
+  MdList
+} from "vue-material/dist/components";
+// import VueMaterial from 'vue-material'
+// Vue.use(VueMaterial)
+Vue.use(MdButton);
+Vue.use(MdContent);
+Vue.use(MdField);
+Vue.use(MdCard);
+Vue.use(MdMenu);
+Vue.use(MdList);
+import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
-	mixins: [validationMixin],
-	props: ['ruta'],
-	
-	data() {
+  mixins: [validationMixin],
 
-		Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
-		Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
-		Vue.material.locale.shortMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul','Ago','Sep','Oct','Nov','Dic'];
-		Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
-		let now = new Date();
-    
-		return {      form: {
+  data() {
+    return {
+      form: {
         name: "",
       },
-      arrayMunicipalities: [],
-      id_municipalities: 0,
-      arrayReg: {id:0, name:''},
-		  arrayRegion: [],
-      id_region: 0,
-      edo: 1,
-
+      state: 1,
       tipoAccion: 1,
       listado: 1,
-      idMcpio: 0,
+      idFisher: 0,
       sending: false,
+      edo: 1,
 
       arrayData: [],
       modal: 0,
       tipoAccion: 0
     };
   },
-  components: {
-		vSelect,
-		Multiselect
-	},
 
   validations: {
     form: {
       name: {
         required
-      }
+      },
     }
   },
 
@@ -207,63 +170,50 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.name = null;
-      this.arrayReg = {id:0, name:''};
+      this.form.state = 1;
     },
-    nameWithRegion ({ name }) {
-            return `${name}`
-    },
-    listData() {
-      let me = this;
-      var url =
-        "/municipalities";
-      axios
-        .get(url)
-        .then(function (response) {
-          var respuesta = response.data;
-          me.arrayMunicipalities = respuesta.municipalities.data;
-          me.myTable(me.arrayMunicipalities);
-    
 
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
-    selectRegion() {
-            let me = this;
-            var url = "region/selectRegion";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayRegion = respuesta.region;
-                }).catch(function (error) {
-                    console.log(error);
-            });
-        },
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
-      (this.id_municipalities = data["id"]);
+      (this.idFisher = data["id"]);
       this.form.name = data["name"];
-      this.arrayReg.id = data["id_region"];
-			this.arrayReg.name = data["nameReg"];
+      // this.form.state = data["state"];
     },
     showData() {
       this.clearForm();
       let me = this;
       (this.tipoAccion = 1), (me.listado = 0);
-      this.edo=0;
+      this.state=0;
     },
     hideForm() {
-      this.listData();
-      this.edo = 1;
+      this.state = 1;
       this.listado = 1;
-    },    
+      this.listData();
+    },   
+    listData() {
+      let me = this;
+      var url =
+        "/autoFishers";
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.arrayData = respuesta.data;
+          me.myTable(me.arrayData);
+
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }, 
     saveData() {
       let me = this;
+
       axios
-        .post("/municipalities/save", {
+        .post("/autoFishers/save", {
           name: this.form.name.toUpperCase(),
-          'id_region': this.arrayReg.id,
+          name: this.form.state,
         })
         .then(function(response) {
           me.hideForm();
@@ -276,11 +226,12 @@ export default {
     },
     updateData() {
       let me = this;
+
       axios
-        .put("/municipalities/update", {
+        .put("/autoFishers/update", {
           name: this.form.name.toUpperCase(),
-          id: this.id_municipalities,
-          'id_region': this.arrayReg.id,
+          name: this.form.state,
+          id: this.idFisher
         })
         .then(function(response) {
           me.hideForm();
@@ -293,7 +244,7 @@ export default {
     },
     deleteData(data = []) {
       swal({
-        title: "Esta seguro de Eliminar este municipio " + data["name"],
+        title: "Esta seguro de Eliminar el puerto " + data["name"],
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -308,8 +259,8 @@ export default {
         if (result.value) {
           let me = this;      
           axios
-            .post("/municipalities/delete", {
-              id: this.id_municipalities
+            .post("/autoFishers/delete", {
+              id: data["id"],
             })
             .then(function(response) {
               me.hideForm();
@@ -326,6 +277,84 @@ export default {
         }
       });
     },
+    desactivarAutoFisher(id){
+               swal({
+                title: 'Esta seguro de desactivar esta zona?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar!',
+                cancelButtonText: 'Cancelar',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false,
+                reverseButtons: true
+                }).then((result) => {
+                if (result.value) {
+                    let me = this;
+
+                    axios.put(this.ruta+'/autoFishers/desactivar',{
+                        'id': id
+                    }).then(function (response) {
+                        me.listData(1,'','name');
+                        swal(
+                        'Desactivado!',
+                        'El registro ha sido desactivado con éxito.',
+                        'success'
+                        )
+                    }).catch(function (error) {
+                        console.log(error);
+					});
+                    
+                    
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === swal.DismissReason.cancel
+                ) {
+                    
+                }
+                }) 
+        },
+        activarAutoFisher(id){
+               swal({
+                title: 'Esta seguro de activar esta zona?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar!',
+                cancelButtonText: 'Cancelar',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false,
+                reverseButtons: true
+                }).then((result) => {
+                if (result.value) {
+                    let me = this;
+
+                    axios.put(this.ruta+'/autoFishers/activar',{
+                        'id': id
+                    }).then(function (response) {
+                        me.listData(1,'','name');
+                        swal(
+                        'Activado!',
+                        'El registro ha sido activado con éxito.',
+                        'success'
+                        )
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                    
+                    
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === swal.DismissReason.cancel
+                ) {
+                    
+                }
+                }) 
+        },
 
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
@@ -361,8 +390,16 @@ export default {
           "columns": [
 
             { "data": "name" },
-            { "data": "nameReg" },
-             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
+            {data:"state", 
+            "render":function(data,type,row){
+                if(row["state"]=="1"){
+                    return '<span class="badge badge-success">Activo</span>';
+                }else{
+                    return '<span class="badge badge-dark">Inactivo</span>';
+                }
+            }               
+            },
+             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button> "},
 
         ]
 
@@ -382,7 +419,6 @@ export default {
 
   mounted() {
     this.listData();
-    this.selectRegion();
   }
 };
 </script>

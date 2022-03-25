@@ -35,8 +35,39 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/region/save', 'RegionController@store');
         Route::put('/region/update', 'RegionController@update');
         Route::post('/region/delete', 'RegionController@destroy');
-       
+        //municipios
+        Route::get('/municipalities', 'MunicipalityController@index');
+        Route::post('/municipalities/save', 'MunicipalityController@store');
+        Route::put('/municipalities/update', 'MunicipalityController@update');
+        Route::post('/municipalities/delete', 'MunicipalityController@destroy');
+        Route::get('/region/selectRegion', 'RegionController@selectRegion');
+        //puertos
+        Route::get('/ports', 'PortsController@index');
+        Route::post('/ports/save', 'PortsController@store');
+        Route::put('/ports/update', 'PortsController@update');
+        Route::post('/ports/delete', 'PortsController@destroy');
+        //zonas autorizadas
+        Route::get('/autoFishers', 'AutoFisherController@index');
+        Route::post('/autoFishers/save', 'AutoFisherController@store');
+        Route::put('/autoFishers/update', 'AutoFisherController@update');
+        Route::post('/autoFishers/delete', 'AutoFisherController@destroy');
+        Route::put('/autoFishers/desactivar', 'AutoFisherController@desactivar');
+        Route::put('/autoFishers/activar', 'AutoFisherController@activar');
+        //bandera
+        Route::get('/flags', 'FlagController@index');
+        Route::post('/flags/save', 'FlagController@store');
+        Route::put('/flags/update', 'FlagController@update');
+        Route::post('/flags/delete', 'FlagController@destroy');
+        //muelles
+        Route::get('/docks', 'DockController@index');
+        Route::post('/docks/save', 'DockController@store');
+        Route::put('/docks/update', 'DockController@update');
+        Route::post('/docks/delete', 'DockController@destroy');
+        Route::get('/ports/selectPorts', 'PortsController@selectPort');
+        //zarpe
+        Route::get('/zarpe', 'ZarpeController@index');
 
+       
     });
 
 });

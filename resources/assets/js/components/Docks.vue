@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Gestión de municipios</strong>          
+          <strong class="lead">Gestión de muelles</strong>          
           <button
             v-if="edo"
             type="button"
@@ -23,7 +23,9 @@
                 <thead>
                   <tr>
                     <th>Nombre</th>
-                    <th>Región</th>
+                    <th>Puerto</th>
+                    <th>Arribo</th>
+                    <th>Zarpe</th>
                     <th>Opciones</th>    
                   </tr>
                 </thead>
@@ -32,7 +34,9 @@
                   <tfoot>
                     <tr>
                       <th>Nombre</th>
-                      <th>Región</th>
+                      <th>Puerto</th>
+                      <th>Arribo</th>
+                      <th>Zarpe</th>
                       <th>Opciones</th>  
                     </tr>
                   </tfoot>
@@ -48,7 +52,7 @@
           <div class="card-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
-                <div class="md-layout">
+                <div class="md-layout col-md-12">
                   <md-field md-clearable :class="getValidationClass('name')">
                     <label for="first-name">Nombre</label>
                     <md-input
@@ -61,18 +65,30 @@
                     <span
                       class="md-error"
                       v-if="!$v.form.name.required"
-                    >Olvidaste ingresar un name para el municipio</span>
+                    >Olvidaste ingresar un nombre para el muelle</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <div class="md-layout-item">
-											<label>Región</label>
-                      <multiselect v-model="arrayReg" :options="arrayRegion"
-                          placeholder="Seleccione una región"
-                          :custom-label="nameWithRegion"
+				           	<label>Puerto</label>
+                      <multiselect v-model="arrayPt" :options="arrayPort"
+                          placeholder="Seleccione un puerto"
+                          :custom-label="nameWithPort"
                           label="name"
                           track-by="name">
                       </multiselect>
-									</div>&nbsp;&nbsp;&nbsp;
+				         </div>&nbsp;&nbsp;&nbsp;
+                  <div class="form-check col-md-3">
+                        <input class="form-check-input" type="checkbox" value="arrival" id="defaultCheck1" v-model="arrival">
+                        <label class="form-check-label" for="defaultCheck1">
+                              Arribo
+                        </label>
+                  </div>  
+                  <div class="form-check col-md-3">
+                        <input class="form-check-input" type="checkbox" value="zarpe" id="defaultCheck1" v-model="zarpe">
+                        <label class="form-check-label" for="defaultCheck1">
+                              Zarpe
+                        </label>
+                  </div>  
                 </div>
               </md-card-content>
             </form>
@@ -151,15 +167,17 @@ export default {
 		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
 		let now = new Date();
     
-		return {      form: {
+	  return {      form: {
         name: "",
       },
-      arrayMunicipalities: [],
-      id_municipalities: 0,
-      arrayReg: {id:0, name:''},
-		  arrayRegion: [],
-      id_region: 0,
+      arrayDocks: [],
+      id_Docks: 0,
+      arrayPt: {id:0, name:''},
+	    arrayPort: [],
+      id_port: 0,
       edo: 1,
+      zarpe: false,
+      arrival: false,
 
       tipoAccion: 1,
       listado: 1,
@@ -207,21 +225,23 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.name = null;
-      this.arrayReg = {id:0, name:''};
+      this.form.arrival = null;
+      this.form.zarpe = null;
+      this.arrayPt = {id:0, name:''};
     },
-    nameWithRegion ({ name }) {
+    nameWithPort ({ name }) {
             return `${name}`
     },
     listData() {
       let me = this;
       var url =
-        "/municipalities";
+        "/docks";
       axios
         .get(url)
         .then(function (response) {
           var respuesta = response.data;
-          me.arrayMunicipalities = respuesta.municipalities.data;
-          me.myTable(me.arrayMunicipalities);
+          me.arrayDocks = respuesta.docks.data;
+          me.myTable(me.arrayDocks);
     
 
         })
@@ -229,23 +249,25 @@ export default {
           console.log(error);
         });
     },
-    selectRegion() {
+    selectPort() {
             let me = this;
-            var url = "region/selectRegion";
+            var url = "ports/selectPorts";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
-                    me.arrayRegion = respuesta.region;
+                    me.arrayPort = respuesta.port;
                 }).catch(function (error) {
                     console.log(error);
             });
-        },
+    },
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
-      (this.id_municipalities = data["id"]);
+      (this.id_docks = data["id"]);
       this.form.name = data["name"];
-      this.arrayReg.id = data["id_region"];
-			this.arrayReg.name = data["nameReg"];
+      this.form.arrival = data["arrival"];
+      this.form.zarpe = data["zarpe"];
+      this.arrayPt.id = data["id_port"];
+	    this.arrayPt.name = data["namePort"];
     },
     showData() {
       this.clearForm();
@@ -261,9 +283,11 @@ export default {
     saveData() {
       let me = this;
       axios
-        .post("/municipalities/save", {
+        .post("/docks/save", {
           name: this.form.name.toUpperCase(),
-          'id_region': this.arrayReg.id,
+          arrival: this.arrival,
+          zarpe: this.zarpe,
+          'id_port': this.arrayPt.id,
         })
         .then(function(response) {
           me.hideForm();
@@ -277,10 +301,12 @@ export default {
     updateData() {
       let me = this;
       axios
-        .put("/municipalities/update", {
+        .put("/docks/update", {
           name: this.form.name.toUpperCase(),
-          id: this.id_municipalities,
-          'id_region': this.arrayReg.id,
+          arrival: this.arrival,
+          zarpe: this.zarpe,
+          id: this.id_docks,
+          'id_port': this.arrayPt.id,
         })
         .then(function(response) {
           me.hideForm();
@@ -293,7 +319,7 @@ export default {
     },
     deleteData(data = []) {
       swal({
-        title: "Esta seguro de Eliminar este municipio " + data["name"],
+        title: "Esta seguro de Eliminar este muelle " + data["name"],
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -308,8 +334,8 @@ export default {
         if (result.value) {
           let me = this;      
           axios
-            .post("/municipalities/delete", {
-              id: this.id_municipalities
+            .post("/docks/delete", {
+              id: this.id_docks
             })
             .then(function(response) {
               me.hideForm();
@@ -361,7 +387,25 @@ export default {
           "columns": [
 
             { "data": "name" },
-            { "data": "nameReg" },
+            { "data": "namePort" },    
+            { "data": "arrival", 
+               "render":function(data,type,row){
+                  if(row["arrival"]=="true"){
+                      return '<span class="badge badge-success">Aplica</span>';
+                  }else{
+                      return '<span class="badge badge-dark">No aplica</span>';
+                  }
+               }  
+            },    
+            { "data": "zarpe",
+              "render":function(data,type,row){
+                    if(row["zarpe"]=="true"){
+                        return '<span class="badge badge-success">Aplica</span>';
+                    }else{
+                        return '<span class="badge badge-dark">No aplica</span>';
+                    }
+                }  
+             },    
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
 
         ]
@@ -382,7 +426,7 @@ export default {
 
   mounted() {
     this.listData();
-    this.selectRegion();
+    this.selectPort();
   }
 };
 </script>

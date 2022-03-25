@@ -20,7 +20,12 @@ window.Vue = require('vue');
 
 
 Vue.component('region', require('./components/Regions.vue'));
-Vue.component('mpios', require('./components/Municipalities.vue'));
+Vue.component('municipalities', require('./components/Municipalities.vue'));
+Vue.component('ports', require('./components/Ports.vue'));
+Vue.component('autofisher', require('./components/AutoFishers.vue'));
+Vue.component('flags', require('./components/Flags.vue'));
+Vue.component('docks', require('./components/Docks.vue'));
+Vue.component('zarpe', require('./components/Zarpe.vue'));
 
 
 const app = new Vue({
