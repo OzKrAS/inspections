@@ -26,6 +26,8 @@ Vue.component('autofisher', require('./components/AutoFishers.vue'));
 Vue.component('flags', require('./components/Flags.vue'));
 Vue.component('docks', require('./components/Docks.vue'));
 Vue.component('zarpe', require('./components/Zarpe.vue'));
+Vue.component('arrival', require('./components/Arrivals.vue'));
+Vue.component('checkdetinch', require('./components/CheckDetInch.vue'));
 
 
 const app = new Vue({

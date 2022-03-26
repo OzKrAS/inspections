@@ -27,6 +27,12 @@
             <template v-if="menu==7">
                 <zarpe></zarpe>
             </template>
+            <template v-if="menu==8">
+                <arrival></arrival>
+            </template>
+            <template v-if="menu==9">
+                <checkdetinch></checkdetinch>
+            </template>
 
            
    

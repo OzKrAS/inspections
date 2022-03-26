@@ -67,6 +67,18 @@
                             <li @click="menu=7">
                                 <a href="#"><i class="icon-bag"></i>Inspección a Embarcación Pesquera - Zarpe</a>                                                                               
                             </li>                                
+                            <li @click="menu=8">
+                                <a href="#"><i class="icon-bag"></i>Inspección a Embarcación Pesquera - Arribo</a>                                                                               
+                            </li>                                
+                            <li @click="menu=9">
+                                <a href="#"><i class="icon-bag"></i>Verificación DETs 71 Pulgadas</a>                                                                               
+                            </li>                                
+                            <li @click="menu=10">
+                                <a href="#"><i class="icon-bag"></i>Verificación DET Doble Solapa</a>                                                                               
+                            </li>                                
+                            <li @click="menu=11">
+                                <a href="#"><i class="icon-bag"></i>Verificación Presencia del Equipo de Rescate de Delfines Abordo de BarcosAtuneros de Cerco</a>                                                                               
+                            </li>                                
                           
                         </ul>                            
                         </div>                        

@@ -65,7 +65,19 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/docks/delete', 'DockController@destroy');
         Route::get('/ports/selectPorts', 'PortsController@selectPort');
         //zarpe
-        Route::get('/zarpe', 'ZarpeController@index');
+        Route::get('/zarpes', 'ZarpeController@index');
+        Route::post('/zarpes/save', 'ZarpeController@store');
+        Route::put('/zarpes/update', 'ZarpeController@update');
+        Route::post('/zarpes/delete', 'ZarpeController@destroy');
+        Route::get('/zarpes/selectPorts', 'PortsController@selectPort');
+        Route::get('/flags/selectFlags', 'FlagController@selectFlag');
+        Route::get('/region/selectRegion', 'RegionController@selectRegion');
+        //verificación 71
+        Route::get('/checkDetInch', 'CheckDetInchController@index');
+        Route::post('/checkDetInch/save', 'CheckDetInchController@store');
+        Route::put('/checkDetInch/update', 'CheckDetInchController@update');
+        Route::post('/checkDetInch/delete', 'CheckDetInchController@destroy');
+
 
        
     });
