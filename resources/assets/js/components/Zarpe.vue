@@ -159,7 +159,7 @@
                       </div> &nbsp;&nbsp;&nbsp; 
                       <div class="md-layout-item">
                         <label>Recibió Notificación Previa</label>
-                        <multiselect v-model="arrayReg" :options="arrayNotification"
+                        <multiselect v-model="notification" :options="arrayNotification"
                             placeholder="Seleccione una opción"
                             :custom-label="nameWithRegion"
                             label="name"
@@ -357,7 +357,7 @@
                   <div class="md-layout-item">
                         <label>Bandera</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
-                            placeholder="Seleccione una región"
+                            placeholder="Seleccione una bandera"
                             :custom-label="nameWithFlag"
                             label="name"
                             track-by="name">
@@ -704,6 +704,13 @@ export default {
         
       },
 
+      dateIns: 0,
+      dateScale: 0,
+      dateZarpe: 0,
+      dateResolution: 0,
+      dateValid: 0,
+      dateLatestArrival: 0,
+      dateValidityPat: 0,
       observation: "",
       conclusions: "",
       comments: "",
@@ -720,20 +727,13 @@ export default {
 	    arrayFlag: [],
       id_flag: 0,
       arrayNotification: [],
+      notification: "",
       arrayFinalityZarpe: [],
       arrayOrigin: [],
       arrayDestination: [],
       arrayNational: [],
       arrayOrop: [],
-      arrayFlag: [],
       arrayFishAut: [],
-      dateIns: 0,
-      dateScale: 0,
-      dateZarpe: 0,
-      dateResolution: 0,
-      dateValid: 0,
-      dateLatestArrival: 0,
-      dateValidityPat: 0,
       
       edo: 1,
 
@@ -864,6 +864,13 @@ export default {
       this.observation = null;
       this.conclusions = null;
       this.comments = null;
+      this.dateIns = null;
+      this.dateScale = null;
+      this.dateZarpe = null;
+      this.dateResolution = null;
+      this.dateValid = null;
+      this.dateLatestArrival = null;
+      this.dateValidityPat = null;
       this.arrayReg = {id:0, name:''};
       this.arrayPt = {id:0, name:''};
       this.arrayFg = {id:0, name:''};
@@ -916,10 +923,10 @@ export default {
     },
     selectFlag() {
             let me = this;
-            var url = "flags/selectFlag";
+            var url = "flags/selectFlags";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
-                    me.arrayFlag = respuesta.flag;
+                    me.arrayFlag = respuesta.flags;
                 }).catch(function (error) {
                     console.log(error);
             });
@@ -951,7 +958,13 @@ export default {
       this.observation = data["observation"];
       this.conclusions = data["conclusions"];
       this.comments = data["comments"];
-
+      this.dateIns = data["dateIns"];
+      this.dateScale = data["dateScale"];
+      this.dateZarpe = data["dateZarpe"];
+      this.dateResolution = data["dateResolution"];
+      this.dateValid = data["dateValid"];
+      this.dateLatestArrival = data["dateLatestArrival"];
+      this.dateValidityPat = data["dateValidityPat"];
       this.arrayReg.id = data["id_region"];
 			this.arrayReg.name = data["nameReg"];
       this.arrayPt.id = data["id_port"];
@@ -998,6 +1011,13 @@ export default {
           observation: this.observation.toUpperCase(),
           conclusions: this.conclusions.toUpperCase(),
           comments: this.comments.toUpperCase(),
+          dateIns: this.dateIns,
+          dateScale: this.dateScale,
+          dateZarpe: this.dateZarpe,
+          dateResolution: this.dateResolution,
+          dateValid: this.dateValid,
+          dateLatestArrival: this.dateLatestArrival,
+          dateValidityPat: this.dateValidityPat,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
@@ -1041,6 +1061,13 @@ export default {
           observation: this.observation.toUpperCase(),
           conclusions: this.conclusions.toUpperCase(),
           comments: this.comments.toUpperCase(),
+          dateIns: this.dateIns,
+          dateScale: this.dateScale,
+          dateZarpe: this.dateZarpe,
+          dateResolution: this.dateResolution,
+          dateValid: this.dateValid,
+          dateLatestArrival: this.dateLatestArrival,
+          dateValidityPat: this.dateValidityPat,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
@@ -1124,8 +1151,39 @@ export default {
             responsive: "true",
           "columns": [
 
-            { "data": "name" },
+            // { "data": "insNo" },
+            // { "data": "portArrival" },
+            // { "data": "radioCall" },
+            // { "data": "idOmi" },
+            // { "data": "noResolution" },
+            // { "data": "nameBoat" },
+            // { "data": "enrollment" },
+            // { "data": "noPatent" },
+            // { "data": "representative" },
+            // { "data": "business" },
+            // { "data": "zoneAutFish" },
+            // { "data": "eyeMesh" },
+            // { "data": "netWidth" },
+            // { "data": "eyeFlake" },
+            // { "data": "typeHook" },
+            // { "data": "longNet" },
+            // { "data": "materialArt" },
+            // { "data": "equipDevi" },
+            // { "data": "captain" },
+            // { "data": "nacionality" },
+            // { "data": "dateIns" },
+            // { "data": "dateScale" },
+            // { "data": "dateZarpe" },
+            // { "data": "dateResolution" },
+            // { "data": "dateValid" },
+            // { "data": "dateLatestArrival" },
+            // { "data": "dateValidityPat" },
+            // { "data": "observation" },
+            // { "data": "conclusions" },
+            // { "data": "comments" },
             { "data": "nameReg" },
+            { "data": "namePort" },
+            { "data": "nameFlag" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
 
         ]

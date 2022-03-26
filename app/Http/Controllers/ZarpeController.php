@@ -14,11 +14,36 @@ class ZarpeController extends Controller
         if (!$request->ajax()) return redirect('/');
 
             $zarpes = Zarpe::join('regions','zarpes.id_region','=','regions.id')
-            ->select('zarpes.id', 'zarpes.name', 'zarpes.id_region','regions.name as nameReg')
-            ->join('ports','zarpes.id_region','=','ports.id')
-            ->select('zarpes.id', 'zarpes.name', 'zarpes.id_port','ports.name as namePort')
-            ->join('flags','zarpes.id_flag','=','flags.id')
-            ->select('zarpes.id', 'zarpes.name', 'zarpes.id_flag','flags.name as nameFlag')
+            ->join('ports', 'zarpes.id_port', '=', 'ports.id')
+            ->join('flags', 'zarpes.id_flag', '=', 'flags.id')
+            ->select('zarpes.id',
+                     'zarpes.insNo',
+                     'zarpes.portArrival',
+                     'zarpes.radioCall',
+                     'zarpes.idOmi',
+                     'zarpes.noResolution',
+                     'zarpes.nameBoat',
+                     'zarpes.enrollment',
+                     'zarpes.noPatent',
+                     'zarpes.representative',
+                     'zarpes.business',
+                     'zarpes.zoneAutFish',
+                     'zarpes.eyeMesh',
+                     'zarpes.netWidth',
+                     'zarpes.eyeFlake',
+                     'zarpes.typeHook',
+                     'zarpes.longNet',
+                     'zarpes.materialArt',
+                     'zarpes.equipDevi',
+                     'zarpes.captain',
+                     'zarpes.nacionality',
+                     'zarpes.observation',
+                     'zarpes.conclusions',
+                     'zarpes.comments',
+                     'zarpes.id_region','regions.name as nameReg',
+                     'zarpes.id_port','ports.name as namePort',
+                     'zarpes.id_flag','flags.name as nameFlag'
+            )
             ->paginate(9999999999999999999999999);
         
         return [
