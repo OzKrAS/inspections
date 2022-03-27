@@ -39966,27 +39966,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -40684,47 +40663,35 @@ var render = function() {
                                 }
                               }),
                               _vm._v("   \n                      "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Fecha de Inspección")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateIns,
-                                            expression: "dateIns"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: { value: _vm.dateIns },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateIns = $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha de Inspección")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateIns,
+                                          callback: function($$v) {
+                                            _vm.dateIns = $$v
+                                          },
+                                          expression: "dateIns"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("     \n                      "),
                               _c(
                                 "div",
@@ -40833,47 +40800,35 @@ var render = function() {
                                 1
                               ),
                               _vm._v("   \n                      "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Fecha Última Escala")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateScale,
-                                            expression: "dateScale"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: { value: _vm.dateScale },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateScale = $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha Última Escala")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateScale,
+                                          callback: function($$v) {
+                                            _vm.dateScale = $$v
+                                          },
+                                          expression: "dateScale"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("     \n                        "),
                               _c(
                                 "div",
@@ -40901,47 +40856,35 @@ var render = function() {
                                 1
                               ),
                               _vm._v("   \n                      "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Fecha Zarpe")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateZarpe,
-                                            expression: "dateZarpe"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: { value: _vm.dateZarpe },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateZarpe = $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha Zarpe")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateZarpe,
+                                          callback: function($$v) {
+                                            _vm.dateZarpe = $$v
+                                          },
+                                          expression: "dateZarpe"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("      \n                  "),
                               _c(
                                 "md-field",
@@ -40983,50 +40926,35 @@ var render = function() {
                                 1
                               ),
                               _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Fecha Ultimo Arribo")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateLatestArrival,
-                                            expression: "dateLatestArrival"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: {
-                                          value: _vm.dateLatestArrival
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateLatestArrival =
-                                              $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha Ultimo Arribo")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateLatestArrival,
+                                          callback: function($$v) {
+                                            _vm.dateLatestArrival = $$v
+                                          },
+                                          expression: "dateLatestArrival"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("    \n\n                  "),
                               _vm._v(" "),
                               _c(
@@ -41201,90 +41129,65 @@ var render = function() {
                                 1
                               ),
                               _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Fecha")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateResolution,
-                                            expression: "dateResolution"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: { value: _vm.dateResolution },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateResolution =
-                                              $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateResolution,
+                                          callback: function($$v) {
+                                            _vm.dateResolution = $$v
+                                          },
+                                          expression: "dateResolution"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("     \n                  "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Vigencia")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateValid,
-                                            expression: "dateValid"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: { value: _vm.dateValid },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateValid = $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Vigencia")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateValid,
+                                          callback: function($$v) {
+                                            _vm.dateValid = $$v
+                                          },
+                                          expression: "dateValid"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("     \n                  "),
                               _c(
                                 "md-field",
@@ -41432,50 +41335,35 @@ var render = function() {
                                 1
                               ),
                               _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Vigencia Patente")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateValidityPat,
-                                            expression: "dateValidityPat"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: {
-                                          value: _vm.dateValidityPat
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateValidityPat =
-                                              $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Vigencia Patente")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateValidityPat,
+                                          callback: function($$v) {
+                                            _vm.dateValidityPat = $$v
+                                          },
+                                          expression: "dateValidityPat"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("     \n                  "),
                               _c(
                                 "md-field",
@@ -41662,7 +41550,7 @@ var render = function() {
                                   !_vm.$v.form.eyeMesh.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar una zona de pesca autorizada"
+                                          "Olvidaste ingresar el Oojo de malla"
                                         )
                                       ])
                                     : _vm._e()
@@ -41946,7 +41834,7 @@ var render = function() {
                                   !_vm.$v.form.captain.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar un nombre para el capitan"
+                                          "Olvidaste ingresar un nombre para el capitan de pesca"
                                         )
                                       ])
                                     : _vm._e()
@@ -43067,27 +42955,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -43115,7 +42982,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
   props: ['ruta'],
 
   data: function data() {
-    var _ref;
 
     Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
     Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
@@ -43124,7 +42990,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
     var dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
     var now = new Date();
 
-    return _ref = { form: {
+    return _defineProperty({ form: {
 
         insNo: "",
         portArrival: "",
@@ -43149,6 +43015,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
 
       },
 
+      dateIns: 0,
+      dateScale: 0,
+      dateZarpe: 0,
+      dateResolution: 0,
+      dateValid: 0,
+      dateLatestArrival: 0,
+      dateValidityPat: 0,
       observation: "",
       conclusions: "",
       comments: "",
@@ -43165,12 +43038,24 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       arrayFlag: [],
       id_flag: 0,
       arrayNotification: [],
+      notification: "",
       arrayFinalityZarpe: [],
       arrayOrigin: [],
       arrayDestination: [],
       arrayNational: [],
-      arrayOrop: []
-    }, _defineProperty(_ref, "arrayFlag", []), _defineProperty(_ref, "arrayFishAut", []), _defineProperty(_ref, "dateIns", 0), _defineProperty(_ref, "dateScale", 0), _defineProperty(_ref, "dateZarpe", 0), _defineProperty(_ref, "dateResolution", 0), _defineProperty(_ref, "dateValid", 0), _defineProperty(_ref, "dateLatestArrival", 0), _defineProperty(_ref, "dateValidityPat", 0), _defineProperty(_ref, "edo", 1), _defineProperty(_ref, "tipoAccion", 1), _defineProperty(_ref, "listado", 1), _defineProperty(_ref, "idMcpio", 0), _defineProperty(_ref, "sending", false), _defineProperty(_ref, "arrayData", []), _defineProperty(_ref, "modal", 0), _defineProperty(_ref, "tipoAccion", 0), _ref;
+      arrayOrop: [],
+      arrayFishAut: [],
+
+      edo: 1,
+
+      tipoAccion: 1,
+      listado: 1,
+      idMcpio: 0,
+      sending: false,
+
+      arrayData: [],
+      modal: 0
+    }, "tipoAccion", 0);
   },
 
   components: {
@@ -43288,6 +43173,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       this.observation = null;
       this.conclusions = null;
       this.comments = null;
+      this.dateIns = null;
+      this.dateScale = null;
+      this.dateZarpe = null;
+      this.dateResolution = null;
+      this.dateValid = null;
+      this.dateLatestArrival = null;
+      this.dateValidityPat = null;
       this.arrayReg = { id: 0, name: '' };
       this.arrayPt = { id: 0, name: '' };
       this.arrayFg = { id: 0, name: '' };
@@ -43340,10 +43232,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
     },
     selectFlag: function selectFlag() {
       var me = this;
-      var url = "flags/selectFlag";
+      var url = "flags/selectFlags";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
-        me.arrayFlag = respuesta.flag;
+        me.arrayFlag = respuesta.flags;
       }).catch(function (error) {
         console.log(error);
       });
@@ -43377,7 +43269,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       this.observation = data["observation"];
       this.conclusions = data["conclusions"];
       this.comments = data["comments"];
-
+      this.dateIns = data["dateIns"];
+      this.dateScale = data["dateScale"];
+      this.dateZarpe = data["dateZarpe"];
+      this.dateResolution = data["dateResolution"];
+      this.dateValid = data["dateValid"];
+      this.dateLatestArrival = data["dateLatestArrival"];
+      this.dateValidityPat = data["dateValidityPat"];
       this.arrayReg.id = data["id_region"];
       this.arrayReg.name = data["nameReg"];
       this.arrayPt.id = data["id_port"];
@@ -43423,6 +43321,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
         observation: this.observation.toUpperCase(),
         conclusions: this.conclusions.toUpperCase(),
         comments: this.comments.toUpperCase(),
+        dateIns: this.dateIns,
+        dateScale: this.dateScale,
+        dateZarpe: this.dateZarpe,
+        dateResolution: this.dateResolution,
+        dateValid: this.dateValid,
+        dateLatestArrival: this.dateLatestArrival,
+        dateValidityPat: this.dateValidityPat,
 
         'id_region': this.arrayReg.id,
         'id_port': this.arrayPt.id,
@@ -43463,6 +43368,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
         observation: this.observation.toUpperCase(),
         conclusions: this.conclusions.toUpperCase(),
         comments: this.comments.toUpperCase(),
+        dateIns: this.dateIns,
+        dateScale: this.dateScale,
+        dateZarpe: this.dateZarpe,
+        dateResolution: this.dateResolution,
+        dateValid: this.dateValid,
+        dateLatestArrival: this.dateLatestArrival,
+        dateValidityPat: this.dateValidityPat,
 
         'id_region': this.arrayReg.id,
         'id_port': this.arrayPt.id,
@@ -43540,7 +43452,39 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
             "infoFiltered": "(filtrado de _MAX_ total registros)"
           },
           responsive: "true",
-          "columns": [{ "data": "name" }, { "data": "nameReg" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
+          "columns": [
+
+          // { "data": "insNo" },
+          // { "data": "portArrival" },
+          // { "data": "radioCall" },
+          // { "data": "idOmi" },
+          // { "data": "noResolution" },
+          // { "data": "nameBoat" },
+          // { "data": "enrollment" },
+          // { "data": "noPatent" },
+          // { "data": "representative" },
+          // { "data": "business" },
+          // { "data": "zoneAutFish" },
+          // { "data": "eyeMesh" },
+          // { "data": "netWidth" },
+          // { "data": "eyeFlake" },
+          // { "data": "typeHook" },
+          // { "data": "longNet" },
+          // { "data": "materialArt" },
+          // { "data": "equipDevi" },
+          // { "data": "captain" },
+          // { "data": "nacionality" },
+          // { "data": "dateIns" },
+          // { "data": "dateScale" },
+          // { "data": "dateZarpe" },
+          // { "data": "dateResolution" },
+          // { "data": "dateValid" },
+          // { "data": "dateLatestArrival" },
+          // { "data": "dateValidityPat" },
+          // { "data": "observation" },
+          // { "data": "conclusions" },
+          // { "data": "comments" },
+          { "data": "nameReg" }, { "data": "namePort" }, { "data": "nameFlag" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
 
         });
 
@@ -43708,47 +43652,35 @@ var render = function() {
                                 }
                               }),
                               _vm._v("   \n                      "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Fecha de Inspección")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateIns,
-                                            expression: "dateIns"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: { value: _vm.dateIns },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateIns = $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha de Inspección")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateIns,
+                                          callback: function($$v) {
+                                            _vm.dateIns = $$v
+                                          },
+                                          expression: "dateIns"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("     \n                      "),
                               _c(
                                 "div",
@@ -43767,11 +43699,11 @@ var render = function() {
                                       "track-by": "name"
                                     },
                                     model: {
-                                      value: _vm.arrayReg,
+                                      value: _vm.notification,
                                       callback: function($$v) {
-                                        _vm.arrayReg = $$v
+                                        _vm.notification = $$v
                                       },
-                                      expression: "arrayReg"
+                                      expression: "notification"
                                     }
                                   })
                                 ],
@@ -43782,11 +43714,11 @@ var render = function() {
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _c("label", [_vm._v("Finalidad Zarpe")]),
+                                  _c("label", [_vm._v("Finalidad Arribo")]),
                                   _vm._v(" "),
                                   _c("multiselect", {
                                     attrs: {
-                                      options: _vm.arrayFinalityZarpe,
+                                      options: _vm.arrayFinalityArribo,
                                       placeholder: "Seleccione una opción",
                                       "custom-label": _vm.nameWithRegion,
                                       label: "name",
@@ -43857,47 +43789,35 @@ var render = function() {
                                 1
                               ),
                               _vm._v("   \n                      "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Fecha Última Escala")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateScale,
-                                            expression: "dateScale"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: { value: _vm.dateScale },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateScale = $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha Última Escala")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateScale,
+                                          callback: function($$v) {
+                                            _vm.dateScale = $$v
+                                          },
+                                          expression: "dateScale"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("     \n                        "),
                               _c(
                                 "div",
@@ -43925,47 +43845,35 @@ var render = function() {
                                 1
                               ),
                               _vm._v("   \n                      "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Fecha Zarpe")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateZarpe,
-                                            expression: "dateZarpe"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: { value: _vm.dateZarpe },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateZarpe = $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha Zarpe")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateZarpe,
+                                          callback: function($$v) {
+                                            _vm.dateZarpe = $$v
+                                          },
+                                          expression: "dateZarpe"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("      \n                  "),
                               _c(
                                 "md-field",
@@ -44007,50 +43915,35 @@ var render = function() {
                                 1
                               ),
                               _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Fecha Ultimo Arribo")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateLatestArrival,
-                                            expression: "dateLatestArrival"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: {
-                                          value: _vm.dateLatestArrival
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateLatestArrival =
-                                              $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha Ultimo Arribo")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateLatestArrival,
+                                          callback: function($$v) {
+                                            _vm.dateLatestArrival = $$v
+                                          },
+                                          expression: "dateLatestArrival"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("    \n\n                  "),
                               _vm._v(" "),
                               _c(
@@ -44225,90 +44118,65 @@ var render = function() {
                                 1
                               ),
                               _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Fecha")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateResolution,
-                                            expression: "dateResolution"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: { value: _vm.dateResolution },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateResolution =
-                                              $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateResolution,
+                                          callback: function($$v) {
+                                            _vm.dateResolution = $$v
+                                          },
+                                          expression: "dateResolution"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("     \n                  "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Vigencia")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateValid,
-                                            expression: "dateValid"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: { value: _vm.dateValid },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateValid = $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Vigencia")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateValid,
+                                          callback: function($$v) {
+                                            _vm.dateValid = $$v
+                                          },
+                                          expression: "dateValid"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("     \n                  "),
                               _c(
                                 "md-field",
@@ -44359,7 +44227,7 @@ var render = function() {
                                   _c("multiselect", {
                                     attrs: {
                                       options: _vm.arrayFlag,
-                                      placeholder: "Seleccione una región",
+                                      placeholder: "Seleccione una bandera",
                                       "custom-label": _vm.nameWithFlag,
                                       label: "name",
                                       "track-by": "name"
@@ -44456,50 +44324,35 @@ var render = function() {
                                 1
                               ),
                               _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", { staticClass: "negrita" }, [
-                                    _vm._v("Vigencia Patente")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs12: "", sm6: "" } },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.dateValidityPat,
-                                            expression: "dateValidityPat"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "date",
-                                          pattern: "\\d{4}-\\d{2}-\\d{2}"
-                                        },
-                                        domProps: {
-                                          value: _vm.dateValidityPat
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.dateValidityPat =
-                                              $event.target.value
-                                          }
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Vigencia Patente")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateValidityPat,
+                                          callback: function($$v) {
+                                            _vm.dateValidityPat = $$v
+                                          },
+                                          expression: "dateValidityPat"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v("     \n                  "),
                               _c(
                                 "md-field",
@@ -44686,7 +44539,7 @@ var render = function() {
                                   !_vm.$v.form.eyeMesh.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar una zona de pesca autorizada"
+                                          "Olvidaste ingresar el Oojo de malla"
                                         )
                                       ])
                                     : _vm._e()
@@ -44970,7 +44823,7 @@ var render = function() {
                                   !_vm.$v.form.captain.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar un nombre para el capitan"
+                                          "Olvidaste ingresar un nombre para el capitan de pesca"
                                         )
                                       ])
                                     : _vm._e()

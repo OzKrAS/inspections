@@ -148,18 +148,15 @@
                         </multiselect>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
                         <label class="negrita">Fecha de Inspección</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateIns"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateIns">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                       </div> &nbsp;&nbsp;&nbsp; 
                       <div class="md-layout-item">
                         <label>Recibió Notificación Previa</label>
-                        <multiselect v-model="arrayReg" :options="arrayNotification"
+                        <multiselect v-model="notification" :options="arrayNotification"
                             placeholder="Seleccione una opción"
                             :custom-label="nameWithRegion"
                             label="name"
@@ -167,8 +164,8 @@
                         </multiselect>
                       </div> &nbsp;&nbsp;&nbsp; 
                         <div class="md-layout-item">
-                            <label>Finalidad Zarpe</label>
-                            <multiselect v-model="arrayReg" :options="arrayFinalityZarpe"
+                            <label>Finalidad Arribo</label>
+                            <multiselect v-model="arrayReg" :options="arrayFinalityArribo"
                                 placeholder="Seleccione una opción"
                                 :custom-label="nameWithRegion"
                                 label="name"
@@ -198,14 +195,11 @@
                         </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
                         <label class="negrita">Fecha Última Escala</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateScale"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateScale">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                       </div> &nbsp;&nbsp;&nbsp; 
                         <div class="md-layout-item">
                             <label>Puerto de Zarpe</label>
@@ -218,14 +212,11 @@
                         </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
                         <label class="negrita">Fecha Zarpe</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateZarpe"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateZarpe">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                       </div> &nbsp;&nbsp;&nbsp;  
                   <md-field md-clearable :class="getValidationClass('portArrival')">
                     <label for="first-name">Puerto de Ultimo Arribo</label>
@@ -243,14 +234,11 @@
                   </md-field>
                   <div class="md-layout-item">
                         <label class="negrita">Fecha Ultimo Arribo</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateLatestArrival"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateLatestArrival">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                   </div> &nbsp;&nbsp;&nbsp;
 
                   <!-- <label>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</label> -->
@@ -320,25 +308,19 @@
                   </md-field>
                   <div class="md-layout-item">
                         <label class="negrita">Fecha</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateResolution"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateResolution">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                   </div> &nbsp;&nbsp;&nbsp; 
                   <div class="md-layout-item">
                         <label class="negrita">Vigencia</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateValid"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateValid">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                   </div> &nbsp;&nbsp;&nbsp; 
                   <md-field md-clearable :class="getValidationClass('nameBoat')">
                     <label for="first-name">Nombre Embarcación</label>
@@ -357,7 +339,7 @@
                   <div class="md-layout-item">
                         <label>Bandera</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
-                            placeholder="Seleccione una región"
+                            placeholder="Seleccione una bandera"
                             :custom-label="nameWithFlag"
                             label="name"
                             track-by="name">
@@ -393,14 +375,11 @@
                   </md-field>
                   <div class="md-layout-item">
                         <label class="negrita">Vigencia Patente</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateValidityPat"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateValidityPat">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                   </div> &nbsp;&nbsp;&nbsp; 
                   <md-field md-clearable :class="getValidationClass('representative')">
                     <label for="first-name">Representante Legal</label>
@@ -471,7 +450,7 @@
                     <span
                       class="md-error"
                       v-if="!$v.form.eyeMesh.required"
-                    >Olvidaste ingresar una zona de pesca autorizada</span>
+                    >Olvidaste ingresar el Oojo de malla</span>
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('netWidth')">
                     <label for="first-name">Ancho de Red (Brazas)</label>
@@ -569,7 +548,7 @@
                     <span
                       class="md-error"
                       v-if="!$v.form.captain.required"
-                    >Olvidaste ingresar un nombre para el capitan</span>
+                    >Olvidaste ingresar un nombre para el capitan de pesca</span>
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('nacionality')">
                     <label for="first-name">Nacionalidad</label>
@@ -704,6 +683,13 @@ export default {
         
       },
 
+      dateIns: 0,
+      dateScale: 0,
+      dateZarpe: 0,
+      dateResolution: 0,
+      dateValid: 0,
+      dateLatestArrival: 0,
+      dateValidityPat: 0,
       observation: "",
       conclusions: "",
       comments: "",
@@ -720,20 +706,13 @@ export default {
 	    arrayFlag: [],
       id_flag: 0,
       arrayNotification: [],
+      notification: "",
       arrayFinalityZarpe: [],
       arrayOrigin: [],
       arrayDestination: [],
       arrayNational: [],
       arrayOrop: [],
-      arrayFlag: [],
       arrayFishAut: [],
-      dateIns: 0,
-      dateScale: 0,
-      dateZarpe: 0,
-      dateResolution: 0,
-      dateValid: 0,
-      dateLatestArrival: 0,
-      dateValidityPat: 0,
       
       edo: 1,
 
@@ -864,6 +843,13 @@ export default {
       this.observation = null;
       this.conclusions = null;
       this.comments = null;
+      this.dateIns = null;
+      this.dateScale = null;
+      this.dateZarpe = null;
+      this.dateResolution = null;
+      this.dateValid = null;
+      this.dateLatestArrival = null;
+      this.dateValidityPat = null;
       this.arrayReg = {id:0, name:''};
       this.arrayPt = {id:0, name:''};
       this.arrayFg = {id:0, name:''};
@@ -916,10 +902,10 @@ export default {
     },
     selectFlag() {
             let me = this;
-            var url = "flags/selectFlag";
+            var url = "flags/selectFlags";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
-                    me.arrayFlag = respuesta.flag;
+                    me.arrayFlag = respuesta.flags;
                 }).catch(function (error) {
                     console.log(error);
             });
@@ -951,7 +937,13 @@ export default {
       this.observation = data["observation"];
       this.conclusions = data["conclusions"];
       this.comments = data["comments"];
-
+      this.dateIns = data["dateIns"];
+      this.dateScale = data["dateScale"];
+      this.dateZarpe = data["dateZarpe"];
+      this.dateResolution = data["dateResolution"];
+      this.dateValid = data["dateValid"];
+      this.dateLatestArrival = data["dateLatestArrival"];
+      this.dateValidityPat = data["dateValidityPat"];
       this.arrayReg.id = data["id_region"];
 			this.arrayReg.name = data["nameReg"];
       this.arrayPt.id = data["id_port"];
@@ -998,6 +990,13 @@ export default {
           observation: this.observation.toUpperCase(),
           conclusions: this.conclusions.toUpperCase(),
           comments: this.comments.toUpperCase(),
+          dateIns: this.dateIns,
+          dateScale: this.dateScale,
+          dateZarpe: this.dateZarpe,
+          dateResolution: this.dateResolution,
+          dateValid: this.dateValid,
+          dateLatestArrival: this.dateLatestArrival,
+          dateValidityPat: this.dateValidityPat,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
@@ -1041,6 +1040,13 @@ export default {
           observation: this.observation.toUpperCase(),
           conclusions: this.conclusions.toUpperCase(),
           comments: this.comments.toUpperCase(),
+          dateIns: this.dateIns,
+          dateScale: this.dateScale,
+          dateZarpe: this.dateZarpe,
+          dateResolution: this.dateResolution,
+          dateValid: this.dateValid,
+          dateLatestArrival: this.dateLatestArrival,
+          dateValidityPat: this.dateValidityPat,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
@@ -1124,8 +1130,39 @@ export default {
             responsive: "true",
           "columns": [
 
-            { "data": "name" },
+            // { "data": "insNo" },
+            // { "data": "portArrival" },
+            // { "data": "radioCall" },
+            // { "data": "idOmi" },
+            // { "data": "noResolution" },
+            // { "data": "nameBoat" },
+            // { "data": "enrollment" },
+            // { "data": "noPatent" },
+            // { "data": "representative" },
+            // { "data": "business" },
+            // { "data": "zoneAutFish" },
+            // { "data": "eyeMesh" },
+            // { "data": "netWidth" },
+            // { "data": "eyeFlake" },
+            // { "data": "typeHook" },
+            // { "data": "longNet" },
+            // { "data": "materialArt" },
+            // { "data": "equipDevi" },
+            // { "data": "captain" },
+            // { "data": "nacionality" },
+            // { "data": "dateIns" },
+            // { "data": "dateScale" },
+            // { "data": "dateZarpe" },
+            // { "data": "dateResolution" },
+            // { "data": "dateValid" },
+            // { "data": "dateLatestArrival" },
+            // { "data": "dateValidityPat" },
+            // { "data": "observation" },
+            // { "data": "conclusions" },
+            // { "data": "comments" },
             { "data": "nameReg" },
+            { "data": "namePort" },
+            { "data": "nameFlag" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
 
         ]

@@ -148,14 +148,11 @@
                         </multiselect>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
                         <label class="negrita">Fecha de Inspección</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateIns"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateIns">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                       </div> &nbsp;&nbsp;&nbsp; 
                       <div class="md-layout-item">
                         <label>Recibió Notificación Previa</label>
@@ -198,14 +195,11 @@
                         </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
                         <label class="negrita">Fecha Última Escala</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateScale"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateScale">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                       </div> &nbsp;&nbsp;&nbsp; 
                         <div class="md-layout-item">
                             <label>Puerto de Zarpe</label>
@@ -218,14 +212,11 @@
                         </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
                         <label class="negrita">Fecha Zarpe</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateZarpe"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateZarpe">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                       </div> &nbsp;&nbsp;&nbsp;  
                   <md-field md-clearable :class="getValidationClass('portArrival')">
                     <label for="first-name">Puerto de Ultimo Arribo</label>
@@ -243,14 +234,11 @@
                   </md-field>
                   <div class="md-layout-item">
                         <label class="negrita">Fecha Ultimo Arribo</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateLatestArrival"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateLatestArrival">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                   </div> &nbsp;&nbsp;&nbsp;
 
                   <!-- <label>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</label> -->
@@ -320,25 +308,19 @@
                   </md-field>
                   <div class="md-layout-item">
                         <label class="negrita">Fecha</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateResolution"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateResolution">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                   </div> &nbsp;&nbsp;&nbsp; 
                   <div class="md-layout-item">
                         <label class="negrita">Vigencia</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateValid"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateValid">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                   </div> &nbsp;&nbsp;&nbsp; 
                   <md-field md-clearable :class="getValidationClass('nameBoat')">
                     <label for="first-name">Nombre Embarcación</label>
@@ -393,14 +375,11 @@
                   </md-field>
                   <div class="md-layout-item">
                         <label class="negrita">Vigencia Patente</label>
-                        <v-flex xs12 sm6>
-                          <input
-                            type="date"
-                            class="form-control"
-                            v-model="dateValidityPat"
-                            pattern="\d{4}-\d{2}-\d{2}"
-                          />
-                        </v-flex>
+                        <div>
+                          <md-datepicker v-model="dateValidityPat">
+                            <label>Seleccione fecha</label>
+                          </md-datepicker>
+                        </div>
                   </div> &nbsp;&nbsp;&nbsp; 
                   <md-field md-clearable :class="getValidationClass('representative')">
                     <label for="first-name">Representante Legal</label>
@@ -471,7 +450,7 @@
                     <span
                       class="md-error"
                       v-if="!$v.form.eyeMesh.required"
-                    >Olvidaste ingresar una zona de pesca autorizada</span>
+                    >Olvidaste ingresar el Oojo de malla</span>
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('netWidth')">
                     <label for="first-name">Ancho de Red (Brazas)</label>
@@ -569,7 +548,7 @@
                     <span
                       class="md-error"
                       v-if="!$v.form.captain.required"
-                    >Olvidaste ingresar un nombre para el capitan</span>
+                    >Olvidaste ingresar un nombre para el capitan de pesca</span>
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('nacionality')">
                     <label for="first-name">Nacionalidad</label>
