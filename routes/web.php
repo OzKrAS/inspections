@@ -73,10 +73,10 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/flags/selectFlags', 'FlagController@selectFlag');
         Route::get('/region/selectRegion', 'RegionController@selectRegion');
         //verificación 71
-        Route::get('/checkDetInch', 'CheckDetInchController@index');
-        Route::post('/checkDetInch/save', 'CheckDetInchController@store');
-        Route::put('/checkDetInch/update', 'CheckDetInchController@update');
-        Route::post('/checkDetInch/delete', 'CheckDetInchController@destroy');
+        Route::get('/checkDetInchs', 'CheckDetInchController@index');
+        Route::post('/checkDetInchs/save', 'CheckDetInchController@store');
+        Route::put('/checkDetInchs/update', 'CheckDetInchController@update');
+        Route::post('/checkDetInchs/delete', 'CheckDetInchController@destroy');
 
 
        

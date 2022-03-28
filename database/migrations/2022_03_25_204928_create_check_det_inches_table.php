@@ -15,6 +15,19 @@ class CreateCheckDetInchesTable extends Migration
     {
         Schema::create('check_det_inches', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('region'); 
+            $table->string('office'); 
+            $table->string('official'); 
+            $table->string('boat'); 
+            $table->string('enrollment'); 
+            $table->string('outhFhisher'); 
+            $table->string('fishLicense'); 
+            $table->string('business'); 
+            $table->string('owner'); 
+            $table->string('fishCaptain'); 
+            $table->string('location'); 
+            $table->string('date'); 
+            
             $table->timestamps();
         });
     }

@@ -67,14 +67,14 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                   <div class="md-layout-item">
+                  <div class="md-layout-item">
                       <label class="negrita">Fecha</label>
                       <div>
                         <md-datepicker v-model="date">
-                        <label>Fecha</label>
+                          <label>Seleccione Fecha</label>
                         </md-datepicker>
                       </div>
-                  </div> &nbsp;&nbsp;&nbsp; 
+                  </div> &nbsp;&nbsp;&nbsp;  
                   <md-field md-clearable :class="getValidationClass('region')">
                     <label for="first-name">Regional</label>
                     <md-input
@@ -102,6 +102,132 @@
                        class="md-error"
                        v-if="!$v.form.office.required"
                      >Olvidaste ingresar el nombre de la oficina</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('official')">
+                    <label for="first-name">Funcionario</label>
+                    <md-input
+                       name="first-name"
+                       id="first-name"
+                       autocomplete="given-name"
+                       v-model="form.official"
+                       :disabled="sending"
+                     />
+                     <span
+                       class="md-error"
+                       v-if="!$v.form.official.required"
+                     >Olvidaste ingresar el nombre del funcionario</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('boat')">
+                    <label for="first-name">Embarcación</label>
+                    <md-input
+                       name="first-name"
+                       id="first-name"
+                       autocomplete="given-name"
+                       v-model="form.boat"
+                       :disabled="sending"
+                     />
+                     <span
+                       class="md-error"
+                       v-if="!$v.form.boat.required"
+                     >Olvidaste ingresar el nombre de la embarcación</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('enrollment')">
+                    <label for="first-name">Matrícula</label>
+                    <md-input
+                       name="first-name"
+                       id="first-name"
+                       autocomplete="given-name"
+                       v-model="form.enrollment"
+                       :disabled="sending"
+                     />
+                     <span
+                       class="md-error"
+                       v-if="!$v.form.enrollment.required"
+                     >Olvidaste ingresar el nombre de la matrícula</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('outhFhisher')">
+                    <label for="first-name">Pesquería Autorizada</label>
+                    <md-input
+                       name="first-name"
+                       id="first-name"
+                       autocomplete="given-name"
+                       v-model="form.outhFhisher"
+                       :disabled="sending"
+                     />
+                     <span
+                       class="md-error"
+                       v-if="!$v.form.outhFhisher.required"
+                     >Olvidaste ingresar el nombre de la pesqueria autorizada</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('fishLicense')">
+                    <label for="first-name">Pantente de Pesca</label>
+                    <md-input
+                       name="first-name"
+                       id="first-name"
+                       autocomplete="given-name"
+                       v-model="form.fishLicense"
+                       :disabled="sending"
+                     />
+                     <span
+                       class="md-error"
+                       v-if="!$v.form.fishLicense.required"
+                     >Olvidaste ingresar el nombre de la patente de pesca</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('business')">
+                    <label for="first-name">Empresa</label>
+                    <md-input
+                       name="first-name"
+                       id="first-name"
+                       autocomplete="given-name"
+                       v-model="form.business"
+                       :disabled="sending"
+                     />
+                     <span
+                       class="md-error"
+                       v-if="!$v.form.business.required"
+                     >Olvidaste ingresar el nombre de la empresa</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('owner')">
+                    <label for="first-name">Armador</label>
+                    <md-input
+                       name="first-name"
+                       id="first-name"
+                       autocomplete="given-name"
+                       v-model="form.owner"
+                       :disabled="sending"
+                     />
+                     <span
+                       class="md-error"
+                       v-if="!$v.form.owner.required"
+                     >Olvidaste ingresar el nombre del armador</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('fishCaptain')">
+                    <label for="first-name">Capitán de Pesca</label>
+                    <md-input
+                       name="first-name"
+                       id="first-name"
+                       autocomplete="given-name"
+                       v-model="form.fishCaptain"
+                       :disabled="sending"
+                     />
+                     <span
+                       class="md-error"
+                       v-if="!$v.form.fishCaptain.required"
+                     >Olvidaste ingresar el nombre del capitán de pesca</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('location')">
+                    <label for="first-name">Localización</label>
+                    <md-input
+                       name="first-name"
+                       id="first-name"
+                       autocomplete="given-name"
+                       v-model="form.location"
+                       :disabled="sending"
+                     />
+                     <span
+                       class="md-error"
+                       v-if="!$v.form.location.required"
+                     >Olvidaste ingresar el nombre de la localización</span>
                   </md-field>
                 </div>
               </md-card-content>
@@ -139,41 +265,66 @@
 
 <script>
 import { validationMixin } from "vuelidate";
-import {
-  MdButton,
-  MdContent,
-  MdField,
-  MdCard,
-  MdMenu,
-  MdList
-} from "vue-material/dist/components";
-// import VueMaterial from 'vue-material'
-// Vue.use(VueMaterial)
-Vue.use(MdButton);
-Vue.use(MdContent);
-Vue.use(MdField);
-Vue.use(MdCard);
-Vue.use(MdMenu);
-Vue.use(MdList);
-import { required, minLength } from "vuelidate/lib/validators";
+    import Multiselect from "vue-multiselect";
+    import Toasted from 'vue-toasted';
+    import vSelect from "vue-select";
+    import {
+		MdButton,  
+		MdContent,
+		MdField,
+		MdCard,
+		MdMenu,
+		MdSwitch,
+		MdDatepicker,
+		MdList
+    } from "vue-material/dist/components";
+
+    Vue.use(Toasted,  {
+        iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
+    });
+    Vue.use(MdButton);
+
+    Vue.use(MdContent);
+    Vue.use(MdField);
+    Vue.use(MdCard);
+    Vue.use(MdMenu);
+    Vue.use(MdSwitch);
+    Vue.use(MdList);
+    Vue.use(MdDatepicker);
+    import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
 
 export default {
   mixins: [validationMixin],
+  props: ['ruta'],
 
   data() {
+    Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+		Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+		Vue.material.locale.shortMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul','Ago','Sep','Oct','Nov','Dic'];
+		Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
+		let now = new Date();
     return {
       form: {
-        name: "",
         region: "",
         office: "",
+        official: "",
+        boat: "",
+        enrollment: "",
+        outhFhisher: "",
+        fishLicense: "",
+        business: "",
+        owner: "",
+        fishCaptain: "",
+        location: "",
       },
 
       date: 0,
+      idCheckDelt: 0,
 
       edo:1,
       tipoAccion: 1,
       listado: 1,
-      idReg: 0,
       sending: false,
 
       arrayData: [],
@@ -189,13 +340,44 @@ export default {
       },
       office: {
         required
-      }
+      },
+      official:  {
+        required
+      },
+      boat:  {
+        required
+      },
+      enrollment:  {
+        required
+      },
+      outhFhisher:  {
+        required
+      },
+      fishLicense:  {
+        required
+      },
+      business:  {
+        required
+      },
+      owner:  {
+        required
+      },
+      fishCaptain:  {
+        required
+      },
+      location:  {
+        required
+      },
     }
   },
 
   computed: {
 
   },
+  components: {
+		vSelect,
+		Multiselect
+	},
   methods: {
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
@@ -215,14 +397,37 @@ export default {
     },
     clearForm() {
       this.$v.$reset();
-      this.form.name = null;
+    
+      this.form.region = null;
+      this.form.office = null;
+      this.form.official = null;
+      this.form.boat = null;
+      this.form.enrollment = null;
+      this.form.outhFhisher = null;
+      this.form.fishLicense = null;
+      this.form.business = null;
+      this.form.owner = null;
+      this.form.fishCaptain = null;
+      this.form.location = null;
+      this.date = null;
     },
 
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
-      (this.idReg = data["id"]);
-      this.form.name = data["name"];
+      (this.idCheckDelt = data["id"]);
+      this.form.region = data["region"];
+      this.form.office = data["office"];
+      this.form.official = data["official"];
+      this.form.boat = data["boat"];
+      this.form.enrollment = data["enrollment"];
+      this.form.outhFhisher = data["outhFhisher"];
+      this.form.fishLicense = data["fishLicense"];
+      this.form.business = data["business"];
+      this.form.owner = data["owner"];
+      this.form.fishCaptain = data["fishCaptain"];
+      this.form.location = data["location"];
+      this.date = data["date"];
     },
     showData() {
       this.clearForm();
@@ -238,7 +443,7 @@ export default {
     listData() {
       let me = this;
       var url =
-        "/checkDetInch";
+        "/checkDetInchs";
       axios
         .get(url)
         .then(function (response) {
@@ -255,8 +460,20 @@ export default {
       let me = this;
 
       axios
-        .post("/checkDetInch/save", {
-          name: this.form.name.toUpperCase(),
+        .post("/checkDetInchs/save", {
+    
+        region: this.form.region.toUpperCase(),
+        office: this.form.office.toUpperCase(),
+        official: this.form.official.toUpperCase(),
+        boat: this.form.boat.toUpperCase(),
+        enrollment: this.form.enrollment.toUpperCase(),
+        outhFhisher: this.form.outhFhisher.toUpperCase(),
+        fishLicense: this.form.fishLicense.toUpperCase(),
+        business: this.form.business.toUpperCase(),
+        owner: this.form.owner.toUpperCase(),
+        fishCaptain: this.form.fishCaptain.toUpperCase(),
+        location: this.form.location.toUpperCase(),
+        date: this.date,
         })
         .then(function(response) {
           me.hideForm();
@@ -271,9 +488,21 @@ export default {
       let me = this;
 
       axios
-        .put("/checkDetInch/update", {
-          name: this.form.name.toUpperCase(),
-          id: this.idReg
+        .put("/checkDetInchs/update", {
+      
+          region: this.form.region.toUpperCase(),
+          office: this.form.office.toUpperCase(),
+          official: this.form.official.toUpperCase(),
+          boat: this.form.boat.toUpperCase(),
+          enrollment: this.form.enrollment.toUpperCase(),
+          outhFhisher: this.form.outhFhisher.toUpperCase(),
+          fishLicense: this.form.fishLicense.toUpperCase(),
+          business: this.form.business.toUpperCase(),
+          owner: this.form.owner.toUpperCase(),
+          fishCaptain: this.form.fishCaptain.toUpperCase(),
+          location: this.form.location.toUpperCase(),
+          date: this.date,
+          id: this.idCheckDelt
         })
         .then(function(response) {
           me.hideForm();
@@ -301,7 +530,7 @@ export default {
         if (result.value) {
           let me = this;      
           axios
-            .post("/checkDetInch/delete", {
+            .post("/checkDetInchs/delete", {
               id: data["id"],
             })
             .then(function(response) {
@@ -353,7 +582,18 @@ export default {
             responsive: "true",
           "columns": [
 
-            { "data": "name" },
+            { "data": "date" },
+            { "data": "region" },
+            { "data": "office" },
+            { "data": "official" },
+            { "data": "boat" },
+            { "data": "enrollment" },
+            { "data": "outhFhisher" },
+            { "data": "fishLicense" },
+            { "data": "business" },
+            { "data": "owner" },
+            { "data": "fishCaptain" },
+            { "data": "location" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
 
         ]

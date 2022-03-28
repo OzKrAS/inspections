@@ -39993,6 +39993,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
   props: ['ruta'],
 
   data: function data() {
+    var _ref;
 
     Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
     Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
@@ -40001,7 +40002,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
     var dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
     var now = new Date();
 
-    return _defineProperty({ form: {
+    return _ref = { form: {
 
         insNo: "",
         portArrival: "",
@@ -40026,6 +40027,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
 
       },
 
+      observation: "",
+      conclusions: "",
+      comments: "",
+
       dateIns: 0,
       dateScale: 0,
       dateZarpe: 0,
@@ -40033,9 +40038,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       dateValid: 0,
       dateLatestArrival: 0,
       dateValidityPat: 0,
-      observation: "",
-      conclusions: "",
-      comments: "",
 
       arrayZarpes: [],
       id_zarpes: 0,
@@ -40049,24 +40051,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       arrayFlag: [],
       id_flag: 0,
       arrayNotification: [],
-      notification: "",
       arrayFinalityZarpe: [],
       arrayOrigin: [],
       arrayDestination: [],
       arrayNational: [],
-      arrayOrop: [],
-      arrayFishAut: [],
-
-      edo: 1,
-
-      tipoAccion: 1,
-      listado: 1,
-      idMcpio: 0,
-      sending: false,
-
-      arrayData: [],
-      modal: 0
-    }, "tipoAccion", 0);
+      arrayOrop: []
+    }, _defineProperty(_ref, "arrayFlag", []), _defineProperty(_ref, "arrayFishAut", []), _defineProperty(_ref, "edo", 1), _defineProperty(_ref, "tipoAccion", 1), _defineProperty(_ref, "listado", 1), _defineProperty(_ref, "idMcpio", 0), _defineProperty(_ref, "sending", false), _defineProperty(_ref, "arrayData", []), _defineProperty(_ref, "modal", 0), _defineProperty(_ref, "tipoAccion", 0), _ref;
   },
 
   components: {
@@ -40160,7 +40150,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
     },
     clearForm: function clearForm() {
       this.$v.$reset();
-      this.form.name = null;
       this.form.insNo = null;
       this.form.portArrival = null;
       this.form.radioCall = null;
@@ -40246,7 +40235,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       var url = "flags/selectFlags";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
-        me.arrayFlag = respuesta.flags;
+        me.arrayFlag = respuesta.flag;
       }).catch(function (error) {
         console.log(error);
       });
@@ -40287,6 +40276,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       this.dateValid = data["dateValid"];
       this.dateLatestArrival = data["dateLatestArrival"];
       this.dateValidityPat = data["dateValidityPat"];
+
       this.arrayReg.id = data["id_region"];
       this.arrayReg.name = data["nameReg"];
       this.arrayPt.id = data["id_port"];
@@ -40313,7 +40303,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
         portArrival: this.form.portArrival.toUpperCase(),
         radioCall: this.form.radioCall.toUpperCase(),
         idOmi: this.form.idOmi.toUpperCase(),
-        noResolution: this.noResolution.name.toUpperCase(),
+        noResolution: this.noResolution.toUpperCase(),
         nameBoat: this.form.nameBoat.toUpperCase(),
         enrollment: this.form.enrollment.toUpperCase(),
         noPatent: this.form.noPatent.toUpperCase(),
@@ -40332,13 +40322,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
         observation: this.observation.toUpperCase(),
         conclusions: this.conclusions.toUpperCase(),
         comments: this.comments.toUpperCase(),
-        dateIns: this.dateIns,
-        dateScale: this.dateScale,
-        dateZarpe: this.dateZarpe,
-        dateResolution: this.dateResolution,
-        dateValid: this.dateValid,
-        dateLatestArrival: this.dateLatestArrival,
-        dateValidityPat: this.dateValidityPat,
 
         'id_region': this.arrayReg.id,
         'id_port': this.arrayPt.id,
@@ -40355,12 +40338,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       var me = this;
       axios.put("/zarpes/update", {
         id: this.id_zarpes,
-        name: this.form.name.toUpperCase(),
         insNo: this.form.insNo.toUpperCase(),
         portArrival: this.form.portArrival.toUpperCase(),
         radioCall: this.form.radioCall.toUpperCase(),
         idOmi: this.form.idOmi.toUpperCase(),
-        noResolution: this.noResolution.name.toUpperCase(),
+        noResolution: this.noResolution.toUpperCase(),
         nameBoat: this.form.nameBoat.toUpperCase(),
         enrollment: this.form.enrollment.toUpperCase(),
         noPatent: this.form.noPatent.toUpperCase(),
@@ -40379,13 +40361,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
         observation: this.observation.toUpperCase(),
         conclusions: this.conclusions.toUpperCase(),
         comments: this.comments.toUpperCase(),
-        dateIns: this.dateIns,
-        dateScale: this.dateScale,
-        dateZarpe: this.dateZarpe,
-        dateResolution: this.dateResolution,
-        dateValid: this.dateValid,
-        dateLatestArrival: this.dateLatestArrival,
-        dateValidityPat: this.dateValidityPat,
 
         'id_region': this.arrayReg.id,
         'id_port': this.arrayPt.id,
@@ -40465,36 +40440,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
           responsive: "true",
           "columns": [
 
-          // { "data": "insNo" },
-          // { "data": "portArrival" },
-          // { "data": "radioCall" },
-          // { "data": "idOmi" },
-          // { "data": "noResolution" },
-          // { "data": "nameBoat" },
-          // { "data": "enrollment" },
-          // { "data": "noPatent" },
-          // { "data": "representative" },
-          // { "data": "business" },
-          // { "data": "zoneAutFish" },
-          // { "data": "eyeMesh" },
-          // { "data": "netWidth" },
-          // { "data": "eyeFlake" },
-          // { "data": "typeHook" },
-          // { "data": "longNet" },
-          // { "data": "materialArt" },
-          // { "data": "equipDevi" },
-          // { "data": "captain" },
-          // { "data": "nacionality" },
-          // { "data": "dateIns" },
-          // { "data": "dateScale" },
-          // { "data": "dateZarpe" },
-          // { "data": "dateResolution" },
-          // { "data": "dateValid" },
-          // { "data": "dateLatestArrival" },
-          // { "data": "dateValidityPat" },
-          // { "data": "observation" },
-          // { "data": "conclusions" },
-          // { "data": "comments" },
+          // { "data": "name" },
           { "data": "nameReg" }, { "data": "namePort" }, { "data": "nameFlag" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
 
         });
@@ -40684,7 +40630,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione fecha")
+                                          _vm._v("Seleccione Fecha")
                                         ])
                                       ]
                                     )
@@ -40710,11 +40656,11 @@ var render = function() {
                                       "track-by": "name"
                                     },
                                     model: {
-                                      value: _vm.notification,
+                                      value: _vm.arrayReg,
                                       callback: function($$v) {
-                                        _vm.notification = $$v
+                                        _vm.arrayReg = $$v
                                       },
-                                      expression: "notification"
+                                      expression: "arrayReg"
                                     }
                                   })
                                 ],
@@ -40821,7 +40767,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione fecha")
+                                          _vm._v("Seleccione Fecha")
                                         ])
                                       ]
                                     )
@@ -40877,7 +40823,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione fecha")
+                                          _vm._v("Seleccione Fecha")
                                         ])
                                       ]
                                     )
@@ -40947,7 +40893,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione fecha")
+                                          _vm._v("Seleccione Fecha")
                                         ])
                                       ]
                                     )
@@ -41150,7 +41096,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione fecha")
+                                          _vm._v("Seleccione Fecha")
                                         ])
                                       ]
                                     )
@@ -41180,7 +41126,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione fecha")
+                                          _vm._v("Seleccione Fecha")
                                         ])
                                       ]
                                     )
@@ -41238,7 +41184,7 @@ var render = function() {
                                   _c("multiselect", {
                                     attrs: {
                                       options: _vm.arrayFlag,
-                                      placeholder: "Seleccione una bandera",
+                                      placeholder: "Seleccione una región",
                                       "custom-label": _vm.nameWithFlag,
                                       label: "name",
                                       "track-by": "name"
@@ -41356,7 +41302,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione fecha")
+                                          _vm._v("Seleccione Fecha")
                                         ])
                                       ]
                                     )
@@ -41550,7 +41496,7 @@ var render = function() {
                                   !_vm.$v.form.eyeMesh.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar el Oojo de malla"
+                                          "Olvidaste ingresar una zona de pesca autorizada"
                                         )
                                       ])
                                     : _vm._e()
@@ -41834,7 +41780,7 @@ var render = function() {
                                   !_vm.$v.form.captain.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar un nombre para el capitan de pesca"
+                                          "Olvidaste ingresar un nombre para el capitan"
                                         )
                                       ])
                                     : _vm._e()
@@ -42955,6 +42901,95 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -42982,6 +43017,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
   props: ['ruta'],
 
   data: function data() {
+    var _ref;
 
     Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
     Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
@@ -42990,7 +43026,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
     var dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
     var now = new Date();
 
-    return _defineProperty({ form: {
+    return _ref = { form: {
 
         insNo: "",
         portArrival: "",
@@ -43015,6 +43051,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
 
       },
 
+      observation: "",
+      conclusions: "",
+      comments: "",
+
       dateIns: 0,
       dateScale: 0,
       dateZarpe: 0,
@@ -43022,9 +43062,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       dateValid: 0,
       dateLatestArrival: 0,
       dateValidityPat: 0,
-      observation: "",
-      conclusions: "",
-      comments: "",
 
       arrayZarpes: [],
       id_zarpes: 0,
@@ -43038,24 +43075,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       arrayFlag: [],
       id_flag: 0,
       arrayNotification: [],
-      notification: "",
       arrayFinalityZarpe: [],
       arrayOrigin: [],
       arrayDestination: [],
       arrayNational: [],
-      arrayOrop: [],
-      arrayFishAut: [],
-
-      edo: 1,
-
-      tipoAccion: 1,
-      listado: 1,
-      idMcpio: 0,
-      sending: false,
-
-      arrayData: [],
-      modal: 0
-    }, "tipoAccion", 0);
+      arrayOrop: []
+    }, _defineProperty(_ref, "arrayFlag", []), _defineProperty(_ref, "arrayFishAut", []), _defineProperty(_ref, "edo", 1), _defineProperty(_ref, "tipoAccion", 1), _defineProperty(_ref, "listado", 1), _defineProperty(_ref, "idMcpio", 0), _defineProperty(_ref, "sending", false), _defineProperty(_ref, "arrayData", []), _defineProperty(_ref, "modal", 0), _defineProperty(_ref, "tipoAccion", 0), _ref;
   },
 
   components: {
@@ -43149,7 +43174,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
     },
     clearForm: function clearForm() {
       this.$v.$reset();
-      this.form.name = null;
       this.form.insNo = null;
       this.form.portArrival = null;
       this.form.radioCall = null;
@@ -43235,7 +43259,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       var url = "flags/selectFlags";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
-        me.arrayFlag = respuesta.flags;
+        me.arrayFlag = respuesta.flag;
       }).catch(function (error) {
         console.log(error);
       });
@@ -43276,6 +43300,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       this.dateValid = data["dateValid"];
       this.dateLatestArrival = data["dateLatestArrival"];
       this.dateValidityPat = data["dateValidityPat"];
+
       this.arrayReg.id = data["id_region"];
       this.arrayReg.name = data["nameReg"];
       this.arrayPt.id = data["id_port"];
@@ -43321,13 +43346,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
         observation: this.observation.toUpperCase(),
         conclusions: this.conclusions.toUpperCase(),
         comments: this.comments.toUpperCase(),
-        dateIns: this.dateIns,
-        dateScale: this.dateScale,
-        dateZarpe: this.dateZarpe,
-        dateResolution: this.dateResolution,
-        dateValid: this.dateValid,
-        dateLatestArrival: this.dateLatestArrival,
-        dateValidityPat: this.dateValidityPat,
 
         'id_region': this.arrayReg.id,
         'id_port': this.arrayPt.id,
@@ -43344,7 +43362,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       var me = this;
       axios.put("/zarpes/update", {
         id: this.id_zarpes,
-        name: this.form.name.toUpperCase(),
         insNo: this.form.insNo.toUpperCase(),
         portArrival: this.form.portArrival.toUpperCase(),
         radioCall: this.form.radioCall.toUpperCase(),
@@ -43368,13 +43385,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
         observation: this.observation.toUpperCase(),
         conclusions: this.conclusions.toUpperCase(),
         comments: this.comments.toUpperCase(),
-        dateIns: this.dateIns,
-        dateScale: this.dateScale,
-        dateZarpe: this.dateZarpe,
-        dateResolution: this.dateResolution,
-        dateValid: this.dateValid,
-        dateLatestArrival: this.dateLatestArrival,
-        dateValidityPat: this.dateValidityPat,
 
         'id_region': this.arrayReg.id,
         'id_port': this.arrayPt.id,
@@ -43454,36 +43464,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
           responsive: "true",
           "columns": [
 
-          // { "data": "insNo" },
-          // { "data": "portArrival" },
-          // { "data": "radioCall" },
-          // { "data": "idOmi" },
-          // { "data": "noResolution" },
-          // { "data": "nameBoat" },
-          // { "data": "enrollment" },
-          // { "data": "noPatent" },
-          // { "data": "representative" },
-          // { "data": "business" },
-          // { "data": "zoneAutFish" },
-          // { "data": "eyeMesh" },
-          // { "data": "netWidth" },
-          // { "data": "eyeFlake" },
-          // { "data": "typeHook" },
-          // { "data": "longNet" },
-          // { "data": "materialArt" },
-          // { "data": "equipDevi" },
-          // { "data": "captain" },
-          // { "data": "nacionality" },
-          // { "data": "dateIns" },
-          // { "data": "dateScale" },
-          // { "data": "dateZarpe" },
-          // { "data": "dateResolution" },
-          // { "data": "dateValid" },
-          // { "data": "dateLatestArrival" },
-          // { "data": "dateValidityPat" },
-          // { "data": "observation" },
-          // { "data": "conclusions" },
-          // { "data": "comments" },
+          // { "data": "name" },
           { "data": "nameReg" }, { "data": "namePort" }, { "data": "nameFlag" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
 
         });
@@ -43673,7 +43654,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione fecha")
+                                          _vm._v("Seleccione Fecha")
                                         ])
                                       ]
                                     )
@@ -43699,11 +43680,11 @@ var render = function() {
                                       "track-by": "name"
                                     },
                                     model: {
-                                      value: _vm.notification,
+                                      value: _vm.arrayReg,
                                       callback: function($$v) {
-                                        _vm.notification = $$v
+                                        _vm.arrayReg = $$v
                                       },
-                                      expression: "notification"
+                                      expression: "arrayReg"
                                     }
                                   })
                                 ],
@@ -43718,7 +43699,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("multiselect", {
                                     attrs: {
-                                      options: _vm.arrayFinalityArribo,
+                                      options: _vm.arrayFinalityZarpe,
                                       placeholder: "Seleccione una opción",
                                       "custom-label": _vm.nameWithRegion,
                                       label: "name",
@@ -43810,7 +43791,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione fecha")
+                                          _vm._v("Seleccione Fecha")
                                         ])
                                       ]
                                     )
@@ -43866,7 +43847,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione fecha")
+                                          _vm._v("Seleccione Fecha")
                                         ])
                                       ]
                                     )
@@ -43927,16 +43908,16 @@ var render = function() {
                                       "md-datepicker",
                                       {
                                         model: {
-                                          value: _vm.dateLatestArrival,
+                                          value: _vm.dateZarpe,
                                           callback: function($$v) {
-                                            _vm.dateLatestArrival = $$v
+                                            _vm.dateZarpe = $$v
                                           },
-                                          expression: "dateLatestArrival"
+                                          expression: "dateZarpe"
                                         }
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione fecha")
+                                          _vm._v("Seleccione Fecha")
                                         ])
                                       ]
                                     )
@@ -43944,28 +43925,27 @@ var render = function() {
                                   1
                                 )
                               ]),
-                              _vm._v("    \n\n                  "),
-                              _vm._v(" "),
+                              _vm._v("      \n                  "),
                               _c(
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _c("label", [_vm._v("Nacional")]),
+                                  _c("label", [_vm._v("Faena Realizada En")]),
                                   _vm._v(" "),
                                   _c("multiselect", {
                                     attrs: {
-                                      options: _vm.arrayNational,
+                                      options: _vm.arrayPort,
                                       placeholder: "Seleccione una región",
-                                      "custom-label": _vm.nameWithRegion,
+                                      "custom-label": _vm.nameWithPort,
                                       label: "name",
                                       "track-by": "name"
                                     },
                                     model: {
-                                      value: _vm.arrayReg,
+                                      value: _vm.arrayPt,
                                       callback: function($$v) {
-                                        _vm.arrayReg = $$v
+                                        _vm.arrayPt = $$v
                                       },
-                                      expression: "arrayReg"
+                                      expression: "arrayPt"
                                     }
                                   })
                                 ],
@@ -43976,22 +43956,26 @@ var render = function() {
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _c("label", [_vm._v("OROP")]),
+                                  _c("label", [
+                                    _vm._v(
+                                      "Sistema dE Localización de Buques/VMS"
+                                    )
+                                  ]),
                                   _vm._v(" "),
                                   _c("multiselect", {
                                     attrs: {
-                                      options: _vm.arrayOrop,
+                                      options: _vm.arrayPort,
                                       placeholder: "Seleccione una región",
-                                      "custom-label": _vm.nameWithRegion,
+                                      "custom-label": _vm.nameWithPort,
                                       label: "name",
                                       "track-by": "name"
                                     },
                                     model: {
-                                      value: _vm.arrayReg,
+                                      value: _vm.arrayPt,
                                       callback: function($$v) {
-                                        _vm.arrayReg = $$v
+                                        _vm.arrayPt = $$v
                                       },
-                                      expression: "arrayReg"
+                                      expression: "arrayPt"
                                     }
                                   })
                                 ],
@@ -44048,7 +44032,173 @@ var render = function() {
                                   _c(
                                     "label",
                                     { attrs: { for: "first-name" } },
-                                    [_vm._v("Identificador OMI")]
+                                    [_vm._v("No. de Resolición")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.idOmi,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "idOmi", $$v)
+                                      },
+                                      expression: "form.idOmi"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.idOmi.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el Número de resolución"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateZarpe,
+                                          callback: function($$v) {
+                                            _vm.dateZarpe = $$v
+                                          },
+                                          expression: "dateZarpe"
+                                        }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione Fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v("    \n                  "),
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Vigencia")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateZarpe,
+                                          callback: function($$v) {
+                                            _vm.dateZarpe = $$v
+                                          },
+                                          expression: "dateZarpe"
+                                        }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione Fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v("      \n                  "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("idOmi"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Nombre Embarcación")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.idOmi,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "idOmi", $$v)
+                                      },
+                                      expression: "form.idOmi"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.idOmi.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el identificador OMI"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c("label", [_vm._v("Bandera")]),
+                                  _vm._v(" "),
+                                  _c("multiselect", {
+                                    attrs: {
+                                      options: _vm.arrayPort,
+                                      placeholder: "Seleccione una región",
+                                      "custom-label": _vm.nameWithPort,
+                                      label: "name",
+                                      "track-by": "name"
+                                    },
+                                    model: {
+                                      value: _vm.arrayPt,
+                                      callback: function($$v) {
+                                        _vm.arrayPt = $$v
+                                      },
+                                      expression: "arrayPt"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v("   \n                  "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("idOmi"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Matricula")]
                                   ),
                                   _vm._v(" "),
                                   _c("md-input", {
@@ -44081,14 +44231,14 @@ var render = function() {
                               _c(
                                 "md-field",
                                 {
-                                  class: _vm.getValidationClass("noResolution"),
+                                  class: _vm.getValidationClass("idOmi"),
                                   attrs: { "md-clearable": "" }
                                 },
                                 [
                                   _c(
                                     "label",
                                     { attrs: { for: "first-name" } },
-                                    [_vm._v("No. Resolución")]
+                                    [_vm._v("No. OMI")]
                                   ),
                                   _vm._v(" "),
                                   _c("md-input", {
@@ -44099,184 +44249,18 @@ var render = function() {
                                       disabled: _vm.sending
                                     },
                                     model: {
-                                      value: _vm.form.noResolution,
+                                      value: _vm.form.idOmi,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.form, "noResolution", $$v)
+                                        _vm.$set(_vm.form, "idOmi", $$v)
                                       },
-                                      expression: "form.noResolution"
+                                      expression: "form.idOmi"
                                     }
                                   }),
                                   _vm._v(" "),
-                                  !_vm.$v.form.noResolution.required
+                                  !_vm.$v.form.idOmi.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar el número de resolución"
-                                        )
-                                      ])
-                                    : _vm._e()
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Fecha")
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  [
-                                    _c(
-                                      "md-datepicker",
-                                      {
-                                        model: {
-                                          value: _vm.dateResolution,
-                                          callback: function($$v) {
-                                            _vm.dateResolution = $$v
-                                          },
-                                          expression: "dateResolution"
-                                        }
-                                      },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Seleccione fecha")
-                                        ])
-                                      ]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ]),
-                              _vm._v("     \n                  "),
-                              _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Vigencia")
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  [
-                                    _c(
-                                      "md-datepicker",
-                                      {
-                                        model: {
-                                          value: _vm.dateValid,
-                                          callback: function($$v) {
-                                            _vm.dateValid = $$v
-                                          },
-                                          expression: "dateValid"
-                                        }
-                                      },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Seleccione fecha")
-                                        ])
-                                      ]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ]),
-                              _vm._v("     \n                  "),
-                              _c(
-                                "md-field",
-                                {
-                                  class: _vm.getValidationClass("nameBoat"),
-                                  attrs: { "md-clearable": "" }
-                                },
-                                [
-                                  _c(
-                                    "label",
-                                    { attrs: { for: "first-name" } },
-                                    [_vm._v("Nombre Embarcación")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("md-input", {
-                                    attrs: {
-                                      name: "first-name",
-                                      id: "first-name",
-                                      autocomplete: "given-name",
-                                      disabled: _vm.sending
-                                    },
-                                    model: {
-                                      value: _vm.form.nameBoat,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "nameBoat", $$v)
-                                      },
-                                      expression: "form.nameBoat"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  !_vm.$v.form.nameBoat.required
-                                    ? _c("span", { staticClass: "md-error" }, [
-                                        _vm._v(
-                                          "Olvidaste ingresar un nombre para la embarcación"
-                                        )
-                                      ])
-                                    : _vm._e()
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
-                                [
-                                  _c("label", [_vm._v("Bandera")]),
-                                  _vm._v(" "),
-                                  _c("multiselect", {
-                                    attrs: {
-                                      options: _vm.arrayFlag,
-                                      placeholder: "Seleccione una bandera",
-                                      "custom-label": _vm.nameWithFlag,
-                                      label: "name",
-                                      "track-by": "name"
-                                    },
-                                    model: {
-                                      value: _vm.arrayFg,
-                                      callback: function($$v) {
-                                        _vm.arrayFg = $$v
-                                      },
-                                      expression: "arrayFg"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v("   \n                  "),
-                              _c(
-                                "md-field",
-                                {
-                                  class: _vm.getValidationClass("enrollment"),
-                                  attrs: { "md-clearable": "" }
-                                },
-                                [
-                                  _c(
-                                    "label",
-                                    { attrs: { for: "first-name" } },
-                                    [_vm._v("Matrícula")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("md-input", {
-                                    attrs: {
-                                      name: "first-name",
-                                      id: "first-name",
-                                      autocomplete: "given-name",
-                                      disabled: _vm.sending
-                                    },
-                                    model: {
-                                      value: _vm.form.enrollment,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "enrollment", $$v)
-                                      },
-                                      expression: "form.enrollment"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  !_vm.$v.form.enrollment.required
-                                    ? _c("span", { staticClass: "md-error" }, [
-                                        _vm._v(
-                                          "Olvidaste ingresar la matrícula"
+                                          "Olvidaste ingresar el identificador OMI"
                                         )
                                       ])
                                     : _vm._e()
@@ -44287,14 +44271,14 @@ var render = function() {
                               _c(
                                 "md-field",
                                 {
-                                  class: _vm.getValidationClass("noPatent"),
+                                  class: _vm.getValidationClass("idOmi"),
                                   attrs: { "md-clearable": "" }
                                 },
                                 [
                                   _c(
                                     "label",
                                     { attrs: { for: "first-name" } },
-                                    [_vm._v("No. de Pantente")]
+                                    [_vm._v("No. Pantente")]
                                   ),
                                   _vm._v(" "),
                                   _c("md-input", {
@@ -44305,18 +44289,18 @@ var render = function() {
                                       disabled: _vm.sending
                                     },
                                     model: {
-                                      value: _vm.form.noPatent,
+                                      value: _vm.form.idOmi,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.form, "noPatent", $$v)
+                                        _vm.$set(_vm.form, "idOmi", $$v)
                                       },
-                                      expression: "form.noPatent"
+                                      expression: "form.idOmi"
                                     }
                                   }),
                                   _vm._v(" "),
-                                  !_vm.$v.form.noPatent.required
+                                  !_vm.$v.form.idOmi.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar el numero de patente"
+                                          "Olvidaste ingresar el identificador OMI"
                                         )
                                       ])
                                     : _vm._e()
@@ -44336,16 +44320,16 @@ var render = function() {
                                       "md-datepicker",
                                       {
                                         model: {
-                                          value: _vm.dateValidityPat,
+                                          value: _vm.dateZarpe,
                                           callback: function($$v) {
-                                            _vm.dateValidityPat = $$v
+                                            _vm.dateZarpe = $$v
                                           },
-                                          expression: "dateValidityPat"
+                                          expression: "dateZarpe"
                                         }
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione fecha")
+                                          _vm._v("Seleccione Fecha")
                                         ])
                                       ]
                                     )
@@ -44353,13 +44337,11 @@ var render = function() {
                                   1
                                 )
                               ]),
-                              _vm._v("     \n                  "),
+                              _vm._v("    \n                  "),
                               _c(
                                 "md-field",
                                 {
-                                  class: _vm.getValidationClass(
-                                    "representative"
-                                  ),
+                                  class: _vm.getValidationClass("idOmi"),
                                   attrs: { "md-clearable": "" }
                                 },
                                 [
@@ -44377,22 +44359,18 @@ var render = function() {
                                       disabled: _vm.sending
                                     },
                                     model: {
-                                      value: _vm.form.representative,
+                                      value: _vm.form.idOmi,
                                       callback: function($$v) {
-                                        _vm.$set(
-                                          _vm.form,
-                                          "representative",
-                                          $$v
-                                        )
+                                        _vm.$set(_vm.form, "idOmi", $$v)
                                       },
-                                      expression: "form.representative"
+                                      expression: "form.idOmi"
                                     }
                                   }),
                                   _vm._v(" "),
-                                  !_vm.$v.form.representative.required
+                                  !_vm.$v.form.idOmi.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar el nombre del representante legal"
+                                          "Olvidaste ingresar el identificador OMI"
                                         )
                                       ])
                                     : _vm._e()
@@ -44403,7 +44381,7 @@ var render = function() {
                               _c(
                                 "md-field",
                                 {
-                                  class: _vm.getValidationClass("business"),
+                                  class: _vm.getValidationClass("idOmi"),
                                   attrs: { "md-clearable": "" }
                                 },
                                 [
@@ -44421,18 +44399,18 @@ var render = function() {
                                       disabled: _vm.sending
                                     },
                                     model: {
-                                      value: _vm.form.business,
+                                      value: _vm.form.idOmi,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.form, "business", $$v)
+                                        _vm.$set(_vm.form, "idOmi", $$v)
                                       },
-                                      expression: "form.business"
+                                      expression: "form.idOmi"
                                     }
                                   }),
                                   _vm._v(" "),
-                                  !_vm.$v.form.business.required
+                                  !_vm.$v.form.idOmi.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar el nombre de la empresa"
+                                          "Olvidaste ingresar el identificador OMI"
                                         )
                                       ])
                                     : _vm._e()
@@ -44441,36 +44419,49 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("idOmi"),
+                                  attrs: { "md-clearable": "" }
+                                },
                                 [
-                                  _c("label", [_vm._v("Pesquería Autorizada")]),
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Pesquería Autorizada")]
+                                  ),
                                   _vm._v(" "),
-                                  _c("multiselect", {
+                                  _c("md-input", {
                                     attrs: {
-                                      options: _vm.arrayFishAut,
-                                      placeholder:
-                                        "Seleccione una pesquería autorizada",
-                                      "custom-label": _vm.nameWithRegion,
-                                      label: "name",
-                                      "track-by": "name"
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
                                     },
                                     model: {
-                                      value: _vm.arrayReg,
+                                      value: _vm.form.idOmi,
                                       callback: function($$v) {
-                                        _vm.arrayReg = $$v
+                                        _vm.$set(_vm.form, "idOmi", $$v)
                                       },
-                                      expression: "arrayReg"
+                                      expression: "form.idOmi"
                                     }
-                                  })
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.idOmi.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el identificador OMI"
+                                        )
+                                      ])
+                                    : _vm._e()
                                 ],
                                 1
                               ),
-                              _vm._v("   \n                  "),
+                              _vm._v(" "),
                               _c(
                                 "md-field",
                                 {
-                                  class: _vm.getValidationClass("zoneAutFish"),
+                                  class: _vm.getValidationClass("idOmi"),
                                   attrs: { "md-clearable": "" }
                                 },
                                 [
@@ -44488,18 +44479,18 @@ var render = function() {
                                       disabled: _vm.sending
                                     },
                                     model: {
-                                      value: _vm.form.zoneAutFish,
+                                      value: _vm.form.idOmi,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.form, "zoneAutFish", $$v)
+                                        _vm.$set(_vm.form, "idOmi", $$v)
                                       },
-                                      expression: "form.zoneAutFish"
+                                      expression: "form.idOmi"
                                     }
                                   }),
                                   _vm._v(" "),
-                                  !_vm.$v.form.zoneAutFish.required
+                                  !_vm.$v.form.idOmi.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar una zona de pesca autorizada"
+                                          "Olvidaste ingresar el identificador OMI"
                                         )
                                       ])
                                     : _vm._e()
@@ -44539,7 +44530,7 @@ var render = function() {
                                   !_vm.$v.form.eyeMesh.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar el Oojo de malla"
+                                          "Olvidaste ingresar una zona de pesca autorizada"
                                         )
                                       ])
                                     : _vm._e()
@@ -44823,7 +44814,7 @@ var render = function() {
                                   !_vm.$v.form.captain.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar un nombre para el capitan de pesca"
+                                          "Olvidaste ingresar un nombre para el capitan"
                                         )
                                       ])
                                     : _vm._e()
@@ -44832,16 +44823,42 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c("label", [_vm._v("Nacionalidad")]),
+                                  _vm._v(" "),
+                                  _c("multiselect", {
+                                    attrs: {
+                                      options: _vm.arrayFlag,
+                                      placeholder: "Seleccione una región",
+                                      "custom-label": _vm.nameWithFlag,
+                                      label: "name",
+                                      "track-by": "name"
+                                    },
+                                    model: {
+                                      value: _vm.arrayFg,
+                                      callback: function($$v) {
+                                        _vm.arrayFg = $$v
+                                      },
+                                      expression: "arrayFg"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v("   \n                  "),
+                              _c(
                                 "md-field",
                                 {
-                                  class: _vm.getValidationClass("nacionality"),
+                                  class: _vm.getValidationClass("captain"),
                                   attrs: { "md-clearable": "" }
                                 },
                                 [
                                   _c(
                                     "label",
                                     { attrs: { for: "first-name" } },
-                                    [_vm._v("Nacionalidad")]
+                                    [_vm._v("No. Total de Tripulantes")]
                                   ),
                                   _vm._v(" "),
                                   _c("md-input", {
@@ -44852,18 +44869,258 @@ var render = function() {
                                       disabled: _vm.sending
                                     },
                                     model: {
-                                      value: _vm.form.nacionality,
+                                      value: _vm.form.captain,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.form, "nacionality", $$v)
+                                        _vm.$set(_vm.form, "captain", $$v)
                                       },
-                                      expression: "form.nacionality"
+                                      expression: "form.captain"
                                     }
                                   }),
                                   _vm._v(" "),
-                                  !_vm.$v.form.nacionality.required
+                                  !_vm.$v.form.captain.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar una nacionalidad"
+                                          "Olvidaste ingresar un nombre para el capitan"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("captain"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("No. Tripulantes Extranjeros")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.captain,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "captain", $$v)
+                                      },
+                                      expression: "form.captain"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.captain.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar un nombre para el capitan"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("captain"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("No. Tripulantes Nacionales")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.captain,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "captain", $$v)
+                                      },
+                                      expression: "form.captain"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.captain.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar un nombre para el capitan"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("captain"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("No. Días de Pesca")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.captain,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "captain", $$v)
+                                      },
+                                      expression: "form.captain"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.captain.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar un nombre para el capitan"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("captain"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("No. Total de Lances")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.captain,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "captain", $$v)
+                                      },
+                                      expression: "form.captain"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.captain.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar un nombre para el capitan"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("captain"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("No. Lances Nacionales")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.captain,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "captain", $$v)
+                                      },
+                                      expression: "form.captain"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.captain.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar un nombre para el capitan"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("captain"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("No. Lances Internacionales")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.captain,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "captain", $$v)
+                                      },
+                                      expression: "form.captain"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.captain.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar un nombre para el capitan"
                                         )
                                       ])
                                     : _vm._e()
@@ -44887,48 +45144,6 @@ var render = function() {
                                         _vm.observation = $$v
                                       },
                                       expression: "observation"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "md-field",
-                                [
-                                  _c("label", [
-                                    _vm._v("Conclusiones del Inspector")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("md-textarea", {
-                                    model: {
-                                      value: _vm.conclusions,
-                                      callback: function($$v) {
-                                        _vm.conclusions = $$v
-                                      },
-                                      expression: "conclusions"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "md-field",
-                                [
-                                  _c("label", [
-                                    _vm._v(
-                                      "Comentarios Adicionales (Espacio disponible para el capitan)"
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("md-textarea", {
-                                    model: {
-                                      value: _vm.comments,
-                                      callback: function($$v) {
-                                        _vm.comments = $$v
-                                      },
-                                      expression: "comments"
                                     }
                                   })
                                 ],
@@ -45316,10 +45531,16 @@ exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuelidate__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuelidate_lib_validators__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vuelidate_lib_validators__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_multiselect__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_toasted__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_toasted___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_toasted__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_select__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_select__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
@@ -45461,36 +45682,185 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
-// import VueMaterial from 'vue-material'
-// Vue.use(VueMaterial)
-Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdButton"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdContent"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdField"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdCard"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdMenu"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdList"]);
+
+
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_toasted___default.a, {
+  iconPack: 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
+});
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdButton"]);
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdContent"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdField"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdCard"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdMenu"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdSwitch"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdList"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker"]);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [__WEBPACK_IMPORTED_MODULE_0_vuelidate__["validationMixin"]],
+  props: ['ruta'],
 
   data: function data() {
+    Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+    Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+    Vue.material.locale.shortMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    var dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
+    var now = new Date();
     return _defineProperty({
       form: {
-        name: "",
         region: "",
-        office: ""
+        office: "",
+        official: "",
+        boat: "",
+        enrollment: "",
+        outhFhisher: "",
+        fishLicense: "",
+        business: "",
+        owner: "",
+        fishCaptain: "",
+        location: ""
       },
 
       date: 0,
+      idCheckDelt: 0,
 
       edo: 1,
       tipoAccion: 1,
       listado: 1,
-      idReg: 0,
       sending: false,
 
       arrayData: [],
@@ -45502,15 +45872,46 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdList"]);
   validations: {
     form: {
       region: {
-        required: __WEBPACK_IMPORTED_MODULE_2_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
       },
       office: {
-        required: __WEBPACK_IMPORTED_MODULE_2_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      official: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      boat: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      enrollment: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      outhFhisher: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      fishLicense: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      business: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      owner: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      fishCaptain: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      location: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
       }
     }
   },
 
   computed: {},
+  components: {
+    vSelect: __WEBPACK_IMPORTED_MODULE_3_vue_select___default.a,
+    Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a
+  },
   methods: {
     getValidationClass: function getValidationClass(fieldName) {
       var field = this.$v.form[fieldName];
@@ -45530,15 +45931,38 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdList"]);
     },
     clearForm: function clearForm() {
       this.$v.$reset();
-      this.form.name = null;
+
+      this.form.region = null;
+      this.form.office = null;
+      this.form.official = null;
+      this.form.boat = null;
+      this.form.enrollment = null;
+      this.form.outhFhisher = null;
+      this.form.fishLicense = null;
+      this.form.business = null;
+      this.form.owner = null;
+      this.form.fishCaptain = null;
+      this.form.location = null;
+      this.date = null;
     },
     showUpdate: function showUpdate() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
       var me = this;
       this.tipoAccion = 2, me.listado = 0;
-      this.idReg = data["id"];
-      this.form.name = data["name"];
+      this.idCheckDelt = data["id"];
+      this.form.region = data["region"];
+      this.form.office = data["office"];
+      this.form.official = data["official"];
+      this.form.boat = data["boat"];
+      this.form.enrollment = data["enrollment"];
+      this.form.outhFhisher = data["outhFhisher"];
+      this.form.fishLicense = data["fishLicense"];
+      this.form.business = data["business"];
+      this.form.owner = data["owner"];
+      this.form.fishCaptain = data["fishCaptain"];
+      this.form.location = data["location"];
+      this.date = data["date"];
     },
     showData: function showData() {
       this.clearForm();
@@ -45553,7 +45977,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdList"]);
     },
     listData: function listData() {
       var me = this;
-      var url = "/checkDetInch";
+      var url = "/checkDetInchs";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
         me.arrayData = respuesta.data;
@@ -45565,8 +45989,20 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdList"]);
     saveData: function saveData() {
       var me = this;
 
-      axios.post("/checkDetInch/save", {
-        name: this.form.name.toUpperCase()
+      axios.post("/checkDetInchs/save", {
+
+        region: this.form.region.toUpperCase(),
+        office: this.form.office.toUpperCase(),
+        official: this.form.official.toUpperCase(),
+        boat: this.form.boat.toUpperCase(),
+        enrollment: this.form.enrollment.toUpperCase(),
+        outhFhisher: this.form.outhFhisher.toUpperCase(),
+        fishLicense: this.form.fishLicense.toUpperCase(),
+        business: this.form.business.toUpperCase(),
+        owner: this.form.owner.toUpperCase(),
+        fishCaptain: this.form.fishCaptain.toUpperCase(),
+        location: this.form.location.toUpperCase(),
+        date: this.date
       }).then(function (response) {
         me.hideForm();
         me.message("Guardado", "Guardo ");
@@ -45578,9 +46014,21 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdList"]);
     updateData: function updateData() {
       var me = this;
 
-      axios.put("/checkDetInch/update", {
-        name: this.form.name.toUpperCase(),
-        id: this.idReg
+      axios.put("/checkDetInchs/update", {
+
+        region: this.form.region.toUpperCase(),
+        office: this.form.office.toUpperCase(),
+        official: this.form.official.toUpperCase(),
+        boat: this.form.boat.toUpperCase(),
+        enrollment: this.form.enrollment.toUpperCase(),
+        outhFhisher: this.form.outhFhisher.toUpperCase(),
+        fishLicense: this.form.fishLicense.toUpperCase(),
+        business: this.form.business.toUpperCase(),
+        owner: this.form.owner.toUpperCase(),
+        fishCaptain: this.form.fishCaptain.toUpperCase(),
+        location: this.form.location.toUpperCase(),
+        date: this.date,
+        id: this.idCheckDelt
       }).then(function (response) {
         me.hideForm();
         me.message("Actualizado", "Actualizó ");
@@ -45609,7 +46057,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdList"]);
       }).then(function (result) {
         if (result.value) {
           var me = _this;
-          axios.post("/checkDetInch/delete", {
+          axios.post("/checkDetInchs/delete", {
             id: data["id"]
           }).then(function (response) {
             me.hideForm();
@@ -45654,7 +46102,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdList"]);
             "infoFiltered": "(filtrado de _MAX_ total registros)"
           },
           responsive: "true",
-          "columns": [{ "data": "name" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
+          "columns": [{ "data": "date" }, { "data": "region" }, { "data": "office" }, { "data": "official" }, { "data": "boat" }, { "data": "enrollment" }, { "data": "outhFhisher" }, { "data": "fishLicense" }, { "data": "business" }, { "data": "owner" }, { "data": "fishCaptain" }, { "data": "location" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
 
         });
 
@@ -45758,13 +46206,17 @@ var render = function() {
                                           expression: "date"
                                         }
                                       },
-                                      [_c("label", [_vm._v("Fecha")])]
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione Fecha")
+                                        ])
+                                      ]
                                     )
                                   ],
                                   1
                                 )
                               ]),
-                              _vm._v("     \n                "),
+                              _vm._v("      \n                "),
                               _c(
                                 "md-field",
                                 {
@@ -45838,6 +46290,366 @@ var render = function() {
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
                                           "Olvidaste ingresar el nombre de la oficina"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("official"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Funcionario")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.official,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "official", $$v)
+                                      },
+                                      expression: "form.official"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.official.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del funcionario"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("boat"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Embarcación")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.boat,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "boat", $$v)
+                                      },
+                                      expression: "form.boat"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.boat.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la embarcación"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("enrollment"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Matrícula")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.enrollment,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "enrollment", $$v)
+                                      },
+                                      expression: "form.enrollment"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.enrollment.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la matrícula"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("outhFhisher"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Pesquería Autorizada")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.outhFhisher,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "outhFhisher", $$v)
+                                      },
+                                      expression: "form.outhFhisher"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.outhFhisher.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la pesqueria autorizada"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("fishLicense"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Pantente de Pesca")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.fishLicense,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "fishLicense", $$v)
+                                      },
+                                      expression: "form.fishLicense"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.fishLicense.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la patente de pesca"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("business"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Empresa")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.business,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "business", $$v)
+                                      },
+                                      expression: "form.business"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.business.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la empresa"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("owner"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Armador")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.owner,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "owner", $$v)
+                                      },
+                                      expression: "form.owner"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.owner.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del armador"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("fishCaptain"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Capitán de Pesca")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.fishCaptain,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "fishCaptain", $$v)
+                                      },
+                                      expression: "form.fishCaptain"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.fishCaptain.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del capitán de pesca"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("location"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Localización")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.location,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "location", $$v)
+                                      },
+                                      expression: "form.location"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.location.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la localización"
                                         )
                                       ])
                                     : _vm._e()

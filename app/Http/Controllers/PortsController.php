@@ -46,15 +46,4 @@ class PortsController extends Controller
         $port = Ports::findOrFail($request->id);
         $port->delete();
     }
-
-
-  
-    
-    
-    
-    
-  
-    
-    
-    
 }

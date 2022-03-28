@@ -150,13 +150,13 @@
                         <label class="negrita">Fecha de Inspección</label>
                         <div>
                           <md-datepicker v-model="dateIns">
-                            <label>Seleccione fecha</label>
+                            <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp; 
                       <div class="md-layout-item">
                         <label>Recibió Notificación Previa</label>
-                        <multiselect v-model="notification" :options="arrayNotification"
+                        <multiselect v-model="arrayReg" :options="arrayNotification"
                             placeholder="Seleccione una opción"
                             :custom-label="nameWithRegion"
                             label="name"
@@ -165,7 +165,7 @@
                       </div> &nbsp;&nbsp;&nbsp; 
                         <div class="md-layout-item">
                             <label>Finalidad Arribo</label>
-                            <multiselect v-model="arrayReg" :options="arrayFinalityArribo"
+                            <multiselect v-model="arrayReg" :options="arrayFinalityZarpe"
                                 placeholder="Seleccione una opción"
                                 :custom-label="nameWithRegion"
                                 label="name"
@@ -197,7 +197,7 @@
                         <label class="negrita">Fecha Última Escala</label>
                         <div>
                           <md-datepicker v-model="dateScale">
-                            <label>Seleccione fecha</label>
+                            <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp; 
@@ -214,7 +214,7 @@
                         <label class="negrita">Fecha Zarpe</label>
                         <div>
                           <md-datepicker v-model="dateZarpe">
-                            <label>Seleccione fecha</label>
+                            <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp;  
@@ -233,33 +233,30 @@
                     >Olvidaste ingresar el puerto para el ultimo arribo</span>
                   </md-field>
                   <div class="md-layout-item">
-                        <label class="negrita">Fecha Ultimo Arribo</label>
-                        <div>
-                          <md-datepicker v-model="dateLatestArrival">
-                            <label>Seleccione fecha</label>
-                          </md-datepicker>
-                        </div>
-                  </div> &nbsp;&nbsp;&nbsp;
-
-                  <!-- <label>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</label> -->
-
+                    <label class="negrita">Fecha Ultimo Arribo</label>
+                    <div>
+                        <md-datepicker v-model="dateZarpe">
+                        <label>Seleccione Fecha</label>
+                        </md-datepicker>
+                    </div>
+                  </div> &nbsp;&nbsp;&nbsp;  
                   <div class="md-layout-item">
-                            <label>Nacional</label>
-                            <multiselect v-model="arrayReg" :options="arrayNational"
-                                placeholder="Seleccione una región"
-                                :custom-label="nameWithRegion"
-                                label="name"
-                                track-by="name">
-                            </multiselect>
+                    <label>Faena Realizada En</label>
+                    <multiselect v-model="arrayPt" :options="arrayPort"
+                        placeholder="Seleccione una región"
+                        :custom-label="nameWithPort"
+                        label="name"
+                        track-by="name">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                            <label>OROP</label>
-                            <multiselect v-model="arrayReg" :options="arrayOrop"
-                                placeholder="Seleccione una región"
-                                :custom-label="nameWithRegion"
-                                label="name"
-                                track-by="name">
-                            </multiselect>
+                    <label>Sistema dE Localización de Buques/VMS</label>
+                    <multiselect v-model="arrayPt" :options="arrayPort"
+                        placeholder="Seleccione una región"
+                        :custom-label="nameWithPort"
+                        label="name"
+                        track-by="name">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <md-field md-clearable :class="getValidationClass('radioCall')">
                     <label for="first-name">Señal Radiollamada Internacional</label>
@@ -275,8 +272,128 @@
                       v-if="!$v.form.radioCall.required"
                     >Olvidaste ingresar la señal radiollamada internacional</span>
                   </md-field>
+
+                  <!-- <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label> -->
+
                   <md-field md-clearable :class="getValidationClass('idOmi')">
-                    <label for="first-name">Identificador OMI</label>
+                    <label for="first-name">No. de Resolición</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.idOmi"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.idOmi.required"
+                    >Olvidaste ingresar el Número de resolución</span>
+                  </md-field>
+                  <div class="md-layout-item">
+                    <label class="negrita">Fecha</label>
+                    <div>
+                        <md-datepicker v-model="dateZarpe">
+                        <label>Seleccione Fecha</label>
+                        </md-datepicker>
+                    </div>
+                  </div> &nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <label class="negrita">Vigencia</label>
+                    <div>
+                        <md-datepicker v-model="dateZarpe">
+                        <label>Seleccione Fecha</label>
+                        </md-datepicker>
+                    </div>
+                  </div> &nbsp;&nbsp;&nbsp;  
+                  <md-field md-clearable :class="getValidationClass('idOmi')">
+                    <label for="first-name">Nombre Embarcación</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.idOmi"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.idOmi.required"
+                    >Olvidaste ingresar el identificador OMI</span>
+                  </md-field>  
+                  <div class="md-layout-item">
+                    <label>Bandera</label>
+                    <multiselect v-model="arrayPt" :options="arrayPort"
+                        placeholder="Seleccione una región"
+                        :custom-label="nameWithPort"
+                        label="name"
+                        track-by="name">
+                    </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <md-field md-clearable :class="getValidationClass('idOmi')">
+                    <label for="first-name">Matricula</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.idOmi"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.idOmi.required"
+                    >Olvidaste ingresar el identificador OMI</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('idOmi')">
+                    <label for="first-name">No. OMI</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.idOmi"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.idOmi.required"
+                    >Olvidaste ingresar el identificador OMI</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('idOmi')">
+                    <label for="first-name">No. Pantente</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.idOmi"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.idOmi.required"
+                    >Olvidaste ingresar el identificador OMI</span>
+                  </md-field>
+                  <div class="md-layout-item">
+                    <label class="negrita">Vigencia Patente</label>
+                    <div>
+                        <md-datepicker v-model="dateZarpe">
+                        <label>Seleccione Fecha</label>
+                        </md-datepicker>
+                    </div>
+                  </div> &nbsp;&nbsp;&nbsp;
+                  <md-field md-clearable :class="getValidationClass('idOmi')">
+                    <label for="first-name">Representante Legal</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.idOmi"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.idOmi.required"
+                    >Olvidaste ingresar el identificador OMI</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('idOmi')">
+                    <label for="first-name">Empresa</label>
                     <md-input
                       name="first-name"
                       id="first-name"
@@ -290,155 +407,40 @@
                     >Olvidaste ingresar el identificador OMI</span>
                   </md-field>
 
-                   <!-- <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label> -->
-
-                  <md-field md-clearable :class="getValidationClass('noResolution')">
-                    <label for="first-name">No. Resolución</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.noResolution"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.noResolution.required"
-                    >Olvidaste ingresar el número de resolución</span>
-                  </md-field>
-                  <div class="md-layout-item">
-                        <label class="negrita">Fecha</label>
-                        <div>
-                          <md-datepicker v-model="dateResolution">
-                            <label>Seleccione fecha</label>
-                          </md-datepicker>
-                        </div>
-                  </div> &nbsp;&nbsp;&nbsp; 
-                  <div class="md-layout-item">
-                        <label class="negrita">Vigencia</label>
-                        <div>
-                          <md-datepicker v-model="dateValid">
-                            <label>Seleccione fecha</label>
-                          </md-datepicker>
-                        </div>
-                  </div> &nbsp;&nbsp;&nbsp; 
-                  <md-field md-clearable :class="getValidationClass('nameBoat')">
-                    <label for="first-name">Nombre Embarcación</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameBoat"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameBoat.required"
-                    >Olvidaste ingresar un nombre para la embarcación</span>
-                  </md-field>
-                  <div class="md-layout-item">
-                        <label>Bandera</label>
-                        <multiselect v-model="arrayFg" :options="arrayFlag"
-                            placeholder="Seleccione una bandera"
-                            :custom-label="nameWithFlag"
-                            label="name"
-                            track-by="name">
-                        </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('enrollment')">
-                    <label for="first-name">Matrícula</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.enrollment"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.enrollment.required"
-                    >Olvidaste ingresar la matrícula</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('noPatent')">
-                    <label for="first-name">No. de Pantente</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.noPatent"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.noPatent.required"
-                    >Olvidaste ingresar el numero de patente</span>
-                  </md-field>
-                  <div class="md-layout-item">
-                        <label class="negrita">Vigencia Patente</label>
-                        <div>
-                          <md-datepicker v-model="dateValidityPat">
-                            <label>Seleccione fecha</label>
-                          </md-datepicker>
-                        </div>
-                  </div> &nbsp;&nbsp;&nbsp; 
-                  <md-field md-clearable :class="getValidationClass('representative')">
-                    <label for="first-name">Representante Legal</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.representative"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.representative.required"
-                    >Olvidaste ingresar el nombre del representante legal</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('business')">
-                    <label for="first-name">Empresa</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.business"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.business.required"
-                    >Olvidaste ingresar el nombre de la empresa</span>
-                  </md-field>
-
                   <!-- <label>PESQUERÍA Y ARTES AUTORIZADOS</label> -->
 
-                  <div class="md-layout-item">
-                            <label>Pesquería Autorizada</label>
-                            <multiselect v-model="arrayReg" :options="arrayFishAut"
-                                placeholder="Seleccione una pesquería autorizada"
-                                :custom-label="nameWithRegion"
-                                label="name"
-                                track-by="name">
-                            </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('zoneAutFish')">
+                  <md-field md-clearable :class="getValidationClass('idOmi')">
+                    <label for="first-name">Pesquería Autorizada</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.idOmi"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.idOmi.required"
+                    >Olvidaste ingresar el identificador OMI</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('idOmi')">
                     <label for="first-name">Zona de Pesca Autorizada</label>
                     <md-input
                       name="first-name"
                       id="first-name"
                       autocomplete="given-name"
-                      v-model="form.zoneAutFish"
+                      v-model="form.idOmi"
                       :disabled="sending"
                     />
                     <span
                       class="md-error"
-                      v-if="!$v.form.zoneAutFish.required"
-                    >Olvidaste ingresar una zona de pesca autorizada</span>
+                      v-if="!$v.form.idOmi.required"
+                    >Olvidaste ingresar el identificador OMI</span>
                   </md-field>
 
-                  <!-- <label>CARACTERÍSTICAS ARTE DE PESCA</label> -->
+                  <!-- <label>Características Arte de Pesca</label> -->
 
-                 <md-field md-clearable :class="getValidationClass('eyeMesh')">
+                  <md-field md-clearable :class="getValidationClass('eyeMesh')">
                     <label for="first-name">Ojo de Malla (Pulgadas)</label>
                     <md-input
                       name="first-name"
@@ -450,7 +452,7 @@
                     <span
                       class="md-error"
                       v-if="!$v.form.eyeMesh.required"
-                    >Olvidaste ingresar el Oojo de malla</span>
+                    >Olvidaste ingresar una zona de pesca autorizada</span>
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('netWidth')">
                     <label for="first-name">Ancho de Red (Brazas)</label>
@@ -548,38 +550,125 @@
                     <span
                       class="md-error"
                       v-if="!$v.form.captain.required"
-                    >Olvidaste ingresar un nombre para el capitan de pesca</span>
+                    >Olvidaste ingresar un nombre para el capitan</span>
                   </md-field>
-                  <md-field md-clearable :class="getValidationClass('nacionality')">
-                    <label for="first-name">Nacionalidad</label>
+                  <div class="md-layout-item">
+                        <label>Nacionalidad</label>
+                        <multiselect v-model="arrayFg" :options="arrayFlag"
+                            placeholder="Seleccione una región"
+                            :custom-label="nameWithFlag"
+                            label="name"
+                            track-by="name">
+                        </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <md-field md-clearable :class="getValidationClass('captain')">
+                    <label for="first-name">No. Total de Tripulantes</label>
                     <md-input
                       name="first-name"
                       id="first-name"
                       autocomplete="given-name"
-                      v-model="form.nacionality"
+                      v-model="form.captain"
                       :disabled="sending"
                     />
                     <span
                       class="md-error"
-                      v-if="!$v.form.nacionality.required"
-                    >Olvidaste ingresar una nacionalidad</span>
+                      v-if="!$v.form.captain.required"
+                    >Olvidaste ingresar un nombre para el capitan</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('captain')">
+                    <label for="first-name">No. Tripulantes Extranjeros</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.captain"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.captain.required"
+                    >Olvidaste ingresar un nombre para el capitan</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('captain')">
+                    <label for="first-name">No. Tripulantes Nacionales</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.captain"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.captain.required"
+                    >Olvidaste ingresar un nombre para el capitan</span>
                   </md-field>
 
-                  <!-- <label>LOS DATOS RELACIONADOS CON LAS MEDIDAS DE ORDENAMIENTO APLICABLES</label> -->
+                  <!-- <label>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</label> -->
 
-                   <md-field>
+                  <md-field md-clearable :class="getValidationClass('captain')">
+                    <label for="first-name">No. Días de Pesca</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.captain"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.captain.required"
+                    >Olvidaste ingresar un nombre para el capitan</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('captain')">
+                    <label for="first-name">No. Total de Lances</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.captain"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.captain.required"
+                    >Olvidaste ingresar un nombre para el capitan</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('captain')">
+                    <label for="first-name">No. Lances Nacionales</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.captain"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.captain.required"
+                    >Olvidaste ingresar un nombre para el capitan</span>
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('captain')">
+                    <label for="first-name">No. Lances Internacionales</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.captain"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.captain.required"
+                    >Olvidaste ingresar un nombre para el capitan</span>
+                  </md-field>
+                  <md-field>
                         <label>Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)</label>
                         <md-textarea v-model="observation"></md-textarea>
                    </md-field>
-                   <md-field>
-                        <label>Conclusiones del Inspector</label>
-                        <md-textarea v-model="conclusions"></md-textarea>
-                   </md-field>
-                   <md-field>
-                        <label>Comentarios Adicionales (Espacio disponible para el capitan)</label>
-                        <md-textarea v-model="comments"></md-textarea>
-                   </md-field>
 
+
+                   
                 </div>
               </md-card-content>
             </form>
@@ -683,6 +772,10 @@ export default {
         
       },
 
+      observation: "",
+      conclusions: "",
+      comments: "",
+
       dateIns: 0,
       dateScale: 0,
       dateZarpe: 0,
@@ -690,9 +783,6 @@ export default {
       dateValid: 0,
       dateLatestArrival: 0,
       dateValidityPat: 0,
-      observation: "",
-      conclusions: "",
-      comments: "",
 
       arrayZarpes: [],
       id_zarpes: 0,
@@ -706,13 +796,14 @@ export default {
 	    arrayFlag: [],
       id_flag: 0,
       arrayNotification: [],
-      notification: "",
       arrayFinalityZarpe: [],
       arrayOrigin: [],
       arrayDestination: [],
       arrayNational: [],
       arrayOrop: [],
+      arrayFlag: [],
       arrayFishAut: [],
+      
       
       edo: 1,
 
@@ -819,7 +910,6 @@ export default {
     },
     clearForm() {
       this.$v.$reset();
-      this.form.name = null;
       this.form.insNo = null;
       this.form.portArrival = null;
       this.form.radioCall = null;
@@ -905,7 +995,7 @@ export default {
             var url = "flags/selectFlags";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
-                    me.arrayFlag = respuesta.flags;
+                    me.arrayFlag = respuesta.flag;
                 }).catch(function (error) {
                     console.log(error);
             });
@@ -944,6 +1034,7 @@ export default {
       this.dateValid = data["dateValid"];
       this.dateLatestArrival = data["dateLatestArrival"];
       this.dateValidityPat = data["dateValidityPat"];
+
       this.arrayReg.id = data["id_region"];
 			this.arrayReg.name = data["nameReg"];
       this.arrayPt.id = data["id_port"];
@@ -990,13 +1081,6 @@ export default {
           observation: this.observation.toUpperCase(),
           conclusions: this.conclusions.toUpperCase(),
           comments: this.comments.toUpperCase(),
-          dateIns: this.dateIns,
-          dateScale: this.dateScale,
-          dateZarpe: this.dateZarpe,
-          dateResolution: this.dateResolution,
-          dateValid: this.dateValid,
-          dateLatestArrival: this.dateLatestArrival,
-          dateValidityPat: this.dateValidityPat,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
@@ -1016,7 +1100,6 @@ export default {
       axios
         .put("/zarpes/update", {
           id: this.id_zarpes,
-          name: this.form.name.toUpperCase(),
           insNo: this.form.insNo.toUpperCase(),
           portArrival: this.form.portArrival.toUpperCase(),
           radioCall: this.form.radioCall.toUpperCase(),
@@ -1040,13 +1123,6 @@ export default {
           observation: this.observation.toUpperCase(),
           conclusions: this.conclusions.toUpperCase(),
           comments: this.comments.toUpperCase(),
-          dateIns: this.dateIns,
-          dateScale: this.dateScale,
-          dateZarpe: this.dateZarpe,
-          dateResolution: this.dateResolution,
-          dateValid: this.dateValid,
-          dateLatestArrival: this.dateLatestArrival,
-          dateValidityPat: this.dateValidityPat,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
@@ -1130,36 +1206,7 @@ export default {
             responsive: "true",
           "columns": [
 
-            // { "data": "insNo" },
-            // { "data": "portArrival" },
-            // { "data": "radioCall" },
-            // { "data": "idOmi" },
-            // { "data": "noResolution" },
-            // { "data": "nameBoat" },
-            // { "data": "enrollment" },
-            // { "data": "noPatent" },
-            // { "data": "representative" },
-            // { "data": "business" },
-            // { "data": "zoneAutFish" },
-            // { "data": "eyeMesh" },
-            // { "data": "netWidth" },
-            // { "data": "eyeFlake" },
-            // { "data": "typeHook" },
-            // { "data": "longNet" },
-            // { "data": "materialArt" },
-            // { "data": "equipDevi" },
-            // { "data": "captain" },
-            // { "data": "nacionality" },
-            // { "data": "dateIns" },
-            // { "data": "dateScale" },
-            // { "data": "dateZarpe" },
-            // { "data": "dateResolution" },
-            // { "data": "dateValid" },
-            // { "data": "dateLatestArrival" },
-            // { "data": "dateValidityPat" },
-            // { "data": "observation" },
-            // { "data": "conclusions" },
-            // { "data": "comments" },
+            // { "data": "name" },
             { "data": "nameReg" },
             { "data": "namePort" },
             { "data": "nameFlag" },

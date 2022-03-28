@@ -37,15 +37,14 @@ class CreateZarpesTable extends Migration
             $table->string('nacionality'); 
             $table->string('observation'); 
             $table->string('conclusions'); 
-            $table->string('comments');    
+            $table->string('comments');   
             $table->date('dateIns');
             $table->date('dateScale');
             $table->date('dateZarpe');
             $table->date('dateResolution');
             $table->date('dateValid');
             $table->date('dateLatestArrival');
-            $table->date('dateValidityPat');
-
+            $table->date('dateValidityPat');     
             $table->integer('id_port')->unsigned();
             $table->foreign('id_port')->references('id')->on('ports');
             $table->integer('id_flag')->unsigned();

@@ -150,13 +150,13 @@
                         <label class="negrita">Fecha de Inspección</label>
                         <div>
                           <md-datepicker v-model="dateIns">
-                            <label>Seleccione fecha</label>
+                            <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp; 
                       <div class="md-layout-item">
                         <label>Recibió Notificación Previa</label>
-                        <multiselect v-model="notification" :options="arrayNotification"
+                        <multiselect v-model="arrayReg" :options="arrayNotification"
                             placeholder="Seleccione una opción"
                             :custom-label="nameWithRegion"
                             label="name"
@@ -197,7 +197,7 @@
                         <label class="negrita">Fecha Última Escala</label>
                         <div>
                           <md-datepicker v-model="dateScale">
-                            <label>Seleccione fecha</label>
+                            <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp; 
@@ -214,7 +214,7 @@
                         <label class="negrita">Fecha Zarpe</label>
                         <div>
                           <md-datepicker v-model="dateZarpe">
-                            <label>Seleccione fecha</label>
+                            <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp;  
@@ -236,7 +236,7 @@
                         <label class="negrita">Fecha Ultimo Arribo</label>
                         <div>
                           <md-datepicker v-model="dateLatestArrival">
-                            <label>Seleccione fecha</label>
+                            <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp;
@@ -310,7 +310,7 @@
                         <label class="negrita">Fecha</label>
                         <div>
                           <md-datepicker v-model="dateResolution">
-                            <label>Seleccione fecha</label>
+                            <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp; 
@@ -318,7 +318,7 @@
                         <label class="negrita">Vigencia</label>
                         <div>
                           <md-datepicker v-model="dateValid">
-                            <label>Seleccione fecha</label>
+                            <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp; 
@@ -339,7 +339,7 @@
                   <div class="md-layout-item">
                         <label>Bandera</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
-                            placeholder="Seleccione una bandera"
+                            placeholder="Seleccione una región"
                             :custom-label="nameWithFlag"
                             label="name"
                             track-by="name">
@@ -377,7 +377,7 @@
                         <label class="negrita">Vigencia Patente</label>
                         <div>
                           <md-datepicker v-model="dateValidityPat">
-                            <label>Seleccione fecha</label>
+                            <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp; 
@@ -450,7 +450,7 @@
                     <span
                       class="md-error"
                       v-if="!$v.form.eyeMesh.required"
-                    >Olvidaste ingresar el Oojo de malla</span>
+                    >Olvidaste ingresar una zona de pesca autorizada</span>
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('netWidth')">
                     <label for="first-name">Ancho de Red (Brazas)</label>
@@ -548,7 +548,7 @@
                     <span
                       class="md-error"
                       v-if="!$v.form.captain.required"
-                    >Olvidaste ingresar un nombre para el capitan de pesca</span>
+                    >Olvidaste ingresar un nombre para el capitan</span>
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('nacionality')">
                     <label for="first-name">Nacionalidad</label>
@@ -683,6 +683,10 @@ export default {
         
       },
 
+      observation: "",
+      conclusions: "",
+      comments: "",
+
       dateIns: 0,
       dateScale: 0,
       dateZarpe: 0,
@@ -690,9 +694,6 @@ export default {
       dateValid: 0,
       dateLatestArrival: 0,
       dateValidityPat: 0,
-      observation: "",
-      conclusions: "",
-      comments: "",
 
       arrayZarpes: [],
       id_zarpes: 0,
@@ -706,13 +707,14 @@ export default {
 	    arrayFlag: [],
       id_flag: 0,
       arrayNotification: [],
-      notification: "",
       arrayFinalityZarpe: [],
       arrayOrigin: [],
       arrayDestination: [],
       arrayNational: [],
       arrayOrop: [],
+      arrayFlag: [],
       arrayFishAut: [],
+      
       
       edo: 1,
 
@@ -819,7 +821,6 @@ export default {
     },
     clearForm() {
       this.$v.$reset();
-      this.form.name = null;
       this.form.insNo = null;
       this.form.portArrival = null;
       this.form.radioCall = null;
@@ -905,7 +906,7 @@ export default {
             var url = "flags/selectFlags";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
-                    me.arrayFlag = respuesta.flags;
+                    me.arrayFlag = respuesta.flag;
                 }).catch(function (error) {
                     console.log(error);
             });
@@ -944,6 +945,7 @@ export default {
       this.dateValid = data["dateValid"];
       this.dateLatestArrival = data["dateLatestArrival"];
       this.dateValidityPat = data["dateValidityPat"];
+
       this.arrayReg.id = data["id_region"];
 			this.arrayReg.name = data["nameReg"];
       this.arrayPt.id = data["id_port"];
@@ -971,7 +973,7 @@ export default {
           portArrival: this.form.portArrival.toUpperCase(),
           radioCall: this.form.radioCall.toUpperCase(),
           idOmi: this.form.idOmi.toUpperCase(),
-          noResolution: this.noResolution.name.toUpperCase(),
+          noResolution: this.noResolution.toUpperCase(),
           nameBoat: this.form.nameBoat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
           noPatent: this.form.noPatent.toUpperCase(),
@@ -990,13 +992,6 @@ export default {
           observation: this.observation.toUpperCase(),
           conclusions: this.conclusions.toUpperCase(),
           comments: this.comments.toUpperCase(),
-          dateIns: this.dateIns,
-          dateScale: this.dateScale,
-          dateZarpe: this.dateZarpe,
-          dateResolution: this.dateResolution,
-          dateValid: this.dateValid,
-          dateLatestArrival: this.dateLatestArrival,
-          dateValidityPat: this.dateValidityPat,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
@@ -1016,12 +1011,11 @@ export default {
       axios
         .put("/zarpes/update", {
           id: this.id_zarpes,
-          name: this.form.name.toUpperCase(),
           insNo: this.form.insNo.toUpperCase(),
           portArrival: this.form.portArrival.toUpperCase(),
           radioCall: this.form.radioCall.toUpperCase(),
           idOmi: this.form.idOmi.toUpperCase(),
-          noResolution: this.noResolution.name.toUpperCase(),
+          noResolution: this.noResolution.toUpperCase(),
           nameBoat: this.form.nameBoat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
           noPatent: this.form.noPatent.toUpperCase(),
@@ -1040,13 +1034,6 @@ export default {
           observation: this.observation.toUpperCase(),
           conclusions: this.conclusions.toUpperCase(),
           comments: this.comments.toUpperCase(),
-          dateIns: this.dateIns,
-          dateScale: this.dateScale,
-          dateZarpe: this.dateZarpe,
-          dateResolution: this.dateResolution,
-          dateValid: this.dateValid,
-          dateLatestArrival: this.dateLatestArrival,
-          dateValidityPat: this.dateValidityPat,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
@@ -1130,36 +1117,7 @@ export default {
             responsive: "true",
           "columns": [
 
-            // { "data": "insNo" },
-            // { "data": "portArrival" },
-            // { "data": "radioCall" },
-            // { "data": "idOmi" },
-            // { "data": "noResolution" },
-            // { "data": "nameBoat" },
-            // { "data": "enrollment" },
-            // { "data": "noPatent" },
-            // { "data": "representative" },
-            // { "data": "business" },
-            // { "data": "zoneAutFish" },
-            // { "data": "eyeMesh" },
-            // { "data": "netWidth" },
-            // { "data": "eyeFlake" },
-            // { "data": "typeHook" },
-            // { "data": "longNet" },
-            // { "data": "materialArt" },
-            // { "data": "equipDevi" },
-            // { "data": "captain" },
-            // { "data": "nacionality" },
-            // { "data": "dateIns" },
-            // { "data": "dateScale" },
-            // { "data": "dateZarpe" },
-            // { "data": "dateResolution" },
-            // { "data": "dateValid" },
-            // { "data": "dateLatestArrival" },
-            // { "data": "dateValidityPat" },
-            // { "data": "observation" },
-            // { "data": "conclusions" },
-            // { "data": "comments" },
+            // { "data": "name" },
             { "data": "nameReg" },
             { "data": "namePort" },
             { "data": "nameFlag" },

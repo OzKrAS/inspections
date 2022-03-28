@@ -10,40 +10,40 @@ class FlagController extends Controller
     public function index(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $flags = Flag::orderBy('name', 'asc')->get();
+        $flag = Flag::orderBy('name', 'asc')->get();
 
         return [     
-            'data' => $flags
+            'data' => $flag
         ];
     }
     public function selectFlag(Request $request)
     {
-        $flags = Flag::select('id','name')
+        $flag = Flag::select('id','name')
             ->orderBy('name', 'asc')->get();
         return [
-            'flags' => $flags
+            'flag' => $flag
         ];
     } 
     public function store(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $flags = new Flag();
-        $flags->name = $request->name;    
-        $flags->save();
+        $flag = new Flag();
+        $flag->name = $request->name;    
+        $flag->save();
     }
 
     public function update(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $flags = Flag::findOrFail($request->id);
-        $flags->name = $request->name;    
-        $flags->save();
+        $flag = Flag::findOrFail($request->id);
+        $flag->name = $request->name;    
+        $flag->save();
     }
 
     public function destroy(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $flags = Flag::findOrFail($request->id);
-        $flags->delete();
+        $flag = Flag::findOrFail($request->id);
+        $flag->delete();
     }
 }
