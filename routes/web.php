@@ -77,6 +77,19 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/checkDetInchs/save', 'CheckDetInchController@store');
         Route::put('/checkDetInchs/update', 'CheckDetInchController@update');
         Route::post('/checkDetInchs/delete', 'CheckDetInchController@destroy');
+        //verificacion DET doble solapa
+        Route::get('/checkDetFlaps', 'CheckDetFlapController@index');
+        Route::post('/checkDetFlaps/save', 'CheckDetFlapController@store');
+        Route::put('/checkDetFlaps/update', 'CheckDetFlapController@update');
+        Route::post('/checkDetFlaps/delete', 'CheckDetFlapController@destroy');
+        //verificacion presencia equipo de rescate
+        Route::get('/presenVerifics', 'presenVerificController@index');
+        Route::post('/presenVerifics/save', 'presenVerificController@store');
+        Route::put('/presenVerifics/update', 'presenVerificController@update');
+        Route::post('/presenVerifics/delete', 'presenVerificController@destroy');
+        Route::get('/flags/selectFlags', 'FlagController@selectFlag');
+
+
 
 
        

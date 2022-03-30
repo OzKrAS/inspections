@@ -28,6 +28,8 @@ Vue.component('docks', require('./components/Docks.vue'));
 Vue.component('zarpe', require('./components/Zarpe.vue'));
 Vue.component('arrival', require('./components/Arrivals.vue'));
 Vue.component('checkdetinch', require('./components/CheckDetInch.vue'));
+Vue.component('checkdetflap', require('./components/CheckDetFlap.vue'));
+Vue.component('presenverific', require('./components/PresenVerific.vue'));
 
 
 const app = new Vue({

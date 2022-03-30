@@ -33,6 +33,12 @@
             <template v-if="menu==9">
                 <checkdetinch></checkdetinch>
             </template>
+            <template v-if="menu==10">
+                <checkdetflap></checkdetflap>
+            </template>
+            <template v-if="menu==11">
+                <presenVerific></presenVerific>
+            </template>
 
            
    
