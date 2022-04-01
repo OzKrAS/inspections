@@ -10,7 +10,7 @@ class autoFisherController extends Controller
     public function index(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $autoFisher = AutoFisher::orderBy('name', 'state', 'asc')->get();
+        $autoFisher = AutoFisher::orderBy('name',  'asc')->get();
 
         return [     
             'data' => $autoFisher

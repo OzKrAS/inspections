@@ -24,9 +24,9 @@
                   <tr>
                     <th>Nombre</th>
                     <th>Puerto</th>
-                    <th>Arribo</th>
-                    <th>Zarpe</th>
-                    <th>Opciones</th>    
+                    <th style="width: 40px">Arribo</th>
+                    <th style="width: 40px">Zarpe</th>
+                    <th style="width: 90px">Opciones</th>    
                   </tr>
                 </thead>
                 <tbody>
@@ -35,9 +35,9 @@
                     <tr>
                       <th>Nombre</th>
                       <th>Puerto</th>
-                      <th>Arribo</th>
-                      <th>Zarpe</th>
-                      <th>Opciones</th>  
+                      <th style="width: 40px">Arribo</th>
+                      <th style="width: 40px">Zarpe</th>
+                      <th style="width: 90px">Opciones</th>  
                     </tr>
                   </tfoot>
                   <tbody>
@@ -77,18 +77,10 @@
                           track-by="name">
                       </multiselect>
 				         </div>&nbsp;&nbsp;&nbsp;
-                  <div class="form-check col-md-3">
-                        <input class="form-check-input" type="checkbox" value="arrival" id="defaultCheck1" v-model="arrival">
-                        <label class="form-check-label" for="defaultCheck1">
-                              Arribo
-                        </label>
-                  </div>  
-                  <div class="form-check col-md-3">
-                        <input class="form-check-input" type="checkbox" value="zarpe" id="defaultCheck1" v-model="zarpe">
-                        <label class="form-check-label" for="defaultCheck1">
-                              Zarpe
-                        </label>
-                  </div>  
+                  <div class="md-layout-item md-size-20">
+                    <md-checkbox v-model="arrival">Arribo</md-checkbox>
+                    <md-checkbox v-model="zarpe" class="md-primary">Zarpe</md-checkbox> 
+                  </div>
                 </div>
               </md-card-content>
             </form>
@@ -131,6 +123,7 @@
     import vSelect from "vue-select";
     import {
 		MdButton,  
+    MdCheckbox,
 		MdContent,
 		MdField,
 		MdCard,
@@ -144,7 +137,7 @@
         iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
     });
     Vue.use(MdButton);
-
+    Vue.use(MdCheckbox);
     Vue.use(MdContent);
     Vue.use(MdField);
     Vue.use(MdCard);
@@ -156,7 +149,6 @@
 
 export default {
 	mixins: [validationMixin],
-	props: ['ruta'],
 	
 	data() {
 
@@ -264,8 +256,17 @@ export default {
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_docks = data["id"]);
       this.form.name = data["name"];
-      this.form.arrival = data["arrival"];
-      this.form.zarpe = data["zarpe"];
+      console.log(data["zarpe"])
+      if(data["arrival"]=="1"){
+        this.arrival =true ;
+      }else{
+        this.arrival =false ;
+      }
+      if(data["zarpe"]=="1"){
+         this.zarpe  =true ;
+      }else{
+         this.zarpe  =false ;
+      }
       this.arrayPt.id = data["id_port"];
 	    this.arrayPt.name = data["namePort"];
     },
@@ -390,19 +391,19 @@ export default {
             { "data": "namePort" },    
             { "data": "arrival", 
                "render":function(data,type,row){
-                  if(row["arrival"]=="true"){
-                      return '<span class="badge badge-success">Aplica</span>';
+                  if(row["arrival"]=="1"){
+                      return '<span class="badge badge-success">SI</span>';
                   }else{
-                      return '<span class="badge badge-dark">No aplica</span>';
+                      return '<span class="badge badge-dark">NO</span>';
                   }
                }  
             },    
             { "data": "zarpe",
               "render":function(data,type,row){
-                    if(row["zarpe"]=="true"){
-                        return '<span class="badge badge-success">Aplica</span>';
+                    if(row["zarpe"]=="1"){
+                        return '<span class="badge badge-success">SI</span>';
                     }else{
-                        return '<span class="badge badge-dark">No aplica</span>';
+                        return '<span class="badge badge-dark">NO</span>';
                     }
                 }  
              },    

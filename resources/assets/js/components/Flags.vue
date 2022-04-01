@@ -49,7 +49,8 @@
                 <div class="md-layout">
                   <md-field md-clearable :class="getValidationClass('name')">
                     <label for="first-name">Nombre</label>
-                    <md-input
+                    <md-input                 
+                      @keyup.enter="validateData()"
                       name="first-name"
                       id="first-name"
                       autocomplete="given-name"
@@ -74,17 +75,18 @@
             <md-card-actions>
               <md-button
                 type="submit"
+
                 v-if="tipoAccion==1"
                 class="md-dense md-raised md-primary"
                 :disabled="sending"
-                @click="validateData()"
+                @click.prevent="validateData()"
               >Guardar</md-button>
               <md-button
-                type="submit"
+                type="button"
                 v-if="tipoAccion==2"
                 class="md-dense md-raised md-primary"
                 :disabled="sending"
-                @click="updateData()"
+                @click.prevent="updateData()"
               >Actualizar</md-button>
             </md-card-actions>
           </div>

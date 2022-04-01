@@ -149,7 +149,13 @@
                       <div class="md-layout-item">
                         <label class="negrita">Fecha de Inspección</label>
                         <div>
-                          <md-datepicker v-model="dateIns">
+                          <md-datepicker 
+                            v-model="dateIns"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                          
+                          >
                             <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
@@ -202,7 +208,12 @@
                       <div class="md-layout-item">
                         <label class="n  egrita">Fecha Última Escala</label>
                         <div>
-                          <md-datepicker v-model="dateScale">
+                          <md-datepicker 
+                            v-model="dateScale"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                          >
                             <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
@@ -219,7 +230,12 @@
                       <div class="md-layout-item">
                         <label class="negrita">Fecha Zarpe</label>
                         <div>
-                          <md-datepicker v-model="dateZarpe">
+                          <md-datepicker 
+                            v-model="dateZarpe"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                            >
                             <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
@@ -241,7 +257,12 @@
                   <div class="md-layout-item">
                         <label class="negrita">Fecha Ultimo Arribo</label>
                         <div>
-                          <md-datepicker v-model="dateLatestArrival">
+                          <md-datepicker 
+                            v-model="dateLatestArrival"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                          >
                             <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
@@ -319,7 +340,12 @@
                   <div class="md-layout-item">
                         <label class="negrita">Fecha</label>
                         <div>
-                          <md-datepicker v-model="dateResolution">
+                          <md-datepicker 
+                            v-model="dateResolution"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                          >
                             <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
@@ -327,7 +353,12 @@
                   <div class="md-layout-item">
                         <label class="negrita">Vigencia</label>
                         <div>
-                          <md-datepicker v-model="dateValid">
+                          <md-datepicker 
+                            v-model="dateValid"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                            >
                             <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
@@ -386,7 +417,12 @@
                   <div class="md-layout-item">
                         <label class="negrita">Vigencia Patente</label>
                         <div>
-                          <md-datepicker v-model="dateValidityPat">
+                          <md-datepicker 
+                            v-model="dateValidityPat"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                          >
                             <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
@@ -622,6 +658,7 @@
 
 <script>
 
+    import format from "date-fns/format"; 
     import { validationMixin } from "vuelidate";
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
@@ -634,6 +671,7 @@
 		MdMenu,
 		MdSwitch,
 		MdDatepicker,
+    MdDialog,
 		MdList
     } from "vue-material/dist/components";
 
@@ -649,6 +687,7 @@
     Vue.use(MdSwitch);
     Vue.use(MdList);
     Vue.use(MdDatepicker);
+    Vue.use(MdDialog);
     import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
 
 export default {
@@ -691,13 +730,13 @@ export default {
       observation: "",
       conclusions: "",
       comments: "",
-      dateIns: 0,
-      dateScale: 0,
-      dateZarpe: 0,
-      dateResolution: 0,
-      dateValid: 0,
-      dateLatestArrival: 0,
-      dateValidityPat: 0,
+      dateIns: format(now, dateFormat),
+      dateScale: format(now, dateFormat),
+      dateZarpe: format(now, dateFormat),
+      dateResolution: format(now, dateFormat),
+      dateValid: format(now, dateFormat),
+      dateLatestArrival: format(now, dateFormat),
+      dateValidityPat: format(now, dateFormat),
       notification: "",
       finalityZarpe: "",
       origin: "",
@@ -807,6 +846,22 @@ export default {
 
   },
   methods: {
+    toString() {
+      this.toDate();
+      this.dynamicByModel =
+        this.dynamicByModel && format(this.dynamicByModel, this.dateFormat);
+    },
+        toDate() {
+      switch (this.type) {
+        case "string":
+          this.dynamicByModel = parse(
+            this.dynamicByModel,
+            this.dateFormat,
+            new Date()
+          );
+          break;
+      }
+    },
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
       if (field) {
@@ -1007,7 +1062,7 @@ export default {
           portArrival: this.form.portArrival,
           radioCall: this.form.radioCall,
           idOmi: this.form.idOmi,
-          noResolution: this.noResolution,
+          noResolution: this.form.noResolution,
           nameBoat: this.form.nameBoat,
           enrollment: this.form.enrollment,
           noPatent: this.form.noPatent,

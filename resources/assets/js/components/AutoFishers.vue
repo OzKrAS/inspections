@@ -23,7 +23,7 @@
                 <thead>
                   <tr>
                     <th>Nombre</th>
-                    <th>Estado</th>
+                    <th style="width: 90px">Estado</th>
                     <th style="width: 90px">Opciones</th>    
                   </tr>
                 </thead>
@@ -32,7 +32,7 @@
                   <tfoot>
                     <tr>
                       <th>Nombre</th>
-                      <th>Estado</th>
+                      <th style="width: 90px">Estado</th>
                       <th style="width: 90px">Opciones</th>  
                     </tr>
                   </tfoot>
@@ -49,6 +49,7 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
+                <div class="md-layout-item">
                   <md-field md-clearable :class="getValidationClass('name')">
                     <label for="first-name">Nombre</label>
                     <md-input
@@ -64,6 +65,11 @@
                     >Olvidaste ingresar un nombre para el puerto</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
+                </div>
+                  <div class="md-layout-item md-size-15">
+                      <md-radio v-model="state" value="1"><small>SI</small></md-radio>
+                      <md-radio v-model="state" value="0" class="md-primary">NO</md-radio>
+                  </div>
                 </div>
               </md-card-content>
             </form>
@@ -106,6 +112,7 @@ import {
   MdField,
   MdCard,
   MdMenu,
+  MdRadio,
   MdList
 } from "vue-material/dist/components";
 // import VueMaterial from 'vue-material'
@@ -116,6 +123,8 @@ Vue.use(MdField);
 Vue.use(MdCard);
 Vue.use(MdMenu);
 Vue.use(MdList);
+Vue.use(MdRadio);
+
 import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
@@ -178,6 +187,7 @@ export default {
       (this.tipoAccion = 2), (me.listado = 0);
       (this.idFisher = data["id"]);
       this.form.name = data["name"];
+      this.state = data["state"];
       // this.form.state = data["state"];
     },
     showData() {
@@ -213,7 +223,7 @@ export default {
       axios
         .post("/autoFishers/save", {
           name: this.form.name.toUpperCase(),
-          name: this.form.state,
+          state: this.state,
         })
         .then(function(response) {
           me.hideForm();
@@ -230,7 +240,7 @@ export default {
       axios
         .put("/autoFishers/update", {
           name: this.form.name.toUpperCase(),
-          name: this.form.state,
+          state: this.state,
           id: this.idFisher
         })
         .then(function(response) {

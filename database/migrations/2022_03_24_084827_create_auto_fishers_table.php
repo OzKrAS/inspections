@@ -16,7 +16,7 @@ class CreateAutoFishersTable extends Migration
         Schema::create('auto_fishers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100)->unique();
-            $table->boolean('state')->default(1);
+            $table->char('state')->default(1);
             $table->timestamps();
         });
     }
