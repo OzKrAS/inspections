@@ -30,6 +30,7 @@ Vue.component('arrival', require('./components/Arrivals.vue'));
 Vue.component('checkdetinch', require('./components/CheckDetInch.vue'));
 Vue.component('checkdetflap', require('./components/CheckDetFlap.vue'));
 Vue.component('presenverific', require('./components/PresenVerific.vue'));
+Vue.component('nationality', require('./components/Nationality.vue'));
 
 
 const app = new Vue({

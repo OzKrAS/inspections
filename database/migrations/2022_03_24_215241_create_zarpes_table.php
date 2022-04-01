@@ -34,7 +34,6 @@ class CreateZarpesTable extends Migration
             $table->string('materialArt'); 
             $table->string('equipDevi'); 
             $table->string('captain'); 
-            $table->string('nacionality'); 
             $table->string('observation'); 
             $table->string('conclusions'); 
             $table->string('comments');   
@@ -44,13 +43,24 @@ class CreateZarpesTable extends Migration
             $table->date('dateResolution');
             $table->date('dateValid');
             $table->date('dateLatestArrival');
-            $table->date('dateValidityPat');     
+            $table->date('dateValidityPat');    
+            
+            $table->string('notification');
+            $table->string('finalityZarpe');
+            $table->string('origin');
+            $table->string('destination');
+            $table->string('national');
+            $table->string('orop');
+            $table->string('fishAut');
+
             $table->integer('id_port')->unsigned();
             $table->foreign('id_port')->references('id')->on('ports');
             $table->integer('id_flag')->unsigned();
             $table->foreign('id_flag')->references('id')->on('flags');
             $table->integer('id_region')->unsigned();
             $table->foreign('id_region')->references('id')->on('regions');
+            $table->integer('id_nationality')->unsigned();
+            $table->foreign('id_nationality')->references('id')->on('nationalities');
             $table->timestamps();
         });
     }

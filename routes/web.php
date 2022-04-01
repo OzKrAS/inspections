@@ -72,6 +72,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/zarpes/selectPorts', 'PortsController@selectPort');
         Route::get('/flags/selectFlags', 'FlagController@selectFlag');
         Route::get('/region/selectRegion', 'RegionController@selectRegion');
+        Route::get('/nationality/selectNationality', 'NationalityController@selectNationality');
         //verificación 71
         Route::get('/checkDetInchs', 'CheckDetInchController@index');
         Route::post('/checkDetInchs/save', 'CheckDetInchController@store');
@@ -88,6 +89,12 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/presenVerifics/update', 'presenVerificController@update');
         Route::post('/presenVerifics/delete', 'presenVerificController@destroy');
         Route::get('/flags/selectFlags', 'FlagController@selectFlag');
+        //pais
+        Route::get('/nationality', 'NationalityController@index');
+        Route::post('/nationality/save', 'NationalityController@store');
+        Route::put('/nationality/update', 'NationalityController@update');
+        Route::post('/nationality/delete', 'NationalityController@destroy');
+
 
 
 

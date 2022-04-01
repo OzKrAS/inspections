@@ -39,6 +39,9 @@
             <template v-if="menu==11">
                 <presenVerific></presenVerific>
             </template>
+            <template v-if="menu==12">
+                <nationality></nationality>
+            </template>
 
            
    

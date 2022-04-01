@@ -13480,6 +13480,7 @@ Vue.component('arrival', __webpack_require__(108));
 Vue.component('checkdetinch', __webpack_require__(113));
 Vue.component('checkdetflap', __webpack_require__(118));
 Vue.component('presenverific', __webpack_require__(123));
+Vue.component('nationality', __webpack_require__(128));
 
 var app = new Vue({
     el: '#app',
@@ -39968,6 +39969,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -39995,7 +40002,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
   props: ['ruta'],
 
   data: function data() {
-    var _ref;
 
     Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
     Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
@@ -40004,7 +40010,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
     var dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
     var now = new Date();
 
-    return _ref = { form: {
+    return _defineProperty({ form: {
 
         insNo: "",
         portArrival: "",
@@ -40024,15 +40030,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
         longNet: "",
         materialArt: "",
         equipDevi: "",
-        captain: "",
-        nacionality: ""
+        captain: ""
 
       },
 
       observation: "",
       conclusions: "",
       comments: "",
-
       dateIns: 0,
       dateScale: 0,
       dateZarpe: 0,
@@ -40040,6 +40044,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       dateValid: 0,
       dateLatestArrival: 0,
       dateValidityPat: 0,
+      notification: "",
+      finalityZarpe: "",
+      origin: "",
+      destination: "",
+      national: "",
+      orop: "",
+      fishAut: "",
 
       arrayZarpes: [],
       id_zarpes: 0,
@@ -40052,13 +40063,20 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       arrayFg: { id: 0, name: '' },
       arrayFlag: [],
       id_flag: 0,
-      arrayNotification: [],
-      arrayFinalityZarpe: [],
-      arrayOrigin: [],
-      arrayDestination: [],
-      arrayNational: [],
-      arrayOrop: []
-    }, _defineProperty(_ref, "arrayFlag", []), _defineProperty(_ref, "arrayFishAut", []), _defineProperty(_ref, "edo", 1), _defineProperty(_ref, "tipoAccion", 1), _defineProperty(_ref, "listado", 1), _defineProperty(_ref, "idMcpio", 0), _defineProperty(_ref, "sending", false), _defineProperty(_ref, "arrayData", []), _defineProperty(_ref, "modal", 0), _defineProperty(_ref, "tipoAccion", 0), _ref;
+      arrayNation: { id: 0, name: '' },
+      arrayNationality: [],
+      id_nationality: 0,
+
+      edo: 1,
+
+      tipoAccion: 1,
+      listado: 1,
+      idMcpio: 0,
+      sending: false,
+
+      arrayData: [],
+      modal: 0
+    }, "tipoAccion", 0);
   },
 
   components: {
@@ -40123,9 +40141,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       captain: {
         required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
       },
-      nacionality: {
-        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
-      },
       zoneAutFish: {
         required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
       }
@@ -40171,7 +40186,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       this.form.materialArt = null;
       this.form.equipDevi = null;
       this.form.captain = null;
-      this.form.nacionality = null;
       this.observation = null;
       this.conclusions = null;
       this.comments = null;
@@ -40182,9 +40196,17 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       this.dateValid = null;
       this.dateLatestArrival = null;
       this.dateValidityPat = null;
+      this.notification = null;
+      this.finalityZarpe = null;
+      this.origin = null;
+      this.destination = null;
+      this.national = null;
+      this.orop = null;
+      this.fishAut = null;
       this.arrayReg = { id: 0, name: '' };
       this.arrayPt = { id: 0, name: '' };
       this.arrayFg = { id: 0, name: '' };
+      this.arrayNation = { id: 0, name: '' };
     },
     nameWithRegion: function nameWithRegion(_ref2) {
       var name = _ref2.name;
@@ -40198,6 +40220,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
     },
     nameWithFlag: function nameWithFlag(_ref4) {
       var name = _ref4.name;
+
+      return "" + name;
+    },
+    nameWithNationality: function nameWithNationality(_ref5) {
+      var name = _ref5.name;
 
       return "" + name;
     },
@@ -40228,6 +40255,16 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       axios.get(url).then(function (response) {
         var respuesta = response.data;
         me.arrayRegion = respuesta.region;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    selectNationality: function selectNationality() {
+      var me = this;
+      var url = "nationality/selectNationality";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayNationality = respuesta.nationality;
       }).catch(function (error) {
         console.log(error);
       });
@@ -40267,7 +40304,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       this.form.materialArt = data["materialArt"];
       this.form.equipDevi = data["equipDevi"];
       this.form.captain = data["captain"];
-      this.form.nacionality = data["nacionality"];
       this.observation = data["observation"];
       this.conclusions = data["conclusions"];
       this.comments = data["comments"];
@@ -40279,12 +40315,22 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
       this.dateLatestArrival = data["dateLatestArrival"];
       this.dateValidityPat = data["dateValidityPat"];
 
+      this.notification = data["notification"];
+      this.finalityZarpe = data["finalityZarpe"];
+      this.origin = data["origin"];
+      this.destination = data["destination"];
+      this.national = data["nationa"];
+      this.orop = data["orop"];
+      this.fishAut = data["fishAut"];
+
       this.arrayReg.id = data["id_region"];
       this.arrayReg.name = data["nameReg"];
       this.arrayPt.id = data["id_port"];
       this.arrayPt.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
       this.arrayFg.name = data["nameFlag"];
+      this.arrayNation.id = data["id_nationality"];
+      this.arrayNation.name = data["nameNationality"];
     },
     showData: function showData() {
       this.clearForm();
@@ -40300,34 +40346,51 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
     saveData: function saveData() {
       var me = this;
       axios.post("/zarpes/save", {
+        // .toUpperCase(),
+        insNo: this.form.insNo,
+        portArrival: this.form.portArrival,
+        radioCall: this.form.radioCall,
+        idOmi: this.form.idOmi,
+        noResolution: this.noResolution,
+        nameBoat: this.form.nameBoat,
+        enrollment: this.form.enrollment,
+        noPatent: this.form.noPatent,
+        representative: this.form.representative,
+        business: this.form.business,
+        zoneAutFish: this.form.zoneAutFish,
+        eyeMesh: this.form.eyeMesh,
+        netWidth: this.form.netWidth,
+        eyeFlake: this.form.eyeFlake,
+        typeHook: this.form.typeHook,
+        longNet: this.form.longNet,
+        materialArt: this.form.materialArt,
+        equipDevi: this.form.equipDevi,
+        captain: this.form.captain,
+        observation: this.observation,
+        conclusions: this.conclusions,
+        comments: this.comments,
 
-        insNo: this.form.insNo.toUpperCase(),
-        portArrival: this.form.portArrival.toUpperCase(),
-        radioCall: this.form.radioCall.toUpperCase(),
-        idOmi: this.form.idOmi.toUpperCase(),
-        noResolution: this.noResolution.toUpperCase(),
-        nameBoat: this.form.nameBoat.toUpperCase(),
-        enrollment: this.form.enrollment.toUpperCase(),
-        noPatent: this.form.noPatent.toUpperCase(),
-        representative: this.form.representative.toUpperCase(),
-        business: this.form.business.toUpperCase(),
-        zoneAutFish: this.form.zoneAutFish.toUpperCase(),
-        eyeMesh: this.form.eyeMesh.toUpperCase(),
-        netWidth: this.form.netWidth.toUpperCase(),
-        eyeFlake: this.form.eyeFlake.toUpperCase(),
-        typeHook: this.form.typeHook.toUpperCase(),
-        longNet: this.form.longNet.toUpperCase(),
-        materialArt: this.form.materialArt.toUpperCase(),
-        equipDevi: this.form.equipDevi.toUpperCase(),
-        captain: this.form.captain.toUpperCase(),
-        nacionality: this.form.nacionality.toUpperCase(),
-        observation: this.observation.toUpperCase(),
-        conclusions: this.conclusions.toUpperCase(),
-        comments: this.comments.toUpperCase(),
+        dateIns: this.dateIns,
+        dateScale: this.dateScale,
+        dateZarpe: this.dateZarpe,
+        dateResolution: this.dateResolution,
+        dateValid: this.dateValid,
+        dateLatestArrival: this.dateLatestArrival,
+        dateValidityPat: this.dateValidityPat,
+
+        notification: this.notification,
+        finalityZarpe: this.finalityZarpe,
+        origin: this.origin,
+        destination: this.destination,
+        national: this.national,
+        orop: this.orop,
+        fishAut: this.fishAut,
 
         'id_region': this.arrayReg.id,
         'id_port': this.arrayPt.id,
-        'id_flag': this.arrayFg.id
+        'id_flag': this.arrayFg.id,
+        'id_nationality': this.arrayNation.id
+
       }).then(function (response) {
         me.hideForm();
         me.message("Guardado", "Guardo ");
@@ -40359,14 +40422,30 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
         materialArt: this.form.materialArt.toUpperCase(),
         equipDevi: this.form.equipDevi.toUpperCase(),
         captain: this.form.captain.toUpperCase(),
-        nacionality: this.form.nacionality.toUpperCase(),
         observation: this.observation.toUpperCase(),
         conclusions: this.conclusions.toUpperCase(),
         comments: this.comments.toUpperCase(),
 
+        dateIns: this.dateIns,
+        dateScale: this.dateScale,
+        dateZarpe: this.dateZarpe,
+        dateResolution: this.dateResolution,
+        dateValid: this.dateValid,
+        dateLatestArrival: this.dateLatestArrival,
+        dateValidityPat: this.dateValidityPat,
+
+        notification: this.notification,
+        finalityZarpe: this.finalityZarpe,
+        origin: this.origin,
+        destination: this.destination,
+        national: this.national,
+        orop: this.orop,
+        fishAut: this.fishAut,
+
         'id_region': this.arrayReg.id,
         'id_port': this.arrayPt.id,
-        'id_flag': this.arrayFg.id
+        'id_flag': this.arrayFg.id,
+        'id_nationality': this.arrayNation.id
       }).then(function (response) {
         me.hideForm();
         me.message("Actualizado", "Actualizó ");
@@ -40464,6 +40543,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
     this.selectRegion();
     this.selectPort();
     this.selectFlag();
+    this.selectNationality();
   }
 });
 
@@ -40645,79 +40725,187 @@ var render = function() {
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _c("label", [
-                                    _vm._v("Recibió Notificación Previa")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("multiselect", {
-                                    attrs: {
-                                      options: _vm.arrayNotification,
-                                      placeholder: "Seleccione una opción",
-                                      "custom-label": _vm.nameWithRegion,
-                                      label: "name",
-                                      "track-by": "name"
-                                    },
-                                    model: {
-                                      value: _vm.arrayReg,
-                                      callback: function($$v) {
-                                        _vm.arrayReg = $$v
-                                      },
-                                      expression: "arrayReg"
-                                    }
-                                  })
+                                  _c(
+                                    "md-field",
+                                    [
+                                      _c(
+                                        "label",
+                                        { attrs: { for: "notification" } },
+                                        [_vm._v("Recibió Notificación Previa")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "md-select",
+                                        {
+                                          attrs: {
+                                            name: "notification",
+                                            id: "notification"
+                                          },
+                                          model: {
+                                            value: _vm.notification,
+                                            callback: function($$v) {
+                                              _vm.notification = $$v
+                                            },
+                                            expression: "notification"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "si" } },
+                                            [_vm._v("Si")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "no" } },
+                                            [_vm._v("No")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               ),
-                              _vm._v("     \n                        "),
+                              _vm._v("    \n                      "),
                               _c(
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _c("label", [_vm._v("Finalidad Zarpe")]),
-                                  _vm._v(" "),
-                                  _c("multiselect", {
-                                    attrs: {
-                                      options: _vm.arrayFinalityZarpe,
-                                      placeholder: "Seleccione una opción",
-                                      "custom-label": _vm.nameWithRegion,
-                                      label: "name",
-                                      "track-by": "name"
-                                    },
-                                    model: {
-                                      value: _vm.arrayReg,
-                                      callback: function($$v) {
-                                        _vm.arrayReg = $$v
-                                      },
-                                      expression: "arrayReg"
-                                    }
-                                  })
+                                  _c(
+                                    "md-field",
+                                    [
+                                      _c(
+                                        "label",
+                                        { attrs: { for: "finalityZarpe" } },
+                                        [_vm._v("Finalidad Zarpe")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "md-select",
+                                        {
+                                          attrs: {
+                                            name: "finalityZarpe",
+                                            id: "finalityZarpe"
+                                          },
+                                          model: {
+                                            value: _vm.finalityZarpe,
+                                            callback: function($$v) {
+                                              _vm.finalityZarpe = $$v
+                                            },
+                                            expression: "finalityZarpe"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "pesca" } },
+                                            [_vm._v("Pesca")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "transito" } },
+                                            [_vm._v("Tránsito")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               ),
-                              _vm._v("   \n\n                         "),
+                              _vm._v("    \n\n                         "),
                               _vm._v(" "),
                               _c(
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _c("label", [_vm._v("Origen")]),
-                                  _vm._v(" "),
-                                  _c("multiselect", {
-                                    attrs: {
-                                      options: _vm.arrayOrigin,
-                                      placeholder: "Seleccione una origen",
-                                      "custom-label": _vm.nameWithRegion,
-                                      label: "name",
-                                      "track-by": "name"
-                                    },
-                                    model: {
-                                      value: _vm.arrayReg,
-                                      callback: function($$v) {
-                                        _vm.arrayReg = $$v
-                                      },
-                                      expression: "arrayReg"
-                                    }
-                                  })
+                                  _c(
+                                    "md-field",
+                                    [
+                                      _c(
+                                        "label",
+                                        { attrs: { for: "origin" } },
+                                        [_vm._v("Origen")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "md-select",
+                                        {
+                                          attrs: {
+                                            name: "origin",
+                                            id: "origin"
+                                          },
+                                          model: {
+                                            value: _vm.origin,
+                                            callback: function($$v) {
+                                              _vm.origin = $$v
+                                            },
+                                            expression: "origin"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "caribe/Cartagena"
+                                              }
+                                            },
+                                            [_vm._v("Caribe/Cartagena")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "caribe/Barranquilla"
+                                              }
+                                            },
+                                            [_vm._v("Caribe/Barranquilla")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "pacifico/Bahia Solano"
+                                              }
+                                            },
+                                            [_vm._v("Pacifico/Bahía Solano")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "pacifico/Buenaventura"
+                                              }
+                                            },
+                                            [_vm._v("Pacifico/Buenaventura")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "pacifico/tumaco"
+                                              }
+                                            },
+                                            [_vm._v("Pacífico/Tumaco")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               ),
@@ -40726,30 +40914,92 @@ var render = function() {
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _c("label", [_vm._v("Destino")]),
-                                  _vm._v(" "),
-                                  _c("multiselect", {
-                                    attrs: {
-                                      options: _vm.arrayDestination,
-                                      placeholder: "Seleccione una región",
-                                      "custom-label": _vm.nameWithRegion,
-                                      label: "name",
-                                      "track-by": "name"
-                                    },
-                                    model: {
-                                      value: _vm.arrayReg,
-                                      callback: function($$v) {
-                                        _vm.arrayReg = $$v
-                                      },
-                                      expression: "arrayReg"
-                                    }
-                                  })
+                                  _c(
+                                    "md-field",
+                                    [
+                                      _c(
+                                        "label",
+                                        { attrs: { for: "destination" } },
+                                        [_vm._v("Destino")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "md-select",
+                                        {
+                                          attrs: {
+                                            name: "destination",
+                                            id: "destination"
+                                          },
+                                          model: {
+                                            value: _vm.destination,
+                                            callback: function($$v) {
+                                              _vm.destination = $$v
+                                            },
+                                            expression: "destination"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "caribe/Cartagena"
+                                              }
+                                            },
+                                            [_vm._v("Caribe/Cartagena")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "caribe/Barranquilla"
+                                              }
+                                            },
+                                            [_vm._v("Caribe/Barranquilla")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "pacifico/Bahia Solano"
+                                              }
+                                            },
+                                            [_vm._v("Pacifico/Bahía Solano")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "pacifico/Buenaventura"
+                                              }
+                                            },
+                                            [_vm._v("Pacifico/Buenaventura")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "pacifico/tumaco"
+                                              }
+                                            },
+                                            [_vm._v("Pacífico/Tumaco")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               ),
-                              _vm._v("   \n                      "),
+                              _vm._v("    \n                      "),
                               _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
+                                _c("label", { staticClass: "n  egrita" }, [
                                   _vm._v("Fecha Última Escala")
                                 ]),
                                 _vm._v(" "),
@@ -40787,7 +41037,7 @@ var render = function() {
                                   _c("multiselect", {
                                     attrs: {
                                       options: _vm.arrayPort,
-                                      placeholder: "Seleccione una región",
+                                      placeholder: "Seleccione un puerto",
                                       "custom-label": _vm.nameWithPort,
                                       label: "name",
                                       "track-by": "name"
@@ -40909,54 +41159,131 @@ var render = function() {
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _c("label", [_vm._v("Nacional")]),
-                                  _vm._v(" "),
-                                  _c("multiselect", {
-                                    attrs: {
-                                      options: _vm.arrayNational,
-                                      placeholder: "Seleccione una región",
-                                      "custom-label": _vm.nameWithRegion,
-                                      label: "name",
-                                      "track-by": "name"
-                                    },
-                                    model: {
-                                      value: _vm.arrayReg,
-                                      callback: function($$v) {
-                                        _vm.arrayReg = $$v
-                                      },
-                                      expression: "arrayReg"
-                                    }
-                                  })
+                                  _c(
+                                    "md-field",
+                                    [
+                                      _c(
+                                        "label",
+                                        { attrs: { for: "national" } },
+                                        [_vm._v("Nacional")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "md-select",
+                                        {
+                                          attrs: {
+                                            name: "national",
+                                            id: "national"
+                                          },
+                                          model: {
+                                            value: _vm.national,
+                                            callback: function($$v) {
+                                              _vm.national = $$v
+                                            },
+                                            expression: "national"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "no" } },
+                                            [_vm._v("No")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: { value: "nacional-AIS" }
+                                            },
+                                            [_vm._v("Nacional - AIS")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: { value: "nacional-VMS" }
+                                            },
+                                            [_vm._v("Nacional - VMS")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "nacional-AIS/VMS"
+                                              }
+                                            },
+                                            [_vm._v("Nacional - AIS/VMS")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               ),
-                              _vm._v("   \n                  "),
+                              _vm._v("    \n                  "),
                               _c(
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _c("label", [_vm._v("OROP")]),
-                                  _vm._v(" "),
-                                  _c("multiselect", {
-                                    attrs: {
-                                      options: _vm.arrayOrop,
-                                      placeholder: "Seleccione una región",
-                                      "custom-label": _vm.nameWithRegion,
-                                      label: "name",
-                                      "track-by": "name"
-                                    },
-                                    model: {
-                                      value: _vm.arrayReg,
-                                      callback: function($$v) {
-                                        _vm.arrayReg = $$v
-                                      },
-                                      expression: "arrayReg"
-                                    }
-                                  })
+                                  _c(
+                                    "md-field",
+                                    [
+                                      _c("label", { attrs: { for: "orop" } }, [
+                                        _vm._v("OROP")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "md-select",
+                                        {
+                                          attrs: { name: "orop", id: "orop" },
+                                          model: {
+                                            value: _vm.orop,
+                                            callback: function($$v) {
+                                              _vm.orop = $$v
+                                            },
+                                            expression: "orop"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "no" } },
+                                            [_vm._v("No")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "orop-AIS" } },
+                                            [_vm._v("OROP - AIS")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "orop-VMS" } },
+                                            [_vm._v("OROP - VMS")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: { value: "orop-AIS/VMS" }
+                                            },
+                                            [_vm._v("OROP - AIS/VMS")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               ),
-                              _vm._v("   \n                  "),
+                              _vm._v("    \n                  "),
                               _c(
                                 "md-field",
                                 {
@@ -41400,32 +41727,75 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c(
-                                "div",
-                                { staticClass: "md-layout-item" },
+                                "md-field",
                                 [
-                                  _c("label", [_vm._v("Pesquería Autorizada")]),
+                                  _c("label", { attrs: { for: "fishAut" } }, [
+                                    _vm._v("Pesquería Autorizada")
+                                  ]),
                                   _vm._v(" "),
-                                  _c("multiselect", {
-                                    attrs: {
-                                      options: _vm.arrayFishAut,
-                                      placeholder:
-                                        "Seleccione una pesquería autorizada",
-                                      "custom-label": _vm.nameWithRegion,
-                                      label: "name",
-                                      "track-by": "name"
+                                  _c(
+                                    "md-select",
+                                    {
+                                      attrs: { name: "fishAut", id: "fishAut" },
+                                      model: {
+                                        value: _vm.fishAut,
+                                        callback: function($$v) {
+                                          _vm.fishAut = $$v
+                                        },
+                                        expression: "fishAut"
+                                      }
                                     },
-                                    model: {
-                                      value: _vm.arrayReg,
-                                      callback: function($$v) {
-                                        _vm.arrayReg = $$v
-                                      },
-                                      expression: "arrayReg"
-                                    }
-                                  })
+                                    [
+                                      _c(
+                                        "md-option",
+                                        {
+                                          attrs: { value: "caribe/Cartagena" }
+                                        },
+                                        [_vm._v("Cartagena")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "md-option",
+                                        {
+                                          attrs: {
+                                            value: "caribe/Barranquilla"
+                                          }
+                                        },
+                                        [_vm._v("Barranquilla")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "md-option",
+                                        {
+                                          attrs: {
+                                            value: "pacifico/Bahia Solano"
+                                          }
+                                        },
+                                        [_vm._v("Bahía Solano")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "md-option",
+                                        {
+                                          attrs: {
+                                            value: "pacifico/Buenaventura"
+                                          }
+                                        },
+                                        [_vm._v("Buenaventura")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "md-option",
+                                        { attrs: { value: "pacifico/tumaco" } },
+                                        [_vm._v("Tumaco")]
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               ),
-                              _vm._v("   \n                  "),
+                              _vm._v(" "),
                               _c(
                                 "md-field",
                                 {
@@ -41782,7 +42152,7 @@ var render = function() {
                                   !_vm.$v.form.captain.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
-                                          "Olvidaste ingresar un nombre para el capitan"
+                                          "Olvidaste ingresar un nombre para el capitan de pesca"
                                         )
                                       ])
                                     : _vm._e()
@@ -41791,44 +42161,31 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c(
-                                "md-field",
-                                {
-                                  class: _vm.getValidationClass("nacionality"),
-                                  attrs: { "md-clearable": "" }
-                                },
+                                "div",
+                                { staticClass: "md-layout-item" },
                                 [
-                                  _c(
-                                    "label",
-                                    { attrs: { for: "first-name" } },
-                                    [_vm._v("Nacionalidad")]
-                                  ),
+                                  _c("label", [_vm._v("Nacionalidad")]),
                                   _vm._v(" "),
-                                  _c("md-input", {
+                                  _c("multiselect", {
                                     attrs: {
-                                      name: "first-name",
-                                      id: "first-name",
-                                      autocomplete: "given-name",
-                                      disabled: _vm.sending
+                                      options: _vm.arrayNationality,
+                                      placeholder: "Seleccione un pais",
+                                      "custom-label": _vm.nameWithNationality,
+                                      label: "name",
+                                      "track-by": "name"
                                     },
                                     model: {
-                                      value: _vm.form.nacionality,
+                                      value: _vm.arrayNation,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.form, "nacionality", $$v)
+                                        _vm.arrayNation = $$v
                                       },
-                                      expression: "form.nacionality"
+                                      expression: "arrayNation"
                                     }
-                                  }),
-                                  _vm._v(" "),
-                                  !_vm.$v.form.nacionality.required
-                                    ? _c("span", { staticClass: "md-error" }, [
-                                        _vm._v(
-                                          "Olvidaste ingresar una nacionalidad"
-                                        )
-                                      ])
-                                    : _vm._e()
+                                  })
                                 ],
                                 1
                               ),
+                              _vm._v("   \n\n                  "),
                               _vm._v(" "),
                               _c(
                                 "md-field",
@@ -46843,19 +47200,3119 @@ if (false) {
 
 /***/ }),
 /* 118 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\xampp\\htdocs\\inspections\\resources\\assets\\js\\components\\CheckDetFlap.vue'");
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(119)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(121)
+/* template */
+var __vue_template__ = __webpack_require__(122)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\CheckDetFlap.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1f3c4ef7", Component.options)
+  } else {
+    hotAPI.reload("data-v-1f3c4ef7", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
 
 /***/ }),
-/* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */,
-/* 123 */
-/***/ (function(module, exports) {
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\xampp\\htdocs\\inspections\\resources\\assets\\js\\components\\PresenVerific.vue'");
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(120);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("644cc394", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1f3c4ef7\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CheckDetFlap.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1f3c4ef7\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CheckDetFlap.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\n.material-icons.Color1 { color: rgb(31, 33, 34);\n}\n.material-icons.Color2 { color: rgba(167, 142, 5, 0.849);\n}\n.material-icons.Color3 { color: rgb(12, 170, 91);\n}\n.material-icons.Color4 { color: rgba(228, 54, 54, 0.863);\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 121 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuelidate__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_multiselect__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_toasted__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_toasted___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_toasted__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_select__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_select__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_toasted___default.a, {
+  iconPack: 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
+});
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdButton"]);
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdContent"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdField"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdCard"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdMenu"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdSwitch"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdList"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker"]);
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [__WEBPACK_IMPORTED_MODULE_0_vuelidate__["validationMixin"]],
+  props: ['ruta'],
+
+  data: function data() {
+    Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+    Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+    Vue.material.locale.shortMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    var dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
+    var now = new Date();
+    return _defineProperty({
+      form: {
+        region: "",
+        office: "",
+        official: "",
+        boat: "",
+        enrollment: "",
+        outhFhisher: "",
+        fishLicense: "",
+        business: "",
+        owner: "",
+        fishCaptain: "",
+        location: ""
+      },
+
+      date: 0,
+      idCheckFlap: 0,
+
+      edo: 1,
+      tipoAccion: 1,
+      listado: 1,
+      sending: false,
+
+      arrayData: [],
+      modal: 0
+    }, "tipoAccion", 0);
+  },
+
+
+  validations: {
+    form: {
+      region: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      office: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      official: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      boat: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      enrollment: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      outhFhisher: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      fishLicense: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      business: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      owner: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      fishCaptain: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      location: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      }
+    }
+  },
+
+  computed: {},
+  components: {
+    vSelect: __WEBPACK_IMPORTED_MODULE_3_vue_select___default.a,
+    Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a
+  },
+  methods: {
+    getValidationClass: function getValidationClass(fieldName) {
+      var field = this.$v.form[fieldName];
+      if (field) {
+        return {
+          "md-invalid": field.$invalid && field.$dirty
+        };
+      }
+    },
+    validateData: function validateData() {
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.saveData();
+        this.clearForm();
+      }
+    },
+    clearForm: function clearForm() {
+      this.$v.$reset();
+
+      this.form.region = null;
+      this.form.office = null;
+      this.form.official = null;
+      this.form.boat = null;
+      this.form.enrollment = null;
+      this.form.outhFhisher = null;
+      this.form.fishLicense = null;
+      this.form.business = null;
+      this.form.owner = null;
+      this.form.fishCaptain = null;
+      this.form.location = null;
+      this.date = null;
+    },
+    showUpdate: function showUpdate() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      var me = this;
+      this.tipoAccion = 2, me.listado = 0;
+      this.idCheckFlap = data["id"];
+      this.form.region = data["region"];
+      this.form.office = data["office"];
+      this.form.official = data["official"];
+      this.form.boat = data["boat"];
+      this.form.enrollment = data["enrollment"];
+      this.form.outhFhisher = data["outhFhisher"];
+      this.form.fishLicense = data["fishLicense"];
+      this.form.business = data["business"];
+      this.form.owner = data["owner"];
+      this.form.fishCaptain = data["fishCaptain"];
+      this.form.location = data["location"];
+      this.date = data["date"];
+    },
+    showData: function showData() {
+      this.clearForm();
+      var me = this;
+      this.tipoAccion = 1, me.listado = 0;
+      this.edo = 0;
+    },
+    hideForm: function hideForm() {
+      this.edo = 1;
+      this.listado = 1;
+      this.listData();
+    },
+    listData: function listData() {
+      var me = this;
+      var url = "/checkDetFlaps";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayData = respuesta.data;
+        me.myTable(me.arrayData);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    saveData: function saveData() {
+      var me = this;
+
+      axios.post("/checkDetFlaps/save", {
+
+        region: this.form.region.toUpperCase(),
+        office: this.form.office.toUpperCase(),
+        official: this.form.official.toUpperCase(),
+        boat: this.form.boat.toUpperCase(),
+        enrollment: this.form.enrollment.toUpperCase(),
+        outhFhisher: this.form.outhFhisher.toUpperCase(),
+        fishLicense: this.form.fishLicense.toUpperCase(),
+        business: this.form.business.toUpperCase(),
+        owner: this.form.owner.toUpperCase(),
+        fishCaptain: this.form.fishCaptain.toUpperCase(),
+        location: this.form.location.toUpperCase(),
+        date: this.date
+      }).then(function (response) {
+        me.hideForm();
+        me.message("Guardado", "Guardo ");
+        me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    updateData: function updateData() {
+      var me = this;
+
+      axios.put("/checkDetFlaps/update", {
+
+        region: this.form.region.toUpperCase(),
+        office: this.form.office.toUpperCase(),
+        official: this.form.official.toUpperCase(),
+        boat: this.form.boat.toUpperCase(),
+        enrollment: this.form.enrollment.toUpperCase(),
+        outhFhisher: this.form.outhFhisher.toUpperCase(),
+        fishLicense: this.form.fishLicense.toUpperCase(),
+        business: this.form.business.toUpperCase(),
+        owner: this.form.owner.toUpperCase(),
+        fishCaptain: this.form.fishCaptain.toUpperCase(),
+        location: this.form.location.toUpperCase(),
+        date: this.date,
+        id: this.idCheckFlap
+      }).then(function (response) {
+        me.hideForm();
+        me.message("Actualizado", "Actualizó ");
+        me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    deleteData: function deleteData() {
+      var _this = this;
+
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      swal({
+        title: "Esta seguro de Eliminar la Región " + data["name"],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.value) {
+          var me = _this;
+          axios.post("/checkDetFlaps/delete", {
+            id: data["id"]
+          }).then(function (response) {
+            me.hideForm();
+            me.message("Eliminado", "Eliminó ");
+            me.listData();
+          }).catch(function (error) {
+            console.log(error);
+          });
+        } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    message: function message(tipo, crud) {
+      swal(tipo, "El registro se " + crud + " con éxito.", "success");
+    },
+    myTable: function myTable(datas) {
+      var me = this;
+
+      $(document).ready(function () {
+
+        var table = $('#dataTable').DataTable({ destroy: true,
+          stateSave: true,
+          data: datas,
+          "createdRow": function createdRow(row, data, dataIndex) {
+            if (data[6] == "0") {
+              $(row).addClass('redClass');
+            }
+          },
+          "language": {
+            "lengthMenu": "Ver _MENU_ registros por página",
+            "zeroRecords": "NO existen Datos",
+            "info": "mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "search": "Buscar:",
+            "paginate": {
+              "first": "Prim",
+              "last": "Ant",
+              "next": "Sig",
+              "previous": "Ant"
+            },
+            "infoFiltered": "(filtrado de _MAX_ total registros)"
+          },
+          responsive: "true",
+          "columns": [{ "data": "date" }, { "data": "region" }, { "data": "office" }, { "data": "official" }, { "data": "boat" }, { "data": "enrollment" }, { "data": "outhFhisher" }, { "data": "fishLicense" }, { "data": "business" }, { "data": "owner" }, { "data": "fishCaptain" }, { "data": "location" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
+
+        });
+
+        $('#dataTable tbody').on('click', '.editar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.showUpdate(me.datos);
+        });
+        $('#dataTable tbody').on('click', '.eliminar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.deleteData(me.datos);
+        });
+      });
+    }
+  },
+
+  mounted: function mounted() {
+    this.listData();
+  }
+});
+
+/***/ }),
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", { staticClass: "main" }, [
+    _c("div", { staticClass: "container-fluid" }, [
+      _c(
+        "div",
+        { staticClass: "card" },
+        [
+          _c("div", { staticClass: "card-header" }, [
+            _c("i", {
+              staticClass: "m-0 font-weight-bold text-primary fas fa-car"
+            }),
+            _vm._v(" "),
+            _c("strong", { staticClass: "lead" }, [
+              _vm._v("Verificación DET Doble Solapa")
+            ]),
+            _vm._v(" "),
+            _vm.edo
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-sm",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.showData()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "icon-plus" }),
+                    _vm._v(" Nuevo\n        ")
+                  ]
+                )
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _vm.listado == 1
+            ? [_vm._m(0)]
+            : _vm.listado == 0
+              ? [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "form",
+                      {
+                        staticClass: "form-horizontal",
+                        attrs: {
+                          action: "",
+                          method: "post",
+                          enctype: "multipart/form-data"
+                        }
+                      },
+                      [
+                        _c("md-card-content", [
+                          _c(
+                            "div",
+                            { staticClass: "md-layout" },
+                            [
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.date,
+                                          callback: function($$v) {
+                                            _vm.date = $$v
+                                          },
+                                          expression: "date"
+                                        }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione Fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v("      \n                "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("region"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Regional")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.region,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "region", $$v)
+                                      },
+                                      expression: "form.region"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.region.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la región"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("office"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Oficina")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.office,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "office", $$v)
+                                      },
+                                      expression: "form.office"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.office.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la oficina"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("official"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Funcionario")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.official,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "official", $$v)
+                                      },
+                                      expression: "form.official"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.official.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del funcionario"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("boat"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Embarcación")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.boat,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "boat", $$v)
+                                      },
+                                      expression: "form.boat"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.boat.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la embarcación"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("enrollment"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Matrícula")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.enrollment,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "enrollment", $$v)
+                                      },
+                                      expression: "form.enrollment"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.enrollment.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la matrícula"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("outhFhisher"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Pesquería Autorizada")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.outhFhisher,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "outhFhisher", $$v)
+                                      },
+                                      expression: "form.outhFhisher"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.outhFhisher.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la pesqueria autorizada"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("fishLicense"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Pantente de Pesca")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.fishLicense,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "fishLicense", $$v)
+                                      },
+                                      expression: "form.fishLicense"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.fishLicense.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la patente de pesca"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("business"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Empresa")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.business,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "business", $$v)
+                                      },
+                                      expression: "form.business"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.business.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la empresa"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("owner"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Armador")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.owner,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "owner", $$v)
+                                      },
+                                      expression: "form.owner"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.owner.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del armador"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("fishCaptain"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Capitán de Pesca")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.fishCaptain,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "fishCaptain", $$v)
+                                      },
+                                      expression: "form.fishCaptain"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.fishCaptain.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del capitán de pesca"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("location"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Localización")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.location,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "location", $$v)
+                                      },
+                                      expression: "form.location"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.location.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la localización"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "modal-footer" },
+                    [
+                      _c(
+                        "md-card-actions",
+                        [
+                          _c(
+                            "md-button",
+                            {
+                              staticClass: "md-raised",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.hideForm()
+                                }
+                              }
+                            },
+                            [_vm._v("Cerrar")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "md-card-actions",
+                        [
+                          _vm.tipoAccion == 1
+                            ? _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "submit",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.validateData()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Guardar")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.tipoAccion == 2
+                            ? _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "submit",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.updateData()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Actualizar")]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]
+              : _vm._e()
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          {
+            staticClass: "table table-striped table-bordered display",
+            attrs: { id: "dataTable", width: "100%", cellspacing: "0" }
+          },
+          [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("Fecha")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Regional")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Oficina")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Funcionario")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Embarcación")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Matrícula")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Pesquería Autorizada")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Patente de Pesca")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Empresa")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Armador")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Capitán de Pesca")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Localización")]),
+                _vm._v(" "),
+                _c("th", { staticStyle: { width: "90px" } }, [
+                  _vm._v("Opciones")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody"),
+            _vm._v(" "),
+            _c("tfoot", [
+              _c("tr", [
+                _c("th", [_vm._v("Fecha")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Regional")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Oficina")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Funcionario")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Embarcación")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Matrícula")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Pesquería Autorizada")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Patente de Pesca")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Empresa")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Armador")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Capitán de Pesca")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Localización")]),
+                _vm._v(" "),
+                _c("th", { staticStyle: { width: "90px" } }, [
+                  _vm._v("Opciones")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody")
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1f3c4ef7", module.exports)
+  }
+}
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(124)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(126)
+/* template */
+var __vue_template__ = __webpack_require__(127)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\PresenVerific.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-975a24cc", Component.options)
+  } else {
+    hotAPI.reload("data-v-975a24cc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(125);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("9f349b3a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-975a24cc\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PresenVerific.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-975a24cc\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PresenVerific.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\n.material-icons.Color1 { color: rgb(31, 33, 34);\n}\n.material-icons.Color2 { color: rgba(167, 142, 5, 0.849);\n}\n.material-icons.Color3 { color: rgb(12, 170, 91);\n}\n.material-icons.Color4 { color: rgba(228, 54, 54, 0.863);\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 126 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuelidate__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_multiselect__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_toasted__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_toasted___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_toasted__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_select__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_select__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_toasted___default.a, {
+  iconPack: 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
+});
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdButton"]);
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdContent"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdField"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdCard"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdMenu"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdSwitch"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdList"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker"]);
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [__WEBPACK_IMPORTED_MODULE_0_vuelidate__["validationMixin"]],
+  props: ['ruta'],
+
+  data: function data() {
+
+    Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+    Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+    Vue.material.locale.shortMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    var dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
+    var now = new Date();
+
+    return _defineProperty({ form: {
+
+        nameShip: "",
+        cruise: "",
+        nameFish: "",
+        nameCaptain: ""
+
+      },
+
+      dateZarpe: 0,
+      dateDesemb: 0,
+
+      arrayPresenVerifics: [],
+      id_presenVerific: 0,
+
+      arrayFg: { id: 0, name: '' },
+      arrayFlag: [],
+      id_flag: 0,
+
+      edo: 1,
+
+      tipoAccion: 1,
+      listado: 1,
+      idMcpio: 0,
+      sending: false,
+
+      arrayData: [],
+      modal: 0
+    }, "tipoAccion", 0);
+  },
+
+  components: {
+    vSelect: __WEBPACK_IMPORTED_MODULE_3_vue_select___default.a,
+    Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a
+  },
+
+  validations: {
+    form: {
+
+      nameShip: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      cruise: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      nameFish: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      },
+      nameCaptain: {
+        required: __WEBPACK_IMPORTED_MODULE_5_vuelidate_lib_validators__["required"]
+      }
+    }
+  },
+
+  computed: {},
+  methods: {
+    getValidationClass: function getValidationClass(fieldName) {
+      var field = this.$v.form[fieldName];
+      if (field) {
+        return {
+          "md-invalid": field.$invalid && field.$dirty
+        };
+      }
+    },
+    validateData: function validateData() {
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.saveData();
+        this.clearForm();
+      }
+    },
+    clearForm: function clearForm() {
+      this.$v.$reset();
+      this.form.insNo = null;
+      this.form.nameShip = null;
+      this.form.cruise = null;
+      this.form.nameFish = null;
+      this.form.nameCaptain = null;
+      this.dateZarpe = null;
+      this.dateDesemb = null;
+      this.arrayFg = { id: 0, name: '' };
+    },
+    nameWithFlag: function nameWithFlag(_ref2) {
+      var name = _ref2.name;
+
+      return "" + name;
+    },
+    listData: function listData() {
+      var me = this;
+      var url = "/presenVerifics";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayPresenVerifics = respuesta.presenVerifics.data;
+        me.myTable(me.arrayPresenVerifics);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    selectFlag: function selectFlag() {
+      var me = this;
+      var url = "flags/selectFlags";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayFlag = respuesta.flag;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    showUpdate: function showUpdate() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      var me = this;
+      this.tipoAccion = 2, me.listado = 0;
+      this.id_presenVerific = data["id"];
+      this.form.nameShip = data["nameShip"];
+      this.form.cruise = data["cruise"];
+      this.form.nameFish = data["nameFish"];
+      this.form.nameCaptain = data["nameCaptain"];
+      this.dateZarpe = data["dateZarpe"];
+      this.dateDesemb = data["dateDesemb"];
+
+      this.arrayFg.id = data["id_flag"];
+      this.arrayFg.name = data["nameFlag"];
+    },
+    showData: function showData() {
+      this.clearForm();
+      var me = this;
+      this.tipoAccion = 1, me.listado = 0;
+      this.edo = 0;
+    },
+    hideForm: function hideForm() {
+      this.listData();
+      this.edo = 1;
+      this.listado = 1;
+    },
+    saveData: function saveData() {
+      var me = this;
+      axios.post("/presenVerifics/save", {
+
+        nameShip: this.form.nameShip.toUpperCase(),
+        cruise: this.form.cruise.toUpperCase(),
+        nameFish: this.form.nameFish.toUpperCase(),
+        nameCaptain: this.form.nameCaptain.toUpperCase(),
+        dateZarpe: this.dateZarpe,
+        dateDesemb: this.dateDesemb,
+        'id_flag': this.arrayFg.id
+      }).then(function (response) {
+        me.hideForm();
+        me.message("Guardado", "Guardo ");
+        me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    updateData: function updateData() {
+      var me = this;
+      axios.put("/presenVerifics/update", {
+        id: this.id_presenVerific,
+        nameShip: this.form.nameShip.toUpperCase(),
+        cruise: this.form.cruise.toUpperCase(),
+        nameFish: this.form.nameFish.toUpperCase(),
+        nameCaptain: this.form.nameCaptain.toUpperCase(),
+        dateZarpe: this.dateZarpe,
+        dateDesemb: this.dateDesemb,
+
+        'id_flag': this.arrayFg.id
+      }).then(function (response) {
+        me.hideForm();
+        me.message("Actualizado", "Actualizó ");
+        me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    deleteData: function deleteData() {
+      var _this = this;
+
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      swal({
+        title: "Esta seguro de Eliminar este Zarpe " + data["name"],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.value) {
+          var me = _this;
+          axios.post("/presenVerifics/delete", {
+            id: _this.id_presenVerific
+          }).then(function (response) {
+            me.hideForm();
+            me.message("Eliminado", "Eliminó ");
+            me.listData();
+          }).catch(function (error) {
+            console.log(error);
+          });
+        } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    message: function message(tipo, crud) {
+      swal(tipo, "El registro se " + crud + " con éxito.", "success");
+    },
+    myTable: function myTable(datas) {
+      var me = this;
+
+      $(document).ready(function () {
+
+        var table = $('#dataTable').DataTable({ destroy: true,
+          stateSave: true,
+          data: datas,
+          "createdRow": function createdRow(row, data, dataIndex) {
+            if (data[6] == "0") {
+              $(row).addClass('redClass');
+            }
+          },
+          "language": {
+            "lengthMenu": "Ver _MENU_ registros por página",
+            "zeroRecords": "NO existen Datos",
+            "info": "mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "search": "Buscar:",
+            "paginate": {
+              "first": "Prim",
+              "last": "Ant",
+              "next": "Sig",
+              "previous": "Ant"
+            },
+            "infoFiltered": "(filtrado de _MAX_ total registros)"
+          },
+          responsive: "true",
+          "columns": [
+
+          // { "data": "name" },
+          { "data": "nameShip" }, { "data": "cruise" }, { "data": "nameFish" }, { "data": "nameCaptain" }, { "data": "dateZarpe" }, { "data": "dateDesemb" }, { "data": "nameFlag" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
+
+        });
+
+        $('#dataTable tbody').on('click', '.editar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.showUpdate(me.datos);
+        });
+        $('#dataTable tbody').on('click', '.eliminar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.deleteData(me.datos);
+        });
+      });
+    }
+  },
+
+  mounted: function mounted() {
+    this.listData();
+    this.selectFlag();
+  }
+});
+
+/***/ }),
+/* 127 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", { staticClass: "main" }, [
+    _c("div", { staticClass: "container-fluid" }, [
+      _c(
+        "div",
+        { staticClass: "card" },
+        [
+          _c("div", { staticClass: "card-header" }, [
+            _c("i", {
+              staticClass: "m-0 font-weight-bold text-primary fas fa-car"
+            }),
+            _vm._v(" "),
+            _c("strong", { staticClass: "lead" }, [
+              _vm._v(
+                "Verificaión Presencia del Equipo de Rescate de Delfines Abordo de Barcos Atuneros de Cerco"
+              )
+            ]),
+            _vm._v(" "),
+            _vm.edo
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-sm",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.showData()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "icon-plus" }),
+                    _vm._v(" Nuevo\n        ")
+                  ]
+                )
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _vm.listado == 1
+            ? [_vm._m(0)]
+            : _vm.listado == 0
+              ? [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "form",
+                      {
+                        staticClass: "form-horizontal",
+                        attrs: {
+                          action: "",
+                          method: "post",
+                          enctype: "multipart/form-data"
+                        }
+                      },
+                      [
+                        _c("md-card-content", [
+                          _c(
+                            "div",
+                            { staticClass: "md-layout" },
+                            [
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("nameShip"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Nombre del Barco")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.nameShip,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "nameShip", $$v)
+                                      },
+                                      expression: "form.nameShip"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.nameShip.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del barco\n                      "
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c("label", [_vm._v("Bandera")]),
+                                  _vm._v(" "),
+                                  _c("multiselect", {
+                                    attrs: {
+                                      options: _vm.arrayFlag,
+                                      placeholder: "Seleccione una región",
+                                      "custom-label": _vm.nameWithFlag,
+                                      label: "name",
+                                      "track-by": "name"
+                                    },
+                                    model: {
+                                      value: _vm.arrayFg,
+                                      callback: function($$v) {
+                                        _vm.arrayFg = $$v
+                                      },
+                                      expression: "arrayFg"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v("    \n                  "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("cruise"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("No. Crucero/RSA")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.cruise,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "cruise", $$v)
+                                      },
+                                      expression: "form.cruise"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.cruise.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el número de crucero/RSA\n                      "
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("nameFish"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Nombre Pescador")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.nameFish,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "nameFish", $$v)
+                                      },
+                                      expression: "form.nameFish"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.nameFish.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del pescador\n                      "
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha Zarpe")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateZarpe,
+                                          callback: function($$v) {
+                                            _vm.dateZarpe = $$v
+                                          },
+                                          expression: "dateZarpe"
+                                        }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione Fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v("     \n                  "),
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("label", { staticClass: "negrita" }, [
+                                  _vm._v("Fecha Desembarque")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        model: {
+                                          value: _vm.dateDesemb,
+                                          callback: function($$v) {
+                                            _vm.dateDesemb = $$v
+                                          },
+                                          expression: "dateDesemb"
+                                        }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione Fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v("     \n                  "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("nameCaptain"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Nombre Capitán")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.nameCaptain,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "nameCaptain", $$v)
+                                      },
+                                      expression: "form.nameCaptain"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.nameCaptain.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del capitán"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "modal-footer" },
+                    [
+                      _c(
+                        "md-card-actions",
+                        [
+                          _c(
+                            "md-button",
+                            {
+                              staticClass: "md-raised",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.hideForm()
+                                }
+                              }
+                            },
+                            [_vm._v("Cerrar")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "md-card-actions",
+                        [
+                          _vm.tipoAccion == 1
+                            ? _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "submit",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.validateData()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Guardar")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.tipoAccion == 2
+                            ? _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "submit",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.updateData()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Actualizar")]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]
+              : _vm._e()
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          {
+            staticClass: "table table-striped table-bordered display",
+            attrs: { id: "dataTable", width: "100%", cellspacing: "0" }
+          },
+          [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("Nombre del Barco")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Bandera")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("No. Crucero/RSA")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Nombre Pescador")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha de Zarpe")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha desembarque")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Nombre Capitán")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Opciones")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody"),
+            _vm._v(" "),
+            _c("tfoot", [
+              _c("tr", [
+                _c("th", [_vm._v("Nombre del Barco")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Bandera")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("No. Crucero/RSA")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Nombre Pescador")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha de Zarpe")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha desembarque")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Nombre Capitán")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Opciones")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody")
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-975a24cc", module.exports)
+  }
+}
+
+/***/ }),
+/* 128 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(129)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(131)
+/* template */
+var __vue_template__ = __webpack_require__(132)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Nationality.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4ca53e15", Component.options)
+  } else {
+    hotAPI.reload("data-v-4ca53e15", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(130);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("7ae4c5d0", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4ca53e15\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Nationality.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4ca53e15\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Nationality.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\n.material-icons.Color1 { color: rgb(31, 33, 34);\n}\n.material-icons.Color2 { color: rgba(167, 142, 5, 0.849);\n}\n.material-icons.Color3 { color: rgb(12, 170, 91);\n}\n.material-icons.Color4 { color: rgba(228, 54, 54, 0.863);\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 131 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuelidate__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuelidate_lib_validators__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vuelidate_lib_validators__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+// import VueMaterial from 'vue-material'
+// Vue.use(VueMaterial)
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdButton"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdContent"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdField"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdCard"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdMenu"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdList"]);
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [__WEBPACK_IMPORTED_MODULE_0_vuelidate__["validationMixin"]],
+
+  data: function data() {
+    return _defineProperty({
+      form: {
+        name: ""
+      },
+      edo: 1,
+      tipoAccion: 1,
+      listado: 1,
+      id_nationality: 0,
+      sending: false,
+
+      arrayData: [],
+      modal: 0
+    }, "tipoAccion", 0);
+  },
+
+
+  validations: {
+    form: {
+      name: {
+        required: __WEBPACK_IMPORTED_MODULE_2_vuelidate_lib_validators__["required"]
+      }
+    }
+  },
+
+  computed: {},
+  methods: {
+    getValidationClass: function getValidationClass(fieldName) {
+      var field = this.$v.form[fieldName];
+      if (field) {
+        return {
+          "md-invalid": field.$invalid && field.$dirty
+        };
+      }
+    },
+    validateData: function validateData() {
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.saveData();
+        this.clearForm();
+      }
+    },
+    clearForm: function clearForm() {
+      this.$v.$reset();
+      this.form.name = null;
+    },
+    showUpdate: function showUpdate() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      var me = this;
+      this.tipoAccion = 2, me.listado = 0;
+      this.id_nationality = data["id"];
+      this.form.name = data["name"];
+    },
+    showData: function showData() {
+      this.clearForm();
+      var me = this;
+      this.tipoAccion = 1, me.listado = 0;
+      this.edo = 0;
+    },
+    hideForm: function hideForm() {
+      this.edo = 1;
+      this.listado = 1;
+      this.listData();
+    },
+    listData: function listData() {
+      var me = this;
+      var url = "/nationality";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayData = respuesta.data;
+        me.myTable(me.arrayData);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    saveData: function saveData() {
+      var me = this;
+
+      axios.post("/nationality/save", {
+        name: this.form.name.toUpperCase()
+      }).then(function (response) {
+        me.hideForm();
+        me.message("Guardado", "Guardo ");
+        me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    updateData: function updateData() {
+      var me = this;
+
+      axios.put("/nationality/update", {
+        name: this.form.name.toUpperCase(),
+        id: this.id_nationality
+      }).then(function (response) {
+        me.hideForm();
+        me.message("Actualizado", "Actualizó ");
+        me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    deleteData: function deleteData() {
+      var _this = this;
+
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      swal({
+        title: "Esta seguro de Eliminar el país " + data["name"],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.value) {
+          var me = _this;
+          axios.post("/nationality/delete", {
+            id: data["id"]
+          }).then(function (response) {
+            me.hideForm();
+            me.message("Eliminado", "Eliminó ");
+            me.listData();
+          }).catch(function (error) {
+            console.log(error);
+          });
+        } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    message: function message(tipo, crud) {
+      swal(tipo, "El registro se " + crud + " con éxito.", "success");
+    },
+    myTable: function myTable(datas) {
+      var me = this;
+
+      $(document).ready(function () {
+
+        var table = $('#dataTable').DataTable({ destroy: true,
+          stateSave: true,
+          data: datas,
+          "createdRow": function createdRow(row, data, dataIndex) {
+            if (data[6] == "0") {
+              $(row).addClass('redClass');
+            }
+          },
+          "language": {
+            "lengthMenu": "Ver _MENU_ registros por página",
+            "zeroRecords": "NO existen Datos",
+            "info": "mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "search": "Buscar:",
+            "paginate": {
+              "first": "Prim",
+              "last": "Ant",
+              "next": "Sig",
+              "previous": "Ant"
+            },
+            "infoFiltered": "(filtrado de _MAX_ total registros)"
+          },
+          responsive: "true",
+          "columns": [{ "data": "name" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
+
+        });
+
+        $('#dataTable tbody').on('click', '.editar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.showUpdate(me.datos);
+        });
+        $('#dataTable tbody').on('click', '.eliminar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.deleteData(me.datos);
+        });
+      });
+    }
+  },
+
+  mounted: function mounted() {
+    this.listData();
+  }
+});
+
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", { staticClass: "main" }, [
+    _c("div", { staticClass: "container-fluid" }, [
+      _c(
+        "div",
+        { staticClass: "card" },
+        [
+          _c("div", { staticClass: "card-header" }, [
+            _c("i", {
+              staticClass: "m-0 font-weight-bold text-primary fas fa-car"
+            }),
+            _vm._v(" "),
+            _c("strong", { staticClass: "lead" }, [
+              _vm._v("Gestión de Países")
+            ]),
+            _vm._v(" "),
+            _vm.edo
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-sm",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.showData()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "icon-plus" }),
+                    _vm._v(" Nuevo\n        ")
+                  ]
+                )
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _vm.listado == 1
+            ? [_vm._m(0)]
+            : _vm.listado == 0
+              ? [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "form",
+                      {
+                        staticClass: "form-horizontal",
+                        attrs: {
+                          action: "",
+                          method: "post",
+                          enctype: "multipart/form-data"
+                        }
+                      },
+                      [
+                        _c("md-card-content", [
+                          _c(
+                            "div",
+                            { staticClass: "md-layout" },
+                            [
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("name"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Nombre")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.name,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "name", $$v)
+                                      },
+                                      expression: "form.name"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.name.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v("Olvidaste ingresar un país")
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "modal-footer" },
+                    [
+                      _c(
+                        "md-card-actions",
+                        [
+                          _c(
+                            "md-button",
+                            {
+                              staticClass: "md-raised",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.hideForm()
+                                }
+                              }
+                            },
+                            [_vm._v("Cerrar")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "md-card-actions",
+                        [
+                          _vm.tipoAccion == 1
+                            ? _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "submit",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.validateData()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Guardar")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.tipoAccion == 2
+                            ? _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "submit",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.updateData()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Actualizar")]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]
+              : _vm._e()
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          {
+            staticClass: "table table-striped table-bordered display",
+            attrs: { id: "dataTable", width: "100%", cellspacing: "0" }
+          },
+          [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("Nombre")]),
+                _vm._v(" "),
+                _c("th", { staticStyle: { width: "90px" } }, [
+                  _vm._v("Opciones")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody"),
+            _vm._v(" "),
+            _c("tfoot", [
+              _c("tr", [
+                _c("th", [_vm._v("Nombre")]),
+                _vm._v(" "),
+                _c("th", { staticStyle: { width: "90px" } }, [
+                  _vm._v("Opciones")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody")
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4ca53e15", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

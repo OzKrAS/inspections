@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Zarpe;
 use App\Region;
 use App\Flag;
+use App\Nationality;
 
 class ZarpeController extends Controller
 {
@@ -16,6 +17,7 @@ class ZarpeController extends Controller
             $zarpes = Zarpe::join('regions','zarpes.id_region','=','regions.id')
             ->join('ports','zarpes.id_port','=','ports.id')
             ->join('flags','zarpes.id_flag','=','flags.id')
+            ->join('nationalities','zarpes.id_nationality','=','nationalities.id')
             ->select('zarpes.id',
                      'zarpes.insNo',
                      'zarpes.portArrival',
@@ -36,7 +38,6 @@ class ZarpeController extends Controller
                      'zarpes.materialArt',
                      'zarpes.equipDevi',
                      'zarpes.captain',
-                     'zarpes.nacionality',
                      'zarpes.observation',
                      'zarpes.conclusions',
                      'zarpes.comments',
@@ -47,9 +48,20 @@ class ZarpeController extends Controller
                      'zarpes.dateValid',
                      'zarpes.dateLatestArrival',
                      'zarpes.dateValidityPat',
+
+                     'zarpes.notification',
+                     'zarpes.finalityZarpe',
+                     'zarpes.origin',
+                     'zarpes.destination',
+                     'zarpes.national',
+                     'zarpes.orop',
+                     'zarpes.fishAut',
+
                      'zarpes.id_region','regions.name as nameReg',
                      'zarpes.id_port','ports.name as namePort',
-                     'zarpes.id_flag','flags.name as nameFlag'
+                     'zarpes.id_flag','flags.name as nameFlag',
+                     'zarpes.id_nationality','nationalities.name as nameNationality',
+                     
             )
         
             ->paginate(9999999999999999999999999);
@@ -81,13 +93,29 @@ class ZarpeController extends Controller
         $zarpes->materialArt = $request->materialArt;
         $zarpes->equipDevi = $request->equipDevi;
         $zarpes->captain = $request->captain;
-        $zarpes->nacionality = $request->nacionality; 
         $zarpes->observation = $request->observation;
         $zarpes->conclusions = $request->conclusions;
         $zarpes->comments = $request->comments;
+        $zarpes->dateIns = $request->dateIns;
+        $zarpes->dateScale = $request->dateScale;
+        $zarpes->dateZarpe = $request->dateZarpe;
+        $zarpes->dateResolution = $request->dateResolution;
+        $zarpes->dateValid = $request->dateValid;
+        $zarpes->dateLatestArrival = $request->dateLatestArrival;
+        $zarpes->dateValidityPat = $request->dateValidityPat;
+
+        $zarpes->notification = $request->notification;
+        $zarpes->finalityZarpe = $request->finalityZarpe;
+        $zarpes->origin = $request->origin;
+        $zarpes->destination = $request->destination;
+        $zarpes->national = $request->national;
+        $zarpes->orop = $request->orop;
+        $zarpes->fishAut = $request->fishAut;
+
         $zarpes->id_region = $request->id_region;    
         $zarpes->id_port = $request->id_port;    
-        $zarpes->id_flag = $request->id_flag;    
+        $zarpes->id_flag = $request->id_flag;   
+        $zarpes->id_nationality = $request->id_nationality;       
         $zarpes->save();
     }
 
@@ -114,13 +142,30 @@ class ZarpeController extends Controller
         $zarpes->materialArt = $request->materialArt;
         $zarpes->equipDevi = $request->equipDevi;
         $zarpes->captain = $request->captain;
-        $zarpes->nacionality = $request->nacionality; 
         $zarpes->observation = $request->observation;
         $zarpes->conclusions = $request->conclusions;
         $zarpes->comments = $request->comments;
+
+        $zarpes->dateIns = $request->dateIns;
+        $zarpes->dateScale = $request->dateScale;
+        $zarpes->dateZarpe = $request->dateZarpe;
+        $zarpes->dateResolution = $request->dateResolution;
+        $zarpes->dateValid = $request->dateValid;
+        $zarpes->dateLatestArrival = $request->dateLatestArrival;
+        $zarpes->dateValidityPat = $request->dateValidityPat;
+
+        $zarpes->notification = $request->notification;
+        $zarpes->finalityZarpe = $request->finalityZarpe;
+        $zarpes->origin = $request->origin;
+        $zarpes->destination = $request->destination;
+        $zarpes->national = $request->national;
+        $zarpes->orop = $request->orop;
+        $zarpes->fishAut = $request->fishAut;
+
         $zarpes->id_region = $request->id_region;    
         $zarpes->id_port = $request->id_port;    
         $zarpes->id_flag = $request->id_flag;  
+        $zarpes->id_nationality = $request->id_nationality;  
         $zarpes->save();
     }
 
