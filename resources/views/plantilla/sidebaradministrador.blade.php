@@ -80,9 +80,11 @@
                                 <a href="#"><i class="icon-bag"></i>Verificación Presencia del Equipo de Rescate de Delfines Abordo de BarcosAtuneros de Cerco</a>                                                                               
                             </li>                                
                             <li @click="menu=12">
-                                <a href="#"><i class="icon-bag"></i>País</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>Países</a>                                                                               
                             </li>                                
-                          
+                            <li @click="menu=13">
+                                <a href="#"><i class="icon-bag"></i>Empresas</a>                                                                               
+                            </li>                                
                         </ul>                            
                         </div>                        
                     </li>

@@ -22,42 +22,16 @@
               <table class="table table-striped table-bordered display" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Región/Municipio</th>
-                    <th>Puerto/Muelle de Inspección</th>
-                    <th>Fecha Inspección</th>
-                    <th>Notificación Previa</th>
+                    <th>Inspección No.</th>        
+                    <th>Región/Municipio</th>        
                     <th>Finalidad Zarpe</th>
                     <th>Origen</th>
                     <th>Destino</th>
-                    <th>Fecha Última Escala</th>
                     <th>Puerto de Zarpe</th>
-                    <th>Fecha Zarpe</th>
-                    <th>Puerto de Ultimo Arribo</th>
-                    <th>Nacional</th>
-                    <th>OROP</th>
-                    <th>Señal Radiollamada Internacional</th>
-                    <th>Identificador OMI</th>
-                    <th>Permiso Otorgado - Última Prorroga</th>
-                    <th>Fecha</th>
-                    <th>Vigencia</th>
+                    <th>Fecha Zarpe</th>  
                     <th>Nombre Embarcación</th>
-                    <th>Bandera</th>
-                    <th>Matricula</th>
-                    <th>No. Patente</th>
-                    <th>Vigencia Patente</th>
-                    <th>Representante Legal</th>
-                    <th>Empresa</th>
-                    <th>Pesqueria Autorizada</th>
-                    <th>Zona de Pesca Autorizada</th>
-                    <th>Características Arte De Pesca (Ojo de malla-pulgadas)</th>
-                    <th>Ancho de la Red (Brazas)</th>
-                    <th>Ojo de malla del Copo (pulgadas)</th>
-                    <th>Tamaño No. y Tipo de Anzuelo</th>
-                    <th>Longitud de la Red (Brazas)</th>
-                    <th>Material de Arte de Pesca</th>
-                    <th>Equipos o Dispositivos Requeridos</th>
+                    <th>Matricula</th>                                                        
                     <th>Nombre Capitán de Pesca</th>
-                    <th>Nacionalidad</th>
                     <th>Opciones</th>    
                   </tr>
                 </thead>
@@ -65,42 +39,16 @@
                 </tbody>
                   <tfoot>
                      <tr>
+                        <th>Inspección No.</th> 
                         <th>Región/Municipio</th>
-                        <th>Puerto/Muelle de Inspección</th>
-                        <th>Fecha Inspección</th>
-                        <th>Notificación Previa</th>
                         <th>Finalidad Zarpe</th>
                         <th>Origen</th>
-                        <th>Destino</th>
-                        <th>Fecha Última Escala</th>
+                        <th>Destino</th>    
                         <th>Puerto de Zarpe</th>
                         <th>Fecha Zarpe</th>
-                        <th>Puerto de Ultimo Arribo</th>
-                        <th>Nacional</th>
-                        <th>OROP</th>
-                        <th>Señal Radiollamada Internacional</th>
-                        <th>Identificador OMI</th>
-                        <th>Permiso Otorgado - Última Prorroga</th>
-                        <th>Fecha</th>
-                        <th>Vigencia</th>
                         <th>Nombre Embarcación</th>
-                        <th>Bandera</th>
-                        <th>Matricula</th>
-                        <th>No. Patente</th>
-                        <th>Vigencia Patente</th>
-                        <th>Representante Legal</th>
-                        <th>Empresa</th>
-                        <th>Pesqueria Autorizada</th>
-                        <th>Zona de Pesca Autorizada</th>
-                        <th>Características Arte De Pesca (Ojo de malla-pulgadas)</th>
-                        <th>Ancho de la Red (Brazas)</th>
-                        <th>Ojo de malla del Copo (pulgadas)</th>
-                        <th>Tamaño No. y Tipo de Anzuelo</th>
-                        <th>Longitud de la Red (Brazas)</th>
-                        <th>Material de Arte de Pesca</th>
-                        <th>Equipos o Dispositivos Requeridos</th>
+                        <th>Matricula</th>                                                                             
                         <th>Nombre Capitán de Pesca</th>
-                        <th>Nacionalidad</th>
                         <th>Opciones</th>  
                     </tr>
                   </tfoot>
@@ -280,18 +228,16 @@
                         <md-option value="nacional-AIS/VMS">Nacional - AIS/VMS</md-option>
                       </md-select>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
+                  </div>&nbsp;&nbsp;&nbsp;  
                   <div class="md-layout-item">
-                    <md-field>
-                      <label for="orop">OROP</label>
-                      <md-select v-model="orop" name="orop" id="orop">
-                        <md-option value="no">No</md-option>
-                        <md-option value="orop-AIS">OROP - AIS</md-option>
-                        <md-option value="orop-VMS">OROP - VMS</md-option>
-                        <md-option value="orop-AIS/VMS">OROP - AIS/VMS</md-option>
-                      </md-select>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
+                        <label>OROP</label>
+                        <multiselect v-model="arrayOr" :options="arrayOrop"
+                            placeholder="Seleccione una opción"
+                            :custom-label="nameWithOrop"
+                            label="name"
+                            track-by="name">
+                        </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <md-field md-clearable :class="getValidationClass('radioCall')">
                     <label for="first-name">Señal Radiollamada Internacional</label>
                     <md-input
@@ -412,7 +358,7 @@
                     <span
                       class="md-error"
                       v-if="!$v.form.noPatent.required"
-                    >Olvidaste ingresar el numero de patente</span>
+                    >Olvidaste ingresar el número de patente</span>
                   </md-field>
                   <div class="md-layout-item">
                         <label class="negrita">Vigencia Patente</label>
@@ -441,47 +387,36 @@
                       v-if="!$v.form.representative.required"
                     >Olvidaste ingresar el nombre del representante legal</span>
                   </md-field>
-                  <md-field md-clearable :class="getValidationClass('business')">
-                    <label for="first-name">Empresa</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.business"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.business.required"
-                    >Olvidaste ingresar el nombre de la empresa</span>
-                  </md-field>
+                  <div class="md-layout-item">
+                      <label>Empresa</label>
+                      <multiselect v-model="arrayComp" :options="arrayCompany"
+                          placeholder="Seleccione una zona"
+                          :custom-label="nameWithCompany"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
 
                   <!-- <label>PESQUERÍA Y ARTES AUTORIZADOS</label> -->
 
-                  <md-field>
-                    <label for="fishAut">Pesquería Autorizada</label>
-                    <md-select v-model="fishAut" name="fishAut" id="fishAut">
-                      <md-option value="caribe/Cartagena">Cartagena</md-option>
-                      <md-option value="caribe/Barranquilla">Barranquilla</md-option>
-                      <md-option value="pacifico/Bahia Solano">Bahía Solano</md-option>
-                      <md-option value="pacifico/Buenaventura">Buenaventura</md-option>
-                      <md-option value="pacifico/tumaco">Tumaco</md-option>
-                    </md-select>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('zoneAutFish')">
-                    <label for="first-name">Zona de Pesca Autorizada</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.zoneAutFish"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.zoneAutFish.required"
-                    >Olvidaste ingresar una zona de pesca autorizada</span>
-                  </md-field>
+                  <div class="md-layout-item">
+                      <label>Pesquería Autorizada</label>
+                      <multiselect v-model="arrayFa" :options="arrayFisheryAuthorized"
+                          placeholder="Seleccione una zona"
+                          :custom-label="nameWithFisheryAuthorized"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                      <label>Zona de Pesca Autorizada</label>
+                      <multiselect v-model="arrayZoneAuto" :options="arrayZoneAutoFish"
+                          placeholder="Seleccione una zona"
+                          :custom-label="nameWithZoneAutoFish"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
 
                   <!-- <label>CARACTERÍSTICAS ARTE DE PESCA</label> -->
 
@@ -679,7 +614,6 @@
         iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
     });
     Vue.use(MdButton);
-
     Vue.use(MdContent);
     Vue.use(MdField);
     Vue.use(MdCard);
@@ -714,8 +648,6 @@ export default {
         enrollment: "",
         noPatent: "",
         representative: "",
-        business: "",
-        zoneAutFish: "",
         eyeMesh: "",
         netWidth: "",
         eyeFlake: "",
@@ -743,7 +675,6 @@ export default {
       destination: "",
       national: "",
       orop: "",
-      fishAut: "",
       
 
       arrayZarpes: [],
@@ -760,6 +691,18 @@ export default {
       arrayNation: {id:0, name:''},
 	    arrayNationality: [],
       id_nationality: 0,
+      arrayOr: {id:0, name:''},
+	    arrayOrop: [],
+      id_orop: 0,
+      arrayZoneAuto: {id:0, name:''},
+	    arrayZoneAutoFish: [],
+      id_zoneAutoFisher: 0,
+      arrayFa: {id:0, name:''},
+	    arrayFisheryAuthorized: [],
+      id_fisheryAuthorized: 0,
+      arrayComp: {id:0, name:''},
+	    arrayCompany: [],
+      id_Company: 0,
       
       
       edo: 1,
@@ -809,9 +752,6 @@ export default {
       representative: {
         required
       },
-      business: {
-        required
-      },
       eyeMesh: {
         required
       },
@@ -836,9 +776,6 @@ export default {
       captain: {
         required
       },
-      zoneAutFish: {
-        required
-      },
     }
   },
 
@@ -851,7 +788,7 @@ export default {
       this.dynamicByModel =
         this.dynamicByModel && format(this.dynamicByModel, this.dateFormat);
     },
-        toDate() {
+    toDate() {
       switch (this.type) {
         case "string":
           this.dynamicByModel = parse(
@@ -889,8 +826,6 @@ export default {
       this.form.enrollment = null;
       this.form.noPatent = null;
       this.form.representative = null;
-      this.form.business = null;
-      this.form.zoneAutFish = null;
       this.form.eyeMesh = null;
       this.form.netWidth = null;
       this.form.eyeFlake = null;
@@ -914,12 +849,15 @@ export default {
       this.origin = null;
       this.destination = null;
       this.national = null;
-      this.orop = null;
-      this.fishAut = null;
+  
       this.arrayReg = {id:0, name:''};
       this.arrayPt = {id:0, name:''};
       this.arrayFg = {id:0, name:''};
       this.arrayNation = {id:0, name:''};
+      this.arrayOr = {id:0, name:''};
+      this.arrayZoneAuto = {id:0, name:''};
+      this.arrayFa = {id:0, name:''};
+      this.arrayComp = {id:0, name:''};
     },
     nameWithRegion ({ name }) {
             return `${name}`
@@ -931,6 +869,18 @@ export default {
             return `${name}`
     },
     nameWithNationality ({ name }) {
+            return `${name}`
+    },
+    nameWithOrop ({ name }) {
+            return `${name}`
+    },
+    nameWithZoneAutoFish ({ name }) {
+            return `${name}`
+    },
+    nameWithFisheryAuthorized ({ name }) {
+            return `${name}`
+    },
+    nameWithCompany ({ name }) {
             return `${name}`
     },
     listData() {
@@ -990,11 +940,51 @@ export default {
                     console.log(error);
             });
     },
+    selectOrop() {
+            let me = this;
+            var url = "orops/selectOrops";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayOrop = respuesta.orops;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
+    selectZoneAutoFisher() {
+            let me = this;
+            var url = "/zarpes/selectZoneAutoFisher";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayZoneAutoFish = respuesta.autoFisher;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
+    selectFisheryAuthorized() {
+            let me = this;
+            var url = "/zarpes/selectFisheryAuthorized";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayFisheryAuthorized= respuesta.fishery;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
+    selectCompanies() {
+            let me = this;
+            var url = "/zarpes/selectCompanies";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayCompany= respuesta.company;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_zarpes = data["id"]);
-      this.form.insNo = data["insNo "];
+      this.form.insNo = data["insNo"];
       this.form.portArrival = data["portArrival"];
       this.form.radioCall = data["radioCall"];
       this.form.idOmi = data["idOmi"];
@@ -1003,8 +993,6 @@ export default {
       this.form.enrollment = data["enrollment"];
       this.form.noPatent = data["noPatent"];
       this.form.representative = data["representative"];
-      this.form.business = data["business"];
-      this.form.zoneAutFish = data["zoneAutFish"];
       this.form.eyeMesh = data["eyeMesh"];
       this.form.netWidth = data["netWidth"];
       this.form.eyeFlake = data["eyeFlake"];
@@ -1023,15 +1011,12 @@ export default {
       this.dateValid = data["dateValid"];
       this.dateLatestArrival = data["dateLatestArrival"];
       this.dateValidityPat = data["dateValidityPat"];
-
       this.notification = data["notification"];
       this.finalityZarpe = data["finalityZarpe"];
       this.origin = data["origin"];
       this.destination = data["destination"];
-      this.national = data["nationa"];
-      this.orop = data["orop"];
-      this.fishAut = data["fishAut"];
-
+      this.national = data["national"];
+  
       this.arrayReg.id = data["id_region"];
 			this.arrayReg.name = data["nameReg"];
       this.arrayPt.id = data["id_port"];
@@ -1040,6 +1025,14 @@ export default {
 			this.arrayFg.name = data["nameFlag"];
       this.arrayNation.id = data["id_nationality"];
 			this.arrayNation.name = data["nameNationality"];
+      this.arrayOr.id = data["id_orop"];
+			this.arrayOr.name = data["nameOrop"];
+      this.arrayZoneAuto.id = data["id_zoneAutoFisher"];
+			this.arrayZoneAuto.name = data["nameZoneAutoFisher"];
+      this.arrayFa.id = data["id_fisheryAuthorized"];
+			this.arrayFa.name = data["nameFishery"];
+      this.arrayComp.id = data["id_company"];
+			this.arrayComp.name = data["nameCompany"];
  
     },
     showData() {
@@ -1057,30 +1050,26 @@ export default {
       let me = this;
       axios
         .post("/zarpes/save", {
-          // .toUpperCase(),
-          insNo: this.form.insNo,
-          portArrival: this.form.portArrival,
-          radioCall: this.form.radioCall,
-          idOmi: this.form.idOmi,
-          noResolution: this.form.noResolution,
-          nameBoat: this.form.nameBoat,
-          enrollment: this.form.enrollment,
-          noPatent: this.form.noPatent,
-          representative: this.form.representative,
-          business: this.form.business,
-          zoneAutFish: this.form.zoneAutFish,
-          eyeMesh: this.form.eyeMesh,
-          netWidth: this.form.netWidth,
-          eyeFlake: this.form.eyeFlake,
-          typeHook: this.form.typeHook,
-          longNet: this.form.longNet,
-          materialArt: this.form.materialArt,
-          equipDevi: this.form.equipDevi,
-          captain: this.form.captain,
-          observation: this.observation,
-          conclusions: this.conclusions,
-          comments: this.comments,
-
+          insNo: this.form.insNo.toUpperCase(),
+          portArrival: this.form.portArrival.toUpperCase(),
+          radioCall: this.form.radioCall.toUpperCase(),
+          idOmi: this.form.idOmi.toUpperCase(),
+          noResolution: this.form.noResolution.toUpperCase(),
+          nameBoat: this.form.nameBoat.toUpperCase(),
+          enrollment: this.form.enrollment.toUpperCase(),
+          noPatent: this.form.noPatent.toUpperCase(),
+          representative: this.form.representative.toUpperCase(),
+          eyeMesh: this.form.eyeMesh.toUpperCase(),
+          netWidth: this.form.netWidth.toUpperCase(),
+          eyeFlake: this.form.eyeFlake.toUpperCase(),
+          typeHook: this.form.typeHook.toUpperCase(),
+          longNet: this.form.longNet.toUpperCase(),
+          materialArt: this.form.materialArt.toUpperCase(),
+          equipDevi: this.form.equipDevi.toUpperCase(),
+          captain: this.form.captain.toUpperCase(),
+          observation: this.observation.toUpperCase(),
+          conclusions: this.conclusions.toUpperCase(),
+          comments: this.comments.toUpperCase(),
           dateIns: this.dateIns,
           dateScale: this.dateScale,
           dateZarpe: this.dateZarpe,
@@ -1088,19 +1077,20 @@ export default {
           dateValid: this.dateValid,
           dateLatestArrival: this.dateLatestArrival,
           dateValidityPat: this.dateValidityPat,
-
           notification: this.notification,
           finalityZarpe: this.finalityZarpe,
           origin: this.origin,
           destination: this.destination,
           national: this.national,
-          orop: this.orop,
-          fishAut: this.fishAut,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
           'id_flag': this.arrayFg.id,
           'id_nationality': this.arrayNation.id,
+          'id_orop': this.arrayOr.id,
+          'id_zoneAutoFisher': this.arrayZoneAuto.id,
+          'id_fisheryAuthorized': this.arrayFa.id,
+          'id_company': this.arrayComp.id,
 
         })
         .then(function(response) {
@@ -1121,13 +1111,11 @@ export default {
           portArrival: this.form.portArrival.toUpperCase(),
           radioCall: this.form.radioCall.toUpperCase(),
           idOmi: this.form.idOmi.toUpperCase(),
-          noResolution: this.noResolution.toUpperCase(),
+          noResolution: this.form.noResolution.toUpperCase(),
           nameBoat: this.form.nameBoat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
           noPatent: this.form.noPatent.toUpperCase(),
           representative: this.form.representative.toUpperCase(),
-          business: this.form.business.toUpperCase(),
-          zoneAutFish: this.form.zoneAutFish.toUpperCase(),
           eyeMesh: this.form.eyeMesh.toUpperCase(),
           netWidth: this.form.netWidth.toUpperCase(),
           eyeFlake: this.form.eyeFlake.toUpperCase(),
@@ -1139,7 +1127,6 @@ export default {
           observation: this.observation.toUpperCase(),
           conclusions: this.conclusions.toUpperCase(),
           comments: this.comments.toUpperCase(),
-
           dateIns: this.dateIns,
           dateScale: this.dateScale,
           dateZarpe: this.dateZarpe,
@@ -1147,19 +1134,20 @@ export default {
           dateValid: this.dateValid,
           dateLatestArrival: this.dateLatestArrival,
           dateValidityPat: this.dateValidityPat,
-
           notification: this.notification,
           finalityZarpe: this.finalityZarpe,
           origin: this.origin,
           destination: this.destination,
           national: this.national,
-          orop: this.orop,
-          fishAut: this.fishAut,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
           'id_flag': this.arrayFg.id,
           'id_nationality': this.arrayNation.id,
+          'id_orop': this.arrayOr.id,
+          'id_zoneAutoFisher': this.arrayZoneAuto.id,
+          'id_fisheryAuthorized': this.arrayFa.id,
+          'id_company': this.arrayComp.id,
         })
         .then(function(response) {
           me.hideForm();
@@ -1238,11 +1226,16 @@ export default {
             },
             responsive: "true",
           "columns": [
-
-            // { "data": "name" },
+            { "data": "insNo" },
             { "data": "nameReg" },
+            { "data": "finalityZarpe" },
+            { "data": "origin" },
+            { "data": "destination" },
             { "data": "namePort" },
-            { "data": "nameFlag" },
+            { "data": "dateZarpe" },
+            { "data": "nameBoat" },
+            { "data": "enrollment" },
+            { "data": "captain" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
 
         ]
@@ -1267,6 +1260,10 @@ export default {
     this.selectPort();   
     this.selectFlag();   
     this.selectNationality();   
+    this.selectOrop();   
+    this.selectZoneAutoFisher();   
+    this.selectFisheryAuthorized();   
+    this.selectCompanies();   
   }
 };
 </script>

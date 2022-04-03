@@ -116,19 +116,29 @@
                     <div class="md-layout-item">
                         <label class="negrita">Fecha Zarpe</label>
                         <div>
-                          <md-datepicker v-model="dateZarpe">
+                          <md-datepicker 
+                            v-model="dateZarpe"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                          >
                             <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
-                    </div> &nbsp;&nbsp;&nbsp; 
+                  </div> &nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item">
                         <label class="negrita">Fecha Desembarque</label>
                         <div>
-                          <md-datepicker v-model="dateDesemb">
+                          <md-datepicker 
+                            v-model="dateDesemb"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                          >
                             <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
-                    </div> &nbsp;&nbsp;&nbsp; 
+                    </div> &nbsp;&nbsp;&nbsp;
                     <md-field md-clearable :class="getValidationClass('nameCaptain')">
                         <label for="first-name">Nombre Capitán</label>
                         <md-input
@@ -179,6 +189,7 @@
 
 <script>
 
+   import format from "date-fns/format"; 
     import { validationMixin } from "vuelidate";
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
@@ -191,6 +202,7 @@
 		MdMenu,
 		MdSwitch,
 		MdDatepicker,
+    MdDialog,
 		MdList
     } from "vue-material/dist/components";
 
@@ -198,7 +210,6 @@
         iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
     });
     Vue.use(MdButton);
-
     Vue.use(MdContent);
     Vue.use(MdField);
     Vue.use(MdCard);
@@ -206,6 +217,7 @@
     Vue.use(MdSwitch);
     Vue.use(MdList);
     Vue.use(MdDatepicker);
+    Vue.use(MdDialog);
     import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
 
 export default {
@@ -280,6 +292,22 @@ export default {
 
   },
   methods: {
+    toString() {
+      this.toDate();
+      this.dynamicByModel =
+        this.dynamicByModel && format(this.dynamicByModel, this.dateFormat);
+    },
+    toDate() {
+      switch (this.type) {
+        case "string":
+          this.dynamicByModel = parse(
+            this.dynamicByModel,
+            this.dateFormat,
+            new Date()
+          );
+          break;
+      }
+    },
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
       if (field) {

@@ -42,6 +42,9 @@
             <template v-if="menu==12">
                 <nationality></nationality>
             </template>
+            <template v-if="menu==13">
+                <companies></companies>
+            </template>
 
            
    

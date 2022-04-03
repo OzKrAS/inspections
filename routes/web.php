@@ -73,6 +73,22 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/flags/selectFlags', 'FlagController@selectFlag');
         Route::get('/region/selectRegion', 'RegionController@selectRegion');
         Route::get('/nationality/selectNationality', 'NationalityController@selectNationality');
+        Route::get('/orops/selectOrops', 'OropController@selectOrop');
+        Route::get('/zarpes/selectZoneAutoFisher', 'AutoFisherController@selectZoneAutoFisher');
+        Route::get('/zarpes/selectFisheryAuthorized', 'FisheryAuthorizedController@selectFisheryAuthorized');
+        Route::get('/zarpes/selectCompanies', 'CompanyController@selectCompanies');
+        // arribo
+        Route::get('/arrivals', 'ArrivalController@index');
+        Route::post('/arrivals/save', 'ArrivalController@store');
+        Route::put('/arrivals/update', 'ArrivalController@update');
+        Route::post('/arrivals/delete', 'ArrivalController@destroy');
+        Route::get('/arrivals/selectPorts', 'PortsController@selectPort');
+        Route::get('/arrivals/selectFlags', 'FlagController@selectFlag');
+        Route::get('/arrivals/selectRegion', 'RegionController@selectRegion');
+        Route::get('/arrivals/selectNationality', 'NationalityController@selectNationality');
+        Route::get('/arrivals/selectZoneAutoFisher', 'AutoFisherController@selectZoneAutoFisher');
+        Route::get('/arrivals/selectFisheryAuthorized', 'FisheryAuthorizedController@selectFisheryAuthorized');
+        Route::get('/arrivals/selectCompanies', 'CompanyController@selectCompanies');
         //verificación 71
         Route::get('/checkDetInchs', 'CheckDetInchController@index');
         Route::post('/checkDetInchs/save', 'CheckDetInchController@store');
@@ -94,6 +110,11 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/nationality/save', 'NationalityController@store');
         Route::put('/nationality/update', 'NationalityController@update');
         Route::post('/nationality/delete', 'NationalityController@destroy');
+        // empresa
+        Route::get('/companies', 'CompanyController@index');
+        Route::post('/companies/save', 'CompanyController@store');
+        Route::put('/companies/update', 'CompanyController@update');
+        Route::post('/companies/delete', 'CompanyController@destroy');
 
 
 

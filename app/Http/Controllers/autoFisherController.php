@@ -16,6 +16,14 @@ class autoFisherController extends Controller
             'data' => $autoFisher
         ];
     } 
+    public function selectZoneAutoFisher(Request $request)
+    {
+        $autoFisher = AutoFisher::select('id','name')
+            ->orderBy('name', 'asc')->get();
+        return [
+            'autoFisher' => $autoFisher
+        ];
+    }
     public function store(Request $request)
     {
         if (!$request->ajax()) return redirect('/');

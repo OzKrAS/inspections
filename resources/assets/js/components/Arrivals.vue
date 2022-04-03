@@ -22,40 +22,15 @@
               <table class="table table-striped table-bordered display" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <th>Inspeccion No.</th>
                     <th>Región/Municipio</th>
                     <th>Puerto/Muelle de Inspección</th>
-                    <th>Fecha Inspección</th>
-                    <th>Notificación Previa</th>
-                    <th>Finalidad Zarpe</th>
-                    <th>Origen</th>
-                    <th>Destino</th>
-                    <th>Fecha Última Escala</th>
+                    <th>Fecha Inspección</th>      
+                    <!-- <th>Origen</th> -->
+                    <!-- <th>Destino</th>               -->
                     <th>Puerto de Zarpe</th>
-                    <th>Fecha Zarpe</th>
-                    <th>Puerto de Ultimo Arribo</th>
-                    <th>Nacional</th>
-                    <th>OROP</th>
-                    <th>Señal Radiollamada Internacional</th>
-                    <th>Identificador OMI</th>
-                    <th>Permiso Otorgado - Última Prorroga</th>
-                    <th>Fecha</th>
-                    <th>Vigencia</th>
-                    <th>Nombre Embarcación</th>
-                    <th>Bandera</th>
-                    <th>Matricula</th>
-                    <th>No. Patente</th>
-                    <th>Vigencia Patente</th>
-                    <th>Representante Legal</th>
-                    <th>Empresa</th>
-                    <th>Pesqueria Autorizada</th>
-                    <th>Zona de Pesca Autorizada</th>
-                    <th>Características Arte De Pesca (Ojo de malla-pulgadas)</th>
-                    <th>Ancho de la Red (Brazas)</th>
-                    <th>Ojo de malla del Copo (pulgadas)</th>
-                    <th>Tamaño No. y Tipo de Anzuelo</th>
-                    <th>Longitud de la Red (Brazas)</th>
-                    <th>Material de Arte de Pesca</th>
-                    <th>Equipos o Dispositivos Requeridos</th>
+                    <th>Fecha Zarpe</th>    
+                    <th>Nombre Embarcación</th>                                        
                     <th>Nombre Capitán de Pesca</th>
                     <th>Nacionalidad</th>
                     <th>Opciones</th>    
@@ -65,40 +40,15 @@
                 </tbody>
                   <tfoot>
                      <tr>
+                        <th>Inspeccion No.</th>
                         <th>Región/Municipio</th>
                         <th>Puerto/Muelle de Inspección</th>
-                        <th>Fecha Inspección</th>
-                        <th>Notificación Previa</th>
-                        <th>Finalidad Zarpe</th>
-                        <th>Origen</th>
-                        <th>Destino</th>
-                        <th>Fecha Última Escala</th>
+                        <th>Fecha Inspección</th>               
+                        <!-- <th>Origen</th> -->
+                        <!-- <th>Destino</th>                  -->
                         <th>Puerto de Zarpe</th>
-                        <th>Fecha Zarpe</th>
-                        <th>Puerto de Ultimo Arribo</th>
-                        <th>Nacional</th>
-                        <th>OROP</th>
-                        <th>Señal Radiollamada Internacional</th>
-                        <th>Identificador OMI</th>
-                        <th>Permiso Otorgado - Última Prorroga</th>
-                        <th>Fecha</th>
-                        <th>Vigencia</th>
-                        <th>Nombre Embarcación</th>
-                        <th>Bandera</th>
-                        <th>Matricula</th>
-                        <th>No. Patente</th>
-                        <th>Vigencia Patente</th>
-                        <th>Representante Legal</th>
-                        <th>Empresa</th>
-                        <th>Pesqueria Autorizada</th>
-                        <th>Zona de Pesca Autorizada</th>
-                        <th>Características Arte De Pesca (Ojo de malla-pulgadas)</th>
-                        <th>Ancho de la Red (Brazas)</th>
-                        <th>Ojo de malla del Copo (pulgadas)</th>
-                        <th>Tamaño No. y Tipo de Anzuelo</th>
-                        <th>Longitud de la Red (Brazas)</th>
-                        <th>Material de Arte de Pesca</th>
-                        <th>Equipos o Dispositivos Requeridos</th>
+                        <th>Fecha Zarpe</th>        
+                        <th>Nombre Embarcación</th>                            
                         <th>Nombre Capitán de Pesca</th>
                         <th>Nacionalidad</th>
                         <th>Opciones</th>  
@@ -129,7 +79,7 @@
                         <span
                             class="md-error"
                             v-if="!$v.form.insNo.required"
-                        >Olvidaste ingresar el número de inspección para el Zarpe
+                        >Olvidaste ingresar el número de inspección para el arribo
                         </span>
                     </md-field> 
 				              	<label>Región/Municipio</label>
@@ -149,58 +99,74 @@
                       <div class="md-layout-item">
                         <label class="negrita">Fecha de Inspección</label>
                         <div>
-                          <md-datepicker v-model="dateIns">
+                          <md-datepicker 
+                            v-model="dateIns"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                            >
                             <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp; 
                       <div class="md-layout-item">
-                        <label>Recibió Notificación Previa</label>
-                        <multiselect v-model="arrayReg" :options="arrayNotification"
-                            placeholder="Seleccione una opción"
-                            :custom-label="nameWithRegion"
-                            label="name"
-                            track-by="name">
-                        </multiselect>
-                      </div> &nbsp;&nbsp;&nbsp; 
-                        <div class="md-layout-item">
-                            <label>Finalidad Arribo</label>
-                            <multiselect v-model="arrayReg" :options="arrayFinalityZarpe"
-                                placeholder="Seleccione una opción"
-                                :custom-label="nameWithRegion"
-                                label="name"
-                                track-by="name">
-                            </multiselect>
-                        </div>&nbsp;&nbsp;&nbsp;
+                        <md-field>
+                          <label for="notification">Recibió Notificación Previa</label>
+                          <md-select v-model="notification" name="notification" id="notification">
+                            <md-option value="si">Si</md-option>
+                            <md-option value="no">No</md-option>
+                          </md-select>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;  
+                      <div class="md-layout-item">
+                        <md-field>
+                          <label for="finalityArrival">Finalidad Arribo</label>
+                          <md-select v-model="finalityArrival" name="finalityArrival" id="finalityArrival">
+                            <md-option value="pesca">Pesca</md-option>
+                            <md-option value="transito">Tránsito</md-option>
+                          </md-select>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp; 
 
                          <!-- <label>PUERTO, ESTADO RECTOR DE PUERTO</label>  -->
 
-                        <div class="md-layout-item">
-                          <label>Origen</label>
-                          <multiselect v-model="arrayReg" :options="arrayOrigin"
-                              placeholder="Seleccione una origen"
-                              :custom-label="nameWithRegion"
-                              label="name"
-                              track-by="name">
-                          </multiselect>
+                          <div class="md-layout-item">
+                            <md-field>
+                              <label for="origin">Origen</label>
+                              <md-select v-model="origin" name="origin" id="origin">
+                                <md-option value="caribe/Cartagena">Caribe/Cartagena</md-option>
+                                <md-option value="caribe/Barranquilla">Caribe/Barranquilla</md-option>
+                                <md-option value="pacifico/Bahia Solano">Pacifico/Bahía Solano</md-option>
+                                <md-option value="pacifico/Buenaventura">Pacifico/Buenaventura</md-option>
+                                <md-option value="pacifico/tumaco">Pacífico/Tumaco</md-option>
+                              </md-select>
+                            </md-field>
+                          </div>&nbsp;&nbsp;&nbsp; 
+                          <div class="md-layout-item">
+                          <md-field>
+                            <label for="destination">Destino</label>
+                            <md-select v-model="destination" name="destination" id="destination">
+                              <md-option value="caribe/Cartagena">Caribe/Cartagena</md-option>
+                              <md-option value="caribe/Barranquilla">Caribe/Barranquilla</md-option>
+                              <md-option value="pacifico/Bahia Solano">Pacifico/Bahía Solano</md-option>
+                              <md-option value="pacifico/Buenaventura">Pacifico/Buenaventura</md-option>
+                              <md-option value="pacifico/tumaco">Pacífico/Tumaco</md-option>
+                            </md-select>
+                          </md-field>
                         </div>&nbsp;&nbsp;&nbsp; 
                         <div class="md-layout-item">
-                            <label>Destino</label>
-                            <multiselect v-model="arrayReg" :options="arrayDestination"
-                                placeholder="Seleccione una región"
-                                :custom-label="nameWithRegion"
-                                label="name"
-                                track-by="name">
-                            </multiselect>
-                        </div>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item">
-                        <label class="negrita">Fecha Última Escala</label>
-                        <div>
-                          <md-datepicker v-model="dateScale">
-                            <label>Seleccione Fecha</label>
-                          </md-datepicker>
-                        </div>
-                      </div> &nbsp;&nbsp;&nbsp; 
+                          <label class="negrita">Fecha Última Escala</label>
+                          <div>
+                            <md-datepicker 
+                              v-model="dateScale"
+                              @input="toString"
+                              md-immediately
+                              :md-model-type="String"
+                              >
+                              <label>Seleccione Fecha</label>
+                            </md-datepicker>
+                          </div>
+                        </div> &nbsp;&nbsp;&nbsp; 
                         <div class="md-layout-item">
                             <label>Puerto de Zarpe</label>
                             <multiselect v-model="arrayPt" :options="arrayPort"
@@ -210,465 +176,491 @@
                                 track-by="name">
                             </multiselect>
                         </div>&nbsp;&nbsp;&nbsp;
+                        <div class="md-layout-item">
+                          <label class="negrita">Fecha de Zarpe</label>
+                          <div>
+                            <md-datepicker 
+                              v-model="dateZarpe"
+                              @input="toString"
+                              md-immediately
+                              :md-model-type="String"
+                              >
+                              <label>Seleccione Fecha</label>
+                            </md-datepicker>
+                          </div>
+                        </div> &nbsp;&nbsp;&nbsp; 
+                        <div class="md-layout-item">
+                            <label>Puerto de Ultimo Arribo</label>
+                            <multiselect v-model="arrayPt" :options="arrayPort"
+                                placeholder="Seleccione una región"
+                                :custom-label="nameWithPort"
+                                label="name"
+                                track-by="name">
+                            </multiselect>
+                        </div>&nbsp;&nbsp;&nbsp;
+                        <div class="md-layout-item">
+                          <label class="negrita">Fecha Último Arribo</label>
+                          <div>
+                            <md-datepicker 
+                              v-model="dateLatestArrival"
+                              @input="toString"
+                              md-immediately
+                              :md-model-type="String"
+                              >
+                              <label>Seleccione Fecha</label>
+                            </md-datepicker>
+                          </div>
+                        </div> &nbsp;&nbsp;&nbsp; 
                       <div class="md-layout-item">
-                        <label class="negrita">Fecha Zarpe</label>
+                        <md-field>
+                          <label for="workDone">Faena Realizada En</label>
+                          <md-select v-model="workDone" name="workDone" id="workDone">
+                            <md-option value="pesca">Pacífico</md-option>
+                            <md-option value="transito">Caribe</md-option>
+                            <md-option value="transito">San Andres</md-option>
+                          </md-select>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp; 
+                      <div class="md-layout-item">
+                        <md-field>
+                          <label for="locationSystem">Sistema de Localización de Buques/VMS</label>
+                          <md-select v-model="locationSystem" name="locationSystem" id="locationSystem">
+                            <md-option value="no">No</md-option>
+                            <md-option value="si nacional">Si Nacional</md-option>
+                            <md-option value="si OROP">Si OROP</md-option>
+                          </md-select>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp; 
+                      <md-field md-clearable :class="getValidationClass('radioCall')">
+                        <label for="first-name">Señal Radiollamada Internacional</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.radioCall"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.radioCall.required"
+                        >Olvidaste ingresar la señal radiollamada internacional</span>
+                      </md-field>
+
+                     <!-- <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label> -->
+
+                      <md-field md-clearable :class="getValidationClass('noResolution')">
+                        <label for="first-name">No. de Resolición</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noResolution"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noResolution.required"
+                        >Olvidaste ingresar el número de resolución</span>
+                      </md-field>
+                      <div class="md-layout-item">
+                        <label class="negrita">Fecha</label>
                         <div>
-                          <md-datepicker v-model="dateZarpe">
+                          <md-datepicker 
+                            v-model="date"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                            >
                             <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
-                      </div> &nbsp;&nbsp;&nbsp;  
-                  <md-field md-clearable :class="getValidationClass('portArrival')">
-                    <label for="first-name">Puerto de Ultimo Arribo</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.portArrival"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.portArrival.required"
-                    >Olvidaste ingresar el puerto para el ultimo arribo</span>
-                  </md-field>
-                  <div class="md-layout-item">
-                    <label class="negrita">Fecha Ultimo Arribo</label>
-                    <div>
-                        <md-datepicker v-model="dateZarpe">
-                        <label>Seleccione Fecha</label>
-                        </md-datepicker>
-                    </div>
-                  </div> &nbsp;&nbsp;&nbsp;  
-                  <div class="md-layout-item">
-                    <label>Faena Realizada En</label>
-                    <multiselect v-model="arrayPt" :options="arrayPort"
-                        placeholder="Seleccione una región"
-                        :custom-label="nameWithPort"
-                        label="name"
-                        track-by="name">
-                    </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <label>Sistema dE Localización de Buques/VMS</label>
-                    <multiselect v-model="arrayPt" :options="arrayPort"
-                        placeholder="Seleccione una región"
-                        :custom-label="nameWithPort"
-                        label="name"
-                        track-by="name">
-                    </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('radioCall')">
-                    <label for="first-name">Señal Radiollamada Internacional</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.radioCall"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.radioCall.required"
-                    >Olvidaste ingresar la señal radiollamada internacional</span>
-                  </md-field>
-
-                  <!-- <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label> -->
-
-                  <md-field md-clearable :class="getValidationClass('idOmi')">
-                    <label for="first-name">No. de Resolición</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.idOmi"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.idOmi.required"
-                    >Olvidaste ingresar el Número de resolución</span>
-                  </md-field>
-                  <div class="md-layout-item">
-                    <label class="negrita">Fecha</label>
-                    <div>
-                        <md-datepicker v-model="dateZarpe">
-                        <label>Seleccione Fecha</label>
-                        </md-datepicker>
-                    </div>
-                  </div> &nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <label class="negrita">Vigencia</label>
-                    <div>
-                        <md-datepicker v-model="dateZarpe">
-                        <label>Seleccione Fecha</label>
-                        </md-datepicker>
-                    </div>
-                  </div> &nbsp;&nbsp;&nbsp;  
-                  <md-field md-clearable :class="getValidationClass('idOmi')">
-                    <label for="first-name">Nombre Embarcación</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.idOmi"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.idOmi.required"
-                    >Olvidaste ingresar el identificador OMI</span>
-                  </md-field>  
-                  <div class="md-layout-item">
-                    <label>Bandera</label>
-                    <multiselect v-model="arrayPt" :options="arrayPort"
-                        placeholder="Seleccione una región"
-                        :custom-label="nameWithPort"
-                        label="name"
-                        track-by="name">
-                    </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('idOmi')">
-                    <label for="first-name">Matricula</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.idOmi"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.idOmi.required"
-                    >Olvidaste ingresar el identificador OMI</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('idOmi')">
-                    <label for="first-name">No. OMI</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.idOmi"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.idOmi.required"
-                    >Olvidaste ingresar el identificador OMI</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('idOmi')">
-                    <label for="first-name">No. Pantente</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.idOmi"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.idOmi.required"
-                    >Olvidaste ingresar el identificador OMI</span>
-                  </md-field>
-                  <div class="md-layout-item">
-                    <label class="negrita">Vigencia Patente</label>
-                    <div>
-                        <md-datepicker v-model="dateZarpe">
-                        <label>Seleccione Fecha</label>
-                        </md-datepicker>
-                    </div>
-                  </div> &nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('idOmi')">
-                    <label for="first-name">Representante Legal</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.idOmi"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.idOmi.required"
-                    >Olvidaste ingresar el identificador OMI</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('idOmi')">
-                    <label for="first-name">Empresa</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.idOmi"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.idOmi.required"
-                    >Olvidaste ingresar el identificador OMI</span>
-                  </md-field>
-
-                  <!-- <label>PESQUERÍA Y ARTES AUTORIZADOS</label> -->
-
-                  <md-field md-clearable :class="getValidationClass('idOmi')">
-                    <label for="first-name">Pesquería Autorizada</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.idOmi"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.idOmi.required"
-                    >Olvidaste ingresar el identificador OMI</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('idOmi')">
-                    <label for="first-name">Zona de Pesca Autorizada</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.idOmi"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.idOmi.required"
-                    >Olvidaste ingresar el identificador OMI</span>
-                  </md-field>
-
-                  <!-- <label>Características Arte de Pesca</label> -->
-
-                  <md-field md-clearable :class="getValidationClass('eyeMesh')">
-                    <label for="first-name">Ojo de Malla (Pulgadas)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.eyeMesh"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.eyeMesh.required"
-                    >Olvidaste ingresar una zona de pesca autorizada</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('netWidth')">
-                    <label for="first-name">Ancho de Red (Brazas)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.netWidth"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.netWidth.required"
-                    >Olvidaste ingresar el ancho de red</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('eyeFlake')">
-                    <label for="first-name">Ojo de Malla del Copo (Pulgadas)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.eyeFlake"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.eyeFlake.required"
-                    >Olvidaste ingresar el ojo de malla del copo</span>
-                  </md-field> 
-                  <md-field md-clearable :class="getValidationClass('typeHook')">
-                    <label for="first-name">Tamaño No. y tipo de Anzuelo</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.typeHook"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.typeHook.required"
-                    >Olvidaste ingresar un tamaño No. y tipo de anzuelo</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('longNet')">
-                    <label for="first-name">Longitud de la red (Brazas)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.longNet"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.longNet.required"
-                    >Olvidaste ingresar la longitud de la red</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('materialArt')">
-                    <label for="first-name">Material de Arte de Pesca</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.materialArt"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.materialArt.required"
-                    >Olvidaste ingresar el material de arte de pesca</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('equipDevi')">
-                    <label for="first-name">Equipos o Dispositivos Requeridos</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.equipDevi"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.equipDevi.required"
-                    >Olvidaste ingresar equipos o dispositivos requeridos</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('captain')">
-                    <label for="first-name">Nombre Capitán de Pesca</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.captain"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.captain.required"
-                    >Olvidaste ingresar un nombre para el capitan</span>
-                  </md-field>
-                  <div class="md-layout-item">
-                        <label>Nacionalidad</label>
+                      </div> &nbsp;&nbsp;&nbsp; 
+                      <div class="md-layout-item">
+                        <label class="negrita">Vigencia</label>
+                        <div>
+                          <md-datepicker 
+                            v-model="dateValidity"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                            >
+                            <label>Seleccione Fecha</label>
+                          </md-datepicker>
+                        </div>
+                      </div> &nbsp;&nbsp;&nbsp; 
+                      <md-field md-clearable :class="getValidationClass('nameBoat')">
+                        <label for="first-name">Nombre Embarcación</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.nameBoat"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.nameBoat.required"
+                        >Olvidaste ingresar un nombre para la embarcación</span>
+                      </md-field>  
+                      <div class="md-layout-item">
+                        <label>Bandera</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
-                            placeholder="Seleccione una región"
+                            placeholder="Seleccione una bandera"
                             :custom-label="nameWithFlag"
                             label="name"
                             track-by="name">
                         </multiselect>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <md-field md-clearable :class="getValidationClass('enrollment')">
+                        <label for="first-name">Matrícula</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.enrollment"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.enrollment.required"
+                        >Olvidaste ingresar una matrícula</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('noOmi')">
+                        <label for="first-name">No. OMI</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noOmi"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noOmi.required"
+                        >Olvidaste ingresar el identificador OMI</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('noPatent')">
+                        <label for="first-name">No. de Pantente</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noPatent"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noPatent.required"
+                        >Olvidaste ingresar el número de patente</span>
+                      </md-field>
+                      <div class="md-layout-item">
+                        <label class="negrita">Vigencia Patente</label>
+                        <div>
+                          <md-datepicker 
+                            v-model="dateValidityPat"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                            >
+                            <label>Seleccione Fecha</label>
+                          </md-datepicker>
+                        </div>
+                      </div> &nbsp;&nbsp;&nbsp; 
+                      <md-field md-clearable :class="getValidationClass('legalRepre')">
+                        <label for="first-name">Representante Legal</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.legalRepre"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.legalRepre.required"
+                        >Olvidaste ingresar un nombre para el representante legal</span>
+                      </md-field>
+                      <div class="md-layout-item">
+                      <label>Empresa</label>
+                      <multiselect v-model="arrayComp" :options="arrayCompany"
+                          placeholder="Seleccione una zona"
+                          :custom-label="nameWithCompany"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('captain')">
-                    <label for="first-name">No. Total de Tripulantes</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.captain"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.captain.required"
-                    >Olvidaste ingresar un nombre para el capitan</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('captain')">
-                    <label for="first-name">No. Tripulantes Extranjeros</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.captain"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.captain.required"
-                    >Olvidaste ingresar un nombre para el capitan</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('captain')">
-                    <label for="first-name">No. Tripulantes Nacionales</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.captain"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.captain.required"
-                    >Olvidaste ingresar un nombre para el capitan</span>
-                  </md-field>
+
+                  <!-- <label>PESQUERÍA Y ARTES AUTORIZADOS</label> -->
+
+                      <div class="md-layout-item">
+                          <label>Pesquería Autorizada</label>
+                          <multiselect v-model="arrayFa" :options="arrayFisheryAuthorized"
+                              placeholder="Seleccione una zona"
+                              :custom-label="nameWithFisheryAuthorized"
+                              label="name"
+                              track-by="name">
+                          </multiselect>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                          <label>Zona de Pesca Autorizada</label>
+                          <multiselect v-model="arrayZoneAuto" :options="arrayZoneAutoFish"
+                              placeholder="Seleccione una zona"
+                              :custom-label="nameWithZoneAutoFish"
+                              label="name"
+                              track-by="name">
+                          </multiselect>
+                      </div>&nbsp;&nbsp;&nbsp;
+
+                  <!-- <label>Características Arte de Pesca</label> -->
+
+                      <md-field md-clearable :class="getValidationClass('eyeMesh')">
+                        <label for="first-name">Ojo de Malla (Pulgadas)</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.eyeMesh"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.eyeMesh.required"
+                        >Olvidaste ingresar las pulgadas del ojo de malla</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('netWidth')">
+                        <label for="first-name">Ancho de Red (Brazas)</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.netWidth"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.netWidth.required"
+                        >Olvidaste ingresar el ancho de red</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('eyeFlake')">
+                        <label for="first-name">Ojo de Malla del Copo (Pulgadas)</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.eyeFlake"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.eyeFlake.required"
+                        >Olvidaste ingresar el ojo de malla del copo</span>
+                      </md-field> 
+                      <md-field md-clearable :class="getValidationClass('typeHook')">
+                        <label for="first-name">Tamaño No. y tipo de Anzuelo</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.typeHook"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.typeHook.required"
+                        >Olvidaste ingresar un tamaño No. y tipo de anzuelo</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('longNet')">
+                        <label for="first-name">Longitud de la red (Brazas)</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.longNet"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.longNet.required"
+                        >Olvidaste ingresar la longitud de la red</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('materialArt')">
+                        <label for="first-name">Material de Arte de Pesca</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.materialArt"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.materialArt.required"
+                        >Olvidaste ingresar el material de arte de pesca</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('equipDevi')">
+                        <label for="first-name">Equipos o Dispositivos Requeridos</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.equipDevi"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.equipDevi.required"
+                        >Olvidaste ingresar equipos o dispositivos requeridos</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('captain')">
+                        <label for="first-name">Nombre Capitán de Pesca</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.captain"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.captain.required"
+                        >Olvidaste ingresar un nombre para el capitan</span>
+                      </md-field>
+                      <div class="md-layout-item">
+                          <label>Nacionalidad</label>
+                          <multiselect v-model="arrayNation" :options="arrayNationality"
+                              placeholder="Seleccione un pais"
+                              :custom-label="nameWithNationality"
+                              label="name"
+                              track-by="name">
+                          </multiselect>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <md-field md-clearable :class="getValidationClass('noAllCrew')">
+                        <label for="first-name">No. Total de Tripulantes</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noAllCrew"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noAllCrew.required"
+                        >Olvidaste ingresar el número total de tripulantes</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('noCrewForeign')">
+                        <label for="first-name">No. Tripulantes Extranjeros</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noCrewForeign"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noCrewForeign.required"
+                        >Olvidaste ingresar el número de tripulantes extrangeros</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('noCrewNational')">
+                        <label for="first-name">No. Tripulantes Nacionales</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noCrewNational"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noCrewNational.required"
+                        >Olvidaste ingresar el número de tripulantes nacionales</span>
+                      </md-field>
 
                   <!-- <label>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</label> -->
 
-                  <md-field md-clearable :class="getValidationClass('captain')">
-                    <label for="first-name">No. Días de Pesca</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.captain"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.captain.required"
-                    >Olvidaste ingresar un nombre para el capitan</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('captain')">
-                    <label for="first-name">No. Total de Lances</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.captain"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.captain.required"
-                    >Olvidaste ingresar un nombre para el capitan</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('captain')">
-                    <label for="first-name">No. Lances Nacionales</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.captain"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.captain.required"
-                    >Olvidaste ingresar un nombre para el capitan</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('captain')">
-                    <label for="first-name">No. Lances Internacionales</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.captain"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.captain.required"
-                    >Olvidaste ingresar un nombre para el capitan</span>
-                  </md-field>
-                  <md-field>
-                        <label>Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)</label>
-                        <md-textarea v-model="observation"></md-textarea>
-                   </md-field>
-
-
-                   
+                      <md-field md-clearable :class="getValidationClass('noDays')">
+                        <label for="first-name">No. Días de Pesca</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noDays"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noDays.required"
+                        >Olvidaste ingresar el número de días de pesca</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('noAllHauls')">
+                        <label for="first-name">No. Total de Lances</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noAllHauls"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noAllHauls.required"
+                        >Olvidaste ingresar el número total de lances</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('noHaulsNacional')">
+                        <label for="first-name">No. Lances Nacionales</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noHaulsNacional"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noHaulsNacional.required"
+                        >Olvidaste ingresar el número total de lances nacionales</span>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('noHaulsInter')">
+                        <label for="first-name">No. Lances Internacionales</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noHaulsInter"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noHaulsInter.required"
+                        >Olvidaste ingresar el número de lances internacionales</span>
+                      </md-field>
+                      <md-field>
+                            <label>Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)</label>
+                            <md-textarea v-model="observation"></md-textarea>
+                      </md-field>
+                      <md-field md-clearable :class="getValidationClass('landedWeight')">
+                        <label for="first-name">Peso Desembarcado Comprobado (ingreso planta proceso)(Ton)</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.landedWeight"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.landedWeight.required"
+                        >Olvidaste ingresar el peso desembarcado comprobado</span>
+                      </md-field>
+                      <md-field>
+                            <label>Conclusiones Del Inspector</label>
+                            <md-textarea v-model="inspectorConclusions"></md-textarea>
+                      </md-field>
+                      <md-field>
+                            <label>Comentarios Adicionales (espacio disponible para el capitan)</label>
+                            <md-textarea v-model="additionalComments"></md-textarea>
+                      </md-field>  
                 </div>
               </md-card-content>
             </form>
@@ -705,6 +697,8 @@
 
 <script>
 
+ 
+    import format from "date-fns/format"; 
     import { validationMixin } from "vuelidate";
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
@@ -717,6 +711,7 @@
 		MdMenu,
 		MdSwitch,
 		MdDatepicker,
+    MdDialog,
 		MdList
     } from "vue-material/dist/components";
 
@@ -724,7 +719,6 @@
         iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
     });
     Vue.use(MdButton);
-
     Vue.use(MdContent);
     Vue.use(MdField);
     Vue.use(MdCard);
@@ -750,16 +744,11 @@ export default {
       return {form: {
 
         insNo: "",
-        portArrival: "",
         radioCall: "",
-        idOmi: "",
         noResolution: "",
         nameBoat: "",
         enrollment: "",
         noPatent: "",
-        representative: "",
-        business: "",
-        zoneAutFish: "",
         eyeMesh: "",
         netWidth: "",
         eyeFlake: "",
@@ -768,24 +757,39 @@ export default {
         materialArt: "",
         equipDevi: "",
         captain: "",
-        nacionality: "",
-        
+        noOmi: "",
+        legalRepre: "",
+        noAllCrew: "",
+        noCrewForeign: "",
+        noCrewNational: "",
+        noDays: "",
+        noAllHauls: "",
+        noHaulsNacional: "",
+        noHaulsInter: "",
+        landedWeight: "",
       },
 
       observation: "",
-      conclusions: "",
-      comments: "",
+      notification: "",
+      finalityArrival: "",
+      origin: "",
+      destination: "",
+      workDone: "",
+      locationSystem: "",
+      inspectorConclusions: "",
+      additionalComments: "",
 
-      dateIns: 0,
-      dateScale: 0,
-      dateZarpe: 0,
-      dateResolution: 0,
-      dateValid: 0,
-      dateLatestArrival: 0,
-      dateValidityPat: 0,
+      dateIns: format(now, dateFormat),
+      dateScale: format(now, dateFormat),
+      dateZarpe: format(now, dateFormat),
+      dateLatestArrival: format(now, dateFormat),
+      dateValidityPat: format(now, dateFormat),
+      date: format(now, dateFormat),
+      dateValidity: format(now, dateFormat),
 
-      arrayZarpes: [],
-      id_zarpes: 0,
+      arrayArrival: [],
+      id_arrival: 0,
+
       arrayReg: {id:0, name:''},
 	    arrayRegion: [],
       id_region: 0,
@@ -795,14 +799,18 @@ export default {
       arrayFg: {id:0, name:''},
 	    arrayFlag: [],
       id_flag: 0,
-      arrayNotification: [],
-      arrayFinalityZarpe: [],
-      arrayOrigin: [],
-      arrayDestination: [],
-      arrayNational: [],
-      arrayOrop: [],
-      arrayFlag: [],
-      arrayFishAut: [],
+      arrayNation: {id:0, name:''},
+	    arrayNationality: [],
+      id_nationality: 0,
+      arrayZoneAuto: {id:0, name:''},
+	    arrayZoneAutoFish: [],
+      id_zoneAutoFisher: 0,
+      arrayFa: {id:0, name:''},
+	    arrayFisheryAuthorized: [],
+      id_fisheryAuthorized: 0,
+      arrayComp: {id:0, name:''},
+	    arrayCompany: [],
+      id_Company: 0,
       
       
       edo: 1,
@@ -828,13 +836,7 @@ export default {
       insNo: {
         required
       },
-      portArrival: {
-        required
-      },
       radioCall: {
-        required
-      },
-      idOmi: {
         required
       },
       noResolution: {
@@ -847,12 +849,6 @@ export default {
         required
       },
       noPatent: {
-        required
-      },
-      representative: {
-        required
-      },
-      business: {
         required
       },
       eyeMesh: {
@@ -879,12 +875,36 @@ export default {
       captain: {
         required
       },
-      nacionality: {
+      noOmi: {
         required
       },
-      zoneAutFish: {
+      legalRepre: {
         required
-      }
+      },
+      noAllCrew: {
+        required
+      },
+      noCrewForeign: {
+        required
+      },
+      noCrewNational: {
+        required
+      },
+      noDays: {
+        required
+      },
+      noAllHauls: {
+        required
+      },
+      noHaulsNacional: {
+        required
+      },
+      noHaulsInter: {
+        required
+      },
+      landedWeight: {
+        required
+      },
     }
   },
 
@@ -892,6 +912,22 @@ export default {
 
   },
   methods: {
+    toString() {
+      this.toDate();
+      this.dynamicByModel =
+        this.dynamicByModel && format(this.dynamicByModel, this.dateFormat);
+    },
+    toDate() {
+      switch (this.type) {
+        case "string":
+          this.dynamicByModel = parse(
+            this.dynamicByModel,
+            this.dateFormat,
+            new Date()
+          );
+          break;
+      }
+    },
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
       if (field) {
@@ -911,16 +947,11 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.insNo = null;
-      this.form.portArrival = null;
       this.form.radioCall = null;
-      this.form.idOmi = null;
       this.form.noResolution = null;
       this.form.nameBoat = null;
       this.form.enrollment = null;
       this.form.noPatent = null;
-      this.form.representative = null;
-      this.form.business = null;
-      this.form.zoneAutFish = null;
       this.form.eyeMesh = null;
       this.form.netWidth = null;
       this.form.eyeFlake = null;
@@ -929,20 +960,40 @@ export default {
       this.form.materialArt = null;
       this.form.equipDevi = null;
       this.form.captain = null;
-      this.form.nacionality = null;
+      this.form.noOmi = null;
+      this.form.legalRepre = null;
+      this.form.noAllCrew = null;
+      this.form.noCrewForeign = null;
+      this.form.noCrewNational = null;
+      this.form.noDays = null;
+      this.form.noAllHauls = null;
+      this.form.noHaulsNacional = null;
+      this.form.noHaulsInter = null;
+      this.form.landedWeight = null;
       this.observation = null;
-      this.conclusions = null;
-      this.comments = null;
+      this.notification = null;
+      this.finalityArrival = null;
+      this.origin = null;
+      this.destination = null;
+      this.workDone = null;
+      this.locationSystem = null;
+      this.inspectorConclusions = null;
+      this.additionalComments = null;
       this.dateIns = null;
       this.dateScale = null;
       this.dateZarpe = null;
-      this.dateResolution = null;
-      this.dateValid = null;
       this.dateLatestArrival = null;
       this.dateValidityPat = null;
+      this.date = null;
+      this.dateValidity = null;
+
       this.arrayReg = {id:0, name:''};
       this.arrayPt = {id:0, name:''};
       this.arrayFg = {id:0, name:''};
+      this.arrayNation = {id:0, name:''};
+      this.arrayZoneAuto = {id:0, name:''};
+      this.arrayFa = {id:0, name:''};
+      this.arrayComp = {id:0, name:''};
     },
     nameWithRegion ({ name }) {
             return `${name}`
@@ -953,16 +1004,28 @@ export default {
     nameWithFlag ({ name }) {
             return `${name}`
     },
+    nameWithNationality ({ name }) {
+            return `${name}`
+    },
+    nameWithZoneAutoFish ({ name }) {
+            return `${name}`
+    },
+    nameWithFisheryAuthorized ({ name }) {
+            return `${name}`
+    },
+    nameWithCompany ({ name }) {
+            return `${name}`
+    },
     listData() {
       let me = this;
       var url =
-        "/zarpes";
+        "/arrivals";
       axios
         .get(url)
         .then(function (response) {
           var respuesta = response.data;
-          me.arrayZarpes = respuesta.zarpes.data;
-          me.myTable(me.arrayZarpes);
+          me.arrayArrival = respuesta.arrivals.data;
+          me.myTable(me.arrayArrival);
     
 
         })
@@ -972,7 +1035,7 @@ export default {
     },
     selectPort() {
             let me = this;
-            var url = "ports/selectPorts";
+            var url = "arrivals/selectPorts";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
                     me.arrayPort = respuesta.port;
@@ -982,7 +1045,7 @@ export default {
     },
     selectRegion() {
             let me = this;
-            var url = "region/selectRegion";
+            var url = "arrivals/selectRegion";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
                     me.arrayRegion = respuesta.region;
@@ -990,9 +1053,19 @@ export default {
                     console.log(error);
             });
     },
+    selectNationality() {
+            let me = this;
+            var url = "arrivals/selectNationality";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayNationality = respuesta.nationality;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
     selectFlag() {
             let me = this;
-            var url = "flags/selectFlags";
+            var url = "arrivals/selectFlags";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
                     me.arrayFlag = respuesta.flag;
@@ -1000,21 +1073,46 @@ export default {
                     console.log(error);
             });
     },
+    selectZoneAutoFisher() {
+            let me = this;
+            var url = "/arrivals/selectZoneAutoFisher";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayZoneAutoFish = respuesta.autoFisher;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
+    selectFisheryAuthorized() {
+            let me = this;
+            var url = "/arrivals/selectFisheryAuthorized";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayFisheryAuthorized= respuesta.fishery;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
+    selectCompanies() {
+            let me = this;
+            var url = "/arrivals/selectCompanies";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayCompany= respuesta.company;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
-      (this.id_zarpes = data["id"]);
-      this.form.insNo = data["insNo "];
-      this.form.portArrival = data["portArrival"];
+      (this.id_arrival = data["id"]);
+      this.form.insNo = data["insNo"];
       this.form.radioCall = data["radioCall"];
-      this.form.idOmi = data["idOmi"];
       this.form.noResolution = data["noResolution"];
       this.form.nameBoat = data["nameBoat"];
       this.form.enrollment = data["enrollment"];
       this.form.noPatent = data["noPatent"];
-      this.form.representative = data["representative"];
-      this.form.business = data["business"];
-      this.form.zoneAutFish = data["zoneAutFish"];
       this.form.eyeMesh = data["eyeMesh"];
       this.form.netWidth = data["netWidth"];
       this.form.eyeFlake = data["eyeFlake"];
@@ -1023,17 +1121,32 @@ export default {
       this.form.materialArt = data["materialArt"];
       this.form.equipDevi = data["equipDevi"];
       this.form.captain = data["captain"];
-      this.form.nacionality = data["nacionality"];
+      this.form.noOmi = data["noOmi"];
+      this.form.legalRepre = data["legalRepre"];
+      this.form.noAllCrew = data["noAllCrew"];
+      this.form.noCrewForeign = data["noCrewForeign"];
+      this.form.noCrewNational = data["noCrewNational"];
+      this.form.noDays = data["noDays"];
+      this.form.noAllHauls = data["noAllHauls"];
+      this.form.noHaulsNacional = data["noHaulsNacional"];
+      this.form.noHaulsInter = data["noHaulsInter"];
+      this.form.landedWeight = data["landedWeight"];
       this.observation = data["observation"];
-      this.conclusions = data["conclusions"];
-      this.comments = data["comments"];
+      this.notification = data["notification"];
+      this.finalityArrival = data["finalityArrival"];
+      this.origin = data["origin"];
+      this.destination = data["destination"];
+      this.workDone = data["workDone"];
+      this.locationSystem = data["locationSystem"];
+      this.inspectorConclusions = data["inspectorConclusions"];
+      this.additionalComments = data["additionalComments"];
       this.dateIns = data["dateIns"];
       this.dateScale = data["dateScale"];
       this.dateZarpe = data["dateZarpe"];
-      this.dateResolution = data["dateResolution"];
-      this.dateValid = data["dateValid"];
       this.dateLatestArrival = data["dateLatestArrival"];
       this.dateValidityPat = data["dateValidityPat"];
+      this.date = data["date"];
+      this.dateValidity = data["dateValidity"];
 
       this.arrayReg.id = data["id_region"];
 			this.arrayReg.name = data["nameReg"];
@@ -1041,6 +1154,14 @@ export default {
 			this.arrayPt.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
 			this.arrayFg.name = data["nameFlag"];
+      this.arrayNation.id = data["id_nationality"];
+			this.arrayNation.name = data["nameNationality"];
+      this.arrayZoneAuto.id = data["id_zoneAutoFisher"];
+			this.arrayZoneAuto.name = data["nameZoneAutoFisher"];
+      this.arrayFa.id = data["id_fisheryAuthorized"];
+			this.arrayFa.name = data["nameFishery"];
+      this.arrayComp.id = data["id_company"];
+			this.arrayComp.name = data["nameCompany"];
     },
     showData() {
       this.clearForm();
@@ -1056,19 +1177,13 @@ export default {
     saveData() {
       let me = this;
       axios
-        .post("/zarpes/save", {
-  
+        .post("/arrivals/save", {
           insNo: this.form.insNo.toUpperCase(),
-          portArrival: this.form.portArrival.toUpperCase(),
           radioCall: this.form.radioCall.toUpperCase(),
-          idOmi: this.form.idOmi.toUpperCase(),
-          noResolution: this.noResolution.name.toUpperCase(),
+          noResolution: this.form.noResolution.toUpperCase(),
           nameBoat: this.form.nameBoat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
           noPatent: this.form.noPatent.toUpperCase(),
-          representative: this.form.representative.toUpperCase(),
-          business: this.form.business.toUpperCase(),
-          zoneAutFish: this.form.zoneAutFish.toUpperCase(),
           eyeMesh: this.form.eyeMesh.toUpperCase(),
           netWidth: this.form.netWidth.toUpperCase(),
           eyeFlake: this.form.eyeFlake.toUpperCase(),
@@ -1077,14 +1192,40 @@ export default {
           materialArt: this.form.materialArt.toUpperCase(),
           equipDevi: this.form.equipDevi.toUpperCase(),
           captain: this.form.captain.toUpperCase(),
-          nacionality: this.form.nacionality.toUpperCase(),
+          noOmi: this.form.noOmi.toUpperCase(),
+          legalRepre: this.form.legalRepre.toUpperCase(),
+          noAllCrew: this.form.noAllCrew.toUpperCase(),
+          noCrewForeign: this.form.noCrewForeign.toUpperCase(),
+          noCrewNational: this.form.noCrewNational.toUpperCase(),
+          noDays: this.form.noDays.toUpperCase(),
+          noAllHauls: this.form.noAllHauls.toUpperCase(),
+          noHaulsNacional: this.form.noHaulsNacional.toUpperCase(),
+          noHaulsInter: this.form.noHaulsInter.toUpperCase(),
+          landedWeight: this.form.landedWeight.toUpperCase(),
           observation: this.observation.toUpperCase(),
-          conclusions: this.conclusions.toUpperCase(),
-          comments: this.comments.toUpperCase(),
+          notification: this.notification,
+          finalityArrival: this.finalityArrival,
+          origin: this.origin,
+          destination: this.destination,
+          workDone: this.workDone,
+          locationSystem: this.locationSystem,
+          inspectorConclusions :this.inspectorConclusions.toUpperCase(),
+          additionalComments :this.additionalComments.toUpperCase(),
+          dateIns :this.dateIns,
+          dateScale :this.dateScale,
+          dateZarpe :this.dateZarpe,
+          dateLatestArrival: this.dateLatestArrival,
+          dateValidityPat: this.dateValidityPat,
+          date: this.date,
+          dateValidity: this.dateValidity,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
           'id_flag': this.arrayFg.id,
+          'id_nationality': this.arrayNation.id,
+          'id_zoneAutoFisher': this.arrayZoneAuto.id,
+          'id_fisheryAuthorized': this.arrayFa.id,
+          'id_company': this.arrayComp.id,
         })
         .then(function(response) {
           me.hideForm();
@@ -1098,35 +1239,56 @@ export default {
     updateData() {
       let me = this;
       axios
-        .put("/zarpes/update", {
-          id: this.id_zarpes,
+        .put("/arrivals/update", {
+          id: this.id_arrival,
           insNo: this.form.insNo.toUpperCase(),
-          portArrival: this.form.portArrival.toUpperCase(),
-          radioCall: this.form.radioCall.toUpperCase(),
-          idOmi: this.form.idOmi.toUpperCase(),
-          noResolution: this.noResolution.name.toUpperCase(),
-          nameBoat: this.form.nameBoat.toUpperCase(),
+          radioCall :this.form.radioCall.toUpperCase(),
+          noResolution: this.form.noResolution.toUpperCase(),
+          nameBoat :this.form.nameBoat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
-          noPatent: this.form.noPatent.toUpperCase(),
-          representative: this.form.representative.toUpperCase(),
-          business: this.form.business.toUpperCase(),
-          zoneAutFish: this.form.zoneAutFish.toUpperCase(),
-          eyeMesh: this.form.eyeMesh.toUpperCase(),
-          netWidth: this.form.netWidth.toUpperCase(),
-          eyeFlake: this.form.eyeFlake.toUpperCase(),
-          typeHook: this.form.typeHook.toUpperCase(),
-          longNet: this.form.longNet.toUpperCase(),
-          materialArt: this.form.materialArt.toUpperCase(),
-          equipDevi: this.form.equipDevi.toUpperCase(),
-          captain: this.form.captain.toUpperCase(),
-          nacionality: this.form.nacionality.toUpperCase(),
-          observation: this.observation.toUpperCase(),
-          conclusions: this.conclusions.toUpperCase(),
-          comments: this.comments.toUpperCase(),
+          noPatent :this.form.noPatent.toUpperCase(),
+          eyeMesh :this.form.eyeMesh.toUpperCase(),
+          netWidth :this.form.netWidth.toUpperCase(),
+          eyeFlake :this.form.eyeFlake.toUpperCase(),
+          typeHook :this.form.typeHook.toUpperCase(),
+          longNet :this.form.longNet.toUpperCase(),
+          materialArt :this.form.materialArt.toUpperCase(),
+          equipDevi :this.form.equipDevi.toUpperCase(),
+          captain :this.form.captain.toUpperCase(),
+          noOmi :this.form.noOmi.toUpperCase(),
+          legalRepre :this.form.legalRepre.toUpperCase(),
+          noAllCrew :this.form.noAllCrew.toUpperCase(),
+          noCrewForeign :this.form.noCrewForeign.toUpperCase(),
+          noCrewNational :this.form.noCrewNational.toUpperCase(),
+          noDays :this.form.noDays.toUpperCase(),
+          noAllHauls :this.form.noAllHauls.toUpperCase(),
+          noHaulsNacional :this.form.noHaulsNacional.toUpperCase(),
+          noHaulsInter :this.form.noHaulsInter.toUpperCase(),
+          landedWeight :this.form.landedWeight.toUpperCase(),
+          observation :this.observation.toUpperCase(),
+          notification: this.notification,
+          finalityArrival: this.finalityArrival,
+          origin: this.origin,
+          destination: this.destination,
+          workDone: this.workDone,
+          locationSystem: this.locationSystem,
+          inspectorConclusions :this.inspectorConclusions.toUpperCase(),
+          additionalComments :this.additionalComments.toUpperCase(),
+          dateIns :this.dateIns,
+          dateScale :this.dateScale,
+          dateZarpe :this.dateZarpe,
+          dateLatestArrival: this.dateLatestArrival,
+          dateValidityPat: this.dateValidityPat,
+          date: this.date,
+          dateValidity: this.dateValidity,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
           'id_flag': this.arrayFg.id,
+          'id_nationality': this.arrayNation.id,
+          'id_zoneAutoFisher': this.arrayZoneAuto.id,
+          'id_fisheryAuthorized': this.arrayFa.id,
+          'id_company': this.arrayComp.id,
         })
         .then(function(response) {
           me.hideForm();
@@ -1139,7 +1301,7 @@ export default {
     },
     deleteData(data = []) {
       swal({
-        title: "Esta seguro de Eliminar este Zarpe " + data["name"],
+        title: "Esta seguro de Eliminar este arribo " + data["name"],
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -1154,8 +1316,8 @@ export default {
         if (result.value) {
           let me = this;      
           axios
-            .post("/zarpes/delete", {
-              id: this.id_zarpes
+            .post("/arrivals/delete", {
+              id: this.id_arrival
             })
             .then(function(response) {
               me.hideForm();
@@ -1206,10 +1368,19 @@ export default {
             responsive: "true",
           "columns": [
 
-            // { "data": "name" },
+            { "data": "insNo" },
             { "data": "nameReg" },
             { "data": "namePort" },
-            { "data": "nameFlag" },
+            { "data": "dateIns" },
+            // { "data": "origin" },
+            // { "data": "destination" },
+            { "data": "namePort" },
+            { "data": "dateZarpe" },
+            { "data": "nameBoat" },
+            // { "data": "nameFlag" },
+            // { "data": "enrollment" },
+            { "data": "captain" },
+            { "data": "nameNationality" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
 
         ]
@@ -1232,7 +1403,11 @@ export default {
     this.listData();
     this.selectRegion();   
     this.selectPort();   
-    this.selectFlag();   
+    this.selectFlag();  
+    this.selectNationality(); 
+    this.selectZoneAutoFisher();   
+    this.selectFisheryAuthorized();  
+    this.selectCompanies();   
   }
 };
 </script>

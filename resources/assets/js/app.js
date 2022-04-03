@@ -22,7 +22,7 @@ window.Vue = require('vue');
 Vue.component('region', require('./components/Regions.vue'));
 Vue.component('municipalities', require('./components/Municipalities.vue'));
 Vue.component('ports', require('./components/Ports.vue'));
-Vue.component('autofisher', require('./components/AutoFishers.vue'));
+Vue.component('autofisher', require('./components/ZoneAutoFishers.vue'));
 Vue.component('flags', require('./components/Flags.vue'));
 Vue.component('docks', require('./components/Docks.vue'));
 Vue.component('zarpe', require('./components/Zarpe.vue'));
@@ -31,6 +31,7 @@ Vue.component('checkdetinch', require('./components/CheckDetInch.vue'));
 Vue.component('checkdetflap', require('./components/CheckDetFlap.vue'));
 Vue.component('presenverific', require('./components/PresenVerific.vue'));
 Vue.component('nationality', require('./components/Nationality.vue'));
+Vue.component('companies', require('./components/Companies.vue'));
 
 
 const app = new Vue({

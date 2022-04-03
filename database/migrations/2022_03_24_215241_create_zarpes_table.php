@@ -24,8 +24,6 @@ class CreateZarpesTable extends Migration
             $table->string('enrollment'); 
             $table->string('noPatent'); 
             $table->string('representative'); 
-            $table->string('business'); 
-            $table->string('zoneAutFish'); 
             $table->string('eyeMesh'); 
             $table->string('netWidth'); 
             $table->string('eyeFlake'); 
@@ -43,15 +41,12 @@ class CreateZarpesTable extends Migration
             $table->date('dateResolution');
             $table->date('dateValid');
             $table->date('dateLatestArrival');
-            $table->date('dateValidityPat');    
-            
+            $table->date('dateValidityPat');        
             $table->string('notification');
             $table->string('finalityZarpe');
             $table->string('origin');
             $table->string('destination');
             $table->string('national');
-            $table->string('orop');
-            $table->string('fishAut');
 
             $table->integer('id_port')->unsigned();
             $table->foreign('id_port')->references('id')->on('ports');
@@ -61,6 +56,14 @@ class CreateZarpesTable extends Migration
             $table->foreign('id_region')->references('id')->on('regions');
             $table->integer('id_nationality')->unsigned();
             $table->foreign('id_nationality')->references('id')->on('nationalities');
+            $table->integer('id_orop')->unsigned();
+            $table->foreign('id_orop')->references('id')->on('orops');
+            $table->integer('id_zoneAutoFisher')->unsigned();
+            $table->foreign('id_zoneAutoFisher')->references('id')->on('auto_fishers');
+            $table->integer('id_fisheryAuthorized')->unsigned();
+            $table->foreign('id_fisheryAuthorized')->references('id')->on('fishery_authorizeds');
+            $table->integer('id_company')->unsigned();
+            $table->foreign('id_company')->references('id')->on('companies');
             $table->timestamps();
         });
     }

@@ -68,13 +68,18 @@
               <md-card-content>
                 <div class="md-layout">
                   <div class="md-layout-item">
-                      <label class="negrita">Fecha</label>
-                      <div>
-                        <md-datepicker v-model="date">
-                          <label>Seleccione Fecha</label>
-                        </md-datepicker>
-                      </div>
-                  </div> &nbsp;&nbsp;&nbsp;  
+                        <label class="negrita">Fecha</label>
+                        <div>
+                          <md-datepicker 
+                            v-model="date"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                          >
+                            <label>Seleccione Fecha</label>
+                          </md-datepicker>
+                        </div>
+                  </div> &nbsp;&nbsp;&nbsp;
                   <md-field md-clearable :class="getValidationClass('region')">
                     <label for="first-name">Regional</label>
                     <md-input
@@ -264,7 +269,8 @@
 </template>
 
 <script>
-import { validationMixin } from "vuelidate";
+ import format from "date-fns/format"; 
+    import { validationMixin } from "vuelidate";
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
     import vSelect from "vue-select";
@@ -276,6 +282,7 @@ import { validationMixin } from "vuelidate";
 		MdMenu,
 		MdSwitch,
 		MdDatepicker,
+    MdDialog,
 		MdList
     } from "vue-material/dist/components";
 
@@ -283,7 +290,6 @@ import { validationMixin } from "vuelidate";
         iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
     });
     Vue.use(MdButton);
-
     Vue.use(MdContent);
     Vue.use(MdField);
     Vue.use(MdCard);
@@ -291,19 +297,22 @@ import { validationMixin } from "vuelidate";
     Vue.use(MdSwitch);
     Vue.use(MdList);
     Vue.use(MdDatepicker);
+    Vue.use(MdDialog);
     import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
 
 export default {
-  mixins: [validationMixin],
-  props: ['ruta'],
+	mixins: [validationMixin],
+	props: ['ruta'],
+	
+	data() {
 
-  data() {
-    Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+		Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
 		Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
 		Vue.material.locale.shortMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul','Ago','Sep','Oct','Nov','Dic'];
 		Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
 		let now = new Date();
+    
     return {
       form: {
         region: "",
@@ -379,6 +388,22 @@ export default {
 		Multiselect
 	},
   methods: {
+    toString() {
+      this.toDate();
+      this.dynamicByModel =
+        this.dynamicByModel && format(this.dynamicByModel, this.dateFormat);
+    },
+    toDate() {
+      switch (this.type) {
+        case "string":
+          this.dynamicByModel = parse(
+            this.dynamicByModel,
+            this.dateFormat,
+            new Date()
+          );
+          break;
+      }
+    },
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
       if (field) {
