@@ -226,8 +226,8 @@
                   </md-field>
                   <img src="/img/img1.png" alt="Workplace" usemap="#workmap" width="263" height="278">
                   <map name="workmap">
-                    <area @click="demo('A')" shape="rect" coords="33,67,72,101" alt="" >
-                    <area @click="demo('B')" class="puntoa" id="puntoa" shape="rect" coords="116,13,151,45" alt="" >
+                    <area @click="demo('B')" shape="rect" coords="33,67,72,101" alt="" >
+                    <area @click="demo('A')" class="puntoa" id="puntoa" shape="rect" coords="116,13,151,45" alt="" >
                     <area @click="demo('C')" shape="rect" coords="117,165,150,196" alt="" >
                   </map>
                   <img src="/img/img2.png" alt="Workplace" usemap="#workmap2" width="263" height="278">
@@ -255,8 +255,8 @@
                             >Agregar
                             </md-button> -->
                           <tr>
-                            <!-- <th>PUNTO</th>              
-                            <th>DETs</th>     -->
+                            <th>PUNTO</th>              
+                            <!-- <th>DETs</th>     -->
                             <th>BABOR 1</th>    
                             <th>BABOR 2</th>    
                             <th>ESTRIBOR 1</th>    
@@ -266,6 +266,7 @@
                         </thead>
                         <tbody>
                           <tr v-for="(dets,index) in arrayDets" :key="`dets-${index}`">
+                            <td v-text="dets.punto"></td>
                             <td v-text="dets.babor1"></td>
                             <td v-text="dets.babor2"></td>
                             <td v-text="dets.estribor1"></td>
@@ -286,8 +287,8 @@
                         </tbody>
                           <tfoot>
                             <tr>
-                              <!-- <th>PUNTO</th>              
-                              <th>DETs</th>     -->
+                              <th>PUNTO</th>              
+                              <!-- <th>DETs</th>     -->
                               <th>BABOR 1</th>    
                               <th>BABOR 2</th>    
                               <th>ESTRIBOR 1</th>    
@@ -643,11 +644,13 @@ export default {
     },
     addDets(){
       this.arrayDets.push({
+        punto:this.punto,
         babor1:this.babor1,
         babor2:this.babor2,
         estribor1:this.estribor1,
         estribor2:this.estribor2,
       })
+      this.punto = "";
     },
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
