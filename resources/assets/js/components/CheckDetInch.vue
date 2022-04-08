@@ -256,7 +256,7 @@
                             </md-button> -->
                           <tr>
                             <th>PUNTO</th>              
-                            <!-- <th>DETs</th>     -->
+                            <th>DETs</th>    
                             <th>BABOR 1</th>    
                             <th>BABOR 2</th>    
                             <th>ESTRIBOR 1</th>    
@@ -267,6 +267,7 @@
                         <tbody>
                           <tr v-for="(dets,index) in arrayDets" :key="`dets-${index}`">
                             <td v-text="dets.punto"></td>
+                            <td v-text="dets.tituloModal"></td>
                             <td v-text="dets.babor1"></td>
                             <td v-text="dets.babor2"></td>
                             <td v-text="dets.estribor1"></td>
@@ -288,7 +289,7 @@
                           <tfoot>
                             <tr>
                               <th>PUNTO</th>              
-                              <!-- <th>DETs</th>     -->
+                              <th>DETs</th>    
                               <th>BABOR 1</th>    
                               <th>BABOR 2</th>    
                               <th>ESTRIBOR 1</th>    
@@ -645,6 +646,7 @@ export default {
     addDets(){
       this.arrayDets.push({
         punto:this.punto,
+        tituloModal:this.tituloModal,
         babor1:this.babor1,
         babor2:this.babor2,
         estribor1:this.estribor1,

@@ -49995,6 +49995,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -50176,6 +50177,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
     addDets: function addDets() {
       this.arrayDets.push({
         punto: this.punto,
+        tituloModal: this.tituloModal,
         babor1: this.babor1,
         babor2: this.babor2,
         estribor1: this.estribor1,
@@ -51116,6 +51118,8 @@ var render = function() {
                                 _c("tr", [
                                   _c("th", [_vm._v("PUNTO")]),
                                   _vm._v(" "),
+                                  _c("th", [_vm._v("DETs")]),
+                                  _vm._v(" "),
                                   _c("th", [_vm._v("BABOR 1")]),
                                   _vm._v(" "),
                                   _c("th", [_vm._v("BABOR 2")]),
@@ -51137,6 +51141,12 @@ var render = function() {
                                     _c("td", {
                                       domProps: {
                                         textContent: _vm._s(dets.punto)
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("td", {
+                                      domProps: {
+                                        textContent: _vm._s(dets.tituloModal)
                                       }
                                     }),
                                     _vm._v(" "),
@@ -51190,6 +51200,8 @@ var render = function() {
                               _c("tfoot", [
                                 _c("tr", [
                                   _c("th", [_vm._v("PUNTO")]),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("DETs")]),
                                   _vm._v(" "),
                                   _c("th", [_vm._v("BABOR 1")]),
                                   _vm._v(" "),
