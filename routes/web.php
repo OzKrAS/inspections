@@ -94,11 +94,15 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/checkDetInchs/save', 'CheckDetInchController@store');
         Route::put('/checkDetInchs/update', 'CheckDetInchController@update');
         Route::post('/checkDetInchs/delete', 'CheckDetInchController@destroy');
+        Route::get('/checkDetInchs/selectCompanies', 'CompanyController@selectCompanies');
+        Route::get('/checkDetInchs/selectRegional', 'RegionalController@selectRegional');
         //verificacion DET doble solapa
         Route::get('/checkDetFlaps', 'CheckDetFlapController@index');
         Route::post('/checkDetFlaps/save', 'CheckDetFlapController@store');
         Route::put('/checkDetFlaps/update', 'CheckDetFlapController@update');
         Route::post('/checkDetFlaps/delete', 'CheckDetFlapController@destroy');
+        Route::get('/checkDetFlaps/selectCompanies', 'CompanyController@selectCompanies');
+        Route::get('/checkDetFlaps/selectRegional', 'RegionalController@selectRegional');
         //verificacion presencia equipo de rescate
         Route::get('/presenVerifics', 'presenVerificController@index');
         Route::post('/presenVerifics/save', 'presenVerificController@store');
@@ -115,6 +119,18 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/companies/save', 'CompanyController@store');
         Route::put('/companies/update', 'CompanyController@update');
         Route::post('/companies/delete', 'CompanyController@destroy');
+        // regional
+        // Route::get('/regionals', 'RegionalController@index');
+        // Route::post('/regionals/save', 'RegionalController@store');
+        // Route::put('/regionals/update', 'RegionalController@update');
+        // Route::post('/regionals/delete', 'RegionalController@destroy');
+        // acta de donacion 
+        Route::get('/donationCertificates', 'DonationCertificateController@index');
+        Route::post('/donationCertificates/save', 'DonationCertificateController@store');
+        Route::put('/donationCertificates/update', 'DonationCertificateController@update');
+        Route::post('/donationCertificates/delete', 'DonationCertificateController@destroy');
+        Route::get('/donationCertificates/selectRegional', 'RegionalController@selectRegional');
+
 
 
 

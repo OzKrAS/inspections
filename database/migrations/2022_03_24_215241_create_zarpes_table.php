@@ -16,7 +16,6 @@ class CreateZarpesTable extends Migration
         Schema::create('zarpes', function (Blueprint $table) {
             $table->increments('id');       
             $table->string('insNo'); 
-            $table->string('portArrival'); 
             $table->string('radioCall'); 
             $table->string('idOmi'); 
             $table->string('noResolution'); 
@@ -49,6 +48,7 @@ class CreateZarpesTable extends Migration
             $table->string('national');
 
             $table->integer('id_port')->unsigned();
+            $table->integer('id_portZarpe')->unsigned();
             $table->foreign('id_port')->references('id')->on('ports');
             $table->integer('id_flag')->unsigned();
             $table->foreign('id_flag')->references('id')->on('flags');

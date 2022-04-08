@@ -85,6 +85,9 @@
                             <li @click="menu=13">
                                 <a href="#"><i class="icon-bag"></i>Empresas</a>                                                                               
                             </li>                                
+                            <li @click="menu=14">
+                                <a href="#"><i class="icon-bag"></i>Acta de Donación</a>                                                                               
+                            </li>                                
                         </ul>                            
                         </div>                        
                     </li>

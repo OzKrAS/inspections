@@ -639,6 +639,185 @@
                             <label>Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)</label>
                             <md-textarea v-model="observation"></md-textarea>
                       </md-field>
+
+                      <label><b>CAPTURA OJETIVO</b></label>
+                      <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                        <thead>
+                            <md-field md-clearable :class="getValidationClass('nameCommon1')">
+                              <label for="first-name">Nombre Común</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.nameCommon1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.nameCommon1.required"
+                              >Olvidaste ingresar el nombre común</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('nameScientific1')">
+                              <label for="first-name">Nombre Científico</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.nameScientific1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.nameScientific1.required"
+                              >Olvidaste ingresar el nombre científico</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('capture1')">
+                              <label for="first-name">Captura - Ton.</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.capture1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.capture1.required"
+                              >Olvidaste ingresar la captura el toneladas</span>
+                            </md-field>
+                            <md-button
+                              type="button"
+                              class="md-dense md-raised md-primary"
+                              :disabled="sending"
+                              @click="addItemTarget()"
+                            >Agregar
+                            </md-button>
+                          <tr>
+                            <th>NOMBRE COMÙN</th>              
+                            <th>NOMBRE CIENTÌFICO</th>    
+                            <th>CAPTURA TON.</th>    
+                            <th style="width: 90px">Opciones</th>
+                          </tr>
+                        </thead>
+                       <tbody>
+                          <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
+                            <td v-text="target.nameCommon1"></td>
+                            <td v-text="target.nameScientific1"></td>
+                            <td v-text="target.capture1"></td>
+                            <td>                      
+                              <button
+                                type="button"
+                                class="btn btn-danger btn-sm"
+                                data-tooltip
+                                title="Eliminar"
+                                @click="deleteTarget(index)"
+                              >
+                                <i class="icon-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                          <tfoot>
+                            <tr>
+                              <th>NOMBRE COMÙN</th>              
+                              <th>NOMBRE CIENTÌFICO</th>    
+                              <th>CAPTURA TON.</th>    
+                              <th style="width: 90px">Opciones</th>
+                            </tr>
+                          </tfoot>
+                          <tbody>
+                          </tbody>
+                      </table>
+                      <label><b>CAPTURA FAUNA INCIDENTAL</b></label>
+                      <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                        <thead>
+                           <md-field md-clearable :class="getValidationClass('nameCommon2')">
+                              <label for="first-name">Nombre Común</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.nameCommon2"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.nameCommon2.required"
+                              >Olvidaste ingresar el nombre común</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('nameScientific2')">
+                              <label for="first-name">Nombre Científico</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.nameScientific2"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.nameScientific2.required"
+                              >Olvidaste ingresar el nombre científico</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('capture2')">
+                              <label for="first-name">Captura - Ton.</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.capture2"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.capture2.required"
+                              >Olvidaste ingresar la captura en toneladas</span>
+                            </md-field>
+                            <md-button
+                              type="button"
+                              v-if="tipoAccion==1"
+                              class="md-dense md-raised md-primary"
+                              :disabled="sending"
+                              @click="addItemFauna()"
+                            >Agregar
+                            </md-button>
+                          <tr>
+                            <th>NOMBRE COMÙN</th>              
+                            <th>NOMBRE CIENTÌFICO</th>    
+                            <th>CAPTURA TON.</th>    
+                            <th style="width: 90px">Opciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="(fauna,index) in arrayFauna" :key="`fauna-${index}`">
+                            <td v-text="fauna.nameCommon2"></td>
+                            <td v-text="fauna.nameScientific2"></td>
+                            <td v-text="fauna.capture2"></td>
+                            <td>  
+                              <button
+                                type="button"
+                                class="btn btn-danger btn-sm"
+                                data-tooltip
+                                title="Eliminar"
+                                @click="deleteFauna(index)"
+                              >
+                                <i class="icon-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                          <tfoot>
+                            <tr>
+                              <th>NOMBRE COMÙN</th>              
+                              <th>NOMBRE CIENTÌFICO</th>    
+                              <th>CAPTURA TON.</th>  
+                              <th style="width: 90px">Opciones</th>
+                            </tr>
+                          </tfoot>
+                          <tbody>
+                          </tbody>
+                      </table>
+
                       <md-field md-clearable :class="getValidationClass('landedWeight')">
                         <label for="first-name">Peso Desembarcado Comprobado (ingreso planta proceso)(Ton)</label>
                         <md-input
@@ -767,6 +946,12 @@ export default {
         noHaulsNacional: "",
         noHaulsInter: "",
         landedWeight: "",
+        nameCommon1: "",
+        nameScientific1: "",
+        capture1: "",
+        nameCommon2: "",
+        nameScientific2: "",
+        capture2: "",
       },
 
       observation: "",
@@ -811,6 +996,9 @@ export default {
       arrayComp: {id:0, name:''},
 	    arrayCompany: [],
       id_Company: 0,
+
+      arrayTarget: [],
+      arrayFauna: [],
       
       
       edo: 1,
@@ -905,6 +1093,24 @@ export default {
       landedWeight: {
         required
       },
+      nameCommon1: {
+        required
+      },
+      nameScientific1: {
+        required
+      },
+      capture1: {
+        required
+      },
+      nameCommon2: {
+        required
+      },
+      nameScientific2: {
+        required
+      },
+      capture2: {
+        required
+      },
     }
   },
 
@@ -943,6 +1149,45 @@ export default {
         this.saveData();
         this.clearForm();
       }
+    },
+    addItemTarget() {
+      let me = this;
+      var total1 = me.arrayTarget.push({
+        nameCommon1:this.form.nameCommon1,
+        nameScientific1:this.form.nameScientific1,
+        capture1:this.form.capture1
+      });
+      console.log("arrayTarget " + total1);
+      me.clearTarget();
+    
+    },
+    addItemFauna() {
+      let me = this;
+      var total2 = me.arrayFauna.push({
+        nameCommon2:this.form.nameCommon2,
+        nameScientific2:this.form.nameScientific2,
+        capture2:this.form.capture2
+      });
+      console.log("arrayFauna " + total2);
+      me.clearFauna();
+       
+      
+    },
+    deleteTarget(index){
+       this.arrayTarget.splice(index,1);
+    },
+    deleteFauna(index){
+       this.arrayFauna.splice(index,1);
+    },
+    clearTarget() {
+      this.form.nameCommon1 = null;
+      this.form.nameScientific1 = null;
+      this.form.capture1 = null;
+    },
+    clearFauna() {
+      this.form.nameCommon2 = null;
+      this.form.nameScientific2 = null;
+      this.form.capture2 = null;
     },
     clearForm() {
       this.$v.$reset();

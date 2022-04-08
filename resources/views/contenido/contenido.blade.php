@@ -45,6 +45,9 @@
             <template v-if="menu==13">
                 <companies></companies>
             </template>
+            <template v-if="menu==14">
+                <donations></donations>
+            </template>
 
            
    

@@ -72,7 +72,7 @@ class ArrivalController extends Controller
                     'arrivals.id_nationality','nationalities.name as nameNationality',
                     'arrivals.id_zoneAutoFisher','auto_fishers.name as nameZoneAutoFisher',
                     'arrivals.id_fisheryAuthorized','fishery_authorizeds.name as nameFishery',
-                    'zarpes.id_company','companies.name as nameCompany',
+                    'arrivals.id_company','companies.name as nameCompany',
             )
         
             ->paginate(9999999999999999999999999);
@@ -130,7 +130,7 @@ class ArrivalController extends Controller
         $arrivals->id_port = $request->id_port;    
         $arrivals->id_flag = $request->id_flag;    
         $arrivals->id_nationality = $request->id_nationality; 
-        $arrivals->id_zoneAutoFish = $request->id_zoneAutoFish;       
+        $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;       
         $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized;    
         $arrivals->id_company = $request->id_company; 
         $arrivals->save();
@@ -185,7 +185,7 @@ class ArrivalController extends Controller
         $arrivals->id_port = $request->id_port;    
         $arrivals->id_flag = $request->id_flag;    
         $arrivals->id_nationality = $request->id_nationality; 
-        $arrivals->id_zoneAutoFish = $request->id_zoneAutoFish;  
+        $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;  
         $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized; 
         $arrivals->id_company = $request->id_company; 
         $arrivals->save();

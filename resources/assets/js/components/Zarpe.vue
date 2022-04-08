@@ -168,7 +168,7 @@
                       </div> &nbsp;&nbsp;&nbsp; 
                         <div class="md-layout-item">
                             <label>Puerto de Zarpe</label>
-                            <multiselect v-model="arrayPt" :options="arrayPort"
+                            <multiselect v-model="arrayPtZarpe" :options="arrayPort"
                                 placeholder="Seleccione un puerto"
                                 :custom-label="nameWithPort"
                                 label="name"
@@ -188,20 +188,15 @@
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp;  
-                  <md-field md-clearable :class="getValidationClass('portArrival')">
-                    <label for="first-name">Puerto de Ultimo Arribo</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.portArrival"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.portArrival.required"
-                    >Olvidaste ingresar el puerto para el ultimo arribo</span>
-                  </md-field>
+                  <div class="md-layout-item">
+                      <label>Puerto de Ultimo Arribo</label>
+                      <multiselect v-model="arrayPt" :options="arrayPort"
+                          placeholder="Seleccione una región"
+                          :custom-label="nameWithPort"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                         <label class="negrita">Fecha Ultimo Arribo</label>
                         <div>
@@ -640,7 +635,6 @@ export default {
       return {form: {
 
         insNo: "",
-        portArrival: "",
         radioCall: "",
         idOmi: "",
         noResolution: "",
@@ -679,12 +673,16 @@ export default {
 
       arrayZarpes: [],
       id_zarpes: 0,
+      arrayPt: {id:0, name:''},
+	    arrayPort: [],
+      id_port: 0,
+      arrayPtZarpe: {id:0, name:''},
+      id_portZarpe: 0,
       arrayReg: {id:0, name:''},
 	    arrayRegion: [],
       id_region: 0,
       arrayPt: {id:0, name:''},
-	    arrayPort: [],
-      id_port: 0,
+      arrayPtOrigin: {id:0, name:''},
       arrayFg: {id:0, name:''},
 	    arrayFlag: [],
       id_flag: 0,
@@ -726,9 +724,6 @@ export default {
     form: {
 
       insNo: {
-        required
-      },
-      portArrival: {
         required
       },
       radioCall: {
@@ -818,7 +813,6 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.insNo = null;
-      this.form.portArrival = null;
       this.form.radioCall = null;
       this.form.idOmi = null;
       this.form.noResolution = null;
@@ -852,6 +846,7 @@ export default {
   
       this.arrayReg = {id:0, name:''};
       this.arrayPt = {id:0, name:''};
+      this.arrayPtZarpe = {id:0, name:''};
       this.arrayFg = {id:0, name:''};
       this.arrayNation = {id:0, name:''};
       this.arrayOr = {id:0, name:''};
@@ -893,8 +888,6 @@ export default {
           var respuesta = response.data;
           me.arrayZarpes = respuesta.zarpes.data;
           me.myTable(me.arrayZarpes);
-    
-
         })
         .catch(function (error) {
           console.log(error);
@@ -985,7 +978,6 @@ export default {
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_zarpes = data["id"]);
       this.form.insNo = data["insNo"];
-      this.form.portArrival = data["portArrival"];
       this.form.radioCall = data["radioCall"];
       this.form.idOmi = data["idOmi"];
       this.form.noResolution = data["noResolution"];
@@ -1021,6 +1013,8 @@ export default {
 			this.arrayReg.name = data["nameReg"];
       this.arrayPt.id = data["id_port"];
 			this.arrayPt.name = data["namePort"];
+      this.arrayPtZarpe.id = data["id_portZarpe"];
+			this.arrayPtZarpe.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
 			this.arrayFg.name = data["nameFlag"];
       this.arrayNation.id = data["id_nationality"];
@@ -1051,7 +1045,6 @@ export default {
       axios
         .post("/zarpes/save", {
           insNo: this.form.insNo.toUpperCase(),
-          portArrival: this.form.portArrival.toUpperCase(),
           radioCall: this.form.radioCall.toUpperCase(),
           idOmi: this.form.idOmi.toUpperCase(),
           noResolution: this.form.noResolution.toUpperCase(),
@@ -1085,6 +1078,7 @@ export default {
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
+          'id_portZarpe': this.arrayPtZarpe.id,
           'id_flag': this.arrayFg.id,
           'id_nationality': this.arrayNation.id,
           'id_orop': this.arrayOr.id,
@@ -1108,7 +1102,6 @@ export default {
         .put("/zarpes/update", {
           id: this.id_zarpes,
           insNo: this.form.insNo.toUpperCase(),
-          portArrival: this.form.portArrival.toUpperCase(),
           radioCall: this.form.radioCall.toUpperCase(),
           idOmi: this.form.idOmi.toUpperCase(),
           noResolution: this.form.noResolution.toUpperCase(),
@@ -1142,6 +1135,7 @@ export default {
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
+          'id_portZarpe': this.arrayPtZarpe.id,
           'id_flag': this.arrayFg.id,
           'id_nationality': this.arrayNation.id,
           'id_orop': this.arrayOr.id,

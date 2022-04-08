@@ -80,20 +80,15 @@
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('region')">
-                    <label for="first-name">Regional</label>
-                    <md-input
-                       name="first-name"
-                       id="first-name"
-                       autocomplete="given-name"
-                       v-model="form.region"
-                       :disabled="sending"
-                     />
-                     <span
-                       class="md-error"
-                       v-if="!$v.form.region.required"
-                     >Olvidaste ingresar el nombre de la región</span>
-                  </md-field>
+                  <div class="md-layout-item">
+                      <label>Regional</label>
+                      <multiselect v-model="arrayRegl" :options="arrayRegional"
+                          placeholder="Seleccione una zona"
+                          :custom-label="nameWithRegional"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <md-field md-clearable :class="getValidationClass('office')">
                     <label for="first-name">Oficina</label>
                     <md-input
@@ -178,20 +173,15 @@
                        v-if="!$v.form.fishLicense.required"
                      >Olvidaste ingresar el nombre de la patente de pesca</span>
                   </md-field>
-                  <md-field md-clearable :class="getValidationClass('business')">
-                    <label for="first-name">Empresa</label>
-                    <md-input
-                       name="first-name"
-                       id="first-name"
-                       autocomplete="given-name"
-                       v-model="form.business"
-                       :disabled="sending"
-                     />
-                     <span
-                       class="md-error"
-                       v-if="!$v.form.business.required"
-                     >Olvidaste ingresar el nombre de la empresa</span>
-                  </md-field>
+                  <div class="md-layout-item">
+                      <label>Empresa</label>
+                      <multiselect v-model="arrayComp" :options="arrayCompany"
+                          placeholder="Seleccione una zona"
+                          :custom-label="nameWithCompany"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <md-field md-clearable :class="getValidationClass('owner')">
                     <label for="first-name">Armador</label>
                     <md-input
@@ -234,6 +224,25 @@
                        v-if="!$v.form.location.required"
                      >Olvidaste ingresar el nombre de la localización</span>
                   </md-field>
+                  <img src="/img/img1.png" alt="Workplace" usemap="#workmap" width="263" height="278">
+                  <map name="workmap">
+                    <area shape="rect" coords="33,67,72,101" alt="" href="">
+                    <area shape="rect" coords="116,13,151,45" alt="" href="">
+                    <area shape="rect" coords="117,165,150,196" alt="" href="">
+                  </map>
+                  <img src="/img/img2.png" alt="Workplace" usemap="#workmap2" width="263" height="278">
+                  <map name="workmap2">
+                    <area shape="rect" coords="132,197,161,226" alt="" href="">
+                    <area shape="rect" coords="232,180,263,210" alt="" href="">
+                  </map>
+                  <img src="/img/img3.png" alt="Workplace" usemap="#workmap3" width="273" height="295">
+                  <map name="workmap3">
+                     <area shape="rect" coords="25,150,57,173" alt="" href="">
+                     <area shape="rect" coords="73,102,104,132" alt="" href="">
+                     <area shape="rect" coords="113,28,144,57" alt="" href="">
+                     <area shape="rect" coords="190,65,222,92" alt="" href="">
+                  </map>
+                  <img alt="Graficos" width="263" height="278" src="/img/img4.png">
                 </div>
               </md-card-content>
             </form>
@@ -315,20 +324,27 @@ export default {
     
     return {
       form: {
-        region: "",
         office: "",
         official: "",
         boat: "",
         enrollment: "",
         outhFhisher: "",
         fishLicense: "",
-        business: "",
         owner: "",
         fishCaptain: "",
         location: "",
       },
+      
+      arrayCheckDet: [],
+      id_CheckDet: 0,
+      arrayComp: {id:0, name:''},
+	    arrayCompany: [],
+      id_company: 0,
+      arrayRegional: {id:0, name:''},
+	    arrayRegl: [],
+      id_regional: 0,
 
-      date: 0,
+      date: format(now, dateFormat),
       idCheckDelt: 0,
 
       edo:1,
@@ -344,9 +360,7 @@ export default {
 
   validations: {
     form: {
-      region: {
-        required
-      },
+      
       office: {
         required
       },
@@ -363,9 +377,6 @@ export default {
         required
       },
       fishLicense:  {
-        required
-      },
-      business:  {
         required
       },
       owner:  {
@@ -388,6 +399,9 @@ export default {
 		Multiselect
 	},
   methods: {
+    alerta() {
+       alert('test');
+    },   
     toString() {
       this.toDate();
       this.dynamicByModel =
@@ -423,36 +437,46 @@ export default {
     clearForm() {
       this.$v.$reset();
     
-      this.form.region = null;
       this.form.office = null;
       this.form.official = null;
       this.form.boat = null;
       this.form.enrollment = null;
       this.form.outhFhisher = null;
       this.form.fishLicense = null;
-      this.form.business = null;
       this.form.owner = null;
       this.form.fishCaptain = null;
       this.form.location = null;
       this.date = null;
+
+      this.arrayComp = {id:0, name:''};
+      this.arrayRegl = {id:0, name:''};
     },
 
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
-      (this.idCheckDelt = data["id"]);
-      this.form.region = data["region"];
+      (this.id_CheckDet = data["id"]);
       this.form.office = data["office"];
       this.form.official = data["official"];
       this.form.boat = data["boat"];
       this.form.enrollment = data["enrollment"];
       this.form.outhFhisher = data["outhFhisher"];
       this.form.fishLicense = data["fishLicense"];
-      this.form.business = data["business"];
       this.form.owner = data["owner"];
       this.form.fishCaptain = data["fishCaptain"];
       this.form.location = data["location"];
       this.date = data["date"];
+
+      this.arrayComp.id = data["id_company"];
+			this.arrayComp.name = data["nameCompany"];
+      this.arrayRegl.id = data["id_regional"];
+			this.arrayRegl.name = data["nameRegional"];
+    },
+    nameWithCompany ({ name }) {
+            return `${name}`
+    },
+    nameWithRegional ({ name }) {
+            return `${name}`
     },
     showData() {
       this.clearForm();
@@ -473,13 +497,33 @@ export default {
         .get(url)
         .then(function (response) {
           var respuesta = response.data;
-          me.arrayData = respuesta.data;
-          me.myTable(me.arrayData);
+          me.arrayCheckDet = respuesta.CheckDetInchs.data;
+          me.myTable(me.arrayCheckDet);
 
         })
         .catch(function (error) {
           console.log(error);
         });
+    },
+    selectCompanies() {
+            let me = this;
+            var url = "/checkDetInchs/selectCompanies";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayCompany= respuesta.company;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    }, 
+    selectRegional() {
+            let me = this;
+            var url = "/checkDetInchs/selectRegional";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayRegional= respuesta.regional;
+                }).catch(function (error) {
+                    console.log(error);
+            });
     }, 
     saveData() {
       let me = this;
@@ -487,18 +531,18 @@ export default {
       axios
         .post("/checkDetInchs/save", {
     
-        region: this.form.region.toUpperCase(),
         office: this.form.office.toUpperCase(),
         official: this.form.official.toUpperCase(),
         boat: this.form.boat.toUpperCase(),
         enrollment: this.form.enrollment.toUpperCase(),
         outhFhisher: this.form.outhFhisher.toUpperCase(),
         fishLicense: this.form.fishLicense.toUpperCase(),
-        business: this.form.business.toUpperCase(),
         owner: this.form.owner.toUpperCase(),
         fishCaptain: this.form.fishCaptain.toUpperCase(),
         location: this.form.location.toUpperCase(),
         date: this.date,
+        'id_company': this.arrayComp.id,
+        'id_regional': this.arrayRegl.id,
         })
         .then(function(response) {
           me.hideForm();
@@ -514,20 +558,21 @@ export default {
 
       axios
         .put("/checkDetInchs/update", {
-      
-          region: this.form.region.toUpperCase(),
+
+          id: this.id_CheckDet,
           office: this.form.office.toUpperCase(),
           official: this.form.official.toUpperCase(),
           boat: this.form.boat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
           outhFhisher: this.form.outhFhisher.toUpperCase(),
           fishLicense: this.form.fishLicense.toUpperCase(),
-          business: this.form.business.toUpperCase(),
           owner: this.form.owner.toUpperCase(),
           fishCaptain: this.form.fishCaptain.toUpperCase(),
           location: this.form.location.toUpperCase(),
           date: this.date,
-          id: this.idCheckDelt
+          
+          'id_company': this.arrayComp.id,
+          'id_regional': this.arrayRegl.id,
         })
         .then(function(response) {
           me.hideForm();
@@ -556,7 +601,7 @@ export default {
           let me = this;      
           axios
             .post("/checkDetInchs/delete", {
-              id: data["id"],
+              id: this.id_CheckDet,
             })
             .then(function(response) {
               me.hideForm();
@@ -608,14 +653,14 @@ export default {
           "columns": [
 
             { "data": "date" },
-            { "data": "region" },
+            { "data": "nameRegional" },
             { "data": "office" },
             { "data": "official" },
             { "data": "boat" },
             { "data": "enrollment" },
             { "data": "outhFhisher" },
             { "data": "fishLicense" },
-            { "data": "business" },
+            { "data": "nameCompany" },
             { "data": "owner" },
             { "data": "fishCaptain" },
             { "data": "location" },
@@ -639,11 +684,12 @@ export default {
 
   mounted() {
     this.listData();
+    this.selectCompanies();  
+    this.selectRegional();
   }
 };
 </script>
 <style>
-
 .div-error {
   display: flex;
   justify-content: center;

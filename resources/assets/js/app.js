@@ -32,6 +32,8 @@ Vue.component('checkdetflap', require('./components/CheckDetFlap.vue'));
 Vue.component('presenverific', require('./components/PresenVerific.vue'));
 Vue.component('nationality', require('./components/Nationality.vue'));
 Vue.component('companies', require('./components/Companies.vue'));
+// Vue.component('regional', require('./components/Regionals.vue'));
+Vue.component('donations', require('./components/DonationCertificates.vue'));
 
 
 const app = new Vue({
