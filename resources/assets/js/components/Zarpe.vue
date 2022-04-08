@@ -64,7 +64,9 @@
           <div class="card-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
-                <div class="md-layout">
+                <!-- <div class="md-layout"> -->
+                <div class="md-layout"> 
+                <div class="md-layout-item md-size-70"> 
                     <md-field md-clearable :class="getValidationClass('insNo')">
                         <label for="first-name">Inspección No.</label>
                         <md-input
@@ -80,13 +82,29 @@
                         >Olvidaste ingresar el número de inspección para el Zarpe
                         </span>
                     </md-field> 
-				              	<label>Región/Municipio</label>
+                    </div>
+                    <div class="md-layout-item ">                                        
+                          <md-datepicker 
+                            v-model="dateIns"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"                          
+                          >
+                            <label>Fecha de Inspección</label>
+                          </md-datepicker>                        
+                      </div> &nbsp;&nbsp;&nbsp; 
+                    </div>
+                     <div class="md-layout">  
+                     <div class="md-layout-item">  
+                      <label>Región/Municipio</label>
                         <multiselect v-model="arrayReg" :options="arrayRegion"
                           placeholder="Seleccione una región"
                           :custom-label="nameWithRegion"
                           label="name"
                           track-by="name">
-                        </multiselect>&nbsp;&nbsp;&nbsp;
+                        </multiselect>
+                        </div>&nbsp;&nbsp;&nbsp;
+                        <div class="md-layout-item">  
                         <label>Puerto/Muelle de Inspección</label>
                         <multiselect v-model="arrayPt" :options="arrayPort"
                             placeholder="Seleccione un puerto/muelle"
@@ -94,20 +112,11 @@
                             label="name"
                             track-by="name">
                         </multiselect>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item">
-                        <label class="negrita">Fecha de Inspección</label>
-                        <div>
-                          <md-datepicker 
-                            v-model="dateIns"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                          
-                          >
-                            <label>Seleccione Fecha</label>
-                          </md-datepicker>
+                        
                         </div>
-                      </div> &nbsp;&nbsp;&nbsp; 
+
+                        </div>
+                      <div class="md-layout">
                       <div class="md-layout-item">
                         <md-field>
                           <label for="notification">Recibió Notificación Previa</label>
@@ -152,9 +161,11 @@
                             <md-option value="pacifico/tumaco">Pacífico/Tumaco</md-option>
                           </md-select>
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp; 
-                      <div class="md-layout-item">
-                        <label class="n  egrita">Fecha Última Escala</label>
+                      </div>
+
+                      </div> 
+                      <div class="md-layout">
+                      <div class="md-layout-item">                     
                         <div>
                           <md-datepicker 
                             v-model="dateScale"
@@ -162,13 +173,13 @@
                             md-immediately
                             :md-model-type="String"
                           >
-                            <label>Seleccione Fecha</label>
+                            <label>Fecha Última Escala</label>
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp; 
                         <div class="md-layout-item">
                             <label>Puerto de Zarpe</label>
-                            <multiselect v-model="arrayPtZarpe" :options="arrayPort"
+                            <multiselect v-model="arrayPt" :options="arrayPort"
                                 placeholder="Seleccione un puerto"
                                 :custom-label="nameWithPort"
                                 label="name"
@@ -176,7 +187,6 @@
                             </multiselect>
                         </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
-                        <label class="negrita">Fecha Zarpe</label>
                         <div>
                           <md-datepicker 
                             v-model="dateZarpe"
@@ -184,7 +194,7 @@
                             md-immediately
                             :md-model-type="String"
                             >
-                            <label>Seleccione Fecha</label>
+                            <label>Fecha Zarpe</label>
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp;  
@@ -196,9 +206,8 @@
                           label="name"
                           track-by="name">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>&nbsp;&nbsp;&nbsp;                 
                   <div class="md-layout-item">
-                        <label class="negrita">Fecha Ultimo Arribo</label>
                         <div>
                           <md-datepicker 
                             v-model="dateLatestArrival"
@@ -206,11 +215,11 @@
                             md-immediately
                             :md-model-type="String"
                           >
-                            <label>Seleccione Fecha</label>
+                            <label>Fecha Ultimo Arribo</label>
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp;
-
+              </div>
                   <!-- <label>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</label> -->
 
                   <div class="md-layout-item">
@@ -279,7 +288,6 @@
                     >Olvidaste ingresar el número de resolución</span>
                   </md-field>
                   <div class="md-layout-item">
-                        <label class="negrita">Fecha</label>
                         <div>
                           <md-datepicker 
                             v-model="dateResolution"
@@ -287,22 +295,21 @@
                             md-immediately
                             :md-model-type="String"
                           >
-                            <label>Seleccione Fecha</label>
+                            <label>Fecha Resolución</label>
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp; 
                   <div class="md-layout-item">
-                        <label class="negrita">Vigencia</label>
-                        <div>
+                     
                           <md-datepicker 
                             v-model="dateValid"
                             @input="toString"
                             md-immediately
                             :md-model-type="String"
                             >
-                            <label>Seleccione Fecha</label>
+                            <label>Fecha Vigencia</label>
                           </md-datepicker>
-                        </div>
+                   
                   </div> &nbsp;&nbsp;&nbsp; 
                   <md-field md-clearable :class="getValidationClass('nameBoat')">
                     <label for="first-name">Nombre Embarcación</label>
@@ -552,7 +559,7 @@
                         <md-textarea v-model="comments"></md-textarea>
                    </md-field>
 
-                </div>
+               <!-- </div> -->
               </md-card-content>
             </form>
           </div>
@@ -676,8 +683,6 @@ export default {
       arrayPt: {id:0, name:''},
 	    arrayPort: [],
       id_port: 0,
-      arrayPtZarpe: {id:0, name:''},
-      id_portZarpe: 0,
       arrayReg: {id:0, name:''},
 	    arrayRegion: [],
       id_region: 0,
@@ -1013,8 +1018,6 @@ export default {
 			this.arrayReg.name = data["nameReg"];
       this.arrayPt.id = data["id_port"];
 			this.arrayPt.name = data["namePort"];
-      this.arrayPtZarpe.id = data["id_portZarpe"];
-			this.arrayPtZarpe.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
 			this.arrayFg.name = data["nameFlag"];
       this.arrayNation.id = data["id_nationality"];
@@ -1078,7 +1081,6 @@ export default {
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
-          'id_portZarpe': this.arrayPtZarpe.id,
           'id_flag': this.arrayFg.id,
           'id_nationality': this.arrayNation.id,
           'id_orop': this.arrayOr.id,
@@ -1135,7 +1137,6 @@ export default {
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
-          'id_portZarpe': this.arrayPtZarpe.id,
           'id_flag': this.arrayFg.id,
           'id_nationality': this.arrayNation.id,
           'id_orop': this.arrayOr.id,

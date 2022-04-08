@@ -61,7 +61,6 @@ class ZarpeController extends Controller
 
                      'zarpes.id_region','regions.name as nameReg',
                      'zarpes.id_port','ports.name as namePort',
-                     'zarpes.id_portZarpe','ports.name as namePortZarpe',
                      'zarpes.id_flag','flags.name as nameFlag',
                      'zarpes.id_nationality','nationalities.name as nameNationality',
                      'zarpes.id_orop','orops.name as nameOrop',
@@ -116,7 +115,6 @@ class ZarpeController extends Controller
 
         $zarpes->id_region = $request->id_region;    
         $zarpes->id_port = $request->id_port;    
-        $zarpes->id_portZarpe = $request->id_portZarpe;    
         $zarpes->id_flag = $request->id_flag;   
         $zarpes->id_nationality = $request->id_nationality;       
         $zarpes->id_orop = $request->id_orop;       
@@ -166,7 +164,6 @@ class ZarpeController extends Controller
 
         $zarpes->id_region = $request->id_region;    
         $zarpes->id_port = $request->id_port;    
-        $zarpes->id_portZarpe = $request->id_portZarpe;  
         $zarpes->id_flag = $request->id_flag;  
         $zarpes->id_nationality = $request->id_nationality;  
         $zarpes->id_orop = $request->id_orop;  

@@ -24,6 +24,18 @@ class DonationCertificateController extends Controller
                      'donation_certificates.date',
                      'donation_certificates.nameOfficial',
                      'donation_certificates.noDocumentId1',
+                     'donation_certificates.nameRepresentative',
+                     'donation_certificates.noDocumentId2',
+                     'donation_certificates.noPlateCertificate',
+                     'donation_certificates.name',
+                     'donation_certificates.legalStatus',
+                     'donation_certificates.address',
+                     'donation_certificates.representativeDonation',
+                     'donation_certificates.identification',
+                     'donation_certificates.municipality',
+                     'donation_certificates.corregimiento',
+                     'donation_certificates.place',
+                     'donation_certificates.telephone',
                      
                      'donation_certificates.id_regional','regionals.name as nameRegional',
                      
@@ -49,6 +61,18 @@ class DonationCertificateController extends Controller
         $donations->date = $request->date;
         $donations->nameOfficial = $request->nameOfficial;
         $donations->noDocumentId1 = $request->noDocumentId1;
+        $donations->nameRepresentative = $request->nameRepresentative;
+        $donations->noDocumentId2 = $request->noDocumentId2;
+        $donations->noPlateCertificate = $request->noPlateCertificate;
+        $donations->name = $request->name;
+        $donations->legalStatus = $request->legalStatus;
+        $donations->address = $request->address;
+        $donations->representativeDonation = $request->representativeDonation;
+        $donations->identification = $request->identification;
+        $donations->municipality = $request->municipality;
+        $donations->corregimiento = $request->corregimiento;
+        $donations->place = $request->place;
+        $donations->telephone = $request->telephone;
 
         $donations->id_regional = $request->id_regional;  
         $donations->save();
@@ -67,6 +91,18 @@ class DonationCertificateController extends Controller
         $donations->date = $request->date;
         $donations->nameOfficial = $request->nameOfficial;
         $donations->noDocumentId1 = $request->noDocumentId1;
+        $donations->nameRepresentative = $request->nameRepresentative;
+        $donations->noDocumentId2 = $request->noDocumentId2;
+        $donations->noPlateCertificate = $request->noPlateCertificate;
+        $donations->name = $request->name;
+        $donations->legalStatus = $request->legalStatus;
+        $donations->address = $request->address;
+        $donations->representativeDonation = $request->representativeDonation;
+        $donations->identification = $request->identification;
+        $donations->municipality = $request->municipality;
+        $donations->corregimiento = $request->corregimiento;
+        $donations->place = $request->place;
+        $donations->telephone = $request->telephone;
 
         $donations->id_regional = $request->id_regional;  
         $donations->save();

@@ -266,7 +266,7 @@
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>   
 
-                  <label>DATOS DE LA INSTITUCIÓN QUE RESIBE LA DINACIÓN</label>
+                  <label>DATOS DE LA INSTITUCIÓN QUE RECIBE LA DINACIÓN</label>
 
                   <md-field md-clearable :class="getValidationClass('name')">
                     <label for="first-name">Nombre</label>
@@ -283,18 +283,18 @@
                     >Olvidaste ingresar el nombre</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>   
-                  <md-field md-clearable :class="getValidationClass('lagalStatus')">
+                  <md-field md-clearable :class="getValidationClass('legalStatus')">
                     <label for="first-name">Personería Jurídica</label>
                     <md-input
                       name="first-name"
                       id="first-name"
                       autocomplete="given-name"
-                      v-model="form.lagalStatus"
+                      v-model="form.legalStatus"
                       :disabled="sending"
                     />
                     <span
                       class="md-error"
-                      v-if="!$v.form.lagalStatus.required"
+                      v-if="!$v.form.legalStatus.required"
                     >Olvidaste ingresar el nombre de la personería jurídica</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>   
@@ -371,6 +371,36 @@
                       class="md-error"
                       v-if="!$v.form.corregimiento.required"
                     >Olvidaste ingresar el nombre del corregimiento</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>   
+                  <md-field md-clearable :class="getValidationClass('place')">
+                    <label for="first-name">Vereda</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.place"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.place.required"
+                    >Olvidaste ingresar el nombre de la vereda</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>   
+                  <md-field md-clearable :class="getValidationClass('telephone')">
+                    <label for="first-name">Teléfono</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.telephone"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.telephone.required"
+                    >Olvidaste ingresar el numero de télefono</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>   
 
@@ -469,12 +499,14 @@ export default {
         noDocumentId2: "",
         noPlateCertificate: "",
         name: "",
-        lagalStatus: "",
+        legalStatus: "",
         address: "",
         representativeDonation: "",
         identification: "",
         municipality: "",
         corregimiento: "",
+        place: "",
+        telephone: "",
       
       },
 
@@ -539,7 +571,7 @@ export default {
       name: {
         required
       },
-      lagalStatus: {
+      legalStatus: {
         required
       },
       address: {
@@ -555,6 +587,12 @@ export default {
         required
       },
       corregimiento: {
+        required
+      },
+      place: {
+        required
+      },
+      telephone: {
         required
       },
       
@@ -616,6 +654,15 @@ export default {
       this.form.nameRepresentative = null;
       this.form.noDocumentId2 = null;
       this.form.noPlateCertificate = null;
+      this.form.name = null;
+      this.form.legalStatus = null;
+      this.form.address = null;
+      this.form.representativeDonation = null;
+      this.form.identification = null;
+      this.form.municipality = null;
+      this.form.corregimiento = null;
+      this.form.place = null;
+      this.form.telephone = null;
       
       this.arrayRegl = {id:0, name:''};
     },
@@ -637,6 +684,15 @@ export default {
       this.form.nameRepresentative = data["nameRepresentative"];
       this.form.noDocumentId2 = data["noDocumentId2"];
       this.form.noPlateCertificate = data["noPlateCertificate"];
+      this.form.name = data["name"];
+      this.form.legalStatus = data["legalStatus"];
+      this.form.address = data["address"];
+      this.form.representativeDonation = data["representativeDonation"];
+      this.form.identification = data["identification"];
+      this.form.municipality = data["municipality"];
+      this.form.corregimiento = data["corregimiento"];
+      this.form.place = data["place"];
+      this.form.telephone = data["telephone"];
     
       this.arrayRegl.id = data["id_regional"];
 	    this.arrayRegl.name = data["nameRegional"];
@@ -700,6 +756,15 @@ export default {
         nameRepresentative: this.form.nameRepresentative.toUpperCase(),
         noDocumentId2: this.form.noDocumentId2,
         noPlateCertificate: this.form.noPlateCertificate.toUpperCase(),
+        name: this.form.name.toUpperCase(),
+        legalStatus: this.form.legalStatus.toUpperCase(),
+        address: this.form.address.toUpperCase(),
+        representativeDonation: this.form.representativeDonation.toUpperCase(),
+        identification: this.form.identification,
+        municipality: this.form.municipality.toUpperCase(),
+        corregimiento: this.form.corregimiento.toUpperCase(),
+        place: this.form.place.toUpperCase(),
+        telephone: this.form.telephone,
        
         'id_regional': this.arrayRegl.id,
         })
@@ -731,6 +796,15 @@ export default {
         nameRepresentative: this.form.nameRepresentative.toUpperCase(),
         noDocumentId2: this.form.noDocumentId2,
         noPlateCertificate: this.form.noPlateCertificate.toUpperCase(),
+        name: this.form.name.toUpperCase(),
+        legalStatus: this.form.legalStatus.toUpperCase(),
+        address: this.form.address.toUpperCase(),
+        representativeDonation: this.form.representativeDonation.toUpperCase(),
+        identification: this.form.identification,
+        municipality: this.form.municipality.toUpperCase(),
+        corregimiento: this.form.corregimiento.toUpperCase(),
+        place: this.form.place.toUpperCase(),
+        telephone: this.form.telephone,
        
         'id_regional': this.arrayRegl.id,
         })

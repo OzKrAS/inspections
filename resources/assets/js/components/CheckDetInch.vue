@@ -68,7 +68,7 @@
               <md-card-content>
                 <div class="md-layout">
                   <div class="md-layout-item">
-                        <label class="negrita">Fecha</label>
+                
                         <div>
                           <md-datepicker 
                             v-model="date"
@@ -76,7 +76,7 @@
                             md-immediately
                             :md-model-type="String"
                           >
-                            <label>Seleccione Fecha</label>
+                            <label>Fecha</label>
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp;
@@ -226,24 +226,78 @@
                   </md-field>
                   <img src="/img/img1.png" alt="Workplace" usemap="#workmap" width="263" height="278">
                   <map name="workmap">
-                    <area shape="rect" coords="33,67,72,101" alt="" href="">
-                    <area shape="rect" coords="116,13,151,45" alt="" href="">
-                    <area shape="rect" coords="117,165,150,196" alt="" href="">
+                    <area @click="demo('A')" shape="rect" coords="33,67,72,101" alt="" >
+                    <area @click="demo('B')" class="puntoa" id="puntoa" shape="rect" coords="116,13,151,45" alt="" >
+                    <area @click="demo('C')" shape="rect" coords="117,165,150,196" alt="" >
                   </map>
                   <img src="/img/img2.png" alt="Workplace" usemap="#workmap2" width="263" height="278">
                   <map name="workmap2">
-                    <area shape="rect" coords="132,197,161,226" alt="" href="">
-                    <area shape="rect" coords="232,180,263,210" alt="" href="">
+                    <area @click="demo('D')" shape="rect" coords="132,197,161,226" alt="" >
+                    <area @click="demo('E')" shape="rect" coords="232,180,263,210" alt="" >
                   </map>
                   <img src="/img/img3.png" alt="Workplace" usemap="#workmap3" width="273" height="295">
                   <map name="workmap3">
-                     <area shape="rect" coords="25,150,57,173" alt="" href="">
-                     <area shape="rect" coords="73,102,104,132" alt="" href="">
-                     <area shape="rect" coords="113,28,144,57" alt="" href="">
-                     <area shape="rect" coords="190,65,222,92" alt="" href="">
+                     <area @click="demo('I')" shape="rect" coords="25,150,57,173" alt="" >
+                     <area @click="demo('F')" shape="rect" coords="73,102,104,132" alt="" >
+                     <area @click="demo('G')" shape="rect" coords="113,28,144,57" alt="" >
+                     <area @click="demo('H')" shape="rect" coords="190,65,222,92" alt="" >
                   </map>
                   <img alt="Graficos" width="263" height="278" src="/img/img4.png">
                 </div>
+                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                        <thead>         
+                            <!-- <md-button
+                              type="button"
+                              v-if="tipoAccion==1"
+                              class="md-dense md-raised md-primary"
+                              :disabled="sending"
+                              @click="addItemFauna()"
+                            >Agregar
+                            </md-button> -->
+                          <tr>
+                            <!-- <th>PUNTO</th>              
+                            <th>DETs</th>     -->
+                            <th>BABOR 1</th>    
+                            <th>BABOR 2</th>    
+                            <th>ESTRIBOR 1</th>    
+                            <th>ESTRIBOR 2</th>    
+                            <th style="width: 90px">Opciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="(dets,index) in arrayDets" :key="`dets-${index}`">
+                            <td v-text="dets.babor1"></td>
+                            <td v-text="dets.babor2"></td>
+                            <td v-text="dets.estribor1"></td>
+                            <td v-text="dets.estribor2"></td>
+                     
+                            <td>  
+                              <button
+                                type="button"
+                                class="btn btn-danger btn-sm"
+                                data-tooltip
+                                title="Eliminar"
+                                @click="deleteFauna(index)"
+                              >
+                                <i class="icon-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                          <tfoot>
+                            <tr>
+                              <!-- <th>PUNTO</th>              
+                              <th>DETs</th>     -->
+                              <th>BABOR 1</th>    
+                              <th>BABOR 2</th>    
+                              <th>ESTRIBOR 1</th>    
+                              <th>ESTRIBOR 2</th>  
+                              <th style="width: 90px">Opciones</th>
+                            </tr>
+                          </tfoot>
+                          <tbody>
+                          </tbody>
+                      </table>
               </md-card-content>
             </form>
           </div>
@@ -272,6 +326,113 @@
         </template>
       </div>
 
+    </div>
+      <div
+      class="modal fade"
+      tabindex="-1"
+      :class="{'mostrar' : modal}"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      style="display: none;"
+      aria-hidden="true"
+     
+    >
+      <div class="modal-dialog modal-primary modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" v-text="tituloModal"></h4>
+            <button type="button" class="close" @click="cerrarModal()" aria-label="Close">
+              <span aria-hidden="true">X</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action method="post" enctype="multipart/form-data" class="form-horizontal">
+              <md-card-content>
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-60">
+                    <md-field>
+                      <label for="first-name">Babor 1</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="babor1"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-60">
+                    <md-field>
+                      <label for="first-name">Babor 2</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="babor2"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-60">
+                    <md-field>
+                      <label for="first-name">Estribor 1</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="estribor1"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-60">
+                    <md-field>
+                      <label for="first-name">Estribor 2</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="estribor2"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-25">
+                  </div>
+                </div>
+              </md-card-content>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <md-card-actions>
+              <md-button type="button" class="md-raised" @click="cerrarModal()">Cerrar</md-button>
+            </md-card-actions>
+
+            <md-card-actions>
+              <md-button
+                type="submit"
+                v-if="tipoAccion==1"
+                class="md-dense md-raised md-primary"
+                :disabled="sending"
+                @click="addDets()"
+              >registrar</md-button>
+            </md-card-actions>
+
+            <md-card-actions>
+              <md-button
+                type="submit"
+                v-if="tipoAccion==2"
+                class="md-dense md-raised md-primary"
+                :disabled="sending"
+                @click="actualizarAccesorio()"
+              >Actualizar</md-button>
+            </md-card-actions>
+   
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
     </div>
 
   </main>
@@ -335,6 +496,14 @@ export default {
         location: "",
       },
       
+      modal: 0,
+      tituloModal: "",
+      punto: "",
+      babor1:0,
+      babor2:0,
+      estribor1:0,
+      estribor2:0,
+      arrayDets: [],
       arrayCheckDet: [],
       id_CheckDet: 0,
       arrayComp: {id:0, name:''},
@@ -353,7 +522,6 @@ export default {
       sending: false,
 
       arrayData: [],
-      modal: 0,
       tipoAccion: 0
     };
   },
@@ -417,6 +585,69 @@ export default {
           );
           break;
       }
+    },
+    addItemT() {
+      let me = this;
+      var total = me.arrayDets.push({
+        babor1:this.babor1,
+        babor2:this.babor2,
+        estribor1:this.estribor1,
+        estribor2:this.estribor2,
+     
+      
+      });
+      console.log(total);
+      // me.clearTarget();
+    
+    },
+    demo(punto){
+      // alert('demoooo'+punto)
+      var dets="";
+      if(punto=='A'){ 
+        dets='Ancho solpa (>= 71 "  cuando esta estirada)'    ;   
+       
+      }else if(punto =='B'){
+        dets='Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=26 " cuando esta estirada)' ; 
+      }
+      if(punto=='C'){ 
+        dets='Ancho solpa (>= 71 "  cuando esta estirada)'    ;   
+       
+      }else if(punto =='D'){
+        dets='Borde trasero de la solapa, desde el borde posterior del marco del DET (centro) al borde de la solapa (<=24 " no estirada)' ; 
+      }
+      if(punto=='E'){ 
+        dets='Desde donde la solapa va cosida mas alla del borde posterior de marco DET (centro) en posicion colgante (<= 6 ")'    ;   
+       
+      }else if(punto =='F'){
+        dets='Amcho DET' ; 
+      }
+      if(punto=='G'){ 
+        dets='Alto DET'    ;   
+       
+      }else if(punto =='H'){
+        dets='Distancia entre varillas' ; 
+      }
+      this.abrirModal(dets,punto)
+      
+    },
+    abrirModal(dets,punto){
+      this.tituloModal=dets;
+        this.punto=punto;
+        this.modal=1;
+
+    },
+     cerrarModal() {
+      this.modal = 0;
+      this.tituloModal = "";
+     // this.clearForm();
+    },
+    addDets(){
+      this.arrayDets.push({
+        babor1:this.babor1,
+        babor2:this.babor2,
+        estribor1:this.estribor1,
+        estribor2:this.estribor2,
+      })
     },
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
@@ -690,6 +921,16 @@ export default {
 };
 </script>
 <style>
+.modal-content {
+  width: 100% !important;
+  position: absolute !important;
+}
+.mostrar {
+  display: list-item !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  background-color: #3c29297a !important;
+}
 .div-error {
   display: flex;
   justify-content: center;

@@ -28,6 +28,15 @@ class CreateDonationCertificatesTable extends Migration
             $table->string('nameRepresentative');
             $table->string('noDocumentId2');
             $table->string('noPlateCertificate');
+            $table->string('name');
+            $table->string('legalStatus');
+            $table->string('address');
+            $table->string('representativeDonation');
+            $table->string('identification');
+            $table->string('municipality');
+            $table->string('corregimiento');
+            $table->string('place');
+            $table->string('telephone');
 
             $table->integer('id_regional')->unsigned();
             $table->foreign('id_regional')->references('id')->on('regionals');
