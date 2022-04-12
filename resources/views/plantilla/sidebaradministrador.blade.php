@@ -112,7 +112,7 @@
                             </ul>                            
                         </div>                        
                     </li>
-                    <li class="sidebar-dropdown">
+                    <!-- <li class="sidebar-dropdown">
                         <a href="#">
                             <i class="fas fa-clipboard-list"></i>
                             <span class="menu-text">Otro Menu</span>                         
@@ -144,7 +144,7 @@
                             </ul>
                         </div>
                     </li>
-   
+    -->
        
                     </li>
                
