@@ -22,15 +22,14 @@ class MunicipalityController extends Controller
             'municipalities' => $municipalities
         ];
     }
-    // public function index(Request $request)
-    // {
-    //     if (!$request->ajax()) return redirect('/');
-    //     $municipality = Municipality::orderBy('name', 'asc')->get();
-
-    //     return [     
-    //         'data' => $municipality
-    //     ];
-    // }
+    public function selectMunicipality(Request $request)
+    {
+        $municipalities = Municipality::select('id','name')
+            ->orderBy('name', 'asc')->get();
+        return [
+            'municipalities' => $municipalities
+        ];
+    }
     
     public function store(Request $request)
     {

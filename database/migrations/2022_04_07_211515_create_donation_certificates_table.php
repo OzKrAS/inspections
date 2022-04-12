@@ -17,6 +17,7 @@ class CreateDonationCertificatesTable extends Migration
             $table->increments('id'); 
             $table->string('noActa');
             $table->string('nameScientific');
+            $table->string('observation');
             $table->string('nameCommon');
             $table->string('presentation');
             $table->string('amount');

@@ -130,6 +130,15 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/donationCertificates/update', 'DonationCertificateController@update');
         Route::post('/donationCertificates/delete', 'DonationCertificateController@destroy');
         Route::get('/donationCertificates/selectRegional', 'RegionalController@selectRegional');
+        // acta de decomiso
+        Route::get('/confiscationCertificates', 'ConfiscationCertificateController@index');
+        Route::post('/confiscationCertificates/save', 'ConfiscationCertificateController@store');
+        Route::put('/confiscationCertificates/update', 'ConfiscationCertificateController@update');
+        Route::post('/confiscationCertificates/delete', 'ConfiscationCertificateController@destroy');
+        Route::get('/confiscationCertificates/selectRegional', 'RegionalController@selectRegional'); 
+        Route::get('/confiscationCertificates/selectMunicipality', 'MunicipalityController@selectMunicipality'); 
+       
+
 
 
 
@@ -142,3 +151,6 @@ Route::group(['middleware'=>['auth']],function(){
 });
 
 //Route::get('/home', 'HomeController@index')->name('home');
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}

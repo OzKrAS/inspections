@@ -88,10 +88,13 @@
                             <li @click="menu=14">
                                 <a href="#"><i class="icon-bag"></i>Acta de Donación</a>                                                                               
                             </li>                                
+                            <li @click="menu=15">
+                                <a href="#"><i class="icon-bag"></i>Acta de Decomiso Preventivo</a>                                                                               
+                            </li>                                
                         </ul>                            
                         </div>                        
                     </li>
-                    <li class="sidebar-dropdown">
+                    <!-- <li class="sidebar-dropdown">
                         <a href="#">
                             <i class="fas fa-clipboard"></i>
                             <span class="menu-text">Otro Menu</span>                         
@@ -108,8 +111,8 @@
                        
                             </ul>                            
                         </div>                        
-                    </li>
-                    <li class="sidebar-dropdown">
+                    </li> -->
+                    <!-- <li class="sidebar-dropdown">
                         <a href="#">
                             <i class="fas fa-clipboard-list"></i>
                             <span class="menu-text">Otro Menu</span>                         
@@ -141,7 +144,7 @@
                             </ul>
                         </div>
                     </li>
-   
+    -->
        
                     </li>
                

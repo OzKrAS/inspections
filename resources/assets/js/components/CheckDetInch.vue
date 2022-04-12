@@ -245,61 +245,118 @@
                   <img alt="Graficos" width="263" height="278" src="/img/img4.png">
                 </div>
                 <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                        <thead>         
-                            <!-- <md-button
+                    <thead>         
+                      <tr>
+                        <th>PUNTO</th>              
+                        <th>DETs</th>    
+                        <th>BABOR 1</th>    
+                        <th>BABOR 2</th>    
+                        <th>ESTRIBOR 1</th>    
+                        <th>ESTRIBOR 2</th>    
+                        <th style="width: 90px">Opciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="(dets,index) in arrayDets" :key="`dets-${index}`">
+                        <td v-text="dets.punto"></td>
+                        <td v-text="dets.tituloModal"></td>
+                        <td v-text="dets.babor1"></td>
+                        <td v-text="dets.babor2"></td>
+                        <td v-text="dets.estribor1"></td>
+                        <td v-text="dets.estribor2"></td>  
+                        <td>  
+                          <button
+                            type="button"
+                            class="btn btn-danger btn-sm"
+                            data-tooltip
+                            title="Eliminar"
+                            @click="deleteDets(index)"
+                          >
+                            <i class="icon-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                      <tfoot>
+                        <tr>
+                          <th>PUNTO</th>              
+                          <th>DETs</th>    
+                          <th>BABOR 1</th>    
+                          <th>BABOR 2</th>    
+                          <th>ESTRIBOR 1</th>    
+                          <th>ESTRIBOR 2</th>  
+                          <th style="width: 90px">Opciones</th>
+                        </tr>
+                      </tfoot>
+                      <tbody>
+                    </tbody>
+                </table>
+                <img src="/img/img5.png" alt="Workplace" usemap="#workmap4" width="263" height="278">
+                  <map name="workmap4">
+                    <area @click="title('B')" shape="rect" coords="0,188,35,228" alt="">
+                    <area @click="title('A')" class="puntoa" id="puntoa" shape="rect" coords="114,132,153,178" alt="">
+                  </map>
+                  <img src="/img/img6.png" alt="Workplace" usemap="#workmap5" width="263" height="278">
+                  <map name="workmap5">
+                    <area @click="title('D')" shape="rect" coords="65,180,105,215" alt="">
+                    <area @click="title('C')" shape="rect" coords="105,100,141,137" alt="">
+                    <area @click="title('E')" shape="rect" coords="230,279,262,312" alt="">
+                  </map>
+                  <img src="/img/img3.png" alt="Workplace" usemap="#workmap6" width="273" height="295">
+                  <map name="workmap6">
+                     <area @click="title('I')" shape="rect" coords="25,150,57,173" alt="" >
+                     <area @click="title('F')" shape="rect" coords="73,102,104,132" alt="" >
+                     <area @click="title('G')" shape="rect" coords="113,28,144,57" alt="" >
+                     <area @click="title('H')" shape="rect" coords="190,65,222,92" alt="" >
+                  </map>
+                  <img alt="Graficos" width="263" height="278" src="/img/img4.png">
+                  <table class="table table-striped table-bordered display" id="dataTable2" width="50%" cellspacing="0">
+                      <thead>         
+                        <tr>
+                          <th>PUNTO</th>              
+                          <th>DETs</th>    
+                          <th>BABOR 1</th>    
+                          <th>BABOR 2</th>    
+                          <th>ESTRIBOR 1</th>    
+                          <th>ESTRIBOR 2</th>    
+                          <th style="width: 90px">Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="(dets,index) in arrayDets2" :key="`dets-${index}`">
+                          <td v-text="dets.punto2"></td>
+                          <td v-text="dets.tituloModal"></td>
+                          <td v-text="dets.babor3"></td>
+                          <td v-text="dets.babor4"></td>
+                          <td v-text="dets.estribor3"></td>
+                          <td v-text="dets.estribor4"></td>      
+                          <td>  
+                            <button
                               type="button"
-                              v-if="tipoAccion==1"
-                              class="md-dense md-raised md-primary"
-                              :disabled="sending"
-                              @click="addItemFauna()"
-                            >Agregar
-                            </md-button> -->
+                              class="btn btn-danger btn-sm"
+                              data-tooltip
+                              title="Eliminar"
+                              @click="deleteDets2(index)"
+                            >
+                              <i class="icon-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                        <tfoot>
                           <tr>
                             <th>PUNTO</th>              
                             <th>DETs</th>    
                             <th>BABOR 1</th>    
                             <th>BABOR 2</th>    
                             <th>ESTRIBOR 1</th>    
-                            <th>ESTRIBOR 2</th>    
+                            <th>ESTRIBOR 2</th>  
                             <th style="width: 90px">Opciones</th>
                           </tr>
-                        </thead>
+                        </tfoot>
                         <tbody>
-                          <tr v-for="(dets,index) in arrayDets" :key="`dets-${index}`">
-                            <td v-text="dets.punto"></td>
-                            <td v-text="dets.tituloModal"></td>
-                            <td v-text="dets.babor1"></td>
-                            <td v-text="dets.babor2"></td>
-                            <td v-text="dets.estribor1"></td>
-                            <td v-text="dets.estribor2"></td>
-                     
-                            <td>  
-                              <button
-                                type="button"
-                                class="btn btn-danger btn-sm"
-                                data-tooltip
-                                title="Eliminar"
-                                @click="deleteFauna(index)"
-                              >
-                                <i class="icon-trash"></i>
-                              </button>
-                            </td>
-                          </tr>
-                        </tbody>
-                          <tfoot>
-                            <tr>
-                              <th>PUNTO</th>              
-                              <th>DETs</th>    
-                              <th>BABOR 1</th>    
-                              <th>BABOR 2</th>    
-                              <th>ESTRIBOR 1</th>    
-                              <th>ESTRIBOR 2</th>  
-                              <th style="width: 90px">Opciones</th>
-                            </tr>
-                          </tfoot>
-                          <tbody>
-                          </tbody>
-                      </table>
+                      </tbody>
+                  </table>
               </md-card-content>
             </form>
           </div>
@@ -316,28 +373,20 @@
                 :disabled="sending"
                 @click="validateData()"
               >Guardar</md-button>
-              <md-button
-                type="submit"
-                v-if="tipoAccion==2"
-                class="md-dense md-raised md-primary"
-                :disabled="sending"
-                @click="updateData()"
-              >Actualizar</md-button>
             </md-card-actions>
           </div>
         </template>
       </div>
-
     </div>
-      <div
+
+    <div
       class="modal fade"
       tabindex="-1"
       :class="{'mostrar' : modal}"
       role="dialog"
       aria-labelledby="myModalLabel"
       style="display: none;"
-      aria-hidden="true"
-     
+      aria-hidden="true" 
     >
       <div class="modal-dialog modal-primary modal-lg" role="document">
         <div class="modal-content">
@@ -419,17 +468,102 @@
                 @click="addDets()"
               >registrar</md-button>
             </md-card-actions>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- modal 2 -->
+    <div
+      class="modal fade"
+      tabindex="-1"
+      :class="{'mostrar' : modal2}"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      style="display: none;"
+      aria-hidden="true" 
+    >
+      <div class="modal-dialog modal-primary modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" v-text="tituloModal"></h4>
+            <button type="button" class="close" @click="cerrarModal()" aria-label="Close">
+              <span aria-hidden="true">X</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action method="post" enctype="multipart/form-data" class="form-horizontal">
+              <md-card-content>
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-60">
+                    <md-field>
+                      <label for="first-name">Babor 1</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="babor3"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-60">
+                    <md-field>
+                      <label for="first-name">Babor 2</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="babor4"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-60">
+                    <md-field>
+                      <label for="first-name">Estribor 1</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="estribor3"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-60">
+                    <md-field>
+                      <label for="first-name">Estribor 2</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="estribor4"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-25">
+                  </div>
+                </div>
+              </md-card-content>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <md-card-actions>
+              <md-button type="button" class="md-raised" @click="cerrarModal()">Cerrar</md-button>
+            </md-card-actions>
 
             <md-card-actions>
               <md-button
                 type="submit"
-                v-if="tipoAccion==2"
+                v-if="tipoAccion==1"
                 class="md-dense md-raised md-primary"
                 :disabled="sending"
-                @click="actualizarAccesorio()"
-              >Actualizar</md-button>
+                @click="addDets2()"
+              >registrar</md-button>
             </md-card-actions>
-   
           </div>
         </div>
         <!-- /.modal-content -->
@@ -499,13 +633,20 @@ export default {
       },
       
       modal: 0,
+      modal2: 0,
       tituloModal: "",
       punto: "",
+      punto2: "",
       babor1:0,
       babor2:0,
       estribor1:0,
       estribor2:0,
+      babor3:0,
+      babor4:0,
+      estribor3:0,
+      estribor4:0,
       arrayDets: [],
+      arrayDets2: [],
       arrayCheckDet: [],
       id_CheckDet: 0,
       arrayComp: {id:0, name:''},
@@ -588,22 +729,7 @@ export default {
           break;
       }
     },
-    addItemT() {
-      let me = this;
-      var total = me.arrayDets.push({
-        babor1:this.babor1,
-        babor2:this.babor2,
-        estribor1:this.estribor1,
-        estribor2:this.estribor2,
-     
-      
-      });
-      console.log(total);
-      // me.clearTarget();
-    
-    },
     demo(punto){
-      // alert('demoooo'+punto)
       var dets="";
       if(punto=='A'){ 
         dets='Ancho solpa (>= 71 "  cuando esta estirada)'    ;   
@@ -612,16 +738,16 @@ export default {
         dets='Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=26 " cuando esta estirada)' ; 
       }
       if(punto=='C'){ 
-        dets='Ancho solpa (>= 71 "  cuando esta estirada)'    ;   
+        dets='Abertura de escape (>= 71 "  cuando esta estirada)'    ;   
        
       }else if(punto =='D'){
         dets='Borde trasero de la solapa, desde el borde posterior del marco del DET (centro) al borde de la solapa (<=24 " no estirada)' ; 
       }
       if(punto=='E'){ 
-        dets='Desde donde la solapa va cosida mas alla del borde posterior de marco DET (centro) en posicion colgante (<= 6 ")'    ;   
+        dets='Desde donde la solapa va cosida mas alla del borde posterior de marco DET (centro) en posición colgante (<= 6 ")'    ;   
        
       }else if(punto =='F'){
-        dets='Amcho DET' ; 
+        dets='Ancho DET' ; 
       }
       if(punto=='G'){ 
         dets='Alto DET'    ;   
@@ -629,18 +755,56 @@ export default {
       }else if(punto =='H'){
         dets='Distancia entre varillas' ; 
       }
-      this.abrirModal(dets,punto)
-      
+      if (punto =='I'){
+         dets='Distancia entre marco y varilla' ; 
+      }
+      this.abrirModal(dets,punto) 
+    },
+    title(punto2){
+      var dets="";
+      if(punto2=='A'){ 
+        dets='Ancho solpa (>= 56 "  cuando está estirada)'    ;   
+       
+      }else if(punto2 =='B'){
+        dets='Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=20 " cuando está estirada)' ; 
+      }
+      if(punto2=='C'){ 
+        dets='Traslape no debe ser mayor a 15 " cuando está estirada';   
+       
+      }else if(punto2 =='D'){
+        dets='Dimencsión de las tapas no debe ser mayor a 58 " cuando están estirada' ; 
+      }
+      if(punto2=='E'){ 
+        dets='Longitud de la solapa no debe ser mayor a 24 " mas allá del borde posterior de la parrilla'    ;   
+       
+      }else if(punto2 =='F'){
+        dets='Ancho del DET' ; 
+      }
+      if(punto2=='G'){ 
+        dets='Alto del DET'    ;   
+       
+      }else if(punto2 =='H'){
+        dets='Distancia entre varillas' ; 
+      }
+      if (punto2 =='I'){
+         dets='Distancia entre marco y varilla' ; 
+      }
+      this.abrirModal2(dets,punto2) 
     },
     abrirModal(dets,punto){
       this.tituloModal=dets;
         this.punto=punto;
         this.modal=1;
-
+    },
+    abrirModal2(dets,punto2){
+      this.tituloModal=dets;
+        this.punto2=punto2;
+        this.modal2=1;
     },
      cerrarModal() {
       this.modal = 0;
-      this.tituloModal = "";
+      this.modal2 = 0;
+      // this.tituloModal = "";
      // this.clearForm();
     },
     addDets(){
@@ -652,7 +816,39 @@ export default {
         estribor1:this.estribor1,
         estribor2:this.estribor2,
       })
-      this.punto = "";
+      this.clearDets();
+      this.cerrarModal();
+    },
+    addDets2(){
+      this.arrayDets2.push({
+        punto2:this.punto2,
+        tituloModal:this.tituloModal,
+        babor3:this.babor3,
+        babor4:this.babor4,
+        estribor3:this.estribor3,
+        estribor4:this.estribor4,
+      })
+      this.clearDets();
+      this.cerrarModal();
+    },
+    clearDets() {
+       this.punto = "";
+       this.punto2 = "";
+       this.tituloModal = "";
+       this.babor1 = 0;
+       this.babor2 = 0;
+       this.estribor1 = 0;
+       this.estribor2 = 0;
+       this.babor3 = 0;
+       this.babor4 = 0;
+       this.estribor3 = 0;
+       this.estribor4 = 0;
+    },
+    deleteDets(index){
+       this.arrayDets.splice(index,1);
+    },
+    deleteDets2(index){
+       this.arrayDets2.splice(index,1);
     },
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
