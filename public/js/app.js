@@ -14174,6 +14174,7 @@ Vue.component('nationality', __webpack_require__(159));
 Vue.component('companies', __webpack_require__(164));
 // Vue.component('regional', require('./components/Regionals.vue'));
 Vue.component('donations', __webpack_require__(169));
+Vue.component('confiscations', __webpack_require__(174));
 
 var app = new Vue({
     el: '#app',
@@ -40638,6 +40639,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -43385,12 +43416,11 @@ var render = function() {
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _c("label", [_vm._v("Región/Municipio")]),
-                                  _vm._v(" "),
                                   _c("multiselect", {
                                     attrs: {
                                       options: _vm.arrayRegion,
-                                      placeholder: "Seleccione una región",
+                                      placeholder:
+                                        "Seleccione una región/municipio",
                                       "custom-label": _vm.nameWithRegion,
                                       label: "name",
                                       "track-by": "name"
@@ -43411,15 +43441,11 @@ var render = function() {
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _c("label", [
-                                    _vm._v("Puerto/Muelle de Inspección")
-                                  ]),
-                                  _vm._v(" "),
                                   _c("multiselect", {
                                     attrs: {
                                       options: _vm.arrayPort,
                                       placeholder:
-                                        "Seleccione un puerto/muelle",
+                                        "Seleccione un puerto/muelle de inspección",
                                       "custom-label": _vm.nameWithPort,
                                       label: "name",
                                       "track-by": "name"
@@ -43432,9 +43458,7 @@ var render = function() {
                                       expression: "arrayPt"
                                     }
                                   }),
-                                  _vm._v(
-                                    "   \n                      \n                      "
-                                  )
+                                  _vm._v("   \n                      ")
                                 ],
                                 1
                               )
@@ -43449,17 +43473,13 @@ var render = function() {
                                     "md-field",
                                     [
                                       _c(
-                                        "label",
-                                        { attrs: { for: "notification" } },
-                                        [_vm._v("Recibió Notificación Previa")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
                                         "md-select",
                                         {
                                           attrs: {
                                             name: "notification",
-                                            id: "notification"
+                                            id: "notification",
+                                            placeholder:
+                                              "Recibió Notificación Previa"
                                           },
                                           model: {
                                             value: _vm.notification,
@@ -43499,17 +43519,12 @@ var render = function() {
                                     "md-field",
                                     [
                                       _c(
-                                        "label",
-                                        { attrs: { for: "finalityZarpe" } },
-                                        [_vm._v("Finalidad Zarpe")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
                                         "md-select",
                                         {
                                           attrs: {
                                             name: "finalityZarpe",
-                                            id: "finalityZarpe"
+                                            id: "finalityZarpe",
+                                            placeholder: "Finalidad Zarpe"
                                           },
                                           model: {
                                             value: _vm.finalityZarpe,
@@ -43550,17 +43565,12 @@ var render = function() {
                                     "md-field",
                                     [
                                       _c(
-                                        "label",
-                                        { attrs: { for: "origin" } },
-                                        [_vm._v("Origen")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
                                         "md-select",
                                         {
                                           attrs: {
                                             name: "origin",
-                                            id: "origin"
+                                            id: "origin",
+                                            placeholder: "Origen"
                                           },
                                           model: {
                                             value: _vm.origin,
@@ -43638,17 +43648,12 @@ var render = function() {
                                     "md-field",
                                     [
                                       _c(
-                                        "label",
-                                        { attrs: { for: "destination" } },
-                                        [_vm._v("Destino")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
                                         "md-select",
                                         {
                                           attrs: {
                                             name: "destination",
-                                            id: "destination"
+                                            id: "destination",
+                                            placeholder: "Destino"
                                           },
                                           model: {
                                             value: _vm.destination,
@@ -43755,12 +43760,10 @@ var render = function() {
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _c("label", [_vm._v("Puerto de Zarpe")]),
-                                  _vm._v(" "),
                                   _c("multiselect", {
                                     attrs: {
                                       options: _vm.arrayPort,
-                                      placeholder: "Seleccione un puerto",
+                                      placeholder: "Seleccione Puerto de Zarpe",
                                       "custom-label": _vm.nameWithPort,
                                       label: "name",
                                       "track-by": "name"
@@ -43815,7 +43818,8 @@ var render = function() {
                                   _c("multiselect", {
                                     attrs: {
                                       options: _vm.arrayPort,
-                                      placeholder: "Seleccione una región",
+                                      placeholder:
+                                        "Seleccione Puerto de Ultimo Arribo",
                                       "custom-label": _vm.nameWithPort,
                                       label: "name",
                                       "track-by": "name"
@@ -43865,6 +43869,10 @@ var render = function() {
                               _vm._v("    \n            ")
                             ]),
                             _vm._v(" "),
+                            _c("label", [
+                              _vm._v("SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS")
+                            ]),
+                            _vm._v(" "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -43873,17 +43881,13 @@ var render = function() {
                                   "md-field",
                                   [
                                     _c(
-                                      "label",
-                                      { attrs: { for: "national" } },
-                                      [_vm._v("Nacional")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
                                       "md-select",
                                       {
                                         attrs: {
                                           name: "national",
-                                          id: "national"
+                                          id: "national",
+                                          placeholder:
+                                            "Seleccione un sistema NAcional"
                                         },
                                         model: {
                                           value: _vm.national,
@@ -43933,12 +43937,10 @@ var render = function() {
                               "div",
                               { staticClass: "md-layout-item" },
                               [
-                                _c("label", [_vm._v("OROP")]),
-                                _vm._v(" "),
                                 _c("multiselect", {
                                   attrs: {
                                     options: _vm.arrayOrop,
-                                    placeholder: "Seleccione una opción",
+                                    placeholder: "Seleccione una opción OROP",
                                     "custom-label": _vm.nameWithOrop,
                                     label: "name",
                                     "track-by": "name"
@@ -44333,12 +44335,10 @@ var render = function() {
                               "div",
                               { staticClass: "md-layout-item" },
                               [
-                                _c("label", [_vm._v("Empresa")]),
-                                _vm._v(" "),
                                 _c("multiselect", {
                                   attrs: {
                                     options: _vm.arrayCompany,
-                                    placeholder: "Seleccione una zona",
+                                    placeholder: "Seleccione una empresa",
                                     "custom-label": _vm.nameWithCompany,
                                     label: "name",
                                     "track-by": "name"
@@ -44358,18 +44358,23 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "div",
-                              { staticClass: "md-layout-item" },
                               [
-                                _c("label", [_vm._v("Pesquería Autorizada")]),
+                                _c("label", { staticClass: "typo__label" }, [
+                                  _vm._v("Pesquería Autorizada")
+                                ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
                                   attrs: {
                                     options: _vm.arrayFisheryAuthorized,
-                                    placeholder: "Seleccione una zona",
-                                    "custom-label":
-                                      _vm.nameWithFisheryAuthorized,
+                                    multiple: true,
+                                    "close-on-select": false,
+                                    "clear-on-select": false,
+                                    "preserve-search": true,
+                                    placeholder:
+                                      "Seleccione Pesquería Autorizada",
                                     label: "name",
-                                    "track-by": "name"
+                                    "track-by": "name",
+                                    "preselect-first": true
                                   },
                                   model: {
                                     value: _vm.arrayFa,
@@ -44382,7 +44387,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("   \n                "),
+                            _vm._v(" "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -49996,6 +50001,140 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -50045,13 +50184,20 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       },
 
       modal: 0,
+      modal2: 0,
       tituloModal: "",
       punto: "",
+      punto2: "",
       babor1: 0,
       babor2: 0,
       estribor1: 0,
       estribor2: 0,
+      babor3: 0,
+      babor4: 0,
+      estribor3: 0,
+      estribor4: 0,
       arrayDets: [],
+      arrayDets2: [],
       arrayCheckDet: [],
       id_CheckDet: 0,
       arrayComp: { id: 0, name: '' },
@@ -50127,20 +50273,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
           break;
       }
     },
-    addItemT: function addItemT() {
-      var me = this;
-      var total = me.arrayDets.push({
-        babor1: this.babor1,
-        babor2: this.babor2,
-        estribor1: this.estribor1,
-        estribor2: this.estribor2
-
-      });
-      console.log(total);
-      // me.clearTarget();
-    },
     demo: function demo(punto) {
-      // alert('demoooo'+punto)
       var dets = "";
       if (punto == 'A') {
         dets = 'Ancho solpa (>= 71 "  cuando esta estirada)';
@@ -50148,30 +50281,66 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         dets = 'Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=26 " cuando esta estirada)';
       }
       if (punto == 'C') {
-        dets = 'Ancho solpa (>= 71 "  cuando esta estirada)';
+        dets = 'Abertura de escape (>= 71 "  cuando esta estirada)';
       } else if (punto == 'D') {
         dets = 'Borde trasero de la solapa, desde el borde posterior del marco del DET (centro) al borde de la solapa (<=24 " no estirada)';
       }
       if (punto == 'E') {
-        dets = 'Desde donde la solapa va cosida mas alla del borde posterior de marco DET (centro) en posicion colgante (<= 6 ")';
+        dets = 'Desde donde la solapa va cosida mas alla del borde posterior de marco DET (centro) en posición colgante (<= 6 ")';
       } else if (punto == 'F') {
-        dets = 'Amcho DET';
+        dets = 'Ancho DET';
       }
       if (punto == 'G') {
         dets = 'Alto DET';
       } else if (punto == 'H') {
         dets = 'Distancia entre varillas';
       }
+      if (punto == 'I') {
+        dets = 'Distancia entre marco y varilla';
+      }
       this.abrirModal(dets, punto);
+    },
+    title: function title(punto2) {
+      var dets = "";
+      if (punto2 == 'A') {
+        dets = 'Ancho solpa (>= 56 "  cuando está estirada)';
+      } else if (punto2 == 'B') {
+        dets = 'Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=20 " cuando está estirada)';
+      }
+      if (punto2 == 'C') {
+        dets = 'Traslape no debe ser mayor a 15 " cuando está estirada';
+      } else if (punto2 == 'D') {
+        dets = 'Dimencsión de las tapas no debe ser mayor a 58 " cuando están estirada';
+      }
+      if (punto2 == 'E') {
+        dets = 'Longitud de la solapa no debe ser mayor a 24 " mas allá del borde posterior de la parrilla';
+      } else if (punto2 == 'F') {
+        dets = 'Ancho del DET';
+      }
+      if (punto2 == 'G') {
+        dets = 'Alto del DET';
+      } else if (punto2 == 'H') {
+        dets = 'Distancia entre varillas';
+      }
+      if (punto2 == 'I') {
+        dets = 'Distancia entre marco y varilla';
+      }
+      this.abrirModal2(dets, punto2);
     },
     abrirModal: function abrirModal(dets, punto) {
       this.tituloModal = dets;
       this.punto = punto;
       this.modal = 1;
     },
+    abrirModal2: function abrirModal2(dets, punto2) {
+      this.tituloModal = dets;
+      this.punto2 = punto2;
+      this.modal2 = 1;
+    },
     cerrarModal: function cerrarModal() {
       this.modal = 0;
-      this.tituloModal = "";
+      this.modal2 = 0;
+      // this.tituloModal = "";
       // this.clearForm();
     },
     addDets: function addDets() {
@@ -50183,7 +50352,39 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         estribor1: this.estribor1,
         estribor2: this.estribor2
       });
+      this.clearDets();
+      this.cerrarModal();
+    },
+    addDets2: function addDets2() {
+      this.arrayDets2.push({
+        punto2: this.punto2,
+        tituloModal: this.tituloModal,
+        babor3: this.babor3,
+        babor4: this.babor4,
+        estribor3: this.estribor3,
+        estribor4: this.estribor4
+      });
+      this.clearDets();
+      this.cerrarModal();
+    },
+    clearDets: function clearDets() {
       this.punto = "";
+      this.punto2 = "";
+      this.tituloModal = "";
+      this.babor1 = 0;
+      this.babor2 = 0;
+      this.estribor1 = 0;
+      this.estribor2 = 0;
+      this.babor3 = 0;
+      this.babor4 = 0;
+      this.estribor3 = 0;
+      this.estribor4 = 0;
+    },
+    deleteDets: function deleteDets(index) {
+      this.arrayDets.splice(index, 1);
+    },
+    deleteDets2: function deleteDets2(index) {
+      this.arrayDets2.splice(index, 1);
     },
     getValidationClass: function getValidationClass(fieldName) {
       var field = this.$v.form[fieldName];
@@ -51186,7 +51387,290 @@ var render = function() {
                                           },
                                           on: {
                                             click: function($event) {
-                                              _vm.deleteFauna(index)
+                                              _vm.deleteDets(index)
+                                            }
+                                          }
+                                        },
+                                        [_c("i", { staticClass: "icon-trash" })]
+                                      )
+                                    ])
+                                  ])
+                                })
+                              ),
+                              _vm._v(" "),
+                              _c("tfoot", [
+                                _c("tr", [
+                                  _c("th", [_vm._v("PUNTO")]),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("DETs")]),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("BABOR 1")]),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("BABOR 2")]),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("ESTRIBOR 1")]),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("ESTRIBOR 2")]),
+                                  _vm._v(" "),
+                                  _c("th", { staticStyle: { width: "90px" } }, [
+                                    _vm._v("Opciones")
+                                  ])
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tbody")
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("img", {
+                            attrs: {
+                              src: "/img/img5.png",
+                              alt: "Workplace",
+                              usemap: "#workmap4",
+                              width: "263",
+                              height: "278"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("map", { attrs: { name: "workmap4" } }, [
+                            _c("area", {
+                              attrs: {
+                                shape: "rect",
+                                coords: "0,188,35,228",
+                                alt: ""
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.title("B")
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("area", {
+                              staticClass: "puntoa",
+                              attrs: {
+                                id: "puntoa",
+                                shape: "rect",
+                                coords: "114,132,153,178",
+                                alt: ""
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.title("A")
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("img", {
+                            attrs: {
+                              src: "/img/img6.png",
+                              alt: "Workplace",
+                              usemap: "#workmap5",
+                              width: "263",
+                              height: "278"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("map", { attrs: { name: "workmap5" } }, [
+                            _c("area", {
+                              attrs: {
+                                shape: "rect",
+                                coords: "65,180,105,215",
+                                alt: ""
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.title("D")
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("area", {
+                              attrs: {
+                                shape: "rect",
+                                coords: "105,100,141,137",
+                                alt: ""
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.title("C")
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("area", {
+                              attrs: {
+                                shape: "rect",
+                                coords: "230,279,262,312",
+                                alt: ""
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.title("E")
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("img", {
+                            attrs: {
+                              src: "/img/img3.png",
+                              alt: "Workplace",
+                              usemap: "#workmap6",
+                              width: "273",
+                              height: "295"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("map", { attrs: { name: "workmap6" } }, [
+                            _c("area", {
+                              attrs: {
+                                shape: "rect",
+                                coords: "25,150,57,173",
+                                alt: ""
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.title("I")
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("area", {
+                              attrs: {
+                                shape: "rect",
+                                coords: "73,102,104,132",
+                                alt: ""
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.title("F")
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("area", {
+                              attrs: {
+                                shape: "rect",
+                                coords: "113,28,144,57",
+                                alt: ""
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.title("G")
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("area", {
+                              attrs: {
+                                shape: "rect",
+                                coords: "190,65,222,92",
+                                alt: ""
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.title("H")
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("img", {
+                            attrs: {
+                              alt: "Graficos",
+                              width: "263",
+                              height: "278",
+                              src: "/img/img4.png"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "table",
+                            {
+                              staticClass:
+                                "table table-striped table-bordered display",
+                              attrs: {
+                                id: "dataTable2",
+                                width: "50%",
+                                cellspacing: "0"
+                              }
+                            },
+                            [
+                              _c("thead", [
+                                _c("tr", [
+                                  _c("th", [_vm._v("PUNTO")]),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("DETs")]),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("BABOR 1")]),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("BABOR 2")]),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("ESTRIBOR 1")]),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("ESTRIBOR 2")]),
+                                  _vm._v(" "),
+                                  _c("th", { staticStyle: { width: "90px" } }, [
+                                    _vm._v("Opciones")
+                                  ])
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "tbody",
+                                _vm._l(_vm.arrayDets2, function(dets, index) {
+                                  return _c("tr", { key: "dets-" + index }, [
+                                    _c("td", {
+                                      domProps: {
+                                        textContent: _vm._s(dets.punto2)
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("td", {
+                                      domProps: {
+                                        textContent: _vm._s(dets.tituloModal)
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("td", {
+                                      domProps: {
+                                        textContent: _vm._s(dets.babor3)
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("td", {
+                                      domProps: {
+                                        textContent: _vm._s(dets.babor4)
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("td", {
+                                      domProps: {
+                                        textContent: _vm._s(dets.estribor3)
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("td", {
+                                      domProps: {
+                                        textContent: _vm._s(dets.estribor4)
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn btn-danger btn-sm",
+                                          attrs: {
+                                            type: "button",
+                                            "data-tooltip": "",
+                                            title: "Eliminar"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.deleteDets2(index)
                                             }
                                           }
                                         },
@@ -51269,25 +51753,6 @@ var render = function() {
                                   }
                                 },
                                 [_vm._v("Guardar")]
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.tipoAccion == 2
-                            ? _c(
-                                "md-button",
-                                {
-                                  staticClass: "md-dense md-raised md-primary",
-                                  attrs: {
-                                    type: "submit",
-                                    disabled: _vm.sending
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.updateData()
-                                    }
-                                  }
-                                },
-                                [_vm._v("Actualizar")]
                               )
                             : _vm._e()
                         ],
@@ -51548,12 +52013,245 @@ var render = function() {
                         : _vm._e()
                     ],
                     1
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        class: { mostrar: _vm.modal2 },
+        staticStyle: { display: "none" },
+        attrs: {
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "myModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-primary modal-lg",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c("h4", {
+                  staticClass: "modal-title",
+                  domProps: { textContent: _vm._s(_vm.tituloModal) }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: { type: "button", "aria-label": "Close" },
+                    on: {
+                      click: function($event) {
+                        _vm.cerrarModal()
+                      }
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("X")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass: "form-horizontal",
+                    attrs: {
+                      action: "",
+                      method: "post",
+                      enctype: "multipart/form-data"
+                    }
+                  },
+                  [
+                    _c("md-card-content", [
+                      _c("div", { staticClass: "md-layout" }, [
+                        _c(
+                          "div",
+                          { staticClass: "md-layout-item md-size-60" },
+                          [
+                            _c(
+                              "md-field",
+                              [
+                                _c("label", { attrs: { for: "first-name" } }, [
+                                  _vm._v("Babor 1")
+                                ]),
+                                _vm._v(" "),
+                                _c("md-input", {
+                                  attrs: {
+                                    name: "first-name",
+                                    id: "first-name",
+                                    autocomplete: "given-name",
+                                    disabled: _vm.sending
+                                  },
+                                  model: {
+                                    value: _vm.babor3,
+                                    callback: function($$v) {
+                                      _vm.babor3 = $$v
+                                    },
+                                    expression: "babor3"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v("   \n                "),
+                        _c(
+                          "div",
+                          { staticClass: "md-layout-item md-size-60" },
+                          [
+                            _c(
+                              "md-field",
+                              [
+                                _c("label", { attrs: { for: "first-name" } }, [
+                                  _vm._v("Babor 2")
+                                ]),
+                                _vm._v(" "),
+                                _c("md-input", {
+                                  attrs: {
+                                    name: "first-name",
+                                    id: "first-name",
+                                    autocomplete: "given-name",
+                                    disabled: _vm.sending
+                                  },
+                                  model: {
+                                    value: _vm.babor4,
+                                    callback: function($$v) {
+                                      _vm.babor4 = $$v
+                                    },
+                                    expression: "babor4"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v("   \n                "),
+                        _c(
+                          "div",
+                          { staticClass: "md-layout-item md-size-60" },
+                          [
+                            _c(
+                              "md-field",
+                              [
+                                _c("label", { attrs: { for: "first-name" } }, [
+                                  _vm._v("Estribor 1")
+                                ]),
+                                _vm._v(" "),
+                                _c("md-input", {
+                                  attrs: {
+                                    name: "first-name",
+                                    id: "first-name",
+                                    autocomplete: "given-name",
+                                    disabled: _vm.sending
+                                  },
+                                  model: {
+                                    value: _vm.estribor3,
+                                    callback: function($$v) {
+                                      _vm.estribor3 = $$v
+                                    },
+                                    expression: "estribor3"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v("   \n                "),
+                        _c(
+                          "div",
+                          { staticClass: "md-layout-item md-size-60" },
+                          [
+                            _c(
+                              "md-field",
+                              [
+                                _c("label", { attrs: { for: "first-name" } }, [
+                                  _vm._v("Estribor 2")
+                                ]),
+                                _vm._v(" "),
+                                _c("md-input", {
+                                  attrs: {
+                                    name: "first-name",
+                                    id: "first-name",
+                                    autocomplete: "given-name",
+                                    disabled: _vm.sending
+                                  },
+                                  model: {
+                                    value: _vm.estribor4,
+                                    callback: function($$v) {
+                                      _vm.estribor4 = $$v
+                                    },
+                                    expression: "estribor4"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v("   \n                "),
+                        _c("div", { staticClass: "md-layout-item md-size-25" })
+                      ])
+                    ])
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-footer" },
+                [
+                  _c(
+                    "md-card-actions",
+                    [
+                      _c(
+                        "md-button",
+                        {
+                          staticClass: "md-raised",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.cerrarModal()
+                            }
+                          }
+                        },
+                        [_vm._v("Cerrar")]
+                      )
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(
                     "md-card-actions",
                     [
-                      _vm.tipoAccion == 2
+                      _vm.tipoAccion == 1
                         ? _c(
                             "md-button",
                             {
@@ -51561,11 +52259,11 @@ var render = function() {
                               attrs: { type: "submit", disabled: _vm.sending },
                               on: {
                                 click: function($event) {
-                                  _vm.actualizarAccesorio()
+                                  _vm.addDets2()
                                 }
                               }
                             },
-                            [_vm._v("Actualizar")]
+                            [_vm._v("registrar")]
                           )
                         : _vm._e()
                     ],
@@ -56055,6 +56753,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -56093,6 +56794,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       form: {
         noActa: "",
         nameScientific: "",
+        observation: "",
         nameCommon: "",
         presentation: "",
         amount: "",
@@ -56199,6 +56901,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       },
       telephone: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      observation: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       }
 
     }
@@ -56241,6 +56946,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.$v.$reset();
       this.form.noActa = null;
       this.form.nameScientific = null;
+      this.form.observation = null;
       this.form.nameCommon = null;
       this.form.presentation = null;
       this.form.amount = null;
@@ -56272,6 +56978,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.id_donationCertificate = data["id"];
       this.form.noActa = data["noActa"];
       this.form.nameScientific = data["nameScientific"];
+      this.form.observation = data["observation"];
       this.form.nameCommon = data["nameCommon"];
       this.form.presentation = data["presentation"];
       this.form.amount = data["amount"];
@@ -56341,6 +57048,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         noActa: this.form.noActa.toUpperCase(),
         nameScientific: this.form.nameScientific.toUpperCase(),
         nameCommon: this.form.nameCommon.toUpperCase(),
+        observation: this.form.observation,
         presentation: this.form.presentation.toUpperCase(),
         amount: this.form.amount.toUpperCase(),
         weight: this.form.weight.toUpperCase(),
@@ -56377,6 +57085,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         id: this.id_donationCertificate,
         noActa: this.form.noActa.toUpperCase(),
         nameScientific: this.form.nameScientific.toUpperCase(),
+        observation: this.form.observation,
         nameCommon: this.form.nameCommon.toUpperCase(),
         presentation: this.form.presentation.toUpperCase(),
         amount: this.form.amount.toUpperCase(),
@@ -56622,6 +57331,22 @@ var render = function() {
                                 1
                               ),
                               _vm._v("   \n                "),
+                              _c(
+                                "md-field",
+                                [
+                                  _c("md-textarea", {
+                                    model: {
+                                      value: _vm.form.observation,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "observation", $$v)
+                                      },
+                                      expression: "form.observation"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
                               _c(
                                 "md-field",
                                 {
@@ -57666,6 +58391,2900 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-49bb2936", module.exports)
+  }
+}
+
+/***/ }),
+/* 174 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(175)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(177)
+/* template */
+var __vue_template__ = __webpack_require__(178)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\ConfiscationCertificates.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-47f25193", Component.options)
+  } else {
+    hotAPI.reload("data-v-47f25193", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 175 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(176);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("7def122a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-47f25193\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ConfiscationCertificates.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-47f25193\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ConfiscationCertificates.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 176 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  position: absolute !important;\n}\n.mostrar {\r\n  display: list-item !important;\r\n  opacity: 1 !important;\r\n  position: absolute !important;\r\n  background-color: #3c29297a !important;\n}\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\n.material-icons.Color1 { color: rgb(31, 33, 34);\n}\n.material-icons.Color2 { color: rgba(167, 142, 5, 0.849);\n}\n.material-icons.Color3 { color: rgb(12, 170, 91);\n}\n.material-icons.Color4 { color: rgba(228, 54, 54, 0.863);\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 177 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns_format__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuelidate__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuelidate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuelidate__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_multiselect__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_multiselect__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_toasted__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_toasted___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_toasted__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_select__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_select__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_toasted___default.a, {
+  iconPack: 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
+});
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdButton"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdContent"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdField"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdCard"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdMenu"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdSwitch"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdList"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [__WEBPACK_IMPORTED_MODULE_1_vuelidate__["validationMixin"]],
+  props: ['ruta'],
+
+  data: function data() {
+
+    Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+    Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+    Vue.material.locale.shortMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    var dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
+    var now = new Date();
+
+    return _defineProperty({
+      form: {
+        noActa: "",
+        departament: "",
+        text: "",
+        nameScientific: "",
+        nameCommon: "",
+        amount: "",
+        average: "",
+        weight: "",
+        commercialValue: "",
+        text2: "",
+        element: "",
+        amount2: "",
+        featuresState: "",
+        commercialValue2: "",
+        text3: "",
+        text4: "",
+        officialName: "",
+        documentIdOfficial: "",
+        representativeName: "",
+        documentIdRepresentative: "",
+        plateCertificate: "",
+        name: "",
+        documentIdOffender: "",
+        expeditionPlace: "",
+        homeAddress: "",
+        municipality: "",
+        corregimiento: "",
+        neighborhood: "",
+        telephone: ""
+      },
+
+      state: "",
+      presentation: "",
+      date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+      dateExpedition: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+      observation: "",
+
+      arrayCheckDet: [],
+      id_CheckDet: 0,
+      arrayRegional: { id: 0, name: '' },
+      arrayRegl: [],
+      id_regional: 0,
+      arrayMunicipality: { id: 0, name: '' },
+      arrayMpality: [],
+      id_municipality: 0,
+
+      idCheckDelt: 0,
+
+      edo: 1,
+      tipoAccion: 1,
+      listado: 1,
+      sending: false,
+
+      arrayData: []
+    }, "tipoAccion", 0);
+  },
+
+
+  validations: {
+    form: {
+
+      official: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      noActa: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      departament: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      text: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      nameScientific: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      nameCommon: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      amount: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      average: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      weight: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      commercialValue: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      text2: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      element: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      amount2: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      featuresState: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      commercialValue2: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      text3: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      text4: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      officialName: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      documentIdOfficial: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      representativeName: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      documentIdRepresentative: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      plateCertificate: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      name: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      documentIdOffender: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      expeditionPlace: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      homeAddress: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      municipality: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      corregimiento: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      neighborhood: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      telephone: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      }
+    }
+  },
+
+  computed: {},
+  components: {
+    vSelect: __WEBPACK_IMPORTED_MODULE_4_vue_select___default.a,
+    Multiselect: __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___default.a
+  },
+  methods: {
+    alerta: function alerta() {
+      alert('test');
+    },
+    toString: function toString() {
+      this.toDate();
+      this.dynamicByModel = this.dynamicByModel && Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(this.dynamicByModel, this.dateFormat);
+    },
+    toDate: function toDate() {
+      switch (this.type) {
+        case "string":
+          this.dynamicByModel = parse(this.dynamicByModel, this.dateFormat, new Date());
+          break;
+      }
+    },
+    getValidationClass: function getValidationClass(fieldName) {
+      var field = this.$v.form[fieldName];
+      if (field) {
+        return {
+          "md-invalid": field.$invalid && field.$dirty
+        };
+      }
+    },
+    validateData: function validateData() {
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.saveData();
+        this.clearForm();
+      }
+    },
+    clearForm: function clearForm() {
+      this.$v.$reset();
+
+      this.form.office = null;
+
+      this.arrayRegl = { id: 0, name: '' };
+      this.arrayMunicipality = { id: 0, name: '' };
+    },
+    showUpdate: function showUpdate() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      var me = this;
+      this.tipoAccion = 2, me.listado = 0;
+      this.id_CheckDet = data["id"];
+      this.form.office = data["office"];
+      this.form.official = data["official"];
+      this.form.boat = data["boat"];
+      this.form.enrollment = data["enrollment"];
+      this.form.outhFhisher = data["outhFhisher"];
+      this.form.fishLicense = data["fishLicense"];
+      this.form.owner = data["owner"];
+      this.form.fishCaptain = data["fishCaptain"];
+      this.form.location = data["location"];
+      this.date = data["date"];
+
+      this.arrayComp.id = data["id_company"];
+      this.arrayComp.name = data["nameCompany"];
+      this.arrayRegl.id = data["id_regional"];
+      this.arrayRegl.name = data["nameRegional"];
+    },
+    nameWithRegional: function nameWithRegional(_ref2) {
+      var name = _ref2.name;
+
+      return "" + name;
+    },
+    nameWithMunicipality: function nameWithMunicipality(_ref3) {
+      var name = _ref3.name;
+
+      return "" + name;
+    },
+    showData: function showData() {
+      this.clearForm();
+      var me = this;
+      this.tipoAccion = 1, me.listado = 0;
+      this.edo = 0;
+    },
+    hideForm: function hideForm() {
+      this.edo = 1;
+      this.listado = 1;
+      this.listData();
+    },
+    listData: function listData() {
+      var me = this;
+      var url = "/checkDetInchs";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayCheckDet = respuesta.CheckDetInchs.data;
+        me.myTable(me.arrayCheckDet);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    selectMunicipality: function selectMunicipality() {
+      var me = this;
+      var url = "/confiscationCertificates/selectMunicipality";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayMunicipality = respuesta.municipalities;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    selectRegional: function selectRegional() {
+      var me = this;
+      var url = "/checkDetInchs/selectRegional";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayRegional = respuesta.regional;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    saveData: function saveData() {
+      var me = this;
+
+      axios.post("/checkDetInchs/save", {
+
+        office: this.form.office.toUpperCase(),
+        official: this.form.official.toUpperCase(),
+        boat: this.form.boat.toUpperCase(),
+        enrollment: this.form.enrollment.toUpperCase(),
+        outhFhisher: this.form.outhFhisher.toUpperCase(),
+        fishLicense: this.form.fishLicense.toUpperCase(),
+        owner: this.form.owner.toUpperCase(),
+        fishCaptain: this.form.fishCaptain.toUpperCase(),
+        location: this.form.location.toUpperCase(),
+        date: this.date,
+        'id_company': this.arrayComp.id,
+        'id_regional': this.arrayRegl.id
+      }).then(function (response) {
+        me.hideForm();
+        me.message("Guardado", "Guardo ");
+        me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    updateData: function updateData() {
+      var me = this;
+
+      axios.put("/checkDetInchs/update", {
+
+        id: this.id_CheckDet,
+        office: this.form.office.toUpperCase(),
+        official: this.form.official.toUpperCase(),
+        boat: this.form.boat.toUpperCase(),
+        enrollment: this.form.enrollment.toUpperCase(),
+        outhFhisher: this.form.outhFhisher.toUpperCase(),
+        fishLicense: this.form.fishLicense.toUpperCase(),
+        owner: this.form.owner.toUpperCase(),
+        fishCaptain: this.form.fishCaptain.toUpperCase(),
+        location: this.form.location.toUpperCase(),
+        date: this.date,
+
+        'id_company': this.arrayComp.id,
+        'id_regional': this.arrayRegl.id
+      }).then(function (response) {
+        me.hideForm();
+        me.message("Actualizado", "Actualizó ");
+        me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    deleteData: function deleteData() {
+      var _this = this;
+
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      swal({
+        title: "Esta seguro de Eliminar la Región " + data["name"],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.value) {
+          var me = _this;
+          axios.post("/checkDetInchs/delete", {
+            id: _this.id_CheckDet
+          }).then(function (response) {
+            me.hideForm();
+            me.message("Eliminado", "Eliminó ");
+            me.listData();
+          }).catch(function (error) {
+            console.log(error);
+          });
+        } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    message: function message(tipo, crud) {
+      swal(tipo, "El registro se " + crud + " con éxito.", "success");
+    },
+    myTable: function myTable(datas) {
+      var me = this;
+
+      $(document).ready(function () {
+
+        var table = $('#dataTable').DataTable({ destroy: true,
+          stateSave: true,
+          data: datas,
+          "createdRow": function createdRow(row, data, dataIndex) {
+            if (data[6] == "0") {
+              $(row).addClass('redClass');
+            }
+          },
+          "language": {
+            "lengthMenu": "Ver _MENU_ registros por página",
+            "zeroRecords": "NO existen Datos",
+            "info": "mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "search": "Buscar:",
+            "paginate": {
+              "first": "Prim",
+              "last": "Ant",
+              "next": "Sig",
+              "previous": "Ant"
+            },
+            "infoFiltered": "(filtrado de _MAX_ total registros)"
+          },
+          responsive: "true",
+          "columns": [{ "data": "date" }, { "data": "nameRegional" }, { "data": "office" }, { "data": "official" }, { "data": "boat" }, { "data": "enrollment" }, { "data": "outhFhisher" }, { "data": "fishLicense" }, { "data": "nameCompany" }, { "data": "owner" }, { "data": "fishCaptain" }, { "data": "location" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
+
+        });
+
+        $('#dataTable tbody').on('click', '.editar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.showUpdate(me.datos);
+        });
+        $('#dataTable tbody').on('click', '.eliminar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.deleteData(me.datos);
+        });
+      });
+    }
+  },
+
+  mounted: function mounted() {
+    this.listData();
+    this.selectCompanies();
+    this.selectRegional();
+  }
+});
+
+/***/ }),
+/* 178 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", { staticClass: "main" }, [
+    _c("div", { staticClass: "container-fluid" }, [
+      _c(
+        "div",
+        { staticClass: "card" },
+        [
+          _c("div", { staticClass: "card-header" }, [
+            _c("i", {
+              staticClass: "m-0 font-weight-bold text-primary fas fa-car"
+            }),
+            _vm._v(" "),
+            _c("strong", { staticClass: "lead" }, [
+              _vm._v("Acta de Decomiso Preventivo")
+            ]),
+            _vm._v(" "),
+            _vm.edo
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-sm",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.showData()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "icon-plus" }),
+                    _vm._v(" Nuevo\n        ")
+                  ]
+                )
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _vm.listado == 1
+            ? [_vm._m(0)]
+            : _vm.listado == 0
+              ? [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "form",
+                      {
+                        staticClass: "form-horizontal",
+                        attrs: {
+                          action: "",
+                          method: "post",
+                          enctype: "multipart/form-data"
+                        }
+                      },
+                      [
+                        _c("md-card-content", [
+                          _c(
+                            "div",
+                            { staticClass: "md-layout" },
+                            [
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("noActa"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("No. Acta")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.noActa,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "noActa", $$v)
+                                      },
+                                      expression: "form.noActa"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.noActa.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el número de acta"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c("label", [_vm._v("Regional")]),
+                                  _vm._v(" "),
+                                  _c("multiselect", {
+                                    attrs: {
+                                      options: _vm.arrayRegional,
+                                      placeholder: "Seleccione una zona",
+                                      "custom-label": _vm.nameWithRegional,
+                                      label: "name",
+                                      "track-by": "name"
+                                    },
+                                    model: {
+                                      value: _vm.arrayRegl,
+                                      callback: function($$v) {
+                                        _vm.arrayRegl = $$v
+                                      },
+                                      expression: "arrayRegl"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v("   \n                "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("departament"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Departamento")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.departament,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "departament", $$v)
+                                      },
+                                      expression: "form.departament"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.departament.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del departamento"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c("label", [_vm._v("Municipio")]),
+                                  _vm._v(" "),
+                                  _c("multiselect", {
+                                    attrs: {
+                                      options: _vm.arrayMunicipality,
+                                      placeholder: "Seleccione una zona",
+                                      "custom-label": _vm.nameWithMunicipality,
+                                      label: "name",
+                                      "track-by": "name"
+                                    },
+                                    model: {
+                                      value: _vm.arrayMpality,
+                                      callback: function($$v) {
+                                        _vm.arrayMpality = $$v
+                                      },
+                                      expression: "arrayMpality"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v("   \n                "),
+                              _c(
+                                "md-field",
+                                [
+                                  _c("md-textarea", {
+                                    model: {
+                                      value: _vm.form.text,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "text", $$v)
+                                      },
+                                      expression: "form.text"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "nameScientific"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Nombre Científico")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.nameScientific,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "nameScientific",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "form.nameScientific"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.nameScientific.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre científico"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("nameCommon"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Nombre Común")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.nameCommon,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "nameCommon", $$v)
+                                      },
+                                      expression: "form.nameCommon"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.nameCommon.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre nombre común"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c(
+                                    "md-field",
+                                    [
+                                      _c(
+                                        "md-select",
+                                        {
+                                          attrs: {
+                                            name: "national",
+                                            id: "national",
+                                            placeholder: "Estado"
+                                          },
+                                          model: {
+                                            value: _vm.state,
+                                            callback: function($$v) {
+                                              _vm.state = $$v
+                                            },
+                                            expression: "state"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: { value: "fresco entero" }
+                                            },
+                                            [_vm._v("Fresco entero")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "fresco eviscerado "
+                                              }
+                                            },
+                                            [_vm._v("Fresco eviscerado ")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "congelado entero"
+                                              }
+                                            },
+                                            [_vm._v("Congelado entero ")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "congelado eviscerado"
+                                              }
+                                            },
+                                            [_vm._v("Congelado eviscerado")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "descabezado" } },
+                                            [_vm._v("Descabezado")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "tronco" } },
+                                            [_vm._v("Tronco")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "aletas" } },
+                                            [_vm._v("Aletas")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "seco" } },
+                                            [_vm._v("Seco")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "vivos" } },
+                                            [_vm._v("Vivos")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "otros" } },
+                                            [_vm._v("Otros")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v("     \n                "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c(
+                                    "md-field",
+                                    [
+                                      _c(
+                                        "md-select",
+                                        {
+                                          attrs: {
+                                            name: "national",
+                                            id: "national",
+                                            placeholder: "presentación"
+                                          },
+                                          model: {
+                                            value: _vm.presentation,
+                                            callback: function($$v) {
+                                              _vm.presentation = $$v
+                                            },
+                                            expression: "presentation"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "unidades" } },
+                                            [_vm._v("Unidades")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "zartas " } },
+                                            [_vm._v("Zartas ")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            {
+                                              attrs: {
+                                                value: "bolsas o bultos"
+                                              }
+                                            },
+                                            [_vm._v("Bolsas o Bultos ")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "canastas" } },
+                                            [_vm._v("Canastas")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "grupos" } },
+                                            [_vm._v("Grupos")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "otros" } },
+                                            [_vm._v("Otros")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v("     \n                "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("amount"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Cantidad (Un)")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.amount,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "amount", $$v)
+                                      },
+                                      expression: "form.amount"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.amount.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v("Olvidaste ingresar la cantidad")
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("average"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Promedio Talla (Cm)")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.average,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "average", $$v)
+                                      },
+                                      expression: "form.average"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.average.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el promedio talla"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("weight"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Peso")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.weight,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "weight", $$v)
+                                      },
+                                      expression: "form.weight"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.weight.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v("Olvidaste ingresar el peso")
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "commercialValue"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Valor Comercial")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.commercialValue,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "commercialValue",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "form.commercialValue"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.commercialValue.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el valor comercial"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                [
+                                  _c("md-textarea", {
+                                    model: {
+                                      value: _vm.form.text2,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "text2", $$v)
+                                      },
+                                      expression: "form.text2"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("element"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Elemento")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.element,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "element", $$v)
+                                      },
+                                      expression: "form.element"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.element.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del elemento"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("amount2"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Cantidad (Un)")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.amount2,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "amount2", $$v)
+                                      },
+                                      expression: "form.amount2"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.amount2.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v("Olvidaste ingresar la cantidad")
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "featuresState"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Características y Estado")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.featuresState,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "featuresState", $$v)
+                                      },
+                                      expression: "form.featuresState"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.featuresState.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar las características y estado"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "commercialValue2"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Valor Comercial")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.commercialValue2,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "commercialValue2",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "form.commercialValue2"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.commercialValue2.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el valor comercial"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                [
+                                  _c("md-textarea", {
+                                    model: {
+                                      value: _vm.form.text3,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "text3", $$v)
+                                      },
+                                      expression: "form.text3"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("label", [
+                                _vm._v(
+                                  "Los recursos, productos pesqueros y/o elementos fueron decomisados cuendo se encontraban en(describa la situación):"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                [
+                                  _c("md-textarea", {
+                                    model: {
+                                      value: _vm.form.text4,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "text4", $$v)
+                                      },
+                                      expression: "form.text4"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("label", [
+                                _vm._v(
+                                  "Para constancia se firma la presente acta por cada uno de los que intervienen en el decomiso preventivo."
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        attrs: {
+                                          "md-immediately": "",
+                                          "md-model-type": String
+                                        },
+                                        on: { input: _vm.toString },
+                                        model: {
+                                          value: _vm.date,
+                                          callback: function($$v) {
+                                            _vm.date = $$v
+                                          },
+                                          expression: "date"
+                                        }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione Fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v("     \n                "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("officialName"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Nombre Funcionario AUNAP")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.officialName,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "officialName", $$v)
+                                      },
+                                      expression: "form.officialName"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.officialName.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del funcionario de la AUNAP"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "documentIdOfficial"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Documento de Identidad")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.documentIdOfficial,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "documentIdOfficial",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "form.documentIdOfficial"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.documentIdOfficial.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el documento de identidad"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "representativeName"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [
+                                      _vm._v(
+                                        "Nombre Representante Autoridad Acompañante"
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.representativeName,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "representativeName",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "form.representativeName"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.representativeName.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre representante autoridad acompañante"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "documentIdRepresentative"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Documento de Identidad")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.documentIdRepresentative,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "documentIdRepresentative",
+                                          $$v
+                                        )
+                                      },
+                                      expression:
+                                        "form.documentIdRepresentative"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.documentIdRepresentative.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el documento de identidad"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "plateCertificate"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("No. Placa o Cedula")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.plateCertificate,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "plateCertificate",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "form.plateCertificate"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.plateCertificate.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar la placa o cedula"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("label", [
+                                _vm._v("DATOS DEL PRESUNTO INFRACTOR")
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("name"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Nombre")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.name,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "name", $$v)
+                                      },
+                                      expression: "form.name"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.name.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del infractor"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "documentIdOffender"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Documento de Identidad")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.documentIdOffender,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "documentIdOffender",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "form.documentIdOffender"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.documentIdOffender.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el documento de identidad del infractor"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        attrs: {
+                                          "md-immediately": "",
+                                          "md-model-type": String
+                                        },
+                                        on: { input: _vm.toString },
+                                        model: {
+                                          value: _vm.dateExpedition,
+                                          callback: function($$v) {
+                                            _vm.dateExpedition = $$v
+                                          },
+                                          expression: "dateExpedition"
+                                        }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Fecha de expediciòn C.C.")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v("    \n                "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "expeditionPlace"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Lugar de Expedidión C.C.")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.expeditionPlace,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "expeditionPlace",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "form.expeditionPlace"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.expeditionPlace.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el lugar de expedición del documento de identidad"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("homeAddress"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Dirección de Domicilio")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.homeAddress,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "homeAddress", $$v)
+                                      },
+                                      expression: "form.homeAddress"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.homeAddress.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar la dirección de domicilio"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("municipality"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Municipio")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.municipality,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "municipality", $$v)
+                                      },
+                                      expression: "form.municipality"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.municipality.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del municipio"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "corregimiento"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Corregimiento")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.corregimiento,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "corregimiento", $$v)
+                                      },
+                                      expression: "form.corregimiento"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.corregimiento.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del corregimiento"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("neighborhood"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Vereda")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.neighborhood,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "neighborhood", $$v)
+                                      },
+                                      expression: "form.neighborhood"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.neighborhood.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la vereda"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("telephone"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Teléfono")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.telephone,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "telephone", $$v)
+                                      },
+                                      expression: "form.telephone"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.telephone.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el número de teléfono"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("mobile"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Celular")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.mobile,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "mobile", $$v)
+                                      },
+                                      expression: "form.mobile"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.mobile.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el número de celular"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("email"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Correo Electrónico")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.email,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "email", $$v)
+                                      },
+                                      expression: "form.email"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.email.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el correo electrónico"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("label", [_vm._v("Observaciones")]),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                [
+                                  _c("md-textarea", {
+                                    model: {
+                                      value: _vm.form.observation,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "observation", $$v)
+                                      },
+                                      expression: "form.observation"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "modal-footer" },
+                    [
+                      _c(
+                        "md-card-actions",
+                        [
+                          _c(
+                            "md-button",
+                            {
+                              staticClass: "md-raised",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.hideForm()
+                                }
+                              }
+                            },
+                            [_vm._v("Cerrar")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "md-card-actions",
+                        [
+                          _vm.tipoAccion == 1
+                            ? _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "submit",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.validateData()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Guardar")]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]
+              : _vm._e()
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          {
+            staticClass: "table table-striped table-bordered display",
+            attrs: { id: "dataTable", width: "100%", cellspacing: "0" }
+          },
+          [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("Fecha")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Regional")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Oficina")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Funcionario")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Embarcación")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Matrícula")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Pesquería Autorizada")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Patente de Pesca")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Empresa")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Armador")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Capitán de Pesca")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Localización")]),
+                _vm._v(" "),
+                _c("th", { staticStyle: { width: "90px" } }, [
+                  _vm._v("Opciones")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody"),
+            _vm._v(" "),
+            _c("tfoot", [
+              _c("tr", [
+                _c("th", [_vm._v("Fecha")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Regional")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Oficina")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Funcionario")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Embarcación")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Matrícula")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Pesquería Autorizada")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Patente de Pesca")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Empresa")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Armador")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Capitán de Pesca")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Localización")]),
+                _vm._v(" "),
+                _c("th", { staticStyle: { width: "90px" } }, [
+                  _vm._v("Opciones")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody")
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-47f25193", module.exports)
   }
 }
 

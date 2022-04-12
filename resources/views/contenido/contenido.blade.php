@@ -48,6 +48,9 @@
             <template v-if="menu==14">
                 <donations></donations>
             </template>
+            <template v-if="menu==15">
+                <confiscations></confiscations>
+            </template>
 
            
    

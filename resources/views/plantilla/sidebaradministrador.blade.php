@@ -88,6 +88,9 @@
                             <li @click="menu=14">
                                 <a href="#"><i class="icon-bag"></i>Acta de Donación</a>                                                                               
                             </li>                                
+                            <li @click="menu=15">
+                                <a href="#"><i class="icon-bag"></i>Acta de Decomiso Preventivo</a>                                                                               
+                            </li>                                
                         </ul>                            
                         </div>                        
                     </li>

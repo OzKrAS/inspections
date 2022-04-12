@@ -16,6 +16,7 @@ class DonationCertificateController extends Controller
             ->select('donation_certificates.id',
                      'donation_certificates.noActa',
                      'donation_certificates.nameScientific',
+                     'donation_certificates.observation',
                      'donation_certificates.nameCommon',
                      'donation_certificates.presentation',
                      'donation_certificates.amount',
@@ -53,6 +54,7 @@ class DonationCertificateController extends Controller
         $donations = new DonationCertificate();
         $donations->noActa = $request->noActa;
         $donations->nameScientific = $request->nameScientific;
+        $donations->observation = $request->observation;
         $donations->nameCommon = $request->nameCommon;
         $donations->presentation = $request->presentation;
         $donations->amount = $request->amount;
@@ -83,6 +85,7 @@ class DonationCertificateController extends Controller
         $donations = DonationCertificate::findOrFail($request->id); 
         $donations->noActa = $request->noActa;
         $donations->nameScientific = $request->nameScientific;
+        $donations->observation = $request->observation;
         $donations->nameCommon = $request->nameCommon;
         $donations->presentation = $request->presentation;
         $donations->amount = $request->amount;
