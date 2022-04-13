@@ -366,18 +366,18 @@
                     >Olvidaste ingresar el nombre del capitán del barco</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>   
-                  <md-field md-clearable :class="getValidationClass('namebusiness')">
+                  <md-field md-clearable :class="getValidationClass('nameBusiness')">
                     <label for="first-name">Nombre Empresa Responsable</label>
                     <md-input
                       name="first-name"
                       id="first-name"
                       autocomplete="given-name"
-                      v-model="form.namebusiness"
+                      v-model="form.nameBusiness"
                       :disabled="sending"
                     />
                     <span
                       class="md-error"
-                      v-if="!$v.form.namebusiness.required"
+                      v-if="!$v.form.nameBusiness.required"
                     >Olvidaste ingresar el nombre de la empresa responsable</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>   
@@ -477,7 +477,7 @@ export default {
         productLanded: "",
         nameOfficial: "",
         nameCaptain: "",
-        namebusiness: "",
+        nameBusiness: "",
       
       },
       
@@ -485,6 +485,7 @@ export default {
       dateTransfer: format(now, dateFormat),
       notification: "",
       areaOperation: "",
+      observation: "",
 
       arrayInspectionBoatCargo: [],
       id_inspectionBoatCargo: 0,
@@ -554,7 +555,7 @@ export default {
       nameCaptain: {
         required
       },
-      namebusiness: {
+      nameBusiness: {
         required
       },
       
@@ -622,7 +623,8 @@ export default {
       this.form.productLanded = null;
       this.form.nameOfficial = null;
       this.form.nameCaptain = null;
-      this.form.namebusiness = null;
+      this.form.nameBusiness = null;
+      this.observation = null;
       
       this.arrayPt = {id:0, name:''};
       this.arrayFg = {id:0, name:''};
@@ -651,7 +653,8 @@ export default {
       this.form.productLanded = data["productLanded"];
       this.form.nameOfficial = data["nameOfficial"];
       this.form.nameCaptain = data["nameCaptain"];
-      this.form.namebusiness = data["namebusiness"];
+      this.form.nameBusiness = data["nameBusiness"];
+      this.observation = data["observation"];
 
       this.arrayPt.id = data["id_port"];
       this.arrayPt.name = data["namePort"];
@@ -736,7 +739,8 @@ export default {
         productLanded: this.form.productLanded.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
-        namebusiness: this.form.namebusiness.toUpperCase(),
+        nameBusiness: this.form.nameBusiness.toUpperCase(),
+        observation: this.observation.toUpperCase(),
        
         'id_port': this.arrayPt.id,
         'id_flag': this.arrayFg.id,
@@ -775,7 +779,8 @@ export default {
         productLanded: this.form.productLanded.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
-        namebusiness: this.form.namebusiness.toUpperCase(),
+        nameBusiness: this.form.nameBusiness.toUpperCase(),
+        observation: this.observation.toUpperCase(),
        
         'id_port': this.arrayPt.id,
         'id_flag': this.arrayFg.id,

@@ -61979,7 +61979,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         productLanded: "",
         nameOfficial: "",
         nameCaptain: "",
-        namebusiness: ""
+        nameBusiness: ""
 
       },
 
@@ -61987,6 +61987,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       dateTransfer: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
       notification: "",
       areaOperation: "",
+      observation: "",
 
       arrayInspectionBoatCargo: [],
       id_inspectionBoatCargo: 0,
@@ -62056,7 +62057,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       nameCaptain: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
-      namebusiness: {
+      nameBusiness: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       }
 
@@ -62117,7 +62118,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.form.productLanded = null;
       this.form.nameOfficial = null;
       this.form.nameCaptain = null;
-      this.form.namebusiness = null;
+      this.form.nameBusiness = null;
+      this.observation = null;
 
       this.arrayPt = { id: 0, name: '' };
       this.arrayFg = { id: 0, name: '' };
@@ -62147,7 +62149,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.form.productLanded = data["productLanded"];
       this.form.nameOfficial = data["nameOfficial"];
       this.form.nameCaptain = data["nameCaptain"];
-      this.form.namebusiness = data["namebusiness"];
+      this.form.nameBusiness = data["nameBusiness"];
+      this.observation = data["observation"];
 
       this.arrayPt.id = data["id_port"];
       this.arrayPt.name = data["namePort"];
@@ -62230,7 +62233,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         productLanded: this.form.productLanded.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
-        namebusiness: this.form.namebusiness.toUpperCase(),
+        nameBusiness: this.form.nameBusiness.toUpperCase(),
+        observation: this.observation.toUpperCase(),
 
         'id_port': this.arrayPt.id,
         'id_flag': this.arrayFg.id
@@ -62266,7 +62270,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         productLanded: this.form.productLanded.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
-        namebusiness: this.form.namebusiness.toUpperCase(),
+        nameBusiness: this.form.nameBusiness.toUpperCase(),
+        observation: this.observation.toUpperCase(),
 
         'id_port': this.arrayPt.id,
         'id_flag': this.arrayFg.id
@@ -63327,7 +63332,7 @@ var render = function() {
                               _c(
                                 "md-field",
                                 {
-                                  class: _vm.getValidationClass("namebusiness"),
+                                  class: _vm.getValidationClass("nameBusiness"),
                                   attrs: { "md-clearable": "" }
                                 },
                                 [
@@ -63345,15 +63350,15 @@ var render = function() {
                                       disabled: _vm.sending
                                     },
                                     model: {
-                                      value: _vm.form.namebusiness,
+                                      value: _vm.form.nameBusiness,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.form, "namebusiness", $$v)
+                                        _vm.$set(_vm.form, "nameBusiness", $$v)
                                       },
-                                      expression: "form.namebusiness"
+                                      expression: "form.nameBusiness"
                                     }
                                   }),
                                   _vm._v(" "),
-                                  !_vm.$v.form.namebusiness.required
+                                  !_vm.$v.form.nameBusiness.required
                                     ? _c("span", { staticClass: "md-error" }, [
                                         _vm._v(
                                           "Olvidaste ingresar el nombre de la empresa responsable"

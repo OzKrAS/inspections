@@ -31,11 +31,12 @@ class InspectionBoatCargoController extends Controller
                      'inspection_boat_cargos.productLanded',
                      'inspection_boat_cargos.nameOfficial',
                      'inspection_boat_cargos.nameCaptain',
-                     'inspection_boat_cargos.namebusiness',
+                     'inspection_boat_cargos.nameBusiness',
                      'inspection_boat_cargos.date',
                      'inspection_boat_cargos.dateTransfer',
                      'inspection_boat_cargos.notification',
                      'inspection_boat_cargos.areaOperation',
+                     'inspection_boat_cargos.observation',
                      
                      'inspection_boat_cargos.id_port','ports.name as namePort',
                      'inspection_boat_cargos.id_flag','flags.name as nameFlag',
@@ -67,11 +68,12 @@ class InspectionBoatCargoController extends Controller
         $inspections->productLanded = $request->productLanded;
         $inspections->nameOfficial = $request->nameOfficial;
         $inspections->nameCaptain = $request->nameCaptain;
-        $inspections->namebusiness = $request->namebusiness;
+        $inspections->nameBusiness = $request->nameBusiness;
         $inspections->date = $request->date;
         $inspections->dateTransfer = $request->dateTransfer;
         $inspections->notification = $request->notification;
         $inspections->areaOperation = $request->areaOperation;
+        $inspections->observation = $request->observation;
          
         $inspections->id_port = $request->id_port;    
         $inspections->id_flag = $request->id_flag;   
@@ -96,11 +98,12 @@ class InspectionBoatCargoController extends Controller
         $inspections->productLanded = $request->productLanded;
         $inspections->nameOfficial = $request->nameOfficial;
         $inspections->nameCaptain = $request->nameCaptain;
-        $inspections->namebusiness = $request->namebusiness;
+        $inspections->nameBusiness = $request->nameBusiness;
         $inspections->date = $request->date;
         $inspections->dateTransfer = $request->dateTransfer;
         $inspections->notification = $request->notification;
         $inspections->areaOperation = $request->areaOperation;
+        $inspections->observation = $request->observation;
         
         $inspections->id_port = $request->id_port;    
         $inspections->id_flag = $request->id_flag;   

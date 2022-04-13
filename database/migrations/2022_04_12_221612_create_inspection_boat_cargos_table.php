@@ -30,11 +30,12 @@ class CreateInspectionBoatCargosTable extends Migration
             $table->string('productLanded');
             $table->string('nameOfficial');
             $table->string('nameCaptain');
-            $table->string('namebusiness');
+            $table->string('nameBusiness');
             $table->date('date');
             $table->date('dateTransfer');
             $table->string('notification');
             $table->string('areaOperation');
+            $table->string('observation');
 
             $table->integer('id_port')->unsigned();
             $table->foreign('id_port')->references('id')->on('ports');
