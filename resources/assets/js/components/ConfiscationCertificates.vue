@@ -657,7 +657,7 @@ export default {
       observation: "",
       
       arrayConfiscationCert: [],
-      id_ConfiscationCert: 0,
+      id_confiscationCert: 0,
 
       arrayRegional: {id:0, name:''},
 	    arrayRegl: [],
@@ -853,7 +853,7 @@ export default {
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
-      (this.id_ConfiscationCert = data["id"]);
+      (this.id_confiscationCert = data["id"]);
       this.form.noActa = data["noActa"];
       this.form.departament = data["departament"];
       this.form.municipality = data["municipality"];
@@ -995,8 +995,8 @@ export default {
 
       axios
         .put("/confiscationCertificates/update", {
-
-        noActa : this.form.noActa.toUpperCase(),
+      id: this.id_confiscationCert,
+      noActa : this.form.noActa.toUpperCase(),
       departament : this.form.departament.toUpperCase(),
       municipality : this.form.municipality.toUpperCase(),
       text : this.text.toUpperCase(),
@@ -1063,7 +1063,7 @@ export default {
           let me = this;      
           axios
             .post("/confiscationCertificates/delete", {
-              id: this.id_ConfiscationCert,
+              id: this.id_confiscationCert,
             })
             .then(function(response) {
               me.hideForm();

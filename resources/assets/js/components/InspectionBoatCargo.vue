@@ -380,6 +380,9 @@
                       v-if="!$v.form.nameBusiness.required"
                     >Olvidaste ingresar el nombre de la empresa responsable</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field> 
+                  <md-field>
+                        <md-textarea v-model="observation"></md-textarea>
                   </md-field>   
 
                 </div>
