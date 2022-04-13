@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Zarpe;
 use App\Region;
 use App\Flag;
+use App\Ports;
 use App\Nationality;
 use App\AutoFisher;
 use App\FisheryAuthorized;

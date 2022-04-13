@@ -51,6 +51,9 @@
             <template v-if="menu==15">
                 <confiscations></confiscations>
             </template>
+            <template v-if="menu==16">
+                <inspectioncargos></inspectioncargos>
+            </template>
 
            
    

@@ -22,18 +22,15 @@
               <table class="table table-striped table-bordered display" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Fecha</th>
+                    <th>No. Acta</th>
                     <th>Regional</th>
-                    <th>Oficina</th>
-                    <th>Funcionario</th>
-                    <th>Embarcación</th>
-                    <th>Matrícula</th>
-                    <th>Pesquería Autorizada</th>
-                    <th>Patente de Pesca</th>
-                    <th>Empresa</th>
-                    <th>Armador</th>
-                    <th>Capitán de Pesca</th>
-                    <th>Localización</th>
+                    <th>Departamento</th>
+                    <th>Municipio</th>
+                    <th>Nombre Científico</th>
+                    <th>Nombre Comun</th>
+                    <th>Cantidad (Un)</th>
+                    <th>Promedio Talla (Cm)</th>
+                    <th>Peso (Kg)</th>
                     <th style="width: 90px">Opciones</th>    
                   </tr>
                 </thead>
@@ -41,18 +38,15 @@
                 </tbody>
                   <tfoot>
                     <tr>
-                      <th>Fecha</th>
+                      <th>No. Acta</th>
                       <th>Regional</th>
-                      <th>Oficina</th>
-                      <th>Funcionario</th>
-                      <th>Embarcación</th>
-                      <th>Matrícula</th>
-                      <th>Pesquería Autorizada</th>
-                      <th>Patente de Pesca</th>
-                      <th>Empresa</th>
-                      <th>Armador</th>
-                      <th>Capitán de Pesca</th>
-                      <th>Localización</th>
+                      <th>Departamento</th>
+                      <th>Municipio</th>
+                      <th>Nombre Científico</th>
+                      <th>Nombre Comun</th>
+                      <th>Cantidad (Un)</th>
+                      <th>Promedio Talla (Cm)</th>
+                      <th>Peso (Kg)</th>
                       <th style="width: 90px">Opciones</th>  
                     </tr>
                   </tfoot>
@@ -80,12 +74,10 @@
                       class="md-error"
                       v-if="!$v.form.noActa.required"
                     >Olvidaste ingresar el número de acta</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <div class="md-layout-item">
-                      <label>Regional</label>
                       <multiselect v-model="arrayRegl" :options="arrayRegional"
-                          placeholder="Seleccione una zona"
+                          placeholder="Regional"
                           :custom-label="nameWithRegional"
                           label="name"
                           track-by="name">
@@ -105,17 +97,22 @@
                        v-if="!$v.form.departament.required"
                      >Olvidaste ingresar el nombre del departamento</span>
                   </md-field>
-                  <div class="md-layout-item">
-                      <label>Municipio</label>
-                      <multiselect v-model="arrayMpality" :options="arrayMunicipality"
-                          placeholder="Seleccione una zona"
-                          :custom-label="nameWithMunicipality"
-                          label="name"
-                          track-by="name">
-                      </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  <md-field md-clearable :class="getValidationClass('municipality')">
+                    <label for="first-name">Municipio</label>
+                    <md-input
+                       name="first-name"
+                       id="first-name"
+                       autocomplete="given-name"
+                       v-model="form.municipality"
+                       :disabled="sending"
+                     />
+                     <span
+                       class="md-error"
+                       v-if="!$v.form.municipality.required"
+                     >Olvidaste ingresar el nombre del municipio</span>
+                  </md-field>
                   <md-field>
-                        <md-textarea v-model="form.text"></md-textarea>
+                        <md-textarea v-model="text"></md-textarea>
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('nameScientific')">
                     <label for="first-name">Nombre Científico</label>
@@ -130,9 +127,8 @@
                       class="md-error"
                       v-if="!$v.form.nameScientific.required"
                     >Olvidaste ingresar el nombre científico</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
-                  <md-field md-clearable :class="getValidationClass('nameCommon')">
+                   <md-field md-clearable :class="getValidationClass('nameCommon')">
                     <label for="first-name">Nombre Común</label>
                     <md-input
                       name="first-name"
@@ -145,11 +141,10 @@
                       class="md-error"
                       v-if="!$v.form.nameCommon.required"
                     >Olvidaste ingresar el nombre nombre común</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
-                  <div class="md-layout-item">
+                 <div class="md-layout-item">
                     <md-field>
-                      <md-select v-model="state" name="national" id="national" placeholder="Estado">
+                      <md-select v-model="state" name="state" id="state" placeholder="Estado">
                         <md-option value="fresco entero">Fresco entero</md-option>
                         <md-option value="fresco eviscerado ">Fresco eviscerado </md-option>
                         <md-option value="congelado entero">Congelado entero </md-option>
@@ -165,7 +160,7 @@
                   </div>&nbsp;&nbsp;&nbsp;  
                   <div class="md-layout-item">
                     <md-field>
-                      <md-select v-model="presentation" name="national" id="national" placeholder="presentación">
+                      <md-select v-model="presentation" name="presentation" id="presentation" placeholder="presentación">
                         <md-option value="unidades">Unidades</md-option>
                         <md-option value="zartas ">Zartas </md-option>
                         <md-option value="bolsas o bultos">Bolsas o Bultos </md-option>
@@ -188,7 +183,6 @@
                       class="md-error"
                       v-if="!$v.form.amount.required"
                     >Olvidaste ingresar la cantidad</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('average')">
                     <label for="first-name">Promedio Talla (Cm)</label>
@@ -203,10 +197,9 @@
                       class="md-error"
                       v-if="!$v.form.average.required"
                     >Olvidaste ingresar el promedio talla</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('weight')">
-                    <label for="first-name">Peso</label>
+                    <label for="first-name">Peso (Kg)</label>
                     <md-input
                       name="first-name"
                       id="first-name"
@@ -218,8 +211,7 @@
                       class="md-error"
                       v-if="!$v.form.weight.required"
                     >Olvidaste ingresar el peso</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
+                  </md-field> 
                   <md-field md-clearable :class="getValidationClass('commercialValue')">
                     <label for="first-name">Valor Comercial</label>
                     <md-input
@@ -233,10 +225,9 @@
                       class="md-error"
                       v-if="!$v.form.commercialValue.required"
                     >Olvidaste ingresar el valor comercial</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
-                  <md-field>
-                        <md-textarea v-model="form.text2"></md-textarea>
+                   <md-field>
+                        <md-textarea v-model="text2"></md-textarea>
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('element')">
                     <label for="first-name">Elemento</label>
@@ -265,7 +256,6 @@
                       class="md-error"
                       v-if="!$v.form.amount2.required"
                     >Olvidaste ingresar la cantidad</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('featuresState')">
                     <label for="first-name">Características y Estado</label>
@@ -280,7 +270,6 @@
                       class="md-error"
                       v-if="!$v.form.featuresState.required"
                     >Olvidaste ingresar las características y estado</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('commercialValue2')">
                     <label for="first-name">Valor Comercial</label>
@@ -295,17 +284,16 @@
                       class="md-error"
                       v-if="!$v.form.commercialValue2.required"
                     >Olvidaste ingresar el valor comercial</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <md-field>
-                        <md-textarea v-model="form.text3"></md-textarea>
+                        <md-textarea v-model="text3"></md-textarea>
                   </md-field>
 
-                  <!-- MOTIVOS DEL DECOMISO PREVENTIVO -->
+                  <label>MOTIVOS DEL DECOMISO PREVENTIVO</label> 
 
-                  <label>Los recursos, productos pesqueros y/o elementos fueron decomisados cuendo se encontraban en(describa la situación):</label>
+                  <label>Los recursos, productos pesqueros y/o elementos fueron decomisados cuendo se encontraban en (describa la situación):</label>
                   <md-field>
-                        <md-textarea v-model="form.text4"></md-textarea>
+                        <md-textarea v-model="text4"></md-textarea>
                   </md-field>
 
                   <label>Para constancia se firma la presente acta por cada uno de los que intervienen en el decomiso preventivo.</label>
@@ -321,7 +309,7 @@
                         </md-datepicker>
                     </div>
                   </div> &nbsp;&nbsp;&nbsp; 
-                  <md-field md-clearable :class="getValidationClass('officialName')">
+                   <md-field md-clearable :class="getValidationClass('officialName')">
                     <label for="first-name">Nombre Funcionario AUNAP</label>
                     <md-input
                        name="first-name"
@@ -335,7 +323,7 @@
                        v-if="!$v.form.officialName.required"
                      >Olvidaste ingresar el nombre del funcionario de la AUNAP</span>
                   </md-field>
-                  <md-field md-clearable :class="getValidationClass('documentIdOfficial')">
+                 <md-field md-clearable :class="getValidationClass('documentIdOfficial')">
                     <label for="first-name">Documento de Identidad</label>
                     <md-input
                        name="first-name"
@@ -349,7 +337,7 @@
                        v-if="!$v.form.documentIdOfficial.required"
                      >Olvidaste ingresar el documento de identidad</span>
                   </md-field>
-                  <md-field md-clearable :class="getValidationClass('representativeName')">
+                   <md-field md-clearable :class="getValidationClass('representativeName')">
                     <label for="first-name">Nombre Representante Autoridad Acompañante</label>
                     <md-input
                        name="first-name"
@@ -408,7 +396,7 @@
                        v-if="!$v.form.name.required"
                      >Olvidaste ingresar el nombre del infractor</span>
                   </md-field>
-                  <md-field md-clearable :class="getValidationClass('documentIdOffender')">
+                 <md-field md-clearable :class="getValidationClass('documentIdOffender')">
                     <label for="first-name">Documento de Identidad</label>
                     <md-input
                        name="first-name"
@@ -448,7 +436,7 @@
                        v-if="!$v.form.expeditionPlace.required"
                      >Olvidaste ingresar el lugar de expedición del documento de identidad</span>
                   </md-field> 
-                  <md-field md-clearable :class="getValidationClass('homeAddress')">
+                 <md-field md-clearable :class="getValidationClass('homeAddress')">
                     <label for="first-name">Dirección de Domicilio</label>
                     <md-input
                        name="first-name"
@@ -462,18 +450,18 @@
                        v-if="!$v.form.homeAddress.required"
                      >Olvidaste ingresar la dirección de domicilio</span>
                   </md-field> 
-                  <md-field md-clearable :class="getValidationClass('municipality')">
+                  <md-field md-clearable :class="getValidationClass('municipalityOffender')">
                     <label for="first-name">Municipio</label>
                     <md-input
                        name="first-name"
                        id="first-name"
                        autocomplete="given-name"
-                       v-model="form.municipality"
+                       v-model="form.municipalityOffender"
                        :disabled="sending"
                      />
                      <span
                        class="md-error"
-                       v-if="!$v.form.municipality.required"
+                       v-if="!$v.form.municipalityOffender.required"
                      >Olvidaste ingresar el nombre del municipio</span>
                   </md-field> 
                   <md-field md-clearable :class="getValidationClass('corregimiento')">
@@ -504,7 +492,7 @@
                        v-if="!$v.form.neighborhood.required"
                      >Olvidaste ingresar el nombre de la vereda</span>
                   </md-field> 
-                  <md-field md-clearable :class="getValidationClass('telephone')">
+                   <md-field md-clearable :class="getValidationClass('telephone')">
                     <label for="first-name">Teléfono</label>
                     <md-input
                        name="first-name"
@@ -548,7 +536,7 @@
                   </md-field> 
                   <label>Observaciones</label>
                   <md-field>
-                        <md-textarea v-model="form.observation"></md-textarea>
+                        <md-textarea v-model="observation"></md-textarea>
                   </md-field>   
                 </div>        
               </md-card-content>
@@ -558,7 +546,6 @@
             <md-card-actions>
               <md-button type="button" class="md-raised" @click="hideForm()">Cerrar</md-button>
             </md-card-actions>
-
             <md-card-actions>
               <md-button
                 type="submit"
@@ -567,6 +554,13 @@
                 :disabled="sending"
                 @click="validateData()"
               >Guardar</md-button>
+              <md-button
+                type="submit"
+                v-if="tipoAccion==2"
+                class="md-dense md-raised md-primary"
+                :disabled="sending"
+                @click="updateData()"
+              >Actualizar</md-button>
             </md-card-actions>
           </div>
         </template>
@@ -624,20 +618,17 @@ export default {
       form: {
         noActa: "",
         departament: "",
-        text: "",
+        municipality: "",
         nameScientific: "",
         nameCommon: "",
         amount: "",
         average: "",
         weight: "",
-        commercialValue: "",
-        text2: "",
+        commercialValue: "",     
         element: "",
         amount2: "",
         featuresState: "",
-        commercialValue2: "",
-        text3: "",
-        text4: "",
+        commercialValue2: "",   
         officialName: "",
         documentIdOfficial: "",
         representativeName: "",
@@ -647,29 +638,30 @@ export default {
         documentIdOffender: "",
         expeditionPlace: "",
         homeAddress: "",
-        municipality: "",
+        municipalityOffender: "",
         corregimiento: "",
         neighborhood: "",
         telephone: "",
+        mobile: "",
+        email: "",
       },
 
+      text3: "",
+      text4: "",
+      text2: "",
+      text: "",
       state: "",
       presentation: "",
       date: format(now, dateFormat),
       dateExpedition: format(now, dateFormat),
       observation: "",
       
+      arrayConfiscationCert: [],
+      id_ConfiscationCert: 0,
 
-      arrayCheckDet: [],
-      id_CheckDet: 0,
       arrayRegional: {id:0, name:''},
-	  arrayRegl: [],
+	    arrayRegl: [],
       id_regional: 0,
-      arrayMunicipality: {id:0, name:''},
-	  arrayMpality: [],
-      id_municipality: 0,
-
-      idCheckDelt: 0,
 
       edo:1,
       tipoAccion: 1,
@@ -684,94 +676,88 @@ export default {
   validations: {
     form: {
       
-      official:  {
-        required
-      },
       noActa:  {
         required
       },
-        departament:  {
+      departament:  {
         required
       },
-        text:  {
+      municipality:  {
         required
       },
-        nameScientific:  {
+      nameScientific:  {
         required
       },
-        nameCommon:  {
+      nameCommon:  {
         required
       },
-        amount:  {
+      amount:  {
         required
       },
-        average:  {
+      average:  {
         required
       },
-        weight:  {
+      weight:  {
         required
       },
-        commercialValue:  {
+      commercialValue:  {
         required
       },
-        text2:  {
+      element:  {
         required
       },
-        element:  {
+      amount2:  {
         required
       },
-        amount2:  {
+      featuresState:  {
         required
       },
-        featuresState:  {
+      commercialValue2:  {
         required
       },
-        commercialValue2:  {
+      officialName:  {
         required
       },
-        text3:  {
+      documentIdOfficial:  {
         required
       },
-        text4:  {
+      representativeName:  {
         required
       },
-        officialName:  {
+      documentIdRepresentative:  {
         required
       },
-        documentIdOfficial:  {
+      plateCertificate:  {
         required
       },
-        representativeName:  {
+      name:  {
         required
       },
-        documentIdRepresentative:  {
+      documentIdOffender:  {
         required
       },
-        plateCertificate:  {
+      expeditionPlace:  {
         required
       },
-        name:  {
+      homeAddress:  {
         required
       },
-        documentIdOffender:  {
+      municipalityOffender:  {
         required
       },
-        expeditionPlace:  {
+      corregimiento:  {
         required
       },
-        homeAddress:  {
+      neighborhood:  {
         required
       },
-        municipality:  {
+      telephone:  {
         required
       },
-        corregimiento:  {
+      mobile:  {
         required
       },
-        neighborhood:  {
-        required
-      },
-        telephone:  {
+      email:  {
         required
       },
     }
@@ -823,38 +809,93 @@ export default {
     clearForm() {
       this.$v.$reset();
     
-      this.form.office = null;
+      this.form.noActa = null;
+      this.form.departament = null;
+      this.form.municipality = null;
+      this.text = null;
+      this.form.nameScientific = null;
+      this.form.nameCommon = null;
+      this.form.amount = null;
+      this.form.average = null;
+      this.form.weight = null;
+      this.form.commercialValue = null;
+      this.text2 = null;
+      this.form.element = null;
+      this.form.amount2 = null;
+      this.form.featuresState = null;
+      this.form.commercialValue2 = null;
+      this.text3 = null;
+      this.text4 = null;
+      this.form.officialName = null;
+      this.form.documentIdOfficial = null;
+      this.form.representativeName = null;
+      this.form.documentIdRepresentative = null;
+      this.form.plateCertificate = null;
+      this.form.name = null;
+      this.form.documentIdOffender = null;
+      this.form.expeditionPlace = null;
+      this.form.homeAddress = null;
+      this.form.municipalityOffender = null;
+      this.form.corregimiento = null;
+      this.form.neighborhood = null;
+      this.form.telephone = null;
+      this.form.mobile = null;
+      this.form.email = null;
+      this.state = null;
+      this.presentation = null;
+      this.date = null;
+      this.dateExpedition = null;
+      this.observation = null;
       
-
-   
       this.arrayRegl = {id:0, name:''};
-      this.arrayMunicipality = {id:0, name:''};
     },
 
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
-      (this.id_CheckDet = data["id"]);
-      this.form.office = data["office"];
-      this.form.official = data["official"];
-      this.form.boat = data["boat"];
-      this.form.enrollment = data["enrollment"];
-      this.form.outhFhisher = data["outhFhisher"];
-      this.form.fishLicense = data["fishLicense"];
-      this.form.owner = data["owner"];
-      this.form.fishCaptain = data["fishCaptain"];
-      this.form.location = data["location"];
+      (this.id_ConfiscationCert = data["id"]);
+      this.form.noActa = data["noActa"];
+      this.form.departament = data["departament"];
+      this.form.municipality = data["municipality"];
+      this.text = data["text"];
+      this.form.nameScientific = data["nameScientific"];
+      this.form.nameCommon = data["nameCommon"];
+      this.form.amount = data["amount"];
+      this.form.average = data["average"];
+      this.form.weight = data["weight"];
+      this.form.commercialValue = data["commercialValue"];
+      this.text2 = data["text2"];
+      this.form.element = data["element"];
+      this.form.amount2 = data["amount2"];
+      this.form.featuresState = data["featuresState"];
+      this.form.commercialValue2 = data["commercialValue2"];
+      this.text3 = data["text3"];
+      this.text4 = data["text4"];
+      this.form.officialName = data["officialName"];
+      this.form.documentIdOfficial = data["documentIdOfficial"];
+      this.form.representativeName = data["representativeName"];
+      this.form.documentIdRepresentative = data["documentIdRepresentative"];
+      this.form.plateCertificate = data["plateCertificate"];
+      this.form.name = data["name"];
+      this.form.documentIdOffender = data["documentIdOffender"];
+      this.form.expeditionPlace = data["expeditionPlace"];
+      this.form.homeAddress = data["homeAddress"];
+      this.form.municipalityOffender = data["municipalityOffender"];
+      this.form.corregimiento = data["corregimiento"];
+      this.form.neighborhood = data["neighborhood"];
+      this.form.telephone = data["telephone"];
+      this.form.mobile = data["mobile"];
+      this.form.email = data["email"];
+      this.state = data["state"];
+      this.presentation = data["presentation"];
       this.date = data["date"];
-
-      this.arrayComp.id = data["id_company"];
-			this.arrayComp.name = data["nameCompany"];
+      this.dateExpedition = data["dateExpedition"];
+      this.observation = data["observation"];
+      
       this.arrayRegl.id = data["id_regional"];
 			this.arrayRegl.name = data["nameRegional"];
     },
     nameWithRegional ({ name }) {
-            return `${name}`
-    },
-    nameWithMunicipality ({ name }) {
             return `${name}`
     },
     showData() {
@@ -871,32 +912,22 @@ export default {
     listData() {
       let me = this;
       var url =
-        "/checkDetInchs";
+        "/confiscationCertificates";
       axios
         .get(url)
         .then(function (response) {
           var respuesta = response.data;
-          me.arrayCheckDet = respuesta.CheckDetInchs.data;
-          me.myTable(me.arrayCheckDet);
+          me.arrayConfiscationCert = respuesta.confiscation.data;
+          me.myTable(me.arrayConfiscationCert);
 
         })
         .catch(function (error) {
           console.log(error);
         });
     },
-    selectMunicipality() {
-            let me = this;
-            var url = "/confiscationCertificates/selectMunicipality";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayMunicipality= respuesta.municipalities;
-                }).catch(function (error) {
-                    console.log(error);
-            });
-    }, 
     selectRegional() {
             let me = this;
-            var url = "/checkDetInchs/selectRegional";
+            var url = "/confiscationCertificates/selectRegional";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
                     me.arrayRegional= respuesta.regional;
@@ -908,21 +939,48 @@ export default {
       let me = this;
 
       axios
-        .post("/checkDetInchs/save", {
+        .post("/confiscationCertificates/save", {
     
-        office: this.form.office.toUpperCase(),
-        official: this.form.official.toUpperCase(),
-        boat: this.form.boat.toUpperCase(),
-        enrollment: this.form.enrollment.toUpperCase(),
-        outhFhisher: this.form.outhFhisher.toUpperCase(),
-        fishLicense: this.form.fishLicense.toUpperCase(),
-        owner: this.form.owner.toUpperCase(),
-        fishCaptain: this.form.fishCaptain.toUpperCase(),
-        location: this.form.location.toUpperCase(),
-        date: this.date,
-        'id_company': this.arrayComp.id,
-        'id_regional': this.arrayRegl.id,
-        })
+      noActa : this.form.noActa.toUpperCase(),
+      departament : this.form.departament.toUpperCase(),
+      municipality : this.form.municipality.toUpperCase(),
+      text : this.text.toUpperCase(),
+      nameScientific : this.form.nameScientific.toUpperCase(),
+      nameCommon : this.form.nameCommon.toUpperCase(),
+      amount : this.form.amount.toUpperCase(),
+      average : this.form.average.toUpperCase(),
+      weight : this.form.weight.toUpperCase(),
+      commercialValue : this.form.commercialValue.toUpperCase(),
+      text2 : this.text2.toUpperCase(),
+      element : this.form.element.toUpperCase(),
+      amount2 : this.form.amount2.toUpperCase(),
+      featuresState : this.form.featuresState.toUpperCase(),
+      commercialValue2 : this.form.commercialValue2.toUpperCase(),
+      text3 : this.text3.toUpperCase(),
+      text4 : this.text4.toUpperCase(),
+      officialName : this.form.officialName.toUpperCase(),
+      documentIdOfficial : this.form.documentIdOfficial.toUpperCase(),
+      representativeName : this.form.representativeName.toUpperCase(),
+      documentIdRepresentative : this.form.documentIdRepresentative.toUpperCase(),
+      plateCertificate : this.form.plateCertificate.toUpperCase(),
+      name : this.form.name.toUpperCase(),
+      documentIdOffender : this.form.documentIdOffender.toUpperCase(),
+      expeditionPlace : this.form.expeditionPlace.toUpperCase(),
+      homeAddress : this.form.homeAddress.toUpperCase(),
+      municipalityOffender : this.form.municipalityOffender.toUpperCase(),
+      corregimiento : this.form.corregimiento.toUpperCase(),
+      neighborhood : this.form.neighborhood.toUpperCase(),
+      telephone : this.form.telephone,
+      mobile : this.form.mobile,
+      email : this.form.email,
+      state : this.state.toUpperCase(),
+      presentation : this.presentation.toUpperCase(),
+      date : this.date,
+      dateExpedition : this.dateExpedition,
+      observation : this.observation.toUpperCase(),
+
+      'id_regional': this.arrayRegl.id,
+    })
         .then(function(response) {
           me.hideForm();
           me.message("Guardado", "Guardo ");
@@ -936,23 +994,48 @@ export default {
       let me = this;
 
       axios
-        .put("/checkDetInchs/update", {
+        .put("/confiscationCertificates/update", {
 
-          id: this.id_CheckDet,
-          office: this.form.office.toUpperCase(),
-          official: this.form.official.toUpperCase(),
-          boat: this.form.boat.toUpperCase(),
-          enrollment: this.form.enrollment.toUpperCase(),
-          outhFhisher: this.form.outhFhisher.toUpperCase(),
-          fishLicense: this.form.fishLicense.toUpperCase(),
-          owner: this.form.owner.toUpperCase(),
-          fishCaptain: this.form.fishCaptain.toUpperCase(),
-          location: this.form.location.toUpperCase(),
-          date: this.date,
-          
-          'id_company': this.arrayComp.id,
-          'id_regional': this.arrayRegl.id,
-        })
+        noActa : this.form.noActa.toUpperCase(),
+      departament : this.form.departament.toUpperCase(),
+      municipality : this.form.municipality.toUpperCase(),
+      text : this.text.toUpperCase(),
+      nameScientific : this.form.nameScientific.toUpperCase(),
+      nameCommon : this.form.nameCommon.toUpperCase(),
+      amount : this.form.amount.toUpperCase(),
+      average : this.form.average.toUpperCase(),
+      weight : this.form.weight.toUpperCase(),
+      commercialValue : this.form.commercialValue.toUpperCase(),
+      text2 : this.text2.toUpperCase(),
+      element : this.form.element.toUpperCase(),
+      amount2 : this.form.amount2.toUpperCase(),
+      featuresState : this.form.featuresState.toUpperCase(),
+      commercialValue2 : this.form.commercialValue2.toUpperCase(),
+      text3 : this.text3.toUpperCase(),
+      text4 : this.text4.toUpperCase(),
+      officialName : this.form.officialName.toUpperCase(),
+      documentIdOfficial : this.form.documentIdOfficial.toUpperCase(),
+      representativeName : this.form.representativeName.toUpperCase(),
+      documentIdRepresentative : this.form.documentIdRepresentative.toUpperCase(),
+      plateCertificate : this.form.plateCertificate.toUpperCase(),
+      name : this.form.name.toUpperCase(),
+      documentIdOffender : this.form.documentIdOffender.toUpperCase(),
+      expeditionPlace : this.form.expeditionPlace.toUpperCase(),
+      homeAddress : this.form.homeAddress.toUpperCase(),
+      municipalityOffender : this.form.municipalityOffender.toUpperCase(),
+      corregimiento : this.form.corregimiento.toUpperCase(),
+      neighborhood : this.form.neighborhood.toUpperCase(),
+      telephone : this.form.telephone,
+      mobile : this.form.mobile,
+      email : this.form.email,
+      state : this.state.toUpperCase(),
+      presentation : this.presentation.toUpperCase(),
+      date : this.date,
+      dateExpedition : this.dateExpedition,
+      observation : this.observation.toUpperCase(),
+
+        'id_regional': this.arrayRegl.id,
+      })
         .then(function(response) {
           me.hideForm();
           me.message("Actualizado", "Actualizó ");
@@ -964,7 +1047,7 @@ export default {
     },
     deleteData(data = []) {
       swal({
-        title: "Esta seguro de Eliminar la Región " + data["name"],
+        title: "Esta seguro de Eliminar el Acta " + data["name"],
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -979,8 +1062,8 @@ export default {
         if (result.value) {
           let me = this;      
           axios
-            .post("/checkDetInchs/delete", {
-              id: this.id_CheckDet,
+            .post("/confiscationCertificates/delete", {
+              id: this.id_ConfiscationCert,
             })
             .then(function(response) {
               me.hideForm();
@@ -1030,19 +1113,15 @@ export default {
             },
             responsive: "true",
           "columns": [
-
-            { "data": "date" },
+            { "data": "noActa" },
             { "data": "nameRegional" },
-            { "data": "office" },
-            { "data": "official" },
-            { "data": "boat" },
-            { "data": "enrollment" },
-            { "data": "outhFhisher" },
-            { "data": "fishLicense" },
-            { "data": "nameCompany" },
-            { "data": "owner" },
-            { "data": "fishCaptain" },
-            { "data": "location" },
+            { "data": "departament" },
+            { "data": "municipality" },
+            { "data": "nameScientific" },
+            { "data": "nameCommon" },
+            { "data": "amount" },
+            { "data": "average" },
+            { "data": "weight" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
 
         ]
@@ -1063,7 +1142,6 @@ export default {
 
   mounted() {
     this.listData();
-    this.selectCompanies();  
     this.selectRegional();
   }
 };

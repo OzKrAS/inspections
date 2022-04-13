@@ -269,7 +269,7 @@
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>   
 
-                  <label>DATOS DE LA INSTITUCIÓN QUE RECIBE LA DINACIÓN</label>
+                  <label>DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN</label>
 
                   <md-field md-clearable :class="getValidationClass('name')">
                     <label for="first-name">Nombre</label>

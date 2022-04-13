@@ -136,9 +136,14 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/confiscationCertificates/update', 'ConfiscationCertificateController@update');
         Route::post('/confiscationCertificates/delete', 'ConfiscationCertificateController@destroy');
         Route::get('/confiscationCertificates/selectRegional', 'RegionalController@selectRegional'); 
-        Route::get('/confiscationCertificates/selectMunicipality', 'MunicipalityController@selectMunicipality'); 
-       
-
+        // iNSPECCION EMBARCACION  DE CARGA
+        Route::get('/inspectionBoatCargo', 'InspectionBoatCargoController@index');
+        Route::post('/inspectionBoatCargo/save', 'InspectionBoatCargoController@store');
+        Route::put('/inspectionBoatCargo/update', 'InspectionBoatCargoController@update');
+        Route::post('/inspectionBoatCargo/delete', 'InspectionBoatCargoController@destroy');
+        Route::get('/inspectionBoatCargo/selectPorts', 'PortsController@selectPort');
+        Route::get('/inspectionBoatCargo/selectFlags', 'FlagController@selectFlag');
+        
 
 
 
