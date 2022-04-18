@@ -49,6 +49,10 @@ class CreateZarpesTable extends Migration
 
             $table->integer('id_port')->unsigned();
             $table->foreign('id_port')->references('id')->on('ports');
+            $table->integer('id_port_zarpe')->unsigned();
+            $table->foreign('id_port_zarpe')->references('id')->on('ports');
+            $table->integer('id_port_arrival')->unsigned();
+            $table->foreign('id_port_arrival')->references('id')->on('ports');
             $table->integer('id_flag')->unsigned();
             $table->foreign('id_flag')->references('id')->on('flags');
             $table->integer('id_region')->unsigned();

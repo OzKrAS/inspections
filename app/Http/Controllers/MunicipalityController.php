@@ -24,7 +24,8 @@ class MunicipalityController extends Controller
     }
     public function selectMunicipality(Request $request)
     {
-        $municipalities = Municipality::select('id','name')
+        $municipalities = Municipality::join('regions','municipalities.id_region','=','regions.id')
+            ->select('regions.id','regions.name','municipalities.name as nameMuni')
             ->orderBy('name', 'asc')->get();
         return [
             'municipalities' => $municipalities

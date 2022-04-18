@@ -96,14 +96,16 @@
                     </div>
                      <div class="md-layout">  
                         <div class="md-layout-item">  
+                        <label for="first-name" class="text-muted">Región/Municipio</label>
                           <multiselect v-model="arrayReg" :options="arrayRegion"
                             placeholder="Seleccione una región/municipio"
                             :custom-label="nameWithRegion"
-                            label="name"
-                            track-by="name">
+                            label="nameMuni"
+                            track-by="nameMuni">
                           </multiselect>
                         </div>&nbsp;&nbsp;&nbsp;
                         <div class="md-layout-item">  
+                          <label for="first-name" class="text-muted">Puerto/Muelle de inspección</label>
                           <multiselect v-model="arrayPt" :options="arrayPort"
                               placeholder="Seleccione un puerto/muelle de inspección"
                               :custom-label="nameWithPort"
@@ -115,7 +117,7 @@
                       <div class="md-layout">
                       <div class="md-layout-item">
                         <md-field>
-                          <!-- <label for="notification">Recibió Notificación Previa</label> -->
+                           <label for="notification" class="text-muted">Recibió Notificación Previa</label> 
                           <md-select v-model="notification" name="notification" id="notification" placeholder="Recibió Notificación Previa">
                             <md-option value="si">Si</md-option>
                             <md-option value="no">No</md-option>
@@ -124,7 +126,7 @@
                       </div>&nbsp;&nbsp;&nbsp; 
                       <div class="md-layout-item">
                         <md-field>
-                          <!-- <label for="finalityZarpe">Finalidad Zarpe</label> -->
+                          <label for="finalityZarpe" class="text-muted">Finalidad Zarpe</label> 
                           <md-select v-model="finalityZarpe" name="finalityZarpe" id="finalityZarpe" placeholder="Finalidad Zarpe">
                             <md-option value="pesca">Pesca</md-option>
                             <md-option value="transito">Tránsito</md-option>
@@ -136,7 +138,7 @@
 
                         <div class="md-layout-item">
                           <md-field>
-                            <!-- <label for="origin">Origen</label> -->
+                            <label for="origin" class="text-muted">Origen</label> 
                             <md-select v-model="origin" name="origin" id="origin" placeholder="Origen">
                               <md-option value="caribe/Cartagena">Caribe/Cartagena</md-option>
                               <md-option value="caribe/Barranquilla">Caribe/Barranquilla</md-option>
@@ -148,7 +150,7 @@
                         </div>&nbsp;&nbsp;&nbsp; 
                         <div class="md-layout-item">
                         <md-field>
-                          <!-- <label for="destination">Destino</label> -->
+                          <label for="destination" class="text-muted">Destino</label>
                           <md-select v-model="destination" name="destination" id="destination" placeholder="Destino">
                             <md-option value="caribe/Cartagena">Caribe/Cartagena</md-option>
                             <md-option value="caribe/Barranquilla">Caribe/Barranquilla</md-option>
@@ -158,9 +160,6 @@
                           </md-select>
                         </md-field>
                       </div>
-
-                      </div> 
-                      <div class="md-layout">
                       <div class="md-layout-item">                     
                         <div>
                           <md-datepicker 
@@ -173,9 +172,12 @@
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp; 
-                        <div class="md-layout-item">
-                            <!-- <label>Puerto de Zarpe</label> -->
-                            <multiselect v-model="arrayPt" :options="arrayPort"
+
+                      </div> 
+                      <div class="md-layout">               
+                        <div class="md-layout-item md-size-70">
+                            <label class="text-muted">Puerto de Zarpe</label>
+                            <multiselect v-model="arrayPtZarpe" :options="arrayPort"
                                 placeholder="Seleccione Puerto de Zarpe"
                                 :custom-label="nameWithPort"
                                 label="name"
@@ -194,9 +196,11 @@
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp;  
-                  <div class="md-layout-item">
-                      <label>Puerto de Ultimo Arribo</label>
-                      <multiselect v-model="arrayPt" :options="arrayPort"
+                      </div>
+                  <div class="md-layout">
+                  <div class="md-layout-item md-size-70" >
+                      <label class="text-muted">Puerto de Ultimo Arribo</label>
+                      <multiselect v-model="arrayPtArrival" :options="arrayPort"
                           placeholder="Seleccione Puerto de Ultimo Arribo"
                           :custom-label="nameWithPort"
                           label="name"
@@ -221,7 +225,7 @@
 
                   <div class="md-layout-item">
                     <md-field>
-                      <!-- <label for="national">Nacional</label> -->
+                      <label for="national" class="text-muted">Nacional</label> 
                       <md-select v-model="national" name="national" id="national" placeholder="Seleccione un sistema NAcional">
                         <md-option value="no">No</md-option>
                         <md-option value="nacional-AIS">Nacional - AIS</md-option>
@@ -231,7 +235,7 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;  
                   <div class="md-layout-item">
-                        <!-- <label>OROP</label> -->
+                         <label class="text-muted">OROP</label> 
                         <multiselect v-model="arrayOr" :options="arrayOrop"
                             placeholder="Seleccione una opción OROP"
                             :custom-label="nameWithOrop"
@@ -254,7 +258,7 @@
                     >Olvidaste ingresar la señal radiollamada internacional</span>
                   </md-field>
                   <md-field md-clearable :class="getValidationClass('idOmi')">
-                    <label for="first-name">Identificador OMI</label>
+                    <label for="first-name" class="text-muted">Identificador OMI</label>
                     <md-input
                       name="first-name"
                       id="first-name"
@@ -709,13 +713,14 @@ export default {
 
       arrayZarpes: [],
       id_zarpes: 0,
-      arrayPt: {id:0, name:''},
+      arrayPt: {id:0, namePort:'', name:''},
 	    arrayPort: [],
       id_port: 0,
-      arrayReg: {id:0, name:''},
+      arrayReg: {id:0, name:'', nameMuni:''},
 	    arrayRegion: [],
       id_region: 0,
-      arrayPt: {id:0, name:''},
+      arrayPtZarpe: {id:0, namePort:'',name:''},
+      arrayPtArrival: {id:0, namePort:'',name:''},
       arrayPtOrigin: {id:0, name:''},
       arrayFg: {id:0, name:''},
 	    arrayFlag: [],
@@ -729,7 +734,7 @@ export default {
       arrayZoneAuto: {id:0, name:''},
 	    arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
-      arrayFa: {id:0, name:''},
+      arrayFa:{},
 	    arrayFisheryAuthorized: [],
       id_fisheryAuthorized: 0,
       arrayComp: {id:0, name:''},
@@ -878,21 +883,21 @@ export default {
       this.destination = null;
       this.national = null;
   
-      this.arrayReg = {id:0, name:''};
-      this.arrayPt = {id:0, name:''};
+      this.arrayReg = {id:0, name:'', nameMuni:''};
+      this.arrayPt = {id:0, namePort:'',name:''};
       this.arrayPtZarpe = {id:0, name:''};
       this.arrayFg = {id:0, name:''};
       this.arrayNation = {id:0, name:''};
       this.arrayOr = {id:0, name:''};
       this.arrayZoneAuto = {id:0, name:''};
-      this.arrayFa = {id:0, name:''};
+     this.arrayFa = [];
       this.arrayComp = {id:0, name:''};
     },
-    nameWithRegion ({ name }) {
-            return `${name}`
+    nameWithRegion ({ nameMuni,name  }) {
+            return `${nameMuni} / ${name}`
     },
-    nameWithPort ({ name }) {
-            return `${name}`
+    nameWithPort ({ namePort,name }) {
+            return `${namePort} / ${name}  `
     },
     nameWithFlag ({ name }) {
             return `${name}`
@@ -929,7 +934,7 @@ export default {
     },
     selectPort() {
             let me = this;
-            var url = "ports/selectPorts";
+            var url = "/docks/selectDocks";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
                     me.arrayPort = respuesta.port;
@@ -939,10 +944,10 @@ export default {
     },
     selectRegion() {
             let me = this;
-            var url = "region/selectRegion";
+            var url = "/municipalities/selectMuni";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
-                    me.arrayRegion = respuesta.region;
+                    me.arrayRegion = respuesta.municipalities;
                 }).catch(function (error) {
                     console.log(error);
             });
@@ -989,6 +994,7 @@ export default {
     },
     selectFisheryAuthorized() {
             let me = this;
+            me.arrayFa=[];
             var url = "/zarpes/selectFisheryAuthorized";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
@@ -1110,6 +1116,8 @@ export default {
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
+          'id_port_zarpe': this.arrayPtZarpe.id,
+          'id_port_arrival': this.arrayPtArrival.id,
           'id_flag': this.arrayFg.id,
           'id_nationality': this.arrayNation.id,
           'id_orop': this.arrayOr.id,

@@ -34913,7 +34913,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\n.material-icons.Color1 { color: rgb(31, 33, 34);\n}\n.material-icons.Color2 { color: rgba(167, 142, 5, 0.849);\n}\n.material-icons.Color3 { color: rgb(12, 170, 91);\n}\n.material-icons.Color4 { color: rgba(228, 54, 54, 0.863);\n}\r\n", ""]);
+exports.push([module.i, "\n.div-error {\n  display: flex;\n  justify-content: center;\n}\n.text-error {\n  color: red !important;\n  font-weight: bold;\n}\n.material-icons.Color1 { color: rgb(31, 33, 34);\n}\n.material-icons.Color2 { color: rgba(167, 142, 5, 0.849);\n}\n.material-icons.Color3 { color: rgb(12, 170, 91);\n}\n.material-icons.Color4 { color: rgba(228, 54, 54, 0.863);\n}\n", ""]);
 
 // exports
 
@@ -40670,6 +40670,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -40698,7 +40702,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
   props: ['ruta'],
 
   data: function data() {
-    var _ref;
 
     Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
     Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
@@ -40707,7 +40710,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
     var dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
     var now = new Date();
 
-    return _ref = { form: {
+    return _defineProperty({ form: {
 
         insNo: "",
         radioCall: "",
@@ -40747,13 +40750,44 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
 
       arrayZarpes: [],
       id_zarpes: 0,
-      arrayPt: { id: 0, name: '' },
+      arrayPt: { id: 0, namePort: '', name: '' },
       arrayPort: [],
       id_port: 0,
-      arrayReg: { id: 0, name: '' },
+      arrayReg: { id: 0, name: '', nameMuni: '' },
       arrayRegion: [],
-      id_region: 0
-    }, _defineProperty(_ref, "arrayPt", { id: 0, name: '' }), _defineProperty(_ref, "arrayPtOrigin", { id: 0, name: '' }), _defineProperty(_ref, "arrayFg", { id: 0, name: '' }), _defineProperty(_ref, "arrayFlag", []), _defineProperty(_ref, "id_flag", 0), _defineProperty(_ref, "arrayNation", { id: 0, name: '' }), _defineProperty(_ref, "arrayNationality", []), _defineProperty(_ref, "id_nationality", 0), _defineProperty(_ref, "arrayOr", { id: 0, name: '' }), _defineProperty(_ref, "arrayOrop", []), _defineProperty(_ref, "id_orop", 0), _defineProperty(_ref, "arrayZoneAuto", { id: 0, name: '' }), _defineProperty(_ref, "arrayZoneAutoFish", []), _defineProperty(_ref, "id_zoneAutoFisher", 0), _defineProperty(_ref, "arrayFa", { id: 0, name: '' }), _defineProperty(_ref, "arrayFisheryAuthorized", []), _defineProperty(_ref, "id_fisheryAuthorized", 0), _defineProperty(_ref, "arrayComp", { id: 0, name: '' }), _defineProperty(_ref, "arrayCompany", []), _defineProperty(_ref, "id_Company", 0), _defineProperty(_ref, "edo", 1), _defineProperty(_ref, "tipoAccion", 1), _defineProperty(_ref, "listado", 1), _defineProperty(_ref, "idMcpio", 0), _defineProperty(_ref, "sending", false), _defineProperty(_ref, "arrayData", []), _defineProperty(_ref, "modal", 0), _defineProperty(_ref, "tipoAccion", 0), _ref;
+      id_region: 0,
+      arrayPtZarpe: { id: 0, namePort: '', name: '' },
+      arrayPtArrival: { id: 0, namePort: '', name: '' },
+      arrayPtOrigin: { id: 0, name: '' },
+      arrayFg: { id: 0, name: '' },
+      arrayFlag: [],
+      id_flag: 0,
+      arrayNation: { id: 0, name: '' },
+      arrayNationality: [],
+      id_nationality: 0,
+      arrayOr: { id: 0, name: '' },
+      arrayOrop: [],
+      id_orop: 0,
+      arrayZoneAuto: { id: 0, name: '' },
+      arrayZoneAutoFish: [],
+      id_zoneAutoFisher: 0,
+      arrayFa: {},
+      arrayFisheryAuthorized: [],
+      id_fisheryAuthorized: 0,
+      arrayComp: { id: 0, name: '' },
+      arrayCompany: [],
+      id_Company: 0,
+
+      edo: 1,
+
+      tipoAccion: 1,
+      listado: 1,
+      idMcpio: 0,
+      sending: false,
+
+      arrayData: [],
+      modal: 0
+    }, "tipoAccion", 0);
   },
 
   components: {
@@ -40878,25 +40912,27 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.destination = null;
       this.national = null;
 
-      this.arrayReg = { id: 0, name: '' };
-      this.arrayPt = { id: 0, name: '' };
+      this.arrayReg = { id: 0, name: '', nameMuni: '' };
+      this.arrayPt = { id: 0, namePort: '', name: '' };
       this.arrayPtZarpe = { id: 0, name: '' };
       this.arrayFg = { id: 0, name: '' };
       this.arrayNation = { id: 0, name: '' };
       this.arrayOr = { id: 0, name: '' };
       this.arrayZoneAuto = { id: 0, name: '' };
-      this.arrayFa = { id: 0, name: '' };
+      this.arrayFa = [];
       this.arrayComp = { id: 0, name: '' };
     },
     nameWithRegion: function nameWithRegion(_ref2) {
-      var name = _ref2.name;
+      var nameMuni = _ref2.nameMuni,
+          name = _ref2.name;
 
-      return "" + name;
+      return nameMuni + " / " + name;
     },
     nameWithPort: function nameWithPort(_ref3) {
-      var name = _ref3.name;
+      var namePort = _ref3.namePort,
+          name = _ref3.name;
 
-      return "" + name;
+      return namePort + " / " + name + "  ";
     },
     nameWithFlag: function nameWithFlag(_ref4) {
       var name = _ref4.name;
@@ -40941,7 +40977,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
     },
     selectPort: function selectPort() {
       var me = this;
-      var url = "ports/selectPorts";
+      var url = "/docks/selectDocks";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
         me.arrayPort = respuesta.port;
@@ -40951,10 +40987,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
     },
     selectRegion: function selectRegion() {
       var me = this;
-      var url = "region/selectRegion";
+      var url = "/municipalities/selectMuni";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
-        me.arrayRegion = respuesta.region;
+        me.arrayRegion = respuesta.municipalities;
       }).catch(function (error) {
         console.log(error);
       });
@@ -41001,6 +41037,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
     },
     selectFisheryAuthorized: function selectFisheryAuthorized() {
       var me = this;
+      me.arrayFa = [];
       var url = "/zarpes/selectFisheryAuthorized";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
@@ -41122,6 +41159,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
 
         'id_region': this.arrayReg.id,
         'id_port': this.arrayPt.id,
+        'id_port_zarpe': this.arrayPtZarpe.id,
+        'id_port_arrival': this.arrayPtArrival.id,
         'id_flag': this.arrayFg.id,
         'id_nationality': this.arrayNation.id,
         'id_orop': this.arrayOr.id,
@@ -43417,14 +43456,23 @@ var render = function() {
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "text-muted",
+                                      attrs: { for: "first-name" }
+                                    },
+                                    [_vm._v("Región/Municipio")]
+                                  ),
+                                  _vm._v(" "),
                                   _c("multiselect", {
                                     attrs: {
                                       options: _vm.arrayRegion,
                                       placeholder:
                                         "Seleccione una región/municipio",
                                       "custom-label": _vm.nameWithRegion,
-                                      label: "name",
-                                      "track-by": "name"
+                                      label: "nameMuni",
+                                      "track-by": "nameMuni"
                                     },
                                     model: {
                                       value: _vm.arrayReg,
@@ -43442,6 +43490,15 @@ var render = function() {
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "text-muted",
+                                      attrs: { for: "first-name" }
+                                    },
+                                    [_vm._v("Puerto/Muelle de inspección")]
+                                  ),
+                                  _vm._v(" "),
                                   _c("multiselect", {
                                     attrs: {
                                       options: _vm.arrayPort,
@@ -43473,6 +43530,15 @@ var render = function() {
                                   _c(
                                     "md-field",
                                     [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass: "text-muted",
+                                          attrs: { for: "notification" }
+                                        },
+                                        [_vm._v("Recibió Notificación Previa")]
+                                      ),
+                                      _vm._v(" "),
                                       _c(
                                         "md-select",
                                         {
@@ -43520,6 +43586,15 @@ var render = function() {
                                     "md-field",
                                     [
                                       _c(
+                                        "label",
+                                        {
+                                          staticClass: "text-muted",
+                                          attrs: { for: "finalityZarpe" }
+                                        },
+                                        [_vm._v("Finalidad Zarpe")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
                                         "md-select",
                                         {
                                           attrs: {
@@ -43565,6 +43640,15 @@ var render = function() {
                                   _c(
                                     "md-field",
                                     [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass: "text-muted",
+                                          attrs: { for: "origin" }
+                                        },
+                                        [_vm._v("Origen")]
+                                      ),
+                                      _vm._v(" "),
                                       _c(
                                         "md-select",
                                         {
@@ -43649,6 +43733,15 @@ var render = function() {
                                     "md-field",
                                     [
                                       _c(
+                                        "label",
+                                        {
+                                          staticClass: "text-muted",
+                                          attrs: { for: "destination" }
+                                        },
+                                        [_vm._v("Destino")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
                                         "md-select",
                                         {
                                           attrs: {
@@ -43722,10 +43815,8 @@ var render = function() {
                                   )
                                 ],
                                 1
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "md-layout" }, [
+                              ),
+                              _vm._v(" "),
                               _c("div", { staticClass: "md-layout-item" }, [
                                 _c(
                                   "div",
@@ -43756,11 +43847,18 @@ var render = function() {
                                   1
                                 )
                               ]),
-                              _vm._v("     \n                      "),
+                              _vm._v("     \n\n                    ")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "md-layout" }, [
                               _c(
                                 "div",
-                                { staticClass: "md-layout-item" },
+                                { staticClass: "md-layout-item md-size-70" },
                                 [
+                                  _c("label", { staticClass: "text-muted" }, [
+                                    _vm._v("Puerto de Zarpe")
+                                  ]),
+                                  _vm._v(" "),
                                   _c("multiselect", {
                                     attrs: {
                                       options: _vm.arrayPort,
@@ -43770,11 +43868,11 @@ var render = function() {
                                       "track-by": "name"
                                     },
                                     model: {
-                                      value: _vm.arrayPt,
+                                      value: _vm.arrayPtZarpe,
                                       callback: function($$v) {
-                                        _vm.arrayPt = $$v
+                                        _vm.arrayPtZarpe = $$v
                                       },
-                                      expression: "arrayPt"
+                                      expression: "arrayPtZarpe"
                                     }
                                   })
                                 ],
@@ -43807,12 +43905,15 @@ var render = function() {
                                   1
                                 )
                               ]),
-                              _vm._v("      \n                "),
+                              _vm._v("      \n                    ")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "md-layout" }, [
                               _c(
                                 "div",
-                                { staticClass: "md-layout-item" },
+                                { staticClass: "md-layout-item md-size-70" },
                                 [
-                                  _c("label", [
+                                  _c("label", { staticClass: "text-muted" }, [
                                     _vm._v("Puerto de Ultimo Arribo")
                                   ]),
                                   _vm._v(" "),
@@ -43826,11 +43927,11 @@ var render = function() {
                                       "track-by": "name"
                                     },
                                     model: {
-                                      value: _vm.arrayPt,
+                                      value: _vm.arrayPtArrival,
                                       callback: function($$v) {
-                                        _vm.arrayPt = $$v
+                                        _vm.arrayPtArrival = $$v
                                       },
-                                      expression: "arrayPt"
+                                      expression: "arrayPtArrival"
                                     }
                                   })
                                 ],
@@ -43881,6 +43982,15 @@ var render = function() {
                                 _c(
                                   "md-field",
                                   [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "text-muted",
+                                        attrs: { for: "national" }
+                                      },
+                                      [_vm._v("Nacional")]
+                                    ),
+                                    _vm._v(" "),
                                     _c(
                                       "md-select",
                                       {
@@ -43938,6 +44048,10 @@ var render = function() {
                               "div",
                               { staticClass: "md-layout-item" },
                               [
+                                _c("label", { staticClass: "text-muted" }, [
+                                  _vm._v("OROP")
+                                ]),
+                                _vm._v(" "),
                                 _c("multiselect", {
                                   attrs: {
                                     options: _vm.arrayOrop,
@@ -44003,9 +44117,14 @@ var render = function() {
                                 attrs: { "md-clearable": "" }
                               },
                               [
-                                _c("label", { attrs: { for: "first-name" } }, [
-                                  _vm._v("Identificador OMI")
-                                ]),
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "text-muted",
+                                    attrs: { for: "first-name" }
+                                  },
+                                  [_vm._v("Identificador OMI")]
+                                ),
                                 _vm._v(" "),
                                 _c("md-input", {
                                   attrs: {

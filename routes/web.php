@@ -39,7 +39,9 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/municipalities', 'MunicipalityController@index');
         Route::post('/municipalities/save', 'MunicipalityController@store');
         Route::put('/municipalities/update', 'MunicipalityController@update');
+        Route::get('/municipalities/selectMuni', 'MunicipalityController@selectMunicipality');
         Route::post('/municipalities/delete', 'MunicipalityController@destroy');
+
         Route::get('/region/selectRegion', 'RegionController@selectRegion');
         //puertos
         Route::get('/ports', 'PortsController@index');
@@ -60,6 +62,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/flags/delete', 'FlagController@destroy');
         //muelles
         Route::get('/docks', 'DockController@index');
+        Route::get('/docks/selectDocks', 'DockController@selectDocks');
         Route::post('/docks/save', 'DockController@store');
         Route::put('/docks/update', 'DockController@update');
         Route::post('/docks/delete', 'DockController@destroy');
