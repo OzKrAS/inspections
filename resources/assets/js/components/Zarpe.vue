@@ -132,7 +132,7 @@
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp; 
 
-                         <!-- <label>PUERTO, ESTADO RECTOR DE PUERTO</label>  -->
+                         <label>PUERTO, ESTADO RECTOR DE PUERTO</label> 
 
                         <div class="md-layout-item">
                           <md-field>
@@ -195,7 +195,7 @@
                         </div>
                       </div> &nbsp;&nbsp;&nbsp;  
                   <div class="md-layout-item">
-                      <label>Puerto de Ultimo Arribo</label>
+                      <!-- <label>Puerto de Ultimo Arribo</label> -->
                       <multiselect v-model="arrayPt" :options="arrayPort"
                           placeholder="Seleccione Puerto de Ultimo Arribo"
                           :custom-label="nameWithPort"
@@ -268,7 +268,7 @@
                     >Olvidaste ingresar el identificador OMI</span>
                   </md-field>
 
-                   <!-- <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label> -->
+                   <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label>
 
                   <md-field md-clearable :class="getValidationClass('noResolution')">
                     <label for="first-name">No. Resolución</label>
@@ -394,7 +394,7 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
 
-                  <!-- <label>PESQUERÍA Y ARTES AUTORIZADOS</label> -->
+                  <label>PESQUERÍA Y ARTES AUTORIZADOS</label>
 
                   <!-- <div class="md-layout-item">
                       <label>Pesquería Autorizada</label>
@@ -407,7 +407,7 @@
                   </div>&nbsp;&nbsp;&nbsp; -->
 
                   <div>
-                    <label class="typo__label">Pesquería Autorizada</label>
+                    <!-- <label class="typo__label">Pesquería Autorizada</label> -->
                     <multiselect
                       v-model="arrayFa" 
                       :options="arrayFisheryAuthorized" 
@@ -449,7 +449,7 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
 
-                  <!-- <label>CARACTERÍSTICAS ARTE DE PESCA</label> -->
+                  <label>CARACTERÍSTICAS ARTE DE PESCA</label>
 
                  <md-field md-clearable :class="getValidationClass('eyeMesh')">
                     <label for="first-name">Ojo de Malla (Pulgadas)</label>
@@ -573,7 +573,7 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
 
-                  <!-- <label>LOS DATOS RELACIONADOS CON LAS MEDIDAS DE ORDENAMIENTO APLICABLES</label> -->
+                  <label>LOS DATOS RELACIONADOS CON LAS MEDIDAS DE ORDENAMIENTO APLICABLES</label>
 
                    <md-field>
                         <label>Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)</label>

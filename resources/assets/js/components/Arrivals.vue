@@ -82,16 +82,16 @@
                         >Olvidaste ingresar el número de inspección para el arribo
                         </span>
                     </md-field> 
-				              	<label>Región/Municipio</label>
+				              	<!-- <label>Región/Municipio</label> -->
                         <multiselect v-model="arrayReg" :options="arrayRegion"
-                          placeholder="Seleccione una región"
+                          placeholder="Región/Municipio"
                           :custom-label="nameWithRegion"
                           label="name"
                           track-by="name">
                         </multiselect>&nbsp;&nbsp;&nbsp;
-                        <label>Puerto/Muelle de Inspección</label>
+                        <!-- <label>Puerto/Muelle de Inspección</label> -->
                         <multiselect v-model="arrayPt" :options="arrayPort"
-                            placeholder="Seleccione un puerto/muelle"
+                            placeholder="Puerto/Muelle de Inspección"
                             :custom-label="nameWithPort"
                             label="name"
                             track-by="name">
@@ -111,8 +111,8 @@
                       </div> &nbsp;&nbsp;&nbsp; 
                       <div class="md-layout-item">
                         <md-field>
-                          <label for="notification">Recibió Notificación Previa</label>
-                          <md-select v-model="notification" name="notification" id="notification">
+                          <!-- <label for="notification">Recibió Notificación Previa</label> -->
+                          <md-select v-model="notification" name="notification" id="notification" placeholder="Recibió Notificación Previa">
                             <md-option value="si">Si</md-option>
                             <md-option value="no">No</md-option>
                           </md-select>
@@ -120,20 +120,20 @@
                       </div>&nbsp;&nbsp;&nbsp;  
                       <div class="md-layout-item">
                         <md-field>
-                          <label for="finalityArrival">Finalidad Arribo</label>
-                          <md-select v-model="finalityArrival" name="finalityArrival" id="finalityArrival">
+                          <!-- <label for="finalityArrival">Finalidad Arribo</label> -->
+                          <md-select v-model="finalityArrival" name="finalityArrival" id="finalityArrival" placeholder="Finalidad Arribo">
                             <md-option value="pesca">Pesca</md-option>
                             <md-option value="transito">Tránsito</md-option>
                           </md-select>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp; 
 
-                         <!-- <label>PUERTO, ESTADO RECTOR DE PUERTO</label>  -->
+                         <label>PUERTO, ESTADO RECTOR DE PUERTO</label> 
 
                           <div class="md-layout-item">
                             <md-field>
-                              <label for="origin">Origen</label>
-                              <md-select v-model="origin" name="origin" id="origin">
+                              <!-- <label for="origin">Origen</label> -->
+                              <md-select v-model="origin" name="origin" id="origin" placeholder="Origen">
                                 <md-option value="caribe/Cartagena">Caribe/Cartagena</md-option>
                                 <md-option value="caribe/Barranquilla">Caribe/Barranquilla</md-option>
                                 <md-option value="pacifico/Bahia Solano">Pacifico/Bahía Solano</md-option>
@@ -144,8 +144,8 @@
                           </div>&nbsp;&nbsp;&nbsp; 
                           <div class="md-layout-item">
                           <md-field>
-                            <label for="destination">Destino</label>
-                            <md-select v-model="destination" name="destination" id="destination">
+                            <!-- <label for="destination">Destino</label> -->
+                            <md-select v-model="destination" name="destination" id="destination" placeholder="Destino">
                               <md-option value="caribe/Cartagena">Caribe/Cartagena</md-option>
                               <md-option value="caribe/Barranquilla">Caribe/Barranquilla</md-option>
                               <md-option value="pacifico/Bahia Solano">Pacifico/Bahía Solano</md-option>
@@ -168,9 +168,9 @@
                           </div>
                         </div> &nbsp;&nbsp;&nbsp; 
                         <div class="md-layout-item">
-                            <label>Puerto de Zarpe</label>
+                            <!-- <label>Puerto de Zarpe</label> -->
                             <multiselect v-model="arrayPt" :options="arrayPort"
-                                placeholder="Seleccione una región"
+                                placeholder="Puerto de Zarpe"
                                 :custom-label="nameWithPort"
                                 label="name"
                                 track-by="name">
@@ -190,9 +190,9 @@
                           </div>
                         </div> &nbsp;&nbsp;&nbsp; 
                         <div class="md-layout-item">
-                            <label>Puerto de Ultimo Arribo</label>
+                            <!-- <label>Puerto de Ultimo Arribo</label> -->
                             <multiselect v-model="arrayPt" :options="arrayPort"
-                                placeholder="Seleccione una región"
+                                placeholder="Puerto de Ultimo Arribo"
                                 :custom-label="nameWithPort"
                                 label="name"
                                 track-by="name">
@@ -213,8 +213,8 @@
                         </div> &nbsp;&nbsp;&nbsp; 
                       <div class="md-layout-item">
                         <md-field>
-                          <label for="workDone">Faena Realizada En</label>
-                          <md-select v-model="workDone" name="workDone" id="workDone">
+                          <!-- <label for="workDone">Faena Realizada En</label> -->
+                          <md-select v-model="workDone" name="workDone" id="workDone" placeholder="Faena Realizada En">
                             <md-option value="pesca">Pacífico</md-option>
                             <md-option value="transito">Caribe</md-option>
                             <md-option value="transito">San Andres</md-option>
@@ -223,8 +223,8 @@
                       </div>&nbsp;&nbsp;&nbsp; 
                       <div class="md-layout-item">
                         <md-field>
-                          <label for="locationSystem">Sistema de Localización de Buques/VMS</label>
-                          <md-select v-model="locationSystem" name="locationSystem" id="locationSystem">
+                          <!-- <label for="locationSystem">Sistema de Localización de Buques/VMS</label> -->
+                          <md-select v-model="locationSystem" name="locationSystem" id="locationSystem" placeholder="Sistema de Localización de Buques/VMS">
                             <md-option value="no">No</md-option>
                             <md-option value="si nacional">Si Nacional</md-option>
                             <md-option value="si OROP">Si OROP</md-option>
@@ -246,7 +246,7 @@
                         >Olvidaste ingresar la señal radiollamada internacional</span>
                       </md-field>
 
-                     <!-- <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label> -->
+                     <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label>
 
                       <md-field md-clearable :class="getValidationClass('noResolution')">
                         <label for="first-name">No. de Resolición</label>
@@ -303,7 +303,7 @@
                         >Olvidaste ingresar un nombre para la embarcación</span>
                       </md-field>  
                       <div class="md-layout-item">
-                        <label>Bandera</label>
+                        <!-- <label>Bandera</label> -->
                         <multiselect v-model="arrayFg" :options="arrayFlag"
                             placeholder="Seleccione una bandera"
                             :custom-label="nameWithFlag"
@@ -381,37 +381,37 @@
                         >Olvidaste ingresar un nombre para el representante legal</span>
                       </md-field>
                       <div class="md-layout-item">
-                      <label>Empresa</label>
+                      <!-- <label>Empresa</label> -->
                       <multiselect v-model="arrayComp" :options="arrayCompany"
-                          placeholder="Seleccione una zona"
+                          placeholder="Seleccione una Empresa"
                           :custom-label="nameWithCompany"
                           label="name"
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
 
-                  <!-- <label>PESQUERÍA Y ARTES AUTORIZADOS</label> -->
+                  <label>PESQUERÍA Y ARTES AUTORIZADOS</label>
 
                       <div class="md-layout-item">
-                          <label>Pesquería Autorizada</label>
+                          <!-- <label>Pesquería Autorizada</label> -->
                           <multiselect v-model="arrayFa" :options="arrayFisheryAuthorized"
-                              placeholder="Seleccione una zona"
+                              placeholder="Pesquería Autorizada"
                               :custom-label="nameWithFisheryAuthorized"
                               label="name"
                               track-by="name">
                           </multiselect>
                       </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
-                          <label>Zona de Pesca Autorizada</label>
+                          <!-- <label>Zona de Pesca Autorizada</label> -->
                           <multiselect v-model="arrayZoneAuto" :options="arrayZoneAutoFish"
-                              placeholder="Seleccione una zona"
+                              placeholder="Zona de Pesca Autorizada"
                               :custom-label="nameWithZoneAutoFish"
                               label="name"
                               track-by="name">
                           </multiselect>
                       </div>&nbsp;&nbsp;&nbsp;
 
-                  <!-- <label>Características Arte de Pesca</label> -->
+                      <label>CARACTERÍSTICAS ARTE DE PESCA</label>
 
                       <md-field md-clearable :class="getValidationClass('eyeMesh')">
                         <label for="first-name">Ojo de Malla (Pulgadas)</label>
@@ -526,9 +526,9 @@
                         >Olvidaste ingresar un nombre para el capitan</span>
                       </md-field>
                       <div class="md-layout-item">
-                          <label>Nacionalidad</label>
+                          <!-- <label>Nacionalidad</label> -->
                           <multiselect v-model="arrayNation" :options="arrayNationality"
-                              placeholder="Seleccione un pais"
+                              placeholder="Seleccione una Nacionalidad"
                               :custom-label="nameWithNationality"
                               label="name"
                               track-by="name">
@@ -577,7 +577,7 @@
                         >Olvidaste ingresar el número de tripulantes nacionales</span>
                       </md-field>
 
-                  <!-- <label>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</label> -->
+                  <label>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</label>
 
                       <md-field md-clearable :class="getValidationClass('noDays')">
                         <label for="first-name">No. Días de Pesca</label>
@@ -999,8 +999,7 @@ export default {
 
       arrayTarget: [],
       arrayFauna: [],
-      
-      
+          
       edo: 1,
 
       tipoAccion: 1,

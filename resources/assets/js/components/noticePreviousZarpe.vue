@@ -53,6 +53,24 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
+                    <div class="md-layout-item">
+                    <md-field>
+                      <md-select v-model="typeFishery" name="typeFishery" id="typeFishery" placeholder="Tipop de pesqueria">
+                        <md-option value="atun">Atún</md-option>
+                        <md-option value="pesca Blanca">Pesca Blanca</md-option>
+                        <md-option value="camaron">Camarónn</md-option>
+                        <md-option value="otros">Otros</md-option>
+                      </md-select>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                      <multiselect v-model="arrayPt" :options="arrayPort"
+                          placeholder="Puerto de zarpe previsto"
+                          :custom-label="nameWithPort"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;   
                   <div class="md-layout-item">
                         <div>
                           <md-datepicker 
@@ -61,20 +79,62 @@
                             md-immediately
                             :md-model-type="String"
                           >
-                            <label>Seleccione Fecha</label>
+                            <label>Fecha Última Escala</label>
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <multiselect v-model="arrayComp" :options="arrayCompany"
-                          placeholder="Seleccione una empresa"
-                          :custom-label="nameWithCompany"
+                        <div>
+                          <md-datepicker 
+                            v-model="datePlanned"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                          >
+                            <label>Fecha Prevista de Zarpe</label>
+                          </md-datepicker>
+                        </div>
+                  </div> &nbsp;&nbsp;&nbsp;
+                  <md-field md-clearable :class="getValidationClass('time')">
+                    <label for="first-name">Hora Prevista de Zarpe</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.time"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.time.required"
+                    >Olvidaste ingresar la hora prevista del zarpe</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>
+                  <md-field md-clearable :class="getValidationClass('portState')">
+                    <label for="first-name">Estado Rector del Puerto</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.portState"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.portState.required"
+                    >Olvidaste ingresar el estado rector del puerto</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>
+                  <div class="md-layout-item">
+                      <multiselect v-model="arrayPt" :options="arrayPort"
+                          placeholder="Puerto de la Última Escala"
+                          :custom-label="nameWithPort"
                           label="name"
                           track-by="name">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>&nbsp;&nbsp;&nbsp; 
                   <md-field md-clearable :class="getValidationClass('nameBoat')">
-                    <label for="first-name">Nombre Embarcación</label>
+                    <label for="first-name">Nombre del Buque</label>
                     <md-input
                       name="first-name"
                       id="first-name"
@@ -85,196 +145,135 @@
                     <span
                       class="md-error"
                       v-if="!$v.form.nameBoat.required"
-                    >Olvidaste ingresar el nombre de la embarcación</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    >Olvidaste ingresar el nombre del buque</span>
                   </md-field>
-                  <div class="md-layout-item">
-                        <multiselect v-model="arrayFg" :options="arrayFlag"
-                            placeholder="Seleccione una bandera"
-                            :custom-label="nameWithFlag"
-                            label="name"
-                            track-by="name">
-                        </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-
-                  <label>CERTIFICA</label>
-
-                  <div class="md-layout-item">
-                        <div>
-                          <md-datepicker 
-                            v-model="dateBeginningFaena"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                          >
-                            <label>Fecha Inicio de Faena</label>
-                          </md-datepicker>
-                        </div>
-                  </div> &nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                        <div>
-                          <md-datepicker 
-                            v-model="dateEndFaena"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                          >
-                            <label>Fecha Inicio de Faena</label>
-                          </md-datepicker>
-                        </div>
-                  </div> &nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('ZoneFisher')">
-                    <label for="first-name">Zona de Pesca</label>
+                  <md-field md-clearable :class="getValidationClass('statePavilion')">
+                    <label for="first-name">Estado del Pabellón</label>
                     <md-input
                       name="first-name"
                       id="first-name"
                       autocomplete="given-name"
-                      v-model="form.ZoneFisher"
+                      v-model="form.statePavilion"
                       :disabled="sending"
                     />
                     <span
                       class="md-error"
-                      v-if="!$v.form.ZoneFisher.required"
-                    >Olvidaste ingresar el nombre de la zona de pesca</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
-                  <div class="md-layout-item">
-                      <multiselect v-model="arrayPt" :options="arrayPort"
-                          placeholder="Seleccione puerto de desembarque"
-                          :custom-label="nameWithPort"
-                          label="name"
-                          track-by="name">
-                      </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;  
-                  <md-field md-clearable :class="getValidationClass('yellowFin')">
-                    <label for="first-name">Aleta Amarilla - YFT (Kg.)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.yellowFin"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.yellowFin.required"
-                    >Olvidaste ingresar la cantidad de aleta amarilla</span>
+                      v-if="!$v.form.statePavilion.required"
+                    >Olvidaste ingresar el estado del pabellón</span>
                   </md-field>
                   <div class="md-layout-item">
                     <md-field>
-                      <md-select v-model="poundRating1" name="poundRating1" id="poundRating1" placeholder="Clasificación en Libras Aleta Amarilla">
-                        <md-option value="menos de 3">Menos de 3</md-option>
-                        <md-option value="de 3 a 6">De 3 a 6</md-option>
-                        <md-option value="de 7 a 20">De 7 a 20</md-option>
-                        <md-option value="de 21 a 30">De 21 a 30</md-option>
-                        <md-option value="más de 30">Mas de 30</md-option>
+                      <md-select v-model="typeBoat" name="typeBoat" id="typeBoat" placeholder="Tipo de Buque">
+                        <md-option value="pesquero">Pesquero</md-option>
+                        <md-option value="carga">Carga</md-option>
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;  
-                  <md-field md-clearable :class="getValidationClass('barrilete')">
-                    <label for="first-name">Barrilete - SKJ (Kg.)</label>
+                  <md-field md-clearable :class="getValidationClass('internationalSignal')">
+                    <label for="first-name">Señal de Llamada Internacional</label>
                     <md-input
                       name="first-name"
                       id="first-name"
                       autocomplete="given-name"
-                      v-model="form.barrilete"
+                      v-model="form.internationalSignal"
                       :disabled="sending"
                     />
                     <span
                       class="md-error"
-                      v-if="!$v.form.barrilete.required"
-                    >Olvidaste ingresar la cantidad de barrilete</span>
-                  </md-field>
-                  <div class="md-layout-item">
-                    <md-field>
-                      <md-select v-model="poundRating2" name="poundRating2" id="poundRating2" placeholder="Clasificación en Libras Barrilete">
-                        <md-option value="menos de 3">Menos de 3</md-option>
-                        <md-option value="de 3 a 6">De 3 a 6</md-option>
-                        <md-option value="de 7 a 20">De 7 a 20</md-option>
-                        <md-option value="de 21 a 30">De 21 a 30</md-option>
-                        <md-option value="más de 30">Mas de 30</md-option>
-                      </md-select>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('patudo')">
-                    <label for="first-name">Patudo - BET (Kg.)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.patudo"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.patudo.required"
-                    >Olvidaste ingresar la cantidad de patudo</span>
-                  </md-field> 
-                  <div class="md-layout-item">
-                    <md-field>
-                      <md-select v-model="poundRating3" name="poundRating3" id="poundRating3" placeholder="Clasificación en Libras Patudo">
-                        <md-option value="menos de 3">Menos de 3</md-option>
-                        <md-option value="de 3 a 6">De 3 a 6</md-option>
-                        <md-option value="de 7 a 20">De 7 a 20</md-option>
-                        <md-option value="de 21 a 30">De 21 a 30</md-option>
-                        <md-option value="más de 30">Mas de 30</md-option>
-                      </md-select>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable>
-                    <label for="first-name">Otro</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="other"
-                      :disabled="sending"
-                    />
-                  </md-field> 
-                  <div class="md-layout-item">
-                    <md-field>
-                      <md-select v-model="poundRating4" name="poundRating4" id="poundRating4" placeholder="Clasificación en Libras otro">
-                        <md-option value="menos de 3">Menos de 3</md-option>
-                        <md-option value="de 3 a 6">De 3 a 6</md-option>
-                        <md-option value="de 7 a 20">De 7 a 20</md-option>
-                        <md-option value="de 21 a 30">De 21 a 30</md-option>
-                        <md-option value="más de 30">Mas de 30</md-option>
-                      </md-select>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <md-field>
-                        <md-textarea v-model="observation"></md-textarea>
-                  </md-field> 
-                  <md-field md-clearable :class="getValidationClass('voBo')">
-                    <label for="first-name">Vo. Bo. AUNAP</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.voBo"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.voBo.required"
-                    >Olvidaste ingresar el visto bueno</span>
+                      v-if="!$v.form.internationalSignal.required"
+                    >Olvidaste ingresar la señal de llamada internacional</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>        
-                  <md-field md-clearable :class="getValidationClass('nameOfficial')">
-                    <label for="first-name">Nombre funcionario</label>
+                  <md-field md-clearable :class="getValidationClass('informationBoat')">
+                    <label for="first-name">Información de Contacto del Buque</label>
                     <md-input
                       name="first-name"
                       id="first-name"
                       autocomplete="given-name"
-                      v-model="form.nameOfficial"
+                      v-model="form.informationBoat"
                       :disabled="sending"
                     />
                     <span
                       class="md-error"
-                      v-if="!$v.form.nameOfficial.required"
-                    >Olvidaste ingresar nombre del funcionario</span>
+                      v-if="!$v.form.informationBoat.required"
+                    >Olvidaste ingresar la información de contacto del buque</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>        
+                  </md-field>                          
+                  <md-field md-clearable :class="getValidationClass('ownerBoat')">
+                    <label for="first-name">Propietario(s) del Buque</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.ownerBoat"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.ownerBoat.required"
+                    >Olvidaste ingresar el nombre del propietario</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>                          
+                  <md-field md-clearable :class="getValidationClass('idEnrollment')">
+                    <label for="first-name">Identificador del Certificado de Matrícula</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.idEnrollment"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.idEnrollment.required"
+                    >Olvidaste ingresar el identificador del certificado de matrícula</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>                          
+                  <md-field md-clearable :class="getValidationClass('idOmi')">
+                    <label for="first-name">Identificador OMI del Buque</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.idOmi"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.idOmi.required"
+                    >Olvidaste ingresar el identificador OMI</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>                          
+                  <md-field md-clearable :class="getValidationClass('idExternal')">
+                    <label for="first-name">Identificador Externo</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.idExternal"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.idExternal.required"
+                    >Olvidaste ingresar el identificador externo</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>                          
+                  <md-field md-clearable :class="getValidationClass('idOrop')">
+                    <label for="first-name">Identificador de la OROP</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.idOrop"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.idOrop.required"
+                    >Olvidaste ingresar el identificador de la OROP</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>                          
                 </div>
               </md-card-content>
             </form>
@@ -354,25 +353,23 @@ export default {
 		let now = new Date();
     return {
       form: {
-          nameBoat: "",
-          ZoneFisher: "",
-          voBo: "",
-          nameOfficial: "", 
-          yellowFin: "", 
-          barrilete: "", 
-          patudo: "", 
-
+          time: "",
+          portState: "",
+          nameBoat: "", 
+          statePavilion: "", 
+          internationalSignal: "",
+          informationBoat: "", 
+          ownerBoat: "", 
+          idEnrollment: "", 
+          idOmi: "", 
+          idExternal: "", 
+          idOrop: "", 
       },
-      
+
+      typeFishery: "",
       date: format(now, dateFormat),
-      dateBeginningFaena: format(now, dateFormat),
-      dateEndFaena: format(now, dateFormat),
-      observation: "",
-      other: "",
-      poundRating1: "",
-      poundRating2: "",
-      poundRating3: "",
-      poundRating4: "",
+      datePlanned: format(now, dateFormat),
+      typeBoat: "",
 
       arrayDisembTuna: [],
       id_disembTuna: 0,
@@ -400,25 +397,37 @@ export default {
 
   validations: {
     form: {
+        time: {
+          required
+        },
+        portState: {
+          required
+        },
         nameBoat: {
-          required
-        },
-        ZoneFisher: {
-          required
-        },
-        voBo: {
+            required
+        },  
+        statePavilion: {
+            required
+        },  
+        internationalSignal: {
           required
         },  
-        nameOfficial: {
+        informationBoat: {
           required
         },  
-        yellowFin: {
+        ownerBoat: {
           required
         },  
-        barrilete: {
+        idEnrollment: {
           required
         },  
-        patudo: {
+        idOmi: {
+          required
+        },  
+        idExternal: {
+          required
+        },  
+        idOrop: {
           required
         },  
       
@@ -467,24 +476,22 @@ export default {
     },
     clearForm() {
       this.$v.$reset();
-      this.form.nameBoat = null;
+      this.form.time = null;
       this.date = null;
-      this.dateBeginningFaena = null;
-      this.dateEndFaena = null;
-      this.form.ZoneFisher = null;
-      this.observation = null;
-      this.form.voBo = null;
-      this.form.nameOfficial = null;
-      this.form.yellowFin = null;
-      this.poundRating1 = null;
-      this.form.barrilete = null;
-      this.poundRating2 = null;
-      this.form.patudo = null;
-      this.poundRating3 = null;
-      this.other = null;
-      this.poundRating4 = null;
+      this.typeFishery = null;
+      this.datePlanned = null;
+      this.form.portState = null;
+      this.form.nameBoat = null;
+      this.form.statePavilion = null;
+      this.typeBoat = null;
+      this.form.internationalSignal = null;
+      this.form.informationBoat = null;
+      this.form.ownerBoat = null;
+      this.form.idEnrollment = null;
+      this.form.idOmi = null;
+      this.form.idExternal = null;
+      this.form.idOrop = null;
   
-      
       this.arrayPt = {id:0, name:''};
       this.arrayFg = {id:0, name:''};
       this.arrayComp = {id:0, name:''};
@@ -494,22 +501,21 @@ export default {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_disembTuna = data["id"]);
-      this.form.nameBoat = data["nameBoat"];
+      this.form.time = data["time"];
       this.date = data["date"];
-      this.dateBeginningFaena = data["dateBeginningFaena"];
-      this.dateEndFaena = data["dateEndFaena"];
-      this.form.ZoneFisher = data["ZoneFisher"];
-      this.observation = data["observation"];
-      this.form.voBo = data["voBo"];
-      this.form.nameOfficial = data["nameOfficial"];
-      this.form.yellowFin = data["yellowFin"];
-      this.poundRating1 = data["poundRating1"];
-      this.form.barrilete = data["barrilete"];
-      this.poundRating2 = data["poundRating2"];
-      this.form.patudo = data["patudo"];
-      this.poundRating3 = data["poundRating3"];
-      this.other = data["other"];
-      this.poundRating4 = data["poundRating4"];
+      this.typeFishery = data["typeFishery"];
+      this.datePlanned = data["datePlanned"];
+      this.form.portState = data["portState"];
+      this.form.nameBoat = data["nameBoat"];
+      this.form.statePavilion = data["statePavilion"];
+      this.typeBoat = data["typeBoat"];
+      this.form.internationalSignal = data["internationalSignal"];
+      this.form.informationBoat = data["informationBoat"];
+      this.form.ownerBoat = data["ownerBoat"];
+      this.form.idEnrollment = data["idEnrollment"];
+      this.form.idOmi = data["idOmi"];
+      this.form.idExternal = data["idExternal"];
+      this.form.idOrop = data["idOrop"];
        
       this.arrayPt.id = data["id_port"];
       this.arrayPt.name = data["namePort"];
@@ -590,23 +596,21 @@ export default {
       axios
         .post("/certificationDisembTuna/save", {
     
-        nameBoat: this.form.nameBoat.toUpperCase(),
+        time: this.form.time,
         date: this.date,
-        dateBeginningFaena: this.dateBeginningFaena,
-        dateEndFaena: this.dateEndFaena,
-        ZoneFisher: this.form.ZoneFisher.toUpperCase(),
-        observation: this.observation.toUpperCase(),
-        voBo: this.form.voBo.toUpperCase(),
-        nameOfficial: this.form.nameOfficial.toUpperCase(),
-        yellowFin: this.form.yellowFin.toUpperCase(),
-        poundRating1: this.poundRating1.toUpperCase(),
-        barrilete: this.form.barrilete.toUpperCase(),
-        poundRating2: this.poundRating2.toUpperCase(),
-        patudo: this.form.patudo.toUpperCase(),
-        poundRating3: this.poundRating3.toUpperCase(),
-        other: this.other.toUpperCase(),
-        poundRating4: this.poundRating4.toUpperCase(),
-       
+        typeFishery: this.typeFishery,
+        datePlanned: this.datePlanned,
+        portState: this.form.portState.toUpperCase(),
+        nameBoat: this.form.nameBoat.toUpperCase(),
+        statePavilion: this.form.statePavilion.toUpperCase(),
+        typeBoat: this.typeBoat.toUpperCase(),
+        internationalSignal: this.form.internationalSignal.toUpperCase(),
+        informationBoat: this.form.informationBoat.toUpperCase(),
+        ownerBoat: this.form.ownerBoat.toUpperCase(),
+        idEnrollment: this.form.idEnrollment.toUpperCase(),
+        idOmi: this.form.idOmi.toUpperCase(),
+        idExternal: this.form.idExternal.toUpperCase(),
+        idOrop: this.form.idOrop.toUpperCase(),
     
         'id_port': this.arrayPt.id,
         'id_flag': this.arrayFg.id,
@@ -627,22 +631,21 @@ export default {
       axios
         .put("/certificationDisembTuna/update", {
         id: this.id_disembTuna,
-        nameBoat: this.form.nameBoat.toUpperCase(),
+        time: this.form.time,
         date: this.date,
-        dateBeginningFaena: this.dateBeginningFaena,
-        dateEndFaena: this.dateEndFaena,
-        ZoneFisher: this.form.ZoneFisher.toUpperCase(),
-        observation: this.observation.toUpperCase(),
-        voBo: this.form.voBo.toUpperCase(),
-        nameOfficial: this.form.nameOfficial.toUpperCase(),
-        yellowFin: this.form.yellowFin.toUpperCase(),
-        poundRating1: this.poundRating1.toUpperCase(),
-        barrilete: this.form.barrilete.toUpperCase(),
-        poundRating2: this.poundRating2.toUpperCase(),
-        patudo: this.form.patudo.toUpperCase(),
-        poundRating3: this.poundRating3.toUpperCase(),
-        other: this.other.toUpperCase(),
-        poundRating4: this.poundRating4.toUpperCase(),
+        typeFishery: this.typeFishery,
+        datePlanned: this.datePlanned,
+        portState: this.form.portState.toUpperCase(),
+        nameBoat: this.form.nameBoat.toUpperCase(),
+        statePavilion: this.form.statePavilion.toUpperCase(),
+        typeBoat: this.typeBoat.toUpperCase(),
+        internationalSignal: this.form.internationalSignal.toUpperCase(),
+        informationBoat: this.form.informationBoat.toUpperCase(),
+        ownerBoat: this.form.ownerBoat.toUpperCase(),
+        idEnrollment: this.form.idEnrollment.toUpperCase(),
+        idOmi: this.form.idOmi.toUpperCase(),
+        idExternal: this.form.idExternal.toUpperCase(),
+        idOrop: this.form.idOrop.toUpperCase(),
     
         'id_port': this.arrayPt.id,
         'id_flag': this.arrayFg.id,
@@ -727,10 +730,10 @@ export default {
           "columns": [
 
             { "data": "date" },
+            { "data": "time" },
+            { "data": "informationBoat" },
+            { "data": "datePlanned" },
             { "data": "nameBoat" },
-            { "data": "nameOfficial" },
-            { "data": "dateBeginningFaena" },
-            { "data": "dateEndFaena" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
 
         ]
