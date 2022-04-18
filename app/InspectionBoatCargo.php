@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ConfiscationCertificates extends Model
+class InspectionBoatCargo extends Model
 {
     //
 }

@@ -323,9 +323,8 @@
                     >Olvidaste ingresar un nombre para la embarcación</span>
                   </md-field>
                   <div class="md-layout-item">
-                        <label>Bandera</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
-                            placeholder="Seleccione una región"
+                            placeholder="Seleccione una bandera"
                             :custom-label="nameWithFlag"
                             label="name"
                             track-by="name">
@@ -1201,7 +1200,7 @@ export default {
           let me = this;      
           axios
             .post("/zarpes/delete", {
-              id: this.id_zarpes
+              id: data["id"],
             })
             .then(function(response) {
               me.hideForm();

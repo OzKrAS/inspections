@@ -97,7 +97,7 @@
                             track-by="name">
                         </multiselect>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
-                        <label class="negrita">Fecha de Inspección</label>
+                        <!-- <label class="negrita">Fecha de Inspección</label> -->
                         <div>
                           <md-datepicker 
                             v-model="dateIns"
@@ -105,7 +105,7 @@
                             md-immediately
                             :md-model-type="String"
                             >
-                            <label>Seleccione Fecha</label>
+                            <label>Fecha de Inspección</label>
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp; 
@@ -155,7 +155,7 @@
                           </md-field>
                         </div>&nbsp;&nbsp;&nbsp; 
                         <div class="md-layout-item">
-                          <label class="negrita">Fecha Última Escala</label>
+                          <!-- <label class="negrita">Fecha Última Escala</label> -->
                           <div>
                             <md-datepicker 
                               v-model="dateScale"
@@ -163,7 +163,7 @@
                               md-immediately
                               :md-model-type="String"
                               >
-                              <label>Seleccione Fecha</label>
+                              <label>Fecha Última Escala</label>
                             </md-datepicker>
                           </div>
                         </div> &nbsp;&nbsp;&nbsp; 
@@ -177,7 +177,7 @@
                             </multiselect>
                         </div>&nbsp;&nbsp;&nbsp;
                         <div class="md-layout-item">
-                          <label class="negrita">Fecha de Zarpe</label>
+                          <!-- <label class="negrita">Fecha de Zarpe</label> -->
                           <div>
                             <md-datepicker 
                               v-model="dateZarpe"
@@ -185,7 +185,7 @@
                               md-immediately
                               :md-model-type="String"
                               >
-                              <label>Seleccione Fecha</label>
+                              <label>Fecha de Zarpe</label>
                             </md-datepicker>
                           </div>
                         </div> &nbsp;&nbsp;&nbsp; 
@@ -199,7 +199,7 @@
                             </multiselect>
                         </div>&nbsp;&nbsp;&nbsp;
                         <div class="md-layout-item">
-                          <label class="negrita">Fecha Último Arribo</label>
+                          <!-- <label class="negrita">Fecha Último Arribo</label> -->
                           <div>
                             <md-datepicker 
                               v-model="dateLatestArrival"
@@ -207,7 +207,7 @@
                               md-immediately
                               :md-model-type="String"
                               >
-                              <label>Seleccione Fecha</label>
+                              <label>Fecha Último Arribo</label>
                             </md-datepicker>
                           </div>
                         </div> &nbsp;&nbsp;&nbsp; 
@@ -263,7 +263,7 @@
                         >Olvidaste ingresar el número de resolución</span>
                       </md-field>
                       <div class="md-layout-item">
-                        <label class="negrita">Fecha</label>
+                        <!-- <label class="negrita">Fecha</label> -->
                         <div>
                           <md-datepicker 
                             v-model="date"
@@ -276,7 +276,7 @@
                         </div>
                       </div> &nbsp;&nbsp;&nbsp; 
                       <div class="md-layout-item">
-                        <label class="negrita">Vigencia</label>
+                        <!-- <label class="negrita">Vigencia</label> -->
                         <div>
                           <md-datepicker 
                             v-model="dateValidity"
@@ -284,7 +284,7 @@
                             md-immediately
                             :md-model-type="String"
                             >
-                            <label>Seleccione Fecha</label>
+                            <label>Seleccione Fecha Vigencia</label>
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp; 
@@ -354,7 +354,7 @@
                         >Olvidaste ingresar el número de patente</span>
                       </md-field>
                       <div class="md-layout-item">
-                        <label class="negrita">Vigencia Patente</label>
+                        <!-- <label class="negrita">Vigencia Patente</label> -->
                         <div>
                           <md-datepicker 
                             v-model="dateValidityPat"
@@ -362,7 +362,7 @@
                             md-immediately
                             :md-model-type="String"
                             >
-                            <label>Seleccione Fecha</label>
+                            <label>Fecha Vigencia Patente</label>
                           </md-datepicker>
                         </div>
                       </div> &nbsp;&nbsp;&nbsp; 
@@ -1562,7 +1562,7 @@ export default {
           let me = this;      
           axios
             .post("/arrivals/delete", {
-              id: this.id_arrival
+              id: data["id"],
             })
             .then(function(response) {
               me.hideForm();

@@ -136,13 +136,21 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/confiscationCertificates/update', 'ConfiscationCertificateController@update');
         Route::post('/confiscationCertificates/delete', 'ConfiscationCertificateController@destroy');
         Route::get('/confiscationCertificates/selectRegional', 'RegionalController@selectRegional'); 
-        Route::get('/confiscationCertificates/selectMunicipality', 'MunicipalityController@selectMunicipality'); 
-       
-
-
-
-
-
+        // iNSPECCION EMBARCACION  DE CARGA
+        Route::get('/inspectionBoatCargo', 'InspectionBoatCargoController@index');
+        Route::post('/inspectionBoatCargo/save', 'InspectionBoatCargoController@store');
+        Route::put('/inspectionBoatCargo/update', 'InspectionBoatCargoController@update');
+        Route::post('/inspectionBoatCargo/delete', 'InspectionBoatCargoController@destroy');
+        Route::get('/inspectionBoatCargo/selectPorts', 'PortsController@selectPort');
+        Route::get('/inspectionBoatCargo/selectFlags', 'FlagController@selectFlag');
+        // CERTIFICACIÓN DESEMBARQUE DE ATÚN PARA EXPORTACIÓN 
+        Route::get('/certificationDisembTuna', 'CertificationDisembTunaController@index');
+        Route::post('/certificationDisembTuna/save', 'CertificationDisembTunaController@store');
+        Route::put('/certificationDisembTuna/update', 'CertificationDisembTunaController@update');
+        Route::post('/certificationDisembTuna/delete', 'CertificationDisembTunaController@destroy');
+        Route::get('/certificationDisembTuna/selectPorts', 'PortsController@selectPort');
+        Route::get('/certificationDisembTuna/selectFlags', 'FlagController@selectFlag');
+        Route::get('/certificationDisembTuna/selectCompanies', 'CompanyController@selectCompanies');
 
 
        

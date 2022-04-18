@@ -309,7 +309,7 @@ export default {
           let me = this;      
           axios
             .post("/municipalities/delete", {
-              id: this.id_municipalities
+              id: data["id"],
             })
             .then(function(response) {
               me.hideForm();

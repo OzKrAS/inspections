@@ -336,7 +336,7 @@ export default {
           let me = this;      
           axios
             .post("/docks/delete", {
-              id: this.id_docks
+              id: data["id"],
             })
             .then(function(response) {
               me.hideForm();

@@ -68,7 +68,7 @@
               <md-card-content>
                 <div class="md-layout">
                   <div class="md-layout-item">
-                          <label class="negrita">Fecha</label>
+                          <!-- <label class="negrita">Fecha</label> -->
                           <div>
                             <md-datepicker 
                               v-model="date"
@@ -577,7 +577,7 @@ export default {
           let me = this;      
           axios
             .post("/checkDetFlaps/delete", {
-               id: this.id_CheckDet,
+               id: data["id"],
             })
             .then(function(response) {
               me.hideForm();

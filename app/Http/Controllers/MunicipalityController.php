@@ -14,8 +14,8 @@ class MunicipalityController extends Controller
 
             $municipalities = Municipality::join('regions','municipalities.id_region','=','regions.id')
             ->select(
-            'municipalities.id', 'municipalities.name', 'municipalities.id_region',
-            'regions.name as nameReg')
+            'municipalities.id', 'municipalities.name', 'municipalities.id_region','regions.name as nameReg')
+            
             ->paginate(9999999999999999999999999);
         
         return [
@@ -34,25 +34,25 @@ class MunicipalityController extends Controller
     public function store(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $municipality = new Municipality();
-        $municipality->name = $request->name;    
-        $municipality->id_region = $request->id_region;    
-        $municipality->save();
+        $municipalities = new Municipality();
+        $municipalities->name = $request->name;    
+        $municipalities->id_region = $request->id_region;    
+        $municipalities->save();
     }
 
     public function update(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $municipality = Municipality::findOrFail($request->id);
-        $municipality->name = $request->name;    
-        $municipality->id_region = $request->id_region;  
-        $municipality->save();
+        $municipalities = Municipality::findOrFail($request->id);
+        $municipalities->name = $request->name;    
+        $municipalities->id_region = $request->id_region;  
+        $municipalities->save();
     }
 
     public function destroy(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $municipality = Municipality::findOrFail($request->id);
-        $municipality->delete();
+        $municipalities = Municipality::findOrFail($request->id);
+        $municipalities->delete();
     }
 }

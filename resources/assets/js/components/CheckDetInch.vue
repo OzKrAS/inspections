@@ -67,8 +67,7 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <div class="md-layout-item">
-                
+                  <div class="md-layout-item">     
                         <div>
                           <md-datepicker 
                             v-model="date"
@@ -76,7 +75,7 @@
                             md-immediately
                             :md-model-type="String"
                           >
-                            <label>Fecha</label>
+                            <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp;
@@ -1033,7 +1032,7 @@ export default {
           let me = this;      
           axios
             .post("/checkDetInchs/delete", {
-              id: this.id_CheckDet,
+              id: data["id"],
             })
             .then(function(response) {
               me.hideForm();

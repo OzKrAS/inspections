@@ -91,6 +91,12 @@
                             <li @click="menu=15">
                                 <a href="#"><i class="icon-bag"></i>Acta de Decomiso Preventivo</a>                                                                               
                             </li>                                
+                            <li @click="menu=16">
+                                <a href="#"><i class="icon-bag"></i>Formato Inspección Embarcación de Carga</a>                                                                               
+                            </li>                                
+                            <li @click="menu=17">
+                                <a href="#"><i class="icon-bag"></i>Formato Certificación Desembarque de Atún para Exportación</a>                                                                               
+                            </li>                                
                         </ul>                            
                         </div>                        
                     </li>
