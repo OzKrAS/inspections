@@ -44,26 +44,7 @@
                             <span class="menu-text">General</span>                         
                         </a>
                         <div class="sidebar-submenu">
-                        <ul>      
-                                                      
-                            <li @click="menu=1"  >
-                                <a href="#"><i class="icon-bag"></i>Región</a>                                                                               
-                            </li>
-                            <li @click="menu=2">
-                                <a href="#"><i class="icon-bag"></i>Municipio</a>                                                                               
-                            </li>                                
-                            <li @click="menu=3">
-                                <a href="#"><i class="icon-bag"></i>Puertos</a>                                                                               
-                            </li>                                
-                            <li @click="menu=4">
-                                <a href="#"><i class="icon-bag"></i>Zonas Autorizadas</a>                                                                               
-                            </li>                                
-                            <li @click="menu=5">
-                                <a href="#"><i class="icon-bag"></i>Banderas</a>                                                                               
-                            </li>                                
-                            <li @click="menu=6">
-                                <a href="#"><i class="icon-bag"></i>Muelles</a>                                                                               
-                            </li>                                
+                        <ul>                                                                                                                                                                                           
                             <li @click="menu=7">
                                 <a href="#"><i class="icon-bag"></i>Inspección a Embarcación Pesquera - Zarpe</a>                                                                               
                             </li>                                
@@ -78,13 +59,7 @@
                             </li>                                
                             <li @click="menu=11">
                                 <a href="#"><i class="icon-bag"></i>Verificación Presencia del Equipo de Rescate de Delfines Abordo de BarcosAtuneros de Cerco</a>                                                                               
-                            </li>                                
-                            <li @click="menu=12">
-                                <a href="#"><i class="icon-bag"></i>Países</a>                                                                               
-                            </li>                                
-                            <li @click="menu=13">
-                                <a href="#"><i class="icon-bag"></i>Empresas</a>                                                                               
-                            </li>                                
+                            </li>                                                               
                             <li @click="menu=14">
                                 <a href="#"><i class="icon-bag"></i>Acta de Donación</a>                                                                               
                             </li>                                
@@ -97,27 +72,49 @@
                             <li @click="menu=17">
                                 <a href="#"><i class="icon-bag"></i>Formato Certificación Desembarque de Atún para Exportación</a>                                                                               
                             </li>                                
+                            <li @click="menu=18">
+                                <a href="#"><i class="icon-bag"></i>Formato de Aviso Previo de Zarpe de Buque</a>                                                                               
+                            </li>                                
                         </ul>                            
                         </div>                        
                     </li>
-                    <!-- <li class="sidebar-dropdown">
+                    <li class="sidebar-dropdown">
                         <a href="#">
                             <i class="fas fa-clipboard"></i>
                             <span class="menu-text">Otro Menu</span>                         
                         </a>
                         <div class="sidebar-submenu">
-                            <ul>
-
-                          
-    
-                       
-                            <li @click="menu=0" >
+                          <ul>  
+                            <li @click="menu=12">
+                                <a href="#"><i class="icon-bag"></i>Países</a>                                                                               
+                            </li>                                
+                            <li @click="menu=13">
+                                <a href="#"><i class="icon-bag"></i>Empresas</a>                                                                               
+                            </li> 
+                            <!-- <li @click="menu=0" >
                                 <a  href="#"><i class="icon-bag"></i>Opcion1</a>
+                            </li> -->
+                            <li @click="menu=5">
+                                <a href="#"><i class="icon-bag"></i>Banderas</a>                                                                               
+                            </li>                                
+                            <li @click="menu=6">
+                                <a href="#"><i class="icon-bag"></i>Muelles</a>                                                                               
+                            </li> 
+                            <li @click="menu=1"  >
+                                <a href="#"><i class="icon-bag"></i>Región</a>                                                                               
                             </li>
-                       
-                            </ul>                            
+                            <li @click="menu=2">
+                                <a href="#"><i class="icon-bag"></i>Municipio</a>                                                                               
+                            </li>                                
+                            <li @click="menu=3">
+                                <a href="#"><i class="icon-bag"></i>Puertos</a>                                                                               
+                            </li>
+                            <li @click="menu=4">
+                                <a href="#"><i class="icon-bag"></i>Zonas Autorizadas</a>                                                                               
+                            </li> 
+                          </ul>                            
                         </div>                        
-                    </li> -->
+                    </li>
                     <!-- <li class="sidebar-dropdown">
                         <a href="#">
                             <i class="fas fa-clipboard-list"></i>

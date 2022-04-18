@@ -154,6 +154,14 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/certificationDisembTuna/selectPorts', 'PortsController@selectPort');
         Route::get('/certificationDisembTuna/selectFlags', 'FlagController@selectFlag');
         Route::get('/certificationDisembTuna/selectCompanies', 'CompanyController@selectCompanies');
+        // FORMATO DE AVISO PREVIO DE ZARPE DE BUQUE
+        Route::get('/noticePreviousZarpe', 'NoticePreviousZarpeController@index');
+        Route::post('/noticePreviousZarpe/save', 'NoticePreviousZarpeController@store');
+        Route::put('/noticePreviousZarpe/update', 'NoticePreviousZarpeController@update');
+        Route::post('/noticePreviousZarpe/delete', 'NoticePreviousZarpeController@destroy');
+        // Route::get('/certificationDisembTuna/selectPorts', 'PortsController@selectPort');
+        // Route::get('/certificationDisembTuna/selectFlags', 'FlagController@selectFlag');
+        // Route::get('/certificationDisembTuna/selectCompanies', 'CompanyController@selectCompanies');
 
 
        
