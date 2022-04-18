@@ -14176,6 +14176,7 @@ Vue.component('companies', __webpack_require__(164));
 Vue.component('donations', __webpack_require__(169));
 Vue.component('confiscations', __webpack_require__(174));
 Vue.component('inspectioncargos', __webpack_require__(179));
+Vue.component('certificationtuna', __webpack_require__(184));
 
 var app = new Vue({
     el: '#app',
@@ -36651,7 +36652,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
         if (result.value) {
           var me = _this;
           axios.post("/municipalities/delete", {
-            id: _this.id_municipalities
+            id: data["id"]
           }).then(function (response) {
             me.hideForm();
             me.message("Eliminado", "Eliminó ");
@@ -39531,7 +39532,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_material_dist_components__["MdDatepicker
         if (result.value) {
           var me = _this;
           axios.post("/docks/delete", {
-            id: _this.id_docks
+            id: data["id"]
           }).then(function (response) {
             me.hideForm();
             me.message("Eliminado", "Eliminó ");
@@ -41209,7 +41210,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         if (result.value) {
           var me = _this;
           axios.post("/zarpes/delete", {
-            id: _this.id_zarpes
+            id: data["id"]
           }).then(function (response) {
             me.hideForm();
             me.message("Eliminado", "Eliminó ");
@@ -46640,7 +46641,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         if (result.value) {
           var me = _this;
           axios.post("/arrivals/delete", {
-            id: _this.id_arrival
+            id: data["id"]
           }).then(function (response) {
             me.hideForm();
             me.message("Eliminado", "Eliminó ");
@@ -46863,10 +46864,6 @@ var render = function() {
                               }),
                               _vm._v("   \n                      "),
                               _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Fecha de Inspección")
-                                ]),
-                                _vm._v(" "),
                                 _c(
                                   "div",
                                   [
@@ -46888,7 +46885,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione Fecha")
+                                          _vm._v("Fecha de Inspección")
                                         ])
                                       ]
                                     )
@@ -47175,10 +47172,6 @@ var render = function() {
                               ),
                               _vm._v("    \n                        "),
                               _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Fecha Última Escala")
-                                ]),
-                                _vm._v(" "),
                                 _c(
                                   "div",
                                   [
@@ -47200,7 +47193,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione Fecha")
+                                          _vm._v("Fecha Última Escala")
                                         ])
                                       ]
                                     )
@@ -47236,10 +47229,6 @@ var render = function() {
                               ),
                               _vm._v("   \n                        "),
                               _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Fecha de Zarpe")
-                                ]),
-                                _vm._v(" "),
                                 _c(
                                   "div",
                                   [
@@ -47259,11 +47248,7 @@ var render = function() {
                                           expression: "dateZarpe"
                                         }
                                       },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Seleccione Fecha")
-                                        ])
-                                      ]
+                                      [_c("label", [_vm._v("Fecha de Zarpe")])]
                                     )
                                   ],
                                   1
@@ -47299,10 +47284,6 @@ var render = function() {
                               ),
                               _vm._v("   \n                        "),
                               _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Fecha Último Arribo")
-                                ]),
-                                _vm._v(" "),
                                 _c(
                                   "div",
                                   [
@@ -47324,7 +47305,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione Fecha")
+                                          _vm._v("Fecha Último Arribo")
                                         ])
                                       ]
                                     )
@@ -47530,10 +47511,6 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Fecha")
-                                ]),
-                                _vm._v(" "),
                                 _c(
                                   "div",
                                   [
@@ -47565,10 +47542,6 @@ var render = function() {
                               ]),
                               _vm._v("     \n                      "),
                               _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Vigencia")
-                                ]),
-                                _vm._v(" "),
                                 _c(
                                   "div",
                                   [
@@ -47590,7 +47563,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione Fecha")
+                                          _vm._v("Seleccione Fecha Vigencia")
                                         ])
                                       ]
                                     )
@@ -47786,10 +47759,6 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Vigencia Patente")
-                                ]),
-                                _vm._v(" "),
                                 _c(
                                   "div",
                                   [
@@ -47811,7 +47780,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione Fecha")
+                                          _vm._v("Fecha Vigencia Patente")
                                         ])
                                       ]
                                     )
@@ -50132,7 +50101,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -50564,7 +50532,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         if (result.value) {
           var me = _this;
           axios.post("/checkDetInchs/delete", {
-            id: _this.id_CheckDet
+            id: data["id"]
           }).then(function (response) {
             me.hideForm();
             me.message("Eliminado", "Eliminó ");
@@ -50715,7 +50683,11 @@ var render = function() {
                                           expression: "date"
                                         }
                                       },
-                                      [_c("label", [_vm._v("Fecha")])]
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione Fecha")
+                                        ])
+                                      ]
                                     )
                                   ],
                                   1
@@ -53044,7 +53016,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         if (result.value) {
           var me = _this;
           axios.post("/checkDetFlaps/delete", {
-            id: _this.id_CheckDet
+            id: data["id"]
           }).then(function (response) {
             me.hideForm();
             me.message("Eliminado", "Eliminó ");
@@ -53176,10 +53148,6 @@ var render = function() {
                             { staticClass: "md-layout" },
                             [
                               _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Fecha")
-                                ]),
-                                _vm._v(" "),
                                 _c(
                                   "div",
                                   [
@@ -54348,7 +54316,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         if (result.value) {
           var me = _this;
           axios.post("/presenVerifics/delete", {
-            id: _this.id_presenVerific
+            id: data["id"]
           }).then(function (response) {
             me.hideForm();
             me.message("Eliminado", "Eliminó ");
@@ -54630,10 +54598,6 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Fecha Zarpe")
-                                ]),
-                                _vm._v(" "),
                                 _c(
                                   "div",
                                   [
@@ -54653,11 +54617,7 @@ var render = function() {
                                           expression: "dateZarpe"
                                         }
                                       },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Seleccione Fecha")
-                                        ])
-                                      ]
+                                      [_c("label", [_vm._v("Fecha Zarpe")])]
                                     )
                                   ],
                                   1
@@ -54665,10 +54625,6 @@ var render = function() {
                               ]),
                               _vm._v("    \n                  "),
                               _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Fecha Desembarque")
-                                ]),
-                                _vm._v(" "),
                                 _c(
                                   "div",
                                   [
@@ -54690,7 +54646,7 @@ var render = function() {
                                       },
                                       [
                                         _c("label", [
-                                          _vm._v("Seleccione Fecha")
+                                          _vm._v("Fecha Desembarque")
                                         ])
                                       ]
                                     )
@@ -57135,7 +57091,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         if (result.value) {
           var me = _this;
           axios.post("/donationCertificates/delete", {
-            id: _this.id_donationCertificate
+            id: data["id"]
           }).then(function (response) {
             me.hideForm();
             me.message("Eliminado", "Eliminó ");
@@ -57594,10 +57550,6 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c("div", { staticClass: "md-layout-item" }, [
-                                _c("label", { staticClass: "negrita" }, [
-                                  _vm._v("Fecha")
-                                ]),
-                                _vm._v(" "),
                                 _c(
                                   "div",
                                   [
@@ -59075,6 +59027,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -59151,6 +59127,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
       dateExpedition: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
       observation: "",
+
+      arrayReasons: [],
+      arrayValue: [{ name: 'Sin Permiso', id: '1' }, { name: 'Sin patente', id: '2' }, { name: 'Sin salvoconducto', id: '3' }, { name: 'Documentos adulterados', id: '4' }, { name: 'Especie en época de veda', id: '5' }, { name: 'Especie no autorizada', id: '6' }, { name: 'Incumplimiento tallas mínimas', id: '7' }, { name: 'Artes de pesca no autorizados', id: '8' }, { name: 'Pesca en áreas no autorizadas', id: '9' }, { name: 'Pesca en áreas protegidas', id: '10' }, { name: 'Malas prácticas de pesca', id: '11' }],
 
       arrayConfiscationCert: [],
       id_confiscationCert: 0,
@@ -59265,6 +59244,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
     Multiselect: __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___default.a
   },
   methods: {
+    addTag: function addTag(newTag) {
+      var tag = {
+        name: newTag,
+        id: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000)
+      };
+      this.arrayRegional.push(tag);
+      this.arrayReasons.push(tag);
+    },
     alerta: function alerta() {
       alert('test');
     },
@@ -59478,6 +59465,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       var me = this;
 
       axios.put("/confiscationCertificates/update", {
+
         id: this.id_confiscationCert,
         noActa: this.form.noActa.toUpperCase(),
         departament: this.form.departament.toUpperCase(),
@@ -59547,7 +59535,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         if (result.value) {
           var me = _this;
           axios.post("/confiscationCertificates/delete", {
-            id: _this.id_confiscationCert
+            id: data["id"]
           }).then(function (response) {
             me.hideForm();
             me.message("Eliminado", "Eliminó ");
@@ -60261,6 +60249,51 @@ var render = function() {
                                         )
                                       ])
                                     : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                [
+                                  _c(
+                                    "multiselect",
+                                    {
+                                      attrs: {
+                                        options: _vm.arrayValue,
+                                        "tag-placeholder":
+                                          "Add this as new tag",
+                                        multiple: true,
+                                        taggable: true,
+                                        "close-on-select": false,
+                                        "clear-on-select": false,
+                                        "preserve-search": true,
+                                        placeholder:
+                                          "Motivos Del Decomiso Preventivo",
+                                        label: "name",
+                                        "track-by": "name",
+                                        "preselect-first": true
+                                      },
+                                      model: {
+                                        value: _vm.arrayReasons,
+                                        callback: function($$v) {
+                                          _vm.arrayReasons = $$v
+                                        },
+                                        expression: "arrayReasons"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        '\n                     @tag="addTag"\n                  '
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("pre", { staticClass: "language-json" }, [
+                                    _c("code", [
+                                      _vm._v(_vm._s(_vm.arrayReasons))
+                                    ])
+                                  ])
                                 ],
                                 1
                               ),
@@ -61931,6 +61964,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -62307,7 +62342,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         if (result.value) {
           var me = _this;
           axios.post("/inspectionBoatCargo/delete", {
-            id: _this.id_inspectionBoatCargo
+            id: data["id"]
           }).then(function (response) {
             me.hideForm();
             me.message("Eliminado", "Eliminó ");
@@ -62351,7 +62386,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
             "infoFiltered": "(filtrado de _MAX_ total registros)"
           },
           responsive: "true",
-          "columns": [{ "data": "noForm" }, { "data": "place" }, { "data": "date" }, { "data": "fullCargo" }, { "data": "nameBoatCargo" }, { "data": "nameOfficial" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
+          "columns": [{ "data": "noForm" }, { "data": "place" }, { "data": "date" }, { "data": "fullCargo" }, { "data": "nameBoatCargo" }, { "data": "nameOfficial" }, { "data": "notification" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
 
         });
 
@@ -63502,6 +63537,8 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("th", [_vm._v("Nombre Representante")]),
                 _vm._v(" "),
+                _c("th", [_vm._v("Notificación Previa")]),
+                _vm._v(" "),
                 _c("th", { staticStyle: { width: "90px" } }, [
                   _vm._v("Opciones")
                 ])
@@ -63524,6 +63561,8 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("th", [_vm._v("Nombre Representante")]),
                 _vm._v(" "),
+                _c("th", [_vm._v("Notificación Previa")]),
+                _vm._v(" "),
                 _c("th", { staticStyle: { width: "90px" } }, [
                   _vm._v("Opciones")
                 ])
@@ -63543,6 +63582,1804 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-665604a1", module.exports)
+  }
+}
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(185)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(187)
+/* template */
+var __vue_template__ = __webpack_require__(188)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\CertificationDisembTuna.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2135b09a", Component.options)
+  } else {
+    hotAPI.reload("data-v-2135b09a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(186);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("4684f6ae", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2135b09a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CertificationDisembTuna.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2135b09a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CertificationDisembTuna.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\n.material-icons.Color1 { color: rgb(31, 33, 34);\n}\n.material-icons.Color2 { color: rgba(167, 142, 5, 0.849);\n}\n.material-icons.Color3 { color: rgb(12, 170, 91);\n}\n.material-icons.Color4 { color: rgba(228, 54, 54, 0.863);\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 187 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns_format__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuelidate__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuelidate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuelidate__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_multiselect__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_multiselect__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_toasted__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_toasted___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_toasted__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_select__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_select__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_toasted___default.a, {
+  iconPack: 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
+});
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdButton"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdContent"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdField"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdCard"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdMenu"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdSwitch"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdList"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [__WEBPACK_IMPORTED_MODULE_1_vuelidate__["validationMixin"]],
+  props: ['ruta'],
+
+  data: function data() {
+
+    Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+    Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+    Vue.material.locale.shortMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    var dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
+    var now = new Date();
+    return _defineProperty({
+      form: {
+        nameBoat: "",
+        ZoneFisher: "",
+        voBo: "",
+        nameOfficial: "",
+        yellowFin: "",
+        barrilete: "",
+        patudo: ""
+
+      },
+
+      date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+      dateBeginningFaena: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+      dateEndFaena: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+      observation: "",
+      other: "",
+      poundRating1: "",
+      poundRating2: "",
+      poundRating3: "",
+      poundRating4: "",
+
+      arrayDisembTuna: [],
+      id_disembTuna: 0,
+
+      arrayPt: { id: 0, name: '' },
+      arrayPort: [],
+      id_port: 0,
+      arrayFg: { id: 0, name: '' },
+      arrayFlag: [],
+      id_flag: 0,
+      arrayComp: { id: 0, name: '' },
+      arrayCompany: [],
+      id_Company: 0,
+
+      edo: 1,
+      tipoAccion: 1,
+      listado: 1,
+      sending: false,
+
+      arrayData: [],
+      modal: 0
+    }, "tipoAccion", 0);
+  },
+
+
+  validations: {
+    form: {
+      nameBoat: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      ZoneFisher: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      voBo: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      nameOfficial: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      yellowFin: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      barrilete: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      patudo: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      }
+
+    }
+  },
+
+  computed: {},
+  components: {
+    vSelect: __WEBPACK_IMPORTED_MODULE_4_vue_select___default.a,
+    Multiselect: __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___default.a
+  },
+  methods: {
+    toString: function toString() {
+      this.toDate();
+      this.dynamicByModel = this.dynamicByModel && Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(this.dynamicByModel, this.dateFormat);
+    },
+    toDate: function toDate() {
+      switch (this.type) {
+        case "string":
+          this.dynamicByModel = parse(this.dynamicByModel, this.dateFormat, new Date());
+          break;
+      }
+    },
+    getValidationClass: function getValidationClass(fieldName) {
+      var field = this.$v.form[fieldName];
+      if (field) {
+        return {
+          "md-invalid": field.$invalid && field.$dirty
+        };
+      }
+    },
+    validateData: function validateData() {
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.saveData();
+        this.clearForm();
+      }
+    },
+    clearForm: function clearForm() {
+      this.$v.$reset();
+      this.form.nameBoat = null;
+      this.date = null;
+      this.dateBeginningFaena = null;
+      this.dateEndFaena = null;
+      this.form.ZoneFisher = null;
+      this.observation = null;
+      this.form.voBo = null;
+      this.form.nameOfficial = null;
+      this.form.yellowFin = null;
+      this.poundRating1 = null;
+      this.form.barrilete = null;
+      this.poundRating2 = null;
+      this.form.patudo = null;
+      this.poundRating3 = null;
+      this.other = null;
+      this.poundRating4 = null;
+
+      this.arrayPt = { id: 0, name: '' };
+      this.arrayFg = { id: 0, name: '' };
+      this.arrayComp = { id: 0, name: '' };
+    },
+    showUpdate: function showUpdate() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      var me = this;
+      this.tipoAccion = 2, me.listado = 0;
+      this.id_disembTuna = data["id"];
+      this.form.nameBoat = data["nameBoat"];
+      this.date = data["date"];
+      this.dateBeginningFaena = data["dateBeginningFaena"];
+      this.dateEndFaena = data["dateEndFaena"];
+      this.form.ZoneFisher = data["ZoneFisher"];
+      this.observation = data["observation"];
+      this.form.voBo = data["voBo"];
+      this.form.nameOfficial = data["nameOfficial"];
+      this.form.yellowFin = data["yellowFin"];
+      this.poundRating1 = data["poundRating1"];
+      this.form.barrilete = data["barrilete"];
+      this.poundRating2 = data["poundRating2"];
+      this.form.patudo = data["patudo"];
+      this.poundRating3 = data["poundRating3"];
+      this.other = data["other"];
+      this.poundRating4 = data["poundRating4"];
+
+      this.arrayPt.id = data["id_port"];
+      this.arrayPt.name = data["namePort"];
+      this.arrayFg.id = data["id_flag"];
+      this.arrayFg.name = data["nameFlag"];
+      this.arrayComp.id = data["id_company"];
+      this.arrayComp.name = data["nameCompany"];
+    },
+    nameWithPort: function nameWithPort(_ref2) {
+      var name = _ref2.name;
+
+      return "" + name;
+    },
+    nameWithFlag: function nameWithFlag(_ref3) {
+      var name = _ref3.name;
+
+      return "" + name;
+    },
+    nameWithCompany: function nameWithCompany(_ref4) {
+      var name = _ref4.name;
+
+      return "" + name;
+    },
+    selectFlag: function selectFlag() {
+      var me = this;
+      var url = "certificationDisembTuna/selectFlags";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayFlag = respuesta.flag;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    selectPort: function selectPort() {
+      var me = this;
+      var url = "certificationDisembTuna/selectPorts";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayPort = respuesta.port;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    selectCompanies: function selectCompanies() {
+      var me = this;
+      var url = "certificationDisembTuna/selectCompanies";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayCompany = respuesta.company;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    showData: function showData() {
+      this.clearForm();
+      var me = this;
+      this.tipoAccion = 1, me.listado = 0;
+      this.edo = 0;
+    },
+    hideForm: function hideForm() {
+      this.edo = 1;
+      this.listado = 1;
+      this.listData();
+    },
+    listData: function listData() {
+      var me = this;
+      var url = "/certificationDisembTuna";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayDisembTuna = respuesta.tunas.data;
+        me.myTable(me.arrayDisembTuna);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    saveData: function saveData() {
+      var me = this;
+
+      axios.post("/certificationDisembTuna/save", {
+
+        nameBoat: this.form.nameBoat.toUpperCase(),
+        date: this.date,
+        dateBeginningFaena: this.dateBeginningFaena,
+        dateEndFaena: this.dateEndFaena,
+        ZoneFisher: this.form.ZoneFisher.toUpperCase(),
+        observation: this.observation.toUpperCase(),
+        voBo: this.form.voBo.toUpperCase(),
+        nameOfficial: this.form.nameOfficial.toUpperCase(),
+        yellowFin: this.form.yellowFin.toUpperCase(),
+        poundRating1: this.poundRating1.toUpperCase(),
+        barrilete: this.form.barrilete.toUpperCase(),
+        poundRating2: this.poundRating2.toUpperCase(),
+        patudo: this.form.patudo.toUpperCase(),
+        poundRating3: this.poundRating3.toUpperCase(),
+        other: this.other.toUpperCase(),
+        poundRating4: this.poundRating4.toUpperCase(),
+
+        'id_port': this.arrayPt.id,
+        'id_flag': this.arrayFg.id,
+        'id_company': this.arrayComp.id
+      }).then(function (response) {
+        me.hideForm();
+        me.message("Guardado", "Guardo ");
+        me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    updateData: function updateData() {
+      var me = this;
+
+      axios.put("/certificationDisembTuna/update", {
+        id: this.id_disembTuna,
+        nameBoat: this.form.nameBoat.toUpperCase(),
+        date: this.date,
+        dateBeginningFaena: this.dateBeginningFaena,
+        dateEndFaena: this.dateEndFaena,
+        ZoneFisher: this.form.ZoneFisher.toUpperCase(),
+        observation: this.observation.toUpperCase(),
+        voBo: this.form.voBo.toUpperCase(),
+        nameOfficial: this.form.nameOfficial.toUpperCase(),
+        yellowFin: this.form.yellowFin.toUpperCase(),
+        poundRating1: this.poundRating1.toUpperCase(),
+        barrilete: this.form.barrilete.toUpperCase(),
+        poundRating2: this.poundRating2.toUpperCase(),
+        patudo: this.form.patudo.toUpperCase(),
+        poundRating3: this.poundRating3.toUpperCase(),
+        other: this.other.toUpperCase(),
+        poundRating4: this.poundRating4.toUpperCase(),
+
+        'id_port': this.arrayPt.id,
+        'id_flag': this.arrayFg.id,
+        'id_company': this.arrayComp.id
+      }).then(function (response) {
+        me.hideForm();
+        me.message("Actualizado", "Actualizó ");
+        me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    deleteData: function deleteData() {
+      var _this = this;
+
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      swal({
+        title: "Esta seguro de Eliminar el Acta " + data["name"],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.value) {
+          var me = _this;
+          axios.post("/certificationDisembTuna/delete", {
+            id: data["id"]
+          }).then(function (response) {
+            me.hideForm();
+            me.message("Eliminado", "Eliminó ");
+            me.listData();
+          }).catch(function (error) {
+            console.log(error);
+          });
+        } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    message: function message(tipo, crud) {
+      swal(tipo, "El registro se " + crud + " con éxito.", "success");
+    },
+    myTable: function myTable(datas) {
+      var me = this;
+
+      $(document).ready(function () {
+
+        var table = $('#dataTable').DataTable({ destroy: true,
+          stateSave: true,
+          data: datas,
+          "createdRow": function createdRow(row, data, dataIndex) {
+            if (data[6] == "0") {
+              $(row).addClass('redClass');
+            }
+          },
+          "language": {
+            "lengthMenu": "Ver _MENU_ registros por página",
+            "zeroRecords": "NO existen Datos",
+            "info": "mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "search": "Buscar:",
+            "paginate": {
+              "first": "Prim",
+              "last": "Ant",
+              "next": "Sig",
+              "previous": "Ant"
+            },
+            "infoFiltered": "(filtrado de _MAX_ total registros)"
+          },
+          responsive: "true",
+          "columns": [{ "data": "date" }, { "data": "nameBoat" }, { "data": "nameOfficial" }, { "data": "dateBeginningFaena" }, { "data": "dateEndFaena" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  " }]
+
+        });
+
+        $('#dataTable tbody').on('click', '.editar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.showUpdate(me.datos);
+        });
+        $('#dataTable tbody').on('click', '.eliminar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.deleteData(me.datos);
+        });
+      });
+    }
+  },
+
+  mounted: function mounted() {
+    this.listData();
+    this.selectPort();
+    this.selectFlag();
+    this.selectCompanies();
+  }
+});
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", { staticClass: "main" }, [
+    _c("div", { staticClass: "container-fluid" }, [
+      _c(
+        "div",
+        { staticClass: "card" },
+        [
+          _c("div", { staticClass: "card-header" }, [
+            _c("i", {
+              staticClass: "m-0 font-weight-bold text-primary fas fa-car"
+            }),
+            _vm._v(" "),
+            _c("strong", { staticClass: "lead" }, [
+              _vm._v(
+                "Formato Certificación Desembarque de Atún para Exportación"
+              )
+            ]),
+            _vm._v(" "),
+            _vm.edo
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-sm",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.showData()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "icon-plus" }),
+                    _vm._v(" Nuevo\n        ")
+                  ]
+                )
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _vm.listado == 1
+            ? [_vm._m(0)]
+            : _vm.listado == 0
+              ? [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "form",
+                      {
+                        staticClass: "form-horizontal",
+                        attrs: {
+                          action: "",
+                          method: "post",
+                          enctype: "multipart/form-data"
+                        }
+                      },
+                      [
+                        _c("md-card-content", [
+                          _c(
+                            "div",
+                            { staticClass: "md-layout" },
+                            [
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        attrs: {
+                                          "md-immediately": "",
+                                          "md-model-type": String
+                                        },
+                                        on: { input: _vm.toString },
+                                        model: {
+                                          value: _vm.date,
+                                          callback: function($$v) {
+                                            _vm.date = $$v
+                                          },
+                                          expression: "date"
+                                        }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Seleccione Fecha")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v("    \n                "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c("multiselect", {
+                                    attrs: {
+                                      options: _vm.arrayCompany,
+                                      placeholder: "Seleccione una empresa",
+                                      "custom-label": _vm.nameWithCompany,
+                                      label: "name",
+                                      "track-by": "name"
+                                    },
+                                    model: {
+                                      value: _vm.arrayComp,
+                                      callback: function($$v) {
+                                        _vm.arrayComp = $$v
+                                      },
+                                      expression: "arrayComp"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v("   \n                "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("nameBoat"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Nombre Embarcación")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.nameBoat,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "nameBoat", $$v)
+                                      },
+                                      expression: "form.nameBoat"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.nameBoat.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la embarcación"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c("multiselect", {
+                                    attrs: {
+                                      options: _vm.arrayFlag,
+                                      placeholder: "Seleccione una bandera",
+                                      "custom-label": _vm.nameWithFlag,
+                                      label: "name",
+                                      "track-by": "name"
+                                    },
+                                    model: {
+                                      value: _vm.arrayFg,
+                                      callback: function($$v) {
+                                        _vm.arrayFg = $$v
+                                      },
+                                      expression: "arrayFg"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v("   \n\n                "),
+                              _c("label", [_vm._v("CERTIFICA")]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c(
+                                  "div",
+                                  [
+                                    _c("md-datepicker", {
+                                      attrs: {
+                                        "md-immediately": "",
+                                        "md-model-type": String
+                                      },
+                                      on: { input: _vm.toString },
+                                      model: {
+                                        value: _vm.dateBeginningFaena,
+                                        callback: function($$v) {
+                                          _vm.dateBeginningFaena = $$v
+                                        },
+                                        expression: "dateBeginningFaena"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v("    \n                "),
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        attrs: {
+                                          "md-immediately": "",
+                                          "md-model-type": String
+                                        },
+                                        on: { input: _vm.toString },
+                                        model: {
+                                          value: _vm.dateEndFaena,
+                                          callback: function($$v) {
+                                            _vm.dateEndFaena = $$v
+                                          },
+                                          expression: "dateEndFaena"
+                                        }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Fecha Inicio de Faena")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v("    \n                "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("ZoneFisher"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Zona de Pesca")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.ZoneFisher,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "ZoneFisher", $$v)
+                                      },
+                                      expression: "form.ZoneFisher"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.ZoneFisher.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre de la zona de pesca"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c("multiselect", {
+                                    attrs: {
+                                      options: _vm.arrayPort,
+                                      placeholder:
+                                        "Seleccione puerto de desembarque",
+                                      "custom-label": _vm.nameWithPort,
+                                      label: "name",
+                                      "track-by": "name"
+                                    },
+                                    model: {
+                                      value: _vm.arrayPt,
+                                      callback: function($$v) {
+                                        _vm.arrayPt = $$v
+                                      },
+                                      expression: "arrayPt"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v("     \n                "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("yellowFin"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Aleta Amarilla - YFT (Kg.)")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.yellowFin,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "yellowFin", $$v)
+                                      },
+                                      expression: "form.yellowFin"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.yellowFin.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar la cantidad de aleta amarilla"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c(
+                                    "md-field",
+                                    [
+                                      _c(
+                                        "md-select",
+                                        {
+                                          attrs: {
+                                            name: "poundRating1",
+                                            id: "poundRating1",
+                                            placeholder:
+                                              "Clasificación en Libras Aleta Amarilla"
+                                          },
+                                          model: {
+                                            value: _vm.poundRating1,
+                                            callback: function($$v) {
+                                              _vm.poundRating1 = $$v
+                                            },
+                                            expression: "poundRating1"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "menos de 3" } },
+                                            [_vm._v("Menos de 3")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "de 3 a 6" } },
+                                            [_vm._v("De 3 a 6")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "de 7 a 20" } },
+                                            [_vm._v("De 7 a 20")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "de 21 a 30" } },
+                                            [_vm._v("De 21 a 30")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "más de 30" } },
+                                            [_vm._v("Mas de 30")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v("     \n                "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("barrilete"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Barrilete - SKJ (Kg.)")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.barrilete,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "barrilete", $$v)
+                                      },
+                                      expression: "form.barrilete"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.barrilete.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar la cantidad de barrilete"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c(
+                                    "md-field",
+                                    [
+                                      _c(
+                                        "md-select",
+                                        {
+                                          attrs: {
+                                            name: "poundRating2",
+                                            id: "poundRating2",
+                                            placeholder:
+                                              "Clasificación en Libras Barrilete"
+                                          },
+                                          model: {
+                                            value: _vm.poundRating2,
+                                            callback: function($$v) {
+                                              _vm.poundRating2 = $$v
+                                            },
+                                            expression: "poundRating2"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "menos de 3" } },
+                                            [_vm._v("Menos de 3")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "de 3 a 6" } },
+                                            [_vm._v("De 3 a 6")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "de 7 a 20" } },
+                                            [_vm._v("De 7 a 20")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "de 21 a 30" } },
+                                            [_vm._v("De 21 a 30")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "más de 30" } },
+                                            [_vm._v("Mas de 30")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v("   \n                "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("patudo"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Patudo - BET (Kg.)")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.patudo,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "patudo", $$v)
+                                      },
+                                      expression: "form.patudo"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.patudo.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar la cantidad de patudo"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c(
+                                    "md-field",
+                                    [
+                                      _c(
+                                        "md-select",
+                                        {
+                                          attrs: {
+                                            name: "poundRating3",
+                                            id: "poundRating3",
+                                            placeholder:
+                                              "Clasificación en Libras Patudo"
+                                          },
+                                          model: {
+                                            value: _vm.poundRating3,
+                                            callback: function($$v) {
+                                              _vm.poundRating3 = $$v
+                                            },
+                                            expression: "poundRating3"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "menos de 3" } },
+                                            [_vm._v("Menos de 3")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "de 3 a 6" } },
+                                            [_vm._v("De 3 a 6")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "de 7 a 20" } },
+                                            [_vm._v("De 7 a 20")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "de 21 a 30" } },
+                                            [_vm._v("De 21 a 30")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "más de 30" } },
+                                            [_vm._v("Mas de 30")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v("   \n                "),
+                              _c(
+                                "md-field",
+                                { attrs: { "md-clearable": "" } },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Otro")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.other,
+                                      callback: function($$v) {
+                                        _vm.other = $$v
+                                      },
+                                      expression: "other"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c(
+                                    "md-field",
+                                    [
+                                      _c(
+                                        "md-select",
+                                        {
+                                          attrs: {
+                                            name: "poundRating4",
+                                            id: "poundRating4",
+                                            placeholder:
+                                              "Clasificación en Libras otro"
+                                          },
+                                          model: {
+                                            value: _vm.poundRating4,
+                                            callback: function($$v) {
+                                              _vm.poundRating4 = $$v
+                                            },
+                                            expression: "poundRating4"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "menos de 3" } },
+                                            [_vm._v("Menos de 3")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "de 3 a 6" } },
+                                            [_vm._v("De 3 a 6")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "de 7 a 20" } },
+                                            [_vm._v("De 7 a 20")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "de 21 a 30" } },
+                                            [_vm._v("De 21 a 30")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "md-option",
+                                            { attrs: { value: "más de 30" } },
+                                            [_vm._v("Mas de 30")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v("   \n                "),
+                              _c(
+                                "md-field",
+                                [
+                                  _c("md-textarea", {
+                                    model: {
+                                      value: _vm.observation,
+                                      callback: function($$v) {
+                                        _vm.observation = $$v
+                                      },
+                                      expression: "observation"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("voBo"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Vo. Bo. AUNAP")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.voBo,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "voBo", $$v)
+                                      },
+                                      expression: "form.voBo"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.voBo.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el visto bueno"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("nameOfficial"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Nombre funcionario")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending
+                                    },
+                                    model: {
+                                      value: _vm.form.nameOfficial,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "nameOfficial", $$v)
+                                      },
+                                      expression: "form.nameOfficial"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.nameOfficial.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar nombre del funcionario"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "modal-footer" },
+                    [
+                      _c(
+                        "md-card-actions",
+                        [
+                          _c(
+                            "md-button",
+                            {
+                              staticClass: "md-raised",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.hideForm()
+                                }
+                              }
+                            },
+                            [_vm._v("Cerrar")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "md-card-actions",
+                        [
+                          _vm.tipoAccion == 1
+                            ? _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "submit",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.validateData()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Guardar")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.tipoAccion == 2
+                            ? _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "submit",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.updateData()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Actualizar")]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]
+              : _vm._e()
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          {
+            staticClass: "table table-striped table-bordered display",
+            attrs: { id: "dataTable", width: "100%", cellspacing: "0" }
+          },
+          [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("Fecha")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Nombre Embarcación de Carga")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Nombre Representante")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha Inicio de Faena")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha Fin de Faena")]),
+                _vm._v(" "),
+                _c("th", { staticStyle: { width: "90px" } }, [
+                  _vm._v("Opciones")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody"),
+            _vm._v(" "),
+            _c("tfoot", [
+              _c("tr", [
+                _c("th", [_vm._v("Fecha")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Nombre Embarcación de Carga")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Nombre Representante")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha Inicio de Faena")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha Fin de Faena")]),
+                _vm._v(" "),
+                _c("th", { staticStyle: { width: "90px" } }, [
+                  _vm._v("Opciones")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody")
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2135b09a", module.exports)
   }
 }
 

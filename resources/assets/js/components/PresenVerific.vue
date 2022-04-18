@@ -114,7 +114,7 @@
                         </span>
                     </md-field>
                     <div class="md-layout-item">
-                        <label class="negrita">Fecha Zarpe</label>
+                        <!-- <label class="negrita">Fecha Zarpe</label> -->
                         <div>
                           <md-datepicker 
                             v-model="dateZarpe"
@@ -122,12 +122,12 @@
                             md-immediately
                             :md-model-type="String"
                           >
-                            <label>Seleccione Fecha</label>
+                            <label>Fecha Zarpe</label>
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item">
-                        <label class="negrita">Fecha Desembarque</label>
+                        <!-- <label class="negrita">Fecha Desembarque</label> -->
                         <div>
                           <md-datepicker 
                             v-model="dateDesemb"
@@ -135,7 +135,7 @@
                             md-immediately
                             :md-model-type="String"
                           >
-                            <label>Seleccione Fecha</label>
+                            <label>Fecha Desembarque</label>
                           </md-datepicker>
                         </div>
                     </div> &nbsp;&nbsp;&nbsp;
@@ -453,7 +453,7 @@ export default {
           let me = this;      
           axios
             .post("/presenVerifics/delete", {
-              id: this.id_presenVerific
+              id: data["id"],
             })
             .then(function(response) {
               me.hideForm();

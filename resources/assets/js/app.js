@@ -36,6 +36,7 @@ Vue.component('companies', require('./components/Companies.vue'));
 Vue.component('donations', require('./components/DonationCertificates.vue'));
 Vue.component('confiscations', require('./components/ConfiscationCertificates.vue'));
 Vue.component('inspectioncargos', require('./components/InspectionBoatCargo.vue'));
+Vue.component('certificationtuna', require('./components/CertificationDisembTuna.vue'));
 
 
 const app = new Vue({

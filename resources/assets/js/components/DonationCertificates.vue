@@ -181,7 +181,7 @@
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <div class="md-layout-item">
-                        <label class="negrita">Fecha</label>
+                        <!-- <label class="negrita">Fecha</label> -->
                         <div>
                           <md-datepicker 
                             v-model="date"
@@ -847,7 +847,7 @@ export default {
           let me = this;      
           axios
             .post("/donationCertificates/delete", {
-               id: this.id_donationCertificate
+               id: data["id"],
             })
             .then(function(response) {
               me.hideForm();

@@ -28,6 +28,7 @@
                     <th>Total Carga (Ton.)</th>
                     <th>Nombre Embarcación de Carga</th>
                     <th>Nombre Representante</th>
+                    <th>Notificación Previa</th>
                     <th style="width: 90px">Opciones</th>    
                   </tr>
                 </thead>
@@ -41,6 +42,7 @@
                       <th>Total Carga (Ton.)</th>
                       <th>Nombre Embarcación de Carga</th>
                       <th>Nombre Representante</th>
+                      <th>Notificación Previa</th>
                       <th style="width: 90px">Opciones</th>  
                     </tr>
                   </tfoot>
@@ -815,7 +817,7 @@ export default {
           let me = this;      
           axios
             .post("/inspectionBoatCargo/delete", {
-               id: this.id_inspectionBoatCargo
+               id: data["id"],
             })
             .then(function(response) {
               me.hideForm();
@@ -872,6 +874,7 @@ export default {
             { "data": "fullCargo" },
             { "data": "nameBoatCargo" },
             { "data": "nameOfficial" },
+            { "data": "notification" },
             
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
 

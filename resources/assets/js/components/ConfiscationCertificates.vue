@@ -226,6 +226,30 @@
                       v-if="!$v.form.commercialValue.required"
                     >Olvidaste ingresar el valor comercial</span>
                   </md-field>
+
+
+
+                  <div>
+                    <multiselect 
+                       v-model="arrayReasons" 
+                       :options="arrayValue" 
+                       tag-placeholder="Add this as new tag"
+                       :multiple="true" 
+                       :taggable="true"
+                       :close-on-select="false" 
+                       :clear-on-select="false" 
+                       :preserve-search="true" 
+                       placeholder="Motivos Del Decomiso Preventivo" 
+                       label="name" 
+                       track-by="name" 
+                       :preselect-first="true">
+                       @tag="addTag"
+                    </multiselect>
+                    <pre class="language-json"><code>{{ arrayReasons  }}</code></pre>
+                  </div>
+
+
+
                    <md-field>
                         <md-textarea v-model="text2"></md-textarea>
                   </md-field>
@@ -655,6 +679,21 @@ export default {
       date: format(now, dateFormat),
       dateExpedition: format(now, dateFormat),
       observation: "",
+
+      arrayReasons:[],
+      arrayValue:[
+                   { name: 'Sin Permiso', id: '1' },
+                   { name: 'Sin patente', id: '2' },
+                   { name: 'Sin salvoconducto', id: '3' },
+                   { name: 'Documentos adulterados', id: '4' },
+                   { name: 'Especie en época de veda', id: '5' },
+                   { name: 'Especie no autorizada', id: '6' },
+                   { name: 'Incumplimiento tallas mínimas', id: '7' },
+                   { name: 'Artes de pesca no autorizados', id: '8' },
+                   { name: 'Pesca en áreas no autorizadas', id: '9' },
+                   { name: 'Pesca en áreas protegidas', id: '10' },
+                   { name: 'Malas prácticas de pesca', id: '11' },
+                 ],
       
       arrayConfiscationCert: [],
       id_confiscationCert: 0,
@@ -771,6 +810,14 @@ export default {
 		Multiselect
 	},
   methods: {
+    addTag (newTag) {
+      const tag = {
+        name: newTag,
+        id: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+      }
+      this.arrayRegional.push(tag)
+      this.arrayReasons.push(tag)
+    },
     alerta() {
        alert('test');
     },   
@@ -995,6 +1042,7 @@ export default {
 
       axios
         .put("/confiscationCertificates/update", {
+          
       id: this.id_confiscationCert,
       noActa : this.form.noActa.toUpperCase(),
       departament : this.form.departament.toUpperCase(),
@@ -1063,7 +1111,7 @@ export default {
           let me = this;      
           axios
             .post("/confiscationCertificates/delete", {
-              id: this.id_confiscationCert,
+              id: data["id"],
             })
             .then(function(response) {
               me.hideForm();

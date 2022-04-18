@@ -1200,7 +1200,7 @@ export default {
           let me = this;      
           axios
             .post("/zarpes/delete", {
-              id: this.id_zarpes
+              id: data["id"],
             })
             .then(function(response) {
               me.hideForm();

@@ -54,6 +54,9 @@
             <template v-if="menu==16">
                 <inspectioncargos></inspectioncargos>
             </template>
+            <template v-if="menu==17">
+                <certificationtuna></certificationtuna>
+            </template>
 
            
    
