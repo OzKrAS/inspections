@@ -79,7 +79,7 @@
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <div class="md-layout-item">
-                      <label>Regional</label>
+                      <label class="text-muted">Regional</label>
                       <multiselect v-model="arrayRegl" :options="arrayRegional"
                           placeholder="Seleccione una opción"
                           :custom-label="nameWithRegional"
@@ -87,9 +87,6 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <md-field>
-                        <md-textarea v-model="form.observation"></md-textarea>
-                  </md-field>
                   <md-field md-clearable :class="getValidationClass('nameScientific')">
                     <label for="first-name">Nombre Científico</label>
                     <md-input
@@ -491,7 +488,6 @@ export default {
       form: {
         noActa: "",
         nameScientific: "",
-        observation: "",
         nameCommon: "",
         presentation: "",
         amount: "",
@@ -600,9 +596,6 @@ export default {
       telephone: {
         required
       },
-      observation: {
-        required
-      },
       
     }
   },
@@ -651,7 +644,6 @@ export default {
       this.$v.$reset();
       this.form.noActa = null;
       this.form.nameScientific = null;
-      this.form.observation = null;
       this.form.nameCommon = null;
       this.form.presentation = null;
       this.form.amount = null;
@@ -682,7 +674,6 @@ export default {
       (this.id_donationCertificate = data["id"]);
       this.form.noActa = data["noActa"];
       this.form.nameScientific = data["nameScientific"];
-      this.form.observation = data["observation"];
       this.form.nameCommon = data["nameCommon"];
       this.form.presentation = data["presentation"];
       this.form.amount = data["amount"];
@@ -756,7 +747,6 @@ export default {
         noActa: this.form.noActa.toUpperCase(),
         nameScientific: this.form.nameScientific.toUpperCase(),
         nameCommon: this.form.nameCommon.toUpperCase(),
-        observation: this.form.observation,
         presentation: this.form.presentation.toUpperCase(),
         amount: this.form.amount.toUpperCase(),
         weight: this.form.weight.toUpperCase(),
@@ -796,7 +786,6 @@ export default {
         id: this.id_donationCertificate,
         noActa: this.form.noActa.toUpperCase(),
         nameScientific: this.form.nameScientific.toUpperCase(),
-        observation: this.form.observation,
         nameCommon: this.form.nameCommon.toUpperCase(),
         presentation: this.form.presentation.toUpperCase(),
         amount: this.form.amount.toUpperCase(),

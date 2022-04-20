@@ -75,9 +75,9 @@
                         </span>
                     </md-field>
                     <div class="md-layout-item">
-                        <label>Bandera</label>
+                        <label class="text-muted">Bandera</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
-                            placeholder="Seleccione una región"
+                            placeholder="Seleccione una bandera"
                             :custom-label="nameWithFlag"
                             label="name"
                             track-by="name">

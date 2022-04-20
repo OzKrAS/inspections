@@ -66,6 +66,7 @@
                         </div>
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
+                    <label class="text-muted">Empresa</label>
                       <multiselect v-model="arrayComp" :options="arrayCompany"
                           placeholder="Seleccione una empresa"
                           :custom-label="nameWithCompany"
@@ -89,6 +90,7 @@
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <div class="md-layout-item">
+                    <label class="text-muted">Bandera</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
                             placeholder="Seleccione una bandera"
                             :custom-label="nameWithFlag"
@@ -139,6 +141,7 @@
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <div class="md-layout-item">
+                    <label class="text-muted">Puerto de Desembarque</label>
                       <multiselect v-model="arrayPt" :options="arrayPort"
                           placeholder="Seleccione puerto de desembarque"
                           :custom-label="nameWithPort"
@@ -162,6 +165,7 @@
                   </md-field>
                   <div class="md-layout-item">
                     <md-field>
+                      <label class="text-muted">Clasificación en Libras Aleta Amarilla</label>
                       <md-select v-model="poundRating1" name="poundRating1" id="poundRating1" placeholder="Clasificación en Libras Aleta Amarilla">
                         <md-option value="menos de 3">Menos de 3</md-option>
                         <md-option value="de 3 a 6">De 3 a 6</md-option>
@@ -187,6 +191,7 @@
                   </md-field>
                   <div class="md-layout-item">
                     <md-field>
+                      <label class="text-muted">Clasificación en Libras Barrilete</label>
                       <md-select v-model="poundRating2" name="poundRating2" id="poundRating2" placeholder="Clasificación en Libras Barrilete">
                         <md-option value="menos de 3">Menos de 3</md-option>
                         <md-option value="de 3 a 6">De 3 a 6</md-option>
@@ -212,6 +217,7 @@
                   </md-field> 
                   <div class="md-layout-item">
                     <md-field>
+                      <label class="text-muted">Clasificación en Libras Patudo</label>
                       <md-select v-model="poundRating3" name="poundRating3" id="poundRating3" placeholder="Clasificación en Libras Patudo">
                         <md-option value="menos de 3">Menos de 3</md-option>
                         <md-option value="de 3 a 6">De 3 a 6</md-option>
@@ -233,6 +239,7 @@
                   </md-field> 
                   <div class="md-layout-item">
                     <md-field>
+                      <label class="text-muted">Clasificación en Libras Otro</label>
                       <md-select v-model="poundRating4" name="poundRating4" id="poundRating4" placeholder="Clasificación en Libras otro">
                         <md-option value="menos de 3">Menos de 3</md-option>
                         <md-option value="de 3 a 6">De 3 a 6</md-option>
@@ -242,6 +249,7 @@
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
+                  <label>Observaciones</label>
                   <md-field>
                         <md-textarea v-model="observation"></md-textarea>
                   </md-field> 
@@ -377,7 +385,7 @@ export default {
       arrayDisembTuna: [],
       id_disembTuna: 0,
 
-      arrayPt: {id:0, name:''},
+      arrayPt: {id:0, namePort:'', name:''},
 	    arrayPort: [],
       id_port: 0,
       arrayFg: {id:0, name:''},
@@ -485,7 +493,7 @@ export default {
       this.poundRating4 = null;
   
       
-      this.arrayPt = {id:0, name:''};
+      this.arrayPt = {id:0, namePort:'',name:''};
       this.arrayFg = {id:0, name:''};
       this.arrayComp = {id:0, name:''};
     },
@@ -518,8 +526,8 @@ export default {
       this.arrayComp.id = data["id_company"];
 	    this.arrayComp.name = data["nameCompany"];
     },
-    nameWithPort ({ name }) {
-            return `${name}`
+    nameWithPort ({ namePort,name }) {
+            return `${namePort} / ${name}  `
     },
     nameWithFlag ({ name }) {
             return `${name}`
@@ -539,7 +547,7 @@ export default {
     },
     selectPort() {
             let me = this;
-            var url = "certificationDisembTuna/selectPorts";
+            var url = "/docks/selectDocks";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
                     me.arrayPort = respuesta.port;

@@ -14,7 +14,7 @@ class DockController extends Controller
 
             $docks = Dock::join('ports','docks.id_port','=','ports.id')
             ->select(
-            'docks.id', 'docks.name','docks.arrival','docks.zarpe', 'docks.id_port',
+            'docks.id', 'docks.name','docks.arrival','docks.zarpe','docks.id_port',
             'ports.name as namePort')
             ->paginate(9999999999999999);
         
@@ -51,11 +51,12 @@ class DockController extends Controller
         $docks = Dock::findOrFail($request->id);
         $docks->delete();
     }
-        public function selectDocks(Request $request)
+    
+    public function selectDocks(Request $request)
     {
         $port = Dock::join('ports','docks.id_port','=','ports.id')
             ->select(
-            'docks.id', 'docks.name','docks.arrival','docks.zarpe', 'docks.id_port',
+            'docks.id', 'docks.name','docks.arrival','docks.zarpe','docks.id_port',
             'ports.name as namePort')
             ->orderBy('docks.name', 'asc')->get();
         return [

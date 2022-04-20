@@ -75,7 +75,9 @@ class InspectionBoatCargoController extends Controller
         $inspections->areaOperation = $request->areaOperation;
         $inspections->observation = $request->observation;
          
-        $inspections->id_port = $request->id_port;    
+        $inspections->id_port = $request->id_port; 
+        $inspections->id_portZarpe = $request->id_portZarpe;  
+        $inspections->id_portDisemb = $request->id_portDisemb;     
         $inspections->id_flag = $request->id_flag;   
         $inspections->save();
     }
@@ -105,7 +107,9 @@ class InspectionBoatCargoController extends Controller
         $inspections->areaOperation = $request->areaOperation;
         $inspections->observation = $request->observation;
         
-        $inspections->id_port = $request->id_port;    
+        $inspections->id_port = $request->id_port;   
+        $inspections->id_portZarpe = $request->id_portZarpe;  
+        $inspections->id_portDisemb = $request->id_portDisemb;  
         $inspections->id_flag = $request->id_flag;   
         $inspections->save();
     }

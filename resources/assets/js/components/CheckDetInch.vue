@@ -80,9 +80,9 @@
                         </div>
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <label>Regional</label>
+                      <label class="text-muted">Regional</label>
                       <multiselect v-model="arrayRegl" :options="arrayRegional"
-                          placeholder="Seleccione una zona"
+                          placeholder="Seleccione una opción"
                           :custom-label="nameWithRegional"
                           label="name"
                           track-by="name">
@@ -173,9 +173,9 @@
                      >Olvidaste ingresar el nombre de la patente de pesca</span>
                   </md-field>
                   <div class="md-layout-item">
-                      <label>Empresa</label>
+                      <label class="text-muted">Empresa</label>
                       <multiselect v-model="arrayComp" :options="arrayCompany"
-                          placeholder="Seleccione una zona"
+                          placeholder="Seleccione una Empresa"
                           :custom-label="nameWithCompany"
                           label="name"
                           track-by="name">

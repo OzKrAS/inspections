@@ -17,19 +17,16 @@ class ConfiscationCertificateController extends Controller
                      'confiscation_certificates.noActa',
                      'confiscation_certificates.departament',
                      'confiscation_certificates.municipality',
-                     'confiscation_certificates.text',
                      'confiscation_certificates.nameScientific',
                      'confiscation_certificates.nameCommon',
                      'confiscation_certificates.amount',
                      'confiscation_certificates.average',
                      'confiscation_certificates.weight',
                      'confiscation_certificates.commercialValue',
-                     'confiscation_certificates.text2',
                      'confiscation_certificates.element',
                      'confiscation_certificates.amount2',
                      'confiscation_certificates.featuresState',
                      'confiscation_certificates.commercialValue2',
-                     'confiscation_certificates.text3',
                      'confiscation_certificates.text4',
                      'confiscation_certificates.officialName',
                      'confiscation_certificates.documentIdOfficial',
@@ -76,7 +73,6 @@ class ConfiscationCertificateController extends Controller
         $confiscation->average = $request->average;
         $confiscation->weight = $request->weight;
         $confiscation->commercialValue = $request->commercialValue;
-        $confiscation->text2 = $request->text2;
         $confiscation->element = $request->element;
         $confiscation->amount2 = $request->amount2;
         $confiscation->featuresState = $request->featuresState;
@@ -121,7 +117,6 @@ class ConfiscationCertificateController extends Controller
         $confiscation->average = $request->average;
         $confiscation->weight = $request->weight;
         $confiscation->commercialValue = $request->commercialValue;
-        $confiscation->text2 = $request->text2;
         $confiscation->element = $request->element;
         $confiscation->amount2 = $request->amount2;
         $confiscation->featuresState = $request->featuresState;

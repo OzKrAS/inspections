@@ -65,7 +65,7 @@
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <div class="md-layout-item">
-											<label>Región</label>
+											<label class="text-muted">Región</label>
                       <multiselect v-model="arrayReg" :options="arrayRegion"
                           placeholder="Seleccione una región"
                           :custom-label="nameWithRegion"

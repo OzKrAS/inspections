@@ -127,7 +127,9 @@ class ArrivalController extends Controller
         $arrivals->dateValidity = $request->dateValidity;
 
         $arrivals->id_region = $request->id_region;    
-        $arrivals->id_port = $request->id_port;    
+        $arrivals->id_port = $request->id_port;
+        $arrivals->id_portZarpe = $request->id_portZarpe;  
+        $arrivals->id_portArrival = $request->id_portArrival;      
         $arrivals->id_flag = $request->id_flag;    
         $arrivals->id_nationality = $request->id_nationality; 
         $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;       
@@ -182,7 +184,9 @@ class ArrivalController extends Controller
         $arrivals->dateValidity = $request->dateValidity;
 
         $arrivals->id_region = $request->id_region;    
-        $arrivals->id_port = $request->id_port;    
+        $arrivals->id_port = $request->id_port; 
+        $arrivals->id_portZarpe = $request->id_portZarpe;  
+        $arrivals->id_portArrival = $request->id_portArrival;     
         $arrivals->id_flag = $request->id_flag;    
         $arrivals->id_nationality = $request->id_nationality; 
         $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;  

@@ -76,8 +76,9 @@
                     >Olvidaste ingresar el número de acta</span>
                   </md-field>
                   <div class="md-layout-item">
+                    <label class="text-muted">Regional</label>
                       <multiselect v-model="arrayRegl" :options="arrayRegional"
-                          placeholder="Regional"
+                          placeholder="Selecciona una opción"
                           :custom-label="nameWithRegional"
                           label="name"
                           track-by="name">
@@ -111,9 +112,6 @@
                        v-if="!$v.form.municipality.required"
                      >Olvidaste ingresar el nombre del municipio</span>
                   </md-field>
-                  <md-field>
-                        <md-textarea v-model="text"></md-textarea>
-                  </md-field>
                   <md-field md-clearable :class="getValidationClass('nameScientific')">
                     <label for="first-name">Nombre Científico</label>
                     <md-input
@@ -144,6 +142,7 @@
                   </md-field>
                  <div class="md-layout-item">
                     <md-field>
+                      <label class="text-muted">Estado</label>
                       <md-select v-model="state" name="state" id="state" placeholder="Estado">
                         <md-option value="fresco entero">Fresco entero</md-option>
                         <md-option value="fresco eviscerado ">Fresco eviscerado </md-option>
@@ -160,6 +159,7 @@
                   </div>&nbsp;&nbsp;&nbsp;  
                   <div class="md-layout-item">
                     <md-field>
+                      <label class="text-muted">Presentación</label>
                       <md-select v-model="presentation" name="presentation" id="presentation" placeholder="presentación">
                         <md-option value="unidades">Unidades</md-option>
                         <md-option value="zartas ">Zartas </md-option>
@@ -226,33 +226,6 @@
                       v-if="!$v.form.commercialValue.required"
                     >Olvidaste ingresar el valor comercial</span>
                   </md-field>
-
-
-
-                  <div>
-                    <multiselect 
-                       v-model="arrayReasons" 
-                       :options="arrayValue" 
-                       tag-placeholder="Add this as new tag"
-                       :multiple="true" 
-                       :taggable="true"
-                       :close-on-select="false" 
-                       :clear-on-select="false" 
-                       :preserve-search="true" 
-                       placeholder="Motivos Del Decomiso Preventivo" 
-                       label="name" 
-                       track-by="name" 
-                       :preselect-first="true">
-                       @tag="addTag"
-                    </multiselect>
-                    <pre class="language-json"><code>{{ arrayReasons  }}</code></pre>
-                  </div>
-
-
-
-                   <md-field>
-                        <md-textarea v-model="text2"></md-textarea>
-                  </md-field>
                   <md-field md-clearable :class="getValidationClass('element')">
                     <label for="first-name">Elemento</label>
                     <md-input
@@ -309,12 +282,28 @@
                       v-if="!$v.form.commercialValue2.required"
                     >Olvidaste ingresar el valor comercial</span>
                   </md-field>
-                  <md-field>
-                        <md-textarea v-model="text3"></md-textarea>
-                  </md-field>
 
                   <label>MOTIVOS DEL DECOMISO PREVENTIVO</label> 
 
+                  <div>
+                    <label class="text-muted">Motivos del decomiso Preventivo</label>
+                    <multiselect 
+                       v-model="arrayReasons" 
+                       :options="arrayValue" 
+                       tag-placeholder="Add this as new tag"
+                       :multiple="true" 
+                       :taggable="true"
+                       :close-on-select="false" 
+                       :clear-on-select="false" 
+                       :preserve-search="true" 
+                       placeholder="Motivos Del Decomiso Preventivo" 
+                       label="name" 
+                       track-by="name" 
+                       :preselect-first="true">
+                       @tag="addTag"
+                    </multiselect>
+                    <!-- <pre class="language-json"><code>{{ arrayReasons  }}</code></pre> -->
+                  </div>
                   <label>Los recursos, productos pesqueros y/o elementos fueron decomisados cuendo se encontraban en (describa la situación):</label>
                   <md-field>
                         <md-textarea v-model="text4"></md-textarea>
@@ -670,10 +659,8 @@ export default {
         email: "",
       },
 
-      text3: "",
       text4: "",
-      text2: "",
-      text: "",
+
       state: "",
       presentation: "",
       date: format(now, dateFormat),
@@ -859,19 +846,16 @@ export default {
       this.form.noActa = null;
       this.form.departament = null;
       this.form.municipality = null;
-      this.text = null;
       this.form.nameScientific = null;
       this.form.nameCommon = null;
       this.form.amount = null;
       this.form.average = null;
       this.form.weight = null;
       this.form.commercialValue = null;
-      this.text2 = null;
       this.form.element = null;
       this.form.amount2 = null;
       this.form.featuresState = null;
       this.form.commercialValue2 = null;
-      this.text3 = null;
       this.text4 = null;
       this.form.officialName = null;
       this.form.documentIdOfficial = null;
@@ -904,19 +888,16 @@ export default {
       this.form.noActa = data["noActa"];
       this.form.departament = data["departament"];
       this.form.municipality = data["municipality"];
-      this.text = data["text"];
       this.form.nameScientific = data["nameScientific"];
       this.form.nameCommon = data["nameCommon"];
       this.form.amount = data["amount"];
       this.form.average = data["average"];
       this.form.weight = data["weight"];
       this.form.commercialValue = data["commercialValue"];
-      this.text2 = data["text2"];
       this.form.element = data["element"];
       this.form.amount2 = data["amount2"];
       this.form.featuresState = data["featuresState"];
       this.form.commercialValue2 = data["commercialValue2"];
-      this.text3 = data["text3"];
       this.text4 = data["text4"];
       this.form.officialName = data["officialName"];
       this.form.documentIdOfficial = data["documentIdOfficial"];
@@ -991,19 +972,16 @@ export default {
       noActa : this.form.noActa.toUpperCase(),
       departament : this.form.departament.toUpperCase(),
       municipality : this.form.municipality.toUpperCase(),
-      text : this.text.toUpperCase(),
       nameScientific : this.form.nameScientific.toUpperCase(),
       nameCommon : this.form.nameCommon.toUpperCase(),
       amount : this.form.amount.toUpperCase(),
       average : this.form.average.toUpperCase(),
       weight : this.form.weight.toUpperCase(),
       commercialValue : this.form.commercialValue.toUpperCase(),
-      text2 : this.text2.toUpperCase(),
       element : this.form.element.toUpperCase(),
       amount2 : this.form.amount2.toUpperCase(),
       featuresState : this.form.featuresState.toUpperCase(),
       commercialValue2 : this.form.commercialValue2.toUpperCase(),
-      text3 : this.text3.toUpperCase(),
       text4 : this.text4.toUpperCase(),
       officialName : this.form.officialName.toUpperCase(),
       documentIdOfficial : this.form.documentIdOfficial.toUpperCase(),
@@ -1047,19 +1025,16 @@ export default {
       noActa : this.form.noActa.toUpperCase(),
       departament : this.form.departament.toUpperCase(),
       municipality : this.form.municipality.toUpperCase(),
-      text : this.text.toUpperCase(),
       nameScientific : this.form.nameScientific.toUpperCase(),
       nameCommon : this.form.nameCommon.toUpperCase(),
       amount : this.form.amount.toUpperCase(),
       average : this.form.average.toUpperCase(),
       weight : this.form.weight.toUpperCase(),
       commercialValue : this.form.commercialValue.toUpperCase(),
-      text2 : this.text2.toUpperCase(),
       element : this.form.element.toUpperCase(),
       amount2 : this.form.amount2.toUpperCase(),
       featuresState : this.form.featuresState.toUpperCase(),
       commercialValue2 : this.form.commercialValue2.toUpperCase(),
-      text3 : this.text3.toUpperCase(),
       text4 : this.text4.toUpperCase(),
       officialName : this.form.officialName.toUpperCase(),
       documentIdOfficial : this.form.documentIdOfficial.toUpperCase(),

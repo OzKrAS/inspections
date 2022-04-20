@@ -145,6 +145,7 @@
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <div class="md-layout-item">
+                    <label class="text-muted">Puerto de Transbordo de la Carga</label>
                       <multiselect v-model="arrayPt" :options="arrayPort"
                           placeholder="Seleccione puerto de transbordo de la carga"
                           :custom-label="nameWithPort"
@@ -153,6 +154,7 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
+                    <label class="text-muted">Bandera</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
                             placeholder="Seleccione una bandera"
                             :custom-label="nameWithFlag"
@@ -161,7 +163,8 @@
                         </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <multiselect v-model="arrayPt" :options="arrayPort"
+                    <label class="text-muted">Puerto de Zarpe</label>
+                      <multiselect v-model="arrayPtZarpe" :options="arrayPort"
                           placeholder="Seleccione puerto de zarpe"
                           :custom-label="nameWithPort"
                           label="name"
@@ -169,7 +172,8 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <multiselect v-model="arrayPt" :options="arrayPort"
+                    <label class="text-muted">Puerto de Desembarque</label>
+                      <multiselect v-model="arrayPtDisemb" :options="arrayPort"
                           placeholder="Seleccione puerto de desembarque"
                           :custom-label="nameWithPort"
                           label="name"
@@ -178,6 +182,7 @@
                   </div>&nbsp;&nbsp;&nbsp;          
                   <div class="md-layout-item">
                     <md-field>
+                      <label class="text-muted">Área de Operación</label>
                       <md-select v-model="areaOperation" name="areaOperation" id="areaOperation" placeholder="Área de operación">
                         <md-option value="atlantico">Atlantico</md-option>
                         <md-option value="pacifico - OPO">Pacifico - OPO</md-option>
@@ -185,6 +190,7 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp; 
                   <div class="md-layout-item">
+                    <label class="text-muted">Notificación Previa</label>
                     <md-field>
                       <md-select v-model="notification" name="notification" id="notification" placeholder="Notificación Previa">
                         <md-option value="si">Si</md-option>
@@ -211,6 +217,7 @@
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <div class="md-layout-item">
+                    <label class="text-muted">Bandera</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
                             placeholder="Seleccione una bandera"
                             :custom-label="nameWithFlag"
@@ -383,6 +390,7 @@
                     >Olvidaste ingresar el nombre de la empresa responsable</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field> 
+                  <label>Observaciones</label>
                   <md-field>
                         <md-textarea v-model="observation"></md-textarea>
                   </md-field>   
@@ -495,9 +503,13 @@ export default {
       arrayInspectionBoatCargo: [],
       id_inspectionBoatCargo: 0,
 
-      arrayPt: {id:0, name:''},
+      arrayPt: {id:0, namePort:'',name:''},
 	    arrayPort: [],
       id_port: 0,
+      arrayPtZarpe: {id:0, namePort:'',name:''},
+      id_portZarpe: 0,
+      arrayPtDisemb: {id:0, namePort:'',name:''},
+      id_disemb: 0,
       arrayFg: {id:0, name:''},
 	    arrayFlag: [],
       id_flag: 0,
@@ -631,7 +643,9 @@ export default {
       this.form.nameBusiness = null;
       this.observation = null;
       
-      this.arrayPt = {id:0, name:''};
+      this.arrayPt = {id:0, namePort:'',name:''};
+      this.arrayPtZarpe = {id:0, namePort:'',name:''};
+      this.arrayPtDisemb = {id:0, namePort:'',name:''};
       this.arrayFg = {id:0, name:''};
     },
 
@@ -663,11 +677,15 @@ export default {
 
       this.arrayPt.id = data["id_port"];
       this.arrayPt.name = data["namePort"];
+      this.arrayPtZarpe.id = data["id_portZarpe"];
+			this.arrayPtZarpe.name = data["namePort"];
+      this.arrayPtDisemb.id = data["id_portDisemb"];
+			this.arrayPtDisemb.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
 	  this.arrayFg.name = data["nameFlag"];
     },
-    nameWithPort ({ name }) {
-            return `${name}`
+    nameWithPort ({ namePort,name }) {
+            return `${namePort} / ${name}  `
     },
     nameWithFlag ({ name }) {
             return `${name}`
@@ -684,7 +702,7 @@ export default {
     },
     selectPort() {
             let me = this;
-            var url = "inspectionBoatCargo/selectPorts";
+            var url = "/docks/selectDocks";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
                     me.arrayPort = respuesta.port;
@@ -748,6 +766,8 @@ export default {
         observation: this.observation.toUpperCase(),
        
         'id_port': this.arrayPt.id,
+        'id_portZarpe': this.arrayPtZarpe.id,
+        'id_portDisemb': this.arrayPtDisemb.id,
         'id_flag': this.arrayFg.id,
         })
         .then(function(response) {
@@ -788,6 +808,8 @@ export default {
         observation: this.observation.toUpperCase(),
        
         'id_port': this.arrayPt.id,
+        'id_portZarpe': this.arrayPtZarpe.id,
+        'id_portDisemb': this.arrayPtDisemb.id,
         'id_flag': this.arrayFg.id,
         })
         .then(function(response) {

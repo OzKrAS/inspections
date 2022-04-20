@@ -69,7 +69,7 @@
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <div class="md-layout-item">
-				           	<label>Puerto</label>
+				           	<label class="text-muted">Puerto</label>
                       <multiselect v-model="arrayPt" :options="arrayPort"
                           placeholder="Seleccione un puerto"
                           :custom-label="nameWithPort"

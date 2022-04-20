@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Formato Certificación Desembarque de Atún para Exportación</strong>          
+          <strong class="lead">Formato de Aviso Previo de Zarpe de Buque</strong>          
           <button
             v-if="edo"
             type="button"
@@ -53,8 +53,9 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                    <div class="md-layout-item">
+                  <div class="md-layout-item">
                     <md-field>
+                      <label class="text-muted">Tipo de pesqueria</label>
                       <md-select v-model="typeFishery" name="typeFishery" id="typeFishery" placeholder="Tipop de pesqueria">
                         <md-option value="atun">Atún</md-option>
                         <md-option value="pesca Blanca">Pesca Blanca</md-option>
@@ -64,13 +65,16 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
+                      <label class="text-muted">Puerto de Zarpe Previsto</label>
                       <multiselect v-model="arrayPt" :options="arrayPort"
                           placeholder="Puerto de zarpe previsto"
                           :custom-label="nameWithPort"
                           label="name"
                           track-by="name">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;   
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>     
+                <div class="md-layout">
                   <div class="md-layout-item">
                         <div>
                           <md-datepicker 
@@ -126,7 +130,8 @@
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
                   <div class="md-layout-item">
-                      <multiselect v-model="arrayPt" :options="arrayPort"
+                      <label class="text-muted">Puerto de la Úlitma Escala</label>
+                      <multiselect v-model="arrayPtScale" :options="arrayPort"
                           placeholder="Puerto de la Última Escala"
                           :custom-label="nameWithPort"
                           label="name"
@@ -163,6 +168,7 @@
                   </md-field>
                   <div class="md-layout-item">
                     <md-field>
+                        <label class="text-muted">Tipo de Buque</label>
                       <md-select v-model="typeBoat" name="typeBoat" id="typeBoat" placeholder="Tipo de Buque">
                         <md-option value="pesquero">Pesquero</md-option>
                         <md-option value="carga">Carga</md-option>
@@ -273,7 +279,206 @@
                       v-if="!$v.form.idOrop.required"
                     >Olvidaste ingresar el identificador de la OROP</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>                          
+                  </md-field>
+                  <div class="md-layout-item">
+                    <md-field>
+                      <label class="text-muted">SLB/VMS</label>
+                      <md-select v-model="slbVms" name="slbVms" id="slbVms" placeholder="SLB/VMS">
+                        <md-option value="no">No</md-option>
+                        <md-option value="nacional">Nacional</md-option>
+                        <md-option value="orop">OROP</md-option>
+                      </md-select>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <md-field md-clearable :class="getValidationClass('type')">
+                    <label for="first-name">Tipo</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.type"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.type.required"
+                    >Olvidaste ingresar el tipo</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>
+
+                  <label>DIMENSIONES DEL BUQUE</label>     
+
+                  <md-field md-clearable :class="getValidationClass('lengthBoat')">
+                    <label for="first-name">Eslora</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.lengthBoat"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.lengthBoat.required"
+                    >Olvidaste ingresar la medida de la eslora</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>                    
+                  <md-field md-clearable :class="getValidationClass('sleeveBoat')">
+                    <label for="first-name">Manga</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.sleeveBoat"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.sleeveBoat.required"
+                    >Olvidaste ingresar la medida de la manga</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>                    
+                  <md-field md-clearable :class="getValidationClass('draftBoat')">
+                    <label for="first-name">Calado</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.draftBoat"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.draftBoat.required"
+                    >Olvidaste ingresar la medida del calado</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>                    
+                  <md-field md-clearable :class="getValidationClass('nameCaptain')">
+                    <label for="first-name">Nombre del Capitán</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.nameCaptain"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.nameCaptain.required"
+                    >Olvidaste ingresar el nombre del capitán</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field> 
+                  <div class="md-layout-item">
+                      <label class="text-muted">Nacionalidad</label>
+                      <multiselect v-model="arrayNation" :options="arrayNationality"
+                          placeholder="Seleccione una Nacionalidad"
+                          :custom-label="nameWithNationality"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;  
+                  <md-field md-clearable :class="getValidationClass('noIdentification')">
+                    <label for="first-name">No. Identificación</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.noIdentification"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.noIdentification.required"
+                    >Olvidaste ingresar el número de identificación</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>    
+
+                  <label>AUTORIZACIONES DE PESCA PERTINENTES</label>
+
+                  <md-field md-clearable :class="getValidationClass('identifier')">
+                    <label for="first-name">Identificador</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.identifier"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.identifier.required"
+                    >Olvidaste ingresar el identificador</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>
+                  <div class="md-layout-item">
+                      <div>
+                        <md-datepicker 
+                          v-model="dateExp"
+                          @input="toString"
+                          md-immediately
+                          :md-model-type="String"
+                          >
+                          <label>Fecha de Expedición</label>
+                        </md-datepicker>
+                      </div>
+                  </div> &nbsp;&nbsp;&nbsp;                
+                  <div class="md-layout-item">
+                      <div>
+                        <md-datepicker 
+                          v-model="dateExpiration"
+                          @input="toString"
+                          md-immediately
+                          :md-model-type="String"
+                          >
+                          <label>Fecha de Vencimiento</label>
+                        </md-datepicker>
+                      </div>
+                  </div> &nbsp;&nbsp;&nbsp;    
+                  <md-field md-clearable :class="getValidationClass('fishingAreas')">
+                    <label for="first-name">Áreas de pesca</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.fishingAreas"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.fishingAreas.required"
+                    >Olvidaste ingresar el nombre de las áreas de pesca</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>            
+                  <md-field md-clearable :class="getValidationClass('species')">
+                    <label for="first-name">Especies</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.species"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.species.required"
+                    >Olvidaste ingresar el nombre de las especies</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>            
+                  <md-field md-clearable :class="getValidationClass('arts')">
+                    <label for="first-name">Artes</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.arts"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.arts.required"
+                    >Olvidaste ingresar el nombre de las artes</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>            
                 </div>
               </md-card-content>
             </form>
@@ -364,25 +569,37 @@ export default {
           idOmi: "", 
           idExternal: "", 
           idOrop: "", 
+          type: "", 
+          lengthBoat: "", 
+          sleeveBoat: "", 
+          draftBoat: "", 
+          nameCaptain: "", 
+          noIdentification: "", 
+          identifier: "", 
+          fishingAreas: "", 
+          species: "", 
+          arts: "", 
       },
 
       typeFishery: "",
       date: format(now, dateFormat),
       datePlanned: format(now, dateFormat),
       typeBoat: "",
+      slbVms: "",
+      dateExp: format(now, dateFormat),
+      dateExpiration: format(now, dateFormat),
 
-      arrayDisembTuna: [],
-      id_disembTuna: 0,
+      arrayNoticePreviousZarpe: [],
+      id_noticePreviousZarpe: 0,
 
-      arrayPt: {id:0, name:''},
+      arrayPt: {id:0,namePort:'',name:''},
+      arrayPtScale: {id:0, namePort:'',name:''},
 	    arrayPort: [],
       id_port: 0,
-      arrayFg: {id:0, name:''},
-	    arrayFlag: [],
-      id_flag: 0,
-      arrayComp: {id:0, name:''},
-	    arrayCompany: [],
-      id_Company: 0,
+      id_port_scale: 0,
+      arrayNation: {id:0, name:''},
+	    arrayNationality: [],
+      id_nationality: 0,
 
       edo:1,
       tipoAccion: 1,
@@ -428,6 +645,36 @@ export default {
           required
         },  
         idOrop: {
+          required
+        },     
+        type: {
+          required
+        },  
+        lengthBoat: {
+          required
+        },  
+        sleeveBoat: {
+          required
+        },  
+        draftBoat: {
+          required
+        },  
+        nameCaptain: {
+          required
+        },  
+        noIdentification: {
+          required
+        },  
+        identifier: {
+          required
+        },  
+        fishingAreas: {
+          required
+        },  
+        species: {
+          required
+        },  
+        arts: {
           required
         },  
       
@@ -491,16 +738,29 @@ export default {
       this.form.idOmi = null;
       this.form.idExternal = null;
       this.form.idOrop = null;
+      this.slbVms = null;
+      this.form.type = null;
+      this.form.lengthBoat = null;
+      this.form.sleeveBoat = null;
+      this.form.draftBoat = null;
+      this.form.nameCaptain = null;
+      this.form.noIdentification = null;
+      this.form.identifier = null;
+      this.dateExp = null;
+      this.dateExpiration = null;
+      this.form.fishingAreas = null;
+      this.form.species = null;
+      this.form.arts = null;
   
-      this.arrayPt = {id:0, name:''};
-      this.arrayFg = {id:0, name:''};
-      this.arrayComp = {id:0, name:''};
+      this.arrayPt = {id:0, namePort:'',name:''};
+      this.arrayPtScale = {id:0, namePort:'',name:''};
+      this.arrayNation = {id:0, name:''};
     },
 
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
-      (this.id_disembTuna = data["id"]);
+      (this.id_noticePreviousZarpe = data["id"]);
       this.form.time = data["time"];
       this.date = data["date"];
       this.typeFishery = data["typeFishery"];
@@ -516,36 +776,39 @@ export default {
       this.form.idOmi = data["idOmi"];
       this.form.idExternal = data["idExternal"];
       this.form.idOrop = data["idOrop"];
+      this.slbVms = data["slbVms"];
+      this.form.type = data["type"];
+      this.form.lengthBoat = data["lengthBoat"];
+      this.form.sleeveBoat = data["sleeveBoat"];
+      this.form.draftBoat = data["draftBoat"];
+      this.form.nameCaptain = data["nameCaptain"];
+      this.form.noIdentification = data["noIdentification"];
+      this.form.identifier = data["identifier"];
+      this.dateExp = data["dateExp"];
+      this.dateExpiration = data["dateExpiration"];
+      this.form.fishingAreas = data["fishingAreas"];
+      this.form.species = data["species"];
+      this.form.arts = data["arts"];
        
       this.arrayPt.id = data["id_port"];
       this.arrayPt.name = data["namePort"];
-      this.arrayFg.id = data["id_flag"];
-	    this.arrayFg.name = data["nameFlag"];
-      this.arrayComp.id = data["id_company"];
-	    this.arrayComp.name = data["nameCompany"];
+      this.arrayPtScale.id = data["id_port"];
+      this.arrayPtScale.name = data["namePort"];
+      this.arrayNation.id = data["id_nationality"];
+			this.arrayNation.name = data["nameNationality"];
     },
-    nameWithPort ({ name }) {
+    // nameWithPort ({ name }) {
+    //         return `${name}`
+    // },
+    nameWithPort ({ namePort,name }) {
+            return `${namePort} / ${name}  `
+    },
+    nameWithNationality ({ name }) {
             return `${name}`
-    },
-    nameWithFlag ({ name }) {
-            return `${name}`
-    },
-    nameWithCompany ({ name }) {
-            return `${name}`
-    },
-    selectFlag() {
-            let me = this;
-            var url = "certificationDisembTuna/selectFlags";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayFlag = respuesta.flag;
-                }).catch(function (error) {
-                    console.log(error);
-            });
     },
     selectPort() {
             let me = this;
-            var url = "certificationDisembTuna/selectPorts";
+            var url = "/noticePreviousZarpe/selectDocks";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
                     me.arrayPort = respuesta.port;
@@ -553,12 +816,12 @@ export default {
                     console.log(error);
             });
     },
-    selectCompanies() {
+    selectNationality() {
             let me = this;
-            var url = "certificationDisembTuna/selectCompanies";
+            var url = "/noticePreviousZarpe/selectNationality";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
-                    me.arrayCompany= respuesta.company;
+                    me.arrayNationality = respuesta.nationality;
                 }).catch(function (error) {
                     console.log(error);
             });
@@ -577,13 +840,13 @@ export default {
     listData() {
       let me = this;
       var url =
-        "/certificationDisembTuna";
+        "/noticePreviousZarpe";
       axios
         .get(url)
         .then(function (response) {
           var respuesta = response.data;
-          me.arrayDisembTuna = respuesta.tunas.data;
-          me.myTable(me.arrayDisembTuna);
+          me.arrayNoticePreviousZarpe = respuesta.noticezarpes.data;
+          me.myTable(me.arrayNoticePreviousZarpe);
 
         })
         .catch(function (error) {
@@ -594,7 +857,7 @@ export default {
       let me = this;
 
       axios
-        .post("/certificationDisembTuna/save", {
+        .post("/noticePreviousZarpe/save", {
     
         time: this.form.time,
         date: this.date,
@@ -611,10 +874,23 @@ export default {
         idOmi: this.form.idOmi.toUpperCase(),
         idExternal: this.form.idExternal.toUpperCase(),
         idOrop: this.form.idOrop.toUpperCase(),
+        slbVms: this.slbVms.toUpperCase(),
+        type: this.form.type.toUpperCase(),
+        lengthBoat: this.form.lengthBoat,
+        sleeveBoat: this.form.sleeveBoat,
+        draftBoat: this.form.draftBoat,
+        nameCaptain: this.form.nameCaptain.toUpperCase(),
+        noIdentification: this.form.noIdentification.toUpperCase(),
+        identifier: this.form.identifier.toUpperCase(),
+        dateExp: this.dateExp,
+        dateExpiration: this.dateExpiration,
+        fishingAreas: this.form.fishingAreas.toUpperCase(),
+        species: this.form.species.toUpperCase(),
+        arts: this.form.arts.toUpperCase(),
     
         'id_port': this.arrayPt.id,
-        'id_flag': this.arrayFg.id,
-        'id_company': this.arrayComp.id,
+        'id_port_scale': this.arrayPtScale.id,
+        'id_nationality': this.arrayNation.id,
         })
         .then(function(response) {
           me.hideForm();
@@ -629,8 +905,8 @@ export default {
       let me = this;
 
       axios
-        .put("/certificationDisembTuna/update", {
-        id: this.id_disembTuna,
+        .put("/noticePreviousZarpe/update", {
+        id: this.id_noticePreviousZarpe,
         time: this.form.time,
         date: this.date,
         typeFishery: this.typeFishery,
@@ -646,10 +922,23 @@ export default {
         idOmi: this.form.idOmi.toUpperCase(),
         idExternal: this.form.idExternal.toUpperCase(),
         idOrop: this.form.idOrop.toUpperCase(),
+        slbVms: this.slbVms.toUpperCase(),
+        type: this.form.type.toUpperCase(),
+        lengthBoat: this.form.lengthBoat,
+        sleeveBoat: this.form.sleeveBoat,
+        draftBoat: this.form.draftBoat,
+        nameCaptain: this.form.nameCaptain.toUpperCase(),
+        noIdentification: this.form.noIdentification.toUpperCase(),
+        identifier: this.form.identifier.toUpperCase(),
+        dateExp: this.dateExp,
+        dateExpiration: this.dateExpiration,
+        fishingAreas: this.form.fishingAreas.toUpperCase(),
+        species: this.form.species.toUpperCase(),
+        arts: this.form.arts.toUpperCase(),
     
         'id_port': this.arrayPt.id,
-        'id_flag': this.arrayFg.id,
-        'id_company': this.arrayComp.id,
+        'id_port_scale': this.arrayPtScale.id,
+        'id_nationality': this.arrayNation.id,
         })
         .then(function(response) {
           me.hideForm();
@@ -677,7 +966,7 @@ export default {
         if (result.value) {
           let me = this;      
           axios
-            .post("/certificationDisembTuna/delete", {
+            .post("/noticePreviousZarpe/delete", {
               id: data["id"],
             })
             .then(function(response) {
@@ -755,8 +1044,7 @@ export default {
   mounted() {
     this.listData();
     this.selectPort();
-    this.selectFlag();
-    this.selectCompanies();
+    this.selectNationality();
   }
 };
 </script>

@@ -57,6 +57,10 @@ class CreateArrivalsTable extends Migration
             $table->date('dateValidity');     
             $table->integer('id_port')->unsigned();
             $table->foreign('id_port')->references('id')->on('ports');
+            $table->integer('id_portZarpe')->unsigned();
+            $table->foreign('id_portZarpe')->references('id')->on('ports');
+            $table->integer('id_portArrival')->unsigned();
+            $table->foreign('id_portArrival')->references('id')->on('ports');
             $table->integer('id_flag')->unsigned();
             $table->foreign('id_flag')->references('id')->on('flags');
             $table->integer('id_region')->unsigned();

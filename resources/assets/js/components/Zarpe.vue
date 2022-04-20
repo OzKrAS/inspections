@@ -66,7 +66,7 @@
               <md-card-content>
                 <!-- <div class="md-layout"> -->
                 <div class="md-layout"> 
-                <div class="md-layout-item md-size-70"> 
+                  <div class="md-layout-item md-size-70"> 
                     <md-field md-clearable :class="getValidationClass('insNo')">
                         <label for="first-name">Inspección No.</label>
                         <md-input
@@ -82,7 +82,7 @@
                         >Olvidaste ingresar el número de inspección para el Zarpe
                         </span>
                     </md-field> 
-                    </div>
+                  </div>
                     <div class="md-layout-item ">                                        
                           <md-datepicker 
                             v-model="dateIns"
@@ -93,7 +93,7 @@
                             <label>Fecha de Inspección</label>
                           </md-datepicker>                        
                       </div> &nbsp;&nbsp;&nbsp; 
-                    </div>
+                </div>
                      <div class="md-layout">  
                         <div class="md-layout-item">  
                         <label for="first-name" class="text-muted">Región/Municipio</label>
@@ -134,7 +134,7 @@
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp; 
 
-                         <!-- <label>PUERTO, ESTADO RECTOR DE PUERTO</label>  -->
+                         <label>PUERTO, ESTADO RECTOR DE PUERTO</label> 
 
                         <div class="md-layout-item">
                           <md-field>
@@ -272,7 +272,7 @@
                     >Olvidaste ingresar el identificador OMI</span>
                   </md-field>
 
-                   <!-- <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label> -->
+                   <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label>
 
                   <md-field md-clearable :class="getValidationClass('noResolution')">
                     <label for="first-name">No. Resolución</label>
@@ -289,28 +289,26 @@
                     >Olvidaste ingresar el número de resolución</span>
                   </md-field>
                   <div class="md-layout-item">
-                        <div>
-                          <md-datepicker 
-                            v-model="dateResolution"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                          >
-                            <label>Fecha Resolución</label>
-                          </md-datepicker>
-                        </div>
+                      <div>
+                        <md-datepicker 
+                          v-model="dateResolution"
+                          @input="toString"
+                          md-immediately
+                          :md-model-type="String"
+                        >
+                          <label>Fecha Resolución</label>
+                        </md-datepicker>
+                      </div>
                   </div> &nbsp;&nbsp;&nbsp; 
-                  <div class="md-layout-item">
-                     
-                          <md-datepicker 
-                            v-model="dateValid"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                            >
-                            <label>Fecha Vigencia</label>
-                          </md-datepicker>
-                   
+                  <div class="md-layout-item">                 
+                        <md-datepicker 
+                          v-model="dateValid"
+                          @input="toString"
+                          md-immediately
+                          :md-model-type="String"
+                          >
+                          <label>Fecha Vigencia</label>
+                        </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp; 
                   <md-field md-clearable :class="getValidationClass('nameBoat')">
                     <label for="first-name">Nombre Embarcación</label>
@@ -327,6 +325,7 @@
                     >Olvidaste ingresar un nombre para la embarcación</span>
                   </md-field>
                   <div class="md-layout-item">
+                    <label class="text-muted">Bandera</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
                             placeholder="Seleccione una bandera"
                             :custom-label="nameWithFlag"
@@ -390,6 +389,7 @@
                     >Olvidaste ingresar el nombre del representante legal</span>
                   </md-field>
                   <div class="md-layout-item">
+                    <label class="text-muted">Empresa</label>
                       <multiselect v-model="arrayComp" :options="arrayCompany"
                           placeholder="Seleccione una empresa"
                           :custom-label="nameWithCompany"
@@ -398,7 +398,7 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
 
-                  <!-- <label>PESQUERÍA Y ARTES AUTORIZADOS</label> -->
+                  <label>PESQUERÍA Y ARTES AUTORIZADOS</label>
 
                   <!-- <div class="md-layout-item">
                       <label>Pesquería Autorizada</label>
@@ -453,7 +453,7 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
 
-                  <!-- <label>CARACTERÍSTICAS ARTE DE PESCA</label> -->
+                  <label>CARACTERÍSTICAS ARTE DE PESCA</label>
 
                  <md-field md-clearable :class="getValidationClass('eyeMesh')">
                     <label for="first-name">Ojo de Malla (Pulgadas)</label>
@@ -710,9 +710,9 @@ export default {
       national: "",
       orop: "",
       
-
       arrayZarpes: [],
       id_zarpes: 0,
+
       arrayPt: {id:0, namePort:'', name:''},
 	    arrayPort: [],
       id_port: 0,
@@ -720,7 +720,9 @@ export default {
 	    arrayRegion: [],
       id_region: 0,
       arrayPtZarpe: {id:0, namePort:'',name:''},
+      id_portZarpe: 0,
       arrayPtArrival: {id:0, namePort:'',name:''},
+      id_portArrival: 0,
       arrayPtOrigin: {id:0, name:''},
       arrayFg: {id:0, name:''},
 	    arrayFlag: [],
@@ -885,12 +887,13 @@ export default {
   
       this.arrayReg = {id:0, name:'', nameMuni:''};
       this.arrayPt = {id:0, namePort:'',name:''};
-      this.arrayPtZarpe = {id:0, name:''};
+      this.arrayPtZarpe = {id:0, namePort:'',name:''};
+      this.arrayPtArrival = {id:0, namePort:'',name:''};
       this.arrayFg = {id:0, name:''};
       this.arrayNation = {id:0, name:''};
       this.arrayOr = {id:0, name:''};
       this.arrayZoneAuto = {id:0, name:''};
-     this.arrayFa = [];
+      this.arrayFa = [];
       this.arrayComp = {id:0, name:''};
     },
     nameWithRegion ({ nameMuni,name  }) {
@@ -1053,6 +1056,10 @@ export default {
 			this.arrayReg.name = data["nameReg"];
       this.arrayPt.id = data["id_port"];
 			this.arrayPt.name = data["namePort"];
+      this.arrayPtZarpe.id = data["id_portZarpe"];
+			this.arrayPtZarpe.name = data["namePort"];
+      this.arrayPtArrival.id = data["id_portArrival"];
+			this.arrayPtArrival.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
 			this.arrayFg.name = data["nameFlag"];
       this.arrayNation.id = data["id_nationality"];
@@ -1116,8 +1123,8 @@ export default {
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
-          'id_port_zarpe': this.arrayPtZarpe.id,
-          'id_port_arrival': this.arrayPtArrival.id,
+          'id_portZarpe': this.arrayPtZarpe.id,
+          'id_portArrival': this.arrayPtArrival.id,
           'id_flag': this.arrayFg.id,
           'id_nationality': this.arrayNation.id,
           'id_orop': this.arrayOr.id,
@@ -1174,6 +1181,8 @@ export default {
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
+          'id_portZarpe': this.arrayPtZarpe.id,
+          'id_portArrival': this.arrayPtArrival.id,
           'id_flag': this.arrayFg.id,
           'id_nationality': this.arrayNation.id,
           'id_orop': this.arrayOr.id,
