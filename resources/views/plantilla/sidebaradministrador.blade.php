@@ -58,7 +58,7 @@
                                 <a href="#"><i class="icon-bag"></i>Verificación DET Doble Solapa</a>                                                                               
                             </li>                                
                             <li @click="menu=11">
-                                <a href="#"><i class="icon-bag"></i>Verificación Presencia del Equipo de Rescate de Delfines Abordo de BarcosAtuneros de Cerco</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>Verificación Presencia del Equipo de Rescate de Delfines Abordo de Barcos Atuneros de Cerco</a>                                                                               
                             </li>                                                               
                             <li @click="menu=14">
                                 <a href="#"><i class="icon-bag"></i>Acta de Donación</a>                                                                               
@@ -72,9 +72,15 @@
                             <li @click="menu=17">
                                 <a href="#"><i class="icon-bag"></i>Formato Certificación Desembarque de Atún para Exportación</a>                                                                               
                             </li>                                
-                            <li @click="menu=18">
+                            <!-- <li @click="menu=18">
                                 <a href="#"><i class="icon-bag"></i>Formato de Aviso Previo de Zarpe de Buque</a>                                                                               
-                            </li>                                
+                            </li>                                 -->
+                            <!-- <li @click="menu=19">
+                                <a href="#"><i class="icon-bag"></i>Formato Reporte Planta Proceso</a>                                                                               
+                            </li>                                 -->
+                            <!-- <li @click="menu=20">
+                                <a href="#"><i class="icon-bag"></i>Formato de Aviso Previo de arribo de Buque</a>                                                                               
+                            </li>                                 -->                             
                         </ul>                            
                         </div>                        
                     </li>

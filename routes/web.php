@@ -162,6 +162,13 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/noticePreviousZarpe/selectPorts', 'PortsController@selectPort');
         Route::get('/noticePreviousZarpe/selectNationality', 'NationalityController@selectNationality');
         Route::get('/noticePreviousZarpe/selectDocks', 'DockController@selectDocks');
+        // FORMATO REPORTE PLANTA PROCESO
+        Route::get('/processingPlant', 'ProcessingPlantController@index');
+        Route::post('/processingPlant/save', 'ProcessingPlantController@store');
+        Route::put('/processingPlant/update', 'ProcessingPlantController@update');
+        Route::post('/processingPlant/delete', 'ProcessingPlantController@destroy');
+        Route::get('/processingPlant/selectPorts', 'PortsController@selectPort');
+        Route::get('/processingPlant/selectDocks', 'DockController@selectDocks');
 
 
        

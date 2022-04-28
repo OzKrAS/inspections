@@ -1161,8 +1161,7 @@ export default {
         capture1:this.form.capture1
       });
       console.log("arrayTarget " + total1);
-      me.clearTarget();
-    
+      me.clearTarget();  
     },
     addItemFauna() {
       let me = this;

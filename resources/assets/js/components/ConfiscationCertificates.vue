@@ -112,6 +112,293 @@
                        v-if="!$v.form.municipality.required"
                      >Olvidaste ingresar el nombre del municipio</span>
                   </md-field>
+
+
+                  <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                        <thead>
+                    
+                            <md-field md-clearable :class="getValidationClass('nameScientific1')">
+                              <label for="first-name">Nombre Científico</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.nameScientific1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.nameScientific1.required"
+                              >Olvidaste ingresar el nombre científico</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('nameCommon1')">
+                              <label for="first-name">Nombre Común</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.nameCommon1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.nameCommon1.required"
+                              >Olvidaste ingresar el nombre común</span>
+                            </md-field> 
+                            <md-field md-clearable :class="getValidationClass('state1')">
+                              <label for="first-name">Estado</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.state1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.state1.required"
+                              >Olvidaste ingresar el estado</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('presentation1')">
+                              <label for="first-name">Presentación</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.presentation1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.presentation1.required"
+                              >Olvidaste ingresar la presentación</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('amount1')">
+                              <label for="first-name">Cantidad (UN)</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.amount1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.amount1.required"
+                              >Olvidaste ingresar la cantidad unitaria</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('AverageSize')">
+                              <label for="first-name">Promedio Talla (Cm)</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.AverageSize"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.AverageSize.required"
+                              >Olvidaste ingresar el promedio talla en centimetros</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('weight1')">
+                              <label for="first-name">Peso (Kg)</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.weight1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.weight1.required"
+                              >Olvidaste ingresar el peso en kilogramosa</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('commercialValue1')">
+                              <label for="first-name">Valor Comercial</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.commercialValue1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.commercialValue1.required"
+                              >Olvidaste ingresar valor comercial</span>
+                            </md-field>
+                            <md-button
+                              type="button"
+                              class="md-dense md-raised md-primary"
+                              :disabled="sending"
+                              @click="addItemTarget()"
+                            >Agregar
+                            </md-button>
+                          <tr>
+                            <th>NOMBRE CIENTÌFICO</th>    
+                            <th>NOMBRE COMÙN</th>              
+                            <th>ESTADO</th>    
+                            <th>PRESENTACIÓN</th>    
+                            <th>CANTIDAD (UN)</th>    
+                            <th>PROMEDIO TALLA (Cm)</th>    
+                            <th>PESO (Kg)</th>    
+                            <th>VALOR COMERCIAL</th>    
+                            <!-- <th>FOTO</th>     -->
+                            <th style="width: 90px">Opciones</th>
+                          </tr>
+                        </thead>
+                       <tbody>
+                          <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
+                            <td v-text="target.nameScientific1"></td>
+                            <td v-text="target.nameCommon1"></td>
+                            <td v-text="target.state1"></td>
+                            <td v-text="target.presentation1"></td>
+                            <td v-text="target.amount1"></td>
+                            <td v-text="target.AverageSize"></td>
+                            <td v-text="target.weight1"></td>
+                            <td v-text="target.commercialValue1"></td>
+                            <td>                      
+                              <button
+                                type="button"
+                                class="btn btn-danger btn-sm"
+                                data-tooltip
+                                title="Eliminar"
+                                @click="deleteTarget(index)"
+                              >
+                                <i class="icon-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                          <tfoot>
+                            <tr>
+                              <th>NOMBRE CIENTÌFICO</th>    
+                              <th>NOMBRE COMÙN</th>              
+                              <th>ESTADO</th>    
+                              <th>PRESENTACIÓN</th>    
+                              <th>CANTIDAD (UN)</th>   
+                              <th>PROMEDIO TALLA (Cm)</th>  
+                              <th>PESO (Kg)</th>    
+                              <th>VALOR COMERCIAL</th>    
+                              <!-- <th>FOTO</th>         -->
+                              <th style="width: 90px">Opciones</th>
+                            </tr>
+                          </tfoot>
+                          <tbody>
+                          </tbody>
+                  </table>
+
+                  <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                        <thead>                  
+                            <md-field md-clearable :class="getValidationClass('element')">
+                              <label for="first-name">Elemento</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.element"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.element.required"
+                              >Olvidaste ingresar el nombre del elemento</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('amount2')">
+                              <label for="first-name">Cantidad (UN)</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.amount2"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.amount2.required"
+                              >Olvidaste ingresar la cantidad unitaria</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('characterState')">
+                              <label for="first-name">Características y Estado</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.characterState"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.characterState.required"
+                              >Olvidaste ingresar las características y estado</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('commercialValue2')">
+                              <label for="first-name">Valor Comercial</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.commercialValue2"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.commercialValue2.required"
+                              >Olvidaste ingresar valor comercial</span>
+                            </md-field>
+                            <md-button
+                              type="button"
+                              class="md-dense md-raised md-primary"
+                              :disabled="sending"
+                              @click="addItemTarget2()"
+                            >Agregar
+                            </md-button>
+                          <tr>
+                            <th>ELEMENTO</th>    
+                            <th>CANTIDAD (UN)</th>    
+                            <th>CARACTERÍSTICAS Y ESTADO</th>    
+                            <th>VALOR COMERCIAL</th>    
+                            <!-- <th>FOTO</th>     -->
+                            <th style="width: 90px">Opciones</th>
+                          </tr>
+                        </thead>
+                       <tbody>
+                          <tr v-for="(target,index) in arrayTarget2" :key="`target-${index}`">
+                            <td v-text="target.element"></td>
+                            <td v-text="target.amount2"></td>
+                            <td v-text="target.characterState"></td>
+                            <td v-text="target.commercialValue2"></td>
+                           
+                            <td>                      
+                              <button
+                                type="button"
+                                class="btn btn-danger btn-sm"
+                                data-tooltip
+                                title="Eliminar"
+                                @click="deleteTarget2(index)"
+                              >
+                                <i class="icon-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                          <tfoot>
+                            <tr>
+                              <th>ELEMENTO</th>     
+                              <th>CANTIDAD (UN)</th>    
+                              <th>CARACTERÍSTICAS Y ESTADO</th>    
+                              <th>VALOR COMERCIAL</th>      
+                              <!-- <th>FOTO</th>         -->
+                              <th style="width: 90px">Opciones</th>
+                            </tr>
+                          </tfoot>
+                          <tbody>
+                          </tbody>
+                  </table>
+
+
                   <md-field md-clearable :class="getValidationClass('nameScientific')">
                     <label for="first-name">Nombre Científico</label>
                     <md-input
@@ -588,6 +875,8 @@
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
     import vSelect from "vue-select";
+    import jsPDF from 'jspdf'
+    import 'jspdf-autotable'
     import {
 		MdButton,  
 		MdContent,
@@ -657,6 +946,20 @@ export default {
         telephone: "",
         mobile: "",
         email: "",
+
+        nameScientific1: "",
+        nameCommon1: "",
+        state1: "",
+        presentation1: "",
+        amount1: "",
+        AverageSize: "",
+        weight1: "",
+        commercialValue1: "",
+
+        element: "",
+        amount2: "",
+        characterState: "",
+        commercialValue2: "",
       },
 
       text4: "",
@@ -681,6 +984,9 @@ export default {
                    { name: 'Pesca en áreas protegidas', id: '10' },
                    { name: 'Malas prácticas de pesca', id: '11' },
                  ],
+
+      arrayTarget: [],
+      arrayTarget2: [],
       
       arrayConfiscationCert: [],
       id_confiscationCert: 0,
@@ -786,6 +1092,44 @@ export default {
       email:  {
         required
       },
+
+      nameScientific1: {
+        required
+      },
+        nameCommon1: {
+        required
+      },
+        state1: {
+        required
+      },
+        presentation1: {
+        required
+      },
+        amount1: {
+        required
+      },
+        AverageSize: {
+        required
+      },
+        weight1: {
+        required
+      },
+        commercialValue1: {
+        required
+      },
+
+        element: {
+        required
+      },
+        amount2: {
+        required
+      },
+        characterState: {
+        required
+      },
+        commercialValue2: {
+        required
+      },
     }
   },
 
@@ -824,6 +1168,55 @@ export default {
           break;
       }
     },
+    addItemTarget() {
+      let me = this;
+      var total1 = me.arrayTarget.push({
+        nameScientific1:this.form.nameScientific1.toUpperCase(),
+        nameCommon1:this.form.nameCommon1.toUpperCase(),
+        state1:this.form.state1.toUpperCase(),
+        presentation1:this.form.presentation1.toUpperCase(),
+        amount1:this.form.amount1,
+        AverageSize:this.form.AverageSize,
+        weight1:this.form.weight1,
+        commercialValue1:this.form.commercialValue1,
+      });
+      console.log("arrayTarget " + total1);
+      me.clearTarget();  
+    },
+    addItemTarget2() {
+      let me = this;
+      var total1 = me.arrayTarget2.push({
+        element:this.form.element.toUpperCase(),
+        amount2:this.form.amount2.toUpperCase(),
+        characterState: this.form.characterState.toUpperCase(),
+        commercialValue2: this.form.commercialValue2.toUpperCase(),
+        
+      });
+      console.log("arrayTarget " + total1);
+      me.clearTarget();  
+    },
+    deleteTarget(index){
+       this.arrayTarget.splice(index,1);
+    },
+    deleteTarget2(index){
+       this.arrayTarget2.splice(index,1);
+    },
+    clearTarget() {
+      this.form.nameScientific1 = null;
+      this.form.nameCommon1 = null;
+      this.form.state1 = null;
+      this.form.presentation1 = null;
+      this.form.amount1 = null;
+      this.form.AverageSize = null;
+      this.form.weight1 = null;
+      this.form.commercialValue1 = null;
+    },
+    clearTarget2() {
+      this.form.element = null;
+      this.form.amount2 = null;
+      this.characterState = null;
+      this.commercialValue2 = null;
+    },
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
       if (field) {
@@ -841,8 +1234,7 @@ export default {
       }
     },
     clearForm() {
-      this.$v.$reset();
-    
+      this.$v.$reset();   
       this.form.noActa = null;
       this.form.departament = null;
       this.form.municipality = null;
@@ -1107,6 +1499,159 @@ export default {
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
+    createPdf () {
+      let me = this;
+      var columns = []; var rows = [];
+      var columns1 = []; var rows1 = [];
+      var columns2 = []; var rows2 = [];
+      var doc = new jsPDF('p','mm','letter');
+        this.arrayConfiscationCert.forEach(element => {
+          doc.text("FORMATO ACTA DE DECOMISO PREVENTIVO", 55, 20);
+          // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
+          doc.setFont("arial");
+          // doc.setFont("arial", "bold");
+          doc.setFontSize(14);
+          doc.text("No. Acta: " + element.noActa, 15, 35 );
+          doc.setFontSize(10);
+          doc.text("Regional: " + element.nameRegional, 15, 45 );
+          doc.setFontSize(10);
+          doc.text("Departamento: " + element.departament, 15, 50 );
+          doc.setFontSize(10);
+          doc.text("Municipio: " + element.municipality, 15, 55 );
+          doc.setFontSize(10);
+          doc.text(`        El suscrito servidor público de la AUNAP ___________________________________________, de la oficina
+          _____________________________, el día _________, del mes de ______________ de 202 __, procedió a 
+          efectuar el decomiso preventivo de los siguientes recursos y/o productos pesqueros:
+          `, 15, 65 );
+              columns = [    
+                { title: "Nombre científico", dataKey: "nomCientifico" },
+                { title: "Nombre Común", dataKey: "nomComun" },
+                { title: "Estado", dataKey: "estado" },
+                { title: "Presentación", dataKey: "presentacion" },
+                { title: "Cantidad (UN)", dataKey: "cant" },
+                { title: "Peso (KG)", dataKey: "peso" },
+                { title: "Valor Comercial", dataKey: "valor" },
+                  
+              ];
+              rows = [
+                {"nomCientifico": element.nameScientific,
+                 "nomComun": element.nameCommon,
+                 "estado": element.state
+                },
+                // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
+              ]; 
+              columns1 = [    
+                { title: "Elemento", dataKey: "elemento" },
+                { title: "Cantidad (UN)", dataKey: "cantidad" },
+                { title: "Características y estado", dataKey: "caractEstado" },
+                { title: "Valor Comercial", dataKey: "valorC" },                
+              ];
+              rows1 = [
+                {"elemento": element.nameScientific,
+                 "cantidad": element.nameCommon,
+                 "caractEstado": element.state,
+                 "valorC": element.state,
+                },
+                // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
+              ]; 
+              columns2 = [    
+                { title: "MOTIVOS DEL DECOMISO PREVENTIVO", dataKey: "motivos" },              
+              ];
+              rows2 = [
+                {
+                  "motivos": element.nameScientific,
+                },
+                // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
+              ]; 
+          doc.setFontSize(10);
+          doc.text(`         ESTADO: Fresco entero (FE), Fresco eviscerado (FV), Congelado entero (CE), Congelado eviscerado (CV), 
+          Descabezado (D), Tronco (TR), Aletas (A), Seco (S), Vivos (V), Otros (especificar). 
+          PRESENTACIÓN: Unidades, zartas, bolsas o bultos, canastas, grupos, otros.
+          Procedió a efectuar el decomiso preventivo de los siguientes elementos (equipos y/o artes de pesca) asociados a la 
+          actividad de extracción o comercialización de recursos y/o productos pesqueros:`, 15, 160 );
+          doc.setFontSize(10);
+          doc.text(`         ELEMENTO: Embarcación, motor, arte de pesca, otro. En caso de artes, especificar tipo (atarraya, chinchorro,
+          liso, palangre, otro).`, 15, 180 );
+ 
+  
+          // doc.setFontSize(10);    
+          // doc.text(`        Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${element.date}`, 15, 150 );    
+          // doc.setFontSize(10);
+          // doc.text("NOMBRE FUNCIONARIO AUNAP", 15, 165 );  
+          // doc.setFontSize(10);
+          // doc.text(`Documento de Identidad: ${element.noDocumentId1}`, 15, 170 );  
+          // doc.setFontSize(10);
+          // doc.text("NOMBRE REPRESENTANTE AUTORIDAD ACOMPAÑANTE", 95, 165 );  
+          // doc.setFontSize(10);
+          // doc.text(`Documento de Identidad: ${element.noDocumentId2}`, 95, 170 );  
+          // doc.setFontSize(10);
+          // doc.line(15, 190, 80, 190);
+          // doc.setFontSize(10);
+          // doc.setFontSize(10);
+          // doc.text("Firma", 42, 195 );
+          // doc.text(`No. de Placa o cédula militar: ${element.noPlateCertificate}`, 95, 175 );  
+          // doc.setFontSize(10);
+          // doc.line(95, 190, 160, 190);
+          // doc.setFontSize(10);
+          // doc.text("Firma", 122, 195 );
+          doc.setFontSize(10);
+          doc.text("DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN", 55, 210 );
+          doc.setFontSize(10);
+          doc.text(`Nombre: ${element.name}`, 15, 220 ); 
+          doc.setFontSize(10);
+          doc.text(`Personería Jurídica: ${element.legalStatus}`, 15, 225 ); 
+          doc.setFontSize(10);
+          doc.text(`Dirección: ${element.address}`, 95, 225 ); 
+          doc.setFontSize(10);
+          doc.text(`Representante Legal: ${element.representativeDonation}`, 15, 230 ); 
+          doc.setFontSize(10);
+          doc.text(`C.C.: ${element.identification}`, 95, 230 ); 
+          doc.setFontSize(10);
+          doc.text(`Municipio: ${element.municipality}`, 15, 235 ); 
+          doc.setFontSize(10);
+          doc.text(`Corregimiento: ${element.corregimiento}`, 95, 235 ); 
+          doc.setFontSize(10);
+          doc.text(`Vereda: ${element.place}`, 15, 240 ); 
+          doc.setFontSize(10);
+          doc.text(`Teléfonos ${element.telephone}`, 95, 240 );
+          doc.setFontSize(10);
+          doc.line(15, 260, 80, 260);
+          doc.setFontSize(10);
+          doc.text("Firma", 15, 265 );
+          
+
+          doc.autoTable(columns, rows, {
+            // theme: 'grid',
+                  margin: { top: 80 },
+                  didDrawPage: function () {
+                    // doc.text("INFORMACIÓN DEL PROYECTO", 50, 60);
+                  },
+          });     
+          
+          doc.autoTable(columns1, rows1, {
+            // theme: 'grid',
+                  margin: { top: 150 },
+                  didDrawPage: function () {
+                    
+                    // doc.text("INFORMACIÓN DEL PROYECTO", 50, 60);
+                  },
+          });     
+
+          doc.autoTable(columns2, rows2, {
+            // theme: 'grid',
+                  margin: { top: 150 },
+                  didDrawPage: function () {
+                    
+                    // doc.text("INFORMACIÓN DEL PROYECTO", 50, 60);
+                  },
+          });     
+        });
+        doc.addPage(); 
+            
+      //  doc.save("FORMATO ACTA DE DONACIÓN");
+        window.open(doc.output('bloburl'))
+
+    },
     myTable(datas){
       let me = this;
 
@@ -1145,7 +1690,7 @@ export default {
             { "data": "amount" },
             { "data": "average" },
             { "data": "weight" },
-             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
+            {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  <button type='button'id='PDF' class='PDF btn btn-primary btn-sm' data-tooltip title='PDF' > <i class='fas fa-file-pdf'></i> </button>"},
 
         ]
 
@@ -1159,6 +1704,10 @@ export default {
                 me.datos= table.row( $(this).parents('tr') ).data();
                 me.deleteData(me.datos);
             } );
+          $('#dataTable tbody').on( 'click', '.PDF', function () {
+                // me.datos= table.row( $(this).parents('tr') ).data();
+                me.createPdf(me.datos);
+            } );  
     });
     }
   },

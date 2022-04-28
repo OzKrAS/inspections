@@ -87,6 +87,170 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
+
+            
+                  
+
+                  <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                        <thead>
+                    
+                            <md-field md-clearable :class="getValidationClass('nameScientific1')">
+                              <label for="first-name">Nombre Científico</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.nameScientific1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.nameScientific1.required"
+                              >Olvidaste ingresar el nombre científico</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('nameCommon1')">
+                              <label for="first-name">Nombre Común</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.nameCommon1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.nameCommon1.required"
+                              >Olvidaste ingresar el nombre común</span>
+                            </md-field> 
+                            <md-field md-clearable :class="getValidationClass('state1')">
+                              <label for="first-name">Estado</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.state1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.state1.required"
+                              >Olvidaste ingresar el estado</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('presentation1')">
+                              <label for="first-name">Presentación</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.presentation1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.presentation1.required"
+                              >Olvidaste ingresar la presentación</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('amount1')">
+                              <label for="first-name">Cantidad (UN)</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.amount1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.amount1.required"
+                              >Olvidaste ingresar la cantidad unitaria</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('weight1')">
+                              <label for="first-name">Peso (Kg)</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.weight1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.weight1.required"
+                              >Olvidaste ingresar el peso en kilogramosa</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('commercialValue1')">
+                              <label for="first-name">Valor Comercial</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.commercialValue1"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.commercialValue1.required"
+                              >Olvidaste ingresar valor comercial</span>
+                            </md-field>
+                            <md-button
+                              type="button"
+                              class="md-dense md-raised md-primary"
+                              :disabled="sending"
+                              @click="addItemTarget()"
+                            >Agregar
+                            </md-button>
+                          <tr>
+                            <th>NOMBRE CIENTÌFICO</th>    
+                            <th>NOMBRE COMÙN</th>              
+                            <th>ESTADO</th>    
+                            <th>PRESENTACIÓN</th>    
+                            <th>CANTIDAD (UN)</th>    
+                            <th>PESO (Kg)</th>    
+                            <th>VALOR COMERCIAL</th>    
+                            <!-- <th>FOTO</th>     -->
+                            <th style="width: 80px">Opciones</th>
+                          </tr>
+                        </thead>
+                       <tbody>
+                          <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
+                            <td v-text="target.nameScientific1"></td>
+                            <td v-text="target.nameCommon1"></td>
+                            <td v-text="target.state1"></td>
+                            <td v-text="target.presentation1"></td>
+                            <td v-text="target.amount1"></td>
+                            <td v-text="target.weight1"></td>
+                            <td v-text="target.commercialValue1"></td>
+                            <td>                      
+                              <button
+                                type="button"
+                                class="btn btn-danger btn-sm"
+                                data-tooltip
+                                title="Eliminar"
+                                @click="deleteTarget(index)"
+                              >
+                                <i class="icon-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                          <tfoot>
+                            <tr>
+                              <th>NOMBRE CIENTÌFICO</th>    
+                              <th>NOMBRE COMÙN</th>              
+                              <th>ESTADO</th>    
+                              <th>PRESENTACIÓN</th>    
+                              <th>CANTIDAD (UN)</th>    
+                              <th>PESO (Kg)</th>    
+                              <th>VALOR COMERCIAL</th>    
+                              <!-- <th>FOTO</th>         -->
+                              <th style="width: 80px">Opciones</th>
+                            </tr>
+                          </tfoot>
+                          <tbody>
+                          </tbody>
+                  </table>
+
+
                   <md-field md-clearable :class="getValidationClass('nameScientific')">
                     <label for="first-name">Nombre Científico</label>
                     <md-input
@@ -446,6 +610,8 @@ import format from "date-fns/format";
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
     import vSelect from "vue-select";
+    import jsPDF from 'jspdf'
+    import 'jspdf-autotable'
     import {
 		MdButton,  
 		MdContent,
@@ -507,18 +673,28 @@ export default {
         corregimiento: "",
         place: "",
         telephone: "",
+
+        nameScientific1: "",
+        nameCommon1: "",
+        state1: "",
+        presentation1: "",
+        amount1: "",
+        weight1: "",
+        commercialValue1: "",
       
       },
       
-
       arrayDonationCertificate: [],
       id_donationCertificate: 0,
 
       arrayRegional: {id:0, name:''},
 	    arrayRegl: [],
       id_regional: 0,
-
+	    arrayTarget: [],
+    
       date: format(now, dateFormat),
+
+      pdf: 0,
 
       edo:1,
       tipoAccion: 1,
@@ -596,6 +772,29 @@ export default {
       telephone: {
         required
       },
+
+
+      nameScientific1: {
+        required
+      },
+        nameCommon1: {
+        required
+      },
+        state1: {
+        required
+      },
+        presentation1: {
+        required
+      },
+        amount1: {
+        required
+      },
+        weight1: {
+        required
+      },
+        commercialValue1: {
+        required
+      },
       
     }
   },
@@ -640,6 +839,32 @@ export default {
         this.clearForm();
       }
     },
+    addItemTarget() {
+      let me = this;
+      var total1 = me.arrayTarget.push({
+        nameScientific1:this.form.nameScientific1.toUpperCase(),
+        nameCommon1:this.form.nameCommon1.toUpperCase(),
+        state1:this.form.state1.toUpperCase(),
+        presentation1:this.form.presentation1.toUpperCase(),
+        amount1:this.form.amount1,
+        weight1:this.form.weight1,
+        commercialValue1:this.form.commercialValue1,
+      });
+      console.log("arrayTarget " + total1);
+      me.clearTarget();  
+    },
+    deleteTarget(index){
+       this.arrayTarget.splice(index,1);
+    },
+    clearTarget() {
+      this.form.nameScientific1 = null;
+      this.form.nameCommon1 = null;
+      this.form.state1 = null;
+      this.form.presentation1 = null;
+      this.form.amount1 = null;
+      this.form.weight1 = null;
+      this.form.commercialValue1 = null;
+    },
     clearForm() {
       this.$v.$reset();
       this.form.noActa = null;
@@ -670,7 +895,8 @@ export default {
 
     showUpdate(data = []) {
       let me = this;
-      (this.tipoAccion = 2), (me.listado = 0);
+      // (this.tipoAccion = 2),(me.listado = 0);
+      (this.tipoAccion = 2),(me.listado = me.pdf);
       (this.id_donationCertificate = data["id"]);
       this.form.noActa = data["noActa"];
       this.form.nameScientific = data["nameScientific"];
@@ -853,7 +1079,106 @@ export default {
         }
       });
     },
+    createPdf (data = []) {
+      let me = this;
+      var columns = []; var rows = [];
+      var doc = new jsPDF('p','mm','letter');
+        var logo = new Image();
+        logo.src = '/img/logoAUNAP.png';
+        doc.addImage(logo, 'png', 19, 11, 31, 15);
+        doc.text("FORMATO ACTA DE DONACIÓN", 65, 20);
+        // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
+        doc.setFont("arial");
+        // doc.setFont("arial", "bold");
+        doc.setFontSize(11);
+        doc.text("No. Acta: " + me.datos.noActa, 15, 35 );
+        doc.setFontSize(10);
+        doc.text("Regional: " + me.datos['nameRegional'], 110, 35,);
+        doc.setFontSize(10);
+        doc.text(`En operativo de control desarrollado en _______________________________________________, el suscrito servidor público 
+de la AUNAP ___________________________, de la oficina _________________________, el día ___, del mes de 202___, 
+procedió a efectuar el decomiso preventivo de los recursos y/o productos pesqueros que a continuación se relacionan, 
+por no cumplir con las disposiciones establecidas por la Autoridad Nacional de Pesca y Acuicultura - AUNAP.
 
+Por tratarse de productos altamente perecederos y que no pueden ser comercializados, se procede a la donación de los mismos,
+en presencia de la autoridad competente.
+`, 15, 45);
+            columns = [    
+              { title: "Nombre científico", dataKey: "nomCientifico" },
+              { title: "Nombre Común", dataKey: "nomComun" },
+              { title: "Estado", dataKey: "estado" },
+              { title: "Presentación", dataKey: "presentacion" },
+              { title: "Cantidad (UN)", dataKey: "cant" },
+              { title: "Peso (KG)", dataKey: "peso" },
+              { title: "Valor Comercial", dataKey: "valor" },
+                
+            ];
+            rows = [
+              {"nomCientifico": this.pruebaData,
+               "nomComun": this.pruebaData},
+              // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
+            ]; 
+        doc.setFontSize(10);    
+        doc.text(`Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${me.datos['date']}`, 15, 145,  {align: 'justify',lineHeightFactor: 1,maxWidth:180} );    
+        doc.setFontSize(10);
+        doc.text("NOMBRE FUNCIONARIO AUNAP", 15, 155 );  
+        doc.setFontSize(10);
+        doc.text(`${me.datos['nameOfficial']}`, 15, 160 );  
+        doc.setFontSize(10);
+        doc.text(`Documento de Identidad: ${me.datos['noDocumentId1']}`, 15, 165 );  
+        doc.setFontSize(10);
+        doc.text("NOMBRE REPRESENTANTE AUTORIDAD ACOMPAÑANTE", 95, 155 );  
+        doc.setFontSize(10);
+        doc.text(`${me.datos['nameRepresentative']}`, 95, 160 ); 
+        doc.setFontSize(10);
+        doc.text(`Documento de Identidad: ${me.datos['noDocumentId2']}`, 95, 165 );  
+        doc.setFontSize(10);
+        doc.line(15, 190, 80, 190);
+        doc.setFontSize(10);
+        doc.setFontSize(10);
+        doc.text("Firma", 42, 195 );
+        doc.text(`No. de Placa o cédula militar: ${me.datos['noPlateCertificate']}`, 95, 170 );  
+        doc.setFontSize(10);
+        doc.line(95, 190, 160, 190);
+        doc.setFontSize(10);
+        doc.text("Firma", 122, 195 );
+        doc.setFontSize(10);
+        doc.text("DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN", 55, 205 );
+        doc.setFontSize(10);
+        doc.text(`Nombre: ${me.datos['name']}`, 15, 215 ); 
+        doc.setFontSize(10);
+        doc.text(`Personería Jurídica: ${me.datos['legalStatus']}`, 15, 220 ); 
+        doc.setFontSize(10);
+        doc.text(`Dirección: ${me.datos['address']}`, 95, 220 ); 
+        doc.setFontSize(10);
+        doc.text(`Representante Legal: ${me.datos['representativeDonation']}`, 15, 225 ); 
+        doc.setFontSize(10);
+        doc.text(`C.C.: ${me.datos['identification']}`, 95, 225 ); 
+        doc.setFontSize(10);
+        doc.text(`Municipio: ${me.datos['municipality']}`, 15, 230 ); 
+        doc.setFontSize(10);
+        doc.text(`Corregimiento: ${me.datos['corregimiento']}`, 95, 230 ); 
+        doc.setFontSize(10);
+        doc.text(`Vereda: ${me.datos['place']}`, 15, 235 ); 
+        doc.setFontSize(10);
+        doc.text(`Teléfonos ${me.datos['telephone']}`, 95, 235 );
+        doc.setFontSize(10);
+        doc.line(15, 255, 80, 255);
+        doc.setFontSize(10);
+        doc.text("Firma", 15, 260 );
+        
+
+        doc.autoTable(columns, rows, {
+          // theme: 'grid',
+                margin: { top: 80 },
+                didDrawPage: function () {
+                  // doc.text("INFORMACIÓN DEL PROYECTO", 50, 60);
+                },
+        });     
+      //  doc.save("FORMATO ACTA DE DONACIÓN");
+      window.open(doc.output('bloburl'))
+      me.pdf = 0;
+    },
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
@@ -895,7 +1220,7 @@ export default {
             { "data": "amount" },
             { "data": "weight" },
             { "data": "commercialValue" },
-             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
+             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  <button type='button'id='PDF' class='PDF btn btn-primary btn-sm' data-tooltip title='PDF' > <i class='fas fa-file-pdf'></i> </button>"},
 
         ]
 
@@ -909,6 +1234,13 @@ export default {
                 me.datos= table.row( $(this).parents('tr') ).data();
                 me.deleteData(me.datos);
             } );
+          $("#dataTable tbody").on("click", ".PDF", function () {
+                me.datos = table.row($(this).parents("tr")).data();
+                me.pdf = 1;
+                me.showUpdate(me.datos);
+                me.createPdf();
+          //  console.log(me.datos['id'] + " prueba de datos ID");       
+      });
     });
     }
   },

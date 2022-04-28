@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Formato de Aviso Previo de Zarpe de Buque</strong>          
+          <strong class="lead">Formato de Aviso Previo de arribo de Buque</strong>          
           <button
             v-if="edo"
             type="button"

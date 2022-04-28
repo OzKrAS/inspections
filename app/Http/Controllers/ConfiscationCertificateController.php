@@ -66,7 +66,6 @@ class ConfiscationCertificateController extends Controller
         $confiscation->noActa = $request->noActa;
         $confiscation->departament = $request->departament;
         $confiscation->municipality = $request->municipality;
-        $confiscation->text = $request->text;
         $confiscation->nameScientific = $request->nameScientific;
         $confiscation->nameCommon = $request->nameCommon;
         $confiscation->amount = $request->amount;
@@ -77,7 +76,6 @@ class ConfiscationCertificateController extends Controller
         $confiscation->amount2 = $request->amount2;
         $confiscation->featuresState = $request->featuresState;
         $confiscation->commercialValue2 = $request->commercialValue2;
-        $confiscation->text3 = $request->text3;
         $confiscation->text4 = $request->text4;
         $confiscation->officialName = $request->officialName;
         $confiscation->documentIdOfficial = $request->documentIdOfficial;
@@ -110,7 +108,6 @@ class ConfiscationCertificateController extends Controller
         $confiscation->noActa = $request->noActa;
         $confiscation->departament = $request->departament;
         $confiscation->municipality = $request->municipality;
-        $confiscation->text = $request->text;
         $confiscation->nameScientific = $request->nameScientific;
         $confiscation->nameCommon = $request->nameCommon;
         $confiscation->amount = $request->amount;
@@ -121,7 +118,6 @@ class ConfiscationCertificateController extends Controller
         $confiscation->amount2 = $request->amount2;
         $confiscation->featuresState = $request->featuresState;
         $confiscation->commercialValue2 = $request->commercialValue2;
-        $confiscation->text3 = $request->text3;
         $confiscation->text4 = $request->text4;
         $confiscation->officialName = $request->officialName;
         $confiscation->documentIdOfficial = $request->documentIdOfficial;

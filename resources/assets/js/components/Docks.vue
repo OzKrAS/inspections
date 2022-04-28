@@ -162,6 +162,7 @@ export default {
 	  return {      form: {
         name: "",
       },
+      
       arrayDocks: [],
       id_Docks: 0,
       arrayPt: {id:0, name:''},
@@ -217,8 +218,8 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.name = null;
-      this.form.arrival = null;
-      this.form.zarpe = null;
+      this.arrival = false;
+      this.zarpe = false;
       this.arrayPt = {id:0, name:''};
     },
     nameWithPort ({ name }) {

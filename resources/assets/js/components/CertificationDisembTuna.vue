@@ -252,21 +252,6 @@
                   <label>Observaciones</label>
                   <md-field>
                         <md-textarea v-model="observation"></md-textarea>
-                  </md-field> 
-                  <md-field md-clearable :class="getValidationClass('voBo')">
-                    <label for="first-name">Vo. Bo. AUNAP</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.voBo"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.voBo.required"
-                    >Olvidaste ingresar el visto bueno</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>        
                   <md-field md-clearable :class="getValidationClass('nameOfficial')">
                     <label for="first-name">Nombre funcionario</label>
@@ -364,7 +349,6 @@ export default {
       form: {
           nameBoat: "",
           ZoneFisher: "",
-          voBo: "",
           nameOfficial: "", 
           yellowFin: "", 
           barrilete: "", 
@@ -413,10 +397,7 @@ export default {
         },
         ZoneFisher: {
           required
-        },
-        voBo: {
-          required
-        },  
+        }, 
         nameOfficial: {
           required
         },  
@@ -481,7 +462,6 @@ export default {
       this.dateEndFaena = null;
       this.form.ZoneFisher = null;
       this.observation = null;
-      this.form.voBo = null;
       this.form.nameOfficial = null;
       this.form.yellowFin = null;
       this.poundRating1 = null;
@@ -508,7 +488,6 @@ export default {
       this.dateEndFaena = data["dateEndFaena"];
       this.form.ZoneFisher = data["ZoneFisher"];
       this.observation = data["observation"];
-      this.form.voBo = data["voBo"];
       this.form.nameOfficial = data["nameOfficial"];
       this.form.yellowFin = data["yellowFin"];
       this.poundRating1 = data["poundRating1"];
@@ -604,7 +583,6 @@ export default {
         dateEndFaena: this.dateEndFaena,
         ZoneFisher: this.form.ZoneFisher.toUpperCase(),
         observation: this.observation.toUpperCase(),
-        voBo: this.form.voBo.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         yellowFin: this.form.yellowFin.toUpperCase(),
         poundRating1: this.poundRating1.toUpperCase(),
@@ -641,7 +619,6 @@ export default {
         dateEndFaena: this.dateEndFaena,
         ZoneFisher: this.form.ZoneFisher.toUpperCase(),
         observation: this.observation.toUpperCase(),
-        voBo: this.form.voBo.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         yellowFin: this.form.yellowFin.toUpperCase(),
         poundRating1: this.poundRating1.toUpperCase(),

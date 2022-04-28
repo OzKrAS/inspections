@@ -57,9 +57,12 @@
             <template v-if="menu==17">
                 <certificationtuna></certificationtuna>
             </template>
-            <template v-if="menu==18">
+            <!-- <template v-if="menu==18">
                 <noticepreviouszarpe></noticepreviouszarpe>
             </template>
+            <template v-if="menu==19">
+                <processingplant></processingplant>
+            </template> -->
 
            
    

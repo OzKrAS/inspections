@@ -153,6 +153,128 @@
                             v-if="!$v.form.nameCaptain.required"
                         >Olvidaste ingresar el nombre del capitán</span>
                     </md-field>
+
+                    <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                        <thead>                  
+                            <md-field md-clearable :class="getValidationClass('equipment')">
+                              <label for="first-name">Equipo</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.equipment"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.equipment.required"
+                              >Olvidaste ingresar el nombre</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('zarpe')">
+                              <label for="first-name">Zarpe</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.zarpe"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.zarpe.required"
+                              >Olvidaste ingresar la cantidad unitaria</span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('desemb')">
+                              <label for="first-name">Desembarque</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.desemb"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.desemb.required"
+                              >Olvidaste ingresar </span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('photoRecord')">
+                              <label for="first-name">Registro Fotográfico</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.photoRecord"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.photoRecord.required"
+                              >Olvidaste ingresar </span>
+                            </md-field>
+                            <md-field md-clearable :class="getValidationClass('observation')">
+                              <label for="first-name">Observaciones</label>
+                              <md-input
+                                name="first-name"
+                                id="first-name"
+                                autocomplete="given-name"
+                                v-model="form.observation"
+                                :disabled="sending"
+                              />
+                              <span
+                                class="md-error"
+                                v-if="!$v.form.observation.required"
+                              >Olvidaste ingresar </span>
+                            </md-field>
+                            <md-button
+                              type="button"
+                              class="md-dense md-raised md-primary"
+                              :disabled="sending"
+                              @click="addItemTarget()"
+                            >Agregar
+                            </md-button>
+                          <tr>
+                            <th>EQUIPO</th>    
+                            <th>ZARPE (S/N)</th>    
+                            <th>DESEMBARQUE (S/N)</th>    
+                            <th>REGISTRO FOTOGRAFICO (S/N)</th>    
+                            <th>OBSERVACIONES</th>    
+                            <th style="width: 90px">Opciones</th>
+                          </tr>
+                        </thead>
+                       <tbody>
+                          <tr v-for="(target,index) in arrayTarget2" :key="`target-${index}`">
+                            <td v-text="target.element"></td>
+                            <td v-text="target.amount2"></td>
+                            <td v-text="target.characterState"></td>
+                            <td v-text="target.commercialValue2"></td>                    
+                            <td>                      
+                              <button
+                                type="button"
+                                class="btn btn-danger btn-sm"
+                                data-tooltip
+                                title="Eliminar"
+                                @click="deleteTarget(index)"
+                              >
+                                <i class="icon-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                          <tfoot>
+                            <tr>
+                              <th>EQUIPO</th>    
+                              <th>ZARPE (S/N)</th>    
+                              <th>DESEMBARQUE (S/N)</th>    
+                              <th>REGISTRO FOTOGRAFICO (S/N)</th> 
+                              <th>OBSERVACIONES</th> 
+                              <th style="width: 90px">Opciones</th>
+                            </tr>
+                          </tfoot>
+                          <tbody>
+                          </tbody>
+                    </table>
+
                 </div>
               </md-card-content>
             </form>
@@ -248,6 +370,15 @@ export default {
 
       arrayPresenVerifics: [],
       id_presenVerific: 0,
+
+      arrayTarget: [],
+      
+      arrayTable: [{ nameTeam: '', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                   { nameTeam: '', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                   { nameTeam: '', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                   { nameTeam: '', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                   { nameTeam: '', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                  ],
     
       arrayFg: {id:0, name:''},
 	    arrayFlag: [],

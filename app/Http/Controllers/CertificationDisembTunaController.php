@@ -20,7 +20,6 @@ class CertificationDisembTunaController extends Controller
             ->select('certification_disemb_tunas.id',
                      'certification_disemb_tunas.nameBoat',
                      'certification_disemb_tunas.ZoneFisher',
-                     'certification_disemb_tunas.voBo',
                      'certification_disemb_tunas.nameOfficial', 
                      'certification_disemb_tunas.yellowFin', 
                      'certification_disemb_tunas.barrilete', 
@@ -53,7 +52,6 @@ class CertificationDisembTunaController extends Controller
         $tunas = new CertificationDisembTuna();
         $tunas->nameBoat = $request->nameBoat;
         $tunas->ZoneFisher = $request->ZoneFisher;
-        $tunas->voBo = $request->voBo;
         $tunas->nameOfficial = $request->nameOfficial; 
         $tunas->yellowFin = $request->yellowFin; 
         $tunas->barrilete = $request->barrilete; 
@@ -79,7 +77,6 @@ class CertificationDisembTunaController extends Controller
         $tunas = CertificationDisembTuna::findOrFail($request->id); 
         $tunas->nameBoat = $request->nameBoat;
         $tunas->ZoneFisher = $request->ZoneFisher;
-        $tunas->voBo = $request->voBo;
         $tunas->nameOfficial = $request->nameOfficial; 
         $tunas->yellowFin = $request->yellowFin; 
         $tunas->barrilete = $request->barrilete; 

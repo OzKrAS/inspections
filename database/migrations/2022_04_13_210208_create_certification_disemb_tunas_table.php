@@ -17,7 +17,6 @@ class CreateCertificationDisembTunasTable extends Migration
             $table->increments('id');
             $table->string('nameBoat');
             $table->string('ZoneFisher');
-            $table->string('voBo');
             $table->string('nameOfficial'); 
             $table->string('yellowFin'); 
             $table->string('barrilete'); 

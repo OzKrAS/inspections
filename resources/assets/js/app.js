@@ -37,7 +37,8 @@ Vue.component('donations', require('./components/DonationCertificates.vue'));
 Vue.component('confiscations', require('./components/ConfiscationCertificates.vue'));
 Vue.component('inspectioncargos', require('./components/InspectionBoatCargo.vue'));
 Vue.component('certificationtuna', require('./components/CertificationDisembTuna.vue'));
-Vue.component('noticepreviouszarpe', require('./components/noticePreviousZarpe.vue'));
+// Vue.component('noticepreviouszarpe', require('./components/noticePreviousZarpe.vue'));
+// Vue.component('processingplant', require('./components/processingPlant.vue'));
 
 
 const app = new Vue({

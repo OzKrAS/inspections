@@ -165,9 +165,7 @@ class ZarpeController extends Controller
         $zarpes->national = $request->national;
 
         $zarpes->id_region = $request->id_region;    
-        $zarpes->id_port = $request->id_port;
-        $zarpes->id_portZarpe = $request->id_portZarpe;  
-        $zarpes->id_portArrival = $request->id_portArrival;      
+        $zarpes->id_port = $request->id_port;    
         $zarpes->id_flag = $request->id_flag;  
         $zarpes->id_nationality = $request->id_nationality;  
         $zarpes->id_orop = $request->id_orop;  
