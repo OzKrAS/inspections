@@ -58152,7 +58152,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
 
       date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
 
-      pdf: 0,
+      // pdf: 0,
 
       edo: 1,
       tipoAccion: 1,
@@ -58346,8 +58346,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
       var me = this;
-      // (this.tipoAccion = 2),(me.listado = 0);
-      this.tipoAccion = 2, me.listado = me.pdf;
+      this.tipoAccion = 2, me.listado = 0;
+      // (this.tipoAccion = 2),(me.listado = me.pdf);
       this.id_donationCertificate = data["id"];
       this.form.noActa = data["noActa"];
       this.form.nameScientific = data["nameScientific"];
@@ -58526,9 +58526,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       var me = this;
       var columns = [];var rows = [];
       var doc = new __WEBPACK_IMPORTED_MODULE_5_jspdf__["default"]('p', 'mm', 'letter');
+      this.id_donationCertificate = data["id"];
+      console.log("ID " + me.datos.id);
       var logo = new Image();
       logo.src = '/img/logoAUNAP.png';
-      doc.addImage(logo, 'png', 19, 11, 31, 15);
+      doc.addImage(logo, 'png', 20, 10, 33, 15);
       doc.text("FORMATO ACTA DE DONACIÓN", 65, 20);
       // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
       doc.setFont("arial");
@@ -58538,30 +58540,33 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       doc.setFontSize(10);
       doc.text("Regional: " + me.datos['nameRegional'], 110, 35);
       doc.setFontSize(10);
-      doc.text("En operativo de control desarrollado en _______________________________________________, el suscrito servidor p\xFAblico \nde la AUNAP ___________________________, de la oficina _________________________, el d\xEDa ___, del mes de 202___, \nprocedi\xF3 a efectuar el decomiso preventivo de los recursos y/o productos pesqueros que a continuaci\xF3n se relacionan, \npor no cumplir con las disposiciones establecidas por la Autoridad Nacional de Pesca y Acuicultura - AUNAP.\n\nPor tratarse de productos altamente perecederos y que no pueden ser comercializados, se procede a la donaci\xF3n de los mismos,\nen presencia de la autoridad competente.\n", 15, 45);
+      doc.text("En operativo de control desarrollado en _______________________________________________, el suscrito servidor p\xFAblico \nde la AUNAP ___________________________, de la oficina _________________________, el d\xEDa ___, del mes de 202___, \nprocedi\xF3 a efectuar el decomiso preventivo de los recursos y/o productos pesqueros que a continuaci\xF3n se relacionan, por no \ncumplir con las disposiciones establecidas por la Autoridad Nacional de Pesca y Acuicultura - AUNAP.\n\nPor tratarse de productos altamente perecederos y que no pueden ser comercializados, se procede a la donaci\xF3n de los mismos,\nen presencia de la autoridad competente.\n", 16, 45);
+      doc.setDrawColor(0, 0, 0);
+      doc.rect(15, 41, 186, 30);
+      doc.setDrawColor(0, 0, 0);
+      doc.rect(15, 262, 186, 10);
       columns = [{ title: "Nombre científico", dataKey: "nomCientifico" }, { title: "Nombre Común", dataKey: "nomComun" }, { title: "Estado", dataKey: "estado" }, { title: "Presentación", dataKey: "presentacion" }, { title: "Cantidad (UN)", dataKey: "cant" }, { title: "Peso (KG)", dataKey: "peso" }, { title: "Valor Comercial", dataKey: "valor" }];
       rows = [{ "nomCientifico": this.pruebaData,
         "nomComun": this.pruebaData }];
       doc.setFontSize(10);
-      doc.text("Para constancia se firma la presente acta por cada uno de los que intervienen en la donaci\xF3n. Fecha: " + me.datos['date'], 15, 145, { align: 'justify', lineHeightFactor: 1, maxWidth: 180 });
+      doc.text("Para constancia se firma la presente acta por cada uno de los que intervienen en la donaci\xF3n. Fecha: " + me.datos.date, 15, 145, { align: 'justify', lineHeightFactor: 1, maxWidth: 180 });
       doc.setFontSize(10);
       doc.text("NOMBRE FUNCIONARIO AUNAP", 15, 155);
       doc.setFontSize(10);
-      doc.text("" + me.datos['nameOfficial'], 15, 160);
+      doc.text("" + me.datos.nameOfficial, 15, 160);
       doc.setFontSize(10);
-      doc.text("Documento de Identidad: " + me.datos['noDocumentId1'], 15, 165);
+      doc.text("Documento de Identidad: " + me.datos.noDocumentId1, 15, 165);
       doc.setFontSize(10);
       doc.text("NOMBRE REPRESENTANTE AUTORIDAD ACOMPAÑANTE", 95, 155);
       doc.setFontSize(10);
-      doc.text("" + me.datos['nameRepresentative'], 95, 160);
+      doc.text("" + me.datos.nameRepresentative, 95, 160);
       doc.setFontSize(10);
-      doc.text("Documento de Identidad: " + me.datos['noDocumentId2'], 95, 165);
+      doc.text("Documento de Identidad: " + me.datos.noDocumentId2, 95, 165);
       doc.setFontSize(10);
       doc.line(15, 190, 80, 190);
       doc.setFontSize(10);
-      doc.setFontSize(10);
       doc.text("Firma", 42, 195);
-      doc.text("No. de Placa o c\xE9dula militar: " + me.datos['noPlateCertificate'], 95, 170);
+      doc.text("No. de Placa o c\xE9dula militar: " + me.datos.noPlateCertificate, 95, 170);
       doc.setFontSize(10);
       doc.line(95, 190, 160, 190);
       doc.setFontSize(10);
@@ -58569,27 +58574,29 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       doc.setFontSize(10);
       doc.text("DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN", 55, 205);
       doc.setFontSize(10);
-      doc.text("Nombre: " + me.datos['name'], 15, 215);
+      doc.text("Nombre: " + me.datos.name, 15, 215);
       doc.setFontSize(10);
-      doc.text("Personer\xEDa Jur\xEDdica: " + me.datos['legalStatus'], 15, 220);
+      doc.text("Personer\xEDa Jur\xEDdica: " + me.datos.legalStatus, 15, 220);
       doc.setFontSize(10);
-      doc.text("Direcci\xF3n: " + me.datos['address'], 95, 220);
+      doc.text("Direcci\xF3n: " + me.datos.address, 95, 220);
       doc.setFontSize(10);
-      doc.text("Representante Legal: " + me.datos['representativeDonation'], 15, 225);
+      doc.text("Representante Legal: " + me.datos.representativeDonation, 15, 225);
       doc.setFontSize(10);
-      doc.text("C.C.: " + me.datos['identification'], 95, 225);
+      doc.text("C.C.: " + me.datos.identification, 95, 225);
       doc.setFontSize(10);
-      doc.text("Municipio: " + me.datos['municipality'], 15, 230);
+      doc.text("Municipio: " + me.datos.municipality, 15, 230);
       doc.setFontSize(10);
-      doc.text("Corregimiento: " + me.datos['corregimiento'], 95, 230);
+      doc.text("Corregimiento: " + me.datos.corregimiento, 95, 230);
       doc.setFontSize(10);
-      doc.text("Vereda: " + me.datos['place'], 15, 235);
+      doc.text("Vereda: " + me.datos.place, 15, 235);
       doc.setFontSize(10);
-      doc.text("Tel\xE9fonos " + me.datos['telephone'], 95, 235);
+      doc.text("Tel\xE9fonos " + me.datos.telephone, 95, 235);
       doc.setFontSize(10);
       doc.line(15, 255, 80, 255);
       doc.setFontSize(10);
       doc.text("Firma", 15, 260);
+      doc.setFontSize(10);
+      doc.text("Nota: Con la firma de la presente acta, los intervinientes del acto de Donaci\xF3n dan fe de las buenas\ncondiciones organol\xE9pticas del producto pesquero donado.", 16, 266, { align: 'justify', lineHeightFactor: 1, maxWidth: 180 });
 
       doc.autoTable(columns, rows, {
         // theme: 'grid',
@@ -58600,7 +58607,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       });
       //  doc.save("FORMATO ACTA DE DONACIÓN");
       window.open(doc.output('bloburl'));
-      me.pdf = 0;
+      // me.pdf = 0;
     },
     message: function message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
@@ -58647,8 +58654,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         });
         $("#dataTable tbody").on("click", ".PDF", function () {
           me.datos = table.row($(this).parents("tr")).data();
-          me.pdf = 1;
-          me.showUpdate(me.datos);
+          // me.pdf = 1;
+          // me.showUpdate(me.datos);
           me.createPdf();
           //  console.log(me.datos['id'] + " prueba de datos ID");       
         });
@@ -63807,117 +63814,85 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
     createPdf: function createPdf() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
       var me = this;
       var columns = [];var rows = [];
       var columns1 = [];var rows1 = [];
       var columns2 = [];var rows2 = [];
       var doc = new __WEBPACK_IMPORTED_MODULE_5_jspdf__["default"]('p', 'mm', 'letter');
-      this.arrayConfiscationCert.forEach(function (element) {
-        doc.text("FORMATO ACTA DE DECOMISO PREVENTIVO", 55, 20);
-        // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
-        doc.setFont("arial");
-        // doc.setFont("arial", "bold");
-        doc.setFontSize(14);
-        doc.text("No. Acta: " + element.noActa, 15, 35);
-        doc.setFontSize(10);
-        doc.text("Regional: " + element.nameRegional, 15, 45);
-        doc.setFontSize(10);
-        doc.text("Departamento: " + element.departament, 15, 50);
-        doc.setFontSize(10);
-        doc.text("Municipio: " + element.municipality, 15, 55);
-        doc.setFontSize(10);
-        doc.text("        El suscrito servidor p\xFAblico de la AUNAP ___________________________________________, de la oficina\n          _____________________________, el d\xEDa _________, del mes de ______________ de 202 __, procedi\xF3 a \n          efectuar el decomiso preventivo de los siguientes recursos y/o productos pesqueros:\n          ", 15, 65);
-        columns = [{ title: "Nombre científico", dataKey: "nomCientifico" }, { title: "Nombre Común", dataKey: "nomComun" }, { title: "Estado", dataKey: "estado" }, { title: "Presentación", dataKey: "presentacion" }, { title: "Cantidad (UN)", dataKey: "cant" }, { title: "Peso (KG)", dataKey: "peso" }, { title: "Valor Comercial", dataKey: "valor" }];
-        rows = [{ "nomCientifico": element.nameScientific,
-          "nomComun": element.nameCommon,
-          "estado": element.state
-        }];
-        columns1 = [{ title: "Elemento", dataKey: "elemento" }, { title: "Cantidad (UN)", dataKey: "cantidad" }, { title: "Características y estado", dataKey: "caractEstado" }, { title: "Valor Comercial", dataKey: "valorC" }];
-        rows1 = [{ "elemento": element.nameScientific,
-          "cantidad": element.nameCommon,
-          "caractEstado": element.state,
-          "valorC": element.state
-        }];
-        columns2 = [{ title: "MOTIVOS DEL DECOMISO PREVENTIVO", dataKey: "motivos" }];
-        rows2 = [{
-          "motivos": element.nameScientific
-        }];
-        doc.setFontSize(10);
-        doc.text("         ESTADO: Fresco entero (FE), Fresco eviscerado (FV), Congelado entero (CE), Congelado eviscerado (CV), \n          Descabezado (D), Tronco (TR), Aletas (A), Seco (S), Vivos (V), Otros (especificar). \n          PRESENTACI\xD3N: Unidades, zartas, bolsas o bultos, canastas, grupos, otros.\n          Procedi\xF3 a efectuar el decomiso preventivo de los siguientes elementos (equipos y/o artes de pesca) asociados a la \n          actividad de extracci\xF3n o comercializaci\xF3n de recursos y/o productos pesqueros:", 15, 160);
-        doc.setFontSize(10);
-        doc.text("         ELEMENTO: Embarcaci\xF3n, motor, arte de pesca, otro. En caso de artes, especificar tipo (atarraya, chinchorro,\n          liso, palangre, otro).", 15, 180);
+      this.id_donationCertificate = data["id"];
+      console.log("ID " + me.datos.id);
+      var logo = new Image();
+      logo.src = '/img/logoAUNAP.png';
+      doc.addImage(logo, 'png', 20, 10, 33, 15);
+      doc.text("FORMATO ACTA DE DECOMISO PREVENTIVO", 55, 20);
+      // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
+      doc.setFont("arial");
+      // doc.setFont("arial", "bold");
+      doc.setFontSize(12);
+      doc.text("No. Acta: " + me.datos.noActa, 15, 35);
+      doc.setFontSize(10);
+      doc.text("Regional: " + me.datos.noActa, 15, 45);
+      doc.setFontSize(10);
+      doc.text("Departamento: " + me.datos.noActa, 75, 45);
+      doc.setFontSize(10);
+      doc.text("Municipio: " + me.datos.noActa, 140, 45);
+      doc.setFontSize(10);
+      doc.text("El suscrito servidor p\xFAblico de la AUNAP ___________________________________________, de la oficina\n_____________________________, el d\xEDa _________, del mes de ______________ de 202 __, procedi\xF3 a efectuar el decomiso \npreventivo de los siguientes recursos y/o productos pesqueros:\n", 16, 55);
+      doc.setDrawColor(0, 0, 0);
+      doc.rect(15, 50, 186, 15);
+      columns = [{ title: "Nombre científico", dataKey: "nomCientifico" }, { title: "Nombre Común", dataKey: "nomComun" }, { title: "Estado", dataKey: "estado" }, { title: "Presentación", dataKey: "presentacion" }, { title: "Cantidad (UN)", dataKey: "cant" }, { title: "Peso (KG)", dataKey: "peso" }, { title: "Valor Comercial", dataKey: "valor" }];
+      rows = [{ "nomCientifico": me.datos.nameScientific,
+        "nomComun": me.datos.nameCommon,
+        "estado": me.datos.state
+      }];
+      columns1 = [{ title: "Elemento", dataKey: "elemento" }, { title: "Cantidad (UN)", dataKey: "cantidad" }, { title: "Características y estado", dataKey: "caractEstado" }, { title: "Valor Comercial", dataKey: "valorC" }];
+      rows1 = [{ "elemento": me.datos.nameScientific,
+        "cantidad": me.datos.nameCommon,
+        "caractEstado": me.datos.state,
+        "valorC": me.datos.state
+      }];
+      columns2 = [{ title: "MOTIVOS DEL DECOMISO PREVENTIVO", dataKey: "motivos" }];
+      rows2 = [{
+        "motivos": me.datos.nameScientific
 
-        // doc.setFontSize(10);    
-        // doc.text(`        Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${element.date}`, 15, 150 );    
-        // doc.setFontSize(10);
-        // doc.text("NOMBRE FUNCIONARIO AUNAP", 15, 165 );  
-        // doc.setFontSize(10);
-        // doc.text(`Documento de Identidad: ${element.noDocumentId1}`, 15, 170 );  
-        // doc.setFontSize(10);
-        // doc.text("NOMBRE REPRESENTANTE AUTORIDAD ACOMPAÑANTE", 95, 165 );  
-        // doc.setFontSize(10);
-        // doc.text(`Documento de Identidad: ${element.noDocumentId2}`, 95, 170 );  
-        // doc.setFontSize(10);
-        // doc.line(15, 190, 80, 190);
-        // doc.setFontSize(10);
-        // doc.setFontSize(10);
-        // doc.text("Firma", 42, 195 );
-        // doc.text(`No. de Placa o cédula militar: ${element.noPlateCertificate}`, 95, 175 );  
-        // doc.setFontSize(10);
-        // doc.line(95, 190, 160, 190);
-        // doc.setFontSize(10);
-        // doc.text("Firma", 122, 195 );
-        doc.setFontSize(10);
-        doc.text("DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN", 55, 210);
-        doc.setFontSize(10);
-        doc.text("Nombre: " + element.name, 15, 220);
-        doc.setFontSize(10);
-        doc.text("Personer\xEDa Jur\xEDdica: " + element.legalStatus, 15, 225);
-        doc.setFontSize(10);
-        doc.text("Direcci\xF3n: " + element.address, 95, 225);
-        doc.setFontSize(10);
-        doc.text("Representante Legal: " + element.representativeDonation, 15, 230);
-        doc.setFontSize(10);
-        doc.text("C.C.: " + element.identification, 95, 230);
-        doc.setFontSize(10);
-        doc.text("Municipio: " + element.municipality, 15, 235);
-        doc.setFontSize(10);
-        doc.text("Corregimiento: " + element.corregimiento, 95, 235);
-        doc.setFontSize(10);
-        doc.text("Vereda: " + element.place, 15, 240);
-        doc.setFontSize(10);
-        doc.text("Tel\xE9fonos " + element.telephone, 95, 240);
-        doc.setFontSize(10);
-        doc.line(15, 260, 80, 260);
-        doc.setFontSize(10);
-        doc.text("Firma", 15, 265);
+      }];
+      doc.setFontSize(10);
+      doc.text("ESTADO: Fresco entero (FE), Fresco eviscerado (FV), Congelado entero (CE), Congelado eviscerado (CV), \nDescabezado (D), Tronco (TR), Aletas (A), Seco (S), Vivos (V), Otros (especificar). \nPRESENTACI\xD3N: Unidades, zartas, bolsas o bultos, canastas, grupos, otros.\nProcedi\xF3 a efectuar el decomiso preventivo de los siguientes elementos (equipos y/o artes de pesca) asociados a la \nactividad de extracci\xF3n o comercializaci\xF3n de recursos y/o productos pesqueros:", 15, 155);
+      doc.setFontSize(10);
+      doc.text("ELEMENTO: Embarcaci\xF3n, motor, arte de pesca, otro. En caso de artes, especificar tipo (atarraya, chinchorro,\nliso, palangre, otro).", 15, 180);
 
-        doc.autoTable(columns, rows, {
-          // theme: 'grid',
-          margin: { top: 80 },
-          didDrawPage: function didDrawPage() {
-            // doc.text("INFORMACIÓN DEL PROYECTO", 50, 60);
-          }
-        });
-
-        doc.autoTable(columns1, rows1, {
-          // theme: 'grid',
-          margin: { top: 150 },
-          didDrawPage: function didDrawPage() {
-
-            // doc.text("INFORMACIÓN DEL PROYECTO", 50, 60);
-          }
-        });
-
-        doc.autoTable(columns2, rows2, {
-          // theme: 'grid',
-          margin: { top: 150 },
-          didDrawPage: function didDrawPage() {
-
-            // doc.text("INFORMACIÓN DEL PROYECTO", 50, 60);
-          }
-        });
+      doc.autoTable({
+        margin: { top: 72 },
+        head: [['Nombre científico', 'Nombre Común', 'Estado', 'Presentación', 'Cantidad (UN)', 'Peso (KG)', 'Valor Comercial']],
+        body: [[me.datos.nameScientific, me.datos.nameScientific, me.datos.nameScientific, me.datos.nameScientific, me.datos.nameScientific, me.datos.nameScientific]]
       });
+      doc.autoTable({
+        margin: { top: 100 },
+        head: [['Nombre científico', 'Nombre Común', 'Estado', 'Presentación', 'Cantidad (UN)', 'Peso (KG)', 'Valor Comercial']],
+        body: [[me.datos.nameScientific, me.datos.nameScientific, me.datos.nameScientific, me.datos.nameScientific, me.datos.nameScientific, me.datos.nameScientific]]
+      });
+
+      // doc.autoTable(columns, rows, {
+      //   // theme: 'grid',
+      //         margin: { top: 72 },
+      //         didDrawPage: function () {
+      //         },
+      // });     
+
+      // doc.autoTable(columns1, rows1, {
+      //         margin: { top: 120 },
+      //         didDrawPage: function () {
+
+      //         },
+      // });     
+
+      // doc.autoTable(columns2, rows2, {
+      //         margin: { top: 140 },
+      //         didDrawPage: function () {          
+      //         },
+      // });     
       doc.addPage();
 
       //  doc.save("FORMATO ACTA DE DONACIÓN");
@@ -63963,9 +63938,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
           me.datos = table.row($(this).parents('tr')).data();
           me.deleteData(me.datos);
         });
-        $('#dataTable tbody').on('click', '.PDF', function () {
-          // me.datos= table.row( $(this).parents('tr') ).data();
-          me.createPdf(me.datos);
+        $("#dataTable tbody").on("click", ".PDF", function () {
+          me.datos = table.row($(this).parents("tr")).data();
+          me.createPdf();
         });
       });
     }

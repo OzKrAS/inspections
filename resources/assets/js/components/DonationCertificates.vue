@@ -694,7 +694,7 @@ export default {
     
       date: format(now, dateFormat),
 
-      pdf: 0,
+      // pdf: 0,
 
       edo:1,
       tipoAccion: 1,
@@ -895,8 +895,8 @@ export default {
 
     showUpdate(data = []) {
       let me = this;
-      // (this.tipoAccion = 2),(me.listado = 0);
-      (this.tipoAccion = 2),(me.listado = me.pdf);
+      (this.tipoAccion = 2),(me.listado = 0);
+      // (this.tipoAccion = 2),(me.listado = me.pdf);
       (this.id_donationCertificate = data["id"]);
       this.form.noActa = data["noActa"];
       this.form.nameScientific = data["nameScientific"];
@@ -1083,9 +1083,11 @@ export default {
       let me = this;
       var columns = []; var rows = [];
       var doc = new jsPDF('p','mm','letter');
+      (this.id_donationCertificate = data["id"]);
+      console.log("ID " + me.datos.id);
         var logo = new Image();
         logo.src = '/img/logoAUNAP.png';
-        doc.addImage(logo, 'png', 19, 11, 31, 15);
+        doc.addImage(logo, 'png', 20, 10, 33, 15);
         doc.text("FORMATO ACTA DE DONACIÓN", 65, 20);
         // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
         doc.setFont("arial");
@@ -1097,12 +1099,16 @@ export default {
         doc.setFontSize(10);
         doc.text(`En operativo de control desarrollado en _______________________________________________, el suscrito servidor público 
 de la AUNAP ___________________________, de la oficina _________________________, el día ___, del mes de 202___, 
-procedió a efectuar el decomiso preventivo de los recursos y/o productos pesqueros que a continuación se relacionan, 
-por no cumplir con las disposiciones establecidas por la Autoridad Nacional de Pesca y Acuicultura - AUNAP.
+procedió a efectuar el decomiso preventivo de los recursos y/o productos pesqueros que a continuación se relacionan, por no 
+cumplir con las disposiciones establecidas por la Autoridad Nacional de Pesca y Acuicultura - AUNAP.
 
 Por tratarse de productos altamente perecederos y que no pueden ser comercializados, se procede a la donación de los mismos,
 en presencia de la autoridad competente.
-`, 15, 45);
+`, 16, 45);
+        doc.setDrawColor(0,0,0);
+        doc.rect(15, 41, 186, 30);
+        doc.setDrawColor(0,0,0);
+        doc.rect(15, 262, 186, 10);
             columns = [    
               { title: "Nombre científico", dataKey: "nomCientifico" },
               { title: "Nombre Común", dataKey: "nomComun" },
@@ -1119,25 +1125,24 @@ en presencia de la autoridad competente.
               // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
             ]; 
         doc.setFontSize(10);    
-        doc.text(`Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${me.datos['date']}`, 15, 145,  {align: 'justify',lineHeightFactor: 1,maxWidth:180} );    
+        doc.text(`Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${me.datos.date}`, 15, 145,  {align: 'justify',lineHeightFactor: 1,maxWidth:180} );    
         doc.setFontSize(10);
         doc.text("NOMBRE FUNCIONARIO AUNAP", 15, 155 );  
         doc.setFontSize(10);
-        doc.text(`${me.datos['nameOfficial']}`, 15, 160 );  
+        doc.text(`${me.datos.nameOfficial}`, 15, 160 );  
         doc.setFontSize(10);
-        doc.text(`Documento de Identidad: ${me.datos['noDocumentId1']}`, 15, 165 );  
+        doc.text(`Documento de Identidad: ${me.datos.noDocumentId1}`, 15, 165 );  
         doc.setFontSize(10);
         doc.text("NOMBRE REPRESENTANTE AUTORIDAD ACOMPAÑANTE", 95, 155 );  
         doc.setFontSize(10);
-        doc.text(`${me.datos['nameRepresentative']}`, 95, 160 ); 
+        doc.text(`${me.datos.nameRepresentative}`, 95, 160 ); 
         doc.setFontSize(10);
-        doc.text(`Documento de Identidad: ${me.datos['noDocumentId2']}`, 95, 165 );  
+        doc.text(`Documento de Identidad: ${me.datos.noDocumentId2}`, 95, 165 );  
         doc.setFontSize(10);
         doc.line(15, 190, 80, 190);
         doc.setFontSize(10);
-        doc.setFontSize(10);
         doc.text("Firma", 42, 195 );
-        doc.text(`No. de Placa o cédula militar: ${me.datos['noPlateCertificate']}`, 95, 170 );  
+        doc.text(`No. de Placa o cédula militar: ${me.datos.noPlateCertificate}`, 95, 170 );  
         doc.setFontSize(10);
         doc.line(95, 190, 160, 190);
         doc.setFontSize(10);
@@ -1145,27 +1150,30 @@ en presencia de la autoridad competente.
         doc.setFontSize(10);
         doc.text("DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN", 55, 205 );
         doc.setFontSize(10);
-        doc.text(`Nombre: ${me.datos['name']}`, 15, 215 ); 
+        doc.text(`Nombre: ${me.datos.name}`, 15, 215 ); 
         doc.setFontSize(10);
-        doc.text(`Personería Jurídica: ${me.datos['legalStatus']}`, 15, 220 ); 
+        doc.text(`Personería Jurídica: ${me.datos.legalStatus}`, 15, 220 ); 
         doc.setFontSize(10);
-        doc.text(`Dirección: ${me.datos['address']}`, 95, 220 ); 
+        doc.text(`Dirección: ${me.datos.address}`, 95, 220 ); 
         doc.setFontSize(10);
-        doc.text(`Representante Legal: ${me.datos['representativeDonation']}`, 15, 225 ); 
+        doc.text(`Representante Legal: ${me.datos.representativeDonation}`, 15, 225 ); 
         doc.setFontSize(10);
-        doc.text(`C.C.: ${me.datos['identification']}`, 95, 225 ); 
+        doc.text(`C.C.: ${me.datos.identification}`, 95, 225 ); 
         doc.setFontSize(10);
-        doc.text(`Municipio: ${me.datos['municipality']}`, 15, 230 ); 
+        doc.text(`Municipio: ${me.datos.municipality}`, 15, 230 ); 
         doc.setFontSize(10);
-        doc.text(`Corregimiento: ${me.datos['corregimiento']}`, 95, 230 ); 
+        doc.text(`Corregimiento: ${me.datos.corregimiento}`, 95, 230 ); 
         doc.setFontSize(10);
-        doc.text(`Vereda: ${me.datos['place']}`, 15, 235 ); 
+        doc.text(`Vereda: ${me.datos.place}`, 15, 235 ); 
         doc.setFontSize(10);
-        doc.text(`Teléfonos ${me.datos['telephone']}`, 95, 235 );
+        doc.text(`Teléfonos ${me.datos.telephone}`, 95, 235 );
         doc.setFontSize(10);
         doc.line(15, 255, 80, 255);
         doc.setFontSize(10);
         doc.text("Firma", 15, 260 );
+        doc.setFontSize(10);
+        doc.text(`Nota: Con la firma de la presente acta, los intervinientes del acto de Donación dan fe de las buenas
+condiciones organolépticas del producto pesquero donado.`, 16, 266,{align: 'justify',lineHeightFactor: 1,maxWidth:180} );
         
 
         doc.autoTable(columns, rows, {
@@ -1177,7 +1185,7 @@ en presencia de la autoridad competente.
         });     
       //  doc.save("FORMATO ACTA DE DONACIÓN");
       window.open(doc.output('bloburl'))
-      me.pdf = 0;
+      // me.pdf = 0;
     },
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
@@ -1236,11 +1244,11 @@ en presencia de la autoridad competente.
             } );
           $("#dataTable tbody").on("click", ".PDF", function () {
                 me.datos = table.row($(this).parents("tr")).data();
-                me.pdf = 1;
-                me.showUpdate(me.datos);
+                // me.pdf = 1;
+                // me.showUpdate(me.datos);
                 me.createPdf();
           //  console.log(me.datos['id'] + " prueba de datos ID");       
-      });
+            } );
     });
     }
   },

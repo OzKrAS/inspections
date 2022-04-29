@@ -1499,30 +1499,36 @@ export default {
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
-    createPdf () {
+    createPdf (data = []) {
       let me = this;
       var columns = []; var rows = [];
       var columns1 = []; var rows1 = [];
       var columns2 = []; var rows2 = [];
       var doc = new jsPDF('p','mm','letter');
-        this.arrayConfiscationCert.forEach(element => {
+        (this.id_donationCertificate = data["id"]);
+        console.log("ID " + me.datos.id);
+        var logo = new Image();
+        logo.src = '/img/logoAUNAP.png';
+        doc.addImage(logo, 'png', 20, 10, 33, 15);
           doc.text("FORMATO ACTA DE DECOMISO PREVENTIVO", 55, 20);
           // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
           doc.setFont("arial");
           // doc.setFont("arial", "bold");
-          doc.setFontSize(14);
-          doc.text("No. Acta: " + element.noActa, 15, 35 );
+          doc.setFontSize(12);
+          doc.text("No. Acta: " + me.datos.noActa, 15, 35 );
           doc.setFontSize(10);
-          doc.text("Regional: " + element.nameRegional, 15, 45 );
+          doc.text("Regional: " + me.datos.noActa, 15, 45 );
           doc.setFontSize(10);
-          doc.text("Departamento: " + element.departament, 15, 50 );
+          doc.text("Departamento: " + me.datos.noActa, 75, 45 );
           doc.setFontSize(10);
-          doc.text("Municipio: " + element.municipality, 15, 55 );
+          doc.text("Municipio: " + me.datos.noActa, 140, 45 );
           doc.setFontSize(10);
-          doc.text(`        El suscrito servidor público de la AUNAP ___________________________________________, de la oficina
-          _____________________________, el día _________, del mes de ______________ de 202 __, procedió a 
-          efectuar el decomiso preventivo de los siguientes recursos y/o productos pesqueros:
-          `, 15, 65 );
+          doc.text(`El suscrito servidor público de la AUNAP ___________________________________________, de la oficina
+_____________________________, el día _________, del mes de ______________ de 202 __, procedió a efectuar el decomiso 
+preventivo de los siguientes recursos y/o productos pesqueros:
+`, 16, 55 );
+          doc.setDrawColor(0,0,0);
+          doc.rect(15, 50, 186, 15);
               columns = [    
                 { title: "Nombre científico", dataKey: "nomCientifico" },
                 { title: "Nombre Común", dataKey: "nomComun" },
@@ -1534,9 +1540,9 @@ export default {
                   
               ];
               rows = [
-                {"nomCientifico": element.nameScientific,
-                 "nomComun": element.nameCommon,
-                 "estado": element.state
+                {"nomCientifico": me.datos.nameScientific,
+                 "nomComun": me.datos.nameCommon,
+                 "estado": me.datos.state
                 },
                 // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
               ]; 
@@ -1547,10 +1553,10 @@ export default {
                 { title: "Valor Comercial", dataKey: "valorC" },                
               ];
               rows1 = [
-                {"elemento": element.nameScientific,
-                 "cantidad": element.nameCommon,
-                 "caractEstado": element.state,
-                 "valorC": element.state,
+                {"elemento": me.datos.nameScientific,
+                 "cantidad": me.datos.nameCommon,
+                 "caractEstado": me.datos.state,
+                 "valorC": me.datos.state,
                 },
                 // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
               ]; 
@@ -1559,93 +1565,51 @@ export default {
               ];
               rows2 = [
                 {
-                  "motivos": element.nameScientific,
+                  "motivos": me.datos.nameScientific,
+                 
                 },
                 // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
               ]; 
           doc.setFontSize(10);
-          doc.text(`         ESTADO: Fresco entero (FE), Fresco eviscerado (FV), Congelado entero (CE), Congelado eviscerado (CV), 
-          Descabezado (D), Tronco (TR), Aletas (A), Seco (S), Vivos (V), Otros (especificar). 
-          PRESENTACIÓN: Unidades, zartas, bolsas o bultos, canastas, grupos, otros.
-          Procedió a efectuar el decomiso preventivo de los siguientes elementos (equipos y/o artes de pesca) asociados a la 
-          actividad de extracción o comercialización de recursos y/o productos pesqueros:`, 15, 160 );
+          doc.text(`ESTADO: Fresco entero (FE), Fresco eviscerado (FV), Congelado entero (CE), Congelado eviscerado (CV), 
+Descabezado (D), Tronco (TR), Aletas (A), Seco (S), Vivos (V), Otros (especificar). 
+PRESENTACIÓN: Unidades, zartas, bolsas o bultos, canastas, grupos, otros.
+Procedió a efectuar el decomiso preventivo de los siguientes elementos (equipos y/o artes de pesca) asociados a la 
+actividad de extracción o comercialización de recursos y/o productos pesqueros:`, 15, 155 );
           doc.setFontSize(10);
-          doc.text(`         ELEMENTO: Embarcación, motor, arte de pesca, otro. En caso de artes, especificar tipo (atarraya, chinchorro,
-          liso, palangre, otro).`, 15, 180 );
+          doc.text(`ELEMENTO: Embarcación, motor, arte de pesca, otro. En caso de artes, especificar tipo (atarraya, chinchorro,
+liso, palangre, otro).`, 15, 180 );
+
+          doc.autoTable({
+            margin: { top: 72 },
+            head:[['Nombre científico','Nombre Común','Estado','Presentación','Cantidad (UN)','Peso (KG)','Valor Comercial']],
+            body:[[me.datos.nameScientific,me.datos.nameScientific,me.datos.nameScientific,me.datos.nameScientific,me.datos.nameScientific,me.datos.nameScientific]]
+          });
+          doc.autoTable({
+            margin: { top: 100},
+            head:[['Nombre científico','Nombre Común','Estado','Presentación','Cantidad (UN)','Peso (KG)','Valor Comercial']],
+            body:[[me.datos.nameScientific,me.datos.nameScientific,me.datos.nameScientific,me.datos.nameScientific,me.datos.nameScientific,me.datos.nameScientific]]
+          });
  
-  
-          // doc.setFontSize(10);    
-          // doc.text(`        Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${element.date}`, 15, 150 );    
-          // doc.setFontSize(10);
-          // doc.text("NOMBRE FUNCIONARIO AUNAP", 15, 165 );  
-          // doc.setFontSize(10);
-          // doc.text(`Documento de Identidad: ${element.noDocumentId1}`, 15, 170 );  
-          // doc.setFontSize(10);
-          // doc.text("NOMBRE REPRESENTANTE AUTORIDAD ACOMPAÑANTE", 95, 165 );  
-          // doc.setFontSize(10);
-          // doc.text(`Documento de Identidad: ${element.noDocumentId2}`, 95, 170 );  
-          // doc.setFontSize(10);
-          // doc.line(15, 190, 80, 190);
-          // doc.setFontSize(10);
-          // doc.setFontSize(10);
-          // doc.text("Firma", 42, 195 );
-          // doc.text(`No. de Placa o cédula militar: ${element.noPlateCertificate}`, 95, 175 );  
-          // doc.setFontSize(10);
-          // doc.line(95, 190, 160, 190);
-          // doc.setFontSize(10);
-          // doc.text("Firma", 122, 195 );
-          doc.setFontSize(10);
-          doc.text("DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN", 55, 210 );
-          doc.setFontSize(10);
-          doc.text(`Nombre: ${element.name}`, 15, 220 ); 
-          doc.setFontSize(10);
-          doc.text(`Personería Jurídica: ${element.legalStatus}`, 15, 225 ); 
-          doc.setFontSize(10);
-          doc.text(`Dirección: ${element.address}`, 95, 225 ); 
-          doc.setFontSize(10);
-          doc.text(`Representante Legal: ${element.representativeDonation}`, 15, 230 ); 
-          doc.setFontSize(10);
-          doc.text(`C.C.: ${element.identification}`, 95, 230 ); 
-          doc.setFontSize(10);
-          doc.text(`Municipio: ${element.municipality}`, 15, 235 ); 
-          doc.setFontSize(10);
-          doc.text(`Corregimiento: ${element.corregimiento}`, 95, 235 ); 
-          doc.setFontSize(10);
-          doc.text(`Vereda: ${element.place}`, 15, 240 ); 
-          doc.setFontSize(10);
-          doc.text(`Teléfonos ${element.telephone}`, 95, 240 );
-          doc.setFontSize(10);
-          doc.line(15, 260, 80, 260);
-          doc.setFontSize(10);
-          doc.text("Firma", 15, 265 );
+          // doc.autoTable(columns, rows, {
+          //   // theme: 'grid',
+          //         margin: { top: 72 },
+          //         didDrawPage: function () {
+          //         },
+          // });     
           
-
-          doc.autoTable(columns, rows, {
-            // theme: 'grid',
-                  margin: { top: 80 },
-                  didDrawPage: function () {
-                    // doc.text("INFORMACIÓN DEL PROYECTO", 50, 60);
-                  },
-          });     
-          
-          doc.autoTable(columns1, rows1, {
-            // theme: 'grid',
-                  margin: { top: 150 },
-                  didDrawPage: function () {
+          // doc.autoTable(columns1, rows1, {
+          //         margin: { top: 120 },
+          //         didDrawPage: function () {
                     
-                    // doc.text("INFORMACIÓN DEL PROYECTO", 50, 60);
-                  },
-          });     
+          //         },
+          // });     
 
-          doc.autoTable(columns2, rows2, {
-            // theme: 'grid',
-                  margin: { top: 150 },
-                  didDrawPage: function () {
-                    
-                    // doc.text("INFORMACIÓN DEL PROYECTO", 50, 60);
-                  },
-          });     
-        });
+          // doc.autoTable(columns2, rows2, {
+          //         margin: { top: 140 },
+          //         didDrawPage: function () {          
+          //         },
+          // });     
         doc.addPage(); 
             
       //  doc.save("FORMATO ACTA DE DONACIÓN");
@@ -1704,10 +1668,10 @@ export default {
                 me.datos= table.row( $(this).parents('tr') ).data();
                 me.deleteData(me.datos);
             } );
-          $('#dataTable tbody').on( 'click', '.PDF', function () {
-                // me.datos= table.row( $(this).parents('tr') ).data();
-                me.createPdf(me.datos);
-            } );  
+          $("#dataTable tbody").on("click", ".PDF", function () {
+                me.datos = table.row($(this).parents("tr")).data();
+                me.createPdf();    
+            } ); 
     });
     }
   },
