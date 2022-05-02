@@ -48,19 +48,19 @@ class autoFisherController extends Controller
         $autoFisher = AutoFisher::findOrFail($request->id);
         $autoFisher->delete();
     }
-    public function desactivar(Request $request)
-    {
-        if (!$request->ajax()) return redirect('/');
-        $autoFisher = AutoFisher::findOrFail($request->id);
-        $autoFisher->edo = '0';
-        $autoFisher->save();
-    }
+    // public function desactivar(Request $request)
+    // {
+    //     if (!$request->ajax()) return redirect('/');
+    //     $autoFisher = AutoFisher::findOrFail($request->id);
+    //     $autoFisher->edo = '0';
+    //     $autoFisher->save();
+    // }
 
-    public function activar(Request $request)
-    {
-        if (!$request->ajax()) return redirect('/');
-        $autoFisher = AutoFisher::findOrFail($request->id);
-        $autoFisher->edo = '1';
-        $autoFisher->save();
-    }
+    // public function activar(Request $request)
+    // {
+    //     if (!$request->ajax()) return redirect('/');
+    //     $autoFisher = AutoFisher::findOrFail($request->id);
+    //     $autoFisher->edo = '1';
+    //     $autoFisher->save();
+    // }
 }
