@@ -1128,8 +1128,8 @@ export default {
 			this.arrayOr.name = data["nameOrop"];
       this.arrayZoneAuto.id = data["id_zoneAutoFisher"];
 			this.arrayZoneAuto.name = data["nameZoneAutoFisher"];
-      this.arrayFa.id = data["id_fisheryAuthorized"];
-			this.arrayFa.name = data["nameFishery"];
+      // this.arrayFa.id = data["id_fisheryAuthorized"];
+			// this.arrayFa.name = data["nameFishery"];
       this.arrayComp.id = data["id_company"];
 			this.arrayComp.name = data["nameCompany"];
  
@@ -1189,7 +1189,7 @@ export default {
           'id_nationality': this.arrayNation.id,
           'id_orop': this.arrayOr.id,
           'id_zoneAutoFisher': this.arrayZoneAuto.id,
-          'id_fisheryAuthorized': this.arrayFa.id,
+          // 'id_fisheryAuthorized': this.arrayFa.id,
           'id_company': this.arrayComp.id,
 
         })
@@ -1247,7 +1247,7 @@ export default {
           'id_nationality': this.arrayNation.id,
           'id_orop': this.arrayOr.id,
           'id_zoneAutoFisher': this.arrayZoneAuto.id,
-          'id_fisheryAuthorized': this.arrayFa.id,
+          // 'id_fisheryAuthorized': this.arrayFa.id,
           'id_company': this.arrayComp.id,
         })
         .then(function(response) {

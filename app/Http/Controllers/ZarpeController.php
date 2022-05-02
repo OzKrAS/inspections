@@ -24,7 +24,7 @@ class ZarpeController extends Controller
             ->join('nationalities','zarpes.id_nationality','=','nationalities.id')
             ->join('orops','zarpes.id_orop','=','orops.id')
             ->join('auto_fishers','zarpes.id_zoneAutoFisher','=','auto_fishers.id')
-            ->join('fishery_authorizeds','zarpes.id_fisheryAuthorized','=','fishery_authorizeds.id')
+            // ->join('fishery_authorizeds','zarpes.id_fisheryAuthorized','=','fishery_authorizeds.id')
             ->join('companies','zarpes.id_company','=','companies.id')
             ->select('zarpes.id',
                      'zarpes.insNo',
@@ -65,7 +65,7 @@ class ZarpeController extends Controller
                      'zarpes.id_nationality','nationalities.name as nameNationality',
                      'zarpes.id_orop','orops.name as nameOrop',
                      'zarpes.id_zoneAutoFisher','auto_fishers.name as nameZoneAutoFisher',
-                     'zarpes.id_fisheryAuthorized','fishery_authorizeds.name as nameFishery',
+                    //  'zarpes.id_fisheryAuthorized','fishery_authorizeds.name as nameFishery',
                      'zarpes.id_company','companies.name as nameCompany',
                      
             )
@@ -121,7 +121,7 @@ class ZarpeController extends Controller
         $zarpes->id_nationality = $request->id_nationality;       
         $zarpes->id_orop = $request->id_orop;       
         $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;       
-        $zarpes->id_fisheryAuthorized = $request->id_fisheryAuthorized;       
+        // $zarpes->id_fisheryAuthorized = $request->id_fisheryAuthorized;       
         $zarpes->id_company = $request->id_company;       
         $zarpes->save();
     }
@@ -170,7 +170,7 @@ class ZarpeController extends Controller
         $zarpes->id_nationality = $request->id_nationality;  
         $zarpes->id_orop = $request->id_orop;  
         $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;  
-        $zarpes->id_fisheryAuthorized = $request->id_fisheryAuthorized;  
+        // $zarpes->id_fisheryAuthorized = $request->id_fisheryAuthorized;  
         $zarpes->id_company = $request->id_company;  
         $zarpes->save();
     }
