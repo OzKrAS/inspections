@@ -48,6 +48,7 @@ class CreateArrivalsTable extends Migration
             $table->string('locationSystem'); 
             $table->string('inspectorConclusions'); 
             $table->string('additionalComments'); 
+            $table->string('stateRectorPort'); 
             $table->date('dateIns'); 
             $table->date('dateScale'); 
             $table->date('dateZarpe'); 

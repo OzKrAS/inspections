@@ -87,7 +87,7 @@
                     <li class="sidebar-dropdown">
                         <a href="#">
                             <i class="fas fa-clipboard"></i>
-                            <span class="menu-text">Otro Menu</span>                         
+                            <span class="menu-text">Configuración</span>                         
                         </a>
                         <div class="sidebar-submenu">
                           <ul>  

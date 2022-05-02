@@ -63,21 +63,23 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <md-field md-clearable :class="getValidationClass('noActa')">
-                    <label for="first-name">No. Acta</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.noActa"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.noActa.required"
-                    >Olvidaste ingresar el número de acta</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
+                  <div class="md-layout-item md-size-50">
+                    <md-field md-clearable :class="getValidationClass('noActa')">
+                      <label for="first-name">No. Acta</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.noActa"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.noActa.required"
+                      >Olvidaste ingresar el número de acta</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                       <label class="text-muted">Regional</label>
                       <multiselect v-model="arrayRegl" :options="arrayRegional"
@@ -87,41 +89,44 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-
-            
-                  
-
+                </div>
+                <div class="md-layout">  
                   <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
                         <thead>
-                    
-                            <md-field md-clearable :class="getValidationClass('nameScientific1')">
-                              <label for="first-name">Nombre Científico</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.nameScientific1"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.nameScientific1.required"
-                              >Olvidaste ingresar el nombre científico</span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('nameCommon1')">
-                              <label for="first-name">Nombre Común</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.nameCommon1"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.nameCommon1.required"
-                              >Olvidaste ingresar el nombre común</span>
-                            </md-field> 
+                          <div class="md-layout">&nbsp;&nbsp;&nbsp; 
+                            <div class="md-layout-item">                 
+                              <md-field md-clearable :class="getValidationClass('nameScientific1')">
+                                <label for="first-name">Nombre Científico</label>
+                                <md-input
+                                  name="first-name"
+                                  id="first-name"
+                                  autocomplete="given-name"
+                                  v-model="form.nameScientific1"
+                                  :disabled="sending"
+                                />
+                                <span
+                                  class="md-error"
+                                  v-if="!$v.form.nameScientific1.required"
+                                >Olvidaste ingresar el nombre científico</span>
+                              </md-field>
+                            </div>&nbsp;&nbsp;&nbsp;    
+                            <div class="md-layout-item">     
+                              <md-field md-clearable :class="getValidationClass('nameCommon1')">
+                                <label for="first-name">Nombre Común</label>
+                                <md-input
+                                  name="first-name"
+                                  id="first-name"
+                                  autocomplete="given-name"
+                                  v-model="form.nameCommon1"
+                                  :disabled="sending"
+                                />
+                                <span
+                                  class="md-error"
+                                  v-if="!$v.form.nameCommon1.required"
+                                >Olvidaste ingresar el nombre común</span>
+                              </md-field>
+                            </div>&nbsp;&nbsp;&nbsp;    
+                          </div>     
                             <md-field md-clearable :class="getValidationClass('state1')">
                               <label for="first-name">Estado</label>
                               <md-input
@@ -211,7 +216,7 @@
                             <th style="width: 80px">Opciones</th>
                           </tr>
                         </thead>
-                       <tbody>
+                        <tbody>
                           <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
                             <td v-text="target.nameScientific1"></td>
                             <td v-text="target.nameCommon1"></td>
@@ -249,23 +254,7 @@
                           <tbody>
                           </tbody>
                   </table>
-
-
-                  <md-field md-clearable :class="getValidationClass('nameScientific')">
-                    <label for="first-name">Nombre Científico</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameScientific"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameScientific.required"
-                    >Olvidaste ingresar el nombre científico</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
+                </div>                
                   <md-field md-clearable :class="getValidationClass('nameCommon')">
                     <label for="first-name">Nombre Común</label>
                     <md-input
@@ -341,8 +330,8 @@
                     >Olvidaste ingresar el valor comercial</span>
                     <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                   </md-field>
-                  <div class="md-layout-item">
-                        <!-- <label class="negrita">Fecha</label> -->
+                  <div class="md-layout">
+                    <div class="md-layout-item md-size-50">
                         <div>
                           <md-datepicker 
                             v-model="date"
@@ -353,224 +342,261 @@
                             <label>Seleccione Fecha</label>
                           </md-datepicker>
                         </div>
-                  </div> &nbsp;&nbsp;&nbsp; 
-                  <md-field md-clearable :class="getValidationClass('nameOfficial')">
-                    <label for="first-name">Nombre Funcionario AUNAP</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameOfficial"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameOfficial.required"
-                    >Olvidaste ingresar el nombre del funcionario</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('noDocumentId1')">
-                    <label for="first-name">Documento de Identidad</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.noDocumentId1"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.noDocumentId1.required"
-                    >Olvidaste ingresar el número de indentidad</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('nameRepresentative')">
-                    <label for="first-name">Nombre Representante Autoridad Acompañante</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameRepresentative"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameRepresentative.required"
-                    >Olvidaste ingresar el nombre del representante</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('noDocumentId2')">
-                    <label for="first-name">Documento de identidad</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.noDocumentId2"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.noDocumentId2.required"
-                    >Olvidaste ingresar el número de identidad</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('noPlateCertificate')">
-                    <label for="first-name">No. de Placa o Cédula Militar</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.noPlateCertificate"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.noPlateCertificate.required"
-                    >Olvidaste ingresar el número de placa o cédula militar</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-
+                    </div>&nbsp;&nbsp;&nbsp;
+                  </div>
+                  <div class="md-layout">                  
+                    <div class="md-layout-item md-size-70"> 
+                      <md-field md-clearable :class="getValidationClass('nameOfficial')">
+                        <label for="first-name">Nombre Funcionario AUNAP</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.nameOfficial"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.nameOfficial.required"
+                        >Olvidaste ingresar el nombre del funcionario</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>   
+                    </div>&nbsp;&nbsp;&nbsp; 
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('noDocumentId1')">
+                        <label for="first-name">Documento de Identidad</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noDocumentId1"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noDocumentId1.required"
+                        >Olvidaste ingresar el número de indentidad</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>    
+                    </div>&nbsp;&nbsp;&nbsp;    
+                  </div>
+                  <div class="md-layout">
+                    <div class="md-layout-item md-size-70">
+                      <md-field md-clearable :class="getValidationClass('nameRepresentative')">
+                        <label for="first-name">Nombre Representante Autoridad Acompañante</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.nameRepresentative"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.nameRepresentative.required"
+                        >Olvidaste ingresar el nombre del representante</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>        
+                    </div>&nbsp;&nbsp;&nbsp;  
+                    <div class="md-layout-item"> 
+                      <md-field md-clearable :class="getValidationClass('noDocumentId2')">
+                        <label for="first-name">Documento de identidad</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noDocumentId2"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noDocumentId2.required"
+                        >Olvidaste ingresar el número de identidad</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>      
+                    </div>&nbsp;&nbsp;&nbsp;  
+                  </div>
+                  <div class="md-layout">                  
+                    <div class="md-layout-item md-size-50">
+                      <md-field md-clearable :class="getValidationClass('noPlateCertificate')">
+                        <label for="first-name">No. de Placa o Cédula Militar</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noPlateCertificate"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noPlateCertificate.required"
+                        >Olvidaste ingresar el número de placa o cédula militar</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>  
+                    </div>&nbsp;&nbsp;&nbsp;
+                  </div>
+                    
                   <label>DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN</label>
 
-                  <md-field md-clearable :class="getValidationClass('name')">
-                    <label for="first-name">Nombre</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.name"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.name.required"
-                    >Olvidaste ingresar el nombre</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('legalStatus')">
-                    <label for="first-name">Personería Jurídica</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.legalStatus"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.legalStatus.required"
-                    >Olvidaste ingresar el nombre de la personería jurídica</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('address')">
-                    <label for="first-name">Dirección</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.address"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.address.required"
-                    >Olvidaste ingresar la dirección</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('representativeDonation')">
-                    <label for="first-name">Representante Legal</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.representativeDonation"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.representativeDonation.required"
-                    >Olvidaste ingresar la dirección</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('identification')">
-                    <label for="first-name">C.C.</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.identification"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.identification.required"
-                    >Olvidaste ingresar la cedula de ciudadania</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('municipality')">
-                    <label for="first-name">Municipio</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.municipality"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.municipality.required"
-                    >Olvidaste ingresar el nombre del municipio</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('corregimiento')">
-                    <label for="first-name">Corregimiento</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.corregimiento"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.corregimiento.required"
-                    >Olvidaste ingresar el nombre del corregimiento</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('place')">
-                    <label for="first-name">Vereda</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.place"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.place.required"
-                    >Olvidaste ingresar el nombre de la vereda</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('telephone')">
-                    <label for="first-name">Teléfono</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.telephone"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.telephone.required"
-                    >Olvidaste ingresar el numero de télefono</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-
-
-
-                </div>
+                  <div class="md-layout">                  
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('name')">
+                        <label for="first-name">Nombre</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.name"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.name.required"
+                        >Olvidaste ingresar el nombre</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp;    
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('legalStatus')">
+                        <label for="first-name">Personería Jurídica</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.legalStatus"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.legalStatus.required"
+                        >Olvidaste ingresar el nombre de la personería jurídica</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp;  
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('address')">
+                        <label for="first-name">Dirección</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.address"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.address.required"
+                        >Olvidaste ingresar la dirección</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp;  
+                  </div>
+                  <div class="md-layout">                  
+                    <div class="md-layout-item md-size-70">
+                      <md-field md-clearable :class="getValidationClass('representativeDonation')">
+                        <label for="first-name">Representante Legal</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.representativeDonation"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.representativeDonation.required"
+                        >Olvidaste ingresar la dirección</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field> 
+                    </div>&nbsp;&nbsp;&nbsp;
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('identification')">
+                        <label for="first-name">C.C.</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.identification"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.identification.required"
+                        >Olvidaste ingresar la cedula de ciudadania</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>    
+                    </div>&nbsp;&nbsp;&nbsp;    
+                  </div>
+                  <div class="md-layout">                  
+                    <div class="md-layout-item"> 
+                      <md-field md-clearable :class="getValidationClass('municipality')">
+                        <label for="first-name">Municipio</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.municipality"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.municipality.required"
+                        >Olvidaste ingresar el nombre del municipio</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>  
+                    </div>&nbsp;&nbsp;&nbsp;     
+                    <div class="md-layout-item"> 
+                      <md-field md-clearable :class="getValidationClass('corregimiento')">
+                        <label for="first-name">Corregimiento</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.corregimiento"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.corregimiento.required"
+                        >Olvidaste ingresar el nombre del corregimiento</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>  
+                    </div>&nbsp;&nbsp;&nbsp;     
+                    <div class="md-layout-item"> 
+                      <md-field md-clearable :class="getValidationClass('place')">
+                        <label for="first-name">Vereda</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.place"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.place.required"
+                        >Olvidaste ingresar el nombre de la vereda</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>  
+                    </div>&nbsp;&nbsp;&nbsp;     
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('telephone')">
+                        <label for="first-name">Teléfono</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.telephone"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.telephone.required"
+                        >Olvidaste ingresar el numero de télefono</span>
+                        <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      </md-field>   
+                    </div>&nbsp;&nbsp;&nbsp;     
+                  </div>     
               </md-card-content>
             </form>
           </div>

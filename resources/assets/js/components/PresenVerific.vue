@@ -114,20 +114,18 @@
                         </span>
                     </md-field>
                     <div class="md-layout-item">
-                        <!-- <label class="negrita">Fecha Zarpe</label> -->
-                        <div>
-                          <md-datepicker 
-                            v-model="dateZarpe"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                          >
-                            <label>Fecha Zarpe</label>
-                          </md-datepicker>
-                        </div>
-                  </div> &nbsp;&nbsp;&nbsp;
+                          <div>
+                            <md-datepicker 
+                              v-model="dateZarpe"
+                              @input="toString"
+                              md-immediately
+                              :md-model-type="String"
+                            >
+                              <label>Fecha Zarpe</label>
+                            </md-datepicker>
+                          </div>
+                    </div> &nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item">
-                        <!-- <label class="negrita">Fecha Desembarque</label> -->
                         <div>
                           <md-datepicker 
                             v-model="dateDesemb"
@@ -243,7 +241,7 @@
                           </tr>
                         </thead>
                        <tbody>
-                          <tr v-for="(target,index) in arrayTarget2" :key="`target-${index}`">
+                          <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
                             <td v-text="target.element"></td>
                             <td v-text="target.amount2"></td>
                             <td v-text="target.characterState"></td>
@@ -361,6 +359,12 @@ export default {
         cruise: "",
         nameFish: "",
         nameCaptain: "",
+        
+        equipment: "",
+        zarpe: "",
+        desemb: "",
+        photoRecord: "",
+        observation: "",
 
       },
 
@@ -414,6 +418,21 @@ export default {
         required
       },
       nameCaptain: {
+        required
+      },
+      equipment: {
+        required
+      },
+      zarpe: {
+        required
+      },
+      desemb: {
+        required
+      },
+      photoRecord: {
+        required
+      },
+      observation: {
         required
       },
     }

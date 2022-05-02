@@ -65,6 +65,7 @@ class ArrivalController extends Controller
                     'arrivals.dateValidityPat',
                     'arrivals.date',
                     'arrivals.dateValidity',
+                    'arrivals.stateRectorPort',
 
                     'arrivals.id_region','regions.name as nameReg',
                     'arrivals.id_port','ports.name as namePort',
@@ -125,6 +126,7 @@ class ArrivalController extends Controller
         $arrivals->dateValidityPat = $request->dateValidityPat;
         $arrivals->date = $request->date;
         $arrivals->dateValidity = $request->dateValidity;
+        $arrivals->stateRectorPort = $request->stateRectorPort;
 
         $arrivals->id_region = $request->id_region;    
         $arrivals->id_port = $request->id_port;
@@ -182,6 +184,7 @@ class ArrivalController extends Controller
         $arrivals->dateValidityPat = $request->dateValidityPat;
         $arrivals->date = $request->date;
         $arrivals->dateValidity = $request->dateValidity;
+        $arrivals->stateRectorPort = $request->stateRectorPort;
 
         $arrivals->id_region = $request->id_region;    
         $arrivals->id_port = $request->id_port; 

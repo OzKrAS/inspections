@@ -67,6 +67,7 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
+                  <div class="md-layout-item md-size-50">
                     <md-field md-clearable :class="getValidationClass('insNo')">
                         <label for="first-name">Inspección No.</label>
                         <md-input
@@ -82,34 +83,42 @@
                         >Olvidaste ingresar el número de inspección para el arribo
                         </span>
                     </md-field> 
-				              	<label class="text-muted">Región/Municipio</label>
+                  </div>
+                </div>
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <label class="text-muted">Región/Municipio</label>
                         <multiselect v-model="arrayReg" :options="arrayRegion"
                           placeholder="Región/Municipio"
                           :custom-label="nameWithRegion"
                           label="name"
                           track-by="name">
-                        </multiselect>&nbsp;&nbsp;&nbsp;
-                        <label class="text-muted">Puerto/Muelle de Inspección</label>
+                        </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <label class="text-muted">Puerto/Muelle de Inspección</label>
                         <multiselect v-model="arrayPt" :options="arrayPort"
                             placeholder="Puerto/Muelle de Inspección"
                             :custom-label="nameWithPort"
                             label="name"
                             track-by="name">
-                        </multiselect>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item">
-                        <!-- <label class="negrita">Fecha de Inspección</label> -->
-                        <div>
-                          <md-datepicker 
-                            v-model="dateIns"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                            >
-                            <label>Fecha de Inspección</label>
-                          </md-datepicker>
-                        </div>
-                      </div> &nbsp;&nbsp;&nbsp; 
-                      <div class="md-layout-item">
+                        </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>  
+                <div class="md-layout">     
+                  <div class="md-layout-item">
+                    <div>
+                      <md-datepicker 
+                        v-model="dateIns"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Fecha de Inspección</label>
+                      </md-datepicker>
+                    </div>
+                  </div> &nbsp;&nbsp;&nbsp; 
+                  <div class="md-layout-item">
                         <md-field>
                           <label class="text-muted">Recibió Notificación Previa</label>
                           <md-select v-model="notification" name="notification" id="notification" placeholder="Recibió Notificación Previa">
@@ -117,8 +126,8 @@
                             <md-option value="no">No</md-option>
                           </md-select>
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;  
-                      <div class="md-layout-item">
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
                         <md-field>
                           <label class="text-muted">Finalidad Arribo</label>
                           <md-select v-model="finalityArrival" name="finalityArrival" id="finalityArrival" placeholder="Finalidad Arribo">
@@ -126,169 +135,196 @@
                             <md-option value="transito">Tránsito</md-option>
                           </md-select>
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp; 
-
-                         <label>PUERTO, ESTADO RECTOR DE PUERTO</label> 
-
-                          <div class="md-layout-item">
-                            <md-field>
-                              <label class="text-muted">Origen</label>
-                              <md-select v-model="origin" name="origin" id="origin" placeholder="Origen">
-                                <md-option value="caribe/Cartagena">Caribe/Cartagena</md-option>
-                                <md-option value="caribe/Barranquilla">Caribe/Barranquilla</md-option>
-                                <md-option value="pacifico/Bahia Solano">Pacifico/Bahía Solano</md-option>
-                                <md-option value="pacifico/Buenaventura">Pacifico/Buenaventura</md-option>
-                                <md-option value="pacifico/tumaco">Pacífico/Tumaco</md-option>
-                              </md-select>
-                            </md-field>
-                          </div>&nbsp;&nbsp;&nbsp; 
-                          <div class="md-layout-item">
-                          <md-field>
-                            <label class="text-muted">Destino</label>
-                            <md-select v-model="destination" name="destination" id="destination" placeholder="Destino">
-                              <md-option value="caribe/Cartagena">Caribe/Cartagena</md-option>
-                              <md-option value="caribe/Barranquilla">Caribe/Barranquilla</md-option>
-                              <md-option value="pacifico/Bahia Solano">Pacifico/Bahía Solano</md-option>
-                              <md-option value="pacifico/Buenaventura">Pacifico/Buenaventura</md-option>
-                              <md-option value="pacifico/tumaco">Pacífico/Tumaco</md-option>
-                            </md-select>
-                          </md-field>
-                        </div>&nbsp;&nbsp;&nbsp; 
-                        <div class="md-layout-item">
-                          <!-- <label class="negrita">Fecha Última Escala</label> -->
-                          <div>
-                            <md-datepicker 
-                              v-model="dateScale"
-                              @input="toString"
-                              md-immediately
-                              :md-model-type="String"
-                              >
-                              <label>Fecha Última Escala</label>
-                            </md-datepicker>
-                          </div>
-                        </div> &nbsp;&nbsp;&nbsp; 
-                        <div class="md-layout-item">
-                            <label class="text-muted">Puerto de Zarpe</label>
-                            <multiselect v-model="arrayPtZarpe" :options="arrayPort"
-                                placeholder="Puerto de Zarpe"
-                                :custom-label="nameWithPort"
-                                label="name"
-                                track-by="name">
-                            </multiselect>
-                        </div>&nbsp;&nbsp;&nbsp;
-                        <div class="md-layout-item">
-                          <!-- <label class="negrita">Fecha de Zarpe</label> -->
-                          <div>
-                            <md-datepicker 
-                              v-model="dateZarpe"
-                              @input="toString"
-                              md-immediately
-                              :md-model-type="String"
-                              >
-                              <label>Fecha de Zarpe</label>
-                            </md-datepicker>
-                          </div>
-                        </div> &nbsp;&nbsp;&nbsp; 
-                        <div class="md-layout-item">
-                            <label class="text-muted">Puerto de Ultimo Arribo</label>
-                            <multiselect v-model="arrayPtArrival" :options="arrayPort"
-                                placeholder="Puerto de Ultimo Arribo"
-                                :custom-label="nameWithPort"
-                                label="name"
-                                track-by="name">
-                            </multiselect>
-                        </div>&nbsp;&nbsp;&nbsp;
-                        <div class="md-layout-item">
-                          <!-- <label class="negrita">Fecha Último Arribo</label> -->
-                          <div>
-                            <md-datepicker 
-                              v-model="dateLatestArrival"
-                              @input="toString"
-                              md-immediately
-                              :md-model-type="String"
-                              >
-                              <label>Fecha Último Arribo</label>
-                            </md-datepicker>
-                          </div>
-                        </div> &nbsp;&nbsp;&nbsp; 
-                      <div class="md-layout-item">
-                        <md-field>
-                          <label class="text-muted">Faena Realizada En</label>
-                          <md-select v-model="workDone" name="workDone" id="workDone" placeholder="Faena Realizada En">
-                            <md-option value="pesca">Pacífico</md-option>
-                            <md-option value="transito">Caribe</md-option>
-                            <md-option value="transito">San Andres</md-option>
-                          </md-select>
-                        </md-field>
-                      </div>&nbsp;&nbsp;&nbsp; 
-                      <div class="md-layout-item">
-                        <md-field>
-                          <label class="text-muted">Sistema de Localización de Buques/VMS</label>
-                          <md-select v-model="locationSystem" name="locationSystem" id="locationSystem" placeholder="Sistema de Localización de Buques/VMS">
-                            <md-option value="no">No</md-option>
-                            <md-option value="si nacional">Si Nacional</md-option>
-                            <md-option value="si OROP">Si OROP</md-option>
-                          </md-select>
-                        </md-field>
-                      </div>&nbsp;&nbsp;&nbsp; 
-                      <md-field md-clearable :class="getValidationClass('radioCall')">
-                        <label for="first-name">Señal Radiollamada Internacional</label>
-                        <md-input
-                          name="first-name"
-                          id="first-name"
-                          autocomplete="given-name"
-                          v-model="form.radioCall"
-                          :disabled="sending"
-                        />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.radioCall.required"
-                        >Olvidaste ingresar la señal radiollamada internacional</span>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                        <md-field md-clearable :class="getValidationClass('stateRectorPort')">
+                            <label for="first-name">Estado Rector de Puerto.</label>
+                            <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.insNo"
+                            :disabled="sending"
+                            />
+                            <span
+                                class="md-error"
+                                v-if="!$v.form.insNo.required"
+                            >Olvidaste ingresar el estado rector del puerto
+                            </span>
+                        </md-field> 
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>  
+                <div class="md-layout">   
+                  <div class="md-layout-item">
+                      <md-field>
+                        <label class="text-muted">Origen</label>
+                        <md-select v-model="origin" name="origin" id="origin" placeholder="Origen">
+                          <md-option value="caribe/Cartagena">Caribe/Cartagena</md-option>
+                          <md-option value="caribe/Barranquilla">Caribe/Barranquilla</md-option>
+                          <md-option value="pacifico/Bahia Solano">Pacifico/Bahía Solano</md-option>
+                          <md-option value="pacifico/Buenaventura">Pacifico/Buenaventura</md-option>
+                          <md-option value="pacifico/tumaco">Pacífico/Tumaco</md-option>
+                        </md-select>
                       </md-field>
+                  </div>&nbsp;&nbsp;&nbsp; 
+                  <div class="md-layout-item">
+                      <md-field>
+                        <label class="text-muted">Destino</label>
+                        <md-select v-model="destination" name="destination" id="destination" placeholder="Destino">
+                          <md-option value="caribe/Cartagena">Caribe/Cartagena</md-option>
+                          <md-option value="caribe/Barranquilla">Caribe/Barranquilla</md-option>
+                          <md-option value="pacifico/Bahia Solano">Pacifico/Bahía Solano</md-option>
+                          <md-option value="pacifico/Buenaventura">Pacifico/Buenaventura</md-option>
+                          <md-option value="pacifico/tumaco">Pacífico/Tumaco</md-option>
+                        </md-select>
+                      </md-field>  
+                  </div>&nbsp;&nbsp;&nbsp; 
+                  <div class="md-layout-item">
+                      <div>
+                        <md-datepicker 
+                          v-model="dateScale"
+                          @input="toString"
+                          md-immediately
+                          :md-model-type="String"
+                          >
+                          <label>Fecha Última Escala</label>
+                        </md-datepicker>
+                      </div>
+                  </div> &nbsp;&nbsp;&nbsp; 
+                </div>  
+                <div class="md-layout">    
+                  <div class="md-layout-item md-size-70">
+                      <label class="text-muted">Puerto de Zarpe</label>
+                      <multiselect v-model="arrayPtZarpe" :options="arrayPort"
+                          placeholder="Puerto de Zarpe"
+                          :custom-label="nameWithPort"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <div>
+                      <md-datepicker 
+                        v-model="dateZarpe"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Fecha de Zarpe</label>
+                      </md-datepicker>
+                    </div>
+                  </div> &nbsp;&nbsp;&nbsp; 
+                </div>  
+                <div class="md-layout">  
+                  <div class="md-layout-item md-size-70">
+                      <label class="text-muted">Puerto de Ultimo Arribo</label>
+                      <multiselect v-model="arrayPtArrival" :options="arrayPort"
+                          placeholder="Puerto de Ultimo Arribo"
+                          :custom-label="nameWithPort"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <div>
+                      <md-datepicker 
+                        v-model="dateLatestArrival"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Fecha Último Arribo</label>
+                      </md-datepicker>
+                    </div>
+                  </div> &nbsp;&nbsp;&nbsp;   
+                </div>          
+                <div class="md-layout">  
+                  <div class="md-layout-item">
+                    <md-field>
+                      <label class="text-muted">Faena Realizada En</label>
+                      <md-select v-model="workDone" name="workDone" id="workDone" placeholder="Faena Realizada En">
+                        <md-option value="pesca">Pacífico</md-option>
+                        <md-option value="transito">Caribe</md-option>
+                        <md-option value="transito">San Andres</md-option>
+                      </md-select>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp; 
+                  <div class="md-layout-item">
+                    <md-field>
+                      <label class="text-muted">Sistema de Localización de Buques/VMS</label>
+                      <md-select v-model="locationSystem" name="locationSystem" id="locationSystem" placeholder="Sistema de Localización de Buques/VMS">
+                        <md-option value="no">No</md-option>
+                        <md-option value="si nacional">Si Nacional</md-option>
+                        <md-option value="si OROP">Si OROP</md-option>
+                      </md-select>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;  
+                  <div class="md-layout-item">   
+                    <md-field md-clearable :class="getValidationClass('radioCall')">
+                      <label for="first-name">Señal Radiollamada Internacional</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.radioCall"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.radioCall.required"
+                      >Olvidaste ingresar la señal radiollamada internacional</span>
+                    </md-field>    
+                  </div>&nbsp;&nbsp;&nbsp;         
+                </div>
 
-                     <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label>
+                <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label>
 
-                      <md-field md-clearable :class="getValidationClass('noResolution')">
-                        <label for="first-name">No. de Resolición</label>
-                        <md-input
-                          name="first-name"
-                          id="first-name"
-                          autocomplete="given-name"
-                          v-model="form.noResolution"
-                          :disabled="sending"
-                        />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.noResolution.required"
-                        >Olvidaste ingresar el número de resolución</span>
-                      </md-field>
-                      <div class="md-layout-item">
-                        <!-- <label class="negrita">Fecha</label> -->
-                        <div>
-                          <md-datepicker 
-                            v-model="date"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                            >
-                            <label>Seleccione Fecha</label>
-                          </md-datepicker>
-                        </div>
-                      </div> &nbsp;&nbsp;&nbsp; 
-                      <div class="md-layout-item">
-                        <!-- <label class="negrita">Vigencia</label> -->
-                        <div>
-                          <md-datepicker 
-                            v-model="dateValidity"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                            >
-                            <label>Seleccione Fecha Vigencia</label>
-                          </md-datepicker>
-                        </div>
-                      </div> &nbsp;&nbsp;&nbsp; 
-                      <md-field md-clearable :class="getValidationClass('nameBoat')">
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-50">
+                    <md-field md-clearable :class="getValidationClass('noResolution')">
+                      <label for="first-name">No. de Resolición</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.noResolution"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.noResolution.required"
+                      >Olvidaste ingresar el número de resolución</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <div>
+                      <md-datepicker 
+                        v-model="date"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Fecha</label>
+                      </md-datepicker>
+                    </div>
+                  </div> &nbsp;&nbsp;&nbsp; 
+                </div>   
+                  
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <div>
+                      <md-datepicker 
+                        v-model="dateValidity"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Seleccione Fecha Vigencia</label>
+                      </md-datepicker>
+                    </div>
+                  </div> &nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('nameBoat')">
                         <label for="first-name">Nombre Embarcación</label>
                         <md-input
                           name="first-name"
@@ -301,17 +337,21 @@
                           class="md-error"
                           v-if="!$v.form.nameBoat.required"
                         >Olvidaste ingresar un nombre para la embarcación</span>
-                      </md-field>  
-                      <div class="md-layout-item">
-                        <label class="text-muted">Bandera</label>
-                        <multiselect v-model="arrayFg" :options="arrayFlag"
-                            placeholder="Seleccione una bandera"
-                            :custom-label="nameWithFlag"
-                            label="name"
-                            track-by="name">
-                        </multiselect>
-                      </div>&nbsp;&nbsp;&nbsp;
-                      <md-field md-clearable :class="getValidationClass('enrollment')">
+                    </md-field>  
+                  </div> &nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <label class="text-muted">Bandera</label>
+                    <multiselect v-model="arrayFg" :options="arrayFlag"
+                        placeholder="Seleccione una bandera"
+                        :custom-label="nameWithFlag"
+                        label="name"
+                        track-by="name">
+                    </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>  
+                <div class="md-layout"> 
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('enrollment')">
                         <label for="first-name">Matrícula</label>
                         <md-input
                           name="first-name"
@@ -324,8 +364,10 @@
                           class="md-error"
                           v-if="!$v.form.enrollment.required"
                         >Olvidaste ingresar una matrícula</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('noOmi')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('noOmi')">
                         <label for="first-name">No. OMI</label>
                         <md-input
                           name="first-name"
@@ -338,8 +380,10 @@
                           class="md-error"
                           v-if="!$v.form.noOmi.required"
                         >Olvidaste ingresar el identificador OMI</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('noPatent')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('noPatent')">
                         <label for="first-name">No. de Pantente</label>
                         <md-input
                           name="first-name"
@@ -352,21 +396,24 @@
                           class="md-error"
                           v-if="!$v.form.noPatent.required"
                         >Olvidaste ingresar el número de patente</span>
-                      </md-field>
-                      <div class="md-layout-item">
-                        <!-- <label class="negrita">Vigencia Patente</label> -->
-                        <div>
-                          <md-datepicker 
-                            v-model="dateValidityPat"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                            >
-                            <label>Fecha Vigencia Patente</label>
-                          </md-datepicker>
-                        </div>
-                      </div> &nbsp;&nbsp;&nbsp; 
-                      <md-field md-clearable :class="getValidationClass('legalRepre')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <div>
+                      <md-datepicker 
+                        v-model="dateValidityPat"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Fecha Vigencia Patente</label>
+                      </md-datepicker>
+                    </div>
+                  </div>&nbsp;&nbsp;&nbsp; 
+                </div>
+                <div class="md-layout"> 
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('legalRepre')">
                         <label for="first-name">Representante Legal</label>
                         <md-input
                           name="first-name"
@@ -379,8 +426,9 @@
                           class="md-error"
                           v-if="!$v.form.legalRepre.required"
                         >Olvidaste ingresar un nombre para el representante legal</span>
-                      </md-field>
-                      <div class="md-layout-item">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
                       <label class="text-muted">Empresa</label>
                       <multiselect v-model="arrayComp" :options="arrayCompany"
                           placeholder="Seleccione una Empresa"
@@ -389,31 +437,36 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
+                </div>  
+				              	                 
+                <label>PESQUERÍA Y ARTES AUTORIZADOS</label>
+                
+                <div class="md-layout"> 
+                  <div class="md-layout-item">
+                      <label class="text-muted">Pesquería Autorizada</label>
+                      <multiselect v-model="arrayFa" :options="arrayFisheryAuthorized"
+                          placeholder="Pesquería Autorizada"
+                          :custom-label="nameWithFisheryAuthorized"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                      <label class="text-muted">Zona de Pesca Autorizada</label>
+                      <multiselect v-model="arrayZoneAuto" :options="arrayZoneAutoFish"
+                          placeholder="Zona de Pesca Autorizada"
+                          :custom-label="nameWithZoneAutoFish"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp; 
+                </div> 
 
-                  <label>PESQUERÍA Y ARTES AUTORIZADOS</label>
-
-                      <div class="md-layout-item">
-                          <label class="text-muted">Pesquería Autorizada</label>
-                          <multiselect v-model="arrayFa" :options="arrayFisheryAuthorized"
-                              placeholder="Pesquería Autorizada"
-                              :custom-label="nameWithFisheryAuthorized"
-                              label="name"
-                              track-by="name">
-                          </multiselect>
-                      </div>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item">
-                          <label class="text-muted">Zona de Pesca Autorizada</label>
-                          <multiselect v-model="arrayZoneAuto" :options="arrayZoneAutoFish"
-                              placeholder="Zona de Pesca Autorizada"
-                              :custom-label="nameWithZoneAutoFish"
-                              label="name"
-                              track-by="name">
-                          </multiselect>
-                      </div>&nbsp;&nbsp;&nbsp;
-
-                      <label>CARACTERÍSTICAS ARTE DE PESCA</label>
-
-                      <md-field md-clearable :class="getValidationClass('eyeMesh')">
+                <label>CARACTERÍSTICAS ARTE DE PESCA</label>                  
+                      
+                <div class="md-layout"> 
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('eyeMesh')">
                         <label for="first-name">Ojo de Malla (Pulgadas)</label>
                         <md-input
                           name="first-name"
@@ -426,8 +479,10 @@
                           class="md-error"
                           v-if="!$v.form.eyeMesh.required"
                         >Olvidaste ingresar las pulgadas del ojo de malla</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('netWidth')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;       
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('netWidth')">
                         <label for="first-name">Ancho de Red (Brazas)</label>
                         <md-input
                           name="first-name"
@@ -440,8 +495,10 @@
                           class="md-error"
                           v-if="!$v.form.netWidth.required"
                         >Olvidaste ingresar el ancho de red</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('eyeFlake')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;       
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('eyeFlake')">
                         <label for="first-name">Ojo de Malla del Copo (Pulgadas)</label>
                         <md-input
                           name="first-name"
@@ -454,8 +511,12 @@
                           class="md-error"
                           v-if="!$v.form.eyeFlake.required"
                         >Olvidaste ingresar el ojo de malla del copo</span>
-                      </md-field> 
-                      <md-field md-clearable :class="getValidationClass('typeHook')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;       
+                </div>      
+                <div class="md-layout"> 
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('typeHook')">
                         <label for="first-name">Tamaño No. y tipo de Anzuelo</label>
                         <md-input
                           name="first-name"
@@ -468,8 +529,10 @@
                           class="md-error"
                           v-if="!$v.form.typeHook.required"
                         >Olvidaste ingresar un tamaño No. y tipo de anzuelo</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('longNet')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;       
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('longNet')">
                         <label for="first-name">Longitud de la red (Brazas)</label>
                         <md-input
                           name="first-name"
@@ -482,8 +545,10 @@
                           class="md-error"
                           v-if="!$v.form.longNet.required"
                         >Olvidaste ingresar la longitud de la red</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('materialArt')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;       
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('materialArt')">
                         <label for="first-name">Material de Arte de Pesca</label>
                         <md-input
                           name="first-name"
@@ -496,8 +561,12 @@
                           class="md-error"
                           v-if="!$v.form.materialArt.required"
                         >Olvidaste ingresar el material de arte de pesca</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('equipDevi')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;       
+                </div>      
+                <div class="md-layout">  
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('equipDevi')">
                         <label for="first-name">Equipos o Dispositivos Requeridos</label>
                         <md-input
                           name="first-name"
@@ -510,8 +579,10 @@
                           class="md-error"
                           v-if="!$v.form.equipDevi.required"
                         >Olvidaste ingresar equipos o dispositivos requeridos</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('captain')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;      
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('captain')">
                         <label for="first-name">Nombre Capitán de Pesca</label>
                         <md-input
                           name="first-name"
@@ -524,17 +595,21 @@
                           class="md-error"
                           v-if="!$v.form.captain.required"
                         >Olvidaste ingresar un nombre para el capitan</span>
-                      </md-field>
-                      <div class="md-layout-item">
-                          <label class="text-muted">Nacionalidad</label>
-                          <multiselect v-model="arrayNation" :options="arrayNationality"
-                              placeholder="Seleccione una Nacionalidad"
-                              :custom-label="nameWithNationality"
-                              label="name"
-                              track-by="name">
-                          </multiselect>
-                      </div>&nbsp;&nbsp;&nbsp;
-                      <md-field md-clearable :class="getValidationClass('noAllCrew')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;  
+                  <div class="md-layout-item">
+                      <label class="text-muted">Nacionalidad</label>
+                      <multiselect v-model="arrayNation" :options="arrayNationality"
+                          placeholder="Seleccione una Nacionalidad"
+                          :custom-label="nameWithNationality"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;    
+                </div>     
+                <div class="md-layout"> 
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('noAllCrew')">
                         <label for="first-name">No. Total de Tripulantes</label>
                         <md-input
                           name="first-name"
@@ -547,8 +622,10 @@
                           class="md-error"
                           v-if="!$v.form.noAllCrew.required"
                         >Olvidaste ingresar el número total de tripulantes</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('noCrewForeign')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;       
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('noCrewForeign')">
                         <label for="first-name">No. Tripulantes Extranjeros</label>
                         <md-input
                           name="first-name"
@@ -561,8 +638,10 @@
                           class="md-error"
                           v-if="!$v.form.noCrewForeign.required"
                         >Olvidaste ingresar el número de tripulantes extrangeros</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('noCrewNational')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;       
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('noCrewNational')">
                         <label for="first-name">No. Tripulantes Nacionales</label>
                         <md-input
                           name="first-name"
@@ -575,11 +654,15 @@
                           class="md-error"
                           v-if="!$v.form.noCrewNational.required"
                         >Olvidaste ingresar el número de tripulantes nacionales</span>
-                      </md-field>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;       
+                </div>     
 
-                  <label>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</label>
+                <label>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</label>
 
-                      <md-field md-clearable :class="getValidationClass('noDays')">
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('noDays')">
                         <label for="first-name">No. Días de Pesca</label>
                         <md-input
                           name="first-name"
@@ -592,8 +675,10 @@
                           class="md-error"
                           v-if="!$v.form.noDays.required"
                         >Olvidaste ingresar el número de días de pesca</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('noAllHauls')">
+                    </md-field> 
+                  </div>&nbsp;&nbsp;&nbsp;     
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('noAllHauls')">
                         <label for="first-name">No. Total de Lances</label>
                         <md-input
                           name="first-name"
@@ -606,8 +691,10 @@
                           class="md-error"
                           v-if="!$v.form.noAllHauls.required"
                         >Olvidaste ingresar el número total de lances</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('noHaulsNacional')">
+                    </md-field> 
+                  </div>&nbsp;&nbsp;&nbsp;      
+                  <div class="md-layout-item"> 
+                    <md-field md-clearable :class="getValidationClass('noHaulsNacional')">
                         <label for="first-name">No. Lances Nacionales</label>
                         <md-input
                           name="first-name"
@@ -620,8 +707,10 @@
                           class="md-error"
                           v-if="!$v.form.noHaulsNacional.required"
                         >Olvidaste ingresar el número total de lances nacionales</span>
-                      </md-field>
-                      <md-field md-clearable :class="getValidationClass('noHaulsInter')">
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;      
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('noHaulsInter')">
                         <label for="first-name">No. Lances Internacionales</label>
                         <md-input
                           name="first-name"
@@ -634,213 +723,258 @@
                           class="md-error"
                           v-if="!$v.form.noHaulsInter.required"
                         >Olvidaste ingresar el número de lances internacionales</span>
-                      </md-field>
-                      <md-field>
+                    </md-field> 
+                  </div>&nbsp;&nbsp;&nbsp;           
+                </div>      
+                <div class="md-layout"> 
+                  <div class="md-layout-item">
+                    <md-field>
                             <label>Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)</label>
                             <md-textarea v-model="observation"></md-textarea>
-                      </md-field>
+                    </md-field>
+                  </div>    
+                </div>         
 
-                      <label><b>CAPTURA OJETIVO</b></label>
-                      <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                        <thead>
-                            <md-field md-clearable :class="getValidationClass('nameCommon1')">
-                              <label for="first-name">Nombre Común</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.nameCommon1"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.nameCommon1.required"
-                              >Olvidaste ingresar el nombre común</span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('nameScientific1')">
-                              <label for="first-name">Nombre Científico</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.nameScientific1"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.nameScientific1.required"
-                              >Olvidaste ingresar el nombre científico</span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('capture1')">
-                              <label for="first-name">Captura - Ton.</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.capture1"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.capture1.required"
-                              >Olvidaste ingresar la captura el toneladas</span>
-                            </md-field>
-                            <md-button
-                              type="button"
-                              class="md-dense md-raised md-primary"
-                              :disabled="sending"
-                              @click="addItemTarget()"
-                            >Agregar
-                            </md-button>
-                          <tr>
-                            <th>NOMBRE COMÙN</th>              
-                            <th>NOMBRE CIENTÌFICO</th>    
-                            <th>CAPTURA TON.</th>    
-                            <th style="width: 90px">Opciones</th>
-                          </tr>
-                        </thead>
-                       <tbody>
-                          <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
-                            <td v-text="target.nameCommon1"></td>
-                            <td v-text="target.nameScientific1"></td>
-                            <td v-text="target.capture1"></td>
-                            <td>                      
-                              <button
-                                type="button"
-                                class="btn btn-danger btn-sm"
-                                data-tooltip
-                                title="Eliminar"
-                                @click="deleteTarget(index)"
-                              >
-                                <i class="icon-trash"></i>
-                              </button>
-                            </td>
-                          </tr>
-                        </tbody>
-                          <tfoot>
-                            <tr>
-                              <th>NOMBRE COMÙN</th>              
-                              <th>NOMBRE CIENTÌFICO</th>    
-                              <th>CAPTURA TON.</th>    
-                              <th style="width: 90px">Opciones</th>
-                            </tr>
-                          </tfoot>
-                          <tbody>
-                          </tbody>
-                      </table>
-                      <label><b>CAPTURA FAUNA INCIDENTAL</b></label>
-                      <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                        <thead>
-                           <md-field md-clearable :class="getValidationClass('nameCommon2')">
-                              <label for="first-name">Nombre Común</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.nameCommon2"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.nameCommon2.required"
-                              >Olvidaste ingresar el nombre común</span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('nameScientific2')">
-                              <label for="first-name">Nombre Científico</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.nameScientific2"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.nameScientific2.required"
-                              >Olvidaste ingresar el nombre científico</span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('capture2')">
-                              <label for="first-name">Captura - Ton.</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.capture2"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.capture2.required"
-                              >Olvidaste ingresar la captura en toneladas</span>
-                            </md-field>
-                            <md-button
-                              type="button"
-                              v-if="tipoAccion==1"
-                              class="md-dense md-raised md-primary"
-                              :disabled="sending"
-                              @click="addItemFauna()"
-                            >Agregar
-                            </md-button>
-                          <tr>
-                            <th>NOMBRE COMÙN</th>              
-                            <th>NOMBRE CIENTÌFICO</th>    
-                            <th>CAPTURA TON.</th>    
-                            <th style="width: 90px">Opciones</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr v-for="(fauna,index) in arrayFauna" :key="`fauna-${index}`">
-                            <td v-text="fauna.nameCommon2"></td>
-                            <td v-text="fauna.nameScientific2"></td>
-                            <td v-text="fauna.capture2"></td>
-                            <td>  
-                              <button
-                                type="button"
-                                class="btn btn-danger btn-sm"
-                                data-tooltip
-                                title="Eliminar"
-                                @click="deleteFauna(index)"
-                              >
-                                <i class="icon-trash"></i>
-                              </button>
-                            </td>
-                          </tr>
-                        </tbody>
-                          <tfoot>
-                            <tr>
-                              <th>NOMBRE COMÙN</th>              
-                              <th>NOMBRE CIENTÌFICO</th>    
-                              <th>CAPTURA TON.</th>  
-                              <th style="width: 90px">Opciones</th>
-                            </tr>
-                          </tfoot>
-                          <tbody>
-                          </tbody>
-                      </table>
+                <label><b>CAPTURA OJETIVO</b></label>
 
-                      <md-field md-clearable :class="getValidationClass('landedWeight')">
-                        <label for="first-name">Peso Desembarcado Comprobado (ingreso planta proceso)(Ton)</label>
-                        <md-input
-                          name="first-name"
-                          id="first-name"
-                          autocomplete="given-name"
-                          v-model="form.landedWeight"
+                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                  <thead>
+                    <div class="md-layout">&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                        <md-field md-clearable :class="getValidationClass('nameCommon1')">
+                          <label for="first-name">Nombre Común</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.nameCommon1"
+                            :disabled="sending"
+                          />
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.nameCommon1.required"
+                          >Olvidaste ingresar el nombre común</span>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;  
+                      <div class="md-layout-item">
+                        <md-field md-clearable :class="getValidationClass('nameScientific1')">
+                          <label for="first-name">Nombre Científico</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.nameScientific1"
+                            :disabled="sending"
+                          />
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.nameScientific1.required"
+                          >Olvidaste ingresar el nombre científico</span>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;  
+                      <div class="md-layout-item md-size-25">
+                        <md-field md-clearable :class="getValidationClass('capture1')">
+                          <label for="first-name">Captura - Ton.</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.capture1"
+                            :disabled="sending"
+                          />
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.capture1.required"
+                          >Olvidaste ingresar la captura el toneladas</span>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;    
+                    </div>
+                    <div class="md-layout">
+                      <div class="md-layout-item">
+                        <md-button
+                          type="button"
+                          class="md-dense md-raised md-primary"
                           :disabled="sending"
-                        />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.landedWeight.required"
-                        >Olvidaste ingresar el peso desembarcado comprobado</span>
-                      </md-field>
-                      <md-field>
-                            <label>Conclusiones Del Inspector</label>
-                            <md-textarea v-model="inspectorConclusions"></md-textarea>
-                      </md-field>
-                      <md-field>
-                            <label>Comentarios Adicionales (espacio disponible para el capitan)</label>
-                            <md-textarea v-model="additionalComments"></md-textarea>
-                      </md-field>  
-                </div>
+                          @click="addItemTarget()"
+                        >Agregar
+                        </md-button>
+                      </div>&nbsp;&nbsp;&nbsp; 
+                    </div>         
+                    <div class="md-layout">    
+                    </div>      
+                    <tr>
+                      <th>NOMBRE COMÙN</th>              
+                      <th>NOMBRE CIENTÌFICO</th>    
+                      <th>CAPTURA TON.</th>    
+                      <th style="width: 90px">Opciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
+                      <td v-text="target.nameCommon1"></td>
+                      <td v-text="target.nameScientific1"></td>
+                      <td v-text="target.capture1"></td>
+                      <td>                      
+                        <button
+                          type="button"
+                          class="btn btn-danger btn-sm"
+                          data-tooltip
+                          title="Eliminar"
+                          @click="deleteTarget(index)"
+                        >
+                          <i class="icon-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>NOMBRE COMÙN</th>              
+                        <th>NOMBRE CIENTÌFICO</th>    
+                        <th>CAPTURA TON.</th>    
+                        <th style="width: 90px">Opciones</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                <label><b>CAPTURA FAUNA INCIDENTAL</b></label>
+
+                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                  <thead>
+                    <div class="md-layout">&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                        <md-field md-clearable :class="getValidationClass('nameCommon2')">
+                          <label for="first-name">Nombre Común</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.nameCommon2"
+                            :disabled="sending"
+                          />
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.nameCommon2.required"
+                          >Olvidaste ingresar el nombre común</span>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item"> 
+                        <md-field md-clearable :class="getValidationClass('nameScientific2')">
+                          <label for="first-name">Nombre Científico</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.nameScientific2"
+                            :disabled="sending"
+                          />
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.nameScientific2.required"
+                          >Olvidaste ingresar el nombre científico</span>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item md-size-25">
+                        <md-field md-clearable :class="getValidationClass('capture2')">
+                          <label for="first-name">Captura - Ton.</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.capture2"
+                            :disabled="sending"
+                          />
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.capture2.required"
+                          >Olvidaste ingresar la captura en toneladas</span>
+                        </md-field>  
+                      </div>&nbsp;&nbsp;&nbsp;     
+                    </div> 
+                    <div class="md-layout">
+                      <div class="md-layout-item">
+                        <md-button
+                          type="button"
+                          v-if="tipoAccion==1"
+                          class="md-dense md-raised md-primary"
+                          :disabled="sending"
+                          @click="addItemFauna()"
+                        >Agregar
+                        </md-button>
+                      </div>                  
+                    </div>                             
+                    <tr>
+                      <th>NOMBRE COMÙN</th>              
+                      <th>NOMBRE CIENTÌFICO</th>    
+                      <th>CAPTURA TON.</th>    
+                      <th style="width: 90px">Opciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(fauna,index) in arrayFauna" :key="`fauna-${index}`">
+                      <td v-text="fauna.nameCommon2"></td>
+                      <td v-text="fauna.nameScientific2"></td>
+                      <td v-text="fauna.capture2"></td>
+                      <td>  
+                        <button
+                          type="button"
+                          class="btn btn-danger btn-sm"
+                          data-tooltip
+                          title="Eliminar"
+                          @click="deleteFauna(index)"
+                        >
+                          <i class="icon-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>NOMBRE COMÙN</th>              
+                        <th>NOMBRE CIENTÌFICO</th>    
+                        <th>CAPTURA TON.</th>  
+                        <th style="width: 90px">Opciones</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-50">
+                    <md-field md-clearable :class="getValidationClass('landedWeight')">
+                      <label for="first-name">Peso Desembarcado Comprobado (ingreso planta proceso)(Ton)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.landedWeight"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.landedWeight.required"
+                      >Olvidaste ingresar el peso desembarcado comprobado</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp; 
+                </div>  
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field>
+                        <label>Conclusiones Del Inspector</label>
+                        <md-textarea v-model="inspectorConclusions"></md-textarea>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp; 
+                </div>    
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field>
+                        <label>Comentarios Adicionales (espacio disponible para el capitan)</label>
+                        <md-textarea v-model="additionalComments"></md-textarea>
+                    </md-field> 
+                  </div>&nbsp;&nbsp;&nbsp;     
+                </div>                        
               </md-card-content>
             </form>
           </div>
@@ -952,6 +1086,7 @@ export default {
         nameCommon2: "",
         nameScientific2: "",
         capture2: "",
+        stateRectorPort: "COLOMBIA",
       },
 
       observation: "",
@@ -1112,6 +1247,9 @@ export default {
         required
       },
       capture2: {
+        required
+      },
+      stateRectorPort: {
         required
       },
     }
@@ -1396,6 +1534,7 @@ export default {
       this.dateValidityPat = data["dateValidityPat"];
       this.date = data["date"];
       this.dateValidity = data["dateValidity"];
+      this.stateRectorPort = data["stateRectorPort"];
 
       this.arrayReg.id = data["id_region"];
 			this.arrayReg.name = data["nameReg"];
@@ -1464,6 +1603,7 @@ export default {
           locationSystem: this.locationSystem,
           inspectorConclusions :this.inspectorConclusions.toUpperCase(),
           additionalComments :this.additionalComments.toUpperCase(),
+          stateRectorPort :this.stateRectorPort.toUpperCase(),
           dateIns :this.dateIns,
           dateScale :this.dateScale,
           dateZarpe :this.dateZarpe,
@@ -1529,6 +1669,7 @@ export default {
           locationSystem: this.locationSystem,
           inspectorConclusions :this.inspectorConclusions.toUpperCase(),
           additionalComments :this.additionalComments.toUpperCase(),
+          stateRectorPort :this.stateRectorPort.toUpperCase(),
           dateIns :this.dateIns,
           dateScale :this.dateScale,
           dateZarpe :this.dateZarpe,

@@ -68,18 +68,17 @@
               <md-card-content>
                 <div class="md-layout">
                   <div class="md-layout-item">
-                          <!-- <label class="negrita">Fecha</label> -->
-                          <div>
-                            <md-datepicker 
-                              v-model="date"
-                              @input="toString"
-                              md-immediately
-                              :md-model-type="String"
-                              >
-                              <label>Seleccione Fecha</label>
-                            </md-datepicker>
-                          </div>
-                  </div> &nbsp;&nbsp;&nbsp; 
+                      <div>
+                        <md-datepicker 
+                          v-model="date"
+                          @input="toString"
+                          md-immediately
+                          :md-model-type="String"
+                          >
+                          <label>Fecha</label>
+                        </md-datepicker>
+                      </div>
+                  </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                       <label class="text-muted">Regional</label>
                       <multiselect v-model="arrayRegl" :options="arrayRegional"
@@ -88,91 +87,107 @@
                           label="name"
                           track-by="name">
                       </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp; 
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('office')">
+                      <label for="first-name">Oficina</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.office"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.office.required"
+                      >Olvidaste ingresar el nombre de la oficina</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp; 
+                </div>
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('official')">
+                      <label for="first-name">Funcionario</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.official"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.official.required"
+                      >Olvidaste ingresar el nombre del funcionario</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp; 
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('boat')">
+                      <label for="first-name">Embarcación</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.boat"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.boat.required"
+                      >Olvidaste ingresar el nombre de la embarcación</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp; 
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('enrollment')">
+                      <label for="first-name">Matrícula</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.enrollment"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.enrollment.required"
+                      >Olvidaste ingresar el nombre de la matrícula</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp; 
+                </div>
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('outhFhisher')">
+                      <label for="first-name">Pesquería Autorizada</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.outhFhisher"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.outhFhisher.required"
+                      >Olvidaste ingresar el nombre de la pesqueria autorizada</span>
+                    </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('office')">
-                    <label for="first-name">Oficina</label>
-                    <md-input
-                       name="first-name"
-                       id="first-name"
-                       autocomplete="given-name"
-                       v-model="form.office"
-                       :disabled="sending"
-                     />
-                     <span
-                       class="md-error"
-                       v-if="!$v.form.office.required"
-                     >Olvidaste ingresar el nombre de la oficina</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('official')">
-                    <label for="first-name">Funcionario</label>
-                    <md-input
-                       name="first-name"
-                       id="first-name"
-                       autocomplete="given-name"
-                       v-model="form.official"
-                       :disabled="sending"
-                     />
-                     <span
-                       class="md-error"
-                       v-if="!$v.form.official.required"
-                     >Olvidaste ingresar el nombre del funcionario</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('boat')">
-                    <label for="first-name">Embarcación</label>
-                    <md-input
-                       name="first-name"
-                       id="first-name"
-                       autocomplete="given-name"
-                       v-model="form.boat"
-                       :disabled="sending"
-                     />
-                     <span
-                       class="md-error"
-                       v-if="!$v.form.boat.required"
-                     >Olvidaste ingresar el nombre de la embarcación</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('enrollment')">
-                    <label for="first-name">Matrícula</label>
-                    <md-input
-                       name="first-name"
-                       id="first-name"
-                       autocomplete="given-name"
-                       v-model="form.enrollment"
-                       :disabled="sending"
-                     />
-                     <span
-                       class="md-error"
-                       v-if="!$v.form.enrollment.required"
-                     >Olvidaste ingresar el nombre de la matrícula</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('outhFhisher')">
-                    <label for="first-name">Pesquería Autorizada</label>
-                    <md-input
-                       name="first-name"
-                       id="first-name"
-                       autocomplete="given-name"
-                       v-model="form.outhFhisher"
-                       :disabled="sending"
-                     />
-                     <span
-                       class="md-error"
-                       v-if="!$v.form.outhFhisher.required"
-                     >Olvidaste ingresar el nombre de la pesqueria autorizada</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('fishLicense')">
-                    <label for="first-name">Pantente de Pesca</label>
-                    <md-input
-                       name="first-name"
-                       id="first-name"
-                       autocomplete="given-name"
-                       v-model="form.fishLicense"
-                       :disabled="sending"
-                     />
-                     <span
-                       class="md-error"
-                       v-if="!$v.form.fishLicense.required"
-                     >Olvidaste ingresar el nombre de la patente de pesca</span>
-                  </md-field>
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('fishLicense')">
+                      <label for="first-name">Pantente de Pesca</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.fishLicense"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.fishLicense.required"
+                      >Olvidaste ingresar el nombre de la patente de pesca</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                       <label class="text-muted">Empresa</label>
                       <multiselect v-model="arrayComp" :options="arrayCompany"
@@ -182,48 +197,56 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('owner')">
-                    <label for="first-name">Armador</label>
-                    <md-input
-                       name="first-name"
-                       id="first-name"
-                       autocomplete="given-name"
-                       v-model="form.owner"
-                       :disabled="sending"
-                     />
-                     <span
-                       class="md-error"
-                       v-if="!$v.form.owner.required"
-                     >Olvidaste ingresar el nombre del armador</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('fishCaptain')">
-                    <label for="first-name">Capitán de Pesca</label>
-                    <md-input
-                       name="first-name"
-                       id="first-name"
-                       autocomplete="given-name"
-                       v-model="form.fishCaptain"
-                       :disabled="sending"
-                     />
-                     <span
-                       class="md-error"
-                       v-if="!$v.form.fishCaptain.required"
-                     >Olvidaste ingresar el nombre del capitán de pesca</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('location')">
-                    <label for="first-name">Localización</label>
-                    <md-input
-                       name="first-name"
-                       id="first-name"
-                       autocomplete="given-name"
-                       v-model="form.location"
-                       :disabled="sending"
-                     />
-                     <span
-                       class="md-error"
-                       v-if="!$v.form.location.required"
-                     >Olvidaste ingresar el nombre de la localización</span>
-                  </md-field>
+                </div>
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('owner')">
+                      <label for="first-name">Armador</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.owner"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.owner.required"
+                      >Olvidaste ingresar el nombre del armador</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('fishCaptain')">
+                      <label for="first-name">Capitán de Pesca</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.fishCaptain"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.fishCaptain.required"
+                      >Olvidaste ingresar el nombre del capitán de pesca</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('location')">
+                      <label for="first-name">Localización</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.location"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.location.required"
+                      >Olvidaste ingresar el nombre de la localización</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                 </div>
               </md-card-content>
             </form>

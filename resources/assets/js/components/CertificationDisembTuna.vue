@@ -53,7 +53,7 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <div class="md-layout-item">
+                  <div class="md-layout-item md-size-16">
                         <div>
                           <md-datepicker 
                             v-model="date"
@@ -65,7 +65,8 @@
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
+                  <div class="md-layout">
+                    <div class="md-layout-item">
                     <label class="text-muted">Empresa</label>
                       <multiselect v-model="arrayComp" :options="arrayCompany"
                           placeholder="Seleccione una empresa"
@@ -74,6 +75,11 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
+                  </div>
+                </div>
+                <div class="md-layout">
+                  
+                  
                   <md-field md-clearable :class="getValidationClass('nameBoat')">
                     <label for="first-name">Nombre Embarcación</label>
                     <md-input

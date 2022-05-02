@@ -57,93 +57,109 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <md-field md-clearable :class="getValidationClass('noForm')">
-                    <label for="first-name">No. Formulario</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.noForm"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.noForm.required"
-                    >Olvidaste ingresar el número de formulario</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('place')">
-                    <label for="first-name">lugar</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.place"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.place.required"
-                    >Olvidaste ingresar el lugar</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
+                  <div class="md-layout-item md-size-70">
+                    <md-field md-clearable :class="getValidationClass('noForm')">
+                      <label for="first-name">No. Formulario</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.noForm"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.noForm.required"
+                      >Olvidaste ingresar el número de formulario</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
-                        <div>
-                          <md-datepicker 
-                            v-model="date"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                          >
-                            <label>Seleccione Fecha</label>
-                          </md-datepicker>
-                        </div>
-                  </div> &nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('businessColombia')">
-                    <label for="first-name">Empresa Colombia</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.businessColombia"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.businessColombia.required"
-                    >Olvidaste ingresar nombre de la empresa</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field> 
-                  <md-field md-clearable :class="getValidationClass('fullCargo')">
-                    <label for="first-name">Total Carga (Ton.)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.fullCargo"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.fullCargo.required"
-                    >Olvidaste ingresar nombre de la empresa</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field> 
-                  <md-field md-clearable :class="getValidationClass('nameBoatCargo')">
-                    <label for="first-name">Nombre Embarcación de Carga</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameBoatCargo"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameBoatCargo.required"
-                    >Olvidaste ingresar el nombre de la embarcación</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
+                    <md-field md-clearable :class="getValidationClass('place')">
+                      <label for="first-name">lugar</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.place"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.place.required"
+                      >Olvidaste ingresar el lugar</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-16">
+                    <div>
+                      <md-datepicker 
+                        v-model="date"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                      >
+                        <label>Seleccione Fecha</label>
+                      </md-datepicker>
+                    </div>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('businessColombia')">
+                      <label for="first-name">Empresa Colombia</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.businessColombia"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.businessColombia.required"
+                      >Olvidaste ingresar nombre de la empresa</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-15">
+                    <md-field md-clearable :class="getValidationClass('fullCargo')">
+                      <label for="first-name">Total Carga (Ton.)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.fullCargo"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.fullCargo.required"
+                      >Olvidaste ingresar nombre de la empresa</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-70">
+                    <md-field md-clearable :class="getValidationClass('nameBoatCargo')">
+                      <label for="first-name">Nombre Embarcación de Carga</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.nameBoatCargo"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.nameBoatCargo.required"
+                      >Olvidaste ingresar el nombre de la embarcación</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <label class="text-muted">Puerto de Transbordo de la Carga</label>
                       <multiselect v-model="arrayPt" :options="arrayPort"
@@ -171,6 +187,8 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <label class="text-muted">Puerto de Desembarque</label>
                       <multiselect v-model="arrayPtDisemb" :options="arrayPort"
@@ -179,7 +197,7 @@
                           label="name"
                           track-by="name">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;          
+                  </div>&nbsp;&nbsp;&nbsp; 
                   <div class="md-layout-item">
                     <md-field>
                       <label class="text-muted">Área de Operación</label>
@@ -188,34 +206,37 @@
                         <md-option value="pacifico - OPO">Pacifico - OPO</md-option>
                       </md-select>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                    <label class="text-muted">Notificación Previa</label>
                     <md-field>
                       <md-select v-model="notification" name="notification" id="notification" placeholder="Notificación Previa">
                         <md-option value="si">Si</md-option>
                         <md-option value="no">No</md-option>
                       </md-select>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                
+                <label>INFORMACIÓN DE TRANSBORDO SOBRE EMBARCACIONES DONANTES</label>
 
-                  <label>INFORMACIÓN DE TRANSBORDO SOBRE EMBARCACIONES DONANTES</label>
-
-                  <md-field md-clearable :class="getValidationClass('nameBoat')">
-                    <label for="first-name">Nombre Embarcación</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameBoat"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameBoat.required"
-                    >Olvidaste ingresar el nombre de la embarcación</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('nameBoat')">
+                      <label for="first-name">Nombre Embarcación</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.nameBoat"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.nameBoat.required"
+                      >Olvidaste ingresar el nombre de la embarcación</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <label class="text-muted">Bandera</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
@@ -225,176 +246,205 @@
                             track-by="name">
                         </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('noIdOmi')">
-                    <label for="first-name">No. Identificador (OMI)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.noIdOmi"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.noIdOmi.required"
-                    >Olvidaste ingresar el identificador (OMI)</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('placeTransfer')">
-                    <label for="first-name">Lugra de transbordo</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.placeTransfer"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.placeTransfer.required"
-                    >Olvidaste ingresar el lugar de transbordo</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
-                        <div>
-                          <md-datepicker 
-                            v-model="dateTransfer"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                          >
-                            <label>Fecha de Transbordo</label>
-                          </md-datepicker>
-                        </div>
+                    <md-field md-clearable :class="getValidationClass('noIdOmi')">
+                      <label for="first-name">No. Identificador (OMI)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.noIdOmi"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.noIdOmi.required"
+                      >Olvidaste ingresar el identificador (OMI)</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('placeTransfer')">
+                      <label for="first-name">Lugra de transbordo</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.placeTransfer"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.placeTransfer.required"
+                      >Olvidaste ingresar el lugar de transbordo</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                      <div>
+                        <md-datepicker 
+                          v-model="dateTransfer"
+                          @input="toString"
+                          md-immediately
+                          :md-model-type="String"
+                        >
+                          <label>Fecha de Transbordo</label>
+                        </md-datepicker>
+                      </div>
                   </div> &nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('areasCapture')">
-                    <label for="first-name">Áreas de Captura</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.areasCapture"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.areasCapture.required"
-                    >Olvidaste ingresar el nombre de las áreas de captura</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('areasCapture')">
+                      <label for="first-name">Áreas de Captura</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.areasCapture"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.areasCapture.required"
+                      >Olvidaste ingresar el nombre de las áreas de captura</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                
+                <label>PRODUCTO POR ESPECIE (TON.)</label>
 
-                  <label>PRODUCTO POR ESPECIE (TON.)</label>
-
-                  <md-field md-clearable :class="getValidationClass('species')">
-                    <label for="first-name">Especie</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.species"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.species.required"
-                    >Olvidaste ingresar el nombre de la especie</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('shapeProduct')">
-                    <label for="first-name">Forma del Producto</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.shapeProduct"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.shapeProduct.required"
-                    >Olvidaste ingresar el número de indentidad</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('amount')">
-                    <label for="first-name">Cantidad</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.amount"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.amount.required"
-                    >Olvidaste ingresar la cantidad</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('productLanded')">
-                    <label for="first-name">Total Producto Desembarcado</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.productLanded"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.productLanded.required"
-                    >Olvidaste ingresar el número de identidad</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('nameOfficial')">
-                    <label for="first-name">Nombre Funcionario</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameOfficial"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameOfficial.required"
-                    >Olvidaste ingresar el nombre del funcionario</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('nameCaptain')">
-                    <label for="first-name">Nombre Capitán Barco Carguero</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameCaptain"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameCaptain.required"
-                    >Olvidaste ingresar el nombre del capitán del barco</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>   
-                  <md-field md-clearable :class="getValidationClass('nameBusiness')">
-                    <label for="first-name">Nombre Empresa Responsable</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameBusiness"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameBusiness.required"
-                    >Olvidaste ingresar el nombre de la empresa responsable</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field> 
-                  <label>Observaciones</label>
-                  <md-field>
-                        <md-textarea v-model="observation"></md-textarea>
-                  </md-field>   
-
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('species')">
+                      <label for="first-name">Especie</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.species"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.species.required"
+                      >Olvidaste ingresar el nombre de la especie</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('shapeProduct')">
+                      <label for="first-name">Forma del Producto</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.shapeProduct"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.shapeProduct.required"
+                      >Olvidaste ingresar el número de indentidad</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-15">
+                    <md-field md-clearable :class="getValidationClass('amount')">
+                      <label for="first-name">Cantidad</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.amount"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.amount.required"
+                      >Olvidaste ingresar la cantidad</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field> 
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-21">
+                    <md-field md-clearable :class="getValidationClass('productLanded')">
+                      <label for="first-name">Total Producto Desembarcado</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.productLanded"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.productLanded.required"
+                      >Olvidaste ingresar el número de identidad</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field> 
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('nameOfficial')">
+                      <label for="first-name">Nombre Funcionario</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.nameOfficial"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.nameOfficial.required"
+                      >Olvidaste ingresar el nombre del funcionario</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('nameCaptain')">
+                      <label for="first-name">Nombre Capitán Barco Carguero</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.nameCaptain"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.nameCaptain.required"
+                      >Olvidaste ingresar el nombre del capitán del barco</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field> 
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('nameBusiness')">
+                      <label for="first-name">Nombre Empresa Responsable</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.nameBusiness"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.nameBusiness.required"
+                      >Olvidaste ingresar el nombre de la empresa responsable</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">  
+                  <div class="md-layout-item">       
+                    <label>Observaciones</label>
+                    <md-field>
+                          <md-textarea v-model="observation"></md-textarea>
+                    </md-field> 
+                  </div>
                 </div>
               </md-card-content>
             </form>
