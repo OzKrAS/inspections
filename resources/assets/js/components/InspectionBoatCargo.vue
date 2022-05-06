@@ -440,8 +440,8 @@
                 </div>
                 <div class="md-layout">  
                   <div class="md-layout-item">       
-                    <label>Observaciones</label>
                     <md-field>
+                          <label>Observaciones</label>
                           <md-textarea v-model="observation"></md-textarea>
                     </md-field> 
                   </div>

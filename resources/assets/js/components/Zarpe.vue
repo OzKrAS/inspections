@@ -202,9 +202,9 @@
                       </div>
                       <div class="md-layout">
                         <div class="md-layout-item md-size-70" >
-                            <label class="text-muted">Puerto de Ultimo Arribo</label>
+                            <label class="text-muted">Puerto de Último Arribo</label>
                             <multiselect v-model="arrayPtArrival" :options="arrayPort"
-                                placeholder="Seleccione Puerto de Ultimo Arribo"
+                                placeholder="Seleccione Puerto de Último Arribo"
                                 :custom-label="nameWithPort"
                                 label="name"
                                 track-by="name">
@@ -218,7 +218,7 @@
                               md-immediately
                               :md-model-type="String"
                             >
-                              <label>Fecha Ultimo Arribo</label>
+                              <label>Fecha Último Arribo</label>
                             </md-datepicker>
                           </div>
                         </div> &nbsp;&nbsp;&nbsp;
@@ -287,7 +287,7 @@
                         </div>&nbsp;&nbsp;&nbsp; 
                       </div>  
 
-                      <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label>}
+                      <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label>
                   
                   <div class="md-layout">
                     <div class="md-layout-item md-size-50"> 

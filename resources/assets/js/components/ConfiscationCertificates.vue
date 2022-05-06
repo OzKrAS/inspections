@@ -600,11 +600,11 @@
                     </div>
                   </div>&nbsp;&nbsp;&nbsp;  
 
-                  <label>Los recursos, productos pesqueros y/o elementos fueron decomisados cuendo se encontraban en (describa la situación):</label>
 
                   <div class="md-layout">
                     <div class="md-layout-item">
                       <md-field>
+                            <label>Los recursos, productos pesqueros y/o elementos fueron decomisados cuando se encontraban en (describa la situación):</label>
                             <md-textarea v-model="text4"></md-textarea>
                       </md-field>
                     </div>&nbsp;&nbsp;&nbsp;
@@ -897,8 +897,8 @@
                   </div> 
                   <div class="md-layout">
                     <div class="md-layout-item">
-                      <label>Observaciones</label>
                       <md-field>
+                            <label>Observaciones</label>
                             <md-textarea v-model="observation"></md-textarea>
                       </md-field>   
                     </div>    

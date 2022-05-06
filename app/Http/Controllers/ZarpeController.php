@@ -180,5 +180,5 @@ class ZarpeController extends Controller
         if (!$request->ajax()) return redirect('/');
         $zarpes = Zarpe::findOrFail($request->id);
         $zarpes->delete();
-    }
+    } 
 }

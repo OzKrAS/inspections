@@ -127,7 +127,7 @@
                             md-immediately
                             :md-model-type="String"
                           >
-                            <label>Fecha Inicio de Faena</label>
+                            <label>Fecha Fin de Faena</label>
                           </md-datepicker>
                         </div>
                   </div> &nbsp;&nbsp;&nbsp;
@@ -255,8 +255,8 @@
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <label>Observaciones</label>
                   <md-field>
+                        <label>Observaciones</label>
                         <md-textarea v-model="observation"></md-textarea>
                   </md-field>        
                   <md-field md-clearable :class="getValidationClass('nameOfficial')">

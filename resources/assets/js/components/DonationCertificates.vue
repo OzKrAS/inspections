@@ -90,170 +90,182 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
-                <div class="md-layout">  
-                  <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                        <thead>
-                          <div class="md-layout">&nbsp;&nbsp;&nbsp; 
-                            <div class="md-layout-item">                 
-                              <md-field md-clearable :class="getValidationClass('nameScientific1')">
-                                <label for="first-name">Nombre Científico</label>
-                                <md-input
-                                  name="first-name"
-                                  id="first-name"
-                                  autocomplete="given-name"
-                                  v-model="form.nameScientific1"
-                                  :disabled="sending"
-                                />
-                                <span
-                                  class="md-error"
-                                  v-if="!$v.form.nameScientific1.required"
-                                >Olvidaste ingresar el nombre científico</span>
-                              </md-field>
-                            </div>&nbsp;&nbsp;&nbsp;    
-                            <div class="md-layout-item">     
-                              <md-field md-clearable :class="getValidationClass('nameCommon1')">
-                                <label for="first-name">Nombre Común</label>
-                                <md-input
-                                  name="first-name"
-                                  id="first-name"
-                                  autocomplete="given-name"
-                                  v-model="form.nameCommon1"
-                                  :disabled="sending"
-                                />
-                                <span
-                                  class="md-error"
-                                  v-if="!$v.form.nameCommon1.required"
-                                >Olvidaste ingresar el nombre común</span>
-                              </md-field>
-                            </div>&nbsp;&nbsp;&nbsp;    
-                          </div>     
-                            <md-field md-clearable :class="getValidationClass('state1')">
-                              <label for="first-name">Estado</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.state1"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.state1.required"
-                              >Olvidaste ingresar el estado</span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('presentation1')">
-                              <label for="first-name">Presentación</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.presentation1"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.presentation1.required"
-                              >Olvidaste ingresar la presentación</span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('amount1')">
-                              <label for="first-name">Cantidad (UN)</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.amount1"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.amount1.required"
-                              >Olvidaste ingresar la cantidad unitaria</span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('weight1')">
-                              <label for="first-name">Peso (Kg)</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.weight1"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.weight1.required"
-                              >Olvidaste ingresar el peso en kilogramosa</span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('commercialValue1')">
-                              <label for="first-name">Valor Comercial</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.commercialValue1"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.commercialValue1.required"
-                              >Olvidaste ingresar valor comercial</span>
-                            </md-field>
-                            <md-button
-                              type="button"
-                              class="md-dense md-raised md-primary"
-                              :disabled="sending"
-                              @click="addItemTarget()"
-                            >Agregar
-                            </md-button>
-                          <tr>
-                            <th>NOMBRE CIENTÌFICO</th>    
-                            <th>NOMBRE COMÙN</th>              
-                            <th>ESTADO</th>    
-                            <th>PRESENTACIÓN</th>    
-                            <th>CANTIDAD (UN)</th>    
-                            <th>PESO (Kg)</th>    
-                            <th>VALOR COMERCIAL</th>    
-                            <!-- <th>FOTO</th>     -->
-                            <th style="width: 80px">Opciones</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
-                            <td v-text="target.nameScientific1"></td>
-                            <td v-text="target.nameCommon1"></td>
-                            <td v-text="target.state1"></td>
-                            <td v-text="target.presentation1"></td>
-                            <td v-text="target.amount1"></td>
-                            <td v-text="target.weight1"></td>
-                            <td v-text="target.commercialValue1"></td>
-                            <td>                      
-                              <button
-                                type="button"
-                                class="btn btn-danger btn-sm"
-                                data-tooltip
-                                title="Eliminar"
-                                @click="deleteTarget(index)"
-                              >
-                                <i class="icon-trash"></i>
-                              </button>
-                            </td>
-                          </tr>
-                        </tbody>
-                          <tfoot>
-                            <tr>
-                              <th>NOMBRE CIENTÌFICO</th>    
-                              <th>NOMBRE COMÙN</th>              
-                              <th>ESTADO</th>    
-                              <th>PRESENTACIÓN</th>    
-                              <th>CANTIDAD (UN)</th>    
-                              <th>PESO (Kg)</th>    
-                              <th>VALOR COMERCIAL</th>    
-                              <!-- <th>FOTO</th>         -->
-                              <th style="width: 80px">Opciones</th>
-                            </tr>
-                          </tfoot>
-                          <tbody>
-                          </tbody>
-                  </table>
+                <div class="card-body">             
+                  <div class="md-layout"> 
+                    <div class="md-layout-item">                 
+                      <md-field md-clearable :class="getValidationClass('nameScientific1')">
+                        <label for="first-name">Nombre Científico</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.nameScientific1"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.nameScientific1.required"
+                        >Olvidaste ingresar el nombre científico</span>
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp;    
+                    <div class="md-layout-item">     
+                      <md-field md-clearable :class="getValidationClass('nameCommon1')">
+                        <label for="first-name">Nombre Común</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.nameCommon1"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.nameCommon1.required"
+                        >Olvidaste ingresar el nombre común</span>
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp; 
+                    <div class="md-layout-item"> 
+                      <md-field md-clearable :class="getValidationClass('state1')">
+                        <label for="first-name">Estado</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.state1"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.state1.required"
+                        >Olvidaste ingresar el estado</span>
+                      </md-field>  
+                    </div>&nbsp;&nbsp;&nbsp;    
+                  </div> 
+                  <div class="md-layout"> 
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('presentation1')">
+                        <label for="first-name">Presentación</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.presentation1"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.presentation1.required"
+                        >Olvidaste ingresar la presentación</span>
+                      </md-field>  
+                    </div>&nbsp;&nbsp;&nbsp;  
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('amount1')">
+                        <label for="first-name">Cantidad (UN)</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.amount1"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.amount1.required"
+                        >Olvidaste ingresar la cantidad unitaria</span>
+                      </md-field> 
+                    </div>&nbsp;&nbsp;&nbsp;  
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('weight1')">
+                        <label for="first-name">Peso (Kg)</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.weight1"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.weight1.required"
+                        >Olvidaste ingresar el peso en kilogramosa</span>
+                      </md-field>  
+                    </div>&nbsp;&nbsp;&nbsp;  
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('commercialValue1')">
+                        <label for="first-name">Valor Comercial</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.commercialValue1"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.commercialValue1.required"
+                        >Olvidaste ingresar valor comercial</span>
+                      </md-field>  
+                    </div>&nbsp;&nbsp;&nbsp;  
+                  </div>        
+                  <md-button
+                    type="button"
+                    class="md-dense md-raised md-primary"
+                    :disabled="sending"
+                    @click="addItemTarget()"
+                  >Agregar
+                  </md-button>
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                            <thead>
+                              <tr>
+                                <th>NOMBRE CIENTÌFICO</th>    
+                                <th>NOMBRE COMÙN</th>              
+                                <th>ESTADO</th>    
+                                <th>PRESENTACIÓN</th>    
+                                <th>CANTIDAD (UN)</th>    
+                                <th>PESO (Kg)</th>    
+                                <th>VALOR COMERCIAL</th>    
+                                <th style="width: 80px">Opciones</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
+                                <td v-text="target.nameScientific1"></td>
+                                <td v-text="target.nameCommon1"></td>
+                                <td v-text="target.state1"></td>
+                                <td v-text="target.presentation1"></td>
+                                <td v-text="target.amount1"></td>
+                                <td v-text="target.weight1"></td>
+                                <td v-text="target.commercialValue1"></td>
+                                <td>                      
+                                  <button
+                                    type="button"
+                                    class="btn btn-danger btn-sm"
+                                    data-tooltip
+                                    title="Eliminar"
+                                    @click="deleteTarget(index)"
+                                  >
+                                    <i class="icon-trash"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                              <tfoot>
+                                <tr>
+                                  <th>NOMBRE CIENTÌFICO</th>    
+                                  <th>NOMBRE COMÙN</th>              
+                                  <th>ESTADO</th>    
+                                  <th>PRESENTACIÓN</th>    
+                                  <th>CANTIDAD (UN)</th>    
+                                  <th>PESO (Kg)</th>    
+                                  <th>VALOR COMERCIAL</th>    
+                                  <th style="width: 80px">Opciones</th>
+                                </tr>
+                              </tfoot>
+                              <tbody>
+                              </tbody>
+                    </table>   
+                  </div>                
                 </div>                
                   <md-field md-clearable :class="getValidationClass('nameCommon')">
                     <label for="first-name">Nombre Común</label>
@@ -858,11 +870,13 @@ export default {
       }
     },
     validateData() {
+      this.saveData();
       this.$v.$touch();
 
       if (!this.$v.$invalid) {
-        this.saveData();
+        console.log(" validateSave");
         this.clearForm();
+      console.log(" validateSaveSale");
       }
     },
     addItemTarget() {
@@ -922,7 +936,6 @@ export default {
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2),(me.listado = 0);
-      // (this.tipoAccion = 2),(me.listado = me.pdf);
       (this.id_donationCertificate = data["id"]);
       this.form.noActa = data["noActa"];
       this.form.nameScientific = data["nameScientific"];
@@ -991,6 +1004,7 @@ export default {
         });
     }, 
     saveData() {
+      console.log(" metodo guardar");
       let me = this;
 
       axios

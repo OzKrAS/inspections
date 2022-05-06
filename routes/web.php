@@ -24,6 +24,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/main', function () {
         return view('contenido/contenido');
     })->name('main');
+    
 
 
 
@@ -169,6 +170,16 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/processingPlant/delete', 'ProcessingPlantController@destroy');
         Route::get('/processingPlant/selectPorts', 'PortsController@selectPort');
         Route::get('/processingPlant/selectDocks', 'DockController@selectDocks');
+        // DATAjSON
+        Route::get('/zarpeJson', 'DataJsonController@jsonZarpe');
+        Route::get('/ArrivalJson', 'DataJsonController@jsonArrival');
+        Route::get('/detFlapJson', 'DataJsonController@jsonDetFlap');
+        Route::get('/DetInchJson', 'DataJsonController@jsonDetInch');
+        Route::get('/PresenVerificJson', 'DataJsonController@jsonEquipmentDolphin');
+        Route::get('/ConfiscationJson', 'DataJsonController@jsonConfiscation');
+        Route::get('/DonationJson', 'DataJsonController@jsonDonation');
+        Route::get('/InspectionBoatCargoJson', 'DataJsonController@jsonInspectionBoatCargo');
+        Route::get('/CertificationDisembTunaJson', 'DataJsonController@jsonCertificationDisembTuna');
 
 
        

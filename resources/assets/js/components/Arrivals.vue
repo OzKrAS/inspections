@@ -143,12 +143,12 @@
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="form.insNo"
+                            v-model="form.stateRectorPort"
                             :disabled="sending"
                             />
                             <span
                                 class="md-error"
-                                v-if="!$v.form.insNo.required"
+                                v-if="!$v.form.stateRectorPort.required"
                             >Olvidaste ingresar el estado rector del puerto
                             </span>
                         </md-field> 
@@ -282,7 +282,7 @@
                 <div class="md-layout">
                   <div class="md-layout-item md-size-50">
                     <md-field md-clearable :class="getValidationClass('noResolution')">
-                      <label for="first-name">No. de Resolición</label>
+                      <label for="first-name">No. de Resolución</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -1355,6 +1355,7 @@ export default {
       this.form.noHaulsNacional = null;
       this.form.noHaulsInter = null;
       this.form.landedWeight = null;
+      this.form.stateRectorPort = null;
       this.observation = null;
       this.notification = null;
       this.finalityArrival = null;
