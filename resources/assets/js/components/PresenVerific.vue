@@ -152,85 +152,99 @@
                         >Olvidaste ingresar el nombre del capitán</span>
                     </md-field>
 
-                    <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                        <thead>                  
-                            <md-field md-clearable :class="getValidationClass('equipment')">
-                              <label for="first-name">Equipo</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.equipment"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.equipment.required"
-                              >Olvidaste ingresar el nombre</span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('zarpe')">
-                              <label for="first-name">Zarpe</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.zarpe"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.zarpe.required"
-                              >Olvidaste ingresar la cantidad unitaria</span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('desemb')">
-                              <label for="first-name">Desembarque</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.desemb"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.desemb.required"
-                              >Olvidaste ingresar </span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('photoRecord')">
-                              <label for="first-name">Registro Fotográfico</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.photoRecord"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.photoRecord.required"
-                              >Olvidaste ingresar </span>
-                            </md-field>
-                            <md-field md-clearable :class="getValidationClass('observation')">
-                              <label for="first-name">Observaciones</label>
-                              <md-input
-                                name="first-name"
-                                id="first-name"
-                                autocomplete="given-name"
-                                v-model="form.observation"
-                                :disabled="sending"
-                              />
-                              <span
-                                class="md-error"
-                                v-if="!$v.form.observation.required"
-                              >Olvidaste ingresar </span>
-                            </md-field>
-                            <md-button
-                              type="button"
-                              class="md-dense md-raised md-primary"
-                              :disabled="sending"
-                              @click="addItemTarget()"
-                            >Agregar
-                            </md-button>
+                    
+                        <div class="card-body">   
+                          <div class="md-layout">
+                            <div class="md-layout-item">
+                              <md-field md-clearable :class="getValidationClass('equipment')">
+                                <label for="first-name">Equipo</label>
+                                <md-input
+                                  name="first-name"
+                                  id="first-name"
+                                  autocomplete="given-name"
+                                  v-model="form.equipment"
+                                  :disabled="sending"
+                                />
+                                <span
+                                  class="md-error"
+                                  v-if="!$v.form.equipment.required"
+                                >Olvidaste ingresar el nombre</span>
+                              </md-field>
+                            </div>&nbsp;&nbsp;&nbsp;                  
+                            <div class="md-layout-item">
+                              <md-field md-clearable :class="getValidationClass('zarpe')">
+                                <label for="first-name">Zarpe</label>
+                                <md-input
+                                  name="first-name"
+                                  id="first-name"
+                                  autocomplete="given-name"
+                                  v-model="form.zarpe"
+                                  :disabled="sending"
+                                />
+                                <span
+                                  class="md-error"
+                                  v-if="!$v.form.zarpe.required"
+                                >Olvidaste ingresar la cantidad unitaria</span>
+                              </md-field>
+                            </div>&nbsp;&nbsp;&nbsp;                  
+                            <div class="md-layout-item">
+                              <md-field md-clearable :class="getValidationClass('desemb')">
+                                <label for="first-name">Desembarque</label>
+                                <md-input
+                                  name="first-name"
+                                  id="first-name"
+                                  autocomplete="given-name"
+                                  v-model="form.desemb"
+                                  :disabled="sending"
+                                />
+                                <span
+                                  class="md-error"
+                                  v-if="!$v.form.desemb.required"
+                                >Olvidaste ingresar </span>
+                              </md-field>
+                            </div>&nbsp;&nbsp;&nbsp;                 
+                            <div class="md-layout-item">
+                              <md-field md-clearable :class="getValidationClass('photoRecord')">
+                                <label for="first-name">Registro Fotográfico</label>
+                                <md-input
+                                  name="first-name"
+                                  id="first-name"
+                                  autocomplete="given-name"
+                                  v-model="form.photoRecord"
+                                  :disabled="sending"
+                                />
+                                <span
+                                  class="md-error"
+                                  v-if="!$v.form.photoRecord.required"
+                                >Olvidaste ingresar </span>
+                              </md-field>
+                            </div>&nbsp;&nbsp;&nbsp;                 
+                            <div class="md-layout-item">
+                              <md-field md-clearable :class="getValidationClass('observation')">
+                                <label for="first-name">Observaciones</label>
+                                <md-input
+                                  name="first-name"
+                                  id="first-name"
+                                  autocomplete="given-name"
+                                  v-model="form.observation"
+                                  :disabled="sending"
+                                />
+                                <span
+                                  class="md-error"
+                                  v-if="!$v.form.observation.required"
+                                >Olvidaste ingresar </span>
+                              </md-field>
+                            </div>&nbsp;&nbsp;&nbsp;                 
+                          </div>                  
+                          <md-button
+                            type="button"
+                            class="md-dense md-raised md-primary"
+                            :disabled="sending"
+                            @click="addItemTarget()"
+                          >Agregar
+                          </md-button>
+                      <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">      
+                        <thead>    
                           <tr>
                             <th>EQUIPO</th>    
                             <th>ZARPE (S/N)</th>    
@@ -272,7 +286,7 @@
                           <tbody>
                           </tbody>
                     </table>
-
+                  </div>  
                 </div>
               </md-card-content>
             </form>

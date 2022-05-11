@@ -12,6 +12,52 @@ use App\Persona;
 
 class UserController extends Controller
 {
+    private $apiToken;
+    public function __construct()
+    {
+    $this->apiToken = uniqid(base64_encode(str_random(60)));
+    }
+    public function login(Request $request){
+        $data = $request->json()->all();
+        $usuario = User::where('usuario', '=', $data['usuario'])->get();
+        if (count($usuario) == 0) {
+            $user->api_token = Str::random(100);
+            $user->save();
+            return response()->json([
+                'res' => true,
+                'token'=> $user->api_token, 
+                'message' => 'bienvenido al sistema'
+            ],200);
+        }
+
+        if( password_verify( $data['password'],$usuario[0]->password)){
+            $update = User::find($usuario[0]->id);
+            $update->api_token = $this->apiToken;
+            $update->save();
+        
+            $array = array(
+            'res' => false,
+            "id" => $usuario[0]->id,
+            "api_token" => $update->api_token,
+            'message' => 'bienvenido al json'
+            );
+            return response()->json($array,201);
+        
+        }
+        
+        else {
+        return response()->json(['error' => 'Unauthorized'], 401, []); }
+    }
+    public function logout (){
+        $user = auth()->user();
+        $user->api_token = null;
+        $user->save();
+
+        return response()->json([
+            'res' => true,
+            'message' => 'sesión cerrada'
+        ],200);
+    }
     public function index(Request $request)
     {
         //if (!$request->ajax()) return redirect('/');
@@ -76,6 +122,17 @@ class UserController extends Controller
         } catch (Exception $e){
             DB::rollBack();
         }
+    }
+
+    public function store1 (Request $request) {
+       $input = $request -> all();
+       $input['password'] = Hash::make($request -> password);
+
+       User::create($input);
+       return response()->json([
+           'res' => true,
+           'message' => 'Usuario creado correctamente',
+       ],200);
     }
 
     public function update(Request $request)

@@ -11,7 +11,7 @@ class PortsController extends Controller
 
     public function index(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+      //  if (!$request->ajax()) return redirect('/');
         $port = Ports::orderBy('name', 'asc')->get();
 
         return [     
@@ -28,7 +28,7 @@ class PortsController extends Controller
     } 
     public function store(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+       // if (!$request->ajax()) return redirect('/');
         $port = new Ports();
         $port->name = $request->name;    
         $port->save();

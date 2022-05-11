@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->foreign('idrol')->references('id')->on('roles');
             $table->integer('id_usuario');
             $table->string('nom');
+            $table->string('api_token',100)->nullable();
 
 
             $table->rememberToken();

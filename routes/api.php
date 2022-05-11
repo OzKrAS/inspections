@@ -13,6 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/users', function (Request $request) {
     return $request->user();
 });
+Route::group(['middleware' => 'auth:api'], function (){
+    Route::get('/zarpeJson', 'DataJsonController@jsonZarpe');
+    Route::get('/donationCertificates', 'DonationCertificateController@index');
+    Route::get('/ports', 'PortsController@index');
+    Route::post('/ports/save', 'PortsController@store');
+    Route::post('/checkDetFlaps/save', 'CheckDetFlapController@store');
+    Route::put('/checkDetFlaps/update', 'CheckDetFlapController@update');
+    Route::post('/checkDetFlaps/delete', 'CheckDetFlapController@destroy');
+    Route::post('/logout', 'UserController@logout');  
+});
+Route::post('/user', 'UserController@login');

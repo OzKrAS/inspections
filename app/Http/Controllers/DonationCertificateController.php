@@ -10,7 +10,7 @@ class DonationCertificateController extends Controller
 {
     public function index(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+      //  if (!$request->ajax()) return redirect('/');
         
         $donations = DonationCertificate::join('regionals','donation_certificates.id_regional','=','regionals.id')
             ->select('donation_certificates.id',

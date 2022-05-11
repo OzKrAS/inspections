@@ -120,11 +120,11 @@
                       >Olvidaste ingresar el nombre del municipio</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;      
-                </div>   
-                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                      <thead>
-                  
-                          <md-field md-clearable :class="getValidationClass('nameScientific1')">
+                </div>
+                <div class="card-body">
+                    <div class="md-layout">
+                      <div class="md-layout-item">
+                        <md-field md-clearable :class="getValidationClass('nameScientific1')">
                             <label for="first-name">Nombre Científico</label>
                             <md-input
                               name="first-name"
@@ -137,8 +137,10 @@
                               class="md-error"
                               v-if="!$v.form.nameScientific1.required"
                             >Olvidaste ingresar el nombre científico</span>
-                          </md-field>
-                          <md-field md-clearable :class="getValidationClass('nameCommon1')">
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                        <md-field md-clearable :class="getValidationClass('nameCommon1')">
                             <label for="first-name">Nombre Común</label>
                             <md-input
                               name="first-name"
@@ -151,98 +153,117 @@
                               class="md-error"
                               v-if="!$v.form.nameCommon1.required"
                             >Olvidaste ingresar el nombre común</span>
-                          </md-field> 
-                          <md-field md-clearable :class="getValidationClass('state1')">
-                            <label for="first-name">Estado</label>
-                            <md-input
-                              name="first-name"
-                              id="first-name"
-                              autocomplete="given-name"
-                              v-model="form.state1"
-                              :disabled="sending"
-                            />
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.state1.required"
-                            >Olvidaste ingresar el estado</span>
-                          </md-field>
-                          <md-field md-clearable :class="getValidationClass('presentation1')">
-                            <label for="first-name">Presentación</label>
-                            <md-input
-                              name="first-name"
-                              id="first-name"
-                              autocomplete="given-name"
-                              v-model="form.presentation1"
-                              :disabled="sending"
-                            />
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.presentation1.required"
-                            >Olvidaste ingresar la presentación</span>
-                          </md-field>
-                          <md-field md-clearable :class="getValidationClass('amount1')">
-                            <label for="first-name">Cantidad (UN)</label>
-                            <md-input
-                              name="first-name"
-                              id="first-name"
-                              autocomplete="given-name"
-                              v-model="form.amount1"
-                              :disabled="sending"
-                            />
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.amount1.required"
-                            >Olvidaste ingresar la cantidad unitaria</span>
-                          </md-field>
-                          <md-field md-clearable :class="getValidationClass('AverageSize')">
-                            <label for="first-name">Promedio Talla (Cm)</label>
-                            <md-input
-                              name="first-name"
-                              id="first-name"
-                              autocomplete="given-name"
-                              v-model="form.AverageSize"
-                              :disabled="sending"
-                            />
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.AverageSize.required"
-                            >Olvidaste ingresar el promedio talla en centimetros</span>
-                          </md-field>
-                          <md-field md-clearable :class="getValidationClass('weight1')">
-                            <label for="first-name">Peso (Kg)</label>
-                            <md-input
-                              name="first-name"
-                              id="first-name"
-                              autocomplete="given-name"
-                              v-model="form.weight1"
-                              :disabled="sending"
-                            />
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.weight1.required"
-                            >Olvidaste ingresar el peso en kilogramosa</span>
-                          </md-field>
-                          <md-field md-clearable :class="getValidationClass('commercialValue1')">
-                            <label for="first-name">Valor Comercial</label>
-                            <md-input
-                              name="first-name"
-                              id="first-name"
-                              autocomplete="given-name"
-                              v-model="form.commercialValue1"
-                              :disabled="sending"
-                            />
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.commercialValue1.required"
-                            >Olvidaste ingresar valor comercial</span>
-                          </md-field>
-                          <md-button
-                            type="button"
-                            class="md-dense md-raised md-primary"
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                    </div>  
+                    <div class="md-layout">
+                      <div class="md-layout-item">
+                        <md-field md-clearable :class="getValidationClass('state1')">
+                          <label for="first-name">Estado</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.state1"
                             :disabled="sending"
-                            @click="addItemTarget()"
-                          >Agregar
-                          </md-button>
+                          />
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.state1.required"
+                          >Olvidaste ingresar el estado</span>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                        <md-field md-clearable :class="getValidationClass('presentation1')">
+                          <label for="first-name">Presentación</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.presentation1"
+                            :disabled="sending"
+                          />
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.presentation1.required"
+                          >Olvidaste ingresar la presentación</span>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                        <md-field md-clearable :class="getValidationClass('amount1')">
+                          <label for="first-name">Cantidad (UN)</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.amount1"
+                            :disabled="sending"
+                          />
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.amount1.required"
+                          >Olvidaste ingresar la cantidad unitaria</span>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                        <md-field md-clearable :class="getValidationClass('AverageSize')">
+                          <label for="first-name">Promedio Talla (Cm)</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.AverageSize"
+                            :disabled="sending"
+                          />
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.AverageSize.required"
+                          >Olvidaste ingresar el promedio talla en centimetros</span>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                        <md-field md-clearable :class="getValidationClass('weight1')">
+                          <label for="first-name">Peso (Kg)</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.weight1"
+                            :disabled="sending"
+                          />
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.weight1.required"
+                          >Olvidaste ingresar el peso en kilogramosa</span>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                        <md-field md-clearable :class="getValidationClass('commercialValue1')">
+                          <label for="first-name">Valor Comercial</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.commercialValue1"
+                            :disabled="sending"
+                          />
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.commercialValue1.required"
+                          >Olvidaste ingresar valor comercial</span>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <md-button
+                      type="button"
+                      class="md-dense md-raised md-primary"
+                      :disabled="sending"
+                      @click="addItemTarget()"
+                    >Agregar
+                    </md-button>
+                  <div class="table-responsive">        
+                    <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                      <thead>    
                         <tr>
                           <th>NOMBRE CIENTÌFICO</th>    
                           <th>NOMBRE COMÙN</th>              
@@ -295,73 +316,88 @@
                         </tfoot>
                         <tbody>
                         </tbody>
-                </table>
+                    </table>
+                  </div>  
+                </div>  
 
-                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                      <thead>                  
-                          <md-field md-clearable :class="getValidationClass('element')">
-                            <label for="first-name">Elemento</label>
-                            <md-input
-                              name="first-name"
-                              id="first-name"
-                              autocomplete="given-name"
-                              v-model="form.element"
-                              :disabled="sending"
-                            />
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.element.required"
-                            >Olvidaste ingresar el nombre del elemento</span>
-                          </md-field>
-                          <md-field md-clearable :class="getValidationClass('amount2')">
-                            <label for="first-name">Cantidad (UN)</label>
-                            <md-input
-                              name="first-name"
-                              id="first-name"
-                              autocomplete="given-name"
-                              v-model="form.amount2"
-                              :disabled="sending"
-                            />
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.amount2.required"
-                            >Olvidaste ingresar la cantidad unitaria</span>
-                          </md-field>
-                          <md-field md-clearable :class="getValidationClass('characterState')">
-                            <label for="first-name">Características y Estado</label>
-                            <md-input
-                              name="first-name"
-                              id="first-name"
-                              autocomplete="given-name"
-                              v-model="form.characterState"
-                              :disabled="sending"
-                            />
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.characterState.required"
-                            >Olvidaste ingresar las características y estado</span>
-                          </md-field>
-                          <md-field md-clearable :class="getValidationClass('commercialValue2')">
-                            <label for="first-name">Valor Comercial</label>
-                            <md-input
-                              name="first-name"
-                              id="first-name"
-                              autocomplete="given-name"
-                              v-model="form.commercialValue2"
-                              :disabled="sending"
-                            />
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.commercialValue2.required"
-                            >Olvidaste ingresar valor comercial</span>
-                          </md-field>
-                          <md-button
-                            type="button"
-                            class="md-dense md-raised md-primary"
-                            :disabled="sending"
-                            @click="addItemTarget2()"
-                          >Agregar
-                          </md-button>
+                <div class="card-body">
+                  <div class="md-layout">
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('element')">
+                        <label for="first-name">Elemento</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.element"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.element.required"
+                        >Olvidaste ingresar el nombre del elemento</span>
+                      </md-field>  
+                    </div>&nbsp;&nbsp;&nbsp;                       
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('amount2')">
+                        <label for="first-name">Cantidad (UN)</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.amount2"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.amount2.required"
+                        >Olvidaste ingresar la cantidad unitaria</span>
+                      </md-field>  
+                    </div>&nbsp;&nbsp;&nbsp;                       
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('characterState')">
+                        <label for="first-name">Características y Estado</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.characterState"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.characterState.required"
+                        >Olvidaste ingresar las características y estado</span>
+                      </md-field>  
+                    </div>&nbsp;&nbsp;&nbsp;                       
+                    <div class="md-layout-item"> 
+                      <md-field md-clearable :class="getValidationClass('commercialValue2')">
+                        <label for="first-name">Valor Comercial</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.commercialValue2"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.commercialValue2.required"
+                        >Olvidaste ingresar valor comercial</span>
+                      </md-field> 
+                    </div>&nbsp;&nbsp;&nbsp;                       
+                                   
+                  </div>                       
+                  <md-button
+                    type="button"
+                    class="md-dense md-raised md-primary"
+                    :disabled="sending"
+                    @click="addItemTarget2()"
+                  >Agregar
+                  </md-button>
+                  <div class="table-responsive">  
+                    <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                      <thead>     
                         <tr>
                           <th>ELEMENTO</th>    
                           <th>CANTIDAD (UN)</th>    
@@ -403,7 +439,9 @@
                         </tfoot>
                         <tbody>
                         </tbody>
-                </table>
+                    </table>
+                  </div>  
+                </div>  
 
                   <md-field md-clearable :class="getValidationClass('nameScientific')">
                     <label for="first-name">Nombre Científico</label>
@@ -584,9 +622,7 @@
                       <multiselect 
                         v-model="arrayReasons" 
                         :options="arrayValue" 
-                        tag-placeholder="Add this as new tag"
                         :multiple="true" 
-                        :taggable="true"
                         :close-on-select="false" 
                         :clear-on-select="false" 
                         :preserve-search="true" 
@@ -594,13 +630,9 @@
                         label="name" 
                         track-by="name" 
                         :preselect-first="true">
-                        @tag="addTag"
                       </multiselect>
-                      <!-- <pre class="language-json"><code>{{ arrayReasons  }}</code></pre> -->
                     </div>
-                  </div>&nbsp;&nbsp;&nbsp;  
-
-
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout">
                     <div class="md-layout-item">
                       <md-field>
@@ -1205,14 +1237,14 @@ export default {
 		Multiselect
 	},
   methods: {
-    addTag (newTag) {
-      const tag = {
-        name: newTag,
-        id: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
-      }
-      this.arrayRegional.push(tag)
-      this.arrayReasons.push(tag)
-    },
+    // addTag (newTag) {
+    //   const tag = {
+    //     name: newTag,
+    //     id: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+    //   }
+    //   this.arrayRegional.push(tag)
+    //   this.arrayReasons.push(tag)
+    // },
     alerta() {
        alert('test');
     },   

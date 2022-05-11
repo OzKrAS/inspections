@@ -45158,7 +45158,9 @@ var render = function() {
                               "div",
                               { staticClass: "md-layout-item" },
                               [
-                                _c("label", [_vm._v("Pesquería Autorizada")]),
+                                _c("label", { staticClass: "text-muted" }, [
+                                  _vm._v("Pesquería Autorizada")
+                                ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
                                   attrs: {
@@ -46042,6 +46044,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -50103,201 +50107,496 @@ var render = function() {
                           _c("label", [_c("b", [_vm._v("CAPTURA OJETIVO")])]),
                           _vm._v(" "),
                           _c(
-                            "table",
-                            {
-                              staticClass:
-                                "table table-striped table-bordered display",
-                              attrs: {
-                                id: "dataTable",
-                                width: "50%",
-                                cellspacing: "0"
-                              }
-                            },
+                            "div",
+                            { staticClass: "card-body" },
                             [
-                              _c("thead", [
-                                _c("div", { staticClass: "md-layout" }, [
-                                  _vm._v("   \n                    "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "md-layout-item" },
-                                    [
-                                      _c(
-                                        "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "nameCommon1"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "first-name" } },
-                                            [_vm._v("Nombre Común")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("md-input", {
-                                            attrs: {
-                                              name: "first-name",
-                                              id: "first-name",
-                                              autocomplete: "given-name",
-                                              disabled: _vm.sending
+                              _c("div", { staticClass: "md-layout" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "md-layout-item" },
+                                  [
+                                    _c(
+                                      "md-field",
+                                      {
+                                        class: _vm.getValidationClass(
+                                          "nameCommon1"
+                                        ),
+                                        attrs: { "md-clearable": "" }
+                                      },
+                                      [
+                                        _c(
+                                          "label",
+                                          { attrs: { for: "first-name" } },
+                                          [_vm._v("Nombre Común")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("md-input", {
+                                          attrs: {
+                                            name: "first-name",
+                                            id: "first-name",
+                                            autocomplete: "given-name",
+                                            disabled: _vm.sending
+                                          },
+                                          model: {
+                                            value: _vm.form.nameCommon1,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                _vm.form,
+                                                "nameCommon1",
+                                                $$v
+                                              )
                                             },
-                                            model: {
-                                              value: _vm.form.nameCommon1,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "nameCommon1",
-                                                  $$v
+                                            expression: "form.nameCommon1"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        !_vm.$v.form.nameCommon1.required
+                                          ? _c(
+                                              "span",
+                                              { staticClass: "md-error" },
+                                              [
+                                                _vm._v(
+                                                  "Olvidaste ingresar el nombre común"
                                                 )
-                                              },
-                                              expression: "form.nameCommon1"
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          !_vm.$v.form.nameCommon1.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
+                                              ]
+                                            )
+                                          : _vm._e()
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v("     \n                    "),
+                                _c(
+                                  "div",
+                                  { staticClass: "md-layout-item" },
+                                  [
+                                    _c(
+                                      "md-field",
+                                      {
+                                        class: _vm.getValidationClass(
+                                          "nameScientific1"
+                                        ),
+                                        attrs: { "md-clearable": "" }
+                                      },
+                                      [
+                                        _c(
+                                          "label",
+                                          { attrs: { for: "first-name" } },
+                                          [_vm._v("Nombre Científico")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("md-input", {
+                                          attrs: {
+                                            name: "first-name",
+                                            id: "first-name",
+                                            autocomplete: "given-name",
+                                            disabled: _vm.sending
+                                          },
+                                          model: {
+                                            value: _vm.form.nameScientific1,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                _vm.form,
+                                                "nameScientific1",
+                                                $$v
+                                              )
+                                            },
+                                            expression: "form.nameScientific1"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        !_vm.$v.form.nameScientific1.required
+                                          ? _c(
+                                              "span",
+                                              { staticClass: "md-error" },
+                                              [
+                                                _vm._v(
+                                                  "Olvidaste ingresar el nombre científico"
+                                                )
+                                              ]
+                                            )
+                                          : _vm._e()
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v("     \n                    "),
+                                _c(
+                                  "div",
+                                  { staticClass: "md-layout-item md-size-25" },
+                                  [
+                                    _c(
+                                      "md-field",
+                                      {
+                                        class: _vm.getValidationClass(
+                                          "capture1"
+                                        ),
+                                        attrs: { "md-clearable": "" }
+                                      },
+                                      [
+                                        _c(
+                                          "label",
+                                          { attrs: { for: "first-name" } },
+                                          [_vm._v("Captura - Ton.")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("md-input", {
+                                          attrs: {
+                                            name: "first-name",
+                                            id: "first-name",
+                                            autocomplete: "given-name",
+                                            disabled: _vm.sending
+                                          },
+                                          model: {
+                                            value: _vm.form.capture1,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                _vm.form,
+                                                "capture1",
+                                                $$v
+                                              )
+                                            },
+                                            expression: "form.capture1"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        !_vm.$v.form.capture1.required
+                                          ? _c(
+                                              "span",
+                                              { staticClass: "md-error" },
+                                              [
+                                                _vm._v(
+                                                  "Olvidaste ingresar la captura el toneladas"
+                                                )
+                                              ]
+                                            )
+                                          : _vm._e()
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v("       \n                  ")
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "button",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.addItemTarget()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Agregar\n                  ")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "table-responsive" }, [
+                                _c(
+                                  "table",
+                                  {
+                                    staticClass:
+                                      "table table-striped table-bordered display",
+                                    attrs: {
+                                      id: "dataTable",
+                                      width: "50%",
+                                      cellspacing: "0"
+                                    }
+                                  },
+                                  [
+                                    _c("thead", [
+                                      _c("tr", [
+                                        _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                        _vm._v(" "),
+                                        _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
+                                        _vm._v(" "),
+                                        _c("th", [_vm._v("CAPTURA TON.")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "th",
+                                          { staticStyle: { width: "90px" } },
+                                          [_vm._v("Opciones")]
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "tbody",
+                                      _vm._l(_vm.arrayTarget, function(
+                                        target,
+                                        index
+                                      ) {
+                                        return _c(
+                                          "tr",
+                                          { key: "target-" + index },
+                                          [
+                                            _c("td", {
+                                              domProps: {
+                                                textContent: _vm._s(
+                                                  target.nameCommon1
+                                                )
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("td", {
+                                              domProps: {
+                                                textContent: _vm._s(
+                                                  target.nameScientific1
+                                                )
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("td", {
+                                              domProps: {
+                                                textContent: _vm._s(
+                                                  target.capture1
+                                                )
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "btn btn-danger btn-sm",
+                                                  attrs: {
+                                                    type: "button",
+                                                    "data-tooltip": "",
+                                                    title: "Eliminar"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.deleteTarget(index)
+                                                    }
+                                                  }
+                                                },
                                                 [
-                                                  _vm._v(
-                                                    "Olvidaste ingresar el nombre común"
-                                                  )
+                                                  _c("i", {
+                                                    staticClass: "icon-trash"
+                                                  })
                                                 ]
                                               )
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v("     \n                    "),
+                                            ])
+                                          ]
+                                        )
+                                      })
+                                    ),
+                                    _vm._v(" "),
+                                    _c("tfoot", [
+                                      _c("tr", [
+                                        _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                        _vm._v(" "),
+                                        _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
+                                        _vm._v(" "),
+                                        _c("th", [_vm._v("CAPTURA TON.")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "th",
+                                          { staticStyle: { width: "90px" } },
+                                          [_vm._v("Opciones")]
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tbody")
+                                  ]
+                                )
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("label", [
+                            _c("b", [_vm._v("CAPTURA FAUNA INCIDENTAL")])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "card-body" }, [
+                            _c("div", { staticClass: "md-layout" }, [
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
                                   _c(
-                                    "div",
-                                    { staticClass: "md-layout-item" },
-                                    [
-                                      _c(
-                                        "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "nameScientific1"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "first-name" } },
-                                            [_vm._v("Nombre Científico")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("md-input", {
-                                            attrs: {
-                                              name: "first-name",
-                                              id: "first-name",
-                                              autocomplete: "given-name",
-                                              disabled: _vm.sending
-                                            },
-                                            model: {
-                                              value: _vm.form.nameScientific1,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "nameScientific1",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "form.nameScientific1"
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          !_vm.$v.form.nameScientific1.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [
-                                                  _vm._v(
-                                                    "Olvidaste ingresar el nombre científico"
-                                                  )
-                                                ]
-                                              )
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v("     \n                    "),
-                                  _c(
-                                    "div",
+                                    "md-field",
                                     {
-                                      staticClass: "md-layout-item md-size-25"
+                                      class: _vm.getValidationClass(
+                                        "nameCommon2"
+                                      ),
+                                      attrs: { "md-clearable": "" }
                                     },
                                     [
                                       _c(
-                                        "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "capture1"
-                                          ),
-                                          attrs: { "md-clearable": "" }
+                                        "label",
+                                        { attrs: { for: "first-name" } },
+                                        [_vm._v("Nombre Común")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("md-input", {
+                                        attrs: {
+                                          name: "first-name",
+                                          id: "first-name",
+                                          autocomplete: "given-name",
+                                          disabled: _vm.sending
                                         },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "first-name" } },
-                                            [_vm._v("Captura - Ton.")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("md-input", {
-                                            attrs: {
-                                              name: "first-name",
-                                              id: "first-name",
-                                              autocomplete: "given-name",
-                                              disabled: _vm.sending
-                                            },
-                                            model: {
-                                              value: _vm.form.capture1,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "capture1",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "form.capture1"
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          !_vm.$v.form.capture1.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [
-                                                  _vm._v(
-                                                    "Olvidaste ingresar la captura el toneladas"
-                                                  )
-                                                ]
+                                        model: {
+                                          value: _vm.form.nameCommon2,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.form,
+                                              "nameCommon2",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "form.nameCommon2"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      !_vm.$v.form.nameCommon2.required
+                                        ? _c(
+                                            "span",
+                                            { staticClass: "md-error" },
+                                            [
+                                              _vm._v(
+                                                "Olvidaste ingresar el nombre común"
                                               )
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      )
+                                            ]
+                                          )
+                                        : _vm._e()
                                     ],
                                     1
-                                  ),
-                                  _vm._v("       \n                  ")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "md-layout" }, [
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v("   \n                    "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
                                   _c(
-                                    "div",
-                                    { staticClass: "md-layout-item" },
+                                    "md-field",
+                                    {
+                                      class: _vm.getValidationClass(
+                                        "nameScientific2"
+                                      ),
+                                      attrs: { "md-clearable": "" }
+                                    },
                                     [
                                       _c(
+                                        "label",
+                                        { attrs: { for: "first-name" } },
+                                        [_vm._v("Nombre Científico")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("md-input", {
+                                        attrs: {
+                                          name: "first-name",
+                                          id: "first-name",
+                                          autocomplete: "given-name",
+                                          disabled: _vm.sending
+                                        },
+                                        model: {
+                                          value: _vm.form.nameScientific2,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.form,
+                                              "nameScientific2",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "form.nameScientific2"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      !_vm.$v.form.nameScientific2.required
+                                        ? _c(
+                                            "span",
+                                            { staticClass: "md-error" },
+                                            [
+                                              _vm._v(
+                                                "Olvidaste ingresar el nombre científico"
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v("   \n                    "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item md-size-25" },
+                                [
+                                  _c(
+                                    "md-field",
+                                    {
+                                      class: _vm.getValidationClass("capture2"),
+                                      attrs: { "md-clearable": "" }
+                                    },
+                                    [
+                                      _c(
+                                        "label",
+                                        { attrs: { for: "first-name" } },
+                                        [_vm._v("Captura - Ton.")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("md-input", {
+                                        attrs: {
+                                          name: "first-name",
+                                          id: "first-name",
+                                          autocomplete: "given-name",
+                                          disabled: _vm.sending
+                                        },
+                                        model: {
+                                          value: _vm.form.capture2,
+                                          callback: function($$v) {
+                                            _vm.$set(_vm.form, "capture2", $$v)
+                                          },
+                                          expression: "form.capture2"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      !_vm.$v.form.capture2.required
+                                        ? _c(
+                                            "span",
+                                            { staticClass: "md-error" },
+                                            [
+                                              _vm._v(
+                                                "Olvidaste ingresar la captura en toneladas"
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v("        \n                  ")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "md-layout" }, [
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _vm.tipoAccion == 1
+                                    ? _c(
                                         "md-button",
                                         {
                                           staticClass:
@@ -50308,7 +50607,7 @@ var render = function() {
                                           },
                                           on: {
                                             click: function($event) {
-                                              _vm.addItemTarget()
+                                              _vm.addItemFauna()
                                             }
                                           }
                                         },
@@ -50318,399 +50617,125 @@ var render = function() {
                                           )
                                         ]
                                       )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v("    \n                  ")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "md-layout" }),
-                                _vm._v(" "),
-                                _c("tr", [
-                                  _c("th", [_vm._v("NOMBRE COMÙN")]),
-                                  _vm._v(" "),
-                                  _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
-                                  _vm._v(" "),
-                                  _c("th", [_vm._v("CAPTURA TON.")]),
-                                  _vm._v(" "),
-                                  _c("th", { staticStyle: { width: "90px" } }, [
-                                    _vm._v("Opciones")
-                                  ])
-                                ])
-                              ]),
-                              _vm._v(" "),
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "table-responsive" }, [
                               _c(
-                                "tbody",
-                                _vm._l(_vm.arrayTarget, function(
-                                  target,
-                                  index
-                                ) {
-                                  return _c("tr", { key: "target-" + index }, [
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(target.nameCommon1)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(
-                                          target.nameScientific1
-                                        )
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(target.capture1)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", [
+                                "table",
+                                {
+                                  staticClass:
+                                    "table table-striped table-bordered display",
+                                  attrs: {
+                                    id: "dataTable",
+                                    width: "50%",
+                                    cellspacing: "0"
+                                  }
+                                },
+                                [
+                                  _c("thead", [
+                                    _c("tr", [
+                                      _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                      _vm._v(" "),
+                                      _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
+                                      _vm._v(" "),
+                                      _c("th", [_vm._v("CAPTURA TON.")]),
+                                      _vm._v(" "),
                                       _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-danger btn-sm",
-                                          attrs: {
-                                            type: "button",
-                                            "data-tooltip": "",
-                                            title: "Eliminar"
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.deleteTarget(index)
-                                            }
-                                          }
-                                        },
-                                        [_c("i", { staticClass: "icon-trash" })]
+                                        "th",
+                                        { staticStyle: { width: "90px" } },
+                                        [_vm._v("Opciones")]
                                       )
                                     ])
-                                  ])
-                                })
-                              ),
-                              _vm._v(" "),
-                              _c("tfoot", [
-                                _c("tr", [
-                                  _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                  ]),
                                   _vm._v(" "),
-                                  _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
-                                  _vm._v(" "),
-                                  _c("th", [_vm._v("CAPTURA TON.")]),
-                                  _vm._v(" "),
-                                  _c("th", { staticStyle: { width: "90px" } }, [
-                                    _vm._v("Opciones")
-                                  ])
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("tbody")
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("label", [
-                            _c("b", [_vm._v("CAPTURA FAUNA INCIDENTAL")])
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "table",
-                            {
-                              staticClass:
-                                "table table-striped table-bordered display",
-                              attrs: {
-                                id: "dataTable",
-                                width: "50%",
-                                cellspacing: "0"
-                              }
-                            },
-                            [
-                              _c("thead", [
-                                _c("div", { staticClass: "md-layout" }, [
-                                  _vm._v("   \n                    "),
                                   _c(
-                                    "div",
-                                    { staticClass: "md-layout-item" },
-                                    [
-                                      _c(
-                                        "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "nameCommon2"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
+                                    "tbody",
+                                    _vm._l(_vm.arrayFauna, function(
+                                      fauna,
+                                      index
+                                    ) {
+                                      return _c(
+                                        "tr",
+                                        { key: "fauna-" + index },
                                         [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "first-name" } },
-                                            [_vm._v("Nombre Común")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("md-input", {
-                                            attrs: {
-                                              name: "first-name",
-                                              id: "first-name",
-                                              autocomplete: "given-name",
-                                              disabled: _vm.sending
-                                            },
-                                            model: {
-                                              value: _vm.form.nameCommon2,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "nameCommon2",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "form.nameCommon2"
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(
+                                                fauna.nameCommon2
+                                              )
                                             }
                                           }),
                                           _vm._v(" "),
-                                          !_vm.$v.form.nameCommon2.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [
-                                                  _vm._v(
-                                                    "Olvidaste ingresar el nombre común"
-                                                  )
-                                                ]
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(
+                                                fauna.nameScientific2
                                               )
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v("   \n                    "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "md-layout-item" },
-                                    [
-                                      _c(
-                                        "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "nameScientific2"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "first-name" } },
-                                            [_vm._v("Nombre Científico")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("md-input", {
-                                            attrs: {
-                                              name: "first-name",
-                                              id: "first-name",
-                                              autocomplete: "given-name",
-                                              disabled: _vm.sending
-                                            },
-                                            model: {
-                                              value: _vm.form.nameScientific2,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "nameScientific2",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "form.nameScientific2"
                                             }
                                           }),
                                           _vm._v(" "),
-                                          !_vm.$v.form.nameScientific2.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [
-                                                  _vm._v(
-                                                    "Olvidaste ingresar el nombre científico"
-                                                  )
-                                                ]
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(
+                                                fauna.capture2
                                               )
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v("   \n                    "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "md-layout-item md-size-25"
-                                    },
-                                    [
-                                      _c(
-                                        "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "capture2"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "first-name" } },
-                                            [_vm._v("Captura - Ton.")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("md-input", {
-                                            attrs: {
-                                              name: "first-name",
-                                              id: "first-name",
-                                              autocomplete: "given-name",
-                                              disabled: _vm.sending
-                                            },
-                                            model: {
-                                              value: _vm.form.capture2,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "capture2",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "form.capture2"
                                             }
                                           }),
                                           _vm._v(" "),
-                                          !_vm.$v.form.capture2.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [
-                                                  _vm._v(
-                                                    "Olvidaste ingresar la captura en toneladas"
-                                                  )
-                                                ]
-                                              )
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v("        \n                  ")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "md-layout" }, [
-                                  _c(
-                                    "div",
-                                    { staticClass: "md-layout-item" },
-                                    [
-                                      _vm.tipoAccion == 1
-                                        ? _c(
-                                            "md-button",
-                                            {
-                                              staticClass:
-                                                "md-dense md-raised md-primary",
-                                              attrs: {
-                                                type: "button",
-                                                disabled: _vm.sending
-                                              },
-                                              on: {
-                                                click: function($event) {
-                                                  _vm.addItemFauna()
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "btn btn-danger btn-sm",
+                                                attrs: {
+                                                  type: "button",
+                                                  "data-tooltip": "",
+                                                  title: "Eliminar"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    _vm.deleteFauna(index)
+                                                  }
                                                 }
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "Agregar\n                      "
-                                              )
-                                            ]
-                                          )
-                                        : _vm._e()
-                                    ],
-                                    1
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("tr", [
-                                  _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass: "icon-trash"
+                                                })
+                                              ]
+                                            )
+                                          ])
+                                        ]
+                                      )
+                                    })
+                                  ),
                                   _vm._v(" "),
-                                  _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
-                                  _vm._v(" "),
-                                  _c("th", [_vm._v("CAPTURA TON.")]),
-                                  _vm._v(" "),
-                                  _c("th", { staticStyle: { width: "90px" } }, [
-                                    _vm._v("Opciones")
-                                  ])
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "tbody",
-                                _vm._l(_vm.arrayFauna, function(fauna, index) {
-                                  return _c("tr", { key: "fauna-" + index }, [
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(fauna.nameCommon2)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(
-                                          fauna.nameScientific2
-                                        )
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(fauna.capture2)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", [
+                                  _c("tfoot", [
+                                    _c("tr", [
+                                      _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                      _vm._v(" "),
+                                      _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
+                                      _vm._v(" "),
+                                      _c("th", [_vm._v("CAPTURA TON.")]),
+                                      _vm._v(" "),
                                       _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-danger btn-sm",
-                                          attrs: {
-                                            type: "button",
-                                            "data-tooltip": "",
-                                            title: "Eliminar"
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.deleteFauna(index)
-                                            }
-                                          }
-                                        },
-                                        [_c("i", { staticClass: "icon-trash" })]
+                                        "th",
+                                        { staticStyle: { width: "90px" } },
+                                        [_vm._v("Opciones")]
                                       )
                                     ])
-                                  ])
-                                })
-                              ),
-                              _vm._v(" "),
-                              _c("tfoot", [
-                                _c("tr", [
-                                  _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                  ]),
                                   _vm._v(" "),
-                                  _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
-                                  _vm._v(" "),
-                                  _c("th", [_vm._v("CAPTURA TON.")]),
-                                  _vm._v(" "),
-                                  _c("th", { staticStyle: { width: "90px" } }, [
-                                    _vm._v("Opciones")
-                                  ])
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("tbody")
-                            ]
-                          ),
+                                  _c("tbody")
+                                ]
+                              )
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
@@ -56051,6 +56076,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -56701,394 +56740,465 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c(
-                                "table",
-                                {
-                                  staticClass:
-                                    "table table-striped table-bordered display",
-                                  attrs: {
-                                    id: "dataTable",
-                                    width: "50%",
-                                    cellspacing: "0"
-                                  }
-                                },
+                                "div",
+                                { staticClass: "card-body" },
                                 [
-                                  _c(
-                                    "thead",
-                                    [
-                                      _c(
-                                        "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "equipment"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "first-name" } },
-                                            [_vm._v("Equipo")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("md-input", {
-                                            attrs: {
-                                              name: "first-name",
-                                              id: "first-name",
-                                              autocomplete: "given-name",
-                                              disabled: _vm.sending
-                                            },
-                                            model: {
-                                              value: _vm.form.equipment,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "equipment",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "form.equipment"
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          !_vm.$v.form.equipment.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [
-                                                  _vm._v(
-                                                    "Olvidaste ingresar el nombre"
-                                                  )
-                                                ]
-                                              )
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "zarpe"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "first-name" } },
-                                            [_vm._v("Zarpe")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("md-input", {
-                                            attrs: {
-                                              name: "first-name",
-                                              id: "first-name",
-                                              autocomplete: "given-name",
-                                              disabled: _vm.sending
-                                            },
-                                            model: {
-                                              value: _vm.form.zarpe,
-                                              callback: function($$v) {
-                                                _vm.$set(_vm.form, "zarpe", $$v)
-                                              },
-                                              expression: "form.zarpe"
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          !_vm.$v.form.zarpe.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [
-                                                  _vm._v(
-                                                    "Olvidaste ingresar la cantidad unitaria"
-                                                  )
-                                                ]
-                                              )
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "desemb"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "first-name" } },
-                                            [_vm._v("Desembarque")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("md-input", {
-                                            attrs: {
-                                              name: "first-name",
-                                              id: "first-name",
-                                              autocomplete: "given-name",
-                                              disabled: _vm.sending
-                                            },
-                                            model: {
-                                              value: _vm.form.desemb,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "desemb",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "form.desemb"
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          !_vm.$v.form.desemb.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [_vm._v("Olvidaste ingresar ")]
-                                              )
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "photoRecord"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "first-name" } },
-                                            [_vm._v("Registro Fotográfico")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("md-input", {
-                                            attrs: {
-                                              name: "first-name",
-                                              id: "first-name",
-                                              autocomplete: "given-name",
-                                              disabled: _vm.sending
-                                            },
-                                            model: {
-                                              value: _vm.form.photoRecord,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "photoRecord",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "form.photoRecord"
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          !_vm.$v.form.photoRecord.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [_vm._v("Olvidaste ingresar ")]
-                                              )
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "observation"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "first-name" } },
-                                            [_vm._v("Observaciones")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("md-input", {
-                                            attrs: {
-                                              name: "first-name",
-                                              id: "first-name",
-                                              autocomplete: "given-name",
-                                              disabled: _vm.sending
-                                            },
-                                            model: {
-                                              value: _vm.form.observation,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "observation",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "form.observation"
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          !_vm.$v.form.observation.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [_vm._v("Olvidaste ingresar ")]
-                                              )
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "md-button",
-                                        {
-                                          staticClass:
-                                            "md-dense md-raised md-primary",
-                                          attrs: {
-                                            type: "button",
-                                            disabled: _vm.sending
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.addItemTarget()
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "Agregar\n                          "
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("tr", [
-                                        _c("th", [_vm._v("EQUIPO")]),
-                                        _vm._v(" "),
-                                        _c("th", [_vm._v("ZARPE (S/N)")]),
-                                        _vm._v(" "),
-                                        _c("th", [_vm._v("DESEMBARQUE (S/N)")]),
-                                        _vm._v(" "),
-                                        _c("th", [
-                                          _vm._v("REGISTRO FOTOGRAFICO (S/N)")
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("th", [_vm._v("OBSERVACIONES")]),
-                                        _vm._v(" "),
+                                  _c("div", { staticClass: "md-layout" }, [
+                                    _c(
+                                      "div",
+                                      { staticClass: "md-layout-item" },
+                                      [
                                         _c(
-                                          "th",
-                                          { staticStyle: { width: "90px" } },
-                                          [_vm._v("Opciones")]
-                                        )
-                                      ])
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "tbody",
-                                    _vm._l(_vm.arrayTarget, function(
-                                      target,
-                                      index
-                                    ) {
-                                      return _c(
-                                        "tr",
-                                        { key: "target-" + index },
-                                        [
-                                          _c("td", {
-                                            domProps: {
-                                              textContent: _vm._s(
-                                                target.element
-                                              )
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("td", {
-                                            domProps: {
-                                              textContent: _vm._s(
-                                                target.amount2
-                                              )
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("td", {
-                                            domProps: {
-                                              textContent: _vm._s(
-                                                target.characterState
-                                              )
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("td", {
-                                            domProps: {
-                                              textContent: _vm._s(
-                                                target.commercialValue2
-                                              )
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("td", [
+                                          "md-field",
+                                          {
+                                            class: _vm.getValidationClass(
+                                              "equipment"
+                                            ),
+                                            attrs: { "md-clearable": "" }
+                                          },
+                                          [
                                             _c(
-                                              "button",
-                                              {
-                                                staticClass:
-                                                  "btn btn-danger btn-sm",
-                                                attrs: {
-                                                  type: "button",
-                                                  "data-tooltip": "",
-                                                  title: "Eliminar"
-                                                },
-                                                on: {
-                                                  click: function($event) {
-                                                    _vm.deleteTarget(index)
-                                                  }
-                                                }
+                                              "label",
+                                              { attrs: { for: "first-name" } },
+                                              [_vm._v("Equipo")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("md-input", {
+                                              attrs: {
+                                                name: "first-name",
+                                                id: "first-name",
+                                                autocomplete: "given-name",
+                                                disabled: _vm.sending
                                               },
-                                              [
-                                                _c("i", {
-                                                  staticClass: "icon-trash"
-                                                })
-                                              ]
-                                            )
-                                          ])
-                                        ]
-                                      )
-                                    })
-                                  ),
-                                  _vm._v(" "),
-                                  _c("tfoot", [
-                                    _c("tr", [
-                                      _c("th", [_vm._v("EQUIPO")]),
-                                      _vm._v(" "),
-                                      _c("th", [_vm._v("ZARPE (S/N)")]),
-                                      _vm._v(" "),
-                                      _c("th", [_vm._v("DESEMBARQUE (S/N)")]),
-                                      _vm._v(" "),
-                                      _c("th", [
-                                        _vm._v("REGISTRO FOTOGRAFICO (S/N)")
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("th", [_vm._v("OBSERVACIONES")]),
-                                      _vm._v(" "),
-                                      _c(
-                                        "th",
-                                        { staticStyle: { width: "90px" } },
-                                        [_vm._v("Opciones")]
-                                      )
-                                    ])
+                                              model: {
+                                                value: _vm.form.equipment,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.form,
+                                                    "equipment",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression: "form.equipment"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            !_vm.$v.form.equipment.required
+                                              ? _c(
+                                                  "span",
+                                                  { staticClass: "md-error" },
+                                                  [
+                                                    _vm._v(
+                                                      "Olvidaste ingresar el nombre"
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e()
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(
+                                      "                     \n                          "
+                                    ),
+                                    _c(
+                                      "div",
+                                      { staticClass: "md-layout-item" },
+                                      [
+                                        _c(
+                                          "md-field",
+                                          {
+                                            class: _vm.getValidationClass(
+                                              "zarpe"
+                                            ),
+                                            attrs: { "md-clearable": "" }
+                                          },
+                                          [
+                                            _c(
+                                              "label",
+                                              { attrs: { for: "first-name" } },
+                                              [_vm._v("Zarpe")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("md-input", {
+                                              attrs: {
+                                                name: "first-name",
+                                                id: "first-name",
+                                                autocomplete: "given-name",
+                                                disabled: _vm.sending
+                                              },
+                                              model: {
+                                                value: _vm.form.zarpe,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.form,
+                                                    "zarpe",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression: "form.zarpe"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            !_vm.$v.form.zarpe.required
+                                              ? _c(
+                                                  "span",
+                                                  { staticClass: "md-error" },
+                                                  [
+                                                    _vm._v(
+                                                      "Olvidaste ingresar la cantidad unitaria"
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e()
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(
+                                      "                     \n                          "
+                                    ),
+                                    _c(
+                                      "div",
+                                      { staticClass: "md-layout-item" },
+                                      [
+                                        _c(
+                                          "md-field",
+                                          {
+                                            class: _vm.getValidationClass(
+                                              "desemb"
+                                            ),
+                                            attrs: { "md-clearable": "" }
+                                          },
+                                          [
+                                            _c(
+                                              "label",
+                                              { attrs: { for: "first-name" } },
+                                              [_vm._v("Desembarque")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("md-input", {
+                                              attrs: {
+                                                name: "first-name",
+                                                id: "first-name",
+                                                autocomplete: "given-name",
+                                                disabled: _vm.sending
+                                              },
+                                              model: {
+                                                value: _vm.form.desemb,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.form,
+                                                    "desemb",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression: "form.desemb"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            !_vm.$v.form.desemb.required
+                                              ? _c(
+                                                  "span",
+                                                  { staticClass: "md-error" },
+                                                  [
+                                                    _vm._v(
+                                                      "Olvidaste ingresar "
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e()
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(
+                                      "                    \n                          "
+                                    ),
+                                    _c(
+                                      "div",
+                                      { staticClass: "md-layout-item" },
+                                      [
+                                        _c(
+                                          "md-field",
+                                          {
+                                            class: _vm.getValidationClass(
+                                              "photoRecord"
+                                            ),
+                                            attrs: { "md-clearable": "" }
+                                          },
+                                          [
+                                            _c(
+                                              "label",
+                                              { attrs: { for: "first-name" } },
+                                              [_vm._v("Registro Fotográfico")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("md-input", {
+                                              attrs: {
+                                                name: "first-name",
+                                                id: "first-name",
+                                                autocomplete: "given-name",
+                                                disabled: _vm.sending
+                                              },
+                                              model: {
+                                                value: _vm.form.photoRecord,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.form,
+                                                    "photoRecord",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression: "form.photoRecord"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            !_vm.$v.form.photoRecord.required
+                                              ? _c(
+                                                  "span",
+                                                  { staticClass: "md-error" },
+                                                  [
+                                                    _vm._v(
+                                                      "Olvidaste ingresar "
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e()
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(
+                                      "                    \n                          "
+                                    ),
+                                    _c(
+                                      "div",
+                                      { staticClass: "md-layout-item" },
+                                      [
+                                        _c(
+                                          "md-field",
+                                          {
+                                            class: _vm.getValidationClass(
+                                              "observation"
+                                            ),
+                                            attrs: { "md-clearable": "" }
+                                          },
+                                          [
+                                            _c(
+                                              "label",
+                                              { attrs: { for: "first-name" } },
+                                              [_vm._v("Observaciones")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("md-input", {
+                                              attrs: {
+                                                name: "first-name",
+                                                id: "first-name",
+                                                autocomplete: "given-name",
+                                                disabled: _vm.sending
+                                              },
+                                              model: {
+                                                value: _vm.form.observation,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.form,
+                                                    "observation",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression: "form.observation"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            !_vm.$v.form.observation.required
+                                              ? _c(
+                                                  "span",
+                                                  { staticClass: "md-error" },
+                                                  [
+                                                    _vm._v(
+                                                      "Olvidaste ingresar "
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e()
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(
+                                      "                    \n                        "
+                                    )
                                   ]),
                                   _vm._v(" "),
-                                  _c("tbody")
-                                ]
+                                  _c(
+                                    "md-button",
+                                    {
+                                      staticClass:
+                                        "md-dense md-raised md-primary",
+                                      attrs: {
+                                        type: "button",
+                                        disabled: _vm.sending
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.addItemTarget()
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "Agregar\n                        "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "table",
+                                    {
+                                      staticClass:
+                                        "table table-striped table-bordered display",
+                                      attrs: {
+                                        id: "dataTable",
+                                        width: "50%",
+                                        cellspacing: "0"
+                                      }
+                                    },
+                                    [
+                                      _c("thead", [
+                                        _c("tr", [
+                                          _c("th", [_vm._v("EQUIPO")]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("ZARPE (S/N)")]),
+                                          _vm._v(" "),
+                                          _c("th", [
+                                            _vm._v("DESEMBARQUE (S/N)")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("th", [
+                                            _vm._v("REGISTRO FOTOGRAFICO (S/N)")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("OBSERVACIONES")]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "th",
+                                            { staticStyle: { width: "90px" } },
+                                            [_vm._v("Opciones")]
+                                          )
+                                        ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "tbody",
+                                        _vm._l(_vm.arrayTarget, function(
+                                          target,
+                                          index
+                                        ) {
+                                          return _c(
+                                            "tr",
+                                            { key: "target-" + index },
+                                            [
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.element
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.amount2
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.characterState
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.commercialValue2
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-danger btn-sm",
+                                                    attrs: {
+                                                      type: "button",
+                                                      "data-tooltip": "",
+                                                      title: "Eliminar"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        _vm.deleteTarget(index)
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass: "icon-trash"
+                                                    })
+                                                  ]
+                                                )
+                                              ])
+                                            ]
+                                          )
+                                        })
+                                      ),
+                                      _vm._v(" "),
+                                      _c("tfoot", [
+                                        _c("tr", [
+                                          _c("th", [_vm._v("EQUIPO")]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("ZARPE (S/N)")]),
+                                          _vm._v(" "),
+                                          _c("th", [
+                                            _vm._v("DESEMBARQUE (S/N)")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("th", [
+                                            _vm._v("REGISTRO FOTOGRAFICO (S/N)")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("OBSERVACIONES")]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "th",
+                                            { staticStyle: { width: "90px" } },
+                                            [_vm._v("Opciones")]
+                                          )
+                                        ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("tbody")
+                                    ]
+                                  )
+                                ],
+                                1
                               )
                             ],
                             1
@@ -59308,6 +59418,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -59387,6 +59507,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       arrayTarget: [],
 
       date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+
+      img1: null,
 
       // pdf: 0,
 
@@ -59508,6 +59630,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
           this.dynamicByModel = parse(this.dynamicByModel, this.dateFormat, new Date());
           break;
       }
+    },
+    clickImg1: function clickImg1(e) {
+      this.img1 = e.target.files[0];
+      console.log(this.img1);
+    },
+    resetImage: function resetImage() {
+      this.$refs.fileupload1.value = null;
     },
     getValidationClass: function getValidationClass(fieldName) {
       var field = this.$v.form[fieldName];
@@ -63542,6 +63671,22 @@ var render = function() {
                                 ],
                                 1
                               ),
+                              _vm._v("        \n                  "),
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("input", {
+                                  ref: "fileupload1",
+                                  attrs: {
+                                    type: "file",
+                                    accept: "image/*",
+                                    src: _vm.img1
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.clickImg1($event)
+                                    }
+                                  }
+                                })
+                              ]),
                               _vm._v("        \n                ")
                             ])
                           ],
@@ -64762,6 +64907,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -65003,14 +65180,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
     Multiselect: __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___default.a
   },
   methods: {
-    addTag: function addTag(newTag) {
-      var tag = {
-        name: newTag,
-        id: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000)
-      };
-      this.arrayRegional.push(tag);
-      this.arrayReasons.push(tag);
-    },
+    // addTag (newTag) {
+    //   const tag = {
+    //     name: newTag,
+    //     id: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+    //   }
+    //   this.arrayRegional.push(tag)
+    //   this.arrayReasons.push(tag)
+    // },
     alerta: function alerta() {
       alert('test');
     },
@@ -65746,921 +65923,1066 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c(
-                              "table",
-                              {
-                                staticClass:
-                                  "table table-striped table-bordered display",
-                                attrs: {
-                                  id: "dataTable",
-                                  width: "50%",
-                                  cellspacing: "0"
-                                }
-                              },
+                              "div",
+                              { staticClass: "card-body" },
                               [
-                                _c(
-                                  "thead",
-                                  [
-                                    _c(
-                                      "md-field",
-                                      {
-                                        class: _vm.getValidationClass(
-                                          "nameScientific1"
-                                        ),
-                                        attrs: { "md-clearable": "" }
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "first-name" } },
-                                          [_vm._v("Nombre Científico")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("md-input", {
-                                          attrs: {
-                                            name: "first-name",
-                                            id: "first-name",
-                                            autocomplete: "given-name",
-                                            disabled: _vm.sending
-                                          },
-                                          model: {
-                                            value: _vm.form.nameScientific1,
-                                            callback: function($$v) {
-                                              _vm.$set(
-                                                _vm.form,
-                                                "nameScientific1",
-                                                $$v
-                                              )
-                                            },
-                                            expression: "form.nameScientific1"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.nameScientific1.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar el nombre científico"
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-field",
-                                      {
-                                        class: _vm.getValidationClass(
-                                          "nameCommon1"
-                                        ),
-                                        attrs: { "md-clearable": "" }
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "first-name" } },
-                                          [_vm._v("Nombre Común")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("md-input", {
-                                          attrs: {
-                                            name: "first-name",
-                                            id: "first-name",
-                                            autocomplete: "given-name",
-                                            disabled: _vm.sending
-                                          },
-                                          model: {
-                                            value: _vm.form.nameCommon1,
-                                            callback: function($$v) {
-                                              _vm.$set(
-                                                _vm.form,
-                                                "nameCommon1",
-                                                $$v
-                                              )
-                                            },
-                                            expression: "form.nameCommon1"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.nameCommon1.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar el nombre común"
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-field",
-                                      {
-                                        class: _vm.getValidationClass("state1"),
-                                        attrs: { "md-clearable": "" }
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "first-name" } },
-                                          [_vm._v("Estado")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("md-input", {
-                                          attrs: {
-                                            name: "first-name",
-                                            id: "first-name",
-                                            autocomplete: "given-name",
-                                            disabled: _vm.sending
-                                          },
-                                          model: {
-                                            value: _vm.form.state1,
-                                            callback: function($$v) {
-                                              _vm.$set(_vm.form, "state1", $$v)
-                                            },
-                                            expression: "form.state1"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.state1.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar el estado"
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-field",
-                                      {
-                                        class: _vm.getValidationClass(
-                                          "presentation1"
-                                        ),
-                                        attrs: { "md-clearable": "" }
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "first-name" } },
-                                          [_vm._v("Presentación")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("md-input", {
-                                          attrs: {
-                                            name: "first-name",
-                                            id: "first-name",
-                                            autocomplete: "given-name",
-                                            disabled: _vm.sending
-                                          },
-                                          model: {
-                                            value: _vm.form.presentation1,
-                                            callback: function($$v) {
-                                              _vm.$set(
-                                                _vm.form,
-                                                "presentation1",
-                                                $$v
-                                              )
-                                            },
-                                            expression: "form.presentation1"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.presentation1.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar la presentación"
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-field",
-                                      {
-                                        class: _vm.getValidationClass(
-                                          "amount1"
-                                        ),
-                                        attrs: { "md-clearable": "" }
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "first-name" } },
-                                          [_vm._v("Cantidad (UN)")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("md-input", {
-                                          attrs: {
-                                            name: "first-name",
-                                            id: "first-name",
-                                            autocomplete: "given-name",
-                                            disabled: _vm.sending
-                                          },
-                                          model: {
-                                            value: _vm.form.amount1,
-                                            callback: function($$v) {
-                                              _vm.$set(_vm.form, "amount1", $$v)
-                                            },
-                                            expression: "form.amount1"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.amount1.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar la cantidad unitaria"
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-field",
-                                      {
-                                        class: _vm.getValidationClass(
-                                          "AverageSize"
-                                        ),
-                                        attrs: { "md-clearable": "" }
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "first-name" } },
-                                          [_vm._v("Promedio Talla (Cm)")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("md-input", {
-                                          attrs: {
-                                            name: "first-name",
-                                            id: "first-name",
-                                            autocomplete: "given-name",
-                                            disabled: _vm.sending
-                                          },
-                                          model: {
-                                            value: _vm.form.AverageSize,
-                                            callback: function($$v) {
-                                              _vm.$set(
-                                                _vm.form,
-                                                "AverageSize",
-                                                $$v
-                                              )
-                                            },
-                                            expression: "form.AverageSize"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.AverageSize.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar el promedio talla en centimetros"
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-field",
-                                      {
-                                        class: _vm.getValidationClass(
-                                          "weight1"
-                                        ),
-                                        attrs: { "md-clearable": "" }
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "first-name" } },
-                                          [_vm._v("Peso (Kg)")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("md-input", {
-                                          attrs: {
-                                            name: "first-name",
-                                            id: "first-name",
-                                            autocomplete: "given-name",
-                                            disabled: _vm.sending
-                                          },
-                                          model: {
-                                            value: _vm.form.weight1,
-                                            callback: function($$v) {
-                                              _vm.$set(_vm.form, "weight1", $$v)
-                                            },
-                                            expression: "form.weight1"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.weight1.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar el peso en kilogramosa"
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-field",
-                                      {
-                                        class: _vm.getValidationClass(
-                                          "commercialValue1"
-                                        ),
-                                        attrs: { "md-clearable": "" }
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "first-name" } },
-                                          [_vm._v("Valor Comercial")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("md-input", {
-                                          attrs: {
-                                            name: "first-name",
-                                            id: "first-name",
-                                            autocomplete: "given-name",
-                                            disabled: _vm.sending
-                                          },
-                                          model: {
-                                            value: _vm.form.commercialValue1,
-                                            callback: function($$v) {
-                                              _vm.$set(
-                                                _vm.form,
-                                                "commercialValue1",
-                                                $$v
-                                              )
-                                            },
-                                            expression: "form.commercialValue1"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.commercialValue1.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar valor comercial"
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-button",
-                                      {
-                                        staticClass:
-                                          "md-dense md-raised md-primary",
-                                        attrs: {
-                                          type: "button",
-                                          disabled: _vm.sending
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.addItemTarget()
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "Agregar\n                        "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("tr", [
-                                      _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
-                                      _vm._v(" "),
-                                      _c("th", [_vm._v("NOMBRE COMÙN")]),
-                                      _vm._v(" "),
-                                      _c("th", [_vm._v("ESTADO")]),
-                                      _vm._v(" "),
-                                      _c("th", [_vm._v("PRESENTACIÓN")]),
-                                      _vm._v(" "),
-                                      _c("th", [_vm._v("CANTIDAD (UN)")]),
-                                      _vm._v(" "),
-                                      _c("th", [_vm._v("PROMEDIO TALLA (Cm)")]),
-                                      _vm._v(" "),
-                                      _c("th", [_vm._v("PESO (Kg)")]),
-                                      _vm._v(" "),
-                                      _c("th", [_vm._v("VALOR COMERCIAL")]),
-                                      _vm._v(" "),
+                                _c("div", { staticClass: "md-layout" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "md-layout-item" },
+                                    [
                                       _c(
-                                        "th",
-                                        { staticStyle: { width: "90px" } },
-                                        [_vm._v("Opciones")]
-                                      )
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "tbody",
-                                  _vm._l(_vm.arrayTarget, function(
-                                    target,
-                                    index
-                                  ) {
-                                    return _c(
-                                      "tr",
-                                      { key: "target-" + index },
-                                      [
-                                        _c("td", {
-                                          domProps: {
-                                            textContent: _vm._s(
-                                              target.nameScientific1
-                                            )
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("td", {
-                                          domProps: {
-                                            textContent: _vm._s(
-                                              target.nameCommon1
-                                            )
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("td", {
-                                          domProps: {
-                                            textContent: _vm._s(target.state1)
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("td", {
-                                          domProps: {
-                                            textContent: _vm._s(
-                                              target.presentation1
-                                            )
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("td", {
-                                          domProps: {
-                                            textContent: _vm._s(target.amount1)
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("td", {
-                                          domProps: {
-                                            textContent: _vm._s(
-                                              target.AverageSize
-                                            )
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("td", {
-                                          domProps: {
-                                            textContent: _vm._s(target.weight1)
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("td", {
-                                          domProps: {
-                                            textContent: _vm._s(
-                                              target.commercialValue1
-                                            )
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("td", [
+                                        "md-field",
+                                        {
+                                          class: _vm.getValidationClass(
+                                            "nameScientific1"
+                                          ),
+                                          attrs: { "md-clearable": "" }
+                                        },
+                                        [
                                           _c(
-                                            "button",
-                                            {
-                                              staticClass:
-                                                "btn btn-danger btn-sm",
-                                              attrs: {
-                                                type: "button",
-                                                "data-tooltip": "",
-                                                title: "Eliminar"
-                                              },
-                                              on: {
-                                                click: function($event) {
-                                                  _vm.deleteTarget(index)
-                                                }
-                                              }
+                                            "label",
+                                            { attrs: { for: "first-name" } },
+                                            [_vm._v("Nombre Científico")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("md-input", {
+                                            attrs: {
+                                              name: "first-name",
+                                              id: "first-name",
+                                              autocomplete: "given-name",
+                                              disabled: _vm.sending
                                             },
-                                            [
-                                              _c("i", {
-                                                staticClass: "icon-trash"
-                                              })
-                                            ]
-                                          )
-                                        ])
-                                      ]
-                                    )
-                                  })
-                                ),
-                                _vm._v(" "),
-                                _c("tfoot", [
-                                  _c("tr", [
-                                    _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
-                                    _vm._v(" "),
-                                    _c("th", [_vm._v("NOMBRE COMÙN")]),
-                                    _vm._v(" "),
-                                    _c("th", [_vm._v("ESTADO")]),
-                                    _vm._v(" "),
-                                    _c("th", [_vm._v("PRESENTACIÓN")]),
-                                    _vm._v(" "),
-                                    _c("th", [_vm._v("CANTIDAD (UN)")]),
-                                    _vm._v(" "),
-                                    _c("th", [_vm._v("PROMEDIO TALLA (Cm)")]),
-                                    _vm._v(" "),
-                                    _c("th", [_vm._v("PESO (Kg)")]),
-                                    _vm._v(" "),
-                                    _c("th", [_vm._v("VALOR COMERCIAL")]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "th",
-                                      { staticStyle: { width: "90px" } },
-                                      [_vm._v("Opciones")]
-                                    )
-                                  ])
+                                            model: {
+                                              value: _vm.form.nameScientific1,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "nameScientific1",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "form.nameScientific1"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          !_vm.$v.form.nameScientific1.required
+                                            ? _c(
+                                                "span",
+                                                { staticClass: "md-error" },
+                                                [
+                                                  _vm._v(
+                                                    "Olvidaste ingresar el nombre científico"
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v("   \n                    "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "md-layout-item" },
+                                    [
+                                      _c(
+                                        "md-field",
+                                        {
+                                          class: _vm.getValidationClass(
+                                            "nameCommon1"
+                                          ),
+                                          attrs: { "md-clearable": "" }
+                                        },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "first-name" } },
+                                            [_vm._v("Nombre Común")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("md-input", {
+                                            attrs: {
+                                              name: "first-name",
+                                              id: "first-name",
+                                              autocomplete: "given-name",
+                                              disabled: _vm.sending
+                                            },
+                                            model: {
+                                              value: _vm.form.nameCommon1,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "nameCommon1",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "form.nameCommon1"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          !_vm.$v.form.nameCommon1.required
+                                            ? _c(
+                                                "span",
+                                                { staticClass: "md-error" },
+                                                [
+                                                  _vm._v(
+                                                    "Olvidaste ingresar el nombre común"
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v("   \n                  ")
                                 ]),
                                 _vm._v(" "),
-                                _c("tbody")
-                              ]
+                                _c("div", { staticClass: "md-layout" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "md-layout-item" },
+                                    [
+                                      _c(
+                                        "md-field",
+                                        {
+                                          class: _vm.getValidationClass(
+                                            "state1"
+                                          ),
+                                          attrs: { "md-clearable": "" }
+                                        },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "first-name" } },
+                                            [_vm._v("Estado")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("md-input", {
+                                            attrs: {
+                                              name: "first-name",
+                                              id: "first-name",
+                                              autocomplete: "given-name",
+                                              disabled: _vm.sending
+                                            },
+                                            model: {
+                                              value: _vm.form.state1,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "state1",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "form.state1"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          !_vm.$v.form.state1.required
+                                            ? _c(
+                                                "span",
+                                                { staticClass: "md-error" },
+                                                [
+                                                  _vm._v(
+                                                    "Olvidaste ingresar el estado"
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v("   \n                    "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "md-layout-item" },
+                                    [
+                                      _c(
+                                        "md-field",
+                                        {
+                                          class: _vm.getValidationClass(
+                                            "presentation1"
+                                          ),
+                                          attrs: { "md-clearable": "" }
+                                        },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "first-name" } },
+                                            [_vm._v("Presentación")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("md-input", {
+                                            attrs: {
+                                              name: "first-name",
+                                              id: "first-name",
+                                              autocomplete: "given-name",
+                                              disabled: _vm.sending
+                                            },
+                                            model: {
+                                              value: _vm.form.presentation1,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "presentation1",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "form.presentation1"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          !_vm.$v.form.presentation1.required
+                                            ? _c(
+                                                "span",
+                                                { staticClass: "md-error" },
+                                                [
+                                                  _vm._v(
+                                                    "Olvidaste ingresar la presentación"
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v("   \n                    "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "md-layout-item" },
+                                    [
+                                      _c(
+                                        "md-field",
+                                        {
+                                          class: _vm.getValidationClass(
+                                            "amount1"
+                                          ),
+                                          attrs: { "md-clearable": "" }
+                                        },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "first-name" } },
+                                            [_vm._v("Cantidad (UN)")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("md-input", {
+                                            attrs: {
+                                              name: "first-name",
+                                              id: "first-name",
+                                              autocomplete: "given-name",
+                                              disabled: _vm.sending
+                                            },
+                                            model: {
+                                              value: _vm.form.amount1,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "amount1",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "form.amount1"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          !_vm.$v.form.amount1.required
+                                            ? _c(
+                                                "span",
+                                                { staticClass: "md-error" },
+                                                [
+                                                  _vm._v(
+                                                    "Olvidaste ingresar la cantidad unitaria"
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v("   \n                    "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "md-layout-item" },
+                                    [
+                                      _c(
+                                        "md-field",
+                                        {
+                                          class: _vm.getValidationClass(
+                                            "AverageSize"
+                                          ),
+                                          attrs: { "md-clearable": "" }
+                                        },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "first-name" } },
+                                            [_vm._v("Promedio Talla (Cm)")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("md-input", {
+                                            attrs: {
+                                              name: "first-name",
+                                              id: "first-name",
+                                              autocomplete: "given-name",
+                                              disabled: _vm.sending
+                                            },
+                                            model: {
+                                              value: _vm.form.AverageSize,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "AverageSize",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "form.AverageSize"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          !_vm.$v.form.AverageSize.required
+                                            ? _c(
+                                                "span",
+                                                { staticClass: "md-error" },
+                                                [
+                                                  _vm._v(
+                                                    "Olvidaste ingresar el promedio talla en centimetros"
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v("   \n                    "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "md-layout-item" },
+                                    [
+                                      _c(
+                                        "md-field",
+                                        {
+                                          class: _vm.getValidationClass(
+                                            "weight1"
+                                          ),
+                                          attrs: { "md-clearable": "" }
+                                        },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "first-name" } },
+                                            [_vm._v("Peso (Kg)")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("md-input", {
+                                            attrs: {
+                                              name: "first-name",
+                                              id: "first-name",
+                                              autocomplete: "given-name",
+                                              disabled: _vm.sending
+                                            },
+                                            model: {
+                                              value: _vm.form.weight1,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "weight1",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "form.weight1"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          !_vm.$v.form.weight1.required
+                                            ? _c(
+                                                "span",
+                                                { staticClass: "md-error" },
+                                                [
+                                                  _vm._v(
+                                                    "Olvidaste ingresar el peso en kilogramosa"
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v("   \n                    "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "md-layout-item" },
+                                    [
+                                      _c(
+                                        "md-field",
+                                        {
+                                          class: _vm.getValidationClass(
+                                            "commercialValue1"
+                                          ),
+                                          attrs: { "md-clearable": "" }
+                                        },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "first-name" } },
+                                            [_vm._v("Valor Comercial")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("md-input", {
+                                            attrs: {
+                                              name: "first-name",
+                                              id: "first-name",
+                                              autocomplete: "given-name",
+                                              disabled: _vm.sending
+                                            },
+                                            model: {
+                                              value: _vm.form.commercialValue1,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "commercialValue1",
+                                                  $$v
+                                                )
+                                              },
+                                              expression:
+                                                "form.commercialValue1"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          !_vm.$v.form.commercialValue1.required
+                                            ? _c(
+                                                "span",
+                                                { staticClass: "md-error" },
+                                                [
+                                                  _vm._v(
+                                                    "Olvidaste ingresar valor comercial"
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v("   \n                  ")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "md-button",
+                                  {
+                                    staticClass:
+                                      "md-dense md-raised md-primary",
+                                    attrs: {
+                                      type: "button",
+                                      disabled: _vm.sending
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.addItemTarget()
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Agregar\n                  ")]
+                                ),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "table-responsive" }, [
+                                  _c(
+                                    "table",
+                                    {
+                                      staticClass:
+                                        "table table-striped table-bordered display",
+                                      attrs: {
+                                        id: "dataTable",
+                                        width: "50%",
+                                        cellspacing: "0"
+                                      }
+                                    },
+                                    [
+                                      _c("thead", [
+                                        _c("tr", [
+                                          _c("th", [
+                                            _vm._v("NOMBRE CIENTÌFICO")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("ESTADO")]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("PRESENTACIÓN")]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("CANTIDAD (UN)")]),
+                                          _vm._v(" "),
+                                          _c("th", [
+                                            _vm._v("PROMEDIO TALLA (Cm)")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("PESO (Kg)")]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("VALOR COMERCIAL")]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "th",
+                                            { staticStyle: { width: "90px" } },
+                                            [_vm._v("Opciones")]
+                                          )
+                                        ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "tbody",
+                                        _vm._l(_vm.arrayTarget, function(
+                                          target,
+                                          index
+                                        ) {
+                                          return _c(
+                                            "tr",
+                                            { key: "target-" + index },
+                                            [
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.nameScientific1
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.nameCommon1
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.state1
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.presentation1
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.amount1
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.AverageSize
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.weight1
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.commercialValue1
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-danger btn-sm",
+                                                    attrs: {
+                                                      type: "button",
+                                                      "data-tooltip": "",
+                                                      title: "Eliminar"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        _vm.deleteTarget(index)
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass: "icon-trash"
+                                                    })
+                                                  ]
+                                                )
+                                              ])
+                                            ]
+                                          )
+                                        })
+                                      ),
+                                      _vm._v(" "),
+                                      _c("tfoot", [
+                                        _c("tr", [
+                                          _c("th", [
+                                            _vm._v("NOMBRE CIENTÌFICO")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("ESTADO")]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("PRESENTACIÓN")]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("CANTIDAD (UN)")]),
+                                          _vm._v(" "),
+                                          _c("th", [
+                                            _vm._v("PROMEDIO TALLA (Cm)")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("PESO (Kg)")]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("VALOR COMERCIAL")]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "th",
+                                            { staticStyle: { width: "90px" } },
+                                            [_vm._v("Opciones")]
+                                          )
+                                        ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("tbody")
+                                    ]
+                                  )
+                                ])
+                              ],
+                              1
                             ),
                             _vm._v(" "),
                             _c(
-                              "table",
-                              {
-                                staticClass:
-                                  "table table-striped table-bordered display",
-                                attrs: {
-                                  id: "dataTable",
-                                  width: "50%",
-                                  cellspacing: "0"
-                                }
-                              },
+                              "div",
+                              { staticClass: "card-body" },
                               [
-                                _c(
-                                  "thead",
-                                  [
-                                    _c(
-                                      "md-field",
-                                      {
-                                        class: _vm.getValidationClass(
-                                          "element"
-                                        ),
-                                        attrs: { "md-clearable": "" }
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "first-name" } },
-                                          [_vm._v("Elemento")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("md-input", {
-                                          attrs: {
-                                            name: "first-name",
-                                            id: "first-name",
-                                            autocomplete: "given-name",
-                                            disabled: _vm.sending
-                                          },
-                                          model: {
-                                            value: _vm.form.element,
-                                            callback: function($$v) {
-                                              _vm.$set(_vm.form, "element", $$v)
-                                            },
-                                            expression: "form.element"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.element.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar el nombre del elemento"
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-field",
-                                      {
-                                        class: _vm.getValidationClass(
-                                          "amount2"
-                                        ),
-                                        attrs: { "md-clearable": "" }
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "first-name" } },
-                                          [_vm._v("Cantidad (UN)")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("md-input", {
-                                          attrs: {
-                                            name: "first-name",
-                                            id: "first-name",
-                                            autocomplete: "given-name",
-                                            disabled: _vm.sending
-                                          },
-                                          model: {
-                                            value: _vm.form.amount2,
-                                            callback: function($$v) {
-                                              _vm.$set(_vm.form, "amount2", $$v)
-                                            },
-                                            expression: "form.amount2"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.amount2.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar la cantidad unitaria"
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-field",
-                                      {
-                                        class: _vm.getValidationClass(
-                                          "characterState"
-                                        ),
-                                        attrs: { "md-clearable": "" }
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "first-name" } },
-                                          [_vm._v("Características y Estado")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("md-input", {
-                                          attrs: {
-                                            name: "first-name",
-                                            id: "first-name",
-                                            autocomplete: "given-name",
-                                            disabled: _vm.sending
-                                          },
-                                          model: {
-                                            value: _vm.form.characterState,
-                                            callback: function($$v) {
-                                              _vm.$set(
-                                                _vm.form,
-                                                "characterState",
-                                                $$v
-                                              )
-                                            },
-                                            expression: "form.characterState"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.characterState.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar las características y estado"
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-field",
-                                      {
-                                        class: _vm.getValidationClass(
-                                          "commercialValue2"
-                                        ),
-                                        attrs: { "md-clearable": "" }
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "first-name" } },
-                                          [_vm._v("Valor Comercial")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("md-input", {
-                                          attrs: {
-                                            name: "first-name",
-                                            id: "first-name",
-                                            autocomplete: "given-name",
-                                            disabled: _vm.sending
-                                          },
-                                          model: {
-                                            value: _vm.form.commercialValue2,
-                                            callback: function($$v) {
-                                              _vm.$set(
-                                                _vm.form,
-                                                "commercialValue2",
-                                                $$v
-                                              )
-                                            },
-                                            expression: "form.commercialValue2"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.commercialValue2.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar valor comercial"
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-button",
-                                      {
-                                        staticClass:
-                                          "md-dense md-raised md-primary",
-                                        attrs: {
-                                          type: "button",
-                                          disabled: _vm.sending
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.addItemTarget2()
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "Agregar\n                        "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("tr", [
-                                      _c("th", [_vm._v("ELEMENTO")]),
-                                      _vm._v(" "),
-                                      _c("th", [_vm._v("CANTIDAD (UN)")]),
-                                      _vm._v(" "),
-                                      _c("th", [
-                                        _vm._v("CARACTERÍSTICAS Y ESTADO")
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("th", [_vm._v("VALOR COMERCIAL")]),
-                                      _vm._v(" "),
+                                _c("div", { staticClass: "md-layout" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "md-layout-item" },
+                                    [
                                       _c(
-                                        "th",
-                                        { staticStyle: { width: "90px" } },
-                                        [_vm._v("Opciones")]
-                                      )
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "tbody",
-                                  _vm._l(_vm.arrayTarget2, function(
-                                    target,
-                                    index
-                                  ) {
-                                    return _c(
-                                      "tr",
-                                      { key: "target-" + index },
-                                      [
-                                        _c("td", {
-                                          domProps: {
-                                            textContent: _vm._s(target.element)
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("td", {
-                                          domProps: {
-                                            textContent: _vm._s(target.amount2)
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("td", {
-                                          domProps: {
-                                            textContent: _vm._s(
-                                              target.characterState
-                                            )
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("td", {
-                                          domProps: {
-                                            textContent: _vm._s(
-                                              target.commercialValue2
-                                            )
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("td", [
+                                        "md-field",
+                                        {
+                                          class: _vm.getValidationClass(
+                                            "element"
+                                          ),
+                                          attrs: { "md-clearable": "" }
+                                        },
+                                        [
                                           _c(
-                                            "button",
-                                            {
-                                              staticClass:
-                                                "btn btn-danger btn-sm",
-                                              attrs: {
-                                                type: "button",
-                                                "data-tooltip": "",
-                                                title: "Eliminar"
-                                              },
-                                              on: {
-                                                click: function($event) {
-                                                  _vm.deleteTarget2(index)
-                                                }
-                                              }
+                                            "label",
+                                            { attrs: { for: "first-name" } },
+                                            [_vm._v("Elemento")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("md-input", {
+                                            attrs: {
+                                              name: "first-name",
+                                              id: "first-name",
+                                              autocomplete: "given-name",
+                                              disabled: _vm.sending
                                             },
-                                            [
-                                              _c("i", {
-                                                staticClass: "icon-trash"
-                                              })
-                                            ]
-                                          )
-                                        ])
-                                      ]
-                                    )
-                                  })
-                                ),
-                                _vm._v(" "),
-                                _c("tfoot", [
-                                  _c("tr", [
-                                    _c("th", [_vm._v("ELEMENTO")]),
-                                    _vm._v(" "),
-                                    _c("th", [_vm._v("CANTIDAD (UN)")]),
-                                    _vm._v(" "),
-                                    _c("th", [
-                                      _vm._v("CARACTERÍSTICAS Y ESTADO")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("th", [_vm._v("VALOR COMERCIAL")]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "th",
-                                      { staticStyle: { width: "90px" } },
-                                      [_vm._v("Opciones")]
-                                    )
-                                  ])
+                                            model: {
+                                              value: _vm.form.element,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "element",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "form.element"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          !_vm.$v.form.element.required
+                                            ? _c(
+                                                "span",
+                                                { staticClass: "md-error" },
+                                                [
+                                                  _vm._v(
+                                                    "Olvidaste ingresar el nombre del elemento"
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(
+                                    "                          \n                  "
+                                  ),
+                                  _c(
+                                    "div",
+                                    { staticClass: "md-layout-item" },
+                                    [
+                                      _c(
+                                        "md-field",
+                                        {
+                                          class: _vm.getValidationClass(
+                                            "amount2"
+                                          ),
+                                          attrs: { "md-clearable": "" }
+                                        },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "first-name" } },
+                                            [_vm._v("Cantidad (UN)")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("md-input", {
+                                            attrs: {
+                                              name: "first-name",
+                                              id: "first-name",
+                                              autocomplete: "given-name",
+                                              disabled: _vm.sending
+                                            },
+                                            model: {
+                                              value: _vm.form.amount2,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "amount2",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "form.amount2"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          !_vm.$v.form.amount2.required
+                                            ? _c(
+                                                "span",
+                                                { staticClass: "md-error" },
+                                                [
+                                                  _vm._v(
+                                                    "Olvidaste ingresar la cantidad unitaria"
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(
+                                    "                          \n                  "
+                                  ),
+                                  _c(
+                                    "div",
+                                    { staticClass: "md-layout-item" },
+                                    [
+                                      _c(
+                                        "md-field",
+                                        {
+                                          class: _vm.getValidationClass(
+                                            "characterState"
+                                          ),
+                                          attrs: { "md-clearable": "" }
+                                        },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "first-name" } },
+                                            [_vm._v("Características y Estado")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("md-input", {
+                                            attrs: {
+                                              name: "first-name",
+                                              id: "first-name",
+                                              autocomplete: "given-name",
+                                              disabled: _vm.sending
+                                            },
+                                            model: {
+                                              value: _vm.form.characterState,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "characterState",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "form.characterState"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          !_vm.$v.form.characterState.required
+                                            ? _c(
+                                                "span",
+                                                { staticClass: "md-error" },
+                                                [
+                                                  _vm._v(
+                                                    "Olvidaste ingresar las características y estado"
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(
+                                    "                          \n                  "
+                                  ),
+                                  _c(
+                                    "div",
+                                    { staticClass: "md-layout-item" },
+                                    [
+                                      _c(
+                                        "md-field",
+                                        {
+                                          class: _vm.getValidationClass(
+                                            "commercialValue2"
+                                          ),
+                                          attrs: { "md-clearable": "" }
+                                        },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "first-name" } },
+                                            [_vm._v("Valor Comercial")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("md-input", {
+                                            attrs: {
+                                              name: "first-name",
+                                              id: "first-name",
+                                              autocomplete: "given-name",
+                                              disabled: _vm.sending
+                                            },
+                                            model: {
+                                              value: _vm.form.commercialValue2,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "commercialValue2",
+                                                  $$v
+                                                )
+                                              },
+                                              expression:
+                                                "form.commercialValue2"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          !_vm.$v.form.commercialValue2.required
+                                            ? _c(
+                                                "span",
+                                                { staticClass: "md-error" },
+                                                [
+                                                  _vm._v(
+                                                    "Olvidaste ingresar valor comercial"
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(
+                                    "                          \n                                 \n                "
+                                  )
                                 ]),
                                 _vm._v(" "),
-                                _c("tbody")
-                              ]
+                                _c(
+                                  "md-button",
+                                  {
+                                    staticClass:
+                                      "md-dense md-raised md-primary",
+                                    attrs: {
+                                      type: "button",
+                                      disabled: _vm.sending
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.addItemTarget2()
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Agregar\n                ")]
+                                ),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "table-responsive" }, [
+                                  _c(
+                                    "table",
+                                    {
+                                      staticClass:
+                                        "table table-striped table-bordered display",
+                                      attrs: {
+                                        id: "dataTable",
+                                        width: "50%",
+                                        cellspacing: "0"
+                                      }
+                                    },
+                                    [
+                                      _c("thead", [
+                                        _c("tr", [
+                                          _c("th", [_vm._v("ELEMENTO")]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("CANTIDAD (UN)")]),
+                                          _vm._v(" "),
+                                          _c("th", [
+                                            _vm._v("CARACTERÍSTICAS Y ESTADO")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("VALOR COMERCIAL")]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "th",
+                                            { staticStyle: { width: "90px" } },
+                                            [_vm._v("Opciones")]
+                                          )
+                                        ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "tbody",
+                                        _vm._l(_vm.arrayTarget2, function(
+                                          target,
+                                          index
+                                        ) {
+                                          return _c(
+                                            "tr",
+                                            { key: "target-" + index },
+                                            [
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.element
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.amount2
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.characterState
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    target.commercialValue2
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-danger btn-sm",
+                                                    attrs: {
+                                                      type: "button",
+                                                      "data-tooltip": "",
+                                                      title: "Eliminar"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        _vm.deleteTarget2(index)
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass: "icon-trash"
+                                                    })
+                                                  ]
+                                                )
+                                              ])
+                                            ]
+                                          )
+                                        })
+                                      ),
+                                      _vm._v(" "),
+                                      _c("tfoot", [
+                                        _c("tr", [
+                                          _c("th", [_vm._v("ELEMENTO")]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("CANTIDAD (UN)")]),
+                                          _vm._v(" "),
+                                          _c("th", [
+                                            _vm._v("CARACTERÍSTICAS Y ESTADO")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("th", [_vm._v("VALOR COMERCIAL")]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "th",
+                                            { staticStyle: { width: "90px" } },
+                                            [_vm._v("Opciones")]
+                                          )
+                                        ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("tbody")
+                                    ]
+                                  )
+                                ])
+                              ],
+                              1
                             ),
                             _vm._v(" "),
                             _c(
@@ -67240,43 +67562,32 @@ var render = function() {
                                     _vm._v("Motivos del decomiso Preventivo")
                                   ]),
                                   _vm._v(" "),
-                                  _c(
-                                    "multiselect",
-                                    {
-                                      attrs: {
-                                        options: _vm.arrayValue,
-                                        "tag-placeholder":
-                                          "Add this as new tag",
-                                        multiple: true,
-                                        taggable: true,
-                                        "close-on-select": false,
-                                        "clear-on-select": false,
-                                        "preserve-search": true,
-                                        placeholder:
-                                          "Motivos Del Decomiso Preventivo",
-                                        label: "name",
-                                        "track-by": "name",
-                                        "preselect-first": true
-                                      },
-                                      model: {
-                                        value: _vm.arrayReasons,
-                                        callback: function($$v) {
-                                          _vm.arrayReasons = $$v
-                                        },
-                                        expression: "arrayReasons"
-                                      }
+                                  _c("multiselect", {
+                                    attrs: {
+                                      options: _vm.arrayValue,
+                                      multiple: true,
+                                      "close-on-select": false,
+                                      "clear-on-select": false,
+                                      "preserve-search": true,
+                                      placeholder:
+                                        "Motivos Del Decomiso Preventivo",
+                                      label: "name",
+                                      "track-by": "name",
+                                      "preselect-first": true
                                     },
-                                    [
-                                      _vm._v(
-                                        '\n                      @tag="addTag"\n                    '
-                                      )
-                                    ]
-                                  )
+                                    model: {
+                                      value: _vm.arrayReasons,
+                                      callback: function($$v) {
+                                        _vm.arrayReasons = $$v
+                                      },
+                                      expression: "arrayReasons"
+                                    }
+                                  })
                                 ],
                                 1
                               )
                             ]),
-                            _vm._v("     \n\n\n                "),
+                            _vm._v("   \n                "),
                             _c("div", { staticClass: "md-layout" }, [
                               _c(
                                 "div",

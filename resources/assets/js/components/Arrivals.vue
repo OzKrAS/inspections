@@ -737,9 +737,8 @@
 
                 <label><b>CAPTURA OJETIVO</b></label>
 
-                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                  <thead>
-                    <div class="md-layout">&nbsp;&nbsp;&nbsp;
+            <div class="card-body">  
+                    <div class="md-layout">
                       <div class="md-layout-item">
                         <md-field md-clearable :class="getValidationClass('nameCommon1')">
                           <label for="first-name">Nombre Común</label>
@@ -788,20 +787,17 @@
                           >Olvidaste ingresar la captura el toneladas</span>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;    
-                    </div>
-                    <div class="md-layout">
-                      <div class="md-layout-item">
-                        <md-button
-                          type="button"
-                          class="md-dense md-raised md-primary"
-                          :disabled="sending"
-                          @click="addItemTarget()"
-                        >Agregar
-                        </md-button>
-                      </div>&nbsp;&nbsp;&nbsp; 
-                    </div>         
-                    <div class="md-layout">    
-                    </div>      
+                    </div>           
+                    <md-button
+                      type="button"
+                      class="md-dense md-raised md-primary"
+                      :disabled="sending"
+                      @click="addItemTarget()"
+                    >Agregar
+                    </md-button>
+              <div class="table-responsive">      
+                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">    
+                  <thead>      
                     <tr>
                       <th>NOMBRE COMÙN</th>              
                       <th>NOMBRE CIENTÌFICO</th>    
@@ -838,12 +834,13 @@
                     <tbody>
                     </tbody>
                 </table>
+              </div>   
+            </div>   
 
-                <label><b>CAPTURA FAUNA INCIDENTAL</b></label>
-
-                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                  <thead>
-                    <div class="md-layout">&nbsp;&nbsp;&nbsp;
+            <label><b>CAPTURA FAUNA INCIDENTAL</b></label>
+            
+            <div class="card-body"> 
+                    <div class="md-layout">
                       <div class="md-layout-item">
                         <md-field md-clearable :class="getValidationClass('nameCommon2')">
                           <label for="first-name">Nombre Común</label>
@@ -904,7 +901,10 @@
                         >Agregar
                         </md-button>
                       </div>                  
-                    </div>                             
+                    </div>  
+              <div class="table-responsive">      
+                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                  <thead>                             
                     <tr>
                       <th>NOMBRE COMÙN</th>              
                       <th>NOMBRE CIENTÌFICO</th>    
@@ -941,6 +941,8 @@
                     <tbody>
                     </tbody>
                 </table>
+              </div>    
+            </div>    
                 <div class="md-layout">
                   <div class="md-layout-item md-size-50">
                     <md-field md-clearable :class="getValidationClass('landedWeight')">

@@ -444,7 +444,7 @@
         
                   <div class="md-layout"> 
                     <div class="md-layout-item">
-                      <label>Pesquería Autorizada</label>
+                      <label class="text-muted">Pesquería Autorizada</label>
                       <multiselect
                         v-model="arrayFa" 
                         :options="arrayFisheryAuthorized" 

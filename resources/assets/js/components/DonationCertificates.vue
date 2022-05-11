@@ -608,6 +608,16 @@
                         <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                       </md-field>   
                     </div>&nbsp;&nbsp;&nbsp;     
+                    <div class="md-layout-item">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        :src="img1"
+                        @change="clickImg1($event)"
+                        ref="fileupload1"
+                        
+                      />
+                    </div>&nbsp;&nbsp;&nbsp;     
                   </div>     
               </md-card-content>
             </form>
@@ -731,6 +741,8 @@ export default {
 	    arrayTarget: [],
     
       date: format(now, dateFormat),
+
+      img1: null,
 
       // pdf: 0,
 
@@ -861,6 +873,13 @@ export default {
           break;
       }
     },
+    clickImg1(e) {
+        this.img1 = e.target.files[0];
+        console.log(this.img1);
+    },
+    resetImage () {
+      this.$refs.fileupload1.value=null;
+    }, 
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
       if (field) {
