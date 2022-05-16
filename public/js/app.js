@@ -69426,8 +69426,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       arrayPtDisemb: { id: 0, namePort: '', name: '' },
       id_disemb: 0,
       arrayFg: { id: 0, name: '' },
+      arrayFgDonor: { id: 0, name: '' },
       arrayFlag: [],
       id_flag: 0,
+      id_flagDonor: 0,
 
       edo: 1,
       tipoAccion: 1,
@@ -69555,6 +69557,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.arrayPtZarpe = { id: 0, namePort: '', name: '' };
       this.arrayPtDisemb = { id: 0, namePort: '', name: '' };
       this.arrayFg = { id: 0, name: '' };
+      this.arrayFgDonor = { id: 0, name: '' };
     },
     showUpdate: function showUpdate() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -69592,6 +69595,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.arrayPtDisemb.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
       this.arrayFg.name = data["nameFlag"];
+      this.arrayFgDonor.id = data["id_flagDonor"];
+      this.arrayFgDonor.name = data["nameFlag"];
     },
     nameWithPort: function nameWithPort(_ref2) {
       var namePort = _ref2.namePort,
@@ -69676,7 +69681,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         'id_port': this.arrayPt.id,
         'id_portZarpe': this.arrayPtZarpe.id,
         'id_portDisemb': this.arrayPtDisemb.id,
-        'id_flag': this.arrayFg.id
+        'id_flag': this.arrayFg.id,
+        'id_flagDonor': this.arrayFgDonor.id
       }).then(function (response) {
         me.hideForm();
         me.message("Guardado", "Guardo ");
@@ -69715,7 +69721,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         'id_port': this.arrayPt.id,
         'id_portZarpe': this.arrayPtZarpe.id,
         'id_portDisemb': this.arrayPtDisemb.id,
-        'id_flag': this.arrayFg.id
+        'id_flag': this.arrayFg.id,
+        'id_flagDonor': this.arrayFgDonor.id
       }).then(function (response) {
         me.hideForm();
         me.message("Actualizado", "Actualizó ");
@@ -70473,11 +70480,11 @@ var render = function() {
                                     "track-by": "name"
                                   },
                                   model: {
-                                    value: _vm.arrayFg,
+                                    value: _vm.arrayFgDonor,
                                     callback: function($$v) {
-                                      _vm.arrayFg = $$v
+                                      _vm.arrayFgDonor = $$v
                                     },
-                                    expression: "arrayFg"
+                                    expression: "arrayFgDonor"
                                   }
                                 })
                               ],

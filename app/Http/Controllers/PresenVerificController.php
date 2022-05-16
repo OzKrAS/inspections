@@ -32,7 +32,7 @@ class PresenVerificController extends Controller
     }   
     public function store(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $presenVerifics = new PresenVerific(); 
         $presenVerifics->nameShip = $request->nameShip;
         $presenVerifics->cruise = $request->cruise;
@@ -43,11 +43,16 @@ class PresenVerificController extends Controller
          
         $presenVerifics->id_flag = $request->id_flag;    
         $presenVerifics->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
     }
 
     public function update(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $presenVerifics = PresenVerific::findOrFail($request->id);  
         $presenVerifics->nameShip = $request->nameShip;
         $presenVerifics->cruise = $request->cruise;
@@ -58,12 +63,22 @@ class PresenVerificController extends Controller
          
         $presenVerifics->id_flag = $request->id_flag;  
         $presenVerifics->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro actualizado exitosamente'
+            );
+        return response()->json($array,201);
     }
 
     public function destroy(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $presenVerifics = PresenVerific::findOrFail($request->id);
         $presenVerifics->delete();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro eliminado exitosamente'
+            );
+        return response()->json($array,201);
     }
 }

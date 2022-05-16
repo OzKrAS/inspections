@@ -51,7 +51,7 @@ class InspectionBoatCargoController extends Controller
     }
     public function store(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $inspections = new InspectionBoatCargo();
         $inspections->place = $request->place;
         $inspections->noForm = $request->noForm;
@@ -79,11 +79,17 @@ class InspectionBoatCargoController extends Controller
         $inspections->id_portZarpe = $request->id_portZarpe;  
         $inspections->id_portDisemb = $request->id_portDisemb;     
         $inspections->id_flag = $request->id_flag;   
+        $inspections->id_flagDonor = $request->id_flagDonor;   
         $inspections->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function update(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $inspections = InspectionBoatCargo::findOrFail($request->id); 
         $inspections->place = $request->place;
         $inspections->noForm = $request->noForm;
@@ -111,12 +117,23 @@ class InspectionBoatCargoController extends Controller
         $inspections->id_portZarpe = $request->id_portZarpe;  
         $inspections->id_portDisemb = $request->id_portDisemb;  
         $inspections->id_flag = $request->id_flag;   
+        $inspections->id_flagDonor = $request->id_flagDonor;  
         $inspections->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro actualizado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function destroy(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $inspections = InspectionBoatCargo::findOrFail($request->id);
         $inspections->delete();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro eliminado exitosamente'
+            );
+        return response()->json($array,201);
     }
 }

@@ -45,6 +45,8 @@ class CreateInspectionBoatCargosTable extends Migration
             $table->foreign('id_portDisemb')->references('id')->on('ports');
             $table->integer('id_flag')->unsigned();
             $table->foreign('id_flag')->references('id')->on('flags');
+            $table->integer('id_flagDonor')->unsigned();
+            $table->foreign('id_flagDonor')->references('id')->on('flags');
             $table->timestamps();
         });
     }

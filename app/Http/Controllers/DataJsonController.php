@@ -1340,7 +1340,6 @@ class DataJsonController extends Controller
         $regional = Regional::all();
 
         return response() -> json(
-            array(
                 ["idForm"=>1,
             "questions"=>
                 array(                                      
@@ -1350,6 +1349,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"noActa",
+                        "cons"=>1,
                         "data"=>null
                     ],
                     [
@@ -1358,6 +1358,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayRegl",
+                        "cons"=>2,
                         "data"=>$regional
                     ],
                     [
@@ -1366,6 +1367,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"departament",
+                        "cons"=>3,
                         "data"=>null
                     ],
                     [
@@ -1374,6 +1376,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"municipality",
+                        "cons"=>4,
                         "data"=>null
                     ],
                     [
@@ -1382,6 +1385,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"",
+                        "cons"=>5,
                         "data"=>null
                     ],
                     [
@@ -1390,6 +1394,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayReasons",
+                        "cons"=>6,
                         "data"=>null
                     ],
                     [
@@ -1398,6 +1403,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"text4",
+                        "cons"=>7,
                         "data"=>null
                     ],
                     [
@@ -1406,6 +1412,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"",
+                        "cons"=>8,
                         "data"=>null
                     ],
                     [
@@ -1414,6 +1421,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"date",
+                        "cons"=>9,
                         "data"=>null
                     ],
                     [
@@ -1422,6 +1430,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"officialName",
+                        "cons"=>10,
                         "data"=>null
                     ],
                     [
@@ -1430,6 +1439,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"documentIdOfficial",
+                        "cons"=>11,
                         "data"=>null
                     ],
                     [
@@ -1438,6 +1448,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"representativeName",
+                        "cons"=>12,
                         "data"=>null
                     ],
                     [
@@ -1446,6 +1457,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"documentIdRepresentative",
+                        "cons"=>13,
                         "data"=>null
                     ],
                     [
@@ -1454,6 +1466,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"plateCertificate",
+                        "cons"=>14,
                         "data"=>null
                     ],
                     [
@@ -1462,6 +1475,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"",
+                        "cons"=>15,
                         "data"=>null
                     ],
                     [
@@ -1470,6 +1484,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"name",
+                        "cons"=>16,
                         "data"=>null
                     ],
                     [
@@ -1478,6 +1493,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"documentIdOffender",
+                        "cons"=>17,
                         "data"=>null
                     ],
                     [
@@ -1486,6 +1502,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"dateExpedition",
+                        "cons"=>18,
                         "data"=>null
                     ],
                     [
@@ -1494,6 +1511,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"expeditionPlace",
+                        "cons"=>19,
                         "data"=>null
                     ],
                     [
@@ -1502,6 +1520,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"homeAddress",
+                        "cons"=>20,
                         "data"=>null
                     ],
                     [
@@ -1510,6 +1529,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"municipalityOffender",
+                        "cons"=>21,
                         "data"=>null
                     ],
                     [
@@ -1518,6 +1538,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"corregimiento",
+                        "cons"=>22,
                         "data"=>null
                     ],
                     [
@@ -1526,6 +1547,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"neighborhood",
+                        "cons"=>23,
                         "data"=>null
                     ],
                     [
@@ -1534,6 +1556,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"telephone",
+                        "cons"=>24,
                         "data"=>null
                     ],
                     [
@@ -1542,6 +1565,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"mobile",
+                        "cons"=>25,
                         "data"=>null
                     ],
                     [
@@ -1550,6 +1574,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"email",
+                        "cons"=>26,
                         "data"=>null
                     ],
                     [
@@ -1558,18 +1583,18 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"observation",
+                        "cons"=>27,
                         "data"=>null
                     ],
                 )
                 ]
-            ),200
+            ,200
         );
     }
     public function jsonDonation(){
         $regional = Regional::all();
 
         return response() -> json(
-            array(
                 ["idForm"=>1,
             "questions"=>
                 array(                                      
@@ -1579,6 +1604,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"noActa",
+                        "cons"=>1,
                         "data"=>null
                     ],
                     [
@@ -1587,6 +1613,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayRegl",
+                        "cons"=>2,
                         "data"=>$regional
                     ],
                     [
@@ -1595,6 +1622,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"date",
+                        "cons"=>3,
                         "data"=>null
                     ],
                     [
@@ -1603,6 +1631,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"nameOfficial",
+                        "cons"=>4,
                         "data"=>null
                     ],
                     [
@@ -1611,6 +1640,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"noDocumentId1",
+                        "cons"=>5,
                         "data"=>null
                     ],
                     [
@@ -1619,6 +1649,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"nameRepresentative",
+                        "cons"=>6,
                         "data"=>null
                     ],
                     [
@@ -1627,6 +1658,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"noDocumentId2",
+                        "cons"=>7,
                         "data"=>null
                     ],
                     [
@@ -1635,6 +1667,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"noPlateCertificate",
+                        "cons"=>8,
                         "data"=>null
                     ],
                     [
@@ -1643,6 +1676,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"name",
+                        "cons"=>9,
                         "data"=>null
                     ],
                     [
@@ -1651,6 +1685,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"legalStatus",
+                        "cons"=>10,
                         "data"=>null
                     ],
                     [
@@ -1659,6 +1694,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"address",
+                        "cons"=>11,
                         "data"=>null
                     ],
                     [
@@ -1667,6 +1703,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"representativeDonation",
+                        "cons"=>12,
                         "data"=>null
                     ],
                     [
@@ -1675,6 +1712,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"identification",
+                        "cons"=>13,
                         "data"=>null
                     ],
                     [
@@ -1683,6 +1721,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"municipality",
+                        "cons"=>14,
                         "data"=>null
                     ],
                     [
@@ -1691,6 +1730,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"corregimiento",
+                        "cons"=>15,
                         "data"=>null
                     ],
                     [
@@ -1699,6 +1739,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"place",
+                        "cons"=>16,
                         "data"=>null
                     ],
                     [
@@ -1707,11 +1748,12 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"telephone",
+                        "cons"=>17,
                         "data"=>null
                     ],
                 )
                 ]
-            ),200
+            ,200
         );
     }
     public function jsonInspectionBoatCargo(){
@@ -1720,7 +1762,7 @@ class DataJsonController extends Controller
         $flags = Flag::all();
 
         return response() -> json(
-            array(
+      
                 ["idForm"=>1,
             "questions"=>
                 array(                                      
@@ -1730,6 +1772,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"noForm",
+                        "cons"=>1,
                         "data"=>null
                     ],
                     [
@@ -1738,6 +1781,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"place",
+                        "cons"=>2,
                         "data"=>null
                     ],      
                     [
@@ -1746,6 +1790,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"date",
+                        "cons"=>3,
                         "data"=>null
                     ],      
                     [
@@ -1754,6 +1799,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"businessColombia",
+                        "cons"=>4,
                         "data"=>null
                     ],      
                     [
@@ -1762,6 +1808,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"fullCargo",
+                        "cons"=>5,
                         "data"=>null
                     ],      
                     [
@@ -1770,6 +1817,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"nameBoatCargo",
+                        "cons"=>6,
                         "data"=>null
                     ],      
                     [
@@ -1778,6 +1826,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPt",
+                        "cons"=>7,
                         "data"=>$ports
                     ],      
                     [
@@ -1786,6 +1835,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayFg",
+                        "cons"=>8,
                         "data"=>$flags
                     ],      
                     [
@@ -1794,6 +1844,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPtZarpe",
+                        "cons"=>9,
                         "data"=>$ports
                     ],      
                     [
@@ -1802,6 +1853,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPtDisemb",
+                        "cons"=>10,
                         "data"=>$ports
                     ],      
                     [
@@ -1810,6 +1862,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"areaOperation",
+                        "cons"=>11,
                         "data"=>null
                     ],      
                     [
@@ -1818,6 +1871,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"notification",
+                        "cons"=>12,
                         "data"=>null
                     ],      
                     [
@@ -1826,6 +1880,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"",
+                        "cons"=>13,
                         "data"=>null
                     ],      
                     [
@@ -1834,6 +1889,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"nameBoat",
+                        "cons"=>14,
                         "data"=>null
                     ],      
                     [
@@ -1842,6 +1898,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayFg",
+                        "cons"=>15,
                         "data"=>$flags
                     ],      
                     [
@@ -1850,6 +1907,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"noIdOmi",
+                        "cons"=>16,
                         "data"=>null
                     ],      
                     [
@@ -1858,6 +1916,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"placeTransfer",
+                        "cons"=>17,
                         "data"=>null
                     ],      
                     [
@@ -1866,6 +1925,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"dateTransfer",
+                        "cons"=>18,
                         "data"=>null
                     ],      
                     [
@@ -1874,6 +1934,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"areasCapture",
+                        "cons"=>19,
                         "data"=>null
                     ],      
                     [
@@ -1882,6 +1943,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"",
+                        "cons"=>20,
                         "data"=>null
                     ],      
                     [
@@ -1890,6 +1952,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"species",
+                        "cons"=>21,
                         "data"=>null
                     ],      
                     [
@@ -1898,6 +1961,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"shapeProduct",
+                        "cons"=>22,
                         "data"=>null
                     ],      
                     [
@@ -1906,6 +1970,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"amount",
+                        "cons"=>23,
                         "data"=>null
                     ],      
                     [
@@ -1914,6 +1979,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"productLanded",
+                        "cons"=>24,
                         "data"=>null
                     ],      
                     [
@@ -1922,6 +1988,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"nameOfficial",
+                        "cons"=>25,
                         "data"=>null
                     ],      
                     [
@@ -1930,6 +1997,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"nameCaptain",
+                        "cons"=>26,
                         "data"=>null
                     ],      
                     [
@@ -1938,6 +2006,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"nameBusiness",
+                        "cons"=>27,
                         "data"=>null
                     ],      
                     [
@@ -1946,11 +2015,12 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"observation",
+                        "cons"=>28,
                         "data"=>null
                     ],      
                 )
                 ]
-            ),200
+            ,200
         );
     }
     public function jsonCertificationDisembTuna(){
@@ -1959,7 +2029,7 @@ class DataJsonController extends Controller
         $ports = Ports::all();
 
         return response() -> json(
-            array(
+        
                 ["idForm"=>1,
             "questions"=>
                 array(                                      
@@ -1969,6 +2039,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"date",
+                        "cons"=>1,
                         "data"=>null
                     ],         
                     [
@@ -1977,6 +2048,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayComp",
+                        "cons"=>2,
                         "data"=>$company
                     ],         
                     [
@@ -1985,6 +2057,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"nameBoat",
+                        "cons"=>3,
                         "data"=>null
                     ],   
                     [
@@ -1993,6 +2066,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayComp",
+                        "cons"=>4,
                         "data"=>$flags
                     ],  
                     [
@@ -2001,6 +2075,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"",
+                        "cons"=>5,
                         "data"=>null
                     ],
                     [
@@ -2009,6 +2084,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"dateBeginningFaena",
+                        "cons"=>6,
                         "data"=>null
                     ],      
                     [
@@ -2017,6 +2093,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"dateEndFaena",
+                        "cons"=>7,
                         "data"=>null
                     ],      
                     [
@@ -2025,6 +2102,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"ZoneFisher",
+                        "cons"=>8,
                         "data"=>null
                     ],      
                     [
@@ -2033,6 +2111,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPt",
+                        "cons"=>9,
                         "data"=>$ports
                     ],      
                     [
@@ -2041,6 +2120,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"yellowFin",
+                        "cons"=>10,
                         "data"=>null
                     ],      
                     [
@@ -2049,6 +2129,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"poundRating1",
+                        "cons"=>11,
                         "data"=>null
                     ],      
                     [
@@ -2057,6 +2138,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"barrilete",
+                        "cons"=>12,
                         "data"=>null
                     ], 
                     [
@@ -2065,6 +2147,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"poundRating2",
+                        "cons"=>13,
                         "data"=>null
                     ],     
                     [
@@ -2073,6 +2156,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"patudo",
+                        "cons"=>14,
                         "data"=>null
                     ],     
                     [
@@ -2081,6 +2165,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"poundRating3",
+                        "cons"=>15,
                         "data"=>null
                     ],     
                     [
@@ -2089,6 +2174,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"other",
+                        "cons"=>16,
                         "data"=>null
                     ],     
                     [
@@ -2097,6 +2183,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"poundRating4",
+                        "cons"=>17,
                         "data"=>null
                     ],     
                     [
@@ -2105,6 +2192,7 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"observation",
+                        "cons"=>18,
                         "data"=>null
                     ],     
                     [
@@ -2113,11 +2201,12 @@ class DataJsonController extends Controller
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"nameOfficial",
+                        "cons"=>19,
                         "data"=>null
                     ],     
                 )
                 ]
-            ),200
+            ,200
         );
     }
     

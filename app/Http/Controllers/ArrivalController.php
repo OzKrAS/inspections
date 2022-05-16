@@ -84,7 +84,7 @@ class ArrivalController extends Controller
     }   
     public function store(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $arrivals = new Arrival(); 
         $arrivals->insNo = $request->insNo;
         $arrivals->radioCall = $request->radioCall;
@@ -138,11 +138,16 @@ class ArrivalController extends Controller
         $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized;    
         $arrivals->id_company = $request->id_company; 
         $arrivals->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
     }
 
     public function update(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $arrivals = Arrival::findOrFail($request->id);  
         $arrivals->insNo = $request->insNo;
         $arrivals->radioCall = $request->radioCall;
@@ -196,12 +201,22 @@ class ArrivalController extends Controller
         $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized; 
         $arrivals->id_company = $request->id_company; 
         $arrivals->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro actualizado exitosamente'
+            );
+        return response()->json($array,201);
     }
 
     public function destroy(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $arrivals = Arrival::findOrFail($request->id);
         $arrivals->delete();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro eliminado exitosamente'
+            );
+        return response()->json($array,201);
     }
 }

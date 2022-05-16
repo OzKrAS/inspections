@@ -61,7 +61,7 @@ class ConfiscationCertificateController extends Controller
     }
     public function store(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $confiscation = new ConfiscationCertificate();
         $confiscation->noActa = $request->noActa;
         $confiscation->departament = $request->departament;
@@ -100,10 +100,15 @@ class ConfiscationCertificateController extends Controller
         
         $confiscation->id_regional = $request->id_regional;  
         $confiscation->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function update(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $confiscation = ConfiscationCertificate::findOrFail($request->id); 
         $confiscation->noActa = $request->noActa;
         $confiscation->departament = $request->departament;
@@ -142,11 +147,21 @@ class ConfiscationCertificateController extends Controller
         
         $confiscation->id_regional = $request->id_regional;  
         $confiscation->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro actualizado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function destroy(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $confiscation = ConfiscationCertificate::findOrFail($request->id);
         $confiscation->delete();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro eliminado exitosamente'
+            );
+        return response()->json($array,201);
     }
 }

@@ -48,7 +48,7 @@ class CertificationDisembTunaController extends Controller
     }
     public function store(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $tunas = new CertificationDisembTuna();
         $tunas->nameBoat = $request->nameBoat;
         $tunas->ZoneFisher = $request->ZoneFisher;
@@ -70,10 +70,15 @@ class CertificationDisembTunaController extends Controller
         $tunas->id_port = $request->id_port;  
         $tunas->id_flag = $request->id_flag;  
         $tunas->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function update(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $tunas = CertificationDisembTuna::findOrFail($request->id); 
         $tunas->nameBoat = $request->nameBoat;
         $tunas->ZoneFisher = $request->ZoneFisher;
@@ -95,11 +100,21 @@ class CertificationDisembTunaController extends Controller
         $tunas->id_port = $request->id_port;  
         $tunas->id_flag = $request->id_flag;   
         $tunas->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro actualizado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function destroy(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $tunas = CertificationDisembTuna::findOrFail($request->id);
         $tunas->delete();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro eliminado exitosamente'
+            );
+        return response()->json($array,201);
     }
 }

@@ -40,7 +40,7 @@ class CheckDetInchController extends Controller
     }
     public function store(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $CheckDetInchs = new CheckDetInch();
         $CheckDetInchs->office = $request->office;
         $CheckDetInchs->official = $request->official;
@@ -56,10 +56,15 @@ class CheckDetInchController extends Controller
         $CheckDetInchs->id_company = $request->id_company;  
         $CheckDetInchs->id_regional = $request->id_regional;  
         $CheckDetInchs->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function update(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $CheckDetInchs = CheckDetInch::findOrFail($request->id); 
         $CheckDetInchs->office = $request->office;
         $CheckDetInchs->official = $request->official;
@@ -75,11 +80,21 @@ class CheckDetInchController extends Controller
         $CheckDetInchs->id_company = $request->id_company;  
         $CheckDetInchs->id_regional = $request->id_regional;  
         $CheckDetInchs->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro actualizado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function destroy(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $CheckDetInchs = CheckDetInch::findOrFail($request->id);
         $CheckDetInchs->delete();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro eliminado exitosamente'
+            );
+        return response()->json($array,201);
     }
 }

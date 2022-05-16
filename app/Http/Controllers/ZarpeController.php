@@ -78,7 +78,7 @@ class ZarpeController extends Controller
     }   
     public function store(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $zarpes = new Zarpe(); 
         $zarpes->insNo = $request->insNo;
         // $zarpes->portArrival = $request->portArrival;
@@ -124,11 +124,16 @@ class ZarpeController extends Controller
         // $zarpes->id_fisheryAuthorized = $request->id_fisheryAuthorized;       
         $zarpes->id_company = $request->id_company;       
         $zarpes->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
     }
 
     public function update(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $zarpes = Zarpe::findOrFail($request->id);  
         $zarpes->insNo = $request->insNo;
         // $zarpes->portArrival = $request->portArrival;
@@ -139,7 +144,7 @@ class ZarpeController extends Controller
         $zarpes->enrollment = $request->enrollment;
         $zarpes->noPatent = $request->noPatent;
         $zarpes->representative = $request->representative;
-        $zarpes->zoneAutoFish = $request->zoneAutoFish;
+        // $zarpes->zoneAutoFish = $request->zoneAutoFish;
         $zarpes->eyeMesh = $request->eyeMesh;
         $zarpes->netWidth = $request->netWidth;
         $zarpes->eyeFlake = $request->eyeFlake;
@@ -173,12 +178,22 @@ class ZarpeController extends Controller
         // $zarpes->id_fisheryAuthorized = $request->id_fisheryAuthorized;  
         $zarpes->id_company = $request->id_company;  
         $zarpes->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro actualizado exitosamente'
+            );
+        return response()->json($array,201);
     }
 
     public function destroy(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $zarpes = Zarpe::findOrFail($request->id);
         $zarpes->delete();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro se elimino exitosamente'
+            );
+        return response()->json($array,201);
     } 
 }

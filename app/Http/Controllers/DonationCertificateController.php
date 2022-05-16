@@ -49,7 +49,7 @@ class DonationCertificateController extends Controller
     }
     public function store(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $donations = new DonationCertificate();
         $donations->noActa = $request->noActa;
         $donations->nameScientific = $request->nameScientific;
@@ -76,10 +76,15 @@ class DonationCertificateController extends Controller
 
         $donations->id_regional = $request->id_regional;  
         $donations->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function update(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $donations = DonationCertificate::findOrFail($request->id); 
         $donations->noActa = $request->noActa;
         $donations->nameScientific = $request->nameScientific;
@@ -106,11 +111,21 @@ class DonationCertificateController extends Controller
 
         $donations->id_regional = $request->id_regional;  
         $donations->save();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro actualizado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function destroy(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        // if (!$request->ajax()) return redirect('/');
         $donations = DonationCertificate::findOrFail($request->id);
         $donations->delete();
+        $array = array(
+            'res' => true,
+            'message' => 'Registro eliminado exitosamente'
+            );
+        return response()->json($array,201);
     }
 }

@@ -239,7 +239,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <label class="text-muted">Bandera</label>
-                        <multiselect v-model="arrayFg" :options="arrayFlag"
+                        <multiselect v-model="arrayFgDonor" :options="arrayFlag"
                             placeholder="Seleccione una bandera"
                             :custom-label="nameWithFlag"
                             label="name"
@@ -561,8 +561,10 @@ export default {
       arrayPtDisemb: {id:0, namePort:'',name:''},
       id_disemb: 0,
       arrayFg: {id:0, name:''},
+      arrayFgDonor: {id:0, name:''},
 	    arrayFlag: [],
       id_flag: 0,
+      id_flagDonor: 0,
 
       edo:1,
       tipoAccion: 1,
@@ -697,6 +699,7 @@ export default {
       this.arrayPtZarpe = {id:0, namePort:'',name:''};
       this.arrayPtDisemb = {id:0, namePort:'',name:''};
       this.arrayFg = {id:0, name:''};
+      this.arrayFgDonor = {id:0, name:''};
     },
 
     showUpdate(data = []) {
@@ -732,7 +735,9 @@ export default {
       this.arrayPtDisemb.id = data["id_portDisemb"];
 			this.arrayPtDisemb.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
-	  this.arrayFg.name = data["nameFlag"];
+	    this.arrayFg.name = data["nameFlag"];
+      this.arrayFgDonor.id = data["id_flagDonor"];
+	    this.arrayFgDonor.name = data["nameFlag"];
     },
     nameWithPort ({ namePort,name }) {
             return `${namePort} / ${name}  `
@@ -819,6 +824,7 @@ export default {
         'id_portZarpe': this.arrayPtZarpe.id,
         'id_portDisemb': this.arrayPtDisemb.id,
         'id_flag': this.arrayFg.id,
+        'id_flagDonor': this.arrayFgDonor.id,
         })
         .then(function(response) {
           me.hideForm();
@@ -861,6 +867,7 @@ export default {
         'id_portZarpe': this.arrayPtZarpe.id,
         'id_portDisemb': this.arrayPtDisemb.id,
         'id_flag': this.arrayFg.id,
+        'id_flagDonor': this.arrayFgDonor.id,
         })
         .then(function(response) {
           me.hideForm();
