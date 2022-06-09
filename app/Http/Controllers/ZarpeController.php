@@ -81,7 +81,6 @@ class ZarpeController extends Controller
         // if (!$request->ajax()) return redirect('/');
         $zarpes = new Zarpe(); 
         $zarpes->insNo = $request->insNo;
-        // $zarpes->portArrival = $request->portArrival;
         $zarpes->radioCall = $request->radioCall;
         $zarpes->idOmi = $request->idOmi;
         $zarpes->noResolution = $request->noResolution;
@@ -122,7 +121,9 @@ class ZarpeController extends Controller
         $zarpes->id_orop = $request->id_orop;       
         $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;       
         // $zarpes->id_fisheryAuthorized = $request->id_fisheryAuthorized;       
-        $zarpes->id_company = $request->id_company;       
+        // $zarpes->arrayFa = $request->arrayFa;       
+        // $zarpes->arrayFa => implode(', ', $request->arrayFa);       
+        $zarpes->id_company = $request->id_company;      
         $zarpes->save();
         $array = array(
             'res' => true,

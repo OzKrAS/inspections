@@ -16,7 +16,13 @@ Route::group(['middleware'=>['guest']],function(){
     Route::post('/login', 'Auth\LoginController@login')->name('login');
     // Route::get('/login', 'Auth\LoginController@login');
 });
-
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('config:clear');
+    $exitCode = Artisan::call('config:cache');
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('route:clear');
+    return 'DONE'; //Return anything
+});
 Route::group(['middleware'=>['auth']],function(){
     
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');

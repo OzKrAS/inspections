@@ -67,34 +67,34 @@
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout">
                     <div class="md-layout-item">
-                    <label class="text-muted">Empresa</label>
-                      <multiselect v-model="arrayComp" :options="arrayCompany"
-                          placeholder="Seleccione una empresa"
-                          :custom-label="nameWithCompany"
-                          label="name"
-                          track-by="name">
-                      </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
+                      <label class="text-muted">Empresa</label>
+                        <multiselect v-model="arrayComp" :options="arrayCompany"
+                            placeholder="Seleccione una empresa"
+                            :custom-label="nameWithCompany"
+                            label="name"
+                            track-by="name">
+                        </multiselect>
+                    </div>&nbsp;&nbsp;&nbsp;
                   </div>
                 </div>
                 <div class="md-layout">
-                  
-                  
-                  <md-field md-clearable :class="getValidationClass('nameBoat')">
-                    <label for="first-name">Nombre Embarcación</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameBoat"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameBoat.required"
-                    >Olvidaste ingresar el nombre de la embarcación</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('nameBoat')">
+                      <label for="first-name">Nombre Embarcación</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.nameBoat"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.nameBoat.required"
+                      >Olvidaste ingresar el nombre de la embarcación</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <label class="text-muted">Bandera</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
@@ -103,49 +103,55 @@
                             label="name"
                             track-by="name">
                         </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-
+                  </div>&nbsp;&nbsp;&nbsp;  
+                </div>  
+                  
                   <label>CERTIFICA</label>
 
-                  <div class="md-layout-item">
-                        <div>
-                          <md-datepicker 
-                            v-model="dateBeginningFaena"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                          >
-                            <label>Fecha Inicio de Faena</label>
-                          </md-datepicker>
-                        </div>
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-16">
+                    <div>
+                      <md-datepicker 
+                        v-model="dateBeginningFaena"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                      >
+                        <label>Fecha Inicio de Faena</label>
+                      </md-datepicker>
+                    </div>
                   </div> &nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-16">
+                    <div>
+                      <md-datepicker 
+                        v-model="dateEndFaena"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                      >
+                        <label>Fecha Fin de Faena</label>
+                      </md-datepicker>
+                    </div>
+                  </div> &nbsp;&nbsp;&nbsp;              
+                </div>  
+                <div class="md-layout">
                   <div class="md-layout-item">
-                        <div>
-                          <md-datepicker 
-                            v-model="dateEndFaena"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                          >
-                            <label>Fecha Fin de Faena</label>
-                          </md-datepicker>
-                        </div>
+                    <md-field md-clearable :class="getValidationClass('ZoneFisher')">
+                      <label for="first-name">Zona de Pesca</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.ZoneFisher"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.ZoneFisher.required"
+                      >Olvidaste ingresar el nombre de la zona de pesca</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
                   </div> &nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('ZoneFisher')">
-                    <label for="first-name">Zona de Pesca</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.ZoneFisher"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.ZoneFisher.required"
-                    >Olvidaste ingresar el nombre de la zona de pesca</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>
                   <div class="md-layout-item">
                     <label class="text-muted">Puerto de Desembarque</label>
                       <multiselect v-model="arrayPt" :options="arrayPort"
@@ -154,21 +160,25 @@
                           label="name"
                           track-by="name">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;  
-                  <md-field md-clearable :class="getValidationClass('yellowFin')">
-                    <label for="first-name">Aleta Amarilla - YFT (Kg.)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.yellowFin"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.yellowFin.required"
-                    >Olvidaste ingresar la cantidad de aleta amarilla</span>
-                  </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-16">
+                    <md-field md-clearable :class="getValidationClass('yellowFin')">
+                      <label for="first-name">Aleta Amarilla - YFT (Kg.)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.yellowFin"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.yellowFin.required"
+                      >Olvidaste ingresar la cantidad de aleta amarilla</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field>
                       <label class="text-muted">Clasificación en Libras Aleta Amarilla</label>
@@ -180,21 +190,23 @@
                         <md-option value="más de 30">Mas de 30</md-option>
                       </md-select>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;  
-                  <md-field md-clearable :class="getValidationClass('barrilete')">
-                    <label for="first-name">Barrilete - SKJ (Kg.)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.barrilete"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.barrilete.required"
-                    >Olvidaste ingresar la cantidad de barrilete</span>
-                  </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('barrilete')">
+                      <label for="first-name">Barrilete - SKJ (Kg.)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.barrilete"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.barrilete.required"
+                      >Olvidaste ingresar la cantidad de barrilete</span>
+                    </md-field>   
+                  </div>&nbsp;&nbsp;&nbsp; 
                   <div class="md-layout-item">
                     <md-field>
                       <label class="text-muted">Clasificación en Libras Barrilete</label>
@@ -206,21 +218,25 @@
                         <md-option value="más de 30">Mas de 30</md-option>
                       </md-select>
                     </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;  
+                </div>    
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('patudo')">
+                      <label for="first-name">Patudo - BET (Kg.)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.patudo"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.patudo.required"
+                      >Olvidaste ingresar la cantidad de patudo</span>
+                    </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable :class="getValidationClass('patudo')">
-                    <label for="first-name">Patudo - BET (Kg.)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.patudo"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.patudo.required"
-                    >Olvidaste ingresar la cantidad de patudo</span>
-                  </md-field> 
                   <div class="md-layout-item">
                     <md-field>
                       <label class="text-muted">Clasificación en Libras Patudo</label>
@@ -233,16 +249,18 @@
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <md-field md-clearable>
-                    <label for="first-name">Otro</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="other"
-                      :disabled="sending"
-                    />
-                  </md-field> 
+                  <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Otro</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="other"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field>
                       <label class="text-muted">Clasificación en Libras Otro</label>
@@ -255,25 +273,33 @@
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <md-field>
-                        <label>Observaciones</label>
-                        <md-textarea v-model="observation"></md-textarea>
-                  </md-field>        
-                  <md-field md-clearable :class="getValidationClass('nameOfficial')">
-                    <label for="first-name">Nombre funcionario</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameOfficial"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameOfficial.required"
-                    >Olvidaste ingresar nombre del funcionario</span>
-                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                  </md-field>        
+                </div>     
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field>
+                          <label>Observaciones</label>
+                          <md-textarea v-model="observation"></md-textarea>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;  
+                </div>        
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-70">
+                    <md-field md-clearable :class="getValidationClass('nameOfficial')">
+                      <label for="first-name">Nombre funcionario</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.nameOfficial"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.nameOfficial.required"
+                      >Olvidaste ingresar nombre del funcionario</span>
+                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;                                               
                 </div>
               </md-card-content>
             </form>

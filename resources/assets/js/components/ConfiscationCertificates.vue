@@ -220,8 +220,10 @@
                             v-if="!$v.form.AverageSize.required"
                           >Olvidaste ingresar el promedio talla en centimetros</span>
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item">
+                      </div>&nbsp;&nbsp;&nbsp;          
+                    </div>
+                    <div class="md-layout">
+                      <div class="md-layout-item md-size-20">
                         <md-field md-clearable :class="getValidationClass('weight1')">
                           <label for="first-name">Peso (Kg)</label>
                           <md-input
@@ -237,7 +239,7 @@
                           >Olvidaste ingresar el peso en kilogramosa</span>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item">
+                      <div class="md-layout-item md-size-20">
                         <md-field md-clearable :class="getValidationClass('commercialValue1')">
                           <label for="first-name">Valor Comercial</label>
                           <md-input
@@ -319,7 +321,6 @@
                     </table>
                   </div>  
                 </div>  
-
                 <div class="card-body">
                   <div class="md-layout">
                     <div class="md-layout-item">
@@ -385,8 +386,7 @@
                           v-if="!$v.form.commercialValue2.required"
                         >Olvidaste ingresar valor comercial</span>
                       </md-field> 
-                    </div>&nbsp;&nbsp;&nbsp;                       
-                                   
+                    </div>&nbsp;&nbsp;&nbsp;                                                         
                   </div>                       
                   <md-button
                     type="button"
@@ -442,7 +442,6 @@
                     </table>
                   </div>  
                 </div>  
-
                   <md-field md-clearable :class="getValidationClass('nameScientific')">
                     <label for="first-name">Nombre Científico</label>
                     <md-input

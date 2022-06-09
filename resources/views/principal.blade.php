@@ -21,6 +21,7 @@
     
         {{-- <link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css"> --}}
         <link href="css/plantilla.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     </head>
 
     <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
@@ -119,8 +120,17 @@
     {{-- <script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> --}}
     {{-- <script  src=" https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>     --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/vue-tables-2@2.0.18/dist/vue-tables-2.min.js"></script> --}}
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <script>
+    // Note that the name "myDropzone" is the camelized
+    // id of the form.
+    Dropzone.options.myDropzone = {
+        // Configuration options go here
+    };
+    </script>
     <script src="js/app.js"></script>
     <script src="js/plantilla.js"></script>
+
 
     </body>
     <script language="javascript">

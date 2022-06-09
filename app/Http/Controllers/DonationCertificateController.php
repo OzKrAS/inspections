@@ -73,6 +73,7 @@ class DonationCertificateController extends Controller
         $donations->corregimiento = $request->corregimiento;
         $donations->place = $request->place;
         $donations->telephone = $request->telephone;
+        // $donations->img1 = $request->img1;
 
         $donations->id_regional = $request->id_regional;  
         $donations->save();

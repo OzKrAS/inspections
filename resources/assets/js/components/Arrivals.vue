@@ -740,51 +740,39 @@
             <div class="card-body">  
                     <div class="md-layout">
                       <div class="md-layout-item">
-                        <md-field md-clearable :class="getValidationClass('nameCommon1')">
+                        <md-field md-clearable>
                           <label for="first-name">Nombre Común</label>
                           <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="form.nameCommon1"
+                            v-model="nameCommon1"
                             :disabled="sending"
                           />
-                          <span
-                            class="md-error"
-                            v-if="!$v.form.nameCommon1.required"
-                          >Olvidaste ingresar el nombre común</span>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;  
                       <div class="md-layout-item">
-                        <md-field md-clearable :class="getValidationClass('nameScientific1')">
+                        <md-field md-clearable>
                           <label for="first-name">Nombre Científico</label>
                           <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="form.nameScientific1"
+                            v-model="nameScientific1"
                             :disabled="sending"
                           />
-                          <span
-                            class="md-error"
-                            v-if="!$v.form.nameScientific1.required"
-                          >Olvidaste ingresar el nombre científico</span>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;  
                       <div class="md-layout-item md-size-25">
-                        <md-field md-clearable :class="getValidationClass('capture1')">
+                        <md-field md-clearable>
                           <label for="first-name">Captura - Ton.</label>
                           <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="form.capture1"
+                            v-model="capture1"
                             :disabled="sending"
                           />
-                          <span
-                            class="md-error"
-                            v-if="!$v.form.capture1.required"
-                          >Olvidaste ingresar la captura el toneladas</span>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;    
                     </div>           
@@ -842,51 +830,39 @@
             <div class="card-body"> 
                     <div class="md-layout">
                       <div class="md-layout-item">
-                        <md-field md-clearable :class="getValidationClass('nameCommon2')">
+                        <md-field md-clearable>
                           <label for="first-name">Nombre Común</label>
                           <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="form.nameCommon2"
+                            v-model="nameCommon2"
                             :disabled="sending"
                           />
-                          <span
-                            class="md-error"
-                            v-if="!$v.form.nameCommon2.required"
-                          >Olvidaste ingresar el nombre común</span>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item"> 
-                        <md-field md-clearable :class="getValidationClass('nameScientific2')">
+                        <md-field md-clearable>
                           <label for="first-name">Nombre Científico</label>
                           <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="form.nameScientific2"
+                            v-model="nameScientific2"
                             :disabled="sending"
                           />
-                          <span
-                            class="md-error"
-                            v-if="!$v.form.nameScientific2.required"
-                          >Olvidaste ingresar el nombre científico</span>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item md-size-25">
-                        <md-field md-clearable :class="getValidationClass('capture2')">
+                        <md-field md-clearable>
                           <label for="first-name">Captura - Ton.</label>
                           <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="form.capture2"
+                            v-model="capture2"
                             :disabled="sending"
                           />
-                          <span
-                            class="md-error"
-                            v-if="!$v.form.capture2.required"
-                          >Olvidaste ingresar la captura en toneladas</span>
                         </md-field>  
                       </div>&nbsp;&nbsp;&nbsp;     
                     </div> 
@@ -1082,15 +1058,15 @@ export default {
         noHaulsNacional: "",
         noHaulsInter: "",
         landedWeight: "",
-        nameCommon1: "",
-        nameScientific1: "",
-        capture1: "",
-        nameCommon2: "",
-        nameScientific2: "",
-        capture2: "",
         stateRectorPort: "COLOMBIA",
       },
 
+      nameCommon1: "",
+      nameScientific1: "",
+      capture1: "",
+      nameCommon2: "",
+      nameScientific2: "",
+      capture2: "",
       observation: "",
       notification: "",
       finalityArrival: "",
@@ -1231,24 +1207,6 @@ export default {
         required
       },
       landedWeight: {
-        required
-      },
-      nameCommon1: {
-        required
-      },
-      nameScientific1: {
-        required
-      },
-      capture1: {
-        required
-      },
-      nameCommon2: {
-        required
-      },
-      nameScientific2: {
-        required
-      },
-      capture2: {
         required
       },
       stateRectorPort: {

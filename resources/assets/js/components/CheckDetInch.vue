@@ -316,7 +316,7 @@
                       <tbody>
                     </tbody>
                 </table>
-                <img src="/img/img5.png" alt="Workplace" usemap="#workmap4" width="263" height="278">
+                <!-- <img src="/img/img5.png" alt="Workplace" usemap="#workmap4" width="263" height="278">
                   <map name="workmap4">
                     <area @click="title('B')" shape="rect" coords="0,188,35,228" alt="">
                     <area @click="title('A')" class="puntoa" id="puntoa" shape="rect" coords="114,132,153,178" alt="">
@@ -381,7 +381,7 @@
                         </tfoot>
                         <tbody>
                       </tbody>
-                  </table>
+                  </table> -->
               </md-card-content>
             </form>
           </div>

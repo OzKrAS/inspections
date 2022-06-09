@@ -591,7 +591,7 @@
                         <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                       </md-field>  
                     </div>&nbsp;&nbsp;&nbsp;     
-                    <div class="md-layout-item">
+                    <div class="md-layout-item">    
                       <md-field md-clearable :class="getValidationClass('telephone')">
                         <label for="first-name">Teléfono</label>
                         <md-input
@@ -607,8 +607,9 @@
                         >Olvidaste ingresar el numero de télefono</span>
                         <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                       </md-field>   
-                    </div>&nbsp;&nbsp;&nbsp;     
-                    <div class="md-layout-item">
+                    </div>&nbsp;&nbsp;&nbsp; 
+                     
+                    <!-- <div class="md-layout-item">
                       <input
                         type="file"
                         accept="image/*"
@@ -617,8 +618,17 @@
                         ref="fileupload1"
                         
                       />
-                    </div>&nbsp;&nbsp;&nbsp;     
-                  </div>     
+                    </div>&nbsp;&nbsp;&nbsp;      -->
+                  </div>  
+                  <div class="md-layout">
+                    <div class="md-layout-item md-size-50">
+                      <label>imagen</label>
+                      <div class="file-loading">
+                          <input type="file" multiple accept="image/*" class="dropzone" id="my-awesome-dropzone">
+                      </div>
+                    </div>&nbsp;&nbsp;&nbsp; 
+                      
+                  </div>    
               </md-card-content>
             </form>
           </div>
@@ -658,8 +668,9 @@ import format from "date-fns/format";
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
     import vSelect from "vue-select";
-    import jsPDF from 'jspdf'
-    import 'jspdf-autotable'
+    import jsPDF from 'jspdf';
+    import 'jspdf-autotable';
+    import 'bootstrap-fileinput';
     import {
 		MdButton,  
 		MdContent,
@@ -756,6 +767,7 @@ export default {
       tipoAccion: 0
     };
   },
+  
 
   validations: {
     form: {
@@ -850,7 +862,32 @@ export default {
   },
 
   computed: {
-
+    file() {
+       $(document).ready(function() {
+        $("#input-res-2").fileinput({
+            uploadUrl: "/site/test-upload",
+            enableResumableUpload: true,
+            initialPreviewAsData: true,
+            allowedFileTypes: ['image'],
+            showCancel: true,
+            resumableUploadOptions: {
+                testUrl: "/site/test-file-chunks",
+                chunkSize: 1024, // 1 MB chunk size
+            },
+            maxFileCount: 5,
+            theme: 'fas',
+            deleteUrl: '/site/file-delete',
+            fileActionSettings: {
+                showZoom: function(config) {
+                    if (config.type === 'pdf' || config.type === 'image') {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+        });
+      });
+    }     
   },
   components: {
 		vSelect,
@@ -873,10 +910,10 @@ export default {
           break;
       }
     },
-    clickImg1(e) {
-        this.img1 = e.target.files[0];
-        console.log(this.img1);
-    },
+    // clickImg1(e) {
+    //     this.img1 = e.target.files[0];
+    //     console.log(this.img1);
+    // },
     resetImage () {
       this.$refs.fileupload1.value=null;
     }, 

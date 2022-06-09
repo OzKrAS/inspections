@@ -59,6 +59,7 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameShip')">
                         <label for="first-name">Nombre del Barco</label>
                         <md-input
@@ -74,15 +75,19 @@
                         >Olvidaste ingresar el nombre del barco
                         </span>
                     </md-field>
-                    <div class="md-layout-item">
-                        <label class="text-muted">Bandera</label>
-                        <multiselect v-model="arrayFg" :options="arrayFlag"
-                            placeholder="Seleccione una bandera"
-                            :custom-label="nameWithFlag"
-                            label="name"
-                            track-by="name">
-                        </multiselect>
-                    </div>&nbsp;&nbsp;&nbsp; 
+                  </div>&nbsp;&nbsp;&nbsp;   
+                  <div class="md-layout-item">
+                      <label class="text-muted">Bandera</label>
+                      <multiselect v-model="arrayFg" :options="arrayFlag"
+                          placeholder="Seleccione una bandera"
+                          :custom-label="nameWithFlag"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('cruise')">
                         <label for="first-name">No. Crucero/RSA</label>
                         <md-input
@@ -98,6 +103,8 @@
                         >Olvidaste ingresar el número de crucero/RSA
                         </span>
                     </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameFish')">
                         <label for="first-name">Nombre Pescador</label>
                         <md-input
@@ -113,7 +120,26 @@
                         >Olvidaste ingresar el nombre del pescador
                         </span>
                     </md-field>
-                    <div class="md-layout-item">
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>      
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-45">
+                    <md-field md-clearable :class="getValidationClass('nameCaptain')">
+                        <label for="first-name">Nombre Capitán</label>
+                        <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="form.nameCaptain"
+                            :disabled="sending"
+                        />
+                        <span
+                            class="md-error"
+                            v-if="!$v.form.nameCaptain.required"
+                        >Olvidaste ingresar el nombre del capitán</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
                           <div>
                             <md-datepicker 
                               v-model="dateZarpe"
@@ -137,22 +163,8 @@
                           </md-datepicker>
                         </div>
                     </div> &nbsp;&nbsp;&nbsp;
-                    <md-field md-clearable :class="getValidationClass('nameCaptain')">
-                        <label for="first-name">Nombre Capitán</label>
-                        <md-input
-                            name="first-name"
-                            id="first-name"
-                            autocomplete="given-name"
-                            v-model="form.nameCaptain"
-                            :disabled="sending"
-                        />
-                        <span
-                            class="md-error"
-                            v-if="!$v.form.nameCaptain.required"
-                        >Olvidaste ingresar el nombre del capitán</span>
-                    </md-field>
-
-                    
+                </div>                
+                <div class="md-layout">                   
                         <div class="card-body">   
                           <div class="md-layout">
                             <div class="md-layout-item">
@@ -391,11 +403,11 @@ export default {
 
       arrayTarget: [],
       
-      arrayTable: [{ nameTeam: '', zarpe: '', disemb: '', photoRecord: '', observation: ''},
-                   { nameTeam: '', zarpe: '', disemb: '', photoRecord: '', observation: ''},
-                   { nameTeam: '', zarpe: '', disemb: '', photoRecord: '', observation: ''},
-                   { nameTeam: '', zarpe: '', disemb: '', photoRecord: '', observation: ''},
-                   { nameTeam: '', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+      arrayTable: [{ nameTeam: 'Marcas del PPD*', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                   { nameTeam: 'Balsa', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                   { nameTeam: 'Reflector', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                   { nameTeam: 'Visores de Buceo', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                   { nameTeam: 'Lanchas con Bridas', zarpe: '', disemb: '', photoRecord: '', observation: ''},
                   ],
     
       arrayFg: {id:0, name:''},

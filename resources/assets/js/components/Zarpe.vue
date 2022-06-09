@@ -455,7 +455,7 @@
                         placeholder="Seleccione Pesquería Autorizada" 
                         label="name" 
                         track-by="name" 
-                        :preselect-first="true">
+                        :preselect-first="false">
                       </multiselect>
                     </div>&nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item">
@@ -796,7 +796,7 @@ export default {
       arrayZoneAuto: {id:0, name:''},
 	    arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
-      arrayFa:{},
+      arrayFa:{id:0, name:''},
 	    arrayFisheryAuthorized: [],
       id_fisheryAuthorized: 0,
       arrayComp: {id:0, name:''},
@@ -1128,7 +1128,7 @@ export default {
 			this.arrayOr.name = data["nameOrop"];
       this.arrayZoneAuto.id = data["id_zoneAutoFisher"];
 			this.arrayZoneAuto.name = data["nameZoneAutoFisher"];
-      // this.arrayFa.id = data["id_fisheryAuthorized"];
+      this.arrayFa.id = data["arrayFa"];
 			// this.arrayFa.name = data["nameFishery"];
       this.arrayComp.id = data["id_company"];
 			this.arrayComp.name = data["nameCompany"];
@@ -1190,6 +1190,8 @@ export default {
           'id_orop': this.arrayOr.id,
           'id_zoneAutoFisher': this.arrayZoneAuto.id,
           // 'id_fisheryAuthorized': this.arrayFa.id,
+          // 'arrayFa': this.arrayFa.id,
+          // 'arrayFa': this.arrayFa.id,
           'id_company': this.arrayComp.id,
 
         })
