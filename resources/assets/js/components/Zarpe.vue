@@ -693,6 +693,7 @@
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
     import vSelect from "vue-select";
+    import jsPDF from 'jspdf';
     import {
 		MdButton,  
 		MdContent,
@@ -1296,7 +1297,6 @@ export default {
         }
       });
     },
-
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
@@ -1339,7 +1339,7 @@ export default {
             { "data": "nameBoat" },
             { "data": "enrollment" },
             { "data": "captain" },
-             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
+             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>"},
 
         ]
 

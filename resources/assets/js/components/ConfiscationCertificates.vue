@@ -628,7 +628,7 @@
                         placeholder="Motivos Del Decomiso Preventivo" 
                         label="name" 
                         track-by="name" 
-                        :preselect-first="true">
+                        :preselect-first="false">
                       </multiselect>
                     </div>
                   </div>&nbsp;&nbsp;&nbsp;

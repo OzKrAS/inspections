@@ -500,7 +500,7 @@
       <!-- /.modal-dialog -->
     </div>
     <!-- modal 2 -->
-    <div
+    <!-- <div
       class="modal fade"
       tabindex="-1"
       :class="{'mostrar' : modal2}"
@@ -591,10 +591,8 @@
             </md-card-actions>
           </div>
         </div>
-        <!-- /.modal-content -->
       </div>
-      <!-- /.modal-dialog -->
-    </div>
+    </div> -->
 
   </main>
 </template>
@@ -785,47 +783,47 @@ export default {
       }
       this.abrirModal(dets,punto) 
     },
-    title(punto2){
-      var dets="";
-      if(punto2=='A'){ 
-        dets='Ancho solpa (>= 56 "  cuando está estirada)'    ;   
+    // title(punto2){
+    //   var dets="";
+    //   if(punto2=='A'){ 
+    //     dets='Ancho solpa (>= 56 "  cuando está estirada)'    ;   
        
-      }else if(punto2 =='B'){
-        dets='Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=20 " cuando está estirada)' ; 
-      }
-      if(punto2=='C'){ 
-        dets='Traslape no debe ser mayor a 15 " cuando está estirada';   
+    //   }else if(punto2 =='B'){
+    //     dets='Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=20 " cuando está estirada)' ; 
+    //   }
+    //   if(punto2=='C'){ 
+    //     dets='Traslape no debe ser mayor a 15 " cuando está estirada';   
        
-      }else if(punto2 =='D'){
-        dets='Dimencsión de las tapas no debe ser mayor a 58 " cuando están estirada' ; 
-      }
-      if(punto2=='E'){ 
-        dets='Longitud de la solapa no debe ser mayor a 24 " mas allá del borde posterior de la parrilla'    ;   
+    //   }else if(punto2 =='D'){
+    //     dets='Dimencsión de las tapas no debe ser mayor a 58 " cuando están estirada' ; 
+    //   }
+    //   if(punto2=='E'){ 
+    //     dets='Longitud de la solapa no debe ser mayor a 24 " mas allá del borde posterior de la parrilla'    ;   
        
-      }else if(punto2 =='F'){
-        dets='Ancho del DET' ; 
-      }
-      if(punto2=='G'){ 
-        dets='Alto del DET'    ;   
+    //   }else if(punto2 =='F'){
+    //     dets='Ancho del DET' ; 
+    //   }
+    //   if(punto2=='G'){ 
+    //     dets='Alto del DET'    ;   
        
-      }else if(punto2 =='H'){
-        dets='Distancia entre varillas' ; 
-      }
-      if (punto2 =='I'){
-         dets='Distancia entre marco y varilla' ; 
-      }
-      this.abrirModal2(dets,punto2) 
-    },
+    //   }else if(punto2 =='H'){
+    //     dets='Distancia entre varillas' ; 
+    //   }
+    //   if (punto2 =='I'){
+    //      dets='Distancia entre marco y varilla' ; 
+    //   }
+    //   this.abrirModal2(dets,punto2) 
+    // },
     abrirModal(dets,punto){
       this.tituloModal=dets;
         this.punto=punto;
         this.modal=1;
     },
-    abrirModal2(dets,punto2){
-      this.tituloModal=dets;
-        this.punto2=punto2;
-        this.modal2=1;
-    },
+    // abrirModal2(dets,punto2){
+    //   this.tituloModal=dets;
+    //     this.punto2=punto2;
+    //     this.modal2=1;
+    // },
      cerrarModal() {
       this.modal = 0;
       this.modal2 = 0;
@@ -844,18 +842,18 @@ export default {
       this.clearDets();
       this.cerrarModal();
     },
-    addDets2(){
-      this.arrayDets2.push({
-        punto2:this.punto2,
-        tituloModal:this.tituloModal,
-        babor3:this.babor3,
-        babor4:this.babor4,
-        estribor3:this.estribor3,
-        estribor4:this.estribor4,
-      })
-      this.clearDets();
-      this.cerrarModal();
-    },
+    // addDets2(){
+    //   this.arrayDets2.push({
+    //     punto2:this.punto2,
+    //     tituloModal:this.tituloModal,
+    //     babor3:this.babor3,
+    //     babor4:this.babor4,
+    //     estribor3:this.estribor3,
+    //     estribor4:this.estribor4,
+    //   })
+    //   this.clearDets();
+    //   this.cerrarModal();
+    // },
     clearDets() {
        this.punto = "";
        this.punto2 = "";
@@ -872,9 +870,9 @@ export default {
     deleteDets(index){
        this.arrayDets.splice(index,1);
     },
-    deleteDets2(index){
-       this.arrayDets2.splice(index,1);
-    },
+    // deleteDets2(index){
+    //    this.arrayDets2.splice(index,1);
+    // },
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
       if (field) {
