@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\AutoFisher;
 
-class autoFisherController extends Controller
+class AutoFisherController extends Controller
 {
     public function index(Request $request)
     {

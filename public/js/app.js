@@ -38540,14 +38540,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdRadio"]);
     message: function message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
-    myTable: function myTable(data) {
+    myTable: function myTable(datas) {
       var me = this;
 
       $(document).ready(function () {
 
         var table = $('#dataTable').DataTable({ destroy: true,
           stateSave: true,
-          data: data,
+          data: datas,
           "createdRow": function createdRow(row, data, dataIndex) {
             if (data[6] == "0") {
               $(row).addClass('redClass');
