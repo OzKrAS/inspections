@@ -130,7 +130,7 @@
                             <md-select v-model="finalityZarpe" name="finalityZarpe" id="finalityZarpe" placeholder="Finalidad Zarpe">
                               <md-option value="pesca">Pesca</md-option>
                               <md-option value="transito">Tránsito</md-option>
-                              <md-option value="desembarque">Desembarque</md-option>
+                              <!-- <md-option value="desembarque">Desembarque</md-option> -->
                             </md-select>
                           </md-field>
                         </div>&nbsp;&nbsp;&nbsp;
