@@ -1313,7 +1313,7 @@ export default {
       this.form.commercialValue = null;
       this.element = null;
       this.amount2 = null;
-      this.featuresState = null;
+      this.form.featuresState = null;
       this.commercialValue2 = null;
       this.text4 = null;
       this.form.officialName = null;
@@ -1355,7 +1355,7 @@ export default {
       this.form.commercialValue = data["commercialValue"];
       this.element = data["element"];
       this.amount2 = data["amount2"];
-      this.featuresState = data["featuresState"];
+      this.form.featuresState = data["featuresState"];
       this.commercialValue2 = data["commercialValue2"];
       this.text4 = data["text4"];
       this.form.officialName = data["officialName"];
@@ -1439,7 +1439,7 @@ export default {
       commercialValue : this.form.commercialValue.toUpperCase(),
       element : this.element.toUpperCase(),
       amount2 : this.amount2.toUpperCase(),
-      featuresState : this.featuresState.toUpperCase(),
+      featuresState : this.form.featuresState.toUpperCase(),
       commercialValue2 : this.commercialValue2.toUpperCase(),
       text4 : this.text4.toUpperCase(),
       officialName : this.form.officialName.toUpperCase(),
@@ -1492,7 +1492,7 @@ export default {
       commercialValue : this.form.commercialValue.toUpperCase(),
       element : this.element.toUpperCase(),
       amount2 : this.amount2.toUpperCase(),
-      featuresState : this.featuresState.toUpperCase(),
+      featuresState : this.form.featuresState.toUpperCase(),
       commercialValue2 : this.commercialValue2.toUpperCase(),
       text4 : this.text4.toUpperCase(),
       officialName : this.form.officialName.toUpperCase(),
@@ -1572,11 +1572,11 @@ export default {
       var columns1 = []; var rows1 = [];
       var columns2 = []; var rows2 = [];
       let info = [];
-      me.arrayTarget.array.forEach((element) => {
-        info.push([element.nameScientific, element.nameCommon, element.state])     
-      });
+      // me.arrayTarget.array.forEach((element) => {
+      //   info.push([element.nameScientific, element.nameCommon, element.state])     
+      // });
       var doc = new jsPDF('p','mm','letter');
-        (this.id_donationCertificate = data["id"]);
+        this.id_donationCertificate = data["id"]
         console.log("ID " + me.datos.id);
         var logo = new Image();
         logo.src = '/img/logoAUNAP.png';

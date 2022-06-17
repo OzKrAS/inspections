@@ -39304,7 +39304,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_material_dist_components__["MdList"]);
             "infoFiltered": "(filtrado de _MAX_ total registros)"
           },
           responsive: "true",
-          "columns": [{ "data": "name" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>   <button type='button'id=carta' class='carta btn btn-success btn-sm' data-tooltip title='carta' > <i class='fas fa-trash-alt'></i> </button> " }]
+          "columns": [{ "data": "name" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>" }]
 
         });
 
@@ -42402,6 +42402,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -60585,6 +60586,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -79609,6 +79625,44 @@ var render = function() {
                             _c(
                               "md-field",
                               {
+                                class: _vm.getValidationClass("nameScientific"),
+                                attrs: { "md-clearable": "" }
+                              },
+                              [
+                                _c("label", { attrs: { for: "first-name" } }, [
+                                  _vm._v("Nombre Científico")
+                                ]),
+                                _vm._v(" "),
+                                _c("md-input", {
+                                  attrs: {
+                                    name: "first-name",
+                                    id: "first-name",
+                                    autocomplete: "given-name",
+                                    disabled: _vm.sending
+                                  },
+                                  model: {
+                                    value: _vm.form.nameScientific,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.form, "nameScientific", $$v)
+                                    },
+                                    expression: "form.nameScientific"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                !_vm.$v.form.nameScientific.required
+                                  ? _c("span", { staticClass: "md-error" }, [
+                                      _vm._v(
+                                        "Olvidaste ingresar el nombre nombre común"
+                                      )
+                                    ])
+                                  : _vm._e()
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "md-field",
+                              {
                                 class: _vm.getValidationClass("nameCommon"),
                                 attrs: { "md-clearable": "" }
                               },
@@ -82235,7 +82289,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.commercialValue = null;
       this.element = null;
       this.amount2 = null;
-      this.featuresState = null;
+      this.form.featuresState = null;
       this.commercialValue2 = null;
       this.text4 = null;
       this.form.officialName = null;
@@ -82278,7 +82332,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.commercialValue = data["commercialValue"];
       this.element = data["element"];
       this.amount2 = data["amount2"];
-      this.featuresState = data["featuresState"];
+      this.form.featuresState = data["featuresState"];
       this.commercialValue2 = data["commercialValue2"];
       this.text4 = data["text4"];
       this.form.officialName = data["officialName"];
@@ -82358,7 +82412,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         commercialValue: this.form.commercialValue.toUpperCase(),
         element: this.element.toUpperCase(),
         amount2: this.amount2.toUpperCase(),
-        featuresState: this.featuresState.toUpperCase(),
+        featuresState: this.form.featuresState.toUpperCase(),
         commercialValue2: this.commercialValue2.toUpperCase(),
         text4: this.text4.toUpperCase(),
         officialName: this.form.officialName.toUpperCase(),
@@ -82408,7 +82462,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         commercialValue: this.form.commercialValue.toUpperCase(),
         element: this.element.toUpperCase(),
         amount2: this.amount2.toUpperCase(),
-        featuresState: this.featuresState.toUpperCase(),
+        featuresState: this.form.featuresState.toUpperCase(),
         commercialValue2: this.commercialValue2.toUpperCase(),
         text4: this.text4.toUpperCase(),
         officialName: this.form.officialName.toUpperCase(),
@@ -82486,9 +82540,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       var columns1 = [];var rows1 = [];
       var columns2 = [];var rows2 = [];
       var info = [];
-      me.arrayTarget.array.forEach(function (element) {
-        info.push([element.nameScientific, element.nameCommon, element.state]);
-      });
+      // me.arrayTarget.array.forEach((element) => {
+      //   info.push([element.nameScientific, element.nameCommon, element.state])     
+      // });
       var doc = new __WEBPACK_IMPORTED_MODULE_5_jspdf__["default"]('p', 'mm', 'letter');
       this.id_donationCertificate = data["id"];
       console.log("ID " + me.datos.id);

@@ -367,7 +367,8 @@ ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
           "columns": [
 
             { "data": "name" },
-             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>   <button type='button'id=carta' class='carta btn btn-success btn-sm' data-tooltip title='carta' > <i class='fas fa-trash-alt'></i> </button> "},
+             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>"},
+              // <button type='button'id=carta' class='carta btn btn-success btn-sm' data-tooltip title='carta' > <i class='fas fa-trash-alt'></i> </button> 
 
         ]
 

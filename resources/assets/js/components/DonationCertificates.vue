@@ -267,6 +267,21 @@
                     </table>   
                   </div>                
                 </div>                
+                  <md-field md-clearable :class="getValidationClass('nameScientific')">
+                    <label for="first-name">Nombre Científico</label>
+                    <md-input
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      v-model="form.nameScientific"
+                      :disabled="sending"
+                    />
+                    <span
+                      class="md-error"
+                      v-if="!$v.form.nameScientific.required"
+                    >Olvidaste ingresar el nombre nombre común</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>
                   <md-field md-clearable :class="getValidationClass('nameCommon')">
                     <label for="first-name">Nombre Común</label>
                     <md-input
@@ -1179,7 +1194,7 @@ export default {
       let me = this;
       var columns = []; var rows = [];
       var doc = new jsPDF('p','mm','letter');
-      (this.id_donationCertificate = data["id"]);
+      this.id_donationCertificate = data["id"]
       console.log("ID " + me.datos.id);
         var logo = new Image();
         logo.src = '/img/logoAUNAP.png';
