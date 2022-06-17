@@ -133,6 +133,7 @@
                           <md-select v-model="finalityArrival" name="finalityArrival" id="finalityArrival" placeholder="Finalidad Arribo">
                             <md-option value="pesca">Pesca</md-option>
                             <md-option value="transito">Tránsito</md-option>
+                            <md-option value="transito">Desembarque</md-option>
                           </md-select>
                         </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -466,135 +467,103 @@
                       
                 <div class="md-layout"> 
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('eyeMesh')">
+                    <md-field md-clearable>
                         <label for="first-name">Ojo de Malla (Pulgadas)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.eyeMesh"
+                          v-model="eyeMesh"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.eyeMesh.required"
-                        >Olvidaste ingresar las pulgadas del ojo de malla</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;       
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('netWidth')">
+                    <md-field md-clearable>
                         <label for="first-name">Ancho de Red (Brazas)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.netWidth"
+                          v-model="netWidth"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.netWidth.required"
-                        >Olvidaste ingresar el ancho de red</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;       
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('eyeFlake')">
+                    <md-field md-clearable>
                         <label for="first-name">Ojo de Malla del Copo (Pulgadas)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.eyeFlake"
+                          v-model="eyeFlake"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.eyeFlake.required"
-                        >Olvidaste ingresar el ojo de malla del copo</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;       
                 </div>      
                 <div class="md-layout"> 
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('typeHook')">
+                    <md-field md-clearable>
                         <label for="first-name">Tamaño No. y tipo de Anzuelo</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.typeHook"
+                          v-model="typeHook"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.typeHook.required"
-                        >Olvidaste ingresar un tamaño No. y tipo de anzuelo</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;       
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('longNet')">
+                    <md-field md-clearable>
                         <label for="first-name">Longitud de la red (Brazas)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.longNet"
+                          v-model="longNet"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.longNet.required"
-                        >Olvidaste ingresar la longitud de la red</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;       
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('materialArt')">
+                    <md-field md-clearable>
                         <label for="first-name">Material de Arte de Pesca</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.materialArt"
+                          v-model="materialArt"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.materialArt.required"
-                        >Olvidaste ingresar el material de arte de pesca</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;       
                 </div>      
                 <div class="md-layout">  
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('equipDevi')">
+                    <md-field md-clearable>
                         <label for="first-name">Equipos o Dispositivos Requeridos</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.equipDevi"
+                          v-model="equipDevi"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.equipDevi.required"
-                        >Olvidaste ingresar equipos o dispositivos requeridos</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;      
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('captain')">
+                    <md-field md-clearable>
                         <label for="first-name">Nombre Capitán de Pesca</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.captain"
+                          v-model="captain"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.captain.required"
-                        >Olvidaste ingresar un nombre para el capitan</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;  
                   <div class="md-layout-item">
@@ -609,51 +578,39 @@
                 </div>     
                 <div class="md-layout"> 
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('noAllCrew')">
+                    <md-field md-clearable>
                         <label for="first-name">No. Total de Tripulantes</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.noAllCrew"
+                          v-model="noAllCrew"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.noAllCrew.required"
-                        >Olvidaste ingresar el número total de tripulantes</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;       
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('noCrewForeign')">
+                    <md-field md-clearable>
                         <label for="first-name">No. Tripulantes Extranjeros</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.noCrewForeign"
+                          v-model="noCrewForeign"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.noCrewForeign.required"
-                        >Olvidaste ingresar el número de tripulantes extrangeros</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;       
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('noCrewNational')">
+                    <md-field md-clearable>
                         <label for="first-name">No. Tripulantes Nacionales</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.noCrewNational"
+                          v-model="noCrewNational"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.noCrewNational.required"
-                        >Olvidaste ingresar el número de tripulantes nacionales</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;       
                 </div>     
@@ -1040,19 +997,19 @@ export default {
         nameBoat: "",
         enrollment: "",
         noPatent: "",
-        eyeMesh: "",
-        netWidth: "",
-        eyeFlake: "",
-        typeHook: "",
-        longNet: "",
-        materialArt: "",
-        equipDevi: "",
-        captain: "",
+        
+        
+        
+        
+        
+        
+        
+        
         noOmi: "",
         legalRepre: "",
-        noAllCrew: "",
-        noCrewForeign: "",
-        noCrewNational: "",
+       
+        
+        
         noDays: "",
         noAllHauls: "",
         noHaulsNacional: "",
@@ -1060,6 +1017,17 @@ export default {
         landedWeight: "",
         stateRectorPort: "COLOMBIA",
       },
+      eyeMesh: "",
+      netWidth: "",
+      eyeFlake: "",
+      typeHook: "",
+      longNet: "",
+      materialArt: "",
+      equipDevi: "",
+      captain: "",
+      noAllCrew: "",
+      noCrewForeign: "",
+      noCrewNational: "",
 
       nameCommon1: "",
       nameScientific1: "",
@@ -1155,43 +1123,10 @@ export default {
       noPatent: {
         required
       },
-      eyeMesh: {
-        required
-      },
-      netWidth: {
-        required
-      },
-      eyeFlake: {
-        required
-      },
-      typeHook: {
-        required
-      },
-      longNet: {
-        required
-      },
-      materialArt: {
-        required
-      },
-      equipDevi: {
-        required
-      },
-      captain: {
-        required
-      },
       noOmi: {
         required
       },
       legalRepre: {
-        required
-      },
-      noAllCrew: {
-        required
-      },
-      noCrewForeign: {
-        required
-      },
-      noCrewNational: {
         required
       },
       noDays: {
@@ -1297,19 +1232,19 @@ export default {
       this.form.nameBoat = null;
       this.form.enrollment = null;
       this.form.noPatent = null;
-      this.form.eyeMesh = null;
-      this.form.netWidth = null;
-      this.form.eyeFlake = null;
-      this.form.typeHook = null;
-      this.form.longNet = null;
-      this.form.materialArt = null;
-      this.form.equipDevi = null;
-      this.form.captain = null;
+      this.eyeMesh = null;
+      this.netWidth = null;
+      this.eyeFlake = null;
+      this.typeHook = null;
+      this.longNet = null;
+      this.materialArt = null;
+      this.equipDevi = null;
+      this.captain = null;
       this.form.noOmi = null;
       this.form.legalRepre = null;
-      this.form.noAllCrew = null;
-      this.form.noCrewForeign = null;
-      this.form.noCrewNational = null;
+      this.noAllCrew = null;
+      this.noCrewForeign = null;
+      this.noCrewNational = null;
       this.form.noDays = null;
       this.form.noAllHauls = null;
       this.form.noHaulsNacional = null;
@@ -1461,19 +1396,19 @@ export default {
       this.form.nameBoat = data["nameBoat"];
       this.form.enrollment = data["enrollment"];
       this.form.noPatent = data["noPatent"];
-      this.form.eyeMesh = data["eyeMesh"];
-      this.form.netWidth = data["netWidth"];
-      this.form.eyeFlake = data["eyeFlake"];
-      this.form.typeHook = data["typeHook"];
-      this.form.longNet = data["longNet"];
-      this.form.materialArt = data["materialArt"];
-      this.form.equipDevi = data["equipDevi"];
-      this.form.captain = data["captain"];
+      this.eyeMesh = data["eyeMesh"];
+      this.netWidth = data["netWidth"];
+      this.eyeFlake = data["eyeFlake"];
+      this.typeHook = data["typeHook"];
+      this.longNet = data["longNet"];
+      this.materialArt = data["materialArt"];
+      this.equipDevi = data["equipDevi"];
+      this.captain = data["captain"];
       this.form.noOmi = data["noOmi"];
       this.form.legalRepre = data["legalRepre"];
-      this.form.noAllCrew = data["noAllCrew"];
-      this.form.noCrewForeign = data["noCrewForeign"];
-      this.form.noCrewNational = data["noCrewNational"];
+      this.noAllCrew = data["noAllCrew"];
+      this.noCrewForeign = data["noCrewForeign"];
+      this.noCrewNational = data["noCrewNational"];
       this.form.noDays = data["noDays"];
       this.form.noAllHauls = data["noAllHauls"];
       this.form.noHaulsNacional = data["noHaulsNacional"];
@@ -1537,19 +1472,19 @@ export default {
           nameBoat: this.form.nameBoat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
           noPatent: this.form.noPatent.toUpperCase(),
-          eyeMesh: this.form.eyeMesh.toUpperCase(),
-          netWidth: this.form.netWidth.toUpperCase(),
-          eyeFlake: this.form.eyeFlake.toUpperCase(),
-          typeHook: this.form.typeHook.toUpperCase(),
-          longNet: this.form.longNet.toUpperCase(),
-          materialArt: this.form.materialArt.toUpperCase(),
-          equipDevi: this.form.equipDevi.toUpperCase(),
-          captain: this.form.captain.toUpperCase(),
+          eyeMesh: this.eyeMesh.toUpperCase(),
+          netWidth: this.netWidth.toUpperCase(),
+          eyeFlake: this.eyeFlake.toUpperCase(),
+          typeHook: this.typeHook.toUpperCase(),
+          longNet: this.longNet.toUpperCase(),
+          materialArt: this.materialArt.toUpperCase(),
+          equipDevi: this.equipDevi.toUpperCase(),
+          captain: this.captain.toUpperCase(),
           noOmi: this.form.noOmi.toUpperCase(),
           legalRepre: this.form.legalRepre.toUpperCase(),
-          noAllCrew: this.form.noAllCrew.toUpperCase(),
-          noCrewForeign: this.form.noCrewForeign.toUpperCase(),
-          noCrewNational: this.form.noCrewNational.toUpperCase(),
+          noAllCrew: this.noAllCrew.toUpperCase(),
+          noCrewForeign: this.noCrewForeign.toUpperCase(),
+          noCrewNational: this.noCrewNational.toUpperCase(),
           noDays: this.form.noDays.toUpperCase(),
           noAllHauls: this.form.noAllHauls.toUpperCase(),
           noHaulsNacional: this.form.noHaulsNacional.toUpperCase(),
@@ -1603,19 +1538,19 @@ export default {
           nameBoat :this.form.nameBoat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
           noPatent :this.form.noPatent.toUpperCase(),
-          eyeMesh :this.form.eyeMesh.toUpperCase(),
-          netWidth :this.form.netWidth.toUpperCase(),
-          eyeFlake :this.form.eyeFlake.toUpperCase(),
-          typeHook :this.form.typeHook.toUpperCase(),
-          longNet :this.form.longNet.toUpperCase(),
-          materialArt :this.form.materialArt.toUpperCase(),
-          equipDevi :this.form.equipDevi.toUpperCase(),
-          captain :this.form.captain.toUpperCase(),
+          eyeMesh :this.eyeMesh.toUpperCase(),
+          netWidth :this.netWidth.toUpperCase(),
+          eyeFlake :this.eyeFlake.toUpperCase(),
+          typeHook :this.typeHook.toUpperCase(),
+          longNet :this.longNet.toUpperCase(),
+          materialArt :this.materialArt.toUpperCase(),
+          equipDevi :this.equipDevi.toUpperCase(),
+          captain :this.captain.toUpperCase(),
           noOmi :this.form.noOmi.toUpperCase(),
           legalRepre :this.form.legalRepre.toUpperCase(),
-          noAllCrew :this.form.noAllCrew.toUpperCase(),
-          noCrewForeign :this.form.noCrewForeign.toUpperCase(),
-          noCrewNational :this.form.noCrewNational.toUpperCase(),
+          noAllCrew :this.noAllCrew.toUpperCase(),
+          noCrewForeign :this.noCrewForeign.toUpperCase(),
+          noCrewNational :this.noCrewNational.toUpperCase(),
           noDays :this.form.noDays.toUpperCase(),
           noAllHauls :this.form.noAllHauls.toUpperCase(),
           noHaulsNacional :this.form.noHaulsNacional.toUpperCase(),

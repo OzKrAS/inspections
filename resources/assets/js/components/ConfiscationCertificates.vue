@@ -324,67 +324,51 @@
                 <div class="card-body">
                   <div class="md-layout">
                     <div class="md-layout-item">
-                      <md-field md-clearable :class="getValidationClass('element')">
+                      <md-field md-clearable>
                         <label for="first-name">Elemento</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.element"
+                          v-model="element"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.element.required"
-                        >Olvidaste ingresar el nombre del elemento</span>
                       </md-field>  
                     </div>&nbsp;&nbsp;&nbsp;                       
                     <div class="md-layout-item">
-                      <md-field md-clearable :class="getValidationClass('amount2')">
+                      <md-field md-clearable>
                         <label for="first-name">Cantidad (UN)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.amount2"
+                          v-model="amount2"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.amount2.required"
-                        >Olvidaste ingresar la cantidad unitaria</span>
                       </md-field>  
                     </div>&nbsp;&nbsp;&nbsp;                       
                     <div class="md-layout-item">
-                      <md-field md-clearable :class="getValidationClass('characterState')">
+                      <md-field md-clearable>
                         <label for="first-name">Características y Estado</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.characterState"
+                          v-model="characterState"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.characterState.required"
-                        >Olvidaste ingresar las características y estado</span>
                       </md-field>  
                     </div>&nbsp;&nbsp;&nbsp;                       
                     <div class="md-layout-item"> 
-                      <md-field md-clearable :class="getValidationClass('commercialValue2')">
+                      <md-field md-clearable>
                         <label for="first-name">Valor Comercial</label>
                         <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
-                          v-model="form.commercialValue2"
+                          v-model="commercialValue2"
                           :disabled="sending"
                         />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.commercialValue2.required"
-                        >Olvidaste ingresar valor comercial</span>
                       </md-field> 
                     </div>&nbsp;&nbsp;&nbsp;                                                         
                   </div>                       
@@ -1051,11 +1035,12 @@ export default {
         weight1: "",
         commercialValue1: "",
 
-        element: "",
-        amount2: "",
-        characterState: "",
-        commercialValue2: "",
+        
       },
+      element: "",
+      amount2: "",
+      characterState: "",
+      commercialValue2: "",
 
       text4: "",
 
@@ -1211,20 +1196,7 @@ export default {
       },
         commercialValue1: {
         required
-      },
-
-        element: {
-        required
-      },
-        amount2: {
-        required
-      },
-        characterState: {
-        required
-      },
-        commercialValue2: {
-        required
-      },
+      },     
     }
   },
 
@@ -1281,10 +1253,10 @@ export default {
     addItemTarget2() {
       let me = this;
       var total1 = me.arrayTarget2.push({
-        element:this.form.element.toUpperCase(),
-        amount2:this.form.amount2.toUpperCase(),
-        characterState: this.form.characterState.toUpperCase(),
-        commercialValue2: this.form.commercialValue2.toUpperCase(),
+        element:this.element.toUpperCase(),
+        amount2:this.amount2.toUpperCase(),
+        characterState: this.characterState.toUpperCase(),
+        commercialValue2: this.commercialValue2.toUpperCase(),
         
       });
       console.log("arrayTarget " + total1);
@@ -1307,8 +1279,8 @@ export default {
       this.form.commercialValue1 = null;
     },
     clearTarget2() {
-      this.form.element = null;
-      this.form.amount2 = null;
+      this.element = null;
+      this.amount2 = null;
       this.characterState = null;
       this.commercialValue2 = null;
     },
@@ -1339,10 +1311,10 @@ export default {
       this.form.average = null;
       this.form.weight = null;
       this.form.commercialValue = null;
-      this.form.element = null;
-      this.form.amount2 = null;
-      this.form.featuresState = null;
-      this.form.commercialValue2 = null;
+      this.element = null;
+      this.amount2 = null;
+      this.featuresState = null;
+      this.commercialValue2 = null;
       this.text4 = null;
       this.form.officialName = null;
       this.form.documentIdOfficial = null;
@@ -1381,10 +1353,10 @@ export default {
       this.form.average = data["average"];
       this.form.weight = data["weight"];
       this.form.commercialValue = data["commercialValue"];
-      this.form.element = data["element"];
-      this.form.amount2 = data["amount2"];
-      this.form.featuresState = data["featuresState"];
-      this.form.commercialValue2 = data["commercialValue2"];
+      this.element = data["element"];
+      this.amount2 = data["amount2"];
+      this.featuresState = data["featuresState"];
+      this.commercialValue2 = data["commercialValue2"];
       this.text4 = data["text4"];
       this.form.officialName = data["officialName"];
       this.form.documentIdOfficial = data["documentIdOfficial"];
@@ -1465,10 +1437,10 @@ export default {
       average : this.form.average.toUpperCase(),
       weight : this.form.weight.toUpperCase(),
       commercialValue : this.form.commercialValue.toUpperCase(),
-      element : this.form.element.toUpperCase(),
-      amount2 : this.form.amount2.toUpperCase(),
-      featuresState : this.form.featuresState.toUpperCase(),
-      commercialValue2 : this.form.commercialValue2.toUpperCase(),
+      element : this.element.toUpperCase(),
+      amount2 : this.amount2.toUpperCase(),
+      featuresState : this.featuresState.toUpperCase(),
+      commercialValue2 : this.commercialValue2.toUpperCase(),
       text4 : this.text4.toUpperCase(),
       officialName : this.form.officialName.toUpperCase(),
       documentIdOfficial : this.form.documentIdOfficial.toUpperCase(),
@@ -1518,10 +1490,10 @@ export default {
       average : this.form.average.toUpperCase(),
       weight : this.form.weight.toUpperCase(),
       commercialValue : this.form.commercialValue.toUpperCase(),
-      element : this.form.element.toUpperCase(),
-      amount2 : this.form.amount2.toUpperCase(),
-      featuresState : this.form.featuresState.toUpperCase(),
-      commercialValue2 : this.form.commercialValue2.toUpperCase(),
+      element : this.element.toUpperCase(),
+      amount2 : this.amount2.toUpperCase(),
+      featuresState : this.featuresState.toUpperCase(),
+      commercialValue2 : this.commercialValue2.toUpperCase(),
       text4 : this.text4.toUpperCase(),
       officialName : this.form.officialName.toUpperCase(),
       documentIdOfficial : this.form.documentIdOfficial.toUpperCase(),

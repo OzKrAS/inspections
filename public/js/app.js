@@ -48883,49 +48883,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -48969,19 +48926,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         nameBoat: "",
         enrollment: "",
         noPatent: "",
-        eyeMesh: "",
-        netWidth: "",
-        eyeFlake: "",
-        typeHook: "",
-        longNet: "",
-        materialArt: "",
-        equipDevi: "",
-        captain: "",
+
         noOmi: "",
         legalRepre: "",
-        noAllCrew: "",
-        noCrewForeign: "",
-        noCrewNational: "",
+
         noDays: "",
         noAllHauls: "",
         noHaulsNacional: "",
@@ -48989,6 +48937,17 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         landedWeight: "",
         stateRectorPort: "COLOMBIA"
       },
+      eyeMesh: "",
+      netWidth: "",
+      eyeFlake: "",
+      typeHook: "",
+      longNet: "",
+      materialArt: "",
+      equipDevi: "",
+      captain: "",
+      noAllCrew: "",
+      noCrewForeign: "",
+      noCrewNational: "",
 
       nameCommon1: "",
       nameScientific1: "",
@@ -49084,43 +49043,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       noPatent: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
-      eyeMesh: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      netWidth: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      eyeFlake: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      typeHook: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      longNet: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      materialArt: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      equipDevi: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      captain: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
       noOmi: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
       legalRepre: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      noAllCrew: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      noCrewForeign: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      noCrewNational: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
       noDays: {
@@ -49217,19 +49143,19 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.form.nameBoat = null;
       this.form.enrollment = null;
       this.form.noPatent = null;
-      this.form.eyeMesh = null;
-      this.form.netWidth = null;
-      this.form.eyeFlake = null;
-      this.form.typeHook = null;
-      this.form.longNet = null;
-      this.form.materialArt = null;
-      this.form.equipDevi = null;
-      this.form.captain = null;
+      this.eyeMesh = null;
+      this.netWidth = null;
+      this.eyeFlake = null;
+      this.typeHook = null;
+      this.longNet = null;
+      this.materialArt = null;
+      this.equipDevi = null;
+      this.captain = null;
       this.form.noOmi = null;
       this.form.legalRepre = null;
-      this.form.noAllCrew = null;
-      this.form.noCrewForeign = null;
-      this.form.noCrewNational = null;
+      this.noAllCrew = null;
+      this.noCrewForeign = null;
+      this.noCrewNational = null;
       this.form.noDays = null;
       this.form.noAllHauls = null;
       this.form.noHaulsNacional = null;
@@ -49393,19 +49319,19 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.form.nameBoat = data["nameBoat"];
       this.form.enrollment = data["enrollment"];
       this.form.noPatent = data["noPatent"];
-      this.form.eyeMesh = data["eyeMesh"];
-      this.form.netWidth = data["netWidth"];
-      this.form.eyeFlake = data["eyeFlake"];
-      this.form.typeHook = data["typeHook"];
-      this.form.longNet = data["longNet"];
-      this.form.materialArt = data["materialArt"];
-      this.form.equipDevi = data["equipDevi"];
-      this.form.captain = data["captain"];
+      this.eyeMesh = data["eyeMesh"];
+      this.netWidth = data["netWidth"];
+      this.eyeFlake = data["eyeFlake"];
+      this.typeHook = data["typeHook"];
+      this.longNet = data["longNet"];
+      this.materialArt = data["materialArt"];
+      this.equipDevi = data["equipDevi"];
+      this.captain = data["captain"];
       this.form.noOmi = data["noOmi"];
       this.form.legalRepre = data["legalRepre"];
-      this.form.noAllCrew = data["noAllCrew"];
-      this.form.noCrewForeign = data["noCrewForeign"];
-      this.form.noCrewNational = data["noCrewNational"];
+      this.noAllCrew = data["noAllCrew"];
+      this.noCrewForeign = data["noCrewForeign"];
+      this.noCrewNational = data["noCrewNational"];
       this.form.noDays = data["noDays"];
       this.form.noAllHauls = data["noAllHauls"];
       this.form.noHaulsNacional = data["noHaulsNacional"];
@@ -49468,19 +49394,19 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         nameBoat: this.form.nameBoat.toUpperCase(),
         enrollment: this.form.enrollment.toUpperCase(),
         noPatent: this.form.noPatent.toUpperCase(),
-        eyeMesh: this.form.eyeMesh.toUpperCase(),
-        netWidth: this.form.netWidth.toUpperCase(),
-        eyeFlake: this.form.eyeFlake.toUpperCase(),
-        typeHook: this.form.typeHook.toUpperCase(),
-        longNet: this.form.longNet.toUpperCase(),
-        materialArt: this.form.materialArt.toUpperCase(),
-        equipDevi: this.form.equipDevi.toUpperCase(),
-        captain: this.form.captain.toUpperCase(),
+        eyeMesh: this.eyeMesh.toUpperCase(),
+        netWidth: this.netWidth.toUpperCase(),
+        eyeFlake: this.eyeFlake.toUpperCase(),
+        typeHook: this.typeHook.toUpperCase(),
+        longNet: this.longNet.toUpperCase(),
+        materialArt: this.materialArt.toUpperCase(),
+        equipDevi: this.equipDevi.toUpperCase(),
+        captain: this.captain.toUpperCase(),
         noOmi: this.form.noOmi.toUpperCase(),
         legalRepre: this.form.legalRepre.toUpperCase(),
-        noAllCrew: this.form.noAllCrew.toUpperCase(),
-        noCrewForeign: this.form.noCrewForeign.toUpperCase(),
-        noCrewNational: this.form.noCrewNational.toUpperCase(),
+        noAllCrew: this.noAllCrew.toUpperCase(),
+        noCrewForeign: this.noCrewForeign.toUpperCase(),
+        noCrewNational: this.noCrewNational.toUpperCase(),
         noDays: this.form.noDays.toUpperCase(),
         noAllHauls: this.form.noAllHauls.toUpperCase(),
         noHaulsNacional: this.form.noHaulsNacional.toUpperCase(),
@@ -49531,19 +49457,19 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         nameBoat: this.form.nameBoat.toUpperCase(),
         enrollment: this.form.enrollment.toUpperCase(),
         noPatent: this.form.noPatent.toUpperCase(),
-        eyeMesh: this.form.eyeMesh.toUpperCase(),
-        netWidth: this.form.netWidth.toUpperCase(),
-        eyeFlake: this.form.eyeFlake.toUpperCase(),
-        typeHook: this.form.typeHook.toUpperCase(),
-        longNet: this.form.longNet.toUpperCase(),
-        materialArt: this.form.materialArt.toUpperCase(),
-        equipDevi: this.form.equipDevi.toUpperCase(),
-        captain: this.form.captain.toUpperCase(),
+        eyeMesh: this.eyeMesh.toUpperCase(),
+        netWidth: this.netWidth.toUpperCase(),
+        eyeFlake: this.eyeFlake.toUpperCase(),
+        typeHook: this.typeHook.toUpperCase(),
+        longNet: this.longNet.toUpperCase(),
+        materialArt: this.materialArt.toUpperCase(),
+        equipDevi: this.equipDevi.toUpperCase(),
+        captain: this.captain.toUpperCase(),
         noOmi: this.form.noOmi.toUpperCase(),
         legalRepre: this.form.legalRepre.toUpperCase(),
-        noAllCrew: this.form.noAllCrew.toUpperCase(),
-        noCrewForeign: this.form.noCrewForeign.toUpperCase(),
-        noCrewNational: this.form.noCrewNational.toUpperCase(),
+        noAllCrew: this.noAllCrew.toUpperCase(),
+        noCrewForeign: this.noCrewForeign.toUpperCase(),
+        noCrewNational: this.noCrewNational.toUpperCase(),
         noDays: this.form.noDays.toUpperCase(),
         noAllHauls: this.form.noAllHauls.toUpperCase(),
         noHaulsNacional: this.form.noHaulsNacional.toUpperCase(),
@@ -49975,6 +49901,12 @@ var render = function() {
                                           "md-option",
                                           { attrs: { value: "transito" } },
                                           [_vm._v("Tránsito")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "md-option",
+                                          { attrs: { value: "transito" } },
+                                          [_vm._v("Desembarque")]
                                         )
                                       ],
                                       1
@@ -51084,10 +51016,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("eyeMesh"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -51103,25 +51032,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.eyeMesh,
+                                        value: _vm.eyeMesh,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "eyeMesh", $$v)
+                                          _vm.eyeMesh = $$v
                                         },
-                                        expression: "form.eyeMesh"
+                                        expression: "eyeMesh"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.eyeMesh.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar las pulgadas del ojo de malla"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -51135,10 +51052,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("netWidth"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -51154,25 +51068,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.netWidth,
+                                        value: _vm.netWidth,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "netWidth", $$v)
+                                          _vm.netWidth = $$v
                                         },
-                                        expression: "form.netWidth"
+                                        expression: "netWidth"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.netWidth.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar el ancho de red"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -51186,10 +51088,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("eyeFlake"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -51209,25 +51108,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.eyeFlake,
+                                        value: _vm.eyeFlake,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "eyeFlake", $$v)
+                                          _vm.eyeFlake = $$v
                                         },
-                                        expression: "form.eyeFlake"
+                                        expression: "eyeFlake"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.eyeFlake.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar el ojo de malla del copo"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -51244,10 +51131,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("typeHook"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -51263,25 +51147,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.typeHook,
+                                        value: _vm.typeHook,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "typeHook", $$v)
+                                          _vm.typeHook = $$v
                                         },
-                                        expression: "form.typeHook"
+                                        expression: "typeHook"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.typeHook.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar un tamaño No. y tipo de anzuelo"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -51295,10 +51167,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("longNet"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -51314,25 +51183,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.longNet,
+                                        value: _vm.longNet,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "longNet", $$v)
+                                          _vm.longNet = $$v
                                         },
-                                        expression: "form.longNet"
+                                        expression: "longNet"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.longNet.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar la longitud de la red"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -51346,12 +51203,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass(
-                                      "materialArt"
-                                    ),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -51367,25 +51219,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.materialArt,
+                                        value: _vm.materialArt,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "materialArt", $$v)
+                                          _vm.materialArt = $$v
                                         },
-                                        expression: "form.materialArt"
+                                        expression: "materialArt"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.materialArt.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar el material de arte de pesca"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -51402,10 +51242,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("equipDevi"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -51425,25 +51262,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.equipDevi,
+                                        value: _vm.equipDevi,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "equipDevi", $$v)
+                                          _vm.equipDevi = $$v
                                         },
-                                        expression: "form.equipDevi"
+                                        expression: "equipDevi"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.equipDevi.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar equipos o dispositivos requeridos"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -51457,10 +51282,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("captain"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -51476,25 +51298,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.captain,
+                                        value: _vm.captain,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "captain", $$v)
+                                          _vm.captain = $$v
                                         },
-                                        expression: "form.captain"
+                                        expression: "captain"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.captain.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar un nombre para el capitan"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -51539,10 +51349,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("noAllCrew"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -51558,25 +51365,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.noAllCrew,
+                                        value: _vm.noAllCrew,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "noAllCrew", $$v)
+                                          _vm.noAllCrew = $$v
                                         },
-                                        expression: "form.noAllCrew"
+                                        expression: "noAllCrew"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.noAllCrew.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar el número total de tripulantes"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -51590,12 +51385,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass(
-                                      "noCrewForeign"
-                                    ),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -51611,29 +51401,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.noCrewForeign,
+                                        value: _vm.noCrewForeign,
                                         callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form,
-                                            "noCrewForeign",
-                                            $$v
-                                          )
+                                          _vm.noCrewForeign = $$v
                                         },
-                                        expression: "form.noCrewForeign"
+                                        expression: "noCrewForeign"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.noCrewForeign.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar el número de tripulantes extrangeros"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -51647,12 +51421,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass(
-                                      "noCrewNational"
-                                    ),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -51668,29 +51437,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.noCrewNational,
+                                        value: _vm.noCrewNational,
                                         callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form,
-                                            "noCrewNational",
-                                            $$v
-                                          )
+                                          _vm.noCrewNational = $$v
                                         },
-                                        expression: "form.noCrewNational"
+                                        expression: "noCrewNational"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.noCrewNational.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar el número de tripulantes nacionales"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -81160,26 +80913,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__);
-var _form2;
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -82159,7 +81894,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
   props: ['ruta'],
 
   data: function data() {
-    var _form;
 
     Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
     Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
@@ -82169,7 +81903,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
     var now = new Date();
 
     return _defineProperty({
-      form: (_form = {
+      form: {
         noActa: "",
         departament: "",
         municipality: "",
@@ -82208,7 +81942,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         weight1: "",
         commercialValue1: ""
 
-      }, _defineProperty(_form, "element", ""), _defineProperty(_form, "amount2", ""), _defineProperty(_form, "characterState", ""), _defineProperty(_form, "commercialValue2", ""), _form),
+      },
+      element: "",
+      amount2: "",
+      characterState: "",
+      commercialValue2: "",
 
       text4: "",
 
@@ -82242,7 +81980,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
 
 
   validations: {
-    form: (_form2 = {
+    form: {
 
       noActa: {
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
@@ -82353,16 +82091,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       commercialValue1: {
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       }
-
-    }, _defineProperty(_form2, "element", {
-      required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
-    }), _defineProperty(_form2, "amount2", {
-      required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
-    }), _defineProperty(_form2, "characterState", {
-      required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
-    }), _defineProperty(_form2, "commercialValue2", {
-      required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
-    }), _form2)
+    }
   },
 
   computed: {},
@@ -82411,10 +82140,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
     addItemTarget2: function addItemTarget2() {
       var me = this;
       var total1 = me.arrayTarget2.push({
-        element: this.form.element.toUpperCase(),
-        amount2: this.form.amount2.toUpperCase(),
-        characterState: this.form.characterState.toUpperCase(),
-        commercialValue2: this.form.commercialValue2.toUpperCase()
+        element: this.element.toUpperCase(),
+        amount2: this.amount2.toUpperCase(),
+        characterState: this.characterState.toUpperCase(),
+        commercialValue2: this.commercialValue2.toUpperCase()
 
       });
       console.log("arrayTarget " + total1);
@@ -82437,8 +82166,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.commercialValue1 = null;
     },
     clearTarget2: function clearTarget2() {
-      this.form.element = null;
-      this.form.amount2 = null;
+      this.element = null;
+      this.amount2 = null;
       this.characterState = null;
       this.commercialValue2 = null;
     },
@@ -82469,10 +82198,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.average = null;
       this.form.weight = null;
       this.form.commercialValue = null;
-      this.form.element = null;
-      this.form.amount2 = null;
-      this.form.featuresState = null;
-      this.form.commercialValue2 = null;
+      this.element = null;
+      this.amount2 = null;
+      this.featuresState = null;
+      this.commercialValue2 = null;
       this.text4 = null;
       this.form.officialName = null;
       this.form.documentIdOfficial = null;
@@ -82512,10 +82241,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.average = data["average"];
       this.form.weight = data["weight"];
       this.form.commercialValue = data["commercialValue"];
-      this.form.element = data["element"];
-      this.form.amount2 = data["amount2"];
-      this.form.featuresState = data["featuresState"];
-      this.form.commercialValue2 = data["commercialValue2"];
+      this.element = data["element"];
+      this.amount2 = data["amount2"];
+      this.featuresState = data["featuresState"];
+      this.commercialValue2 = data["commercialValue2"];
       this.text4 = data["text4"];
       this.form.officialName = data["officialName"];
       this.form.documentIdOfficial = data["documentIdOfficial"];
@@ -82592,10 +82321,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         average: this.form.average.toUpperCase(),
         weight: this.form.weight.toUpperCase(),
         commercialValue: this.form.commercialValue.toUpperCase(),
-        element: this.form.element.toUpperCase(),
-        amount2: this.form.amount2.toUpperCase(),
-        featuresState: this.form.featuresState.toUpperCase(),
-        commercialValue2: this.form.commercialValue2.toUpperCase(),
+        element: this.element.toUpperCase(),
+        amount2: this.amount2.toUpperCase(),
+        featuresState: this.featuresState.toUpperCase(),
+        commercialValue2: this.commercialValue2.toUpperCase(),
         text4: this.text4.toUpperCase(),
         officialName: this.form.officialName.toUpperCase(),
         documentIdOfficial: this.form.documentIdOfficial.toUpperCase(),
@@ -82642,10 +82371,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         average: this.form.average.toUpperCase(),
         weight: this.form.weight.toUpperCase(),
         commercialValue: this.form.commercialValue.toUpperCase(),
-        element: this.form.element.toUpperCase(),
-        amount2: this.form.amount2.toUpperCase(),
-        featuresState: this.form.featuresState.toUpperCase(),
-        commercialValue2: this.form.commercialValue2.toUpperCase(),
+        element: this.element.toUpperCase(),
+        amount2: this.amount2.toUpperCase(),
+        featuresState: this.featuresState.toUpperCase(),
+        commercialValue2: this.commercialValue2.toUpperCase(),
         text4: this.text4.toUpperCase(),
         officialName: this.form.officialName.toUpperCase(),
         documentIdOfficial: this.form.documentIdOfficial.toUpperCase(),
@@ -83800,12 +83529,7 @@ var render = function() {
                                     [
                                       _c(
                                         "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "element"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
+                                        { attrs: { "md-clearable": "" } },
                                         [
                                           _c(
                                             "label",
@@ -83821,29 +83545,13 @@ var render = function() {
                                               disabled: _vm.sending
                                             },
                                             model: {
-                                              value: _vm.form.element,
+                                              value: _vm.element,
                                               callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "element",
-                                                  $$v
-                                                )
+                                                _vm.element = $$v
                                               },
-                                              expression: "form.element"
+                                              expression: "element"
                                             }
-                                          }),
-                                          _vm._v(" "),
-                                          !_vm.$v.form.element.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [
-                                                  _vm._v(
-                                                    "Olvidaste ingresar el nombre del elemento"
-                                                  )
-                                                ]
-                                              )
-                                            : _vm._e()
+                                          })
                                         ],
                                         1
                                       )
@@ -83859,12 +83567,7 @@ var render = function() {
                                     [
                                       _c(
                                         "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "amount2"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
+                                        { attrs: { "md-clearable": "" } },
                                         [
                                           _c(
                                             "label",
@@ -83880,29 +83583,13 @@ var render = function() {
                                               disabled: _vm.sending
                                             },
                                             model: {
-                                              value: _vm.form.amount2,
+                                              value: _vm.amount2,
                                               callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "amount2",
-                                                  $$v
-                                                )
+                                                _vm.amount2 = $$v
                                               },
-                                              expression: "form.amount2"
+                                              expression: "amount2"
                                             }
-                                          }),
-                                          _vm._v(" "),
-                                          !_vm.$v.form.amount2.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [
-                                                  _vm._v(
-                                                    "Olvidaste ingresar la cantidad unitaria"
-                                                  )
-                                                ]
-                                              )
-                                            : _vm._e()
+                                          })
                                         ],
                                         1
                                       )
@@ -83918,12 +83605,7 @@ var render = function() {
                                     [
                                       _c(
                                         "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "characterState"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
+                                        { attrs: { "md-clearable": "" } },
                                         [
                                           _c(
                                             "label",
@@ -83939,29 +83621,13 @@ var render = function() {
                                               disabled: _vm.sending
                                             },
                                             model: {
-                                              value: _vm.form.characterState,
+                                              value: _vm.characterState,
                                               callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "characterState",
-                                                  $$v
-                                                )
+                                                _vm.characterState = $$v
                                               },
-                                              expression: "form.characterState"
+                                              expression: "characterState"
                                             }
-                                          }),
-                                          _vm._v(" "),
-                                          !_vm.$v.form.characterState.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [
-                                                  _vm._v(
-                                                    "Olvidaste ingresar las características y estado"
-                                                  )
-                                                ]
-                                              )
-                                            : _vm._e()
+                                          })
                                         ],
                                         1
                                       )
@@ -83977,12 +83643,7 @@ var render = function() {
                                     [
                                       _c(
                                         "md-field",
-                                        {
-                                          class: _vm.getValidationClass(
-                                            "commercialValue2"
-                                          ),
-                                          attrs: { "md-clearable": "" }
-                                        },
+                                        { attrs: { "md-clearable": "" } },
                                         [
                                           _c(
                                             "label",
@@ -83998,30 +83659,13 @@ var render = function() {
                                               disabled: _vm.sending
                                             },
                                             model: {
-                                              value: _vm.form.commercialValue2,
+                                              value: _vm.commercialValue2,
                                               callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "commercialValue2",
-                                                  $$v
-                                                )
+                                                _vm.commercialValue2 = $$v
                                               },
-                                              expression:
-                                                "form.commercialValue2"
+                                              expression: "commercialValue2"
                                             }
-                                          }),
-                                          _vm._v(" "),
-                                          !_vm.$v.form.commercialValue2.required
-                                            ? _c(
-                                                "span",
-                                                { staticClass: "md-error" },
-                                                [
-                                                  _vm._v(
-                                                    "Olvidaste ingresar valor comercial"
-                                                  )
-                                                ]
-                                              )
-                                            : _vm._e()
+                                          })
                                         ],
                                         1
                                       )
