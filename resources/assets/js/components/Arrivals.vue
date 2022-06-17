@@ -133,7 +133,7 @@
                           <md-select v-model="finalityArrival" name="finalityArrival" id="finalityArrival" placeholder="Finalidad Arribo">
                             <md-option value="pesca">Pesca</md-option>
                             <md-option value="transito">Tránsito</md-option>
-                            <md-option value="transito">Desembarque</md-option>
+                            <md-option value="desembarque">Desembarque</md-option>
                           </md-select>
                         </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -997,25 +997,14 @@ export default {
         nameBoat: "",
         enrollment: "",
         noPatent: "",
-        
-        
-        
-        
-        
-        
-        
-        
         noOmi: "",
         legalRepre: "",
-       
-        
-        
         noDays: "",
         noAllHauls: "",
         noHaulsNacional: "",
         noHaulsInter: "",
         landedWeight: "",
-        stateRectorPort: "COLOMBIA",
+        stateRectorPort: "",
       },
       eyeMesh: "",
       netWidth: "",
@@ -1044,6 +1033,8 @@ export default {
       locationSystem: "",
       inspectorConclusions: "",
       additionalComments: "",
+
+      noApply: "No aplica",
 
       dateIns: format(now, dateFormat),
       dateScale: format(now, dateFormat),
@@ -1430,7 +1421,7 @@ export default {
       this.dateValidityPat = data["dateValidityPat"];
       this.date = data["date"];
       this.dateValidity = data["dateValidity"];
-      this.stateRectorPort = data["stateRectorPort"];
+      this.form.stateRectorPort = data["stateRectorPort"];
 
       this.arrayReg.id = data["id_region"];
 			this.arrayReg.name = data["nameReg"];
@@ -1462,8 +1453,76 @@ export default {
       this.edo = 1;
       this.listado = 1;
     },    
+    // noApply(){
+    //   if (this.eyeMesh == "") {
+    //     this.eyeMesh = this.noApply;
+    //   }
+    //   if (this.netWidth == "") {
+    //     this.netWidth = this.noApply;
+    //   }
+    //   if (this.eyeFlake == "") {
+    //     this.eyeFlake = this.noApply;
+    //   }
+    //   if (this.typeHook == "") {
+    //     this.typeHook = this.noApply;
+    //   }
+    //   if (this.longNet == "") {
+    //     this.longNet = this.noApply;
+    //   }
+    //   if (this.materialArt == "") {
+    //     this.materialArt = this.noApply;
+    //   }
+    //   if (this.equipDevi == "") {
+    //     this.equipDevi = this.noApply;
+    //   }
+    //   if (this.captain == "") {
+    //     this.captain = this.noApply;
+    //   }
+    //   if (this.noAllCrew == "") {
+    //     this.noAllCrew = this.noApply;
+    //   }
+    //   if (this.noCrewForeign == "") {
+    //     this.noCrewForeign = this.noApply;
+    //   }
+    //   if (this.noCrewNational == "") {
+    //     this.noCrewNational = this.noApply;
+    //   }
+    // },
     saveData() {
       let me = this;
+      if (this.eyeMesh == "") {
+        this.eyeMesh = this.noApply;
+      }
+      if (this.netWidth == "") {
+        this.netWidth = this.noApply;
+      }
+      if (this.eyeFlake == "") {
+        this.eyeFlake = this.noApply;
+      }
+      if (this.typeHook == "") {
+        this.typeHook = this.noApply;
+      }
+      if (this.longNet == "") {
+        this.longNet = this.noApply;
+      }
+      if (this.materialArt == "") {
+        this.materialArt = this.noApply;
+      }
+      if (this.equipDevi == "") {
+        this.equipDevi = this.noApply;
+      }
+      if (this.captain == "") {
+        this.captain = this.noApply;
+      }
+      if (this.noAllCrew == "") {
+        this.noAllCrew = this.noApply;
+      }
+      if (this.noCrewForeign == "") {
+        this.noCrewForeign = this.noApply;
+      }
+      if (this.noCrewNational == "") {
+        this.noCrewNational = this.noApply;
+      }
       axios
         .post("/arrivals/save", {
           insNo: this.form.insNo.toUpperCase(),
@@ -1499,7 +1558,7 @@ export default {
           locationSystem: this.locationSystem,
           inspectorConclusions :this.inspectorConclusions.toUpperCase(),
           additionalComments :this.additionalComments.toUpperCase(),
-          stateRectorPort :this.stateRectorPort.toUpperCase(),
+          stateRectorPort :this.form.stateRectorPort.toUpperCase(),
           dateIns :this.dateIns,
           dateScale :this.dateScale,
           dateZarpe :this.dateZarpe,
@@ -1529,6 +1588,39 @@ export default {
     },
     updateData() {
       let me = this;
+      if (this.eyeMesh == "") {
+        this.eyeMesh = this.noApply;
+      }
+      if (this.netWidth == "") {
+        this.netWidth = this.noApply;
+      }
+      if (this.eyeFlake == "") {
+        this.eyeFlake = this.noApply;
+      }
+      if (this.typeHook == "") {
+        this.typeHook = this.noApply;
+      }
+      if (this.longNet == "") {
+        this.longNet = this.noApply;
+      }
+      if (this.materialArt == "") {
+        this.materialArt = this.noApply;
+      }
+      if (this.equipDevi == "") {
+        this.equipDevi = this.noApply;
+      }
+      if (this.captain == "") {
+        this.captain = this.noApply;
+      }
+      if (this.noAllCrew == "") {
+        this.noAllCrew = this.noApply;
+      }
+      if (this.noCrewForeign == "") {
+        this.noCrewForeign = this.noApply;
+      }
+      if (this.noCrewNational == "") {
+        this.noCrewNational = this.noApply;
+      }
       axios
         .put("/arrivals/update", {
           id: this.id_arrival,
@@ -1565,7 +1657,7 @@ export default {
           locationSystem: this.locationSystem,
           inspectorConclusions :this.inspectorConclusions.toUpperCase(),
           additionalComments :this.additionalComments.toUpperCase(),
-          stateRectorPort :this.stateRectorPort.toUpperCase(),
+          stateRectorPort :this.form.stateRectorPort.toUpperCase(),
           dateIns :this.dateIns,
           dateScale :this.dateScale,
           dateZarpe :this.dateZarpe,

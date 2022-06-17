@@ -781,6 +781,24 @@ export default {
       if (punto =='I'){
          dets='Distancia entre marco y varilla' ; 
       }
+      //  if (punto2 =='J'){
+      //    dets='Tamaño de malla en la solapa' ; 
+      // }
+      // if (punto2 =='K'){
+      //    dets='Ángulo del DET' ; 
+      // }
+      // if (punto2 =='L'){
+      //    dets='Tipo de DET' ; 
+      // }
+      // if (punto2 =='M'){
+      //    dets='material del DET' ; 
+      // }
+      // if (punto2 =='N'){
+      //    dets='Salida (supeior o inferior)' ; 
+      // }
+      // if (punto2 =='O'){
+      //    dets='Flotadores (cantidad)' ; 
+      // }
       this.abrirModal(dets,punto) 
     },
     // title(punto2){

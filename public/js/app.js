@@ -43058,38 +43058,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -43136,17 +43104,17 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         nameBoat: "",
         enrollment: "",
         noPatent: "",
-        representative: "",
-        eyeMesh: "",
-        netWidth: "",
-        eyeFlake: "",
-        typeHook: "",
-        longNet: "",
-        materialArt: "",
-        equipDevi: "",
-        captain: ""
+        representative: ""
 
       },
+      eyeMesh: "",
+      netWidth: "",
+      eyeFlake: "",
+      longNet: "",
+      materialArt: "",
+      equipDevi: "",
+      captain: "",
+      typeHook: "",
 
       observation: "",
       conclusions: "",
@@ -43198,6 +43166,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       arrayCompany: [],
       id_Company: 0,
 
+      noApply: "No aplica",
+
       edo: 1,
 
       tipoAccion: 1,
@@ -43241,31 +43211,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       },
       representative: {
         required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
-      },
-      eyeMesh: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
-      },
-      netWidth: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
-      },
-      eyeFlake: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
-      },
-      typeHook: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
-      },
-      longNet: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
-      },
-      materialArt: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
-      },
-      equipDevi: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
-      },
-      captain: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       }
+
     }
   },
 
@@ -43308,14 +43255,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.form.enrollment = null;
       this.form.noPatent = null;
       this.form.representative = null;
-      this.form.eyeMesh = null;
-      this.form.netWidth = null;
-      this.form.eyeFlake = null;
-      this.form.typeHook = null;
-      this.form.longNet = null;
-      this.form.materialArt = null;
-      this.form.equipDevi = null;
-      this.form.captain = null;
+      this.eyeMesh = null;
+      this.netWidth = null;
+      this.eyeFlake = null;
+      this.typeHook = null;
+      this.longNet = null;
+      this.materialArt = null;
+      this.equipDevi = null;
+      this.captain = null;
       this.observation = null;
       this.conclusions = null;
       this.comments = null;
@@ -43491,14 +43438,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.form.enrollment = data["enrollment"];
       this.form.noPatent = data["noPatent"];
       this.form.representative = data["representative"];
-      this.form.eyeMesh = data["eyeMesh"];
-      this.form.netWidth = data["netWidth"];
-      this.form.eyeFlake = data["eyeFlake"];
-      this.form.typeHook = data["typeHook"];
-      this.form.longNet = data["longNet"];
-      this.form.materialArt = data["materialArt"];
-      this.form.equipDevi = data["equipDevi"];
-      this.form.captain = data["captain"];
+      this.eyeMesh = data["eyeMesh"];
+      this.netWidth = data["netWidth"];
+      this.eyeFlake = data["eyeFlake"];
+      this.typeHook = data["typeHook"];
+      this.longNet = data["longNet"];
+      this.materialArt = data["materialArt"];
+      this.equipDevi = data["equipDevi"];
+      this.captain = data["captain"];
       this.observation = data["observation"];
       this.conclusions = data["conclusions"];
       this.comments = data["comments"];
@@ -43547,8 +43494,56 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.edo = 1;
       this.listado = 1;
     },
+
+    // noApply(){
+    //   if (this.eyeMesh == "") {
+    //     this.eyeMesh = this.noApply;
+    //   }
+    //   if (this.netWidth == "") {
+    //     this.netWidth = this.noApply;
+    //   }
+    //   if (this.eyeFlake == "") {
+    //     this.eyeFlake = this.noApply;
+    //   }
+    //   if (this.longNet == "") {
+    //     this.longNet = this.noApply;
+    //   }
+    //   if (this.materialArt == "") {
+    //     this.materialArt = this.noApply;
+    //   }
+    //   if (this.equipDevi == "") {
+    //     this.equipDevi = this.noApply;
+    //   }
+    //   if (this.captain == "") {
+    //     this.captain = this.noApply;
+    //   }
+    // },
     saveData: function saveData() {
       var me = this;
+      if (this.eyeMesh == "") {
+        this.eyeMesh = this.noApply;
+      }
+      if (this.netWidth == "") {
+        this.netWidth = this.noApply;
+      }
+      if (this.eyeFlake == "") {
+        this.eyeFlake = this.noApply;
+      }
+      if (this.longNet == "") {
+        this.longNet = this.noApply;
+      }
+      if (this.typeHook == "") {
+        this.typeHook = this.noApply;
+      }
+      if (this.materialArt == "") {
+        this.materialArt = this.noApply;
+      }
+      if (this.equipDevi == "") {
+        this.equipDevi = this.noApply;
+      }
+      if (this.captain == "") {
+        this.captain = this.noApply;
+      }
       axios.post("/zarpes/save", {
         insNo: this.form.insNo.toUpperCase(),
         radioCall: this.form.radioCall.toUpperCase(),
@@ -43558,14 +43553,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         enrollment: this.form.enrollment.toUpperCase(),
         noPatent: this.form.noPatent.toUpperCase(),
         representative: this.form.representative.toUpperCase(),
-        eyeMesh: this.form.eyeMesh.toUpperCase(),
-        netWidth: this.form.netWidth.toUpperCase(),
-        eyeFlake: this.form.eyeFlake.toUpperCase(),
-        typeHook: this.form.typeHook.toUpperCase(),
-        longNet: this.form.longNet.toUpperCase(),
-        materialArt: this.form.materialArt.toUpperCase(),
-        equipDevi: this.form.equipDevi.toUpperCase(),
-        captain: this.form.captain.toUpperCase(),
+        eyeMesh: this.eyeMesh.toUpperCase(),
+        netWidth: this.netWidth.toUpperCase(),
+        eyeFlake: this.eyeFlake.toUpperCase(),
+        typeHook: this.typeHook.toUpperCase(),
+        longNet: this.longNet.toUpperCase(),
+        materialArt: this.materialArt.toUpperCase(),
+        equipDevi: this.equipDevi.toUpperCase(),
+        captain: this.captain.toUpperCase(),
         observation: this.observation.toUpperCase(),
         conclusions: this.conclusions.toUpperCase(),
         comments: this.comments.toUpperCase(),
@@ -43605,6 +43600,30 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
     },
     updateData: function updateData() {
       var me = this;
+      if (this.eyeMesh == "") {
+        this.eyeMesh = this.noApply;
+      }
+      if (this.netWidth == "") {
+        this.netWidth = this.noApply;
+      }
+      if (this.eyeFlake == "") {
+        this.eyeFlake = this.noApply;
+      }
+      if (this.typeHook == "") {
+        this.typeHook = this.noApply;
+      }
+      if (this.longNet == "") {
+        this.longNet = this.noApply;
+      }
+      if (this.materialArt == "") {
+        this.materialArt = this.noApply;
+      }
+      if (this.equipDevi == "") {
+        this.equipDevi = this.noApply;
+      }
+      if (this.captain == "") {
+        this.captain = this.noApply;
+      }
       axios.put("/zarpes/update", {
         id: this.id_zarpes,
         insNo: this.form.insNo.toUpperCase(),
@@ -43615,14 +43634,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         enrollment: this.form.enrollment.toUpperCase(),
         noPatent: this.form.noPatent.toUpperCase(),
         representative: this.form.representative.toUpperCase(),
-        eyeMesh: this.form.eyeMesh.toUpperCase(),
-        netWidth: this.form.netWidth.toUpperCase(),
-        eyeFlake: this.form.eyeFlake.toUpperCase(),
-        typeHook: this.form.typeHook.toUpperCase(),
-        longNet: this.form.longNet.toUpperCase(),
-        materialArt: this.form.materialArt.toUpperCase(),
-        equipDevi: this.form.equipDevi.toUpperCase(),
-        captain: this.form.captain.toUpperCase(),
+        eyeMesh: this.eyeMesh.toUpperCase(),
+        netWidth: this.netWidth.toUpperCase(),
+        eyeFlake: this.eyeFlake.toUpperCase(),
+        typeHook: this.typeHook.toUpperCase(),
+        longNet: this.longNet.toUpperCase(),
+        materialArt: this.materialArt.toUpperCase(),
+        equipDevi: this.equipDevi.toUpperCase(),
+        captain: this.captain.toUpperCase(),
         observation: this.observation.toUpperCase(),
         conclusions: this.conclusions.toUpperCase(),
         comments: this.comments.toUpperCase(),
@@ -47122,10 +47141,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("eyeMesh"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -47141,25 +47157,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.eyeMesh,
+                                        value: _vm.eyeMesh,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "eyeMesh", $$v)
+                                          _vm.eyeMesh = $$v
                                         },
-                                        expression: "form.eyeMesh"
+                                        expression: "eyeMesh"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.eyeMesh.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar una zona de pesca autorizada"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -47173,10 +47177,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("netWidth"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -47192,25 +47193,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.netWidth,
+                                        value: _vm.netWidth,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "netWidth", $$v)
+                                          _vm.netWidth = $$v
                                         },
-                                        expression: "form.netWidth"
+                                        expression: "netWidth"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.netWidth.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar el ancho de red"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -47224,10 +47213,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("eyeFlake"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -47247,25 +47233,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.eyeFlake,
+                                        value: _vm.eyeFlake,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "eyeFlake", $$v)
+                                          _vm.eyeFlake = $$v
                                         },
-                                        expression: "form.eyeFlake"
+                                        expression: "eyeFlake"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.eyeFlake.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar el ojo de malla del copo"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -47282,10 +47256,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("typeHook"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -47301,25 +47272,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.typeHook,
+                                        value: _vm.typeHook,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "typeHook", $$v)
+                                          _vm.typeHook = $$v
                                         },
-                                        expression: "form.typeHook"
+                                        expression: "typeHook"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.typeHook.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar un tamaño No. y tipo de anzuelo"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -47333,10 +47292,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("longNet"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -47352,25 +47308,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.longNet,
+                                        value: _vm.longNet,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "longNet", $$v)
+                                          _vm.longNet = $$v
                                         },
-                                        expression: "form.longNet"
+                                        expression: "longNet"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.longNet.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar la longitud de la red"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -47384,12 +47328,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass(
-                                      "materialArt"
-                                    ),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -47405,25 +47344,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.materialArt,
+                                        value: _vm.materialArt,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "materialArt", $$v)
+                                          _vm.materialArt = $$v
                                         },
-                                        expression: "form.materialArt"
+                                        expression: "materialArt"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.materialArt.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar el material de arte de pesca"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -47440,10 +47367,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("equipDevi"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -47463,25 +47387,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.equipDevi,
+                                        value: _vm.equipDevi,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "equipDevi", $$v)
+                                          _vm.equipDevi = $$v
                                         },
-                                        expression: "form.equipDevi"
+                                        expression: "equipDevi"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.equipDevi.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar equipos o dispositivos requeridos"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -47495,10 +47407,7 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass("captain"),
-                                    attrs: { "md-clearable": "" }
-                                  },
+                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
@@ -47514,25 +47423,13 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.form.captain,
+                                        value: _vm.captain,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.form, "captain", $$v)
+                                          _vm.captain = $$v
                                         },
-                                        expression: "form.captain"
+                                        expression: "captain"
                                       }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.captain.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar un nombre para el capitan de pesca"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
+                                    })
                                   ],
                                   1
                                 )
@@ -48926,16 +48823,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         nameBoat: "",
         enrollment: "",
         noPatent: "",
-
         noOmi: "",
         legalRepre: "",
-
         noDays: "",
         noAllHauls: "",
         noHaulsNacional: "",
         noHaulsInter: "",
         landedWeight: "",
-        stateRectorPort: "COLOMBIA"
+        stateRectorPort: ""
       },
       eyeMesh: "",
       netWidth: "",
@@ -48964,6 +48859,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       locationSystem: "",
       inspectorConclusions: "",
       additionalComments: "",
+
+      noApply: "No aplica",
 
       dateIns: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
       dateScale: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
@@ -49353,7 +49250,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.dateValidityPat = data["dateValidityPat"];
       this.date = data["date"];
       this.dateValidity = data["dateValidity"];
-      this.stateRectorPort = data["stateRectorPort"];
+      this.form.stateRectorPort = data["stateRectorPort"];
 
       this.arrayReg.id = data["id_region"];
       this.arrayReg.name = data["nameReg"];
@@ -49385,8 +49282,77 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.edo = 1;
       this.listado = 1;
     },
+
+    // noApply(){
+    //   if (this.eyeMesh == "") {
+    //     this.eyeMesh = this.noApply;
+    //   }
+    //   if (this.netWidth == "") {
+    //     this.netWidth = this.noApply;
+    //   }
+    //   if (this.eyeFlake == "") {
+    //     this.eyeFlake = this.noApply;
+    //   }
+    //   if (this.typeHook == "") {
+    //     this.typeHook = this.noApply;
+    //   }
+    //   if (this.longNet == "") {
+    //     this.longNet = this.noApply;
+    //   }
+    //   if (this.materialArt == "") {
+    //     this.materialArt = this.noApply;
+    //   }
+    //   if (this.equipDevi == "") {
+    //     this.equipDevi = this.noApply;
+    //   }
+    //   if (this.captain == "") {
+    //     this.captain = this.noApply;
+    //   }
+    //   if (this.noAllCrew == "") {
+    //     this.noAllCrew = this.noApply;
+    //   }
+    //   if (this.noCrewForeign == "") {
+    //     this.noCrewForeign = this.noApply;
+    //   }
+    //   if (this.noCrewNational == "") {
+    //     this.noCrewNational = this.noApply;
+    //   }
+    // },
     saveData: function saveData() {
       var me = this;
+      if (this.eyeMesh == "") {
+        this.eyeMesh = this.noApply;
+      }
+      if (this.netWidth == "") {
+        this.netWidth = this.noApply;
+      }
+      if (this.eyeFlake == "") {
+        this.eyeFlake = this.noApply;
+      }
+      if (this.typeHook == "") {
+        this.typeHook = this.noApply;
+      }
+      if (this.longNet == "") {
+        this.longNet = this.noApply;
+      }
+      if (this.materialArt == "") {
+        this.materialArt = this.noApply;
+      }
+      if (this.equipDevi == "") {
+        this.equipDevi = this.noApply;
+      }
+      if (this.captain == "") {
+        this.captain = this.noApply;
+      }
+      if (this.noAllCrew == "") {
+        this.noAllCrew = this.noApply;
+      }
+      if (this.noCrewForeign == "") {
+        this.noCrewForeign = this.noApply;
+      }
+      if (this.noCrewNational == "") {
+        this.noCrewNational = this.noApply;
+      }
       axios.post("/arrivals/save", {
         insNo: this.form.insNo.toUpperCase(),
         radioCall: this.form.radioCall.toUpperCase(),
@@ -49421,7 +49387,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         locationSystem: this.locationSystem,
         inspectorConclusions: this.inspectorConclusions.toUpperCase(),
         additionalComments: this.additionalComments.toUpperCase(),
-        stateRectorPort: this.stateRectorPort.toUpperCase(),
+        stateRectorPort: this.form.stateRectorPort.toUpperCase(),
         dateIns: this.dateIns,
         dateScale: this.dateScale,
         dateZarpe: this.dateZarpe,
@@ -49449,6 +49415,39 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
     },
     updateData: function updateData() {
       var me = this;
+      if (this.eyeMesh == "") {
+        this.eyeMesh = this.noApply;
+      }
+      if (this.netWidth == "") {
+        this.netWidth = this.noApply;
+      }
+      if (this.eyeFlake == "") {
+        this.eyeFlake = this.noApply;
+      }
+      if (this.typeHook == "") {
+        this.typeHook = this.noApply;
+      }
+      if (this.longNet == "") {
+        this.longNet = this.noApply;
+      }
+      if (this.materialArt == "") {
+        this.materialArt = this.noApply;
+      }
+      if (this.equipDevi == "") {
+        this.equipDevi = this.noApply;
+      }
+      if (this.captain == "") {
+        this.captain = this.noApply;
+      }
+      if (this.noAllCrew == "") {
+        this.noAllCrew = this.noApply;
+      }
+      if (this.noCrewForeign == "") {
+        this.noCrewForeign = this.noApply;
+      }
+      if (this.noCrewNational == "") {
+        this.noCrewNational = this.noApply;
+      }
       axios.put("/arrivals/update", {
         id: this.id_arrival,
         insNo: this.form.insNo.toUpperCase(),
@@ -49484,7 +49483,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         locationSystem: this.locationSystem,
         inspectorConclusions: this.inspectorConclusions.toUpperCase(),
         additionalComments: this.additionalComments.toUpperCase(),
-        stateRectorPort: this.stateRectorPort.toUpperCase(),
+        stateRectorPort: this.form.stateRectorPort.toUpperCase(),
         dateIns: this.dateIns,
         dateScale: this.dateScale,
         dateZarpe: this.dateZarpe,
@@ -49905,7 +49904,7 @@ var render = function() {
                                         _vm._v(" "),
                                         _c(
                                           "md-option",
-                                          { attrs: { value: "transito" } },
+                                          { attrs: { value: "desembarque" } },
                                           [_vm._v("Desembarque")]
                                         )
                                       ],
@@ -53385,6 +53384,24 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       if (punto == 'I') {
         dets = 'Distancia entre marco y varilla';
       }
+      //  if (punto2 =='J'){
+      //    dets='Tamaño de malla en la solapa' ; 
+      // }
+      // if (punto2 =='K'){
+      //    dets='Ángulo del DET' ; 
+      // }
+      // if (punto2 =='L'){
+      //    dets='Tipo de DET' ; 
+      // }
+      // if (punto2 =='M'){
+      //    dets='material del DET' ; 
+      // }
+      // if (punto2 =='N'){
+      //    dets='Salida (supeior o inferior)' ; 
+      // }
+      // if (punto2 =='O'){
+      //    dets='Flotadores (cantidad)' ; 
+      // }
       this.abrirModal(dets, punto);
     },
 
@@ -55772,6 +55789,24 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       if (punto2 == 'I') {
         dets = 'Distancia entre marco y varilla';
       }
+      // if (punto2 =='J'){
+      //    dets='Tamaño de malla en la solapa' ; 
+      // }
+      // if (punto2 =='K'){
+      //    dets='Ángulo del DET' ; 
+      // }
+      // if (punto2 =='L'){
+      //    dets='Tipo de DET' ; 
+      // }
+      // if (punto2 =='M'){
+      //    dets='material del DET' ; 
+      // }
+      // if (punto2 =='N'){
+      //    dets='Salida (supeior o inferior)' ; 
+      // }
+      // if (punto2 =='O'){
+      //    dets='Flotadores (cantidad)' ; 
+      // }
       this.abrirModal2(dets, punto2);
     },
     addDets2: function addDets2() {
