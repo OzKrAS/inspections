@@ -369,14 +369,14 @@ export default {
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
-    myTable(datas){
+    myTable(data){
       let me = this;
 
       $(document).ready(function() {
 
       var table = $('#dataTable').DataTable({destroy: true,
       stateSave: true,
-      data:datas,
+      data:data,
                "createdRow": function( row, data, dataIndex){
                 if( data[6] ==  `0`){
                     $(row).addClass('redClass');
