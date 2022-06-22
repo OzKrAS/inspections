@@ -24,6 +24,7 @@ class CheckDetFlapController extends Controller
                      'check_det_flaps.owner',
                      'check_det_flaps.fishCaptain',
                      'check_det_flaps.location',
+                     'check_det_flaps.observation',
                      'check_det_flaps.date',
                      
                      'check_det_flaps.id_company','companies.name as nameCompany',
@@ -51,6 +52,7 @@ class CheckDetFlapController extends Controller
         $checkDetFlaps->owner = $request->owner;
         $checkDetFlaps->fishCaptain = $request->fishCaptain;
         $checkDetFlaps->location = $request->location;
+        $checkDetFlaps->observation = $request->observation;
         $checkDetFlaps->date = $request->date;
 
         $checkDetFlaps->id_company = $request->id_company;  
@@ -76,6 +78,7 @@ class CheckDetFlapController extends Controller
         $checkDetFlaps->owner = $request->owner;
         $checkDetFlaps->fishCaptain = $request->fishCaptain;
         $checkDetFlaps->location = $request->location;
+        $checkDetFlaps->observation = $request->observation;
         $checkDetFlaps->date = $request->date; 
 
         $checkDetFlaps->id_company = $request->id_company; 

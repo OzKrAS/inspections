@@ -29,9 +29,7 @@
                     <th>Embarcación</th>
                     <th>Matrícula</th>
                     <th>Pesquería Autorizada</th>
-                    <th>Patente de Pesca</th>
                     <th>Empresa</th>
-                    <th>Armador</th>
                     <th>Capitán de Pesca</th>
                     <th>Localización</th>
                     <th style="width: 90px">Opciones</th>    
@@ -48,9 +46,7 @@
                       <th>Embarcación</th>
                       <th>Matrícula</th>
                       <th>Pesquería Autorizada</th>
-                      <th>Patente de Pesca</th>
                       <th>Empresa</th>
-                      <th>Armador</th>
                       <th>Capitán de Pesca</th>
                       <th>Localización</th>
                       <th style="width: 90px">Opciones</th>  
@@ -249,6 +245,14 @@
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout"> 
+                  <div class="md-layout-item">
+                    <md-field>
+                            <label>Observaciones</label>
+                            <md-textarea v-model="observation"></md-textarea>
+                    </md-field>
+                  </div>    
+                </div>   
+                <div class="md-layout"> 
                    <img src="/img/img5.png" alt="Workplace" usemap="#workmap4" width="263" height="278">
                   <map name="workmap4">
                     <area @click="title('B')" shape="rect" coords="0,188,35,228" alt="">
@@ -268,6 +272,110 @@
                      <area @click="title('H')" shape="rect" coords="188,75,222,110" alt="" >
                   </map>
                   <img alt="Graficos" width="263" height="278" src="/img/img4.png">
+                </div>
+                <div class="md-layout">
+                  <!-- <div class="md-layout">
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('enrollment')">
+                        <label for="first-name">Material del DET</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.enrollment"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.enrollment.required"
+                        >Olvidaste ingresar el nombre de la matrícula</span>
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp;
+                     <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('enrollment')">
+                        <label for="first-name">Salida (superior ó inferior)</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.enrollment"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.enrollment.required"
+                        >Olvidaste ingresar el nombre de la matrícula</span>
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp; 
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('enrollment')">
+                        <label for="first-name">Flotadores (cantidad)</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.enrollment"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.enrollment.required"
+                        >Olvidaste ingresar el nombre de la matrícula</span>
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp;
+                  </div>
+                  <div class="md-layout">
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('official')">
+                        <label for="first-name">Tamaño de malla en la solapa</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.official"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.official.required"
+                        >Olvidaste ingresar el nombre del funcionario</span>
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp; 
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('boat')">
+                        <label for="first-name">Ángulo del DET</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.boat"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.boat.required"
+                        >Olvidaste ingresar el nombre de la embarcación</span>
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp; 
+                    <div class="md-layout-item">
+                      <md-field md-clearable :class="getValidationClass('enrollment')">
+                        <label for="first-name">Tipo de DET</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.enrollment"
+                          :disabled="sending"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.enrollment.required"
+                        >Olvidaste ingresar el nombre de la matrícula</span>
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp;  
+                  </div> -->
+
+
                   <table class="table table-striped table-bordered display" id="dataTable2" width="50%" cellspacing="0">
                       <thead>         
                         <tr>
@@ -450,6 +558,7 @@ import format from "date-fns/format";
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
     import vSelect from "vue-select";
+    import jsPDF from 'jspdf'
     import {
 		MdButton,  
 		MdContent,
@@ -518,6 +627,7 @@ export default {
       babor4:0,
       estribor3:0,
       estribor4:0,
+      observation: "",
 
       date: format(now, dateFormat),
       idCheckFlap: 0,
@@ -706,6 +816,7 @@ export default {
       this.form.owner = null;
       this.form.fishCaptain = null;
       this.form.location = null;
+      this.observation = null;
       this.date = null;
 
       this.arrayComp = {id:0, name:''};
@@ -725,6 +836,7 @@ export default {
       this.form.owner = data["owner"];
       this.form.fishCaptain = data["fishCaptain"];
       this.form.location = data["location"];
+      this.observation = data["observation"];
       this.date = data["date"];
 
       this.arrayComp.id = data["id_company"];
@@ -800,6 +912,7 @@ export default {
         owner: this.form.owner.toUpperCase(),
         fishCaptain: this.form.fishCaptain.toUpperCase(),
         location: this.form.location.toUpperCase(),
+        observation: this.observation.toUpperCase(),
         date: this.date,
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
@@ -829,6 +942,7 @@ export default {
           owner: this.form.owner.toUpperCase(),
           fishCaptain: this.form.fishCaptain.toUpperCase(),
           location: this.form.location.toUpperCase(),
+          observation: this.observation.toUpperCase(),
           date: this.date,
 
           'id_company': this.arrayComp.id,
@@ -882,6 +996,115 @@ export default {
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
+    createPdf (data = []) {
+      let me = this;
+      var columns = []; var rows = [];
+      var columns1 = []; var rows1 = [];
+      var doc = new jsPDF('p','mm','letter');
+      this.id_CheckDet = data["id"]
+        var logo = new Image();
+        var img1 = new Image();
+        var img2 = new Image();
+        var img3 = new Image();
+        var img4 = new Image();
+        logo.src = '/img/logoAUNAP.png';
+        doc.addImage(logo, 'png', 20, 10, 33, 15);
+        img1.src = '/img/img5.png';
+        doc.addImage(img1, 'png', 15, 70, 40, 45);
+        img2.src = '/img/img6.png';
+        doc.addImage(img2, 'png', 60, 70, 40, 45);
+        img3.src = '/img/img3.png';
+        doc.addImage(img3, 'png', 100, 70, 40, 45);
+        img4.src = '/img/img4.png';
+        doc.addImage(img4, 'png', 140, 70, 40, 45);
+        doc.text("FORMATO VERIFICACIÓN DETs DOBLE SOLAPA", 65, 20);
+        // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
+        doc.setFont("arial");
+        // doc.setFont("arial", "bold");
+        doc.setFontSize(11);
+        doc.text("Oficina: " + me.datos.office, 15, 35 );
+        doc.setFontSize(10);
+        doc.text("Fecha: " + me.datos.date, 110, 35,);
+        doc.setFontSize(10);
+        doc.text("Regional: " + me.datos['nameRegional'], 15, 40,);
+        doc.setFontSize(10);
+        doc.text("Funcionario: " + me.datos.official, 110, 40,);
+        doc.setFontSize(10);
+        doc.text("Embarcación: " + me.datos.boat, 15, 45,);
+        doc.setFontSize(10);
+        doc.text("Empresa: " + me.datos['nameCompany'], 110, 45,);
+        doc.setFontSize(10);
+        doc.text("Matrícula: " + me.datos.enrollment, 15, 50,);
+        doc.setFontSize(10);
+        doc.text("Capitán: " + me.datos.fishCaptain, 110, 50,);
+        doc.setFontSize(10);
+        doc.text("Patente: " + me.datos.fishLicense, 15, 55,);
+        doc.setFontSize(10);
+        doc.text("Armador: " + me.datos.owner, 110, 55,);
+        doc.setFontSize(10);
+        doc.text("Localización: " + me.datos.location, 15, 60,);
+        doc.setFontSize(10);
+        doc.text("Pesquería: " + me.datos.outhFhisher, 110, 60,);
+
+            columns = [    
+              { title: "Punto", dataKey: "nomCientifico" },
+              { title: "DET's", dataKey: "nomComun" },
+              { title: "Babor 1", dataKey: "estado" },
+              { title: "Babor 2", dataKey: "presentacion" },
+              { title: "Estribor 1", dataKey: "cant" },
+              { title: "Estribor 2", dataKey: "peso" }             
+            ];
+            rows = [
+              {"nomCientifico": this.pruebaData,
+               "nomComun": this.pruebaData},
+              // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
+            ]; 
+
+            columns1 = [    
+              { title: "Tamaño de malla en la solapa", dataKey: "nomCientifico" },
+              { title: "Ángulo del DET ", dataKey: "nomComun" },
+              { title: "Tipo de DET", dataKey: "estado" },
+              { title: "Material del DET", dataKey: "presentacion" },
+              { title: "Salida (superior ó inferior)", dataKey: "cant" },
+              { title: "Flotadores (cantidad)", dataKey: "peso" }             
+            ];
+            rows1 = [
+              {"nomCientifico": this.pruebaData,
+               "nomComun": this.pruebaData},
+              // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
+            ]; 
+        doc.setFontSize(10);    
+        doc.text(`DETs con salida inferior: si la circunferencia del DET es ≥ a 120", se requieren 2 boyas, si es menor solo se requiere una boya.`, 15, 145,  {align: 'justify',lineHeightFactor: 1,maxWidth:110} );    
+        doc.setFontSize(10);    
+        doc.text(`Exención: red de prueba (chango)  La longitud de la relinga superior debe ser de 12 pies o menos, y la longitud de la relinga inferior debe ser de 15 pies o menos`, 15, 153,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );  
+        doc.setFontSize(10);
+        doc.setFontSize(10);
+        doc.text("Observaciones: " + me.datos.observation, 15, 165,);
+        doc.setFontSize(10);
+        doc.line(15, 255, 90, 255);
+        doc.setFontSize(10);
+        doc.text("Firma encargado de motonave", 30, 260 );
+        doc.setFontSize(10);
+        doc.line(185, 255, 110, 255);
+        doc.setFontSize(10);
+        doc.text("Firma funcionario", 135, 260 );
+
+        doc.autoTable(columns, rows, {
+          // theme: 'grid',
+                margin: { top: 120 },
+                didDrawPage: function () {
+                  // doc.text("INFORMACIÓN DEL PROYECTO", 50, 60);
+                },
+        });     
+        doc.autoTable(columns1, rows1, {
+                margin: { top: 140 },
+                didDrawPage: function () {
+                },
+        });     
+      //  doc.save("FORMATO ACTA DE DONACIÓN");
+      window.open(doc.output('bloburl'))
+      // me.pdf = 0;
+    },
     myTable(datas){
       let me = this;
 
@@ -919,12 +1142,10 @@ export default {
             { "data": "boat" },
             { "data": "enrollment" },
             { "data": "outhFhisher" },
-            { "data": "fishLicense" },
             { "data": "nameCompany" },
-            { "data": "owner" },
             { "data": "fishCaptain" },
             { "data": "location" },
-             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
+             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  <button type='button'id='pdf' class='pdf btn btn-primary btn-sm' data-tooltip title='pdf' > <i class='fas fa-file-pdf'></i> </button>"},
 
         ]
 
@@ -937,6 +1158,10 @@ export default {
           $('#dataTable tbody').on( 'click', '.eliminar', function () {
                 me.datos= table.row( $(this).parents('tr') ).data();
                 me.deleteData(me.datos);
+            } );
+          $('#dataTable tbody').on( 'click', '.pdf', function () {
+                me.datos= table.row( $(this).parents('tr') ).data();
+                me.createPdf(me.datos);
             } );
     });
     }

@@ -134,6 +134,7 @@
                             <md-option value="pesca">Pesca</md-option>
                             <md-option value="transito">Tránsito</md-option>
                             <md-option value="desembarque">Desembarque</md-option>
+                            <md-option value="mantenimiento">Mantenimiento</md-option>
                           </md-select>
                         </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -1180,9 +1181,9 @@ export default {
     addItemTarget() {
       let me = this;
       var total1 = me.arrayTarget.push({
-        nameCommon1:this.form.nameCommon1,
-        nameScientific1:this.form.nameScientific1,
-        capture1:this.form.capture1
+        nameCommon1:this.nameCommon1,
+        nameScientific1:this.nameScientific1,
+        capture1:this.capture1
       });
       console.log("arrayTarget " + total1);
       me.clearTarget();  
@@ -1190,9 +1191,9 @@ export default {
     addItemFauna() {
       let me = this;
       var total2 = me.arrayFauna.push({
-        nameCommon2:this.form.nameCommon2,
-        nameScientific2:this.form.nameScientific2,
-        capture2:this.form.capture2
+        nameCommon2:this.nameCommon2,
+        nameScientific2:this.nameScientific2,
+        capture2:this.capture2
       });
       console.log("arrayFauna " + total2);
       me.clearFauna();
@@ -1206,14 +1207,14 @@ export default {
        this.arrayFauna.splice(index,1);
     },
     clearTarget() {
-      this.form.nameCommon1 = null;
-      this.form.nameScientific1 = null;
-      this.form.capture1 = null;
+      this.nameCommon1 = null;
+      this.nameScientific1 = null;
+      this.capture1 = null;
     },
     clearFauna() {
-      this.form.nameCommon2 = null;
-      this.form.nameScientific2 = null;
-      this.form.capture2 = null;
+      this.nameCommon2 = null;
+      this.nameScientific2 = null;
+      this.capture2 = null;
     },
     clearForm() {
       this.$v.$reset();

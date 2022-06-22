@@ -24,6 +24,7 @@ class CreateCheckDetFlapsTable extends Migration
             $table->string('owner'); 
             $table->string('fishCaptain'); 
             $table->string('location'); 
+            $table->string('observation'); 
             $table->date('date'); 
 
             $table->integer('id_company')->unsigned();

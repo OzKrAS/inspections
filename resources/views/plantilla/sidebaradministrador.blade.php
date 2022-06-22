@@ -115,6 +115,9 @@
                             <li @click="menu=4">
                                 <a href="#"><i class="icon-bag"></i>Zonas Autorizadas</a>                                                                               
                             </li> 
+                            <li @click="menu=18">
+                                <a href="#"><i class="icon-bag"></i>Material Arte de pesca</a>                                                                               
+                            </li> 
                           </ul>                            
                         </div>                        
                     </li>

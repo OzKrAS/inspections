@@ -186,6 +186,11 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/DonationJson', 'DataJsonController@jsonDonation');
         Route::get('/InspectionBoatCargoJson', 'DataJsonController@jsonInspectionBoatCargo');
         Route::get('/CertificationDisembTunaJson', 'DataJsonController@jsonCertificationDisembTuna');
+        //MATERIAL ARTE DE PESCA
+        Route::get('/materials', 'FishingGearMaterialController@index');
+        Route::post('/materials/save', 'FishingGearMaterialController@store');
+        Route::put('/materials/update', 'FishingGearMaterialController@update');
+        Route::post('/materials/delete', 'FishingGearMaterialController@destroy');
 
 
        
