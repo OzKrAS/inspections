@@ -61634,6 +61634,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -61865,13 +61868,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
           break;
       }
     },
-
-    // clickImg1(e) {
-    //     this.img1 = e.target.files[0];
-    //     console.log(this.img1);
-    // },
-    resetImage: function resetImage() {
-      this.$refs.fileupload1.value = null;
+    clickImg1: function clickImg1(e) {
+      this.img1 = e.target.files[0];
+      console.log(this.img1);
     },
     getValidationClass: function getValidationClass(fieldName) {
       var field = this.$v.form[fieldName];
@@ -62129,7 +62128,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
       var columns = [];var rows = [];
       var doc = new __WEBPACK_IMPORTED_MODULE_5_jspdf__["default"]('p', 'mm', 'letter');
       this.id_donationCertificate = data["id"];
-      console.log("ID " + me.datos.id);
       var logo = new Image();
       logo.src = '/img/logoAUNAP.png';
       doc.addImage(logo, 'png', 20, 10, 33, 15);
@@ -81064,8 +81062,24 @@ var render = function() {
                                 1
                               ),
                               _vm._v(
-                                "    \n                   \n                  "
-                              )
+                                "    \n\n                   \n                  "
+                              ),
+                              _c("div", { staticClass: "md-layout-item" }, [
+                                _c("input", {
+                                  ref: "fileupload1",
+                                  attrs: {
+                                    type: "file",
+                                    accept: "image/*",
+                                    src: _vm.img1
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.clickImg1($event)
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v("        \n\n\n                ")
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "md-layout" }, [

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\PresenVerific;
 use App\Flag;
 
-class PresenVerificController extends Controller
+class presenVerificController extends Controller
 {
     public function index(Request $request)
     {

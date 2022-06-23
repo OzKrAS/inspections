@@ -13,7 +13,9 @@
 
 Route::group(['middleware'=>['guest']],function(){
     Route::get('/','Auth\LoginController@showLoginForm');
-    Route::post('/login', 'Auth\LoginController@login')->name('login');
+    Route::get('/login','Auth\LoginController@showLoginForm');
+   Route::post('/login', 'Auth\LoginController@login')->name('login');
+   Route::get('/logout','Auth\LoginController@showLoginForm');
     // Route::get('/login', 'Auth\LoginController@login');
 });
 Route::get('/clear-cache', function() {

@@ -623,8 +623,9 @@
                         <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                       </md-field>   
                     </div>&nbsp;&nbsp;&nbsp; 
+
                      
-                    <!-- <div class="md-layout-item">
+                    <div class="md-layout-item">
                       <input
                         type="file"
                         accept="image/*"
@@ -633,7 +634,9 @@
                         ref="fileupload1"
                         
                       />
-                    </div>&nbsp;&nbsp;&nbsp;      -->
+                    </div>&nbsp;&nbsp;&nbsp;     
+
+
                   </div>  
                   <div class="md-layout">
                     <div class="md-layout-item md-size-50">
@@ -925,13 +928,13 @@ export default {
           break;
       }
     },
-    // clickImg1(e) {
-    //     this.img1 = e.target.files[0];
-    //     console.log(this.img1);
-    // },
-    resetImage () {
-      this.$refs.fileupload1.value=null;
-    }, 
+
+
+    clickImg1(e) {
+        this.img1 = e.target.files[0];
+        console.log(this.img1);
+    },
+
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
       if (field) {
@@ -1195,7 +1198,6 @@ export default {
       var columns = []; var rows = [];
       var doc = new jsPDF('p','mm','letter');
       this.id_donationCertificate = data["id"]
-      console.log("ID " + me.datos.id);
         var logo = new Image();
         logo.src = '/img/logoAUNAP.png';
         doc.addImage(logo, 'png', 20, 10, 33, 15);
