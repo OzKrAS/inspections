@@ -16,12 +16,6 @@ class CreateDonationCertificatesTable extends Migration
         Schema::create('donation_certificates', function (Blueprint $table) {
             $table->increments('id'); 
             $table->string('noActa');
-            $table->string('nameScientific');
-            $table->string('nameCommon');
-            $table->string('presentation');
-            $table->string('amount');
-            $table->string('weight');
-            $table->string('commercialValue');
             $table->date('date');
             $table->string('nameOfficial');
             $table->string('noDocumentId1');

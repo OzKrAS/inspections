@@ -18,16 +18,6 @@ class CreateConfiscationCertificatesTable extends Migration
             $table->string('noActa');
             $table->string('departament');
             $table->string('municipality');
-            $table->string('nameScientific');
-            $table->string('nameCommon');
-            $table->string('amount');
-            $table->string('average');
-            $table->string('weight');
-            $table->string('commercialValue');
-            $table->string('element');
-            $table->string('amount2');
-            $table->string('featuresState');
-            $table->string('commercialValue2');
             $table->string('text4');
             $table->string('officialName');
             $table->string('documentIdOfficial');
@@ -44,8 +34,6 @@ class CreateConfiscationCertificatesTable extends Migration
             $table->string('telephone');
             $table->string('mobile');
             $table->string('email');
-            $table->string('state');
-            $table->string('presentation');
             $table->date('date');
             $table->date('dateExpedition');
             $table->string('observation');

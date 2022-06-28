@@ -1188,6 +1188,8 @@ export default {
           // 'arrayFa': this.arrayFa.id,
           // 'arrayFa': this.arrayFa.id,
           'id_company': this.arrayComp.id,
+          // 'fishery': this.arrayFa,
+
 
         })
         .then(function(response) {

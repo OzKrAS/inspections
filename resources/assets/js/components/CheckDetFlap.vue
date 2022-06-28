@@ -252,6 +252,9 @@
                     </md-field>
                   </div>    
                 </div>   
+
+                <label>Nota: Para completar los datos de la tabla debe hacer click en cada uno de los puntos de la imagen (A, B, C, D, E, F, G, H, I).</label>
+
                 <div class="md-layout"> 
                    <img src="/img/img5.png" alt="Workplace" usemap="#workmap4" width="263" height="278">
                   <map name="workmap4">

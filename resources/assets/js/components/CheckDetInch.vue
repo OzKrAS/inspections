@@ -255,7 +255,10 @@
                             <md-textarea v-model="observation"></md-textarea>
                     </md-field>
                   </div>    
-                </div>                 
+                </div>  
+
+                <label>Nota: Para completar los datos de la tabla debe hacer click en cada uno de los puntos de la imagen (A, B, C, D, E, F, G, H, I).</label>               
+               
                 <div class="md-layout">                
                   <img src="/img/img1.png" alt="Workplace" usemap="#workmap" width="263" height="278">
                   <map name="workmap">

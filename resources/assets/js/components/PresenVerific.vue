@@ -166,7 +166,7 @@
                 </div>                
                 <div class="md-layout">                   
                         <div class="card-body">   
-                          <div class="md-layout">
+                          <!-- <div class="md-layout">
                             <div class="md-layout-item">
                               <md-field md-clearable :class="getValidationClass('equipment')">
                                 <label for="first-name">Equipo</label>
@@ -247,7 +247,7 @@
                                 >Olvidaste ingresar </span>
                               </md-field>
                             </div>&nbsp;&nbsp;&nbsp;                 
-                          </div>                  
+                          </div>                   -->
                           <md-button
                             type="button"
                             class="md-dense md-raised md-primary"
@@ -266,12 +266,33 @@
                             <th style="width: 90px">Opciones</th>
                           </tr>
                         </thead>
-                       <tbody>
+                       <tbody v-if="arrayTarget.length">
                           <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
-                            <td v-text="target.element"></td>
-                            <td v-text="target.amount2"></td>
-                            <td v-text="target.characterState"></td>
-                            <td v-text="target.commercialValue2"></td>                    
+                               <td>
+                              <md-field>
+                                  <md-textarea v-model="target.element" md-autogrow></md-textarea>
+                              </md-field>
+                            </td>
+                 
+                            <td>
+                               <md-radio  v-model="target.zarpe" value="1"><small>SI</small></md-radio>
+                               <md-radio  v-model="target.zarpe" value="0" class="md-primary"><small>NO</small></md-radio>
+                            </td>
+                            <td>
+                               <md-radio  v-model="target.characterState" value="1"><small>SI</small></md-radio>
+                               <md-radio  v-model="target.characterState" value="0" class="md-primary"><small>NO</small></md-radio>
+                            </td>
+                            <td>
+                               <md-radio  v-model="target.regFot" value="1"><small>SI</small></md-radio>
+                               <md-radio  v-model="target.regFot" value="0" class="md-primary"><small>NO</small></md-radio>
+                            </td>
+                        
+                            <td>
+                              <md-field>
+                                  <md-textarea v-model="target.observation" md-autogrow></md-textarea>
+                              </md-field>
+                            </td>
+                             
                             <td>                      
                               <button
                                 type="button"
@@ -282,6 +303,13 @@
                               >
                                 <i class="icon-trash"></i>
                               </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <tbody v-else>
+                          <tr>
+                            <td colspan="6">
+                              NO existen elementos agregados 
                             </td>
                           </tr>
                         </tbody>
@@ -513,6 +541,9 @@ export default {
     },
     nameWithFlag ({ name }) {
             return `${name}`
+    },
+    addItemTarget(){
+      this.arrayTarget.push({element:""});
     },
     listData() {
       let me = this;

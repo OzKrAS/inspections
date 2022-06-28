@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ConfiscationCertificate;
 use App\Regional;
+use App\DetConfiscationReasons;
 
 class ConfiscationCertificateController extends Controller
 {
@@ -17,16 +18,7 @@ class ConfiscationCertificateController extends Controller
                      'confiscation_certificates.noActa',
                      'confiscation_certificates.departament',
                      'confiscation_certificates.municipality',
-                     'confiscation_certificates.nameScientific',
-                     'confiscation_certificates.nameCommon',
-                     'confiscation_certificates.amount',
-                     'confiscation_certificates.average',
-                     'confiscation_certificates.weight',
-                     'confiscation_certificates.commercialValue',
-                     'confiscation_certificates.element',
-                     'confiscation_certificates.amount2',
-                     'confiscation_certificates.featuresState',
-                     'confiscation_certificates.commercialValue2',
+                    //  'confiscation_certificates.nameCommon',
                      'confiscation_certificates.text4',
                      'confiscation_certificates.officialName',
                      'confiscation_certificates.documentIdOfficial',
@@ -43,8 +35,6 @@ class ConfiscationCertificateController extends Controller
                      'confiscation_certificates.telephone',
                      'confiscation_certificates.mobile',
                      'confiscation_certificates.email',
-                     'confiscation_certificates.state',
-                     'confiscation_certificates.presentation',
                      'confiscation_certificates.date',
                      'confiscation_certificates.dateExpedition',
                      'confiscation_certificates.observation',
@@ -66,16 +56,6 @@ class ConfiscationCertificateController extends Controller
         $confiscation->noActa = $request->noActa;
         $confiscation->departament = $request->departament;
         $confiscation->municipality = $request->municipality;
-        $confiscation->nameScientific = $request->nameScientific;
-        $confiscation->nameCommon = $request->nameCommon;
-        $confiscation->amount = $request->amount;
-        $confiscation->average = $request->average;
-        $confiscation->weight = $request->weight;
-        $confiscation->commercialValue = $request->commercialValue;
-        $confiscation->element = $request->element;
-        $confiscation->amount2 = $request->amount2;
-        $confiscation->featuresState = $request->featuresState;
-        $confiscation->commercialValue2 = $request->commercialValue2;
         $confiscation->text4 = $request->text4;
         $confiscation->officialName = $request->officialName;
         $confiscation->documentIdOfficial = $request->documentIdOfficial;
@@ -92,14 +72,20 @@ class ConfiscationCertificateController extends Controller
         $confiscation->telephone = $request->telephone;
         $confiscation->mobile = $request->mobile;
         $confiscation->email = $request->email;
-        $confiscation->state = $request->state;
-        $confiscation->presentation = $request->presentation;
         $confiscation->date = $request->date;
         $confiscation->dateExpedition = $request->dateExpedition;
         $confiscation->observation = $request->observation;
         
         $confiscation->id_regional = $request->id_regional;  
         $confiscation->save();
+
+        $details = $request->data;
+        foreach($details as $ep=>$det){
+            $objeto= new DetConfiscationReasons();
+            $objeto->id_confiscation = $confiscation->id;
+            $objeto->name= $det['name'];
+            $objeto->save();
+        }
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'
@@ -113,16 +99,6 @@ class ConfiscationCertificateController extends Controller
         $confiscation->noActa = $request->noActa;
         $confiscation->departament = $request->departament;
         $confiscation->municipality = $request->municipality;
-        $confiscation->nameScientific = $request->nameScientific;
-        $confiscation->nameCommon = $request->nameCommon;
-        $confiscation->amount = $request->amount;
-        $confiscation->average = $request->average;
-        $confiscation->weight = $request->weight;
-        $confiscation->commercialValue = $request->commercialValue;
-        $confiscation->element = $request->element;
-        $confiscation->amount2 = $request->amount2;
-        $confiscation->featuresState = $request->featuresState;
-        $confiscation->commercialValue2 = $request->commercialValue2;
         $confiscation->text4 = $request->text4;
         $confiscation->officialName = $request->officialName;
         $confiscation->documentIdOfficial = $request->documentIdOfficial;
@@ -139,14 +115,13 @@ class ConfiscationCertificateController extends Controller
         $confiscation->telephone = $request->telephone;
         $confiscation->mobile = $request->mobile;
         $confiscation->email = $request->email;
-        $confiscation->state = $request->state;
-        $confiscation->presentation = $request->presentation;
         $confiscation->date = $request->date;
         $confiscation->dateExpedition = $request->dateExpedition;
         $confiscation->observation = $request->observation;
         
         $confiscation->id_regional = $request->id_regional;  
         $confiscation->save();
+
         $array = array(
             'res' => true,
             'message' => 'Registro actualizado exitosamente'

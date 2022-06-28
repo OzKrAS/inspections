@@ -11,6 +11,7 @@ use App\Nationality;
 use App\AutoFisher;
 use App\FisheryAuthorized;
 use App\Company;
+use App\DetFisheryZarpes;
 
 class ZarpeController extends Controller
 {
@@ -119,12 +120,17 @@ class ZarpeController extends Controller
         $zarpes->id_flag = $request->id_flag;   
         $zarpes->id_nationality = $request->id_nationality;       
         $zarpes->id_orop = $request->id_orop;       
-        $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;       
-        // $zarpes->id_fisheryAuthorized = $request->id_fisheryAuthorized;       
-        // $zarpes->arrayFa = $request->arrayFa;       
-        // $zarpes->arrayFa => implode(', ', $request->arrayFa);       
+        $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;          
         $zarpes->id_company = $request->id_company;      
         $zarpes->save();
+
+        // $detailszarpe = $request->fishery;
+        // foreach($detailszarpe as $ep=>$det){
+        //     $objeto= new DetFisheryZarpes();
+        //     $objeto->id_fishery = $fishery->id;
+        //     $objeto->name= $det['name'];
+        //     $objeto->save();
+        // }
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'

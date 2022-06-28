@@ -26,11 +26,11 @@
                     <th>Regional</th>
                     <th>Departamento</th>
                     <th>Municipio</th>
-                    <th>Nombre Científico</th>
-                    <th>Nombre Comun</th>
-                    <th>Cantidad (Un)</th>
-                    <th>Promedio Talla (Cm)</th>
-                    <th>Peso (Kg)</th>
+                    <th>Nombre Funcionario AUNAP</th>
+                    <th>Nombre Representante Autoridad Acompañante</th>
+                    <th>No. Placa o Cedula</th>
+                    <th>Nombre del infractor</th>
+                    <th>Dirección de Domicilio</th>
                     <th style="width: 90px">Opciones</th>    
                   </tr>
                 </thead>
@@ -42,11 +42,11 @@
                       <th>Regional</th>
                       <th>Departamento</th>
                       <th>Municipio</th>
-                      <th>Nombre Científico</th>
-                      <th>Nombre Comun</th>
-                      <th>Cantidad (Un)</th>
-                      <th>Promedio Talla (Cm)</th>
-                      <th>Peso (Kg)</th>
+                      <th>Nombre Funcionario AUNAP</th>
+                      <th>Nombre Representante Autoridad Acompañante</th>
+                      <th>No. Placa o Cedula</th>
+                      <th>Nombre del infractor</th>
+                      <th>Dirección de Domicilio</th>
                       <th style="width: 90px">Opciones</th>  
                     </tr>
                   </tfoot>
@@ -124,135 +124,109 @@
                 <div class="card-body">
                     <div class="md-layout">
                       <div class="md-layout-item">
-                        <md-field md-clearable :class="getValidationClass('nameScientific1')">
+                        <md-field md-clearable>
                             <label for="first-name">Nombre Científico</label>
                             <md-input
                               name="first-name"
                               id="first-name"
                               autocomplete="given-name"
-                              v-model="form.nameScientific1"
+                              v-model="nameScientific"
                               :disabled="sending"
                             />
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.nameScientific1.required"
-                            >Olvidaste ingresar el nombre científico</span>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
-                        <md-field md-clearable :class="getValidationClass('nameCommon1')">
+                        <md-field md-clearable>
                             <label for="first-name">Nombre Común</label>
                             <md-input
                               name="first-name"
                               id="first-name"
                               autocomplete="given-name"
-                              v-model="form.nameCommon1"
+                              v-model="nameCommon"
                               :disabled="sending"
                             />
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.nameCommon1.required"
-                            >Olvidaste ingresar el nombre común</span>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
                     </div>  
                     <div class="md-layout">
                       <div class="md-layout-item">
-                        <md-field md-clearable :class="getValidationClass('state1')">
-                          <label for="first-name">Estado</label>
+                        <md-field>
+                          <label class="text-muted">Estado</label>
+                          <md-select v-model="state" name="state" id="state" placeholder="Estado">
+                            <md-option value="fresco entero">Fresco entero</md-option>
+                            <md-option value="fresco eviscerado ">Fresco eviscerado </md-option>
+                            <md-option value="congelado entero">Congelado entero </md-option>
+                            <md-option value="congelado eviscerado">Congelado eviscerado</md-option>
+                            <md-option value="descabezado">Descabezado</md-option>
+                            <md-option value="tronco">Tronco</md-option>
+                            <md-option value="aletas">Aletas</md-option>
+                            <md-option value="seco">Seco</md-option>
+                            <md-option value="vivos">Vivos</md-option>
+                            <md-option value="otros">Otros</md-option>
+                          </md-select>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                        <md-field>
+                          <label class="text-muted">Presentación</label>
+                          <md-select v-model="presentation" name="presentation" id="presentation" placeholder="presentación">
+                            <md-option value="unidades">Unidades</md-option>
+                            <md-option value="zartas ">Zartas </md-option>
+                            <md-option value="bolsas o bultos">Bolsas o Bultos </md-option>
+                            <md-option value="canastas">Canastas</md-option>
+                            <md-option value="grupos">Grupos</md-option>
+                            <md-option value="otros">Otros</md-option>
+                          </md-select>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                        <md-field md-clearable>
+                          <label for="first-name">Cantidad (Un)</label>
                           <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="form.state1"
+                            v-model="amount"
                             :disabled="sending"
                           />
-                          <span
-                            class="md-error"
-                            v-if="!$v.form.state1.required"
-                          >Olvidaste ingresar el estado</span>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
-                        <md-field md-clearable :class="getValidationClass('presentation1')">
-                          <label for="first-name">Presentación</label>
-                          <md-input
-                            name="first-name"
-                            id="first-name"
-                            autocomplete="given-name"
-                            v-model="form.presentation1"
-                            :disabled="sending"
-                          />
-                          <span
-                            class="md-error"
-                            v-if="!$v.form.presentation1.required"
-                          >Olvidaste ingresar la presentación</span>
-                        </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item">
-                        <md-field md-clearable :class="getValidationClass('amount1')">
-                          <label for="first-name">Cantidad (UN)</label>
-                          <md-input
-                            name="first-name"
-                            id="first-name"
-                            autocomplete="given-name"
-                            v-model="form.amount1"
-                            :disabled="sending"
-                          />
-                          <span
-                            class="md-error"
-                            v-if="!$v.form.amount1.required"
-                          >Olvidaste ingresar la cantidad unitaria</span>
-                        </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item">
-                        <md-field md-clearable :class="getValidationClass('AverageSize')">
+                        <md-field md-clearable>
                           <label for="first-name">Promedio Talla (Cm)</label>
                           <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="form.AverageSize"
+                            v-model="average"
                             :disabled="sending"
                           />
-                          <span
-                            class="md-error"
-                            v-if="!$v.form.AverageSize.required"
-                          >Olvidaste ingresar el promedio talla en centimetros</span>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;          
                     </div>
                     <div class="md-layout">
                       <div class="md-layout-item md-size-20">
-                        <md-field md-clearable :class="getValidationClass('weight1')">
+                        <md-field md-clearable>
                           <label for="first-name">Peso (Kg)</label>
                           <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="form.weight1"
+                            v-model="weight"
                             :disabled="sending"
                           />
-                          <span
-                            class="md-error"
-                            v-if="!$v.form.weight1.required"
-                          >Olvidaste ingresar el peso en kilogramosa</span>
-                        </md-field>
+                        </md-field> 
                       </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item md-size-20">
-                        <md-field md-clearable :class="getValidationClass('commercialValue1')">
+                        <md-field md-clearable>
                           <label for="first-name">Valor Comercial</label>
                           <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="form.commercialValue1"
+                            v-model="commercialValue"
                             :disabled="sending"
                           />
-                          <span
-                            class="md-error"
-                            v-if="!$v.form.commercialValue1.required"
-                          >Olvidaste ingresar valor comercial</span>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
                     </div>
@@ -281,14 +255,14 @@
                       </thead>
                       <tbody>
                         <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
-                          <td v-text="target.nameScientific1"></td>
-                          <td v-text="target.nameCommon1"></td>
-                          <td v-text="target.state1"></td>
-                          <td v-text="target.presentation1"></td>
-                          <td v-text="target.amount1"></td>
-                          <td v-text="target.AverageSize"></td>
-                          <td v-text="target.weight1"></td>
-                          <td v-text="target.commercialValue1"></td>
+                          <td v-text="target.nameScientific"></td>
+                          <td v-text="target.nameCommon"></td>
+                          <td v-text="target.state"></td>
+                          <td v-text="target.presentation"></td>
+                          <td v-text="target.amount"></td>
+                          <td v-text="target.average"></td>
+                          <td v-text="target.weight"></td>
+                          <td v-text="target.commercialValue"></td>
                           <td>                      
                             <button
                               type="button"
@@ -333,11 +307,11 @@
                           v-model="element"
                           :disabled="sending"
                         />
-                      </md-field>  
+                      </md-field> 
                     </div>&nbsp;&nbsp;&nbsp;                       
                     <div class="md-layout-item">
                       <md-field md-clearable>
-                        <label for="first-name">Cantidad (UN)</label>
+                        <label for="first-name">Cantidad (Un)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -369,7 +343,7 @@
                           v-model="commercialValue2"
                           :disabled="sending"
                         />
-                      </md-field> 
+                      </md-field>
                     </div>&nbsp;&nbsp;&nbsp;                                                         
                   </div>                       
                   <md-button
@@ -426,7 +400,7 @@
                     </table>
                   </div>  
                 </div>  
-                  <md-field md-clearable :class="getValidationClass('nameScientific')">
+                  <!-- <md-field md-clearable :class="getValidationClass('nameScientific')">
                     <label for="first-name">Nombre Científico</label>
                     <md-input
                       name="first-name"
@@ -439,8 +413,8 @@
                       class="md-error"
                       v-if="!$v.form.nameScientific.required"
                     >Olvidaste ingresar el nombre científico</span>
-                  </md-field>
-                   <md-field md-clearable :class="getValidationClass('nameCommon')">
+                  </md-field> -->
+                   <!-- <md-field md-clearable :class="getValidationClass('nameCommon')">
                     <label for="first-name">Nombre Común</label>
                     <md-input
                       name="first-name"
@@ -453,8 +427,8 @@
                       class="md-error"
                       v-if="!$v.form.nameCommon.required"
                     >Olvidaste ingresar el nombre nombre común</span>
-                  </md-field>
-                 <div class="md-layout-item">
+                  </md-field> -->
+                 <!-- <div class="md-layout-item">
                     <md-field>
                       <label class="text-muted">Estado</label>
                       <md-select v-model="state" name="state" id="state" placeholder="Estado">
@@ -470,8 +444,8 @@
                         <md-option value="otros">Otros</md-option>
                       </md-select>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;  
-                  <div class="md-layout-item">
+                  </div>&nbsp;&nbsp;&nbsp;   -->
+                  <!-- <div class="md-layout-item">
                     <md-field>
                       <label class="text-muted">Presentación</label>
                       <md-select v-model="presentation" name="presentation" id="presentation" placeholder="presentación">
@@ -483,8 +457,8 @@
                         <md-option value="otros">Otros</md-option>
                       </md-select>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;  
-                  <md-field md-clearable :class="getValidationClass('amount')">
+                  </div>&nbsp;&nbsp;&nbsp;   -->
+                  <!-- <md-field md-clearable :class="getValidationClass('amount')">
                     <label for="first-name">Cantidad (Un)</label>
                     <md-input
                       name="first-name"
@@ -497,8 +471,8 @@
                       class="md-error"
                       v-if="!$v.form.amount.required"
                     >Olvidaste ingresar la cantidad</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('average')">
+                  </md-field> -->
+                  <!-- <md-field md-clearable :class="getValidationClass('average')">
                     <label for="first-name">Promedio Talla (Cm)</label>
                     <md-input
                       name="first-name"
@@ -511,8 +485,8 @@
                       class="md-error"
                       v-if="!$v.form.average.required"
                     >Olvidaste ingresar el promedio talla</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('weight')">
+                  </md-field> -->
+                  <!-- <md-field md-clearable :class="getValidationClass('weight')">
                     <label for="first-name">Peso (Kg)</label>
                     <md-input
                       name="first-name"
@@ -525,8 +499,8 @@
                       class="md-error"
                       v-if="!$v.form.weight.required"
                     >Olvidaste ingresar el peso</span>
-                  </md-field> 
-                  <md-field md-clearable :class="getValidationClass('commercialValue')">
+                  </md-field>  -->
+                  <!-- <md-field md-clearable :class="getValidationClass('commercialValue')">
                     <label for="first-name">Valor Comercial</label>
                     <md-input
                       name="first-name"
@@ -539,8 +513,8 @@
                       class="md-error"
                       v-if="!$v.form.commercialValue.required"
                     >Olvidaste ingresar el valor comercial</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('element')">
+                  </md-field> -->
+                  <!-- <md-field md-clearable :class="getValidationClass('element')">
                     <label for="first-name">Elemento</label>
                     <md-input
                        name="first-name"
@@ -553,8 +527,8 @@
                        class="md-error"
                        v-if="!$v.form.element.required"
                      >Olvidaste ingresar el nombre del elemento</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('amount2')">
+                  </md-field> -->
+                  <!-- <md-field md-clearable :class="getValidationClass('amount2')">
                     <label for="first-name">Cantidad (Un)</label>
                     <md-input
                       name="first-name"
@@ -567,8 +541,8 @@
                       class="md-error"
                       v-if="!$v.form.amount2.required"
                     >Olvidaste ingresar la cantidad</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('featuresState')">
+                  </md-field> -->
+                  <!-- <md-field md-clearable :class="getValidationClass('featuresState')">
                     <label for="first-name">Características y Estado</label>
                     <md-input
                       name="first-name"
@@ -581,8 +555,8 @@
                       class="md-error"
                       v-if="!$v.form.featuresState.required"
                     >Olvidaste ingresar las características y estado</span>
-                  </md-field>
-                  <md-field md-clearable :class="getValidationClass('commercialValue2')">
+                  </md-field> -->
+                  <!-- <md-field md-clearable :class="getValidationClass('commercialValue2')">
                     <label for="first-name">Valor Comercial</label>
                     <md-input
                       name="first-name"
@@ -595,9 +569,9 @@
                       class="md-error"
                       v-if="!$v.form.commercialValue2.required"
                     >Olvidaste ingresar el valor comercial</span>
-                  </md-field>
+                  </md-field> -->
 
-                  <label>MOTIVOS DEL DECOMISO PREVENTIVO</label> 
+                  <label align-center>MOTIVOS DEL DECOMISO PREVENTIVO</label> 
 
                   <div class="md-layout">
                     <div class="md-layout-item md-size-50">
@@ -1000,16 +974,6 @@ export default {
         noActa: "",
         departament: "",
         municipality: "",
-        nameScientific: "",
-        nameCommon: "",
-        amount: "",
-        average: "",
-        weight: "",
-        commercialValue: "",     
-        element: "",
-        amount2: "",
-        featuresState: "",
-        commercialValue2: "",   
         officialName: "",
         documentIdOfficial: "",
         representativeName: "",
@@ -1025,27 +989,24 @@ export default {
         telephone: "",
         mobile: "",
         email: "",
-
-        nameScientific1: "",
-        nameCommon1: "",
-        state1: "",
-        presentation1: "",
-        amount1: "",
-        AverageSize: "",
-        weight1: "",
-        commercialValue1: "",
-
-        
+          
       },
       element: "",
       amount2: "",
       characterState: "",
       commercialValue2: "",
+      nameScientific: "",
+      nameCommon: "",
 
       text4: "",
 
       state: "",
       presentation: "",
+      amount: "",
+      average: "",
+      weight: "",
+      commercialValue: "",
+
       date: format(now, dateFormat),
       dateExpedition: format(now, dateFormat),
       observation: "",
@@ -1097,36 +1058,6 @@ export default {
       municipality:  {
         required
       },
-      nameScientific:  {
-        required
-      },
-      nameCommon:  {
-        required
-      },
-      amount:  {
-        required
-      },
-      average:  {
-        required
-      },
-      weight:  {
-        required
-      },
-      commercialValue:  {
-        required
-      },
-      element:  {
-        required
-      },
-      amount2:  {
-        required
-      },
-      featuresState:  {
-        required
-      },
-      commercialValue2:  {
-        required
-      },
       officialName:  {
         required
       },
@@ -1171,32 +1102,7 @@ export default {
       },
       email:  {
         required
-      },
-
-      nameScientific1: {
-        required
-      },
-        nameCommon1: {
-        required
-      },
-        state1: {
-        required
-      },
-        presentation1: {
-        required
-      },
-        amount1: {
-        required
-      },
-        AverageSize: {
-        required
-      },
-        weight1: {
-        required
-      },
-        commercialValue1: {
-        required
-      },     
+      },  
     }
   },
 
@@ -1238,14 +1144,14 @@ export default {
     addItemTarget() {
       let me = this;
       var total1 = me.arrayTarget.push({
-        nameScientific1:this.form.nameScientific1.toUpperCase(),
-        nameCommon1:this.form.nameCommon1.toUpperCase(),
-        state1:this.form.state1.toUpperCase(),
-        presentation1:this.form.presentation1.toUpperCase(),
-        amount1:this.form.amount1,
-        AverageSize:this.form.AverageSize,
-        weight1:this.form.weight1,
-        commercialValue1:this.form.commercialValue1,
+        nameScientific:this.nameScientific.toUpperCase(),
+        nameCommon:this.nameCommon.toUpperCase(),
+        state:this.state.toUpperCase(),
+        presentation:this.presentation.toUpperCase(),
+        amount:this.amount,
+        average:this.average,
+        weight:this.weight,
+        commercialValue:this.commercialValue,
       });
       console.log("arrayTarget " + total1);
       me.clearTarget();  
@@ -1260,7 +1166,7 @@ export default {
         
       });
       console.log("arrayTarget " + total1);
-      me.clearTarget();  
+      me.clearTarget2();  
     },
     deleteTarget(index){
        this.arrayTarget.splice(index,1);
@@ -1269,14 +1175,14 @@ export default {
        this.arrayTarget2.splice(index,1);
     },
     clearTarget() {
-      this.form.nameScientific1 = null;
-      this.form.nameCommon1 = null;
-      this.form.state1 = null;
-      this.form.presentation1 = null;
-      this.form.amount1 = null;
-      this.form.AverageSize = null;
-      this.form.weight1 = null;
-      this.form.commercialValue1 = null;
+      this.nameScientific = null;
+      this.nameCommon = null;
+      this.state = null;
+      this.presentation = null;
+      this.amount = null;
+      this.average = null;
+      this.weight = null;
+      this.commercialValue = null;
     },
     clearTarget2() {
       this.element = null;
@@ -1305,16 +1211,6 @@ export default {
       this.form.noActa = null;
       this.form.departament = null;
       this.form.municipality = null;
-      this.form.nameScientific = null;
-      this.form.nameCommon = null;
-      this.form.amount = null;
-      this.form.average = null;
-      this.form.weight = null;
-      this.form.commercialValue = null;
-      this.element = null;
-      this.amount2 = null;
-      this.form.featuresState = null;
-      this.commercialValue2 = null;
       this.text4 = null;
       this.form.officialName = null;
       this.form.documentIdOfficial = null;
@@ -1331,11 +1227,12 @@ export default {
       this.form.telephone = null;
       this.form.mobile = null;
       this.form.email = null;
-      this.state = null;
-      this.presentation = null;
       this.date = null;
       this.dateExpedition = null;
       this.observation = null;
+      this.arrayReasons = [];
+      this.arrayTarget = [];
+      this.arrayTarget2 = [];
       
       this.arrayRegl = {id:0, name:''};
     },
@@ -1347,16 +1244,6 @@ export default {
       this.form.noActa = data["noActa"];
       this.form.departament = data["departament"];
       this.form.municipality = data["municipality"];
-      this.form.nameScientific = data["nameScientific"];
-      this.form.nameCommon = data["nameCommon"];
-      this.form.amount = data["amount"];
-      this.form.average = data["average"];
-      this.form.weight = data["weight"];
-      this.form.commercialValue = data["commercialValue"];
-      this.element = data["element"];
-      this.amount2 = data["amount2"];
-      this.form.featuresState = data["featuresState"];
-      this.commercialValue2 = data["commercialValue2"];
       this.text4 = data["text4"];
       this.form.officialName = data["officialName"];
       this.form.documentIdOfficial = data["documentIdOfficial"];
@@ -1373,8 +1260,6 @@ export default {
       this.form.telephone = data["telephone"];
       this.form.mobile = data["mobile"];
       this.form.email = data["email"];
-      this.state = data["state"];
-      this.presentation = data["presentation"];
       this.date = data["date"];
       this.dateExpedition = data["dateExpedition"];
       this.observation = data["observation"];
@@ -1425,22 +1310,14 @@ export default {
     saveData() {
       let me = this;
 
+      console.log("entro guardar");
+
       axios
         .post("/confiscationCertificates/save", {
     
       noActa : this.form.noActa.toUpperCase(),
       departament : this.form.departament.toUpperCase(),
       municipality : this.form.municipality.toUpperCase(),
-      nameScientific : this.form.nameScientific.toUpperCase(),
-      nameCommon : this.form.nameCommon.toUpperCase(),
-      amount : this.form.amount.toUpperCase(),
-      average : this.form.average.toUpperCase(),
-      weight : this.form.weight.toUpperCase(),
-      commercialValue : this.form.commercialValue.toUpperCase(),
-      element : this.element.toUpperCase(),
-      amount2 : this.amount2.toUpperCase(),
-      featuresState : this.form.featuresState.toUpperCase(),
-      commercialValue2 : this.commercialValue2.toUpperCase(),
       text4 : this.text4.toUpperCase(),
       officialName : this.form.officialName.toUpperCase(),
       documentIdOfficial : this.form.documentIdOfficial.toUpperCase(),
@@ -1457,11 +1334,10 @@ export default {
       telephone : this.form.telephone,
       mobile : this.form.mobile,
       email : this.form.email,
-      state : this.state.toUpperCase(),
-      presentation : this.presentation.toUpperCase(),
       date : this.date,
       dateExpedition : this.dateExpedition,
       observation : this.observation.toUpperCase(),
+      data:this.arrayReasons,
 
       'id_regional': this.arrayRegl.id,
     })
@@ -1484,16 +1360,6 @@ export default {
       noActa : this.form.noActa.toUpperCase(),
       departament : this.form.departament.toUpperCase(),
       municipality : this.form.municipality.toUpperCase(),
-      nameScientific : this.form.nameScientific.toUpperCase(),
-      nameCommon : this.form.nameCommon.toUpperCase(),
-      amount : this.form.amount.toUpperCase(),
-      average : this.form.average.toUpperCase(),
-      weight : this.form.weight.toUpperCase(),
-      commercialValue : this.form.commercialValue.toUpperCase(),
-      element : this.element.toUpperCase(),
-      amount2 : this.amount2.toUpperCase(),
-      featuresState : this.form.featuresState.toUpperCase(),
-      commercialValue2 : this.commercialValue2.toUpperCase(),
       text4 : this.text4.toUpperCase(),
       officialName : this.form.officialName.toUpperCase(),
       documentIdOfficial : this.form.documentIdOfficial.toUpperCase(),
@@ -1510,8 +1376,6 @@ export default {
       telephone : this.form.telephone,
       mobile : this.form.mobile,
       email : this.form.email,
-      state : this.state.toUpperCase(),
-      presentation : this.presentation.toUpperCase(),
       date : this.date,
       dateExpedition : this.dateExpedition,
       observation : this.observation.toUpperCase(),
@@ -1519,9 +1383,9 @@ export default {
         'id_regional': this.arrayRegl.id,
       })
         .then(function(response) {
+          me.listData();
           me.hideForm();
           me.message("Actualizado", "Actualizó ");
-          me.listData();
         })
         .catch(function(error) {
           console.log(error);
@@ -1646,11 +1510,37 @@ preventivo de los siguientes recursos y/o productos pesqueros:
 Descabezado (D), Tronco (TR), Aletas (A), Seco (S), Vivos (V), Otros (especificar). 
 PRESENTACIÓN: Unidades, zartas, bolsas o bultos, canastas, grupos, otros.
 Procedió a efectuar el decomiso preventivo de los siguientes elementos (equipos y/o artes de pesca) asociados a la 
-actividad de extracción o comercialización de recursos y/o productos pesqueros:`, 15, 155 );
+actividad de extracción o comercialización de recursos y/o productos pesqueros:`, 15, 140 );
           doc.setFontSize(10);
           doc.text(`ELEMENTO: Embarcación, motor, arte de pesca, otro. En caso de artes, especificar tipo (atarraya, chinchorro,
-liso, palangre, otro).`, 15, 180 );
-
+liso, palangre, otro).`, 15, 165 );
+          doc.setFontSize(10);
+          doc.text(`Los recursos, productos pesqueros y/o elementos fueron decomisados cuando se encontraban en 
+(describa la situación):` + me.datos.text4, 15, 175 );
+          doc.setFontSize(10);
+          doc.text(`Para constancia se firma la presente acta por cada uno de los que intervienen en el decomiso preventivo.: ${me.datos.date}`, 15, 185 );  
+          doc.setFontSize(10);
+          doc.text("NOMBRE FUNCIONARIO AUNAP", 15, 195 );  
+          doc.setFontSize(10);
+          doc.text(`${me.datos.officialName}`, 15, 200 );  
+          doc.setFontSize(10);
+          doc.text(`Documento de Identidad: ${me.datos.documentIdOfficial}`, 15, 205 );  
+          doc.setFontSize(10);
+          doc.text("NOMBRE REPRESENTANTE AUTORIDAD ACOMPAÑANTE", 95, 195 );  
+          doc.setFontSize(10);
+          doc.text(`${me.datos.representativeName}`, 95, 200 ); 
+          doc.setFontSize(10);
+          doc.text(`Documento de Identidad: ${me.datos.documentIdRepresentative}`, 95, 205 );
+          doc.setFontSize(10);
+          doc.line(15, 233, 80, 233);
+          doc.setFontSize(10);
+          doc.text("Firma", 42, 236 );
+          doc.text(`No. de Placa o cédula militar: ${me.datos.plateCertificate}`, 95, 210 );  
+          doc.setFontSize(10);
+          doc.line(95, 233, 160, 233);
+          doc.setFontSize(10);
+          doc.text("Firma", 122, 236);
+          
           doc.autoTable({
             margin: { top: 72 },
             head:[['Nombre científico','Nombre Común','Estado','Presentación','Cantidad (UN)','Peso (KG)','Valor Comercial']],
@@ -1664,19 +1554,44 @@ liso, palangre, otro).`, 15, 180 );
           //         },
           // });     
           
-          // doc.autoTable(columns1, rows1, {
-          //         margin: { top: 120 },
-          //         didDrawPage: function () {
+          doc.autoTable(columns1, rows1, {
+                  margin: { top: 120 },
+                  didDrawPage: function () {
                     
-          //         },
-          // });     
+                  },
+          });     
 
-          // doc.autoTable(columns2, rows2, {
-          //         margin: { top: 140 },
-          //         didDrawPage: function () {          
-          //         },
-          // });     
+          doc.autoTable(columns2, rows2, {
+                  margin: { top: 140 },
+                  didDrawPage: function () {          
+                  },
+          });     
         doc.addPage(); 
+        doc.setFontSize(10);
+        doc.text(`DATOS DEL PRESUNTO INFRACTOR`, 70, 20 );
+        doc.setFontSize(10);
+        doc.text(`Nombre: ${me.datos.name}`, 15, 35 );  
+        doc.setFontSize(10);
+        doc.text(`Documento de Identidad: ${me.datos.documentIdOffender}`, 15, 40 );  
+        doc.setFontSize(10);
+        doc.text(`Fecha y Lugar de Expedición de C.C.: ${me.datos.dateExpedition}, ${me.datos.expeditionPlace}`, 15, 45 );  
+        doc.text(`Dirección del Domicilio: ${me.datos.homeAddress}`, 15,50 );  
+        doc.text(`Municipio: ${me.datos.municipalityOffender}`, 15,55 );  
+        doc.text(`Corregimiento: ${me.datos.corregimiento}`, 82,55 );  
+        doc.text(`Vereda: ${me.datos.neighborhood}`, 145,55 );  
+        doc.text(`Teléfonos: ${me.datos.telephone}`, 15,60 );  
+        doc.text(`Celular: ${me.datos.mobile}`, 82,60 );
+        doc.text(`Correo Electrónico: ${me.datos.email}`, 15,65 );  
+        doc.text(`Observaciones: ${me.datos.observation}`, 15,70 );
+        doc.setFontSize(10);
+        doc.line(15, 110, 80, 110);
+        doc.setFontSize(10);
+        doc.text("Firma", 42, 113 );
+        doc.text("Huella", 120, 113 );
+        doc.setDrawColor(0,0,0);
+        doc.rect(105, 75, 40, 35);
+        
+  
             
       //  doc.save("FORMATO ACTA DE DONACIÓN");
         window.open(doc.output('bloburl'))
@@ -1715,11 +1630,11 @@ liso, palangre, otro).`, 15, 180 );
             { "data": "nameRegional" },
             { "data": "departament" },
             { "data": "municipality" },
-            { "data": "nameScientific" },
-            { "data": "nameCommon" },
-            { "data": "amount" },
-            { "data": "average" },
-            { "data": "weight" },
+            { "data": "officialName" },
+            { "data": "representativeName" },
+            { "data": "plateCertificate" },
+            { "data": "name" },
+            { "data": "homeAddress" },
             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  <button type='button'id='PDF' class='PDF btn btn-primary btn-sm' data-tooltip title='PDF' > <i class='fas fa-file-pdf'></i> </button>"},
 
         ]

@@ -15,12 +15,6 @@ class DonationCertificateController extends Controller
         $donations = DonationCertificate::join('regionals','donation_certificates.id_regional','=','regionals.id')
             ->select('donation_certificates.id',
                      'donation_certificates.noActa',
-                     'donation_certificates.nameScientific',
-                     'donation_certificates.nameCommon',
-                     'donation_certificates.presentation',
-                     'donation_certificates.amount',
-                     'donation_certificates.weight',
-                     'donation_certificates.commercialValue',
                      'donation_certificates.date',
                      'donation_certificates.nameOfficial',
                      'donation_certificates.noDocumentId1',
@@ -52,12 +46,6 @@ class DonationCertificateController extends Controller
         // if (!$request->ajax()) return redirect('/');
         $donations = new DonationCertificate();
         $donations->noActa = $request->noActa;
-        $donations->nameScientific = $request->nameScientific;
-        $donations->nameCommon = $request->nameCommon;
-        $donations->presentation = $request->presentation;
-        $donations->amount = $request->amount;
-        $donations->weight = $request->weight;
-        $donations->commercialValue = $request->commercialValue;
         $donations->date = $request->date;
         $donations->nameOfficial = $request->nameOfficial;
         $donations->noDocumentId1 = $request->noDocumentId1;
@@ -88,12 +76,6 @@ class DonationCertificateController extends Controller
         // if (!$request->ajax()) return redirect('/');
         $donations = DonationCertificate::findOrFail($request->id); 
         $donations->noActa = $request->noActa;
-        $donations->nameScientific = $request->nameScientific;
-        $donations->nameCommon = $request->nameCommon;
-        $donations->presentation = $request->presentation;
-        $donations->amount = $request->amount;
-        $donations->weight = $request->weight;
-        $donations->commercialValue = $request->commercialValue;
         $donations->date = $request->date;
         $donations->nameOfficial = $request->nameOfficial;
         $donations->noDocumentId1 = $request->noDocumentId1;

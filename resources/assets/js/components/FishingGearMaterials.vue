@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Gestión Material Arte de Pesaca</strong>          
+          <strong class="lead">Gestión Material Arte de Pesca</strong>          
           <button
             v-if="edo"
             type="button"
