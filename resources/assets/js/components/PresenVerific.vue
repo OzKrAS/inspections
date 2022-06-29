@@ -272,8 +272,7 @@
                               <md-field>
                                   <md-textarea v-model="target.element" md-autogrow></md-textarea>
                               </md-field>
-                            </td>
-                 
+                            </td>               
                             <td>
                                <md-radio  v-model="target.zarpe" value="1"><small>SI</small></md-radio>
                                <md-radio  v-model="target.zarpe" value="0" class="md-primary"><small>NO</small></md-radio>
@@ -412,16 +411,17 @@ export default {
         nameShip: "",
         cruise: "",
         nameFish: "",
-        nameCaptain: "",
-        
-        equipment: "",
-        zarpe: "",
-        desemb: "",
-        photoRecord: "",
-        observation: "",
-
+        nameCaptain: "",     
+        // equipment: "",
+        // desemb: "",
+        // photoRecord: "",
       },
 
+      element: "",
+      zarpe: "",
+      regFot: "",
+      characterState: "",
+      observation: "",
       dateZarpe: 0,
       dateDesemb: 0,
       
@@ -474,21 +474,18 @@ export default {
       nameCaptain: {
         required
       },
-      equipment: {
-        required
-      },
-      zarpe: {
-        required
-      },
-      desemb: {
-        required
-      },
-      photoRecord: {
-        required
-      },
-      observation: {
-        required
-      },
+      // equipment: {
+      //   required
+      // },
+      // zarpe: {
+      //   required
+      // },
+      // desemb: {
+      //   required
+      // },
+      // photoRecord: {
+      //   required
+      // },
     }
   },
 

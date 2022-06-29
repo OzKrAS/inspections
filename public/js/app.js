@@ -58295,7 +58295,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -58337,16 +58336,17 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         nameShip: "",
         cruise: "",
         nameFish: "",
-        nameCaptain: "",
-
-        equipment: "",
-        zarpe: "",
-        desemb: "",
-        photoRecord: "",
-        observation: ""
-
+        nameCaptain: ""
+        // equipment: "",
+        // desemb: "",
+        // photoRecord: "",
       },
 
+      element: "",
+      zarpe: "",
+      regFot: "",
+      characterState: "",
+      observation: "",
       dateZarpe: 0,
       dateDesemb: 0,
 
@@ -58392,22 +58392,19 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       },
       nameCaptain: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      equipment: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      zarpe: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      desemb: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      photoRecord: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
-      observation: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       }
+      // equipment: {
+      //   required
+      // },
+      // zarpe: {
+      //   required
+      // },
+      // desemb: {
+      //   required
+      // },
+      // photoRecord: {
+      //   required
+      // },
     }
   },
 
@@ -80907,7 +80904,7 @@ var staticRenderFns = [
                 _c("th", [_vm._v("No. de Placa o Cédula Militar")]),
                 _vm._v(" "),
                 _c("th", [
-                  _vm._v("Nombre de la institución que recibe la donación")
+                  _vm._v("Nombre de la institución que recibe donación")
                 ]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Personería Jurídica")]),
@@ -80937,7 +80934,7 @@ var staticRenderFns = [
                 _c("th", [_vm._v("No. de Placa o Cédula Militar")]),
                 _vm._v(" "),
                 _c("th", [
-                  _vm._v("Nombre de la institución que recibe la donación")
+                  _vm._v("Nombre de la institución que recibe donación")
                 ]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Personería Jurídica")]),

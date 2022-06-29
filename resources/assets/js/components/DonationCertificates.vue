@@ -28,7 +28,7 @@
                     <th>Nombre Representante Autoridad Acompañante</th>
                     <!-- <th>Estado</th> -->
                     <th>No. de Placa o Cédula Militar</th>
-                    <th>Nombre de la institución que recibe la donación</th>
+                    <th>Nombre de la institución que recibe donación</th>
                     <th>Personería Jurídica</th>
                     <th>Dirección</th>
                     <!-- <th>Foto</th> -->
@@ -45,7 +45,7 @@
                       <th>Nombre Representante Autoridad Acompañante</th>
                       <!-- <th>Estado</th> -->
                       <th>No. de Placa o Cédula Militar</th>
-                      <th>Nombre de la institución que recibe la donación</th>
+                      <th>Nombre de la institución que recibe donación</th>
                       <th>Personería Jurídica</th>
                       <th>Dirección</th>
                       <!-- <th>Foto</th> -->
