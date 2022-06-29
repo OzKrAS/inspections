@@ -1577,6 +1577,8 @@ export default {
           'id_zoneAutoFisher': this.arrayZoneAuto.id,
           'id_fisheryAuthorized': this.arrayFa.id,
           'id_company': this.arrayComp.id,
+
+          'fishery': this.arrayFa,
         })
         .then(function(response) {
           me.hideForm();

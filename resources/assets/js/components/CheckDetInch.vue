@@ -27,8 +27,7 @@
                     <th>Oficina</th>
                     <th>Funcionario</th>
                     <th>Embarcación</th>
-                    <th>Matrícula</th>
-                    <th>Pesquería Autorizada</th>
+                    <th>Matrícula</th>                   
                     <th>Patente de Pesca</th>
                     <th>Empresa</th>
                     <th>Armador</th>
@@ -46,8 +45,7 @@
                       <th>Oficina</th>
                       <th>Funcionario</th>
                       <th>Embarcación</th>
-                      <th>Matrícula</th>
-                      <th>Pesquería Autorizada</th>
+                      <th>Matrícula</th>                    
                       <th>Patente de Pesca</th>
                       <th>Empresa</th>
                       <th>Armador</th>
@@ -614,6 +612,7 @@
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
     import vSelect from "vue-select";
+    import jsPDF from 'jspdf'
     import {
 		MdButton,  
 		MdContent,
@@ -950,6 +949,7 @@ export default {
       this.form.fishLicense = data["fishLicense"];
       this.form.owner = data["owner"];
       this.form.fishCaptain = data["fishCaptain"];
+      this.form.location = data["location"];
       this.observation = data["observation"];
       this.date = data["date"];
 
@@ -1025,6 +1025,7 @@ export default {
         fishLicense: this.form.fishLicense.toUpperCase(),
         owner: this.form.owner.toUpperCase(),
         fishCaptain: this.form.fishCaptain.toUpperCase(),
+        location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
         date: this.date,
         'id_company': this.arrayComp.id,
@@ -1054,6 +1055,7 @@ export default {
           fishLicense: this.form.fishLicense.toUpperCase(),
           owner: this.form.owner.toUpperCase(),
           fishCaptain: this.form.fishCaptain.toUpperCase(),
+          location: this.form.location.toUpperCase(),
           observation: this.observation.toUpperCase(),
           date: this.date,
           
@@ -1255,7 +1257,6 @@ export default {
             { "data": "official" },
             { "data": "boat" },
             { "data": "enrollment" },
-            { "data": "outhFhisher" },
             { "data": "fishLicense" },
             { "data": "nameCompany" },
             { "data": "owner" },

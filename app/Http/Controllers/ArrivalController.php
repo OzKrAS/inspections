@@ -138,6 +138,15 @@ class ArrivalController extends Controller
         $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized;    
         $arrivals->id_company = $request->id_company; 
         $arrivals->save();
+
+        // $detailarrivals = $request->fishery;
+        // foreach($detailarrivals as $ep=>$det){
+        //     $objeto= new DetConfiscationReasons();
+        //     $objeto->id_arrival = $arrival->id;
+        //     $objeto->name= $det['name'];
+        //     $objeto->save();
+        // }
+
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'

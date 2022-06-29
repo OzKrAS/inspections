@@ -49409,7 +49409,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         'id_nationality': this.arrayNation.id,
         'id_zoneAutoFisher': this.arrayZoneAuto.id,
         'id_fisheryAuthorized': this.arrayFa.id,
-        'id_company': this.arrayComp.id
+        'id_company': this.arrayComp.id,
+
+        'fishery': this.arrayFa
       }).then(function (response) {
         me.hideForm();
         me.message("Guardado", "Guardo ");
@@ -52627,10 +52629,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_toasted___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_toasted__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_select__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_select__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jspdf__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
@@ -53241,8 +53244,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
+
 
 
 
@@ -53254,15 +53256,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_toasted___default.a, {
   iconPack: 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
 });
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdButton"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdContent"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdField"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdCard"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdMenu"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdSwitch"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdList"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdButton"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdContent"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdField"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdCard"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdMenu"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdSwitch"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdList"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDatepicker"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53333,31 +53335,31 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
     form: {
 
       office: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       official: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       boat: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       enrollment: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       outhFhisher: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       fishLicense: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       owner: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       fishCaptain: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       location: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       }
     }
   },
@@ -53569,6 +53571,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.form.fishLicense = data["fishLicense"];
       this.form.owner = data["owner"];
       this.form.fishCaptain = data["fishCaptain"];
+      this.form.location = data["location"];
       this.observation = data["observation"];
       this.date = data["date"];
 
@@ -53642,6 +53645,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         fishLicense: this.form.fishLicense.toUpperCase(),
         owner: this.form.owner.toUpperCase(),
         fishCaptain: this.form.fishCaptain.toUpperCase(),
+        location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
         date: this.date,
         'id_company': this.arrayComp.id,
@@ -53668,6 +53672,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         fishLicense: this.form.fishLicense.toUpperCase(),
         owner: this.form.owner.toUpperCase(),
         fishCaptain: this.form.fishCaptain.toUpperCase(),
+        location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
         date: this.date,
 
@@ -53724,7 +53729,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       var me = this;
       var columns = [];var rows = [];
       var columns1 = [];var rows1 = [];
-      var doc = new jsPDF('p', 'mm', 'letter');
+      var doc = new __WEBPACK_IMPORTED_MODULE_5_jspdf__["default"]('p', 'mm', 'letter');
       this.id_CheckDet = data["id"];
       var logo = new Image();
       var img1 = new Image();
@@ -53836,7 +53841,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
             "infoFiltered": "(filtrado de _MAX_ total registros)"
           },
           responsive: "true",
-          "columns": [{ "data": "date" }, { "data": "nameRegional" }, { "data": "office" }, { "data": "official" }, { "data": "boat" }, { "data": "enrollment" }, { "data": "outhFhisher" }, { "data": "fishLicense" }, { "data": "nameCompany" }, { "data": "owner" }, { "data": "fishCaptain" }, { "data": "location" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>   <button type='button'id='pdf' class='pdf btn btn-primary btn-sm' data-tooltip title='pdf' > <i class='fas fa-file-pdf'></i> </button>" }]
+          "columns": [{ "data": "date" }, { "data": "nameRegional" }, { "data": "office" }, { "data": "official" }, { "data": "boat" }, { "data": "enrollment" }, { "data": "fishLicense" }, { "data": "nameCompany" }, { "data": "owner" }, { "data": "fishCaptain" }, { "data": "location" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>   <button type='button'id='pdf' class='pdf btn btn-primary btn-sm' data-tooltip title='pdf' > <i class='fas fa-file-pdf'></i> </button>" }]
 
         });
 
@@ -55148,8 +55153,6 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("th", [_vm._v("Matrícula")]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Pesquería Autorizada")]),
-                _vm._v(" "),
                 _c("th", [_vm._v("Patente de Pesca")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Empresa")]),
@@ -55181,8 +55184,6 @@ var staticRenderFns = [
                 _c("th", [_vm._v("Embarcación")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Matrícula")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Pesquería Autorizada")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Patente de Pesca")]),
                 _vm._v(" "),

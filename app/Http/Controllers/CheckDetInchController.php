@@ -25,6 +25,7 @@ class CheckDetInchController extends Controller
                      'check_det_inches.owner',
                      'check_det_inches.fishCaptain',
                      'check_det_inches.location',
+                     'check_det_inches.observation',
                      'check_det_inches.date',
                      
                      'check_det_inches.id_company','companies.name as nameCompany',
@@ -51,6 +52,7 @@ class CheckDetInchController extends Controller
         $CheckDetInchs->owner = $request->owner;
         $CheckDetInchs->fishCaptain = $request->fishCaptain;
         $CheckDetInchs->location = $request->location;
+        $CheckDetInchs->observation = $request->observation;
         $CheckDetInchs->date = $request->date;
 
         $CheckDetInchs->id_company = $request->id_company;  
@@ -75,6 +77,7 @@ class CheckDetInchController extends Controller
         $CheckDetInchs->owner = $request->owner;
         $CheckDetInchs->fishCaptain = $request->fishCaptain;
         $CheckDetInchs->location = $request->location;
+        $CheckDetInchs->observation = $request->observation;
         $CheckDetInchs->date = $request->date; 
 
         $CheckDetInchs->id_company = $request->id_company;  
