@@ -106,7 +106,10 @@
                   </div>&nbsp;&nbsp;&nbsp;  
                 </div>  
                   
-                  <label>CERTIFICA</label>
+                  <!-- <label>CERTIFICA</label> -->
+                  <div style="text-align:center">
+                  <strong>CERTIFICA</strong>    
+                </div>
 
                 <div class="md-layout">
                   <div class="md-layout-item md-size-16">

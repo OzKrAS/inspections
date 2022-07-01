@@ -229,6 +229,71 @@
                           />
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
+
+                      <p>
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                          Subir imagen
+                        </button>
+                      </p>
+                                   
+                    <div class="collapse" id="collapseExample">
+                      <div class="card card-body">
+                        <div
+                          class="uploader"
+                          @dragenter="OnDragEnter"
+                          @dragleave="OnDragLeave"
+                          @dragover.prevent
+                          @drop="onDrop"
+                          :class="{ dragging: isDragging }"
+                        >
+                          <div class="upload-control" v-show="images.length">
+                            <!-- <label for="file">Anexar otra Imágen</label> -->
+                            <!-- <button @click="upload">Guardar Imágenes</button>
+                            <button @click="abrirList">Cancelar</button> -->
+                          </div>
+
+                          <div v-show="!images.length">
+                            <i class="fa fa-cloud-upload"></i>
+                            <p>Arrastra tus imágenes aquí</p>
+                            <div>O</div>
+                            <div class="file-input">
+                              <label for="file">Selecciona una Imágen</label>
+                              <input
+                                type="file"
+                                id="file"
+                                @change="onInputChange"
+                                multiple
+                              />
+                            </div>
+                          </div>
+
+                          <div class="images-preview" v-show="images.length">
+                            <div
+                              class="img-wrapper"
+                              v-for="(image, index) in images"
+                              :key="index"
+                            >
+                              <img :src="image" :alt="`Image Uplaoder ${index}`" />
+                                <button
+                                  type="button"
+                                  @click="eliminarImg(index)"
+                                  class="btn btn-dark btn-sm"
+                                >
+                                  <i class="material-icons Color4">delete</i>
+                                </button>
+                              <div class="details">
+                                <span class="name" v-text="files[index].name"></span>
+                                <span
+                                  class="size"
+                                  v-text="getFileSize(files[index].size)"
+                                ></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>                      
+                      </div>
+                    </div>  
+                    
                     </div>
                     <md-button
                       type="button"
@@ -249,7 +314,7 @@
                           <th>PROMEDIO TALLA (Cm)</th>    
                           <th>PESO (Kg)</th>    
                           <th>VALOR COMERCIAL</th>    
-                          <!-- <th>FOTO</th>     -->
+                          <th>FOTO</th>    
                           <th style="width: 90px">Opciones</th>
                         </tr>
                       </thead>
@@ -263,6 +328,13 @@
                           <td v-text="target.average"></td>
                           <td v-text="target.weight"></td>
                           <td v-text="target.commercialValue"></td>
+                          <td>
+                            <div v-for="(target,index) in images" :key="`item-${index}`">
+                              <h3>
+                             
+                              </h3>
+                            </div>
+                          </td>
                           <td>                      
                             <button
                               type="button"
@@ -286,7 +358,7 @@
                             <th>PROMEDIO TALLA (Cm)</th>  
                             <th>PESO (Kg)</th>    
                             <th>VALOR COMERCIAL</th>    
-                            <!-- <th>FOTO</th>         -->
+                            <th>FOTO</th>        
                             <th style="width: 90px">Opciones</th>
                           </tr>
                         </tfoot>
@@ -571,7 +643,10 @@
                     >Olvidaste ingresar el valor comercial</span>
                   </md-field> -->
 
-                  <label align-center>MOTIVOS DEL DECOMISO PREVENTIVO</label> 
+                  <!-- <label align-center>MOTIVOS DEL DECOMISO PREVENTIVO</label>  -->
+                  <div style="text-align:center">
+                      <strong>MOTIVOS DEL DECOMISO PREVENTIVO</strong>    
+                  </div>
 
                   <div class="md-layout">
                     <div class="md-layout-item md-size-50">
@@ -599,7 +674,10 @@
                     </div>&nbsp;&nbsp;&nbsp;
                   </div> 
 
-                  <label>Para constancia se firma la presente acta por cada uno de los que intervienen en el decomiso preventivo.</label>
+                  <div style="text-align:center">
+                      <strong>Para constancia se firma la presente acta por cada uno de los que intervienen en el decomiso preventivo.</strong>    
+                  </div>
+                  <!-- <label>Para constancia se firma la presente acta por cada uno de los que intervienen en el decomiso preventivo.</label> -->
 
                   <div class="md-layout">
                     <div class="md-layout-item md-size-40">
@@ -702,7 +780,10 @@
                     </div>&nbsp;&nbsp;&nbsp;
                   </div>
                   
-                  <label>DATOS DEL PRESUNTO INFRACTOR</label>
+                  <!-- <label>DATOS DEL PRESUNTO INFRACTOR</label> -->
+                  <div style="text-align:center">
+                      <strong>DATOS DEL PRESUNTO INFRACTOR</strong>    
+                  </div>
 
                   <div class="md-layout">
                     <div class="md-layout-item md-size-70">
@@ -1042,7 +1123,14 @@ export default {
       sending: false,
 
       arrayData: [],
-      tipoAccion: 0
+      tipoAccion: 0,
+
+      //variables imagen
+      selectedFile: null,
+      isDragging: false,
+      dragCount: 0,
+      files: [],     
+      images: [],
     };
   },
 
@@ -1114,6 +1202,115 @@ export default {
 		Multiselect
 	},
   methods: {
+    OnDragEnter(e) {
+      e.preventDefault();
+
+      this.dragCount++;
+      this.isDragging = true;
+
+      return false;
+    },
+    OnDragLeave(e) {
+      e.preventDefault();
+      this.dragCount--;
+
+      if (this.dragCount <= 0) this.isDragging = false;
+    },
+    onInputChange(e) {
+      const files = e.target.files;
+
+      Array.from(files).forEach((file) => this.addImage(file));
+    },
+    onInputChange2(e) {
+      const files = e.target.files;
+
+      Array.from(files).forEach((file) => this.addImage2(file));
+    },
+    addImage2(file) {
+      if (!file.type.match("image.*")) {
+        this.$toastr.e(`${file.name} is not an image`);
+        return;
+      }
+
+      this.images2.push(file);
+
+      const img = new Image(),
+        reader = new FileReader();
+
+      reader.onload = (e) => this.images2.push(e.target.result);
+
+      reader.readAsDataURL(file);
+    },
+    upload() {
+      let me = this;
+      const formData = new FormData();
+
+      this.files.forEach((file) => {
+        formData.append("images[]", file, file.name);
+      });
+      formData.append("idEquipo", this.idEquipo);
+      formData.append("numCerti", this.form.numCertifica);
+      formData.append("laborat", this.form.laboratorio);
+      formData.append("fecCerti", this.form.fecCertifica);
+
+      axios.post("/detcerti/registrar", formData).then((response) => {
+        me.mensaje("Guardado", "Todos los certificados se han almacenado ");
+        // this.$toastr.s("All images uplaoded successfully");
+        me.getDetCertifica();
+        this.images = [];
+        this.files = [];
+      });
+    },
+    changeImg() {
+      this.listado = 0;
+    },
+    abrirList() {
+      this.listado = 1;
+    },
+    eliminarImg(index){
+      this.images.splice(index, 1);
+    },
+    onDrop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      this.isDragging = false;
+
+      const files = e.dataTransfer.files;
+
+      Array.from(files).forEach((file) => this.addImage(file));
+    },
+    addImage(file) {
+      if (!file.type.match("image.*")) {
+        this.$toastr.e(`${file.name} is not an image`);
+        return;
+      }
+
+      this.files.push(file);
+
+      const img = new Image(),
+        reader = new FileReader();
+
+      reader.onload = (e) => this.images.push(e.target.result);
+
+      reader.readAsDataURL(file);
+    },
+    getFileSize(size) {
+      const fSExt = ["Bytes", "KB", "MB", "GB"];
+      let i = 0;
+
+      while (size > 900) {
+        size /= 1024;
+        i++;
+      }
+      return `${Math.round(size * 100) / 100} ${fSExt[i]}`;
+    },
+    getImage(event) {
+      //Asignamos la imagen a  nuestra data
+      // console.log(event)
+      this.selectedFile = event.target.files[0];
+      // this.upload();
+    },
     // addTag (newTag) {
     //   const tag = {
     //     name: newTag,

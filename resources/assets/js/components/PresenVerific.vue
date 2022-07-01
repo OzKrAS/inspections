@@ -542,6 +542,9 @@ export default {
     addItemTarget(){
       this.arrayTarget.push({element:""});
     },
+    deleteTarget(index){
+       this.arrayTarget.splice(index,1);
+    },
     listData() {
       let me = this;
       var url =

@@ -11,7 +11,7 @@ use App\Nationality;
 use App\AutoFisher;
 use App\FisheryAuthorized;
 use App\Company;
-use App\DetFisheryZarpes;
+use App\DetailFisherAutZarpe;
 
 class ZarpeController extends Controller
 {
@@ -124,9 +124,9 @@ class ZarpeController extends Controller
         $zarpes->id_company = $request->id_company;      
         $zarpes->save();
 
-        // $detailszarpe = $request->fishery;
-        // foreach($detailszarpe as $ep=>$det){
-        //     $objeto= new DetFisheryZarpes();
+        // $details = $request->fishery;
+        // foreach($details as $ep=>$det){
+        //     $objeto= new DetailFisherAutZarpe();
         //     $objeto->id_fishery = $fishery->id;
         //     $objeto->name= $det['name'];
         //     $objeto->save();

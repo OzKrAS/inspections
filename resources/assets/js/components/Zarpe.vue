@@ -135,11 +135,13 @@
                           </md-field>
                         </div>&nbsp;&nbsp;&nbsp;
                       </div>
-                      <div class="md-layout"> 
-                        <div class="md-layout-item"> 
+                        <!-- <div class="md-layout-item"> 
                           <label>PUERTO, ESTADO RECTOR DE PUERTO</label>           
-                        </div>
-                      </div> 
+                        </div> -->
+                      <div style="text-align:center">
+                          <strong>PUERTO, ESTADO RECTOR DE PUERTO</strong>    
+                      </div>
+
                       <div class="md-layout"> 
                         <div class="md-layout-item">
                           <md-field>
@@ -223,14 +225,14 @@
                             </md-datepicker>
                           </div>
                         </div> &nbsp;&nbsp;&nbsp;
-                      </div>
-
-                      <div class="md-layout"> 
-                        <div class="md-layout-item">          
+                      </div>                 
+                        <!-- <div class="md-layout-item">          
                           <label>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</label>
+                        </div> -->
+                        <div style="text-align:center">
+                            <strong>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</strong>    
                         </div>
-                      </div> 
-
+                        
                       <div class="md-layout">
                         <div class="md-layout-item">
                           <md-field>
@@ -288,7 +290,10 @@
                         </div>&nbsp;&nbsp;&nbsp; 
                       </div>  
 
-                      <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label>
+                      <!-- <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label> -->
+                      <div style="text-align:center">
+                            <strong>PERMISO OTORGADO - ÚLTIMA PRORROGA</strong>    
+                      </div>
                   
                   <div class="md-layout">
                     <div class="md-layout-item md-size-50"> 
@@ -431,7 +436,10 @@
                     </div>&nbsp;&nbsp;&nbsp;
                   </div> 
  
-                  <label>PESQUERÍA Y ARTES AUTORIZADOS</label>
+                  <!-- <label>PESQUERÍA Y ARTES AUTORIZADOS</label> -->
+                  <div style="text-align:center">
+                        <strong>PESQUERÍA Y ARTES AUTORIZADOS</strong>    
+                  </div>
 
                   <!-- <div class="md-layout-item">
                       <label>Pesquería Autorizada</label>
@@ -486,7 +494,10 @@
 
                   
 
-                  <label>CARACTERÍSTICAS ARTE DE PESCA</label>
+                  <!-- <label>CARACTERÍSTICAS ARTE DE PESCA</label> -->
+                  <div style="text-align:center">
+                        <strong>CARACTERÍSTICAS ARTE DE PESCA</strong>    
+                  </div>
                  
                  <div class="md-layout">
                    <div class="md-layout-item"> 
@@ -600,7 +611,10 @@
                    </div>&nbsp;&nbsp;&nbsp;
                  </div>
 
-                  <label>LOS DATOS RELACIONADOS CON LAS MEDIDAS DE ORDENAMIENTO APLICABLES</label>
+                  <!-- <label>LOS DATOS RELACIONADOS CON LAS MEDIDAS DE ORDENAMIENTO APLICABLES</label> -->
+                  <div style="text-align:center">
+                        <strong>LOS DATOS RELACIONADOS CON LAS MEDIDAS DE ORDENAMIENTO APLICABLES</strong>    
+                  </div>
 
                    <div class="md-layout-item">
                       <md-field>
@@ -1184,9 +1198,6 @@ export default {
           'id_nationality': this.arrayNation.id,
           'id_orop': this.arrayOr.id,
           'id_zoneAutoFisher': this.arrayZoneAuto.id,
-          // 'id_fisheryAuthorized': this.arrayFa.id,
-          // 'arrayFa': this.arrayFa.id,
-          // 'arrayFa': this.arrayFa.id,
           'id_company': this.arrayComp.id,
           // 'fishery': this.arrayFa,
 

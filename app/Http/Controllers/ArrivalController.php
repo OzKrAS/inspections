@@ -146,6 +146,20 @@ class ArrivalController extends Controller
         //     $objeto->name= $det['name'];
         //     $objeto->save();
         // }
+        // $detailarrivals = $request->target;
+        // foreach($detailarrivals as $ep=>$det){
+        //     $objeto= new DetConfiscationReasons();
+        //     $objeto->id_arrival = $arrival->id;
+        //     $objeto->name= $det['name'];
+        //     $objeto->save();
+        // }
+        // $detailarrivals = $request->fauna;
+        // foreach($detailarrivals as $ep=>$det){
+        //     $objeto= new DetConfiscationReasons();
+        //     $objeto->id_arrival = $arrival->id;
+        //     $objeto->name= $det['name'];
+        //     $objeto->save();
+        // }
 
         $array = array(
             'res' => true,

@@ -147,7 +147,10 @@
                         </multiselect>
                      </div>&nbsp;&nbsp;&nbsp;  
 
-                     <label>REPORTE POR ESPECIES</label> 
+                     <!-- <label>REPORTE POR ESPECIES</label>  -->
+                     <div style="text-align:center">
+                        <strong>REPORTE POR ESPECIES</strong>    
+                     </div>
 
 
                      <!-- espacio datos de la tabla -->

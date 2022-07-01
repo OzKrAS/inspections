@@ -279,8 +279,10 @@
                   </div>&nbsp;&nbsp;&nbsp;         
                 </div>
 
-                <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label>
-
+                <div style="text-align:center">
+                  <strong>PERMISO OTORGADO - ÚLTIMA PRORROGA</strong>
+                </div>
+                
                 <div class="md-layout">
                   <div class="md-layout-item md-size-50">
                     <md-field md-clearable :class="getValidationClass('noResolution')">
@@ -440,8 +442,10 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>  
-				              	                 
-                <label>PESQUERÍA Y ARTES AUTORIZADOS</label>
+
+                <div style="text-align:center">
+                  <strong>PESQUERÍA Y ARTES AUTORIZADOS</strong>              
+                </div>                         
                 
                 <div class="md-layout"> 
                   <div class="md-layout-item">
@@ -464,7 +468,9 @@
                   </div>&nbsp;&nbsp;&nbsp; 
                 </div> 
 
-                <label>CARACTERÍSTICAS ARTE DE PESCA</label>                  
+                <div style="text-align:center">
+                  <strong>CARACTERÍSTICAS ARTE DE PESCA</strong>                  
+                </div>
                       
                 <div class="md-layout"> 
                   <div class="md-layout-item">
@@ -616,7 +622,9 @@
                   </div>&nbsp;&nbsp;&nbsp;       
                 </div>     
 
-                <label>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</label>
+                <div style="text-align:center">
+                  <strong>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</strong>              
+                </div>
 
                 <div class="md-layout">
                   <div class="md-layout-item">
@@ -693,7 +701,9 @@
                   </div>    
                 </div>         
 
-                <label><b>CAPTURA OJETIVO</b></label>
+                <div style="text-align:center">
+                  <strong>CAPTURA OJETIVO</strong>    
+                </div>
 
             <div class="card-body">  
                     <div class="md-layout">
@@ -783,7 +793,9 @@
               </div>   
             </div>   
 
-            <label><b>CAPTURA FAUNA INCIDENTAL</b></label>
+            <div style="text-align:center">
+              <strong>CAPTURA FAUNA INCIDENTAL</strong>     
+            </div>
             
             <div class="card-body"> 
                     <div class="md-layout">
@@ -1578,7 +1590,9 @@ export default {
           'id_fisheryAuthorized': this.arrayFa.id,
           'id_company': this.arrayComp.id,
 
-          'fishery': this.arrayFa,
+          // 'fishery': this.arrayFa,
+          // 'fauna': this.arrayFauna,
+          // 'target': this.arrayTarget,
         })
         .then(function(response) {
           me.hideForm();
