@@ -42397,10 +42397,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_select__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_select__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jspdf__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jspdf_autotable__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jspdf_autotable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jspdf_autotable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
@@ -43074,6 +43076,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -43087,15 +43097,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_toasted___default.a, {
   iconPack: 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
 });
-Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdButton"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdContent"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdField"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdCard"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdMenu"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdSwitch"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdList"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDatepicker"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdButton"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdContent"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdField"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdCard"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdMenu"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdSwitch"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdList"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDatepicker"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -43205,28 +43215,28 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
     form: {
 
       insNo: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
       radioCall: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
       idOmi: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
       noResolution: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
       nameBoat: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
       enrollment: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
       noPatent: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
       representative: {
-        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       }
 
     }
@@ -43727,6 +43737,27 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
     },
     message: function message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
+    },
+    carta: function carta() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      var me = this;
+      var doc = new __WEBPACK_IMPORTED_MODULE_5_jspdf__["default"]('p', 'mm', 'letter');
+      // (this.id_flag = data["id"]);
+      // console.log("ID " + me.datos.id);
+      var logo = new Image();
+      logo.src = '/img/logoAUNAP.png';
+      doc.addImage(logo, 'png', 20, 10, 33, 15);
+      doc.text("FORMATO DE AUTORIZACIÓN DE ZARPE", 60, 20);
+      // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
+      doc.setFont("arial");
+      doc.setFontSize(11);
+      doc.text("_____________, ____ de ________ de 201_\n\n\n\nSe\xF1or(a) (res)\n\n_________________________________\n__________________________________\nCiudad: ___________________________\n\n\n\nRespetado(s) se\xF1or(a) (res):\n\n\n\nAsunto: Autorizaci\xF3n para Zarpe.\n\n\nPara su informaci\xF3n y fines pertinentes le comunico que una vez realizada la inspecci\xF3n a la \nMotonave _________________________________________ con matr\xEDcula ________________ \nvinculada al permiso de pesca comercial industrial seg\xFAn Resoluci\xF3n # ___________ otorgado al \nse\xF1or ___________________________________ identificado con la cedula de ciudadan\xEDa n\xFAmero \n______________________________, se constat\xF3 que cumple con los requisitos m\xEDnimos \nestablecidos en la Resoluci\xF3n 1026 del 2014, para realizar faenas de pesca dirigida a la captura de \n___________________ \n\n\nPor la AUNAP\t\t\t\t\t\t\n\n \n\nNombre: ____________________________\t\nCargo: ______________________________\t\t\nDirecci\xF3n oficina: _____________________                     \nTel\xE9fono oficina: ______________________                    \nCorreo Electr\xF3nico: ___________________                     \n", 30, 45);
+      doc.setFontSize(8);
+      doc.setTextColor(100);
+      doc.text("Nota: Si este documento se encuentra impreso se considera Copia no Controlada. La versi\xF3n vigente est\xE1 publicada en la \nntranet de la Autoridad Nacional de Acuicultura y Pesca.", 30, 260);
+
+      window.open(doc.output('bloburl'));
     },
     myTable: function myTable(datas) {
       var me = this;
@@ -45808,7 +45839,24 @@ var render = function() {
                     _vm._v(" Nuevo\n        ")
                   ]
                 )
-              : _vm._e()
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary btn-sm",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.carta()
+                  }
+                }
+              },
+              [
+                _c("i", { staticClass: "icon-plus" }),
+                _vm._v(" Autorización\n        ")
+              ]
+            )
           ]),
           _vm._v(" "),
           _vm.listado == 1

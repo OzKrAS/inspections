@@ -15,6 +15,13 @@
           >
             <i class="icon-plus"></i>&nbsp;Nuevo
           </button>
+          <button
+            type="button"
+            @click="carta()"
+            class="btn btn-primary btn-sm"
+          >
+            <i class="icon-plus"></i>&nbsp;Autorización
+          </button>
         </div>
         <template v-if="listado==1">
           <div class="card-body">
@@ -677,6 +684,7 @@
     import Toasted from 'vue-toasted';
     import vSelect from "vue-select";
     import jsPDF from 'jspdf';
+    import 'jspdf-autotable';
     import {
 		MdButton,  
 		MdContent,
@@ -1331,6 +1339,64 @@ export default {
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
+    carta(data = []) {
+      let me = this;
+      var doc = new jsPDF('p','mm','letter');
+      // (this.id_flag = data["id"]);
+      // console.log("ID " + me.datos.id);
+        var logo = new Image();
+        logo.src = '/img/logoAUNAP.png';
+        doc.addImage(logo, 'png', 20, 10, 33, 15);
+        doc.text("FORMATO DE AUTORIZACIÓN DE ZARPE", 60, 20);
+        // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
+        doc.setFont("arial");
+        doc.setFontSize(11);
+        doc.text(`_____________, ____ de ________ de 201_
+
+
+
+Señor(a) (res)
+
+_________________________________
+__________________________________
+Ciudad: ___________________________
+
+
+
+Respetado(s) señor(a) (res):
+
+
+
+Asunto: Autorización para Zarpe.
+
+
+Para su información y fines pertinentes le comunico que una vez realizada la inspección a la 
+Motonave _________________________________________ con matrícula ________________ 
+vinculada al permiso de pesca comercial industrial según Resolución # ___________ otorgado al 
+señor ___________________________________ identificado con la cedula de ciudadanía número 
+______________________________, se constató que cumple con los requisitos mínimos 
+establecidos en la Resolución 1026 del 2014, para realizar faenas de pesca dirigida a la captura de 
+___________________ 
+
+
+Por la AUNAP						
+
+ 
+
+Nombre: ____________________________	
+Cargo: ______________________________		
+Dirección oficina: _____________________                     
+Teléfono oficina: ______________________                    
+Correo Electrónico: ___________________                     
+`, 30, 45);
+        doc.setFontSize(8);
+        doc.setTextColor(100);
+        doc.text(`Nota: Si este documento se encuentra impreso se considera Copia no Controlada. La versión vigente está publicada en la 
+ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
+             
+           
+      window.open(doc.output('bloburl'))
+},
     myTable(datas){
       let me = this;
 
