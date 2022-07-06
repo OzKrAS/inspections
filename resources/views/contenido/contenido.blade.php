@@ -60,6 +60,9 @@
             <template v-if="menu==18">
                 <materials></materials>
             </template>
+            <template v-if="menu==19">
+                <profiles></profiles>
+            </template>
             <!-- <template v-if="menu==18">
                 <noticepreviouszarpe></noticepreviouszarpe>
             </template>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetailFisherAutZarpe extends Model
 {
-    protected $table = 'det_fishery_zarpes';
+    protected $table = 'detail_fisher_aut_zarpes';
     protected $fillable = ['id','id_zarpe','name'];
     public $timestamps = false;
 }

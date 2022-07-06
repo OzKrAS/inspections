@@ -251,7 +251,69 @@
                             <md-textarea v-model="observation"></md-textarea>
                     </md-field>
                   </div>    
-                </div>   
+                </div> 
+                <p>
+                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Subir imagen
+                  </button>
+                </p>                                 
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                    <div
+                      class="uploader"
+                      @dragenter="OnDragEnter"
+                      @dragleave="OnDragLeave"
+                      @dragover.prevent
+                      @drop="onDrop"
+                      :class="{ dragging: isDragging }"
+                    >
+                      <div class="upload-control" v-show="images.length">
+                        <!-- <label for="file">Anexar otra Imágen</label> -->
+                        <!-- <button @click="upload">Guardar Imágenes</button>
+                        <button @click="abrirList">Cancelar</button> -->
+                      </div>
+
+                      <div v-show="!images.length">
+                        <i class="fa fa-cloud-upload"></i>
+                        <p>Arrastra tus imágenes aquí</p>
+                        <div>O</div>
+                        <div class="file-input">
+                          <label for="file">Selecciona una Imágen</label>
+                          <input
+                            type="file"
+                            id="file"
+                            @change="onInputChange"
+                            multiple
+                          />
+                        </div>
+                      </div>
+
+                      <div class="images-preview" v-show="images.length">
+                        <div
+                          class="img-wrapper"
+                          v-for="(image, index) in images"
+                          :key="index"
+                        >
+                          <img :src="image" :alt="`Image Uplaoder ${index}`" />
+                            <button
+                              type="button"
+                              @click="eliminarImg(index)"
+                              class="btn btn-dark btn-sm"
+                            >
+                              <i class="material-icons Color4">delete</i>
+                            </button>
+                          <div class="details">
+                            <span class="name" v-text="files[index].name"></span>
+                            <span
+                              class="size"
+                              v-text="getFileSize(files[index].size)"
+                            ></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>                      
+                  </div>
+                </div>    
 
                 <label>Nota: Para completar los datos de la tabla debe hacer click en cada uno de los puntos de la imagen (A, B, C, D, E, F, G, H, I).</label>
 
@@ -276,109 +338,82 @@
                   </map>
                   <img alt="Graficos" width="263" height="278" src="/img/img4.png">
                 </div>
-                <div class="md-layout">
-                  <!-- <div class="md-layout">
-                    <div class="md-layout-item">
-                      <md-field md-clearable :class="getValidationClass('enrollment')">
-                        <label for="first-name">Material del DET</label>
-                        <md-input
-                          name="first-name"
-                          id="first-name"
-                          autocomplete="given-name"
-                          v-model="form.enrollment"
-                          :disabled="sending"
-                        />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.enrollment.required"
-                        >Olvidaste ingresar el nombre de la matrícula</span>
-                      </md-field>
-                    </div>&nbsp;&nbsp;&nbsp;
-                     <div class="md-layout-item">
-                      <md-field md-clearable :class="getValidationClass('enrollment')">
-                        <label for="first-name">Salida (superior ó inferior)</label>
-                        <md-input
-                          name="first-name"
-                          id="first-name"
-                          autocomplete="given-name"
-                          v-model="form.enrollment"
-                          :disabled="sending"
-                        />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.enrollment.required"
-                        >Olvidaste ingresar el nombre de la matrícula</span>
-                      </md-field>
-                    </div>&nbsp;&nbsp;&nbsp; 
-                    <div class="md-layout-item">
-                      <md-field md-clearable :class="getValidationClass('enrollment')">
-                        <label for="first-name">Flotadores (cantidad)</label>
-                        <md-input
-                          name="first-name"
-                          id="first-name"
-                          autocomplete="given-name"
-                          v-model="form.enrollment"
-                          :disabled="sending"
-                        />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.enrollment.required"
-                        >Olvidaste ingresar el nombre de la matrícula</span>
-                      </md-field>
-                    </div>&nbsp;&nbsp;&nbsp;
-                  </div>
-                  <div class="md-layout">
-                    <div class="md-layout-item">
-                      <md-field md-clearable :class="getValidationClass('official')">
-                        <label for="first-name">Tamaño de malla en la solapa</label>
-                        <md-input
-                          name="first-name"
-                          id="first-name"
-                          autocomplete="given-name"
-                          v-model="form.official"
-                          :disabled="sending"
-                        />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.official.required"
-                        >Olvidaste ingresar el nombre del funcionario</span>
-                      </md-field>
-                    </div>&nbsp;&nbsp;&nbsp; 
-                    <div class="md-layout-item">
-                      <md-field md-clearable :class="getValidationClass('boat')">
-                        <label for="first-name">Ángulo del DET</label>
-                        <md-input
-                          name="first-name"
-                          id="first-name"
-                          autocomplete="given-name"
-                          v-model="form.boat"
-                          :disabled="sending"
-                        />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.boat.required"
-                        >Olvidaste ingresar el nombre de la embarcación</span>
-                      </md-field>
-                    </div>&nbsp;&nbsp;&nbsp; 
-                    <div class="md-layout-item">
-                      <md-field md-clearable :class="getValidationClass('enrollment')">
-                        <label for="first-name">Tipo de DET</label>
-                        <md-input
-                          name="first-name"
-                          id="first-name"
-                          autocomplete="given-name"
-                          v-model="form.enrollment"
-                          :disabled="sending"
-                        />
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.enrollment.required"
-                        >Olvidaste ingresar el nombre de la matrícula</span>
-                      </md-field>
-                    </div>&nbsp;&nbsp;&nbsp;  
-                  </div> -->
-
-
+                 <!-- <div class="md-layout"> 
+                  <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Tamaño de malla en la solapa</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="meshSize"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Ángulo del DET</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="angleDet"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Tipo de DET</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="typeDet"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout"> 
+                  <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Material del DET</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="materialDet"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Salida (superior ó inferior)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="exit"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Flotadores (cantidad)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="float"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div> -->
                   <table class="table table-striped table-bordered display" id="dataTable2" width="50%" cellspacing="0">
                       <thead>         
                         <tr>
@@ -425,8 +460,7 @@
                         </tfoot>
                         <tbody>
                       </tbody>
-                  </table>
-                </div>             
+                  </table>            
               </md-card-content>
             </form>
           </div>
@@ -632,6 +666,13 @@ export default {
       estribor4:0,
       observation: "",
 
+      meshSize: "",
+      angleDet: "",
+      typeDet: "",
+      materialDet: "",
+      exit: "",
+      float: "",
+
       date: format(now, dateFormat),
       idCheckFlap: 0,
 
@@ -642,7 +683,14 @@ export default {
 
       arrayData: [],
       modal: 0,
-      tipoAccion: 0
+      tipoAccion: 0,
+
+      //variables imagen
+      selectedFile: null,
+      isDragging: false,
+      dragCount: 0,
+      files: [],     
+      images: [],
     };
   },
 
@@ -686,6 +734,126 @@ export default {
 		Multiselect
 	},
   methods: {
+    OnDragEnter(e) {
+      e.preventDefault();
+
+      this.dragCount++;
+      this.isDragging = true;
+
+      return false;
+    },
+    OnDragLeave(e) {
+      e.preventDefault();
+      this.dragCount--;
+
+      if (this.dragCount <= 0) this.isDragging = false;
+    },
+    onInputChange(e) {
+      const files = e.target.files;
+
+      Array.from(files).forEach((file) => this.addImage(file));
+    },
+    onInputChange2(e) {
+      const files = e.target.files;
+
+      Array.from(files).forEach((file) => this.addImage2(file));
+    },
+    addImage2(file) {
+      if (!file.type.match("image.*")) {
+        this.$toastr.e(`${file.name} is not an image`);
+        return;
+      }
+
+      this.images2.push(file);
+
+      const img = new Image(),
+        reader = new FileReader();
+
+      reader.onload = (e) => this.images2.push(e.target.result);
+
+      reader.readAsDataURL(file);
+    },
+    upload() {
+      let me = this;
+      const formData = new FormData();
+
+      this.files.forEach((file) => {
+        formData.append("images[]", file, file.name);
+      });
+      formData.append("idEquipo", this.idEquipo);
+      formData.append("numCerti", this.form.numCertifica);
+      formData.append("laborat", this.form.laboratorio);
+      formData.append("fecCerti", this.form.fecCertifica);
+
+      axios.post("/detcerti/registrar", formData).then((response) => {
+        me.mensaje("Guardado", "Todos los certificados se han almacenado ");
+        // this.$toastr.s("All images uplaoded successfully");
+        me.getDetCertifica();
+        this.images = [];
+        this.files = [];
+      });
+    },
+    changeImg() {
+      this.listado = 0;
+    },
+    abrirList() {
+      this.listado = 1;
+    },
+    eliminarImg(index){
+      this.images.splice(index, 1);
+    },
+    onDrop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      this.isDragging = false;
+
+      const files = e.dataTransfer.files;
+
+      Array.from(files).forEach((file) => this.addImage(file));
+    },
+    addImage(file) {
+      if (!file.type.match("image.*")) {
+        this.$toastr.e(`${file.name} is not an image`);
+        return;
+      }
+
+      this.files.push(file);
+
+      const img = new Image(),
+        reader = new FileReader();
+
+      reader.onload = (e) => this.images.push(e.target.result);
+
+      reader.readAsDataURL(file);
+    },
+    getFileSize(size) {
+      const fSExt = ["Bytes", "KB", "MB", "GB"];
+      let i = 0;
+
+      while (size > 900) {
+        size /= 1024;
+        i++;
+      }
+      return `${Math.round(size * 100) / 100} ${fSExt[i]}`;
+    },
+    getImage(event) {
+      //Asignamos la imagen a  nuestra data
+      // console.log(event)
+      this.selectedFile = event.target.files[0];
+      // this.upload();
+    },
+    // addTag (newTag) {
+    //   const tag = {
+    //     name: newTag,
+    //     id: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+    //   }
+    //   this.arrayRegional.push(tag)
+    //   this.arrayReasons.push(tag)
+    // },
+    alerta() {
+       alert('test');
+    }, 
     abrirModal2(dets,punto2){
       this.tituloModal=dets;
         this.punto2=punto2;

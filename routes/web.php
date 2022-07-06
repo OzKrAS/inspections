@@ -193,6 +193,8 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/materials/save', 'FishingGearMaterialController@store');
         Route::put('/materials/update', 'FishingGearMaterialController@update');
         Route::post('/materials/delete', 'FishingGearMaterialController@destroy');
+        //PROFILES
+        Route::get('/profiles', 'ProfileController@index');
 
 
        

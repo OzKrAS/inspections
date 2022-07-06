@@ -318,7 +318,9 @@
                           v-if="!$v.form.noResolution.required"
                         >Olvidaste ingresar el número de resolución</span>
                       </md-field>
-                    </div>
+                    </div>&nbsp;&nbsp;&nbsp;
+                  </div>
+                  <div class="md-layout"> 
                     <div class="md-layout-item">
                         <div>
                           <md-datepicker 
@@ -341,7 +343,7 @@
                             <label>Fecha Vigencia</label>
                           </md-datepicker>                   
                     </div> &nbsp;&nbsp;&nbsp; 
-                  </div>  
+                  </div>                    
                   <div class="md-layout">
                     <div class="md-layout-item">
                       <md-field md-clearable :class="getValidationClass('nameBoat')">
@@ -641,6 +643,137 @@
                             <md-textarea v-model="comments"></md-textarea>
                       </md-field>
                    </div>
+                   <div class="md-layout-item">
+                      <md-field>
+                            <label>Observaciones</label>
+                            <md-textarea v-model="observationGeneral"></md-textarea>
+                      </md-field>
+                   </div>
+                   <p>
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Subir imagen
+                      </button>
+                    </p>                                 
+                    <div class="collapse" id="collapseExample">
+                      <div class="card card-body">
+                        <div
+                          class="uploader"
+                          @dragenter="OnDragEnter"
+                          @dragleave="OnDragLeave"
+                          @dragover.prevent
+                          @drop="onDrop"
+                          :class="{ dragging: isDragging }"
+                        >
+                          <div class="upload-control" v-show="images.length">
+                            <!-- <label for="file">Anexar otra Imágen</label> -->
+                            <!-- <button @click="upload">Guardar Imágenes</button>
+                            <button @click="abrirList">Cancelar</button> -->
+                          </div>
+
+                          <div v-show="!images.length">
+                            <i class="fa fa-cloud-upload"></i>
+                            <p>Arrastra tus imágenes aquí</p>
+                            <div>O</div>
+                            <div class="file-input">
+                              <label for="file">Selecciona una Imágen</label>
+                              <input
+                                type="file"
+                                id="file"
+                                @change="onInputChange"
+                                multiple
+                              />
+                            </div>
+                          </div>
+
+                          <div class="images-preview" v-show="images.length">
+                            <div
+                              class="img-wrapper"
+                              v-for="(image, index) in images"
+                              :key="index"
+                            >
+                              <img :src="image" :alt="`Image Uplaoder ${index}`" />
+                                <button
+                                  type="button"
+                                  @click="eliminarImg(index)"
+                                  class="btn btn-dark btn-sm"
+                                >
+                                  <i class="material-icons Color4">delete</i>
+                                </button>
+                              <div class="details">
+                                <span class="name" v-text="files[index].name"></span>
+                                <span
+                                  class="size"
+                                  v-text="getFileSize(files[index].size)"
+                                ></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>                      
+                      </div>
+                    </div>
+                     <!-- SUBIR PDF -->
+                 <p>
+                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                    Subir PDF
+                  </button>
+                </p>                                
+                <div class="collapse" id="collapseExample1">
+                  <div class="card card-body">
+                    <div
+                      class="uploader1"
+                      @dragenter="OnDragEnter"
+                      @dragleave="OnDragLeave"
+                      @dragover.prevent
+                      @drop="onDrop"
+                      :class="{ dragging: isDragging }"
+                    >
+                      <div class="upload-control" v-show="pdf.length">
+                        <!-- <label for="file">Anexar otra Imágen</label> -->
+                        <!-- <button @click="upload">Guardar Imágenes</button>
+                        <button @click="abrirList">Cancelar</button> -->
+                      </div>
+
+                      <div v-show="!pdf.length">
+                        <i class="fa fa-cloud-upload"></i>
+                        <p>Arrastra tus PDF's aquí</p>
+                        <div>O</div>
+                        <div class="file-input">
+                          <label for="file">Selecciona un PDF</label>
+                          <input
+                            type="file"
+                            id="file"
+                            accept="application/pdf"
+                            @change="onInputChange"
+                            multiple
+                          />
+                        </div>
+                      </div>
+                      <div class="images-preview" v-show="pdf.length">
+                        <div
+                          class="img-wrapper"
+                          v-for="(image, index) in pdf" :key="index"
+                        >
+                          <img :src="pdf" :alt="`Image Uplaoder ${index}`" />
+                            <button
+                              type="button"
+                              @click="eliminarImg(index)"
+                              class="btn btn-dark btn-sm"
+                            >
+                              <i class="material-icons Color4">delete</i>
+                            </button>
+                          <div class="details">
+                            <span class="name" v-text="files[index].name"></span>
+                            <span
+                              class="size"
+                              v-text="getFileSize(files[index].size)"
+                            ></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>                      
+                  </div>
+                </div>
+                <!-- FIN SUBIR PDF -->
 
                <!-- </div> -->
               </md-card-content>
@@ -746,6 +879,7 @@ export default {
       typeHook: "",
 
       observation: "",
+      observationGeneral: "",
       conclusions: "",
       comments: "",
       dateIns: format(now, dateFormat),
@@ -788,7 +922,7 @@ export default {
       arrayZoneAuto: {id:0, name:''},
 	    arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
-      arrayFa:{id:0, name:''},
+      arrayFa:[],
 	    arrayFisheryAuthorized: [],
       id_fisheryAuthorized: 0,
       arrayComp: {id:0, name:''},
@@ -806,7 +940,20 @@ export default {
 
       arrayData: [],
       modal: 0,
-      tipoAccion: 0
+      tipoAccion: 0,
+
+      //variables imagen
+      selectedFile: null,
+      isDragging: false,
+      dragCount: 0,
+      files: [],     
+      images: [],
+      //variables pdf
+      selectedFilePDF: null,
+      isDraggingPDF: false,
+      dragCountPDF: 0,
+      filesPDF: [],     
+      pdf: []
     };
   },
   components: {
@@ -849,6 +996,126 @@ export default {
 
   },
   methods: {
+    OnDragEnter(e) {
+      e.preventDefault();
+
+      this.dragCount++;
+      this.isDragging = true;
+
+      return false;
+    },
+    OnDragLeave(e) {
+      e.preventDefault();
+      this.dragCount--;
+
+      if (this.dragCount <= 0) this.isDragging = false;
+    },
+    onInputChange(e) {
+      const files = e.target.files;
+
+      Array.from(files).forEach((file) => this.addImage(file));
+    },
+    onInputChange2(e) {
+      const files = e.target.files;
+
+      Array.from(files).forEach((file) => this.addImage2(file));
+    },
+    addImage2(file) {
+      if (!file.type.match("image.*")) {
+        this.$toastr.e(`${file.name} is not an image`);
+        return;
+      }
+
+      this.images2.push(file);
+
+      const img = new Image(),
+        reader = new FileReader();
+
+      reader.onload = (e) => this.images2.push(e.target.result);
+
+      reader.readAsDataURL(file);
+    },
+    upload() {
+      let me = this;
+      const formData = new FormData();
+
+      this.files.forEach((file) => {
+        formData.append("images[]", file, file.name);
+      });
+      formData.append("idEquipo", this.idEquipo);
+      formData.append("numCerti", this.form.numCertifica);
+      formData.append("laborat", this.form.laboratorio);
+      formData.append("fecCerti", this.form.fecCertifica);
+
+      axios.post("/detcerti/registrar", formData).then((response) => {
+        me.mensaje("Guardado", "Todos los certificados se han almacenado ");
+        // this.$toastr.s("All images uplaoded successfully");
+        me.getDetCertifica();
+        this.images = [];
+        this.files = [];
+      });
+    },
+    changeImg() {
+      this.listado = 0;
+    },
+    abrirList() {
+      this.listado = 1;
+    },
+    eliminarImg(index){
+      this.images.splice(index, 1);
+    },
+    onDrop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      this.isDragging = false;
+
+      const files = e.dataTransfer.files;
+
+      Array.from(files).forEach((file) => this.addImage(file));
+    },
+    addImage(file) {
+      if (!file.type.match("image.*")) {
+        this.$toastr.e(`${file.name} is not an image`);
+        return;
+      }
+
+      this.files.push(file);
+
+      const img = new Image(),
+        reader = new FileReader();
+
+      reader.onload = (e) => this.images.push(e.target.result);
+
+      reader.readAsDataURL(file);
+    },
+    getFileSize(size) {
+      const fSExt = ["Bytes", "KB", "MB", "GB"];
+      let i = 0;
+
+      while (size > 900) {
+        size /= 1024;
+        i++;
+      }
+      return `${Math.round(size * 100) / 100} ${fSExt[i]}`;
+    },
+    getImage(event) {
+      //Asignamos la imagen a  nuestra data
+      // console.log(event)
+      this.selectedFile = event.target.files[0];
+      // this.upload();
+    },
+    // addTag (newTag) {
+    //   const tag = {
+    //     name: newTag,
+    //     id: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+    //   }
+    //   this.arrayRegional.push(tag)
+    //   this.arrayReasons.push(tag)
+    // },
+    alerta() {
+       alert('test');
+    },  
     toString() {
       this.toDate();
       this.dynamicByModel =
@@ -900,6 +1167,7 @@ export default {
       this.equipDevi = null;
       this.captain = null;
       this.observation = null;
+      this.observationGeneral = null;
       this.conclusions = null;
       this.comments = null;
       this.dateIns = null;
@@ -1067,6 +1335,7 @@ export default {
       this.equipDevi = data["equipDevi"];
       this.captain = data["captain"];
       this.observation = data["observation"];
+      this.observationGeneral = data["observationGeneral"];
       this.conclusions = data["conclusions"];
       this.comments = data["comments"];
       this.dateIns = data["dateIns"];
@@ -1115,29 +1384,7 @@ export default {
       this.edo = 1;
       this.listado = 1;
     },    
-    // noApply(){
-    //   if (this.eyeMesh == "") {
-    //     this.eyeMesh = this.noApply;
-    //   }
-    //   if (this.netWidth == "") {
-    //     this.netWidth = this.noApply;
-    //   }
-    //   if (this.eyeFlake == "") {
-    //     this.eyeFlake = this.noApply;
-    //   }
-    //   if (this.longNet == "") {
-    //     this.longNet = this.noApply;
-    //   }
-    //   if (this.materialArt == "") {
-    //     this.materialArt = this.noApply;
-    //   }
-    //   if (this.equipDevi == "") {
-    //     this.equipDevi = this.noApply;
-    //   }
-    //   if (this.captain == "") {
-    //     this.captain = this.noApply;
-    //   }
-    // },
+ 
     saveData() {
       let me = this;
       if (this.eyeMesh == "") {
@@ -1183,6 +1430,7 @@ export default {
           equipDevi: this.equipDevi.toUpperCase(),
           captain: this.captain.toUpperCase(),
           observation: this.observation.toUpperCase(),
+          observationGeneral: this.observationGeneral.toUpperCase(),
           conclusions: this.conclusions.toUpperCase(),
           comments: this.comments.toUpperCase(),
           dateIns: this.dateIns,
@@ -1207,7 +1455,7 @@ export default {
           'id_orop': this.arrayOr.id,
           'id_zoneAutoFisher': this.arrayZoneAuto.id,
           'id_company': this.arrayComp.id,
-          // 'fishery': this.arrayFa,
+          // 'data': this.arrayFa,
 
 
         })
@@ -1266,6 +1514,7 @@ export default {
           equipDevi: this.equipDevi.toUpperCase(),
           captain: this.captain.toUpperCase(),
           observation: this.observation.toUpperCase(),
+          observationGeneral: this.observationGeneral.toUpperCase(),
           conclusions: this.conclusions.toUpperCase(),
           comments: this.comments.toUpperCase(),
           dateIns: this.dateIns,
@@ -1468,6 +1717,145 @@ ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
 };
 </script>
 <style>
+.div-error {
+  display: flex;
+  justify-content: center;
+}
+.text-error {
+  color: red !important;
+  font-weight: bold;
+}
+.material-icons.Color1 { color: rgb(31, 33, 34); }
+.material-icons.Color2 { color: rgba(167, 142, 5, 0.849); }
+.material-icons.Color3 { color: rgb(12, 170, 91); }
+.material-icons.Color4 { color: rgba(228, 54, 54, 0.863); }
+
+.uploader {
+  width: 100%;
+  background: #2196f3;
+  color: #fff;
+  padding: 40px 15px;
+  text-align: center;
+  border-radius: 10px;
+  border: 3px dashed #fff;
+  font-size: 20px;
+  position: relative;
+}
+.uploader:dragging {
+  background: #fff;
+  color: #2196f3;
+  border: 3px dashed #2196f3;
+}
+.uploader1 {
+  width: 100%;
+  background: #ff7777;
+  color: #fff;
+  padding: 40px 15px;
+  text-align: center;
+  border-radius: 10px;
+  border: 3px dashed #fff;
+  font-size: 20px;
+  position: relative;
+}
+.uploader1:dragging {
+  background: #fff;
+  color: #2196f3;
+  border: 3px dashed #2196f3;
+}
+
+i.fa.fa-cloud-upload {
+  font-size: 58px;
+}
+.file-input {
+  width: 200px;
+  margin: auto;
+  height: 68px;
+  position: relative;
+}
+.file-input label {
+  background: #fff;
+  color: #2196f3;
+  width: 105%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+
+.file-input input {
+  opacity: 0;
+  z-index: -2;
+}
+
+.images-preview {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.img-wrapper {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  height: 150px;
+  justify-content: space-between;
+  background: #fff;
+  box-shadow: 5px 5px 20px #3e3737;
+}
+.img {
+  max-height: 105px;
+}
+.imgNew {
+  max-height: 300px;
+}
+.details {
+  font-size: 12px;
+  background: #fff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+  padding: 3px 6px;
+}
+.name {
+  overflow: hidden;
+  height: 18px;
+}
+
+.upload-control {
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  top: 0;
+  left: 0;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  padding: 10px;
+  padding-bottom: 4px;
+  text-align: right;
+}
+.upload-control button {
+  background: #3ab458;
+  border: 2px solid #3ab458;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+.upload-control label {
+  background: #F5A528;
+  border: 2px solid #F5A528;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 2px 5px;
+  margin-right: 10px;
+}
 
 .div-error {
   display: flex;

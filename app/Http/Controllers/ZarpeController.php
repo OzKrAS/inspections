@@ -45,6 +45,7 @@ class ZarpeController extends Controller
                      'zarpes.equipDevi',
                      'zarpes.captain',
                      'zarpes.observation',
+                     'zarpes.observationGeneral',
                      'zarpes.conclusions',
                      'zarpes.comments',
                      'zarpes.dateIns',
@@ -98,6 +99,7 @@ class ZarpeController extends Controller
         $zarpes->equipDevi = $request->equipDevi;
         $zarpes->captain = $request->captain;
         $zarpes->observation = $request->observation;
+        $zarpes->observationGeneral = $request->observationGeneral;
         $zarpes->conclusions = $request->conclusions;
         $zarpes->comments = $request->comments;
         $zarpes->dateIns = $request->dateIns;
@@ -124,11 +126,11 @@ class ZarpeController extends Controller
         $zarpes->id_company = $request->id_company;      
         $zarpes->save();
 
-        // $details = $request->fishery;
-        // foreach($details as $ep=>$det){
+        // $detailsfisheryzarpe = $request->data;
+        // foreach($detailsfisheryzarpe as $fs=>$deta){
         //     $objeto= new DetailFisherAutZarpe();
-        //     $objeto->id_fishery = $fishery->id;
-        //     $objeto->name= $det['name'];
+        //     $objeto->id_zarpe = $zarpes->id;
+        //     $objeto->name= $deta['name'];
         //     $objeto->save();
         // }
         $array = array(
@@ -161,6 +163,7 @@ class ZarpeController extends Controller
         $zarpes->equipDevi = $request->equipDevi;
         $zarpes->captain = $request->captain;
         $zarpes->observation = $request->observation;
+        $zarpes->observationGeneral = $request->observationGeneral;
         $zarpes->conclusions = $request->conclusions;
         $zarpes->comments = $request->comments;
         $zarpes->dateIns = $request->dateIns;

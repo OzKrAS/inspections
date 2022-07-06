@@ -106,7 +106,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameFish')">
-                        <label for="first-name">Nombre Pescador</label>
+                        <label for="first-name">Nombre Observador</label>
                         <md-input
                         name="first-name"
                         id="first-name"
@@ -117,7 +117,7 @@
                         <span
                             class="md-error"
                             v-if="!$v.form.nameFish.required"
-                        >Olvidaste ingresar el nombre del pescador
+                        >Olvidaste ingresar el nombre del observador
                         </span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -352,6 +352,55 @@
               >Actualizar</md-button>
             </md-card-actions>
           </div>
+
+
+          <div
+      class="modal fade"
+      tabindex="-1"
+      :class="{'mostrar' : modal}"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      style="display: none;"
+      aria-hidden="true" 
+    >
+      <div class="modal-dialog modal-primary modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"></h4>
+            <button type="button" class="close" @click="cerrarModal()" aria-label="Close">
+              <span aria-hidden="true">X</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action method="post" enctype="multipart/form-data" class="form-horizontal">
+              <md-card-content>
+                <h2>prueba</h2>
+              </md-card-content>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <md-card-actions>
+              <md-button type="button" class="md-raised" @click="cerrarModal()">Cerrar</md-button>
+            </md-card-actions>
+
+            <md-card-actions>
+              <md-button
+                type="submit"
+                v-if="tipoAccion==1"
+                class="md-dense md-raised md-primary"
+                :disabled="sending"
+                @click="addDets()"
+              >registrar</md-button>
+            </md-card-actions>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+          <!-- modal prueba -->
+
         </template>
       </div>
 
@@ -443,6 +492,8 @@ export default {
       id_flag: 0,
       
       edo: 1,
+      modal2: 0,
+      modal: 0,
 
       tipoAccion: 1,
       listado: 1,
@@ -493,6 +544,12 @@ export default {
 
   },
   methods: {
+    abrirModal(){
+        this.modal=1;
+    },
+     cerrarModal() {
+      this.modal = 0;
+    },
     toString() {
       this.toDate();
       this.dynamicByModel =
@@ -540,7 +597,13 @@ export default {
             return `${name}`
     },
     addItemTarget(){
-      this.arrayTarget.push({element:""});
+      this.arrayTarget.push({
+        element:this.element,
+        zarpe:this.zarpe,
+        characterState:this.characterState,
+        regFot:this.regFot,
+        observation:this.observation,
+      });
     },
     deleteTarget(index){
        this.arrayTarget.splice(index,1);

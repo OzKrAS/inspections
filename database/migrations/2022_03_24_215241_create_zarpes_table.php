@@ -32,6 +32,7 @@ class CreateZarpesTable extends Migration
             $table->string('equipDevi'); 
             $table->string('captain'); 
             $table->string('observation'); 
+            $table->string('observationGeneral'); 
             $table->string('conclusions'); 
             $table->string('comments');   
             $table->date('dateIns');

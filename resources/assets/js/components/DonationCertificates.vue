@@ -194,7 +194,13 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                       </md-field> 
                     </div>&nbsp;&nbsp;&nbsp;  
                     
-                      <p>
+                      
+                  
+
+                    
+                    
+                  </div> 
+                   <p>
                         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                           Subir imagen
                         </button>
@@ -256,12 +262,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                           </div>
                         </div>                      
                       </div>
-                    </div>  
-                  
-
-                    
-                    
-                  </div>        
+                    </div>        
                   <md-button
                     type="button"
                     class="md-dense md-raised md-primary"
@@ -686,21 +687,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                         >Olvidaste ingresar el numero de télefono</span>
                         <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                       </md-field>   
-                    </div>&nbsp;&nbsp;&nbsp; 
-
-                     
-                    <!-- <div class="md-layout-item">
-                      <input
-                        type="file"
-                        accept="image/*"
-                        :src="img1"
-                        @change="clickImg1($event)"
-                        ref="fileupload1"
-                        
-                      />
-                    </div>&nbsp;&nbsp;&nbsp;      -->
-
-
+                    </div>&nbsp;&nbsp;&nbsp;      
                   </div>  
                     
               </md-card-content>

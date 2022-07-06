@@ -228,14 +228,13 @@
                             :disabled="sending"
                           />
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;
-
-                      <p>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                          Subir imagen
-                        </button>
-                      </p>
-                                   
+                      </div>&nbsp;&nbsp;&nbsp;             
+                    </div>
+                    <p>
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Subir imagen
+                      </button>
+                    </p>                                 
                     <div class="collapse" id="collapseExample">
                       <div class="card card-body">
                         <div
@@ -293,8 +292,6 @@
                         </div>                      
                       </div>
                     </div>  
-                    
-                    </div>
                     <md-button
                       type="button"
                       class="md-dense md-raised md-primary"
@@ -1871,6 +1868,129 @@ liso, palangre, otro).`, 15, 165 );
   position: absolute !important;
   background-color: #3c29297a !important;
 }
+.div-error {
+  display: flex;
+  justify-content: center;
+}
+.text-error {
+  color: red !important;
+  font-weight: bold;
+}
+.material-icons.Color1 { color: rgb(31, 33, 34); }
+.material-icons.Color2 { color: rgba(167, 142, 5, 0.849); }
+.material-icons.Color3 { color: rgb(12, 170, 91); }
+.material-icons.Color4 { color: rgba(228, 54, 54, 0.863); }
+.uploader {
+  width: 100%;
+  background: #2196f3;
+  color: #fff;
+  padding: 40px 15px;
+  text-align: center;
+  border-radius: 10px;
+  border: 3px dashed #fff;
+  font-size: 20px;
+  position: relative;
+}
+.uploader:dragging {
+  background: #fff;
+  color: #2196f3;
+  border: 3px dashed #2196f3;
+}
+
+i.fa.fa-cloud-upload {
+  font-size: 58px;
+}
+.file-input {
+  width: 200px;
+  margin: auto;
+  height: 68px;
+  position: relative;
+}
+.file-input label {
+  background: #fff;
+  color: #2196f3;
+  width: 105%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+
+.file-input input {
+  opacity: 0;
+  z-index: -2;
+}
+
+.images-preview {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.img-wrapper {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  height: 150px;
+  justify-content: space-between;
+  background: #fff;
+  box-shadow: 5px 5px 20px #3e3737;
+}
+.img {
+  max-height: 105px;
+}
+.imgNew {
+  max-height: 300px;
+}
+.details {
+  font-size: 12px;
+  background: #fff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+  padding: 3px 6px;
+}
+.name {
+  overflow: hidden;
+  height: 18px;
+}
+
+.upload-control {
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  top: 0;
+  left: 0;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  padding: 10px;
+  padding-bottom: 4px;
+  text-align: right;
+}
+.upload-control button {
+  background: #3ab458;
+  border: 2px solid #3ab458;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+.upload-control label {
+  background: #F5A528;
+  border: 2px solid #F5A528;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 2px 5px;
+  margin-right: 10px;
+}
+
 .div-error {
   display: flex;
   justify-content: center;
