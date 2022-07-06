@@ -46,25 +46,25 @@
                         <div class="sidebar-submenu">
                         <ul>                                                                                                                                                                                           
                             <li @click="menu=7">
-                                <a href="#"><i class="icon-bag"></i>Inspección a Embarcación Pesquera - Zarpe</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>Formato Inspección a Embarcación Pesquera - Zarpe</a>                                                                               
                             </li>                                
                             <li @click="menu=8">
-                                <a href="#"><i class="icon-bag"></i>Inspección a Embarcación Pesquera - Arribo</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>Formato Inspección a Embarcación Pesquera - Arribo</a>                                                                               
                             </li>                                
                             <li @click="menu=9">
-                                <a href="#"><i class="icon-bag"></i>Verificación DETs 71 Pulgadas</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>Formato Verificación DETs 71 Pulgadas</a>                                                                               
                             </li>                                
                             <li @click="menu=10">
-                                <a href="#"><i class="icon-bag"></i>Verificación DET Doble Solapa</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>Formato Verificación DET Doble Solapa</a>                                                                               
                             </li>                                
                             <li @click="menu=11">
-                                <a href="#"><i class="icon-bag"></i>Verificación Presencia del Equipo de Rescate de Delfines Abordo de Barcos Atuneros de Cerco</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>Formato Verificación Presencia del Equipo de Rescate de Delfines Abordo de Barcos Atuneros de Cerco</a>                                                                               
                             </li>                                                               
                             <li @click="menu=14">
-                                <a href="#"><i class="icon-bag"></i>Acta de Donación</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>Formato Acta de Donación</a>                                                                               
                             </li>                                
                             <li @click="menu=15">
-                                <a href="#"><i class="icon-bag"></i>Acta de Decomiso Preventivo</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>Formato Acta de Decomiso Preventivo</a>                                                                               
                             </li>                                
                             <li @click="menu=16">
                                 <a href="#"><i class="icon-bag"></i>Formato Inspección Embarcación de Carga</a>                                                                               
