@@ -135,7 +135,7 @@ export default {
       form: {
         name: "",
       },
-      state: 1,
+      state: 0,
       tipoAccion: 1,
       listado: 1,
       idFisher: 0,

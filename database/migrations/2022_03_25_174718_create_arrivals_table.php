@@ -56,7 +56,7 @@ class CreateArrivalsTable extends Migration
             $table->date('dateValidityPat'); 
             $table->date('date'); 
             $table->date('dateValidity');     
-            $table->date('observationGeneral');     
+            $table->string('observationGeneral');     
             $table->integer('id_port')->unsigned();
             $table->foreign('id_port')->references('id')->on('ports');
             $table->integer('id_portZarpe')->unsigned();

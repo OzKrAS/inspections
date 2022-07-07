@@ -46,31 +46,31 @@
                         <div class="sidebar-submenu">
                         <ul>                                                                                                                                                                                           
                             <li @click="menu=7">
-                                <a href="#"><i class="icon-bag"></i>Formato Inspección a Embarcación Pesquera - Zarpe</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>FT-IV-024 V3 INSPECCIÓN A EMBARCACIÓN PESQUERA - ZARPE</a>                                                                               
                             </li>                                
                             <li @click="menu=8">
-                                <a href="#"><i class="icon-bag"></i>Formato Inspección a Embarcación Pesquera - Arribo</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>FT-IV-018 V3-INSPECCIÓN A EMBARCACIÓN PESQUERA - ARRIBO</a>                                                                               
                             </li>                                
                             <li @click="menu=9">
-                                <a href="#"><i class="icon-bag"></i>Formato Verificación DETs 71 Pulgadas</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>FT-IV-014-FORMATO VERIFICACIÓN DETs 71 PULGADAS</a>                                                                               
                             </li>                                
                             <li @click="menu=10">
-                                <a href="#"><i class="icon-bag"></i>Formato Verificación DET Doble Solapa</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>FT-IV-015 V2-FORMATO VERIFICACIÓN DETs DOBLE SOLAPA.</a>                                                                               
                             </li>                                
                             <li @click="menu=11">
-                                <a href="#"><i class="icon-bag"></i>Formato Verificación Presencia del Equipo de Rescate de Delfines Abordo de Barcos Atuneros de Cerco</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>FT-IV-019-VERIFICACIÓN PRESENCIA DEL EQUIPO DE RESCATE DE DELFINES A BORDO DE BARCOS ATUNEROS DE CERCO</a>                                                                               
                             </li>                                                               
                             <li @click="menu=14">
-                                <a href="#"><i class="icon-bag"></i>Formato Acta de Donación</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>FT-IV-002 V3-FORMATO ACTA DE DONACIÓN</a>                                                                               
                             </li>                                
                             <li @click="menu=15">
-                                <a href="#"><i class="icon-bag"></i>Formato Acta de Decomiso Preventivo</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>FT-IV-004 V3-FORMATO ACTA DE DECOMISO PREVENTIVO</a>                                                                               
                             </li>                                
                             <li @click="menu=16">
-                                <a href="#"><i class="icon-bag"></i>Formato Inspección Embarcación de Carga</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>FT-IV-023-FORMATO INSPECCIÓN EMBARCACIÓN  DE CARGA</a>                                                                               
                             </li>                                
                             <li @click="menu=17">
-                                <a href="#"><i class="icon-bag"></i>Formato Certificación Desembarque de Atún para Exportación</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>FT-IV-020-FORMATO CERTIFICACIÓN DESEMBARQUE DE ATÚN PARA EXPORTACIÓN - ANEXO IV</a>                                                                               
                             </li>                                
                             <!-- <li @click="menu=18">
                                 <a href="#"><i class="icon-bag"></i>Formato de Aviso Previo de Zarpe de Buque</a>                                                                               

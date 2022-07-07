@@ -38336,7 +38336,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdRadio"]);
       form: {
         name: ""
       },
-      state: 1,
+      state: 0,
       tipoAccion: 1,
       listado: 1,
       idFisher: 0,
@@ -59267,7 +59267,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                  Subir imagen\n                "
+                                  "\n                    Subir imagen\n                  "
                                 )
                               ]
                             )
@@ -60247,7 +60247,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\n.material-icons.Color1 { color: rgb(31, 33, 34);\n}\n.material-icons.Color2 { color: rgba(167, 142, 5, 0.849);\n}\n.material-icons.Color3 { color: rgb(12, 170, 91);\n}\n.material-icons.Color4 { color: rgba(228, 54, 54, 0.863);\n}\r\n", ""]);
+exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\n.material-icons.Color1 { color: rgb(31, 33, 34);\n}\n.material-icons.Color2 { color: rgba(167, 142, 5, 0.849);\n}\n.material-icons.Color3 { color: rgb(12, 170, 91);\n}\n.material-icons.Color4 { color: rgba(228, 54, 54, 0.863);\n}\n.uploader {\r\n  width: 100%;\r\n  background: #2196f3;\r\n  color: #fff;\r\n  padding: 40px 15px;\r\n  text-align: center;\r\n  border-radius: 10px;\r\n  border: 3px dashed #fff;\r\n  font-size: 20px;\r\n  position: relative;\n}\n.uploader:dragging {\r\n  background: #fff;\r\n  color: #2196f3;\r\n  border: 3px dashed #2196f3;\n}\n.uploader1 {\r\n  width: 100%;\r\n  background: #ff7777;\r\n  color: #fff;\r\n  padding: 40px 15px;\r\n  text-align: center;\r\n  border-radius: 10px;\r\n  border: 3px dashed #fff;\r\n  font-size: 20px;\r\n  position: relative;\n}\n.uploader1:dragging {\r\n  background: #fff;\r\n  color: #2196f3;\r\n  border: 3px dashed #2196f3;\n}\ni.fa.fa-cloud-upload {\r\n  font-size: 58px;\n}\n.file-input {\r\n  width: 200px;\r\n  margin: auto;\r\n  height: 68px;\r\n  position: relative;\n}\n.file-input label {\r\n  background: #fff;\r\n  color: #2196f3;\r\n  width: 105%;\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  padding: 10px;\r\n  border-radius: 4px;\r\n  margin-top: 7px;\r\n  cursor: pointer;\n}\n.file-input input {\r\n  opacity: 0;\r\n  z-index: -2;\n}\n.images-preview {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  margin-top: 20px;\n}\n.img-wrapper {\r\n  width: 160px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  margin: 10px;\r\n  height: 150px;\r\n  justify-content: space-between;\r\n  background: #fff;\r\n  box-shadow: 5px 5px 20px #3e3737;\n}\n.modal-content {\r\n  width: 100% !important;\r\n  position: absolute !important;\n}\n.mostrar {\r\n  display: list-item !important;\r\n  opacity: 1 !important;\r\n  position: absolute !important;\r\n  background-color: #3c29297a !important;\n}\n.img {\r\n  max-height: 105px;\n}\n.imgNew {\r\n  max-height: 300px;\n}\n.details {\r\n  font-size: 12px;\r\n  background: #fff;\r\n  color: #000;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: self-start;\r\n  padding: 3px 6px;\n}\n.name {\r\n  overflow: hidden;\r\n  height: 18px;\n}\n.upload-control {\r\n  position: absolute;\r\n  width: 100%;\r\n  background: #fff;\r\n  top: 0;\r\n  left: 0;\r\n  border-top-left-radius: 7px;\r\n  border-top-right-radius: 7px;\r\n  padding: 10px;\r\n  padding-bottom: 4px;\r\n  text-align: right;\n}\n.upload-control button {\r\n  background: #3ab458;\r\n  border: 2px solid #3ab458;\r\n  border-radius: 3px;\r\n  color: #fff;\r\n  font-size: 15px;\r\n  cursor: pointer;\n}\n.upload-control label {\r\n  background: #F5A528;\r\n  border: 2px solid #F5A528;\r\n  border-radius: 3px;\r\n  color: #fff;\r\n  font-size: 15px;\r\n  cursor: pointer;\r\n  padding: 2px 5px;\r\n  margin-right: 10px;\n}\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\n.material-icons.Color1 { color: rgb(31, 33, 34);\n}\n.material-icons.Color2 { color: rgba(167, 142, 5, 0.849);\n}\n.material-icons.Color3 { color: rgb(12, 170, 91);\n}\n.material-icons.Color4 { color: rgba(228, 54, 54, 0.863);\n}\r\n", ""]);
 
 // exports
 
@@ -60273,6 +60273,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -60733,9 +60751,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       },
 
       element: "",
-      zarpe: "",
-      regFot: "",
-      characterState: "",
+      zarpe: null,
+      regFot: null,
+      characterState: null,
       observation: "",
       dateZarpe: 0,
       dateDesemb: 0,
@@ -60761,7 +60779,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       sending: false,
 
       arrayData: []
-    }, _defineProperty(_ref, "modal", 0), _defineProperty(_ref, "tipoAccion", 0), _ref;
+    }, _defineProperty(_ref, "modal", 0), _defineProperty(_ref, "tipoAccion", 0), _defineProperty(_ref, "selectedFile", null), _defineProperty(_ref, "isDragging", false), _defineProperty(_ref, "dragCount", 0), _defineProperty(_ref, "files", []), _defineProperty(_ref, "images", []), _ref;
   },
 
   components: {
@@ -60801,7 +60819,139 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
 
   computed: {},
   methods: {
+    OnDragEnter: function OnDragEnter(e) {
+      e.preventDefault();
+
+      this.dragCount++;
+      this.isDragging = true;
+
+      return false;
+    },
+    OnDragLeave: function OnDragLeave(e) {
+      e.preventDefault();
+      this.dragCount--;
+
+      if (this.dragCount <= 0) this.isDragging = false;
+    },
+    onInputChange: function onInputChange(e) {
+      var _this = this;
+
+      var files = e.target.files;
+
+      Array.from(files).forEach(function (file) {
+        return _this.addImage(file);
+      });
+    },
+    onInputChange2: function onInputChange2(e) {
+      var _this2 = this;
+
+      var files = e.target.files;
+
+      Array.from(files).forEach(function (file) {
+        return _this2.addImage2(file);
+      });
+    },
+    addImage2: function addImage2(file) {
+      var _this3 = this;
+
+      if (!file.type.match("image.*")) {
+        this.$toastr.e(file.name + " is not an image");
+        return;
+      }
+
+      this.images2.push(file);
+
+      var img = new Image(),
+          reader = new FileReader();
+
+      reader.onload = function (e) {
+        return _this3.images2.push(e.target.result);
+      };
+
+      reader.readAsDataURL(file);
+    },
+    upload: function upload() {
+      var _this4 = this;
+
+      var me = this;
+      var formData = new FormData();
+
+      this.files.forEach(function (file) {
+        formData.append("images[]", file, file.name);
+      });
+      formData.append("idEquipo", this.idEquipo);
+      formData.append("numCerti", this.form.numCertifica);
+      formData.append("laborat", this.form.laboratorio);
+      formData.append("fecCerti", this.form.fecCertifica);
+
+      axios.post("/detcerti/registrar", formData).then(function (response) {
+        me.mensaje("Guardado", "Todos los certificados se han almacenado ");
+        // this.$toastr.s("All images uplaoded successfully");
+        me.getDetCertifica();
+        _this4.images = [];
+        _this4.files = [];
+      });
+    },
+    changeImg: function changeImg() {
+      this.listado = 0;
+    },
+    abrirList: function abrirList() {
+      this.listado = 1;
+    },
+    eliminarImg: function eliminarImg(index) {
+      this.images.splice(index, 1);
+    },
+    onDrop: function onDrop(e) {
+      var _this5 = this;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      this.isDragging = false;
+
+      var files = e.dataTransfer.files;
+
+      Array.from(files).forEach(function (file) {
+        return _this5.addImage(file);
+      });
+    },
+    addImage: function addImage(file) {
+      var _this6 = this;
+
+      if (!file.type.match("image.*")) {
+        this.$toastr.e(file.name + " is not an image");
+        return;
+      }
+
+      this.files.push(file);
+
+      var img = new Image(),
+          reader = new FileReader();
+
+      reader.onload = function (e) {
+        return _this6.images.push(e.target.result);
+      };
+
+      reader.readAsDataURL(file);
+    },
+    getFileSize: function getFileSize(size) {
+      var fSExt = ["Bytes", "KB", "MB", "GB"];
+      var i = 0;
+
+      while (size > 900) {
+        size /= 1024;
+        i++;
+      }
+      return Math.round(size * 100) / 100 + " " + fSExt[i];
+    },
+    getImage: function getImage(event) {
+      //Asignamos la imagen a  nuestra data
+      // console.log(event)
+      this.selectedFile = event.target.files[0];
+      // this.upload();
+    },
     abrirModal: function abrirModal() {
+      console.log("abrirModal");
       this.modal = 1;
     },
     cerrarModal: function cerrarModal() {
@@ -60950,7 +61100,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       });
     },
     deleteData: function deleteData() {
-      var _this = this;
+      var _this7 = this;
 
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
@@ -60968,7 +61118,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var me = _this;
+          var me = _this7;
           axios.post("/presenVerifics/delete", {
             id: data["id"]
           }).then(function (response) {
@@ -61414,7 +61564,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        _vm.addItemTarget()
+                                        _vm.abrirModal()
                                       }
                                     }
                                   },
@@ -61865,140 +62015,502 @@ var render = function() {
                       )
                     ],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "modal fade",
-                      class: { mostrar: _vm.modal },
-                      staticStyle: { display: "none" },
-                      attrs: {
-                        tabindex: "-1",
-                        role: "dialog",
-                        "aria-labelledby": "myModalLabel",
-                        "aria-hidden": "true"
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "modal-dialog modal-primary modal-lg",
-                          attrs: { role: "document" }
-                        },
-                        [
-                          _c("div", { staticClass: "modal-content" }, [
-                            _c("div", { staticClass: "modal-header" }, [
-                              _c("h4", { staticClass: "modal-title" }),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "close",
-                                  attrs: {
-                                    type: "button",
-                                    "aria-label": "Close"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.cerrarModal()
-                                    }
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { attrs: { "aria-hidden": "true" } },
-                                    [_vm._v("X")]
-                                  )
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "modal-body" }, [
-                              _c(
-                                "form",
-                                {
-                                  staticClass: "form-horizontal",
-                                  attrs: {
-                                    action: "",
-                                    method: "post",
-                                    enctype: "multipart/form-data"
-                                  }
-                                },
-                                [
-                                  _c("md-card-content", [
-                                    _c("h2", [_vm._v("prueba")])
-                                  ])
-                                ],
-                                1
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "modal-footer" },
-                              [
-                                _c(
-                                  "md-card-actions",
-                                  [
-                                    _c(
-                                      "md-button",
-                                      {
-                                        staticClass: "md-raised",
-                                        attrs: { type: "button" },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.cerrarModal()
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Cerrar")]
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "md-card-actions",
-                                  [
-                                    _vm.tipoAccion == 1
-                                      ? _c(
-                                          "md-button",
-                                          {
-                                            staticClass:
-                                              "md-dense md-raised md-primary",
-                                            attrs: {
-                                              type: "submit",
-                                              disabled: _vm.sending
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                _vm.addDets()
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("registrar")]
-                                        )
-                                      : _vm._e()
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ])
-                        ]
-                      )
-                    ]
                   )
                 ]
               : _vm._e()
         ],
         2
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        class: { mostrar: _vm.modal },
+        staticStyle: { display: "none" },
+        attrs: {
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "myModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-primary modal-lg",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c("h4", { staticClass: "modal-title" }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: { type: "button", "aria-label": "Close" },
+                    on: {
+                      click: function($event) {
+                        _vm.cerrarModal()
+                      }
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("X")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass: "form-horizontal",
+                    attrs: {
+                      action: "",
+                      method: "post",
+                      enctype: "multipart/form-data"
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "md-layout" }, [
+                      _c(
+                        "div",
+                        { staticClass: "md-layout-item md-size-50" },
+                        [
+                          _c(
+                            "md-field",
+                            { attrs: { "md-clearable": "" } },
+                            [
+                              _c("label", { attrs: { for: "first-name" } }, [
+                                _vm._v("Equipo")
+                              ]),
+                              _vm._v(" "),
+                              _c("md-input", {
+                                attrs: {
+                                  name: "first-name",
+                                  id: "first-name",
+                                  autocomplete: "given-name",
+                                  disabled: _vm.sending
+                                },
+                                model: {
+                                  value: _vm.element,
+                                  callback: function($$v) {
+                                    _vm.element = $$v
+                                  },
+                                  expression: "element"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v("                 \n            ")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "md-layout" }, [
+                      _c("div", { staticClass: "md-layout-item md-size-30" }, [
+                        _c("label", { attrs: { for: "first-name" } }, [
+                          _vm._v("Zarpe (S/N)")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          [
+                            _c(
+                              "md-radio",
+                              {
+                                attrs: { value: "1" },
+                                model: {
+                                  value: _vm.zarpe,
+                                  callback: function($$v) {
+                                    _vm.zarpe = $$v
+                                  },
+                                  expression: "zarpe"
+                                }
+                              },
+                              [_c("small", [_vm._v("SI")])]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "md-radio",
+                              {
+                                staticClass: "md-primary",
+                                attrs: { value: "0" },
+                                model: {
+                                  value: _vm.zarpe,
+                                  callback: function($$v) {
+                                    _vm.zarpe = $$v
+                                  },
+                                  expression: "zarpe"
+                                }
+                              },
+                              [_c("small", [_vm._v("NO")])]
+                            )
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v("   \n              "),
+                      _c("div", { staticClass: "md-layout-item md-size-30" }, [
+                        _c("label", { attrs: { for: "first-name" } }, [
+                          _vm._v("Desembarque (S/N)")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          [
+                            _c(
+                              "md-radio",
+                              {
+                                attrs: { value: "1" },
+                                model: {
+                                  value: _vm.characterState,
+                                  callback: function($$v) {
+                                    _vm.characterState = $$v
+                                  },
+                                  expression: "characterState"
+                                }
+                              },
+                              [_c("small", [_vm._v("SI")])]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "md-radio",
+                              {
+                                staticClass: "md-primary",
+                                attrs: { value: "0" },
+                                model: {
+                                  value: _vm.characterState,
+                                  callback: function($$v) {
+                                    _vm.characterState = $$v
+                                  },
+                                  expression: "characterState"
+                                }
+                              },
+                              [_c("small", [_vm._v("NO")])]
+                            )
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v("   \n              "),
+                      _c("div", { staticClass: "md-layout-item md-size-30" }, [
+                        _c("label", { attrs: { for: "first-name" } }, [
+                          _vm._v("Registro fotográfico (S/N)")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          [
+                            _c(
+                              "md-radio",
+                              {
+                                attrs: { value: "1" },
+                                model: {
+                                  value: _vm.regFot,
+                                  callback: function($$v) {
+                                    _vm.regFot = $$v
+                                  },
+                                  expression: "regFot"
+                                }
+                              },
+                              [_c("small", [_vm._v("SI")])]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "md-radio",
+                              {
+                                staticClass: "md-primary",
+                                attrs: { value: "0" },
+                                model: {
+                                  value: _vm.regFot,
+                                  callback: function($$v) {
+                                    _vm.regFot = $$v
+                                  },
+                                  expression: "regFot"
+                                }
+                              },
+                              [_c("small", [_vm._v("NO")])]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm.regFot == 1
+                          ? _c("div", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: {
+                                    type: "button",
+                                    "data-toggle": "collapse",
+                                    "data-target": "#collapseExample",
+                                    "aria-expanded": "false",
+                                    "aria-controls": "collapseExample"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                      Subir foto\n                    "
+                                  )
+                                ]
+                              )
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(
+                        "   \n                               \n            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "collapse",
+                        attrs: { id: "collapseExample" }
+                      },
+                      [
+                        _c("div", { staticClass: "card card-body" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "uploader",
+                              class: { dragging: _vm.isDragging },
+                              on: {
+                                dragenter: _vm.OnDragEnter,
+                                dragleave: _vm.OnDragLeave,
+                                dragover: function($event) {
+                                  $event.preventDefault()
+                                },
+                                drop: _vm.onDrop
+                              }
+                            },
+                            [
+                              _c("div", {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.images.length,
+                                    expression: "images.length"
+                                  }
+                                ],
+                                staticClass: "upload-control"
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.images.length,
+                                      expression: "!images.length"
+                                    }
+                                  ]
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-cloud-upload"
+                                  }),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v("Arrastra tus imágenes aquí")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", [_vm._v("O")]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "file-input" }, [
+                                    _c("label", { attrs: { for: "file" } }, [
+                                      _vm._v("Selecciona una Imágen")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      attrs: {
+                                        type: "file",
+                                        id: "file",
+                                        multiple: ""
+                                      },
+                                      on: { change: _vm.onInputChange }
+                                    })
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.images.length,
+                                      expression: "images.length"
+                                    }
+                                  ],
+                                  staticClass: "images-preview"
+                                },
+                                _vm._l(_vm.images, function(image, index) {
+                                  return _c(
+                                    "div",
+                                    { key: index, staticClass: "img-wrapper" },
+                                    [
+                                      _c("img", {
+                                        attrs: {
+                                          src: image,
+                                          alt: "Image Uplaoder " + index
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn btn-dark btn-sm",
+                                          attrs: { type: "button" },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.eliminarImg(index)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "i",
+                                            {
+                                              staticClass:
+                                                "material-icons Color4"
+                                            },
+                                            [_vm._v("delete")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "details" }, [
+                                        _c("span", {
+                                          staticClass: "name",
+                                          domProps: {
+                                            textContent: _vm._s(
+                                              _vm.files[index].name
+                                            )
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("span", {
+                                          staticClass: "size",
+                                          domProps: {
+                                            textContent: _vm._s(
+                                              _vm.getFileSize(
+                                                _vm.files[index].size
+                                              )
+                                            )
+                                          }
+                                        })
+                                      ])
+                                    ]
+                                  )
+                                })
+                              )
+                            ]
+                          )
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "md-layout" }, [
+                      _c(
+                        "div",
+                        { staticClass: "md-layout-item" },
+                        [
+                          _c(
+                            "md-field",
+                            [
+                              _c("label", [_vm._v("Observaciones")]),
+                              _vm._v(" "),
+                              _c("md-textarea", {
+                                model: {
+                                  value: _vm.observation,
+                                  callback: function($$v) {
+                                    _vm.observation = $$v
+                                  },
+                                  expression: "observation"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v("        \n            ")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-footer" },
+                [
+                  _c(
+                    "md-card-actions",
+                    [
+                      _c(
+                        "md-button",
+                        {
+                          staticClass: "md-raised",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.cerrarModal()
+                            }
+                          }
+                        },
+                        [_vm._v("Cerrar")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "md-card-actions",
+                    [
+                      _vm.tipoAccion == 1
+                        ? _c(
+                            "md-button",
+                            {
+                              staticClass: "md-dense md-raised md-primary",
+                              attrs: { type: "submit", disabled: _vm.sending },
+                              on: {
+                                click: function($event) {
+                                  _vm.addDets()
+                                }
+                              }
+                            },
+                            [_vm._v("registrar")]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [

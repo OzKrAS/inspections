@@ -253,67 +253,67 @@
                   </div>    
                 </div> 
                 <p>
-                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    Subir imagen
-                  </button>
-                </p>                                 
-                <div class="collapse" id="collapseExample">
-                  <div class="card card-body">
-                    <div
-                      class="uploader"
-                      @dragenter="OnDragEnter"
-                      @dragleave="OnDragLeave"
-                      @dragover.prevent
-                      @drop="onDrop"
-                      :class="{ dragging: isDragging }"
-                    >
-                      <div class="upload-control" v-show="images.length">
-                        <!-- <label for="file">Anexar otra Imágen</label> -->
-                        <!-- <button @click="upload">Guardar Imágenes</button>
-                        <button @click="abrirList">Cancelar</button> -->
-                      </div>
-
-                      <div v-show="!images.length">
-                        <i class="fa fa-cloud-upload"></i>
-                        <p>Arrastra tus imágenes aquí</p>
-                        <div>O</div>
-                        <div class="file-input">
-                          <label for="file">Selecciona una Imágen</label>
-                          <input
-                            type="file"
-                            id="file"
-                            @change="onInputChange"
-                            multiple
-                          />
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      Subir imagen
+                    </button>
+                  </p>                                 
+                  <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                      <div
+                        class="uploader"
+                        @dragenter="OnDragEnter"
+                        @dragleave="OnDragLeave"
+                        @dragover.prevent
+                        @drop="onDrop"
+                        :class="{ dragging: isDragging }"
+                      >
+                        <div class="upload-control" v-show="images.length">
+                          <!-- <label for="file">Anexar otra Imágen</label> -->
+                          <!-- <button @click="upload">Guardar Imágenes</button>
+                          <button @click="abrirList">Cancelar</button> -->
                         </div>
-                      </div>
 
-                      <div class="images-preview" v-show="images.length">
-                        <div
-                          class="img-wrapper"
-                          v-for="(image, index) in images"
-                          :key="index"
-                        >
-                          <img :src="image" :alt="`Image Uplaoder ${index}`" />
-                            <button
-                              type="button"
-                              @click="eliminarImg(index)"
-                              class="btn btn-dark btn-sm"
-                            >
-                              <i class="material-icons Color4">delete</i>
-                            </button>
-                          <div class="details">
-                            <span class="name" v-text="files[index].name"></span>
-                            <span
-                              class="size"
-                              v-text="getFileSize(files[index].size)"
-                            ></span>
+                        <div v-show="!images.length">
+                          <i class="fa fa-cloud-upload"></i>
+                          <p>Arrastra tus imágenes aquí</p>
+                          <div>O</div>
+                          <div class="file-input">
+                            <label for="file">Selecciona una Imágen</label>
+                            <input
+                              type="file"
+                              id="file"
+                              @change="onInputChange"
+                              multiple
+                            />
                           </div>
                         </div>
-                      </div>
-                    </div>                      
-                  </div>
-                </div>    
+
+                        <div class="images-preview" v-show="images.length">
+                          <div
+                            class="img-wrapper"
+                            v-for="(image, index) in images"
+                            :key="index"
+                          >
+                            <img :src="image" :alt="`Image Uplaoder ${index}`" />
+                              <button
+                                type="button"
+                                @click="eliminarImg(index)"
+                                class="btn btn-dark btn-sm"
+                              >
+                                <i class="material-icons Color4">delete</i>
+                              </button>
+                            <div class="details">
+                              <span class="name" v-text="files[index].name"></span>
+                              <span
+                                class="size"
+                                v-text="getFileSize(files[index].size)"
+                              ></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>                      
+                    </div>
+                  </div>    
 
                 <label>Nota: Para completar los datos de la tabla debe hacer click en cada uno de los puntos de la imagen (A, B, C, D, E, F, G, H, I).</label>
 
