@@ -448,7 +448,7 @@
                 </div>                         
                 
                 <div class="md-layout"> 
-                  <div class="md-layout-item">
+                  <!-- <div class="md-layout-item">
                       <label class="text-muted">Pesquería Autorizada</label>
                       <multiselect v-model="arrayFa" :options="arrayFisheryAuthorized"
                           placeholder="Pesquería Autorizada"
@@ -456,6 +456,21 @@
                           label="name"
                           track-by="name">
                       </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp; -->
+                  <div class="md-layout-item">
+                    <label class="text-muted">Pesquería Autorizada</label>
+                    <multiselect
+                      v-model="arrayFa" 
+                      :options="arrayFisheryAuthorized" 
+                      :multiple="true" 
+                      :close-on-select="false" 
+                      :clear-on-select="false" 
+                      :preserve-search="false" 
+                      placeholder="Seleccione Pesquería Autorizada" 
+                      label="name" 
+                      track-by="name" 
+                      :preselect-first="false">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                       <label class="text-muted">Zona de Pesca Autorizada</label>
@@ -1216,7 +1231,7 @@ export default {
       arrayZoneAuto: {id:0, name:''},
 	    arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
-      arrayFa: {id:0, name:''},
+      arrayFa: [],
 	    arrayFisheryAuthorized: [],
       id_fisheryAuthorized: 0,
       arrayComp: {id:0, name:''},
@@ -1552,8 +1567,10 @@ export default {
       this.arrayFg = {id:0, name:''};
       this.arrayNation = {id:0, name:''};
       this.arrayZoneAuto = {id:0, name:''};
-      this.arrayFa = {id:0, name:''};
+      this.arrayFa = [];
       this.arrayComp = {id:0, name:''};
+      this.arrayTarget = [];
+      this.arrayFauna = [];
     },
     nameWithRegion ({ nameMuni,name  }) {
             return `${nameMuni} / ${name}`
@@ -1645,6 +1662,7 @@ export default {
     },
     selectFisheryAuthorized() {
             let me = this;
+            me.arrayFa=[];
             var url = "/arrivals/selectFisheryAuthorized";
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
@@ -1724,8 +1742,7 @@ export default {
 			this.arrayNation.name = data["nameNationality"];
       this.arrayZoneAuto.id = data["id_zoneAutoFisher"];
 			this.arrayZoneAuto.name = data["nameZoneAutoFisher"];
-      this.arrayFa.id = data["id_fisheryAuthorized"];
-			this.arrayFa.name = data["nameFishery"];
+      this.arrayFa.id = data["arrayFa"];
       this.arrayComp.id = data["id_company"];
 			this.arrayComp.name = data["nameCompany"];
     },
@@ -1865,9 +1882,9 @@ export default {
           'id_fisheryAuthorized': this.arrayFa.id,
           'id_company': this.arrayComp.id,
 
-          // 'fishery': this.arrayFa,
-          // 'fauna': this.arrayFauna,
-          // 'target': this.arrayTarget,
+          'fishery': this.arrayFa,
+          'fauna': this.arrayFauna,
+          'target': this.arrayTarget,
         })
         .then(function(response) {
           me.hideForm();

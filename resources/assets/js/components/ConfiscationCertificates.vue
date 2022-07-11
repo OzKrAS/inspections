@@ -315,7 +315,7 @@
                           <th style="width: 90px">Opciones</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody v-if="arrayTarget.length">
                         <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
                           <td v-text="target.nameScientific"></td>
                           <td v-text="target.nameCommon"></td>
@@ -342,6 +342,13 @@
                             >
                               <i class="icon-trash"></i>
                             </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tbody v-else>
+                        <tr>
+                          <td colspan="10" class="text-center">
+                            NO existen elementos agregados 
                           </td>
                         </tr>
                       </tbody>
@@ -434,7 +441,7 @@
                           <th style="width: 90px">Opciones</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody v-if="arrayTarget.length">
                         <tr v-for="(target,index) in arrayTarget2" :key="`target-${index}`">
                           <td v-text="target.element"></td>
                           <td v-text="target.amount2"></td>
@@ -451,6 +458,13 @@
                             >
                               <i class="icon-trash"></i>
                             </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tbody v-else>
+                        <tr>
+                          <td colspan="6" class="text-center">
+                            NO existen elementos agregados 
                           </td>
                         </tr>
                       </tbody>
@@ -1532,6 +1546,8 @@ export default {
       dateExpedition : this.dateExpedition,
       observation : this.observation.toUpperCase(),
       data:this.arrayReasons,
+      target:this.arrayTarget,
+      target2:this.arrayTarget2,
 
       'id_regional': this.arrayRegl.id,
     })

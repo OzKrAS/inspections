@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\CheckDetInch;
 use App\Company;
 use App\Regional;
+use App\DetailDetInch;
 
 class CheckDetInchController extends Controller
 {
@@ -58,6 +59,19 @@ class CheckDetInchController extends Controller
         $CheckDetInchs->id_company = $request->id_company;  
         $CheckDetInchs->id_regional = $request->id_regional;  
         $CheckDetInchs->save();
+
+        $detaildetinch = $request->detinch;
+        foreach($detaildetinch as $ep=>$det){
+            $objeto= new DetailDetInch();
+            $objeto->id_detinch = $CheckDetInchs->id;
+            $objeto->babor1= $det['babor1'];
+            $objeto->babor2= $det['babor2'];
+            $objeto->estribor1= $det['estribor1'];
+            $objeto->estribor2= $det['estribor2'];
+            $objeto->punto= $det['punto'];
+            $objeto->tituloModal= $det['tituloModal'];
+            $objeto->save();
+        }
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'

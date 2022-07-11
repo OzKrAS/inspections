@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\DonationCertificate;
 use App\Regional;
+use App\DetDonation;
 
 class DonationCertificateController extends Controller
 {
@@ -65,6 +66,21 @@ class DonationCertificateController extends Controller
 
         $donations->id_regional = $request->id_regional;  
         $donations->save();
+
+        $detaildonation = $request->target;
+        foreach($detaildonation as $ep=>$det){
+            $objeto= new DetDonation();
+            $objeto->id_donation = $donations->id;
+            $objeto->nameScientific= $det['nameScientific'];
+            $objeto->nameCommon= $det['nameCommon'];
+            $objeto->state= $det['state'];
+            $objeto->presentation= $det['presentation'];
+            $objeto->amount= $det['amount'];
+            $objeto->weight= $det['weight'];
+            $objeto->commercialValue= $det['commercialValue'];
+
+            $objeto->save();
+        }
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'

@@ -10,6 +10,9 @@ use App\Nationality;
 use App\AutoFisher;
 use App\FisheryAuthorized;
 use App\Company;
+use App\DetailFisherAutArrival;
+use App\DetTargCaptArrivals;
+use App\DetFaunaCaptArrivals;
 
 class ArrivalController extends Controller
 {
@@ -22,7 +25,7 @@ class ArrivalController extends Controller
             ->join('flags','arrivals.id_flag','=','flags.id')
             ->join('nationalities','arrivals.id_nationality','=','nationalities.id')
             ->join('auto_fishers','arrivals.id_zoneAutoFisher','=','auto_fishers.id')
-            ->join('fishery_authorizeds','arrivals.id_fisheryAuthorized','=','fishery_authorizeds.id')
+            // ->join('fishery_authorizeds','arrivals.id_fisheryAuthorized','=','fishery_authorizeds.id')
             ->join('companies','arrivals.id_company','=','companies.id')
             ->select('arrivals.id',
                     'arrivals.insNo',
@@ -73,7 +76,7 @@ class ArrivalController extends Controller
                     'arrivals.id_flag','flags.name as nameFlag',
                     'arrivals.id_nationality','nationalities.name as nameNationality',
                     'arrivals.id_zoneAutoFisher','auto_fishers.name as nameZoneAutoFisher',
-                    'arrivals.id_fisheryAuthorized','fishery_authorizeds.name as nameFishery',
+                    // 'arrivals.id_fisheryAuthorized','fishery_authorizeds.name as nameFishery',
                     'arrivals.id_company','companies.name as nameCompany',
             )
         
@@ -136,32 +139,35 @@ class ArrivalController extends Controller
         $arrivals->id_portArrival = $request->id_portArrival;      
         $arrivals->id_flag = $request->id_flag;    
         $arrivals->id_nationality = $request->id_nationality; 
-        $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;       
-        $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized;    
+        $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;          
         $arrivals->id_company = $request->id_company; 
         $arrivals->save();
 
-        // $detailarrivals = $request->fishery;
-        // foreach($detailarrivals as $ep=>$det){
-        //     $objeto= new DetConfiscationReasons();
-        //     $objeto->id_arrival = $arrival->id;
-        //     $objeto->name= $det['name'];
-        //     $objeto->save();
-        // }
-        // $detailarrivals = $request->target;
-        // foreach($detailarrivals as $ep=>$det){
-        //     $objeto= new DetConfiscationReasons();
-        //     $objeto->id_arrival = $arrival->id;
-        //     $objeto->name= $det['name'];
-        //     $objeto->save();
-        // }
-        // $detailarrivals = $request->fauna;
-        // foreach($detailarrivals as $ep=>$det){
-        //     $objeto= new DetConfiscationReasons();
-        //     $objeto->id_arrival = $arrival->id;
-        //     $objeto->name= $det['name'];
-        //     $objeto->save();
-        // }
+        $detailarrivals = $request->fishery;
+        foreach($detailarrivals as $ep=>$det){
+            $objeto= new DetailFisherAutArrival();
+            $objeto->id_fisheryAut = $arrivals->id;
+            $objeto->name= $det['name'];
+            $objeto->save();
+        }
+        $detailarrivalstarget = $request->target;
+        foreach($detailarrivalstarget as $ep=>$det){
+            $objeto= new DetTargCaptArrivals();
+            $objeto->id_target = $arrivals->id;
+            $objeto->nameCommon1= $det['nameCommon1'];
+            $objeto->nameScientific1= $det['nameScientific1'];
+            $objeto->capture1= $det['capture1'];
+            $objeto->save();
+        }
+        $detailarrivalsfauna = $request->fauna;
+        foreach($detailarrivalsfauna as $ep=>$det){
+            $objeto= new DetFaunaCaptArrivals();
+            $objeto->id_fauna = $arrivals->id;
+            $objeto->nameCommon2= $det['nameCommon2'];
+            $objeto->nameScientific2= $det['nameScientific2'];
+            $objeto->capture2= $det['capture2'];
+            $objeto->save();
+        }
 
         $array = array(
             'res' => true,
@@ -224,7 +230,7 @@ class ArrivalController extends Controller
         $arrivals->id_flag = $request->id_flag;    
         $arrivals->id_nationality = $request->id_nationality; 
         $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;  
-        $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized; 
+        // $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized; 
         $arrivals->id_company = $request->id_company; 
         $arrivals->save();
         $array = array(

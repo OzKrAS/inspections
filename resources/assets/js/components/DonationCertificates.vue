@@ -285,7 +285,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                                 <th style="width: 80px">Opciones</th>
                               </tr>
                             </thead>
-                            <tbody>
+                            <tbody v-if="arrayTarget.length">
                               <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
                                 <td v-text="target.nameScientific"></td>
                                 <td v-text="target.nameCommon"></td>
@@ -308,6 +308,13 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                                   >
                                     <i class="icon-trash"></i>
                                   </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                            <tbody v-else>
+                              <tr>
+                                <td colspan="6">
+                                  NO existen elementos agregados 
                                 </td>
                               </tr>
                             </tbody>
@@ -1152,6 +1159,7 @@ export default {
       this.form.corregimiento = null;
       this.form.place = null;
       this.form.telephone = null;
+      this.arrayTarget = [];
       
       this.arrayRegl = {id:0, name:''};
     },
@@ -1243,6 +1251,8 @@ export default {
         corregimiento: this.form.corregimiento.toUpperCase(),
         place: this.form.place.toUpperCase(),
         telephone: this.form.telephone,
+
+        target: this.arrayTarget,
        
         'id_regional': this.arrayRegl.id,
         })

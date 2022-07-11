@@ -83,6 +83,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/zarpes/delete', 'ZarpeController@destroy');
         Route::get('/zarpes/selectPorts', 'PortsController@selectPort');
         Route::get('/flags/selectFlags', 'FlagController@selectFlag');
+        Route::get('/materials/selectMaterials', 'FishingGearMaterialController@selectMaterial');
         Route::get('/region/selectRegion', 'RegionController@selectRegion');
         Route::get('/nationality/selectNationality', 'NationalityController@selectNationality');
         Route::get('/orops/selectOrops', 'OropController@selectOrop');

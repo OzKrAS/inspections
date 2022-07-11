@@ -16,7 +16,8 @@
         "jquery": "^3.4.1",
         "laravel-mix": "^2.0",
         "lodash": "^4.17.15",
-        "vue": "^2.5.7"
+        "vue": "^2.5.7",
+        "vue2-collapse": "^1.0.15"
     },
     "keywords": [
         "vue-material",

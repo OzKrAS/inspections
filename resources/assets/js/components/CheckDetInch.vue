@@ -1204,6 +1204,7 @@ export default {
 
       this.arrayComp = {id:0, name:''};
       this.arrayRegl = {id:0, name:''};
+      this.arrayDets = [];
     },
 
     showUpdate(data = []) {
@@ -1299,6 +1300,7 @@ export default {
         date: this.date,
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
+        'detinch': this.arrayDets,
         })
         .then(function(response) {
           me.hideForm();

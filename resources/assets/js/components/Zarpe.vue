@@ -571,7 +571,7 @@
                       />
                     </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
-                   <div class="md-layout-item"> 
+                   <!-- <div class="md-layout-item"> 
                     <md-field md-clearable>
                       <label for="first-name">Material de Arte de Pesca</label>
                       <md-input
@@ -582,7 +582,16 @@
                         :disabled="sending"
                       />
                     </md-field>
-                   </div>&nbsp;&nbsp;&nbsp;
+                   </div>&nbsp;&nbsp;&nbsp; -->
+                    <div class="md-layout-item">
+                      <label>Material de Arte de Pesca</label>
+                      <multiselect v-model="arrayMaterial" :options="arrayMaterialArt"
+                          placeholder="Seleccione el material de arte de pesca"
+                          :custom-label="nameWithMaterialArt"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                    </div>&nbsp;&nbsp;&nbsp;
                  </div>
                  <div class="md-layout">
                    <div class="md-layout-item"> 
@@ -873,7 +882,7 @@ export default {
       netWidth: "",
       eyeFlake: "",
       longNet: "",
-      materialArt: "",
+      // materialArt: "",
       equipDevi: "",
       captain: "",
       typeHook: "",
@@ -928,6 +937,9 @@ export default {
       arrayComp: {id:0, name:''},
 	    arrayCompany: [],
       id_Company: 0,
+      arrayMaterial: {id:0, name:''},
+	    arrayMaterialArt: [],
+      id_material: 0,
       
       noApply: "No aplica",
       
@@ -1163,7 +1175,7 @@ export default {
       this.eyeFlake = null;
       this.typeHook = null;
       this.longNet = null;
-      this.materialArt = null;
+      // this.materialArt = null;
       this.equipDevi = null;
       this.captain = null;
       this.observation = null;
@@ -1188,6 +1200,7 @@ export default {
       this.arrayPtZarpe = {id:0, namePort:'',name:''};
       this.arrayPtArrival = {id:0, namePort:'',name:''};
       this.arrayFg = {id:0, name:''};
+      this.arrayMaterial = {id:0, name:''};
       this.arrayNation = {id:0, name:''};
       this.arrayOr = {id:0, name:''};
       this.arrayZoneAuto = {id:0, name:''};
@@ -1210,6 +1223,9 @@ export default {
             return `${name}`
     },
     nameWithZoneAutoFish ({ name }) {
+            return `${name}`
+    },
+    nameWithMaterialArt ({ name }) {
             return `${name}`
     },
     nameWithFisheryAuthorized ({ name }) {
@@ -1273,6 +1289,16 @@ export default {
                     console.log(error);
             });
     },
+    selectMaterial() {
+            let me = this;
+            var url = "/materials/selectMaterials";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayMaterialArt = respuesta.materials;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
     selectOrop() {
             let me = this;
             var url = "orops/selectOrops";
@@ -1331,7 +1357,7 @@ export default {
       this.eyeFlake = data["eyeFlake"];
       this.typeHook = data["typeHook"];
       this.longNet = data["longNet"];
-      this.materialArt = data["materialArt"];
+      // this.materialArt = data["materialArt"];
       this.equipDevi = data["equipDevi"];
       this.captain = data["captain"];
       this.observation = data["observation"];
@@ -1361,6 +1387,8 @@ export default {
 			this.arrayPtArrival.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
 			this.arrayFg.name = data["nameFlag"];
+      this.arrayMaterial.id = data["id_material"];
+			this.arrayMaterial.name = data["nameMaterial"];
       this.arrayNation.id = data["id_nationality"];
 			this.arrayNation.name = data["nameNationality"];
       this.arrayOr.id = data["id_orop"];
@@ -1402,9 +1430,9 @@ export default {
       if (this.typeHook == "") {
         this.typeHook = this.noApply;
       }
-      if (this.materialArt == "") {
-        this.materialArt = this.noApply;
-      }
+      // if (this.materialArt == "") {
+      //   this.materialArt = this.noApply;
+      // }
       if (this.equipDevi == "") {
         this.equipDevi = this.noApply;
       }
@@ -1426,7 +1454,7 @@ export default {
           eyeFlake: this.eyeFlake.toUpperCase(),
           typeHook: this.typeHook.toUpperCase(),
           longNet: this.longNet.toUpperCase(),
-          materialArt: this.materialArt.toUpperCase(),
+          // materialArt: this.materialArt.toUpperCase(),
           equipDevi: this.equipDevi.toUpperCase(),
           captain: this.captain.toUpperCase(),
           observation: this.observation.toUpperCase(),
@@ -1451,11 +1479,12 @@ export default {
           'id_portZarpe': this.arrayPtZarpe.id,
           'id_portArrival': this.arrayPtArrival.id,
           'id_flag': this.arrayFg.id,
+          'id_material': this.arrayMaterial.id,
           'id_nationality': this.arrayNation.id,
           'id_orop': this.arrayOr.id,
           'id_zoneAutoFisher': this.arrayZoneAuto.id,
           'id_company': this.arrayComp.id,
-          // 'data': this.arrayFa,
+          'data': this.arrayFa,
 
 
         })
@@ -1485,9 +1514,9 @@ export default {
       if (this.longNet == "") {
         this.longNet = this.noApply;
       }
-      if (this.materialArt == "") {
-        this.materialArt = this.noApply;
-      }
+      // if (this.materialArt == "") {
+      //   this.materialArt = this.noApply;
+      // }
       if (this.equipDevi == "") {
         this.equipDevi = this.noApply;
       }
@@ -1510,7 +1539,7 @@ export default {
           eyeFlake: this.eyeFlake.toUpperCase(),
           typeHook: this.typeHook.toUpperCase(),
           longNet: this.longNet.toUpperCase(),
-          materialArt: this.materialArt.toUpperCase(),
+          // materialArt: this.materialArt.toUpperCase(),
           equipDevi: this.equipDevi.toUpperCase(),
           captain: this.captain.toUpperCase(),
           observation: this.observation.toUpperCase(),
@@ -1535,6 +1564,7 @@ export default {
           'id_portZarpe': this.arrayPtZarpe.id,
           'id_portArrival': this.arrayPtArrival.id,
           'id_flag': this.arrayFg.id,
+          'id_material': this.arrayMaterial.id,
           'id_nationality': this.arrayNation.id,
           'id_orop': this.arrayOr.id,
           'id_zoneAutoFisher': this.arrayZoneAuto.id,
@@ -1708,6 +1738,7 @@ ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
     this.selectRegion();   
     this.selectPort();   
     this.selectFlag();   
+    this.selectMaterial();   
     this.selectNationality();   
     this.selectOrop();   
     this.selectZoneAutoFisher();   

@@ -326,16 +326,73 @@
                       <md-radio  v-model="regFot" value="1"><small>SI</small></md-radio>
                       <md-radio  v-model="regFot" value="0" class="md-primary"><small>NO</small></md-radio>
                     </div>
-                    <div v-if="regFot == 1">
+                    
+                    <!-- <div v-if="regFot == 1">
                       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Subir foto
                       </button>                  
-                    </div>                                     
+                    </div>                                      -->
                 </div>&nbsp;&nbsp;&nbsp;
-                                 
+                <v-collapse-wrapper v-if="this.regFot == 1">
+                        <div class="content" v-collapse-content>
+                            <div
+                              class="uploader"
+                              @dragenter="OnDragEnter"
+                              @dragleave="OnDragLeave"
+                              @dragover.prevent
+                              @drop="onDrop"
+                              :class="{ dragging: isDragging }"
+                            >
+                              <div class="upload-control" v-show="images.length">
+                                <!-- <label for="file">Anexar otra Imágen</label> -->
+                                <!-- <button @click="upload">Guardar Imágenes</button>
+                                <button @click="abrirList">Cancelar</button> -->
+                              </div>
+
+                              <div v-show="!images.length">
+                                <i class="fa fa-cloud-upload"></i>
+                                <p>Arrastra tus imágenes aquí</p>
+                                <div>O</div>
+                                <div class="file-input">
+                                  <label for="file">Selecciona una Imágen</label>
+                                  <input
+                                    type="file"
+                                    id="file"
+                                    @change="onInputChange"
+                                    multiple
+                                  />
+                                </div>
+                              </div>
+
+                              <div class="images-preview" v-show="images.length">
+                                <div
+                                  class="img-wrapper"
+                                  v-for="(image, index) in images"
+                                  :key="index"
+                                >
+                                  <img :src="image" :alt="`Image Uplaoder ${index}`" />
+                                    <button
+                                      type="button"
+                                      @click="eliminarImg(index)"
+                                      class="btn btn-dark btn-sm"
+                                    >
+                                      <i class="material-icons Color4">delete</i>
+                                    </button>
+                                  <div class="details">
+                                    <span class="name" v-text="files[index].name"></span>
+                                    <span
+                                      class="size"
+                                      v-text="getFileSize(files[index].size)"
+                                    ></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div> 
+                        </div>
+                </v-collapse-wrapper>                   
               </div> 
               <!-- <div class="md-layout"> -->
-                  <div class="collapse" id="collapseExample">
+                  <!-- <div class="collapse" id="collapseExample" >
                       <div class="card card-body">
                         <div
                           class="uploader"
@@ -346,9 +403,6 @@
                           :class="{ dragging: isDragging }"
                         >
                           <div class="upload-control" v-show="images.length">
-                            <!-- <label for="file">Anexar otra Imágen</label> -->
-                            <!-- <button @click="upload">Guardar Imágenes</button>
-                            <button @click="abrirList">Cancelar</button> -->
                           </div>
 
                           <div v-show="!images.length">
@@ -392,7 +446,7 @@
                         </div> 
                           
                       </div>
-                  </div>
+                  </div> -->
                 <!-- </div>  -->
               <div class="md-layout">
                   <div class="md-layout-item">
@@ -401,7 +455,7 @@
                         <md-textarea v-model="observation"></md-textarea>
                     </md-field> 
                   </div>&nbsp;&nbsp;&nbsp;     
-              </div>                        
+              </div>                      
             </form>
           </div>
           <div class="modal-footer">
@@ -434,6 +488,7 @@
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
     import vSelect from "vue-select";
+    import VueCollapse from "vue2-collapse";
     import {
 		MdButton,  
 		MdContent,

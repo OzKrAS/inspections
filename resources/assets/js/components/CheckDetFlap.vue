@@ -989,6 +989,7 @@ export default {
       this.form.location = null;
       this.observation = null;
       this.date = null;
+      this.arrayCheckDet = [];
 
       this.arrayComp = {id:0, name:''};
       this.arrayRegl = {id:0, name:''};
@@ -1087,6 +1088,7 @@ export default {
         date: this.date,
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
+        'detflap': this.arrayDets2,
         })
         .then(function(response) {
           me.hideForm();

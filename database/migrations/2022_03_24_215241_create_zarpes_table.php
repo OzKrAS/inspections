@@ -28,7 +28,7 @@ class CreateZarpesTable extends Migration
             $table->string('eyeFlake'); 
             $table->string('typeHook'); 
             $table->string('longNet'); 
-            $table->string('materialArt'); 
+            // $table->string('materialArt'); 
             $table->string('equipDevi'); 
             $table->string('captain'); 
             $table->string('observation'); 
@@ -56,6 +56,8 @@ class CreateZarpesTable extends Migration
             $table->foreign('id_portArrival')->references('id')->on('ports');
             $table->integer('id_flag')->unsigned();
             $table->foreign('id_flag')->references('id')->on('flags');
+            $table->integer('id_material')->unsigned();
+            $table->foreign('id_material')->references('id')->on('fishing_gear_materials');
             $table->integer('id_region')->unsigned();
             $table->foreign('id_region')->references('id')->on('regions');
             $table->integer('id_nationality')->unsigned();

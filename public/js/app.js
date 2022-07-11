@@ -2545,7 +2545,7 @@ function(t){var r=function(t){var e,r,n,i,a,o,s,c,u,h;for(/[^\x00-\xFF]/.test(t)
  * Licensed under the MIT License.
  * http://opensource.org/licenses/mit-license
  */
-function(t){t.loadFile=function(t,e,r){return function(t,e,r){e=!1!==e,r="function"==typeof r?r:function(){};var n=void 0;try{n=function(t,e,r){var n=new XMLHttpRequest,i=0,a=function(t){var e=t.length,r=[],n=String.fromCharCode;for(i=0;i<e;i+=1)r.push(n(255&t.charCodeAt(i)));return r.join("")};if(n.open("GET",t,!e),n.overrideMimeType("text/plain; charset=x-user-defined"),!1===e&&(n.onload=function(){200===n.status?r(a(this.responseText)):r(void 0)}),n.send(null),e&&200===n.status)return a(n.responseText)}(t,e,r)}catch(t){}return n}(t,e,r)},t.loadImageFile=t.loadFile}(E.API),function(e){function r(){return(n.html2canvas?Promise.resolve(n.html2canvas):__webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 205))).catch((function(t){return Promise.reject(new Error("Could not load html2canvas: "+t))})).then((function(t){return t.default?t.default:t}))}function i(){return(n.DOMPurify?Promise.resolve(n.DOMPurify):__webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 206))).catch((function(t){return Promise.reject(new Error("Could not load dompurify: "+t))})).then((function(t){return t.default?t.default:t}))}var a=function(e){var r=__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default()(e);return"undefined"===r?"undefined":"string"===r||e instanceof String?"string":"number"===r||e instanceof Number?"number":"function"===r||e instanceof Function?"function":e&&e.constructor===Array?"array":e&&1===e.nodeType?"element":"object"===r?"object":"unknown"},o=function(t,e){var r=document.createElement(t);for(var n in e.className&&(r.className=e.className),e.innerHTML&&e.dompurify&&(r.innerHTML=e.dompurify.sanitize(e.innerHTML)),e.style)r.style[n]=e.style[n];return r},s=function t(e){var r=Object.assign(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default.a.convert(Promise.resolve()),JSON.parse(JSON.stringify(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default.a.template))),n=__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default.a.convert(Promise.resolve(),r);return n=(n=n.setProgress(1,__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default.a,1,[__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default.a])).set(e)};(s.prototype=Object.create(Promise.prototype)).constructor=s,s.convert=function(t,e){return t.__proto__=e||s.prototype,t},s.template={prop:{src:null,container:null,overlay:null,canvas:null,img:null,pdf:null,pageSize:null,callback:function(){}},progress:{val:0,state:null,n:0,stack:[]},opt:{filename:"file.pdf",margin:[0,0,0,0],enableLinks:!0,x:0,y:0,html2canvas:{},jsPDF:{},backgroundColor:"transparent"}},s.prototype.from=function(t,e){return this.then((function(){switch(e=e||function(t){switch(a(t)){case"string":return"string";case"element":return"canvas"===t.nodeName.toLowerCase()?"canvas":"element";default:return"unknown"}}(t)){case"string":return this.then(i).then((function(e){return this.set({src:o("div",{innerHTML:t,dompurify:e})})}));case"element":return this.set({src:t});case"canvas":return this.set({canvas:t});case"img":return this.set({img:t});default:return this.error("Unknown source type.")}}))},s.prototype.to=function(t){switch(t){case"container":return this.toContainer();case"canvas":return this.toCanvas();case"img":return this.toImg();case"pdf":return this.toPdf();default:return this.error("Invalid target.")}},s.prototype.toContainer=function(){return this.thenList([function(){return this.prop.src||this.error("Cannot duplicate - no source HTML.")},function(){return this.prop.pageSize||this.setPageSize()}]).then((function(){var t={position:"relative",display:"inline-block",width:("number"!=typeof this.opt.width||isNaN(this.opt.width)||"number"!=typeof this.opt.windowWidth||isNaN(this.opt.windowWidth)?Math.max(this.prop.src.clientWidth,this.prop.src.scrollWidth,this.prop.src.offsetWidth):this.opt.windowWidth)+"px",left:0,right:0,top:0,margin:"auto",backgroundColor:this.opt.backgroundColor},e=function t(e,r){for(var n=3===e.nodeType?document.createTextNode(e.nodeValue):e.cloneNode(!1),i=e.firstChild;i;i=i.nextSibling)!0!==r&&1===i.nodeType&&"SCRIPT"===i.nodeName||n.appendChild(t(i,r));return 1===e.nodeType&&("CANVAS"===e.nodeName?(n.width=e.width,n.height=e.height,n.getContext("2d").drawImage(e,0,0)):"TEXTAREA"!==e.nodeName&&"SELECT"!==e.nodeName||(n.value=e.value),n.addEventListener("load",(function(){n.scrollTop=e.scrollTop,n.scrollLeft=e.scrollLeft}),!0)),n}(this.prop.src,this.opt.html2canvas.javascriptEnabled);"BODY"===e.tagName&&(t.height=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.clientHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight)+"px"),this.prop.overlay=o("div",{className:"html2pdf__overlay",style:{position:"fixed",overflow:"hidden",zIndex:1e3,left:"-100000px",right:0,bottom:0,top:0}}),this.prop.container=o("div",{className:"html2pdf__container",style:t}),this.prop.container.appendChild(e),this.prop.container.firstChild.appendChild(o("div",{style:{clear:"both",border:"0 none transparent",margin:0,padding:0,height:0}})),this.prop.container.style.float="none",this.prop.overlay.appendChild(this.prop.container),document.body.appendChild(this.prop.overlay),this.prop.container.firstChild.style.position="relative",this.prop.container.height=Math.max(this.prop.container.firstChild.clientHeight,this.prop.container.firstChild.scrollHeight,this.prop.container.firstChild.offsetHeight)+"px"}))},s.prototype.toCanvas=function(){var t=[function(){return document.body.contains(this.prop.container)||this.toContainer()}];return this.thenList(t).then(r).then((function(t){var e=Object.assign({},this.opt.html2canvas);return delete e.onrendered,t(this.prop.container,e)})).then((function(t){(this.opt.html2canvas.onrendered||function(){})(t),this.prop.canvas=t,document.body.removeChild(this.prop.overlay)}))},s.prototype.toContext2d=function(){var t=[function(){return document.body.contains(this.prop.container)||this.toContainer()}];return this.thenList(t).then(r).then((function(t){var e=this.opt.jsPDF,r=this.opt.fontFaces,n="number"!=typeof this.opt.width||isNaN(this.opt.width)||"number"!=typeof this.opt.windowWidth||isNaN(this.opt.windowWidth)?1:this.opt.width/this.opt.windowWidth,i=Object.assign({async:!0,allowTaint:!0,scale:n,scrollX:this.opt.scrollX||0,scrollY:this.opt.scrollY||0,backgroundColor:"#ffffff",imageTimeout:15e3,logging:!0,proxy:null,removeContainer:!0,foreignObjectRendering:!1,useCORS:!1},this.opt.html2canvas);if(delete i.onrendered,e.context2d.autoPaging=void 0===this.opt.autoPaging||this.opt.autoPaging,e.context2d.posX=this.opt.x,e.context2d.posY=this.opt.y,e.context2d.margin=this.opt.margin,e.context2d.fontFaces=r,r)for(var a=0;a<r.length;++a){var o=r[a],s=o.src.find((function(t){return"truetype"===t.format}));s&&e.addFont(s.url,o.ref.name,o.ref.style)}return i.windowHeight=i.windowHeight||0,i.windowHeight=0==i.windowHeight?Math.max(this.prop.container.clientHeight,this.prop.container.scrollHeight,this.prop.container.offsetHeight):i.windowHeight,e.context2d.save(!0),t(this.prop.container,i)})).then((function(t){this.opt.jsPDF.context2d.restore(!0),(this.opt.html2canvas.onrendered||function(){})(t),this.prop.canvas=t,document.body.removeChild(this.prop.overlay)}))},s.prototype.toImg=function(){return this.thenList([function(){return this.prop.canvas||this.toCanvas()}]).then((function(){var t=this.prop.canvas.toDataURL("image/"+this.opt.image.type,this.opt.image.quality);this.prop.img=document.createElement("img"),this.prop.img.src=t}))},s.prototype.toPdf=function(){return this.thenList([function(){return this.toContext2d()}]).then((function(){this.prop.pdf=this.prop.pdf||this.opt.jsPDF}))},s.prototype.output=function(t,e,r){return"img"===(r=r||"pdf").toLowerCase()||"image"===r.toLowerCase()?this.outputImg(t,e):this.outputPdf(t,e)},s.prototype.outputPdf=function(t,e){return this.thenList([function(){return this.prop.pdf||this.toPdf()}]).then((function(){return this.prop.pdf.output(t,e)}))},s.prototype.outputImg=function(t){return this.thenList([function(){return this.prop.img||this.toImg()}]).then((function(){switch(t){case void 0:case"img":return this.prop.img;case"datauristring":case"dataurlstring":return this.prop.img.src;case"datauri":case"dataurl":return document.location.href=this.prop.img.src;default:throw'Image output type "'+t+'" is not supported.'}}))},s.prototype.save=function(t){return this.thenList([function(){return this.prop.pdf||this.toPdf()}]).set(t?{filename:t}:null).then((function(){this.prop.pdf.save(this.opt.filename)}))},s.prototype.doCallback=function(){return this.thenList([function(){return this.prop.pdf||this.toPdf()}]).then((function(){this.prop.callback(this.prop.pdf)}))},s.prototype.set=function(t){if("object"!==a(t))return this;var e=Object.keys(t||{}).map((function(e){if(e in s.template.prop)return function(){this.prop[e]=t[e]};switch(e){case"margin":return this.setMargin.bind(this,t.margin);case"jsPDF":return function(){return this.opt.jsPDF=t.jsPDF,this.setPageSize()};case"pageSize":return this.setPageSize.bind(this,t.pageSize);default:return function(){this.opt[e]=t[e]}}}),this);return this.then((function(){return this.thenList(e)}))},s.prototype.get=function(t,e){return this.then((function(){var r=t in s.template.prop?this.prop[t]:this.opt[t];return e?e(r):r}))},s.prototype.setMargin=function(t){return this.then((function(){switch(a(t)){case"number":t=[t,t,t,t];case"array":if(2===t.length&&(t=[t[0],t[1],t[0],t[1]]),4===t.length)break;default:return this.error("Invalid margin array.")}this.opt.margin=t})).then(this.setPageSize)},s.prototype.setPageSize=function(t){function e(t,e){return Math.floor(t*e/72*96)}return this.then((function(){(t=t||E.getPageSize(this.opt.jsPDF)).hasOwnProperty("inner")||(t.inner={width:t.width-this.opt.margin[1]-this.opt.margin[3],height:t.height-this.opt.margin[0]-this.opt.margin[2]},t.inner.px={width:e(t.inner.width,t.k),height:e(t.inner.height,t.k)},t.inner.ratio=t.inner.height/t.inner.width),this.prop.pageSize=t}))},s.prototype.setProgress=function(t,e,r,n){return null!=t&&(this.progress.val=t),null!=e&&(this.progress.state=e),null!=r&&(this.progress.n=r),null!=n&&(this.progress.stack=n),this.progress.ratio=this.progress.val/this.progress.state,this},s.prototype.updateProgress=function(t,e,r,n){return this.setProgress(t?this.progress.val+t:null,e||null,r?this.progress.n+r:null,n?this.progress.stack.concat(n):null)},s.prototype.then=function(t,e){var r=this;return this.thenCore(t,e,(function(t,e){return r.updateProgress(null,null,1,[t]),Promise.prototype.then.call(this,(function(e){return r.updateProgress(null,t),e})).then(t,e).then((function(t){return r.updateProgress(1),t}))}))},s.prototype.thenCore=function(t,e,r){r=r||Promise.prototype.then;t&&(t=t.bind(this)),e&&(e=e.bind(this));var n=-1!==Promise.toString().indexOf("[native code]")&&"Promise"===Promise.name?this:s.convert(Object.assign({},this),Promise.prototype),i=r.call(n,t,e);return s.convert(i,this.__proto__)},s.prototype.thenExternal=function(t,e){return Promise.prototype.then.call(this,t,e)},s.prototype.thenList=function(t){var e=this;return t.forEach((function(t){e=e.thenCore(t)})),e},s.prototype.catch=function(t){t&&(t=t.bind(this));var e=Promise.prototype.catch.call(this,t);return s.convert(e,this)},s.prototype.catchExternal=function(t){return Promise.prototype.catch.call(this,t)},s.prototype.error=function(t){return this.then((function(){throw new Error(t)}))},s.prototype.using=s.prototype.set,s.prototype.saveAs=s.prototype.save,s.prototype.export=s.prototype.output,s.prototype.run=s.prototype.then,E.getPageSize=function(e,r,n){if("object"===__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default()(e)){var i=e;e=i.orientation,r=i.unit||r,n=i.format||n}r=r||"mm",n=n||"a4",e=(""+(e||"P")).toLowerCase();var a,o=(""+n).toLowerCase(),s={a0:[2383.94,3370.39],a1:[1683.78,2383.94],a2:[1190.55,1683.78],a3:[841.89,1190.55],a4:[595.28,841.89],a5:[419.53,595.28],a6:[297.64,419.53],a7:[209.76,297.64],a8:[147.4,209.76],a9:[104.88,147.4],a10:[73.7,104.88],b0:[2834.65,4008.19],b1:[2004.09,2834.65],b2:[1417.32,2004.09],b3:[1000.63,1417.32],b4:[708.66,1000.63],b5:[498.9,708.66],b6:[354.33,498.9],b7:[249.45,354.33],b8:[175.75,249.45],b9:[124.72,175.75],b10:[87.87,124.72],c0:[2599.37,3676.54],c1:[1836.85,2599.37],c2:[1298.27,1836.85],c3:[918.43,1298.27],c4:[649.13,918.43],c5:[459.21,649.13],c6:[323.15,459.21],c7:[229.61,323.15],c8:[161.57,229.61],c9:[113.39,161.57],c10:[79.37,113.39],dl:[311.81,623.62],letter:[612,792],"government-letter":[576,756],legal:[612,1008],"junior-legal":[576,360],ledger:[1224,792],tabloid:[792,1224],"credit-card":[153,243]};switch(r){case"pt":a=1;break;case"mm":a=72/25.4;break;case"cm":a=72/2.54;break;case"in":a=72;break;case"px":a=.75;break;case"pc":case"em":a=12;break;case"ex":a=6;break;default:throw"Invalid unit: "+r}var c,u=0,h=0;if(s.hasOwnProperty(o))u=s[o][1]/a,h=s[o][0]/a;else try{u=n[1],h=n[0]}catch(t){throw new Error("Invalid format: "+n)}if("p"===e||"portrait"===e)e="p",h>u&&(c=h,h=u,u=c);else{if("l"!==e&&"landscape"!==e)throw"Invalid orientation: "+e;e="l",u>h&&(c=h,h=u,u=c)}return{width:h,height:u,unit:r,k:a,orientation:e}},e.html=function(t,e){(e=e||{}).callback=e.callback||function(){},e.html2canvas=e.html2canvas||{},e.html2canvas.canvas=e.html2canvas.canvas||this.canvas,e.jsPDF=e.jsPDF||this,e.fontFaces=e.fontFaces?e.fontFaces.map(jt):null;var r=new s(e);return e.worker?r:r.from(t).doCallback()}}(E.API),E.API.addJS=function(t){return Ht=t,this.internal.events.subscribe("postPutResources",(function(){Ut=this.internal.newObject(),this.internal.out("<<"),this.internal.out("/Names [(EmbeddedJS) "+(Ut+1)+" 0 R]"),this.internal.out(">>"),this.internal.out("endobj"),zt=this.internal.newObject(),this.internal.out("<<"),this.internal.out("/S /JavaScript"),this.internal.out("/JS ("+Ht+")"),this.internal.out(">>"),this.internal.out("endobj")})),this.internal.events.subscribe("putCatalog",(function(){void 0!==Ut&&void 0!==zt&&this.internal.out("/Names <</JavaScript "+Ut+" 0 R>>")})),this},
+function(t){t.loadFile=function(t,e,r){return function(t,e,r){e=!1!==e,r="function"==typeof r?r:function(){};var n=void 0;try{n=function(t,e,r){var n=new XMLHttpRequest,i=0,a=function(t){var e=t.length,r=[],n=String.fromCharCode;for(i=0;i<e;i+=1)r.push(n(255&t.charCodeAt(i)));return r.join("")};if(n.open("GET",t,!e),n.overrideMimeType("text/plain; charset=x-user-defined"),!1===e&&(n.onload=function(){200===n.status?r(a(this.responseText)):r(void 0)}),n.send(null),e&&200===n.status)return a(n.responseText)}(t,e,r)}catch(t){}return n}(t,e,r)},t.loadImageFile=t.loadFile}(E.API),function(e){function r(){return(n.html2canvas?Promise.resolve(n.html2canvas):__webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 206))).catch((function(t){return Promise.reject(new Error("Could not load html2canvas: "+t))})).then((function(t){return t.default?t.default:t}))}function i(){return(n.DOMPurify?Promise.resolve(n.DOMPurify):__webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 207))).catch((function(t){return Promise.reject(new Error("Could not load dompurify: "+t))})).then((function(t){return t.default?t.default:t}))}var a=function(e){var r=__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default()(e);return"undefined"===r?"undefined":"string"===r||e instanceof String?"string":"number"===r||e instanceof Number?"number":"function"===r||e instanceof Function?"function":e&&e.constructor===Array?"array":e&&1===e.nodeType?"element":"object"===r?"object":"unknown"},o=function(t,e){var r=document.createElement(t);for(var n in e.className&&(r.className=e.className),e.innerHTML&&e.dompurify&&(r.innerHTML=e.dompurify.sanitize(e.innerHTML)),e.style)r.style[n]=e.style[n];return r},s=function t(e){var r=Object.assign(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default.a.convert(Promise.resolve()),JSON.parse(JSON.stringify(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default.a.template))),n=__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default.a.convert(Promise.resolve(),r);return n=(n=n.setProgress(1,__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default.a,1,[__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default.a])).set(e)};(s.prototype=Object.create(Promise.prototype)).constructor=s,s.convert=function(t,e){return t.__proto__=e||s.prototype,t},s.template={prop:{src:null,container:null,overlay:null,canvas:null,img:null,pdf:null,pageSize:null,callback:function(){}},progress:{val:0,state:null,n:0,stack:[]},opt:{filename:"file.pdf",margin:[0,0,0,0],enableLinks:!0,x:0,y:0,html2canvas:{},jsPDF:{},backgroundColor:"transparent"}},s.prototype.from=function(t,e){return this.then((function(){switch(e=e||function(t){switch(a(t)){case"string":return"string";case"element":return"canvas"===t.nodeName.toLowerCase()?"canvas":"element";default:return"unknown"}}(t)){case"string":return this.then(i).then((function(e){return this.set({src:o("div",{innerHTML:t,dompurify:e})})}));case"element":return this.set({src:t});case"canvas":return this.set({canvas:t});case"img":return this.set({img:t});default:return this.error("Unknown source type.")}}))},s.prototype.to=function(t){switch(t){case"container":return this.toContainer();case"canvas":return this.toCanvas();case"img":return this.toImg();case"pdf":return this.toPdf();default:return this.error("Invalid target.")}},s.prototype.toContainer=function(){return this.thenList([function(){return this.prop.src||this.error("Cannot duplicate - no source HTML.")},function(){return this.prop.pageSize||this.setPageSize()}]).then((function(){var t={position:"relative",display:"inline-block",width:("number"!=typeof this.opt.width||isNaN(this.opt.width)||"number"!=typeof this.opt.windowWidth||isNaN(this.opt.windowWidth)?Math.max(this.prop.src.clientWidth,this.prop.src.scrollWidth,this.prop.src.offsetWidth):this.opt.windowWidth)+"px",left:0,right:0,top:0,margin:"auto",backgroundColor:this.opt.backgroundColor},e=function t(e,r){for(var n=3===e.nodeType?document.createTextNode(e.nodeValue):e.cloneNode(!1),i=e.firstChild;i;i=i.nextSibling)!0!==r&&1===i.nodeType&&"SCRIPT"===i.nodeName||n.appendChild(t(i,r));return 1===e.nodeType&&("CANVAS"===e.nodeName?(n.width=e.width,n.height=e.height,n.getContext("2d").drawImage(e,0,0)):"TEXTAREA"!==e.nodeName&&"SELECT"!==e.nodeName||(n.value=e.value),n.addEventListener("load",(function(){n.scrollTop=e.scrollTop,n.scrollLeft=e.scrollLeft}),!0)),n}(this.prop.src,this.opt.html2canvas.javascriptEnabled);"BODY"===e.tagName&&(t.height=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.clientHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight)+"px"),this.prop.overlay=o("div",{className:"html2pdf__overlay",style:{position:"fixed",overflow:"hidden",zIndex:1e3,left:"-100000px",right:0,bottom:0,top:0}}),this.prop.container=o("div",{className:"html2pdf__container",style:t}),this.prop.container.appendChild(e),this.prop.container.firstChild.appendChild(o("div",{style:{clear:"both",border:"0 none transparent",margin:0,padding:0,height:0}})),this.prop.container.style.float="none",this.prop.overlay.appendChild(this.prop.container),document.body.appendChild(this.prop.overlay),this.prop.container.firstChild.style.position="relative",this.prop.container.height=Math.max(this.prop.container.firstChild.clientHeight,this.prop.container.firstChild.scrollHeight,this.prop.container.firstChild.offsetHeight)+"px"}))},s.prototype.toCanvas=function(){var t=[function(){return document.body.contains(this.prop.container)||this.toContainer()}];return this.thenList(t).then(r).then((function(t){var e=Object.assign({},this.opt.html2canvas);return delete e.onrendered,t(this.prop.container,e)})).then((function(t){(this.opt.html2canvas.onrendered||function(){})(t),this.prop.canvas=t,document.body.removeChild(this.prop.overlay)}))},s.prototype.toContext2d=function(){var t=[function(){return document.body.contains(this.prop.container)||this.toContainer()}];return this.thenList(t).then(r).then((function(t){var e=this.opt.jsPDF,r=this.opt.fontFaces,n="number"!=typeof this.opt.width||isNaN(this.opt.width)||"number"!=typeof this.opt.windowWidth||isNaN(this.opt.windowWidth)?1:this.opt.width/this.opt.windowWidth,i=Object.assign({async:!0,allowTaint:!0,scale:n,scrollX:this.opt.scrollX||0,scrollY:this.opt.scrollY||0,backgroundColor:"#ffffff",imageTimeout:15e3,logging:!0,proxy:null,removeContainer:!0,foreignObjectRendering:!1,useCORS:!1},this.opt.html2canvas);if(delete i.onrendered,e.context2d.autoPaging=void 0===this.opt.autoPaging||this.opt.autoPaging,e.context2d.posX=this.opt.x,e.context2d.posY=this.opt.y,e.context2d.margin=this.opt.margin,e.context2d.fontFaces=r,r)for(var a=0;a<r.length;++a){var o=r[a],s=o.src.find((function(t){return"truetype"===t.format}));s&&e.addFont(s.url,o.ref.name,o.ref.style)}return i.windowHeight=i.windowHeight||0,i.windowHeight=0==i.windowHeight?Math.max(this.prop.container.clientHeight,this.prop.container.scrollHeight,this.prop.container.offsetHeight):i.windowHeight,e.context2d.save(!0),t(this.prop.container,i)})).then((function(t){this.opt.jsPDF.context2d.restore(!0),(this.opt.html2canvas.onrendered||function(){})(t),this.prop.canvas=t,document.body.removeChild(this.prop.overlay)}))},s.prototype.toImg=function(){return this.thenList([function(){return this.prop.canvas||this.toCanvas()}]).then((function(){var t=this.prop.canvas.toDataURL("image/"+this.opt.image.type,this.opt.image.quality);this.prop.img=document.createElement("img"),this.prop.img.src=t}))},s.prototype.toPdf=function(){return this.thenList([function(){return this.toContext2d()}]).then((function(){this.prop.pdf=this.prop.pdf||this.opt.jsPDF}))},s.prototype.output=function(t,e,r){return"img"===(r=r||"pdf").toLowerCase()||"image"===r.toLowerCase()?this.outputImg(t,e):this.outputPdf(t,e)},s.prototype.outputPdf=function(t,e){return this.thenList([function(){return this.prop.pdf||this.toPdf()}]).then((function(){return this.prop.pdf.output(t,e)}))},s.prototype.outputImg=function(t){return this.thenList([function(){return this.prop.img||this.toImg()}]).then((function(){switch(t){case void 0:case"img":return this.prop.img;case"datauristring":case"dataurlstring":return this.prop.img.src;case"datauri":case"dataurl":return document.location.href=this.prop.img.src;default:throw'Image output type "'+t+'" is not supported.'}}))},s.prototype.save=function(t){return this.thenList([function(){return this.prop.pdf||this.toPdf()}]).set(t?{filename:t}:null).then((function(){this.prop.pdf.save(this.opt.filename)}))},s.prototype.doCallback=function(){return this.thenList([function(){return this.prop.pdf||this.toPdf()}]).then((function(){this.prop.callback(this.prop.pdf)}))},s.prototype.set=function(t){if("object"!==a(t))return this;var e=Object.keys(t||{}).map((function(e){if(e in s.template.prop)return function(){this.prop[e]=t[e]};switch(e){case"margin":return this.setMargin.bind(this,t.margin);case"jsPDF":return function(){return this.opt.jsPDF=t.jsPDF,this.setPageSize()};case"pageSize":return this.setPageSize.bind(this,t.pageSize);default:return function(){this.opt[e]=t[e]}}}),this);return this.then((function(){return this.thenList(e)}))},s.prototype.get=function(t,e){return this.then((function(){var r=t in s.template.prop?this.prop[t]:this.opt[t];return e?e(r):r}))},s.prototype.setMargin=function(t){return this.then((function(){switch(a(t)){case"number":t=[t,t,t,t];case"array":if(2===t.length&&(t=[t[0],t[1],t[0],t[1]]),4===t.length)break;default:return this.error("Invalid margin array.")}this.opt.margin=t})).then(this.setPageSize)},s.prototype.setPageSize=function(t){function e(t,e){return Math.floor(t*e/72*96)}return this.then((function(){(t=t||E.getPageSize(this.opt.jsPDF)).hasOwnProperty("inner")||(t.inner={width:t.width-this.opt.margin[1]-this.opt.margin[3],height:t.height-this.opt.margin[0]-this.opt.margin[2]},t.inner.px={width:e(t.inner.width,t.k),height:e(t.inner.height,t.k)},t.inner.ratio=t.inner.height/t.inner.width),this.prop.pageSize=t}))},s.prototype.setProgress=function(t,e,r,n){return null!=t&&(this.progress.val=t),null!=e&&(this.progress.state=e),null!=r&&(this.progress.n=r),null!=n&&(this.progress.stack=n),this.progress.ratio=this.progress.val/this.progress.state,this},s.prototype.updateProgress=function(t,e,r,n){return this.setProgress(t?this.progress.val+t:null,e||null,r?this.progress.n+r:null,n?this.progress.stack.concat(n):null)},s.prototype.then=function(t,e){var r=this;return this.thenCore(t,e,(function(t,e){return r.updateProgress(null,null,1,[t]),Promise.prototype.then.call(this,(function(e){return r.updateProgress(null,t),e})).then(t,e).then((function(t){return r.updateProgress(1),t}))}))},s.prototype.thenCore=function(t,e,r){r=r||Promise.prototype.then;t&&(t=t.bind(this)),e&&(e=e.bind(this));var n=-1!==Promise.toString().indexOf("[native code]")&&"Promise"===Promise.name?this:s.convert(Object.assign({},this),Promise.prototype),i=r.call(n,t,e);return s.convert(i,this.__proto__)},s.prototype.thenExternal=function(t,e){return Promise.prototype.then.call(this,t,e)},s.prototype.thenList=function(t){var e=this;return t.forEach((function(t){e=e.thenCore(t)})),e},s.prototype.catch=function(t){t&&(t=t.bind(this));var e=Promise.prototype.catch.call(this,t);return s.convert(e,this)},s.prototype.catchExternal=function(t){return Promise.prototype.catch.call(this,t)},s.prototype.error=function(t){return this.then((function(){throw new Error(t)}))},s.prototype.using=s.prototype.set,s.prototype.saveAs=s.prototype.save,s.prototype.export=s.prototype.output,s.prototype.run=s.prototype.then,E.getPageSize=function(e,r,n){if("object"===__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default()(e)){var i=e;e=i.orientation,r=i.unit||r,n=i.format||n}r=r||"mm",n=n||"a4",e=(""+(e||"P")).toLowerCase();var a,o=(""+n).toLowerCase(),s={a0:[2383.94,3370.39],a1:[1683.78,2383.94],a2:[1190.55,1683.78],a3:[841.89,1190.55],a4:[595.28,841.89],a5:[419.53,595.28],a6:[297.64,419.53],a7:[209.76,297.64],a8:[147.4,209.76],a9:[104.88,147.4],a10:[73.7,104.88],b0:[2834.65,4008.19],b1:[2004.09,2834.65],b2:[1417.32,2004.09],b3:[1000.63,1417.32],b4:[708.66,1000.63],b5:[498.9,708.66],b6:[354.33,498.9],b7:[249.45,354.33],b8:[175.75,249.45],b9:[124.72,175.75],b10:[87.87,124.72],c0:[2599.37,3676.54],c1:[1836.85,2599.37],c2:[1298.27,1836.85],c3:[918.43,1298.27],c4:[649.13,918.43],c5:[459.21,649.13],c6:[323.15,459.21],c7:[229.61,323.15],c8:[161.57,229.61],c9:[113.39,161.57],c10:[79.37,113.39],dl:[311.81,623.62],letter:[612,792],"government-letter":[576,756],legal:[612,1008],"junior-legal":[576,360],ledger:[1224,792],tabloid:[792,1224],"credit-card":[153,243]};switch(r){case"pt":a=1;break;case"mm":a=72/25.4;break;case"cm":a=72/2.54;break;case"in":a=72;break;case"px":a=.75;break;case"pc":case"em":a=12;break;case"ex":a=6;break;default:throw"Invalid unit: "+r}var c,u=0,h=0;if(s.hasOwnProperty(o))u=s[o][1]/a,h=s[o][0]/a;else try{u=n[1],h=n[0]}catch(t){throw new Error("Invalid format: "+n)}if("p"===e||"portrait"===e)e="p",h>u&&(c=h,h=u,u=c);else{if("l"!==e&&"landscape"!==e)throw"Invalid orientation: "+e;e="l",u>h&&(c=h,h=u,u=c)}return{width:h,height:u,unit:r,k:a,orientation:e}},e.html=function(t,e){(e=e||{}).callback=e.callback||function(){},e.html2canvas=e.html2canvas||{},e.html2canvas.canvas=e.html2canvas.canvas||this.canvas,e.jsPDF=e.jsPDF||this,e.fontFaces=e.fontFaces?e.fontFaces.map(jt):null;var r=new s(e);return e.worker?r:r.from(t).doCallback()}}(E.API),E.API.addJS=function(t){return Ht=t,this.internal.events.subscribe("postPutResources",(function(){Ut=this.internal.newObject(),this.internal.out("<<"),this.internal.out("/Names [(EmbeddedJS) "+(Ut+1)+" 0 R]"),this.internal.out(">>"),this.internal.out("endobj"),zt=this.internal.newObject(),this.internal.out("<<"),this.internal.out("/S /JavaScript"),this.internal.out("/JS ("+Ht+")"),this.internal.out(">>"),this.internal.out("endobj")})),this.internal.events.subscribe("putCatalog",(function(){void 0!==Ut&&void 0!==zt&&this.internal.out("/Names <</JavaScript "+Ut+" 0 R>>")})),this},
 /**
  * @license
  * Copyright (c) 2014 Steven Spungin (TwelveTone LLC)  steven@twelvetone.tv
@@ -2708,7 +2708,7 @@ function(t){var e=function(t){for(var e=t.length,r=new Uint8Array(e),n=0;n<e;n++
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * ====================================================================
  */
-function(t){function e(){return(n.canvg?Promise.resolve(n.canvg):__webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 207))).catch((function(t){return Promise.reject(new Error("Could not load canvg: "+t))})).then((function(t){return t.default?t.default:t}))}E.API.addSvgAsImage=function(t,r,n,i,o,s,c,u){if(isNaN(r)||isNaN(n))throw a.error("jsPDF.addSvgAsImage: Invalid coordinates",arguments),new Error("Invalid coordinates passed to jsPDF.addSvgAsImage");if(isNaN(i)||isNaN(o))throw a.error("jsPDF.addSvgAsImage: Invalid measurements",arguments),new Error("Invalid measurements (width and/or height) passed to jsPDF.addSvgAsImage");var h=document.createElement("canvas");h.width=i,h.height=o;var l=h.getContext("2d");l.fillStyle="#fff",l.fillRect(0,0,h.width,h.height);var f={ignoreMouse:!0,ignoreAnimation:!0,ignoreDimensions:!0},d=this;return e().then((function(e){return e.fromString(l,t,f)}),(function(){return Promise.reject(new Error("Could not load canvg."))})).then((function(t){return t.render(f)})).then((function(){d.addImage(h.toDataURL("image/jpeg",1),r,n,i,o,c,u)}))}}(),E.API.putTotalPages=function(t){var e,r=0;parseInt(this.internal.getFont().id.substr(1),10)<15?(e=new RegExp(t,"g"),r=this.internal.getNumberOfPages()):(e=new RegExp(this.pdfEscape16(t,this.internal.getFont()),"g"),r=this.pdfEscape16(this.internal.getNumberOfPages()+"",this.internal.getFont()));for(var n=1;n<=this.internal.getNumberOfPages();n++)for(var i=0;i<this.internal.pages[n].length;i++)this.internal.pages[n][i]=this.internal.pages[n][i].replace(e,r);return this},E.API.viewerPreferences=function(e,r){var n;e=e||{},r=r||!1;var i,a,o,s={HideToolbar:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.3},HideMenubar:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.3},HideWindowUI:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.3},FitWindow:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.3},CenterWindow:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.3},DisplayDocTitle:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.4},NonFullScreenPageMode:{defaultValue:"UseNone",value:"UseNone",type:"name",explicitSet:!1,valueSet:["UseNone","UseOutlines","UseThumbs","UseOC"],pdfVersion:1.3},Direction:{defaultValue:"L2R",value:"L2R",type:"name",explicitSet:!1,valueSet:["L2R","R2L"],pdfVersion:1.3},ViewArea:{defaultValue:"CropBox",value:"CropBox",type:"name",explicitSet:!1,valueSet:["MediaBox","CropBox","TrimBox","BleedBox","ArtBox"],pdfVersion:1.4},ViewClip:{defaultValue:"CropBox",value:"CropBox",type:"name",explicitSet:!1,valueSet:["MediaBox","CropBox","TrimBox","BleedBox","ArtBox"],pdfVersion:1.4},PrintArea:{defaultValue:"CropBox",value:"CropBox",type:"name",explicitSet:!1,valueSet:["MediaBox","CropBox","TrimBox","BleedBox","ArtBox"],pdfVersion:1.4},PrintClip:{defaultValue:"CropBox",value:"CropBox",type:"name",explicitSet:!1,valueSet:["MediaBox","CropBox","TrimBox","BleedBox","ArtBox"],pdfVersion:1.4},PrintScaling:{defaultValue:"AppDefault",value:"AppDefault",type:"name",explicitSet:!1,valueSet:["AppDefault","None"],pdfVersion:1.6},Duplex:{defaultValue:"",value:"none",type:"name",explicitSet:!1,valueSet:["Simplex","DuplexFlipShortEdge","DuplexFlipLongEdge","none"],pdfVersion:1.7},PickTrayByPDFSize:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.7},PrintPageRange:{defaultValue:"",value:"",type:"array",explicitSet:!1,valueSet:null,pdfVersion:1.7},NumCopies:{defaultValue:1,value:1,type:"integer",explicitSet:!1,valueSet:null,pdfVersion:1.7}},c=Object.keys(s),u=[],h=0,l=0,f=0;function d(t,e){var r,n=!1;for(r=0;r<t.length;r+=1)t[r]===e&&(n=!0);return n}if(void 0===this.internal.viewerpreferences&&(this.internal.viewerpreferences={},this.internal.viewerpreferences.configuration=JSON.parse(JSON.stringify(s)),this.internal.viewerpreferences.isSubscribed=!1),n=this.internal.viewerpreferences.configuration,"reset"===e||!0===r){var p=c.length;for(f=0;f<p;f+=1)n[c[f]].value=n[c[f]].defaultValue,n[c[f]].explicitSet=!1}if("object"===__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default()(e))for(a in e)if(o=e[a],d(c,a)&&void 0!==o){if("boolean"===n[a].type&&"boolean"==typeof o)n[a].value=o;else if("name"===n[a].type&&d(n[a].valueSet,o))n[a].value=o;else if("integer"===n[a].type&&Number.isInteger(o))n[a].value=o;else if("array"===n[a].type){for(h=0;h<o.length;h+=1)if(i=!0,1===o[h].length&&"number"==typeof o[h][0])u.push(String(o[h]-1));else if(o[h].length>1){for(l=0;l<o[h].length;l+=1)"number"!=typeof o[h][l]&&(i=!1);!0===i&&u.push([o[h][0]-1,o[h][1]-1].join(" "))}n[a].value="["+u.join(" ")+"]"}else n[a].value=n[a].defaultValue;n[a].explicitSet=!0}return!1===this.internal.viewerpreferences.isSubscribed&&(this.internal.events.subscribe("putCatalog",(function(){var t,e=[];for(t in n)!0===n[t].explicitSet&&("name"===n[t].type?e.push("/"+t+" /"+n[t].value):e.push("/"+t+" "+n[t].value));0!==e.length&&this.internal.write("/ViewerPreferences\n<<\n"+e.join("\n")+"\n>>")})),this.internal.viewerpreferences.isSubscribed=!0),this.internal.viewerpreferences.configuration=n,this},
+function(t){function e(){return(n.canvg?Promise.resolve(n.canvg):__webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 208))).catch((function(t){return Promise.reject(new Error("Could not load canvg: "+t))})).then((function(t){return t.default?t.default:t}))}E.API.addSvgAsImage=function(t,r,n,i,o,s,c,u){if(isNaN(r)||isNaN(n))throw a.error("jsPDF.addSvgAsImage: Invalid coordinates",arguments),new Error("Invalid coordinates passed to jsPDF.addSvgAsImage");if(isNaN(i)||isNaN(o))throw a.error("jsPDF.addSvgAsImage: Invalid measurements",arguments),new Error("Invalid measurements (width and/or height) passed to jsPDF.addSvgAsImage");var h=document.createElement("canvas");h.width=i,h.height=o;var l=h.getContext("2d");l.fillStyle="#fff",l.fillRect(0,0,h.width,h.height);var f={ignoreMouse:!0,ignoreAnimation:!0,ignoreDimensions:!0},d=this;return e().then((function(e){return e.fromString(l,t,f)}),(function(){return Promise.reject(new Error("Could not load canvg."))})).then((function(t){return t.render(f)})).then((function(){d.addImage(h.toDataURL("image/jpeg",1),r,n,i,o,c,u)}))}}(),E.API.putTotalPages=function(t){var e,r=0;parseInt(this.internal.getFont().id.substr(1),10)<15?(e=new RegExp(t,"g"),r=this.internal.getNumberOfPages()):(e=new RegExp(this.pdfEscape16(t,this.internal.getFont()),"g"),r=this.pdfEscape16(this.internal.getNumberOfPages()+"",this.internal.getFont()));for(var n=1;n<=this.internal.getNumberOfPages();n++)for(var i=0;i<this.internal.pages[n].length;i++)this.internal.pages[n][i]=this.internal.pages[n][i].replace(e,r);return this},E.API.viewerPreferences=function(e,r){var n;e=e||{},r=r||!1;var i,a,o,s={HideToolbar:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.3},HideMenubar:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.3},HideWindowUI:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.3},FitWindow:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.3},CenterWindow:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.3},DisplayDocTitle:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.4},NonFullScreenPageMode:{defaultValue:"UseNone",value:"UseNone",type:"name",explicitSet:!1,valueSet:["UseNone","UseOutlines","UseThumbs","UseOC"],pdfVersion:1.3},Direction:{defaultValue:"L2R",value:"L2R",type:"name",explicitSet:!1,valueSet:["L2R","R2L"],pdfVersion:1.3},ViewArea:{defaultValue:"CropBox",value:"CropBox",type:"name",explicitSet:!1,valueSet:["MediaBox","CropBox","TrimBox","BleedBox","ArtBox"],pdfVersion:1.4},ViewClip:{defaultValue:"CropBox",value:"CropBox",type:"name",explicitSet:!1,valueSet:["MediaBox","CropBox","TrimBox","BleedBox","ArtBox"],pdfVersion:1.4},PrintArea:{defaultValue:"CropBox",value:"CropBox",type:"name",explicitSet:!1,valueSet:["MediaBox","CropBox","TrimBox","BleedBox","ArtBox"],pdfVersion:1.4},PrintClip:{defaultValue:"CropBox",value:"CropBox",type:"name",explicitSet:!1,valueSet:["MediaBox","CropBox","TrimBox","BleedBox","ArtBox"],pdfVersion:1.4},PrintScaling:{defaultValue:"AppDefault",value:"AppDefault",type:"name",explicitSet:!1,valueSet:["AppDefault","None"],pdfVersion:1.6},Duplex:{defaultValue:"",value:"none",type:"name",explicitSet:!1,valueSet:["Simplex","DuplexFlipShortEdge","DuplexFlipLongEdge","none"],pdfVersion:1.7},PickTrayByPDFSize:{defaultValue:!1,value:!1,type:"boolean",explicitSet:!1,valueSet:[!0,!1],pdfVersion:1.7},PrintPageRange:{defaultValue:"",value:"",type:"array",explicitSet:!1,valueSet:null,pdfVersion:1.7},NumCopies:{defaultValue:1,value:1,type:"integer",explicitSet:!1,valueSet:null,pdfVersion:1.7}},c=Object.keys(s),u=[],h=0,l=0,f=0;function d(t,e){var r,n=!1;for(r=0;r<t.length;r+=1)t[r]===e&&(n=!0);return n}if(void 0===this.internal.viewerpreferences&&(this.internal.viewerpreferences={},this.internal.viewerpreferences.configuration=JSON.parse(JSON.stringify(s)),this.internal.viewerpreferences.isSubscribed=!1),n=this.internal.viewerpreferences.configuration,"reset"===e||!0===r){var p=c.length;for(f=0;f<p;f+=1)n[c[f]].value=n[c[f]].defaultValue,n[c[f]].explicitSet=!1}if("object"===__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_typeof___default()(e))for(a in e)if(o=e[a],d(c,a)&&void 0!==o){if("boolean"===n[a].type&&"boolean"==typeof o)n[a].value=o;else if("name"===n[a].type&&d(n[a].valueSet,o))n[a].value=o;else if("integer"===n[a].type&&Number.isInteger(o))n[a].value=o;else if("array"===n[a].type){for(h=0;h<o.length;h+=1)if(i=!0,1===o[h].length&&"number"==typeof o[h][0])u.push(String(o[h]-1));else if(o[h].length>1){for(l=0;l<o[h].length;l+=1)"number"!=typeof o[h][l]&&(i=!1);!0===i&&u.push([o[h][0]-1,o[h][1]-1].join(" "))}n[a].value="["+u.join(" ")+"]"}else n[a].value=n[a].defaultValue;n[a].explicitSet=!0}return!1===this.internal.viewerpreferences.isSubscribed&&(this.internal.events.subscribe("putCatalog",(function(){var t,e=[];for(t in n)!0===n[t].explicitSet&&("name"===n[t].type?e.push("/"+t+" /"+n[t].value):e.push("/"+t+" "+n[t].value));0!==e.length&&this.internal.write("/ViewerPreferences\n<<\n"+e.join("\n")+"\n>>")})),this.internal.viewerpreferences.isSubscribed=!0),this.internal.viewerpreferences.configuration=n,this},
 /** ====================================================================
  * @license
  * jsPDF XMP metadata plugin
@@ -14627,15 +14627,15 @@ Vue.component('arrival', __webpack_require__(143));
 Vue.component('checkdetinch', __webpack_require__(148));
 Vue.component('checkdetflap', __webpack_require__(153));
 Vue.component('presenverific', __webpack_require__(158));
-Vue.component('nationality', __webpack_require__(163));
-Vue.component('companies', __webpack_require__(168));
+Vue.component('nationality', __webpack_require__(164));
+Vue.component('companies', __webpack_require__(169));
 // Vue.component('regional', require('./components/Regionals.vue'));
-Vue.component('donations', __webpack_require__(173));
-Vue.component('confiscations', __webpack_require__(180));
-Vue.component('inspectioncargos', __webpack_require__(185));
-Vue.component('certificationtuna', __webpack_require__(190));
-Vue.component('materials', __webpack_require__(195));
-Vue.component('profiles', __webpack_require__(200));
+Vue.component('donations', __webpack_require__(174));
+Vue.component('confiscations', __webpack_require__(181));
+Vue.component('inspectioncargos', __webpack_require__(186));
+Vue.component('certificationtuna', __webpack_require__(191));
+Vue.component('materials', __webpack_require__(196));
+Vue.component('profiles', __webpack_require__(201));
 // Vue.component('noticepreviouszarpe', require('./components/noticePreviousZarpe.vue'));
 // Vue.component('processingplant', require('./components/processingPlant.vue'));
 
@@ -43217,6 +43217,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -43272,7 +43281,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       netWidth: "",
       eyeFlake: "",
       longNet: "",
-      materialArt: "",
+      // materialArt: "",
       equipDevi: "",
       captain: "",
       typeHook: "",
@@ -43327,6 +43336,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       arrayComp: { id: 0, name: '' },
       arrayCompany: [],
       id_Company: 0,
+      arrayMaterial: { id: 0, name: '' },
+      arrayMaterialArt: [],
+      id_material: 0,
 
       noApply: "No aplica",
 
@@ -43565,7 +43577,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.eyeFlake = null;
       this.typeHook = null;
       this.longNet = null;
-      this.materialArt = null;
+      // this.materialArt = null;
       this.equipDevi = null;
       this.captain = null;
       this.observation = null;
@@ -43590,6 +43602,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.arrayPtZarpe = { id: 0, namePort: '', name: '' };
       this.arrayPtArrival = { id: 0, namePort: '', name: '' };
       this.arrayFg = { id: 0, name: '' };
+      this.arrayMaterial = { id: 0, name: '' };
       this.arrayNation = { id: 0, name: '' };
       this.arrayOr = { id: 0, name: '' };
       this.arrayZoneAuto = { id: 0, name: '' };
@@ -43628,13 +43641,18 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
 
       return "" + name;
     },
-    nameWithFisheryAuthorized: function nameWithFisheryAuthorized(_ref8) {
+    nameWithMaterialArt: function nameWithMaterialArt(_ref8) {
       var name = _ref8.name;
 
       return "" + name;
     },
-    nameWithCompany: function nameWithCompany(_ref9) {
+    nameWithFisheryAuthorized: function nameWithFisheryAuthorized(_ref9) {
       var name = _ref9.name;
+
+      return "" + name;
+    },
+    nameWithCompany: function nameWithCompany(_ref10) {
+      var name = _ref10.name;
 
       return "" + name;
     },
@@ -43685,6 +43703,16 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       axios.get(url).then(function (response) {
         var respuesta = response.data;
         me.arrayFlag = respuesta.flag;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    selectMaterial: function selectMaterial() {
+      var me = this;
+      var url = "/materials/selectMaterials";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayMaterialArt = respuesta.materials;
       }).catch(function (error) {
         console.log(error);
       });
@@ -43749,7 +43777,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.eyeFlake = data["eyeFlake"];
       this.typeHook = data["typeHook"];
       this.longNet = data["longNet"];
-      this.materialArt = data["materialArt"];
+      // this.materialArt = data["materialArt"];
       this.equipDevi = data["equipDevi"];
       this.captain = data["captain"];
       this.observation = data["observation"];
@@ -43779,6 +43807,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.arrayPtArrival.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
       this.arrayFg.name = data["nameFlag"];
+      this.arrayMaterial.id = data["id_material"];
+      this.arrayMaterial.name = data["nameMaterial"];
       this.arrayNation.id = data["id_nationality"];
       this.arrayNation.name = data["nameNationality"];
       this.arrayOr.id = data["id_orop"];
@@ -43818,9 +43848,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       if (this.typeHook == "") {
         this.typeHook = this.noApply;
       }
-      if (this.materialArt == "") {
-        this.materialArt = this.noApply;
-      }
+      // if (this.materialArt == "") {
+      //   this.materialArt = this.noApply;
+      // }
       if (this.equipDevi == "") {
         this.equipDevi = this.noApply;
       }
@@ -43841,7 +43871,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         eyeFlake: this.eyeFlake.toUpperCase(),
         typeHook: this.typeHook.toUpperCase(),
         longNet: this.longNet.toUpperCase(),
-        materialArt: this.materialArt.toUpperCase(),
+        // materialArt: this.materialArt.toUpperCase(),
         equipDevi: this.equipDevi.toUpperCase(),
         captain: this.captain.toUpperCase(),
         observation: this.observation.toUpperCase(),
@@ -43866,12 +43896,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         'id_portZarpe': this.arrayPtZarpe.id,
         'id_portArrival': this.arrayPtArrival.id,
         'id_flag': this.arrayFg.id,
+        'id_material': this.arrayMaterial.id,
         'id_nationality': this.arrayNation.id,
         'id_orop': this.arrayOr.id,
         'id_zoneAutoFisher': this.arrayZoneAuto.id,
-        'id_company': this.arrayComp.id
-        // 'data': this.arrayFa,
-
+        'id_company': this.arrayComp.id,
+        'data': this.arrayFa
 
       }).then(function (response) {
         me.hideForm();
@@ -43898,9 +43928,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       if (this.longNet == "") {
         this.longNet = this.noApply;
       }
-      if (this.materialArt == "") {
-        this.materialArt = this.noApply;
-      }
+      // if (this.materialArt == "") {
+      //   this.materialArt = this.noApply;
+      // }
       if (this.equipDevi == "") {
         this.equipDevi = this.noApply;
       }
@@ -43922,7 +43952,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         eyeFlake: this.eyeFlake.toUpperCase(),
         typeHook: this.typeHook.toUpperCase(),
         longNet: this.longNet.toUpperCase(),
-        materialArt: this.materialArt.toUpperCase(),
+        // materialArt: this.materialArt.toUpperCase(),
         equipDevi: this.equipDevi.toUpperCase(),
         captain: this.captain.toUpperCase(),
         observation: this.observation.toUpperCase(),
@@ -43947,6 +43977,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         'id_portZarpe': this.arrayPtZarpe.id,
         'id_portArrival': this.arrayPtArrival.id,
         'id_flag': this.arrayFg.id,
+        'id_material': this.arrayMaterial.id,
         'id_nationality': this.arrayNation.id,
         'id_orop': this.arrayOr.id,
         'id_zoneAutoFisher': this.arrayZoneAuto.id,
@@ -44067,6 +44098,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
     this.selectRegion();
     this.selectPort();
     this.selectFlag();
+    this.selectMaterial();
     this.selectNationality();
     this.selectOrop();
     this.selectZoneAutoFisher();
@@ -47669,38 +47701,32 @@ var render = function() {
                               1
                             ),
                             _vm._v("   \n                 "),
+                            _vm._v(" "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
                               [
-                                _c(
-                                  "md-field",
-                                  { attrs: { "md-clearable": "" } },
-                                  [
-                                    _c(
-                                      "label",
-                                      { attrs: { for: "first-name" } },
-                                      [_vm._v("Material de Arte de Pesca")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("md-input", {
-                                      attrs: {
-                                        name: "first-name",
-                                        id: "first-name",
-                                        autocomplete: "given-name",
-                                        disabled: _vm.sending
-                                      },
-                                      model: {
-                                        value: _vm.materialArt,
-                                        callback: function($$v) {
-                                          _vm.materialArt = $$v
-                                        },
-                                        expression: "materialArt"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
+                                _c("label", [
+                                  _vm._v("Material de Arte de Pesca")
+                                ]),
+                                _vm._v(" "),
+                                _c("multiselect", {
+                                  attrs: {
+                                    options: _vm.arrayMaterialArt,
+                                    placeholder:
+                                      "Seleccione el material de arte de pesca",
+                                    "custom-label": _vm.nameWithMaterialArt,
+                                    label: "name",
+                                    "track-by": "name"
+                                  },
+                                  model: {
+                                    value: _vm.arrayMaterial,
+                                    callback: function($$v) {
+                                      _vm.arrayMaterial = $$v
+                                    },
+                                    expression: "arrayMaterial"
+                                  }
+                                })
                               ],
                               1
                             ),
@@ -49689,6 +49715,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -49803,7 +49844,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       arrayZoneAuto: { id: 0, name: '' },
       arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
-      arrayFa: { id: 0, name: '' },
+      arrayFa: [],
       arrayFisheryAuthorized: [],
       id_fisheryAuthorized: 0,
       arrayComp: { id: 0, name: '' },
@@ -50139,8 +50180,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.arrayFg = { id: 0, name: '' };
       this.arrayNation = { id: 0, name: '' };
       this.arrayZoneAuto = { id: 0, name: '' };
-      this.arrayFa = { id: 0, name: '' };
+      this.arrayFa = [];
       this.arrayComp = { id: 0, name: '' };
+      this.arrayTarget = [];
+      this.arrayFauna = [];
     },
     nameWithRegion: function nameWithRegion(_ref2) {
       var nameMuni = _ref2.nameMuni,
@@ -50242,6 +50285,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
     },
     selectFisheryAuthorized: function selectFisheryAuthorized() {
       var me = this;
+      me.arrayFa = [];
       var url = "/arrivals/selectFisheryAuthorized";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
@@ -50323,8 +50367,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.arrayNation.name = data["nameNationality"];
       this.arrayZoneAuto.id = data["id_zoneAutoFisher"];
       this.arrayZoneAuto.name = data["nameZoneAutoFisher"];
-      this.arrayFa.id = data["id_fisheryAuthorized"];
-      this.arrayFa.name = data["nameFishery"];
+      this.arrayFa.id = data["arrayFa"];
       this.arrayComp.id = data["id_company"];
       this.arrayComp.name = data["nameCompany"];
     },
@@ -50462,11 +50505,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         'id_nationality': this.arrayNation.id,
         'id_zoneAutoFisher': this.arrayZoneAuto.id,
         'id_fisheryAuthorized': this.arrayFa.id,
-        'id_company': this.arrayComp.id
+        'id_company': this.arrayComp.id,
 
-        // 'fishery': this.arrayFa,
-        // 'fauna': this.arrayFauna,
-        // 'target': this.arrayTarget,
+        'fishery': this.arrayFa,
+        'fauna': this.arrayFauna,
+        'target': this.arrayTarget
       }).then(function (response) {
         me.hideForm();
         me.message("Guardado", "Guardo ");
@@ -52037,11 +52080,15 @@ var render = function() {
                                 _c("multiselect", {
                                   attrs: {
                                     options: _vm.arrayFisheryAuthorized,
-                                    placeholder: "Pesquería Autorizada",
-                                    "custom-label":
-                                      _vm.nameWithFisheryAuthorized,
+                                    multiple: true,
+                                    "close-on-select": false,
+                                    "clear-on-select": false,
+                                    "preserve-search": false,
+                                    placeholder:
+                                      "Seleccione Pesquería Autorizada",
                                     label: "name",
-                                    "track-by": "name"
+                                    "track-by": "name",
+                                    "preselect-first": false
                                   },
                                   model: {
                                     value: _vm.arrayFa,
@@ -55338,6 +55385,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
 
       this.arrayComp = { id: 0, name: '' };
       this.arrayRegl = { id: 0, name: '' };
+      this.arrayDets = [];
     },
     showUpdate: function showUpdate() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -55431,7 +55479,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         observation: this.observation.toUpperCase(),
         date: this.date,
         'id_company': this.arrayComp.id,
-        'id_regional': this.arrayRegl.id
+        'id_regional': this.arrayRegl.id,
+        'detinch': this.arrayDets
       }).then(function (response) {
         me.hideForm();
         me.message("Guardado", "Guardo ");
@@ -58290,6 +58339,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.form.location = null;
       this.observation = null;
       this.date = null;
+      this.arrayCheckDet = [];
 
       this.arrayComp = { id: 0, name: '' };
       this.arrayRegl = { id: 0, name: '' };
@@ -58386,7 +58436,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         observation: this.observation.toUpperCase(),
         date: this.date,
         'id_company': this.arrayComp.id,
-        'id_regional': this.arrayRegl.id
+        'id_regional': this.arrayRegl.id,
+        'detflap': this.arrayDets2
       }).then(function (response) {
         me.hideForm();
         me.message("Guardado", "Guardo ");
@@ -60174,7 +60225,7 @@ var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(161)
 /* template */
-var __vue_template__ = __webpack_require__(162)
+var __vue_template__ = __webpack_require__(163)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -60267,10 +60318,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_toasted___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_toasted__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_select__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_select__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue2_collapse__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue2_collapse___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue2_collapse__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
@@ -60702,6 +60755,61 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -60714,15 +60822,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_toasted___default.a, {
   iconPack: 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
 });
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdButton"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdContent"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdField"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdCard"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdMenu"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdSwitch"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdList"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdButton"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdContent"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdField"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdCard"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdMenu"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdSwitch"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdList"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDatepicker"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -60791,16 +60899,16 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
     form: {
 
       nameShip: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       cruise: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       nameFish: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       nameCaptain: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       }
       // equipment: {
       //   required
@@ -61191,6 +61299,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
 
 /***/ }),
 /* 162 */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,e){ true?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports["vue2-collapse"]=e():t["vue2-collapse"]=e()}("undefined"!=typeof self?self:this,function(){return function(t){function e(s){if(n[s])return n[s].exports;var o=n[s]={i:s,l:!1,exports:{}};return t[s].call(o.exports,o,o.exports,e),o.l=!0,o.exports}var n={};return e.m=t,e.c=n,e.d=function(t,n,s){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:s})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="/",e(e.s=4)}([function(t,e,n){"use strict";var s="v-collapse",o={prefix:s,basename:"collapse",togglerClassDefault:s+"-toggler",contentClassDefault:s+"-content",contentClassEnd:s+"-content-end"},i=function(t,e){t.classList.toggle(e.contentClassEnd)},r=function(t,e){t.classList.remove(e.contentClassEnd)},c=function(t,e){t.classList.add(e.contentClassEnd)};t.exports={defaults:o,toggleElement:i,closeElement:r,openElement:c}},function(t,e){t.exports=function(t,e,n,s,o,i){var r,c=t=t||{},u=typeof t.default;"object"!==u&&"function"!==u||(r=t,c=t.default);var l="function"==typeof c?c.options:c;e&&(l.render=e.render,l.staticRenderFns=e.staticRenderFns,l._compiled=!0),n&&(l.functional=!0),o&&(l._scopeId=o);var a;if(i?(a=function(t){t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,t||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),s&&s.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(i)},l._ssrRegister=a):s&&(a=s),a){var f=l.functional,d=f?l.render:l.beforeCreate;f?(l._injectStyles=a,l.render=function(t,e){return a.call(e),d(t,e)}):l.beforeCreate=d?[].concat(d,a):[a]}return{esModule:r,exports:c,options:l}}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s=n(0);e.default={data:function(){return{nodes:{},status:!1}},props:["active"],watch:{active:function(t){null!=t&&(this.status=t)},status:function(t,e){if(this.$emit("onStatusChange",{vm:this,status:t,old_status:e}),!1===this.$parent.onlyOneActive)(0,s.toggleElement)(this.nodes.content,this.$options.$vc.settings);else if(!0===t&&!1===e){var n=this.$parent.$children.filter(function(t){return!0===t.status});n.length>1&&n.forEach(function(t){t.close(),(0,s.closeElement)(t.nodes.content,this.$options.$vc.settings)}.bind(this)),(0,s.openElement)(this.nodes.content,this.$options.$vc.settings),this.open()}else!0===e&&!1===t&&((0,s.closeElement)(this.nodes.content,this.$options.$vc.settings),this.close())}},methods:{toggle:function(){this.$emit("beforeToggle",this),this.status=!this.status,this.$emit("afterToggle",this)},close:function(){this.$emit("beforeClose",this),this.status=!1,this.$emit("afterClose",this)},open:function(){this.$emit("beforeOpen",this),this.status=!0,this.$emit("afterOpen",this)}},mounted:function(){var t=this;this.nodes.toggle=this.$el.querySelector("."+this.$options.$vc.settings.togglerClassDefault),this.nodes.content=this.$el.querySelector("."+this.$options.$vc.settings.contentClassDefault),this.$emit("afterNodesBinding",{vm:this,nodes:this.nodes}),null!==this.nodes.toggle&&this.nodes.toggle.addEventListener("click",function(){t.toggle()}),null!=this.active&&(this.status=this.active)}}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});n(0);e.default={data:function(){return{}},props:{onlyOneActive:{default:!1,type:Boolean}},computed:{elements:function(){return this.$children},elements_count:function(){return this.$children.length},active_elements:function(){return this.$children.filter(function(t){return!0===t.status})}},methods:{closeAll:function(){this.$children.forEach(function(t){t.close()})},openAll:function(){this.$children.forEach(function(t){t.open()})}}}},function(t,e,n){"use strict";function s(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0});var o=n(5),i=s(o),r=n(8),c=s(r),u=n(0),l={};l.install=function(t,e){var n=Object.assign(u.defaults,e);t.component(n.prefix+"-wrapper",i.default),t.component(n.prefix+"-group",c.default),t.mixin({created:function(){this.$options.$vc={settings:n}}}),t.directive(n.basename+"-content",{bind:function(t,e,n,s){n.elm.classList.add(n.context.$options.$vc.settings.contentClassDefault)}}),t.directive(n.basename+"-toggle",{bind:function(t,e,n,s){n.elm.classList.add(n.context.$options.$vc.settings.togglerClassDefault)},inserted:function(t,e,n,s){null!=e.value&&n.elm.addEventListener("click",function(){n.context.$refs[e.value].status=!n.context.$refs[e.value].status}.bind(this))}})},"undefined"!=typeof window&&window.Vue&&window.Vue.use(l),e.default=l},function(t,e,n){"use strict";function s(t){n(6)}Object.defineProperty(e,"__esModule",{value:!0});var o=n(2),i=n.n(o);for(var r in o)"default"!==r&&function(t){n.d(e,t,function(){return o[t]})}(r);var c=n(7),u=n(1),l=s,a=u(i.a,c.a,!1,l,null,null);e.default=a.exports},function(t,e){},function(t,e,n){"use strict";var s=function(){var t=this,e=t.$createElement;return(t._self._c||e)("div",{class:"vc-"+t.$options.$vc.settings.basename},[t._t("default")],2)},o=[],i={render:s,staticRenderFns:o};e.a=i},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s=n(3),o=n.n(s);for(var i in s)"default"!==i&&function(t){n.d(e,t,function(){return s[t]})}(i);var r=n(9),c=n(1),u=c(o.a,r.a,!1,null,null,null);e.default=u.exports},function(t,e,n){"use strict";var s=function(){var t=this,e=t.$createElement;return(t._self._c||e)("div",{staticClass:"v-collapse-group"},[t._t("default")],2)},o=[],i={render:s,staticRenderFns:o};e.a=i}])});
+
+/***/ }),
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -62116,315 +62230,336 @@ var render = function() {
                       _vm._v("                 \n            ")
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "md-layout" }, [
-                      _c("div", { staticClass: "md-layout-item md-size-30" }, [
-                        _c("label", { attrs: { for: "first-name" } }, [
-                          _vm._v("Zarpe (S/N)")
-                        ]),
-                        _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "md-layout" },
+                      [
                         _c(
                           "div",
+                          { staticClass: "md-layout-item md-size-30" },
                           [
-                            _c(
-                              "md-radio",
-                              {
-                                attrs: { value: "1" },
-                                model: {
-                                  value: _vm.zarpe,
-                                  callback: function($$v) {
-                                    _vm.zarpe = $$v
-                                  },
-                                  expression: "zarpe"
-                                }
-                              },
-                              [_c("small", [_vm._v("SI")])]
-                            ),
+                            _c("label", { attrs: { for: "first-name" } }, [
+                              _vm._v("Zarpe (S/N)")
+                            ]),
                             _vm._v(" "),
                             _c(
-                              "md-radio",
-                              {
-                                staticClass: "md-primary",
-                                attrs: { value: "0" },
-                                model: {
-                                  value: _vm.zarpe,
-                                  callback: function($$v) {
-                                    _vm.zarpe = $$v
+                              "div",
+                              [
+                                _c(
+                                  "md-radio",
+                                  {
+                                    attrs: { value: "1" },
+                                    model: {
+                                      value: _vm.zarpe,
+                                      callback: function($$v) {
+                                        _vm.zarpe = $$v
+                                      },
+                                      expression: "zarpe"
+                                    }
                                   },
-                                  expression: "zarpe"
-                                }
-                              },
-                              [_c("small", [_vm._v("NO")])]
+                                  [_c("small", [_vm._v("SI")])]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "md-radio",
+                                  {
+                                    staticClass: "md-primary",
+                                    attrs: { value: "0" },
+                                    model: {
+                                      value: _vm.zarpe,
+                                      callback: function($$v) {
+                                        _vm.zarpe = $$v
+                                      },
+                                      expression: "zarpe"
+                                    }
+                                  },
+                                  [_c("small", [_vm._v("NO")])]
+                                )
+                              ],
+                              1
                             )
-                          ],
-                          1
-                        )
-                      ]),
-                      _vm._v("   \n              "),
-                      _c("div", { staticClass: "md-layout-item md-size-30" }, [
-                        _c("label", { attrs: { for: "first-name" } }, [
-                          _vm._v("Desembarque (S/N)")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          [
-                            _c(
-                              "md-radio",
-                              {
-                                attrs: { value: "1" },
-                                model: {
-                                  value: _vm.characterState,
-                                  callback: function($$v) {
-                                    _vm.characterState = $$v
-                                  },
-                                  expression: "characterState"
-                                }
-                              },
-                              [_c("small", [_vm._v("SI")])]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "md-radio",
-                              {
-                                staticClass: "md-primary",
-                                attrs: { value: "0" },
-                                model: {
-                                  value: _vm.characterState,
-                                  callback: function($$v) {
-                                    _vm.characterState = $$v
-                                  },
-                                  expression: "characterState"
-                                }
-                              },
-                              [_c("small", [_vm._v("NO")])]
-                            )
-                          ],
-                          1
-                        )
-                      ]),
-                      _vm._v("   \n              "),
-                      _c("div", { staticClass: "md-layout-item md-size-30" }, [
-                        _c("label", { attrs: { for: "first-name" } }, [
-                          _vm._v("Registro fotográfico (S/N)")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          [
-                            _c(
-                              "md-radio",
-                              {
-                                attrs: { value: "1" },
-                                model: {
-                                  value: _vm.regFot,
-                                  callback: function($$v) {
-                                    _vm.regFot = $$v
-                                  },
-                                  expression: "regFot"
-                                }
-                              },
-                              [_c("small", [_vm._v("SI")])]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "md-radio",
-                              {
-                                staticClass: "md-primary",
-                                attrs: { value: "0" },
-                                model: {
-                                  value: _vm.regFot,
-                                  callback: function($$v) {
-                                    _vm.regFot = $$v
-                                  },
-                                  expression: "regFot"
-                                }
-                              },
-                              [_c("small", [_vm._v("NO")])]
-                            )
-                          ],
-                          1
+                          ]
                         ),
-                        _vm._v(" "),
-                        _vm.regFot == 1
-                          ? _c("div", [
+                        _vm._v("   \n              "),
+                        _c(
+                          "div",
+                          { staticClass: "md-layout-item md-size-30" },
+                          [
+                            _c("label", { attrs: { for: "first-name" } }, [
+                              _vm._v("Desembarque (S/N)")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              [
+                                _c(
+                                  "md-radio",
+                                  {
+                                    attrs: { value: "1" },
+                                    model: {
+                                      value: _vm.characterState,
+                                      callback: function($$v) {
+                                        _vm.characterState = $$v
+                                      },
+                                      expression: "characterState"
+                                    }
+                                  },
+                                  [_c("small", [_vm._v("SI")])]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "md-radio",
+                                  {
+                                    staticClass: "md-primary",
+                                    attrs: { value: "0" },
+                                    model: {
+                                      value: _vm.characterState,
+                                      callback: function($$v) {
+                                        _vm.characterState = $$v
+                                      },
+                                      expression: "characterState"
+                                    }
+                                  },
+                                  [_c("small", [_vm._v("NO")])]
+                                )
+                              ],
+                              1
+                            )
+                          ]
+                        ),
+                        _vm._v("   \n              "),
+                        _c(
+                          "div",
+                          { staticClass: "md-layout-item md-size-30" },
+                          [
+                            _c("label", { attrs: { for: "first-name" } }, [
+                              _vm._v("Registro fotográfico (S/N)")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              [
+                                _c(
+                                  "md-radio",
+                                  {
+                                    attrs: { value: "1" },
+                                    model: {
+                                      value: _vm.regFot,
+                                      callback: function($$v) {
+                                        _vm.regFot = $$v
+                                      },
+                                      expression: "regFot"
+                                    }
+                                  },
+                                  [_c("small", [_vm._v("SI")])]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "md-radio",
+                                  {
+                                    staticClass: "md-primary",
+                                    attrs: { value: "0" },
+                                    model: {
+                                      value: _vm.regFot,
+                                      callback: function($$v) {
+                                        _vm.regFot = $$v
+                                      },
+                                      expression: "regFot"
+                                    }
+                                  },
+                                  [_c("small", [_vm._v("NO")])]
+                                )
+                              ],
+                              1
+                            )
+                          ]
+                        ),
+                        _vm._v("   \n              "),
+                        this.regFot == 1
+                          ? _c("v-collapse-wrapper", [
                               _c(
-                                "button",
+                                "div",
                                 {
-                                  staticClass: "btn btn-primary",
-                                  attrs: {
-                                    type: "button",
-                                    "data-toggle": "collapse",
-                                    "data-target": "#collapseExample",
-                                    "aria-expanded": "false",
-                                    "aria-controls": "collapseExample"
-                                  }
+                                  directives: [
+                                    {
+                                      name: "collapse-content",
+                                      rawName: "v-collapse-content"
+                                    }
+                                  ],
+                                  staticClass: "content"
                                 },
                                 [
-                                  _vm._v(
-                                    "\n                      Subir foto\n                    "
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "uploader",
+                                      class: { dragging: _vm.isDragging },
+                                      on: {
+                                        dragenter: _vm.OnDragEnter,
+                                        dragleave: _vm.OnDragLeave,
+                                        dragover: function($event) {
+                                          $event.preventDefault()
+                                        },
+                                        drop: _vm.onDrop
+                                      }
+                                    },
+                                    [
+                                      _c("div", {
+                                        directives: [
+                                          {
+                                            name: "show",
+                                            rawName: "v-show",
+                                            value: _vm.images.length,
+                                            expression: "images.length"
+                                          }
+                                        ],
+                                        staticClass: "upload-control"
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "show",
+                                              rawName: "v-show",
+                                              value: !_vm.images.length,
+                                              expression: "!images.length"
+                                            }
+                                          ]
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fa fa-cloud-upload"
+                                          }),
+                                          _vm._v(" "),
+                                          _c("p", [
+                                            _vm._v("Arrastra tus imágenes aquí")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("div", [_vm._v("O")]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "file-input" },
+                                            [
+                                              _c(
+                                                "label",
+                                                { attrs: { for: "file" } },
+                                                [
+                                                  _vm._v(
+                                                    "Selecciona una Imágen"
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("input", {
+                                                attrs: {
+                                                  type: "file",
+                                                  id: "file",
+                                                  multiple: ""
+                                                },
+                                                on: {
+                                                  change: _vm.onInputChange
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "show",
+                                              rawName: "v-show",
+                                              value: _vm.images.length,
+                                              expression: "images.length"
+                                            }
+                                          ],
+                                          staticClass: "images-preview"
+                                        },
+                                        _vm._l(_vm.images, function(
+                                          image,
+                                          index
+                                        ) {
+                                          return _c(
+                                            "div",
+                                            {
+                                              key: index,
+                                              staticClass: "img-wrapper"
+                                            },
+                                            [
+                                              _c("img", {
+                                                attrs: {
+                                                  src: image,
+                                                  alt: "Image Uplaoder " + index
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "btn btn-dark btn-sm",
+                                                  attrs: { type: "button" },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.eliminarImg(index)
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c(
+                                                    "i",
+                                                    {
+                                                      staticClass:
+                                                        "material-icons Color4"
+                                                    },
+                                                    [_vm._v("delete")]
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                { staticClass: "details" },
+                                                [
+                                                  _c("span", {
+                                                    staticClass: "name",
+                                                    domProps: {
+                                                      textContent: _vm._s(
+                                                        _vm.files[index].name
+                                                      )
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("span", {
+                                                    staticClass: "size",
+                                                    domProps: {
+                                                      textContent: _vm._s(
+                                                        _vm.getFileSize(
+                                                          _vm.files[index].size
+                                                        )
+                                                      )
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        })
+                                      )
+                                    ]
                                   )
                                 ]
                               )
                             ])
                           : _vm._e()
-                      ]),
-                      _vm._v(
-                        "   \n                               \n            "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "collapse",
-                        attrs: { id: "collapseExample" }
-                      },
-                      [
-                        _c("div", { staticClass: "card card-body" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "uploader",
-                              class: { dragging: _vm.isDragging },
-                              on: {
-                                dragenter: _vm.OnDragEnter,
-                                dragleave: _vm.OnDragLeave,
-                                dragover: function($event) {
-                                  $event.preventDefault()
-                                },
-                                drop: _vm.onDrop
-                              }
-                            },
-                            [
-                              _c("div", {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.images.length,
-                                    expression: "images.length"
-                                  }
-                                ],
-                                staticClass: "upload-control"
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: !_vm.images.length,
-                                      expression: "!images.length"
-                                    }
-                                  ]
-                                },
-                                [
-                                  _c("i", {
-                                    staticClass: "fa fa-cloud-upload"
-                                  }),
-                                  _vm._v(" "),
-                                  _c("p", [
-                                    _vm._v("Arrastra tus imágenes aquí")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", [_vm._v("O")]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "file-input" }, [
-                                    _c("label", { attrs: { for: "file" } }, [
-                                      _vm._v("Selecciona una Imágen")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("input", {
-                                      attrs: {
-                                        type: "file",
-                                        id: "file",
-                                        multiple: ""
-                                      },
-                                      on: { change: _vm.onInputChange }
-                                    })
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: _vm.images.length,
-                                      expression: "images.length"
-                                    }
-                                  ],
-                                  staticClass: "images-preview"
-                                },
-                                _vm._l(_vm.images, function(image, index) {
-                                  return _c(
-                                    "div",
-                                    { key: index, staticClass: "img-wrapper" },
-                                    [
-                                      _c("img", {
-                                        attrs: {
-                                          src: image,
-                                          alt: "Image Uplaoder " + index
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-dark btn-sm",
-                                          attrs: { type: "button" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.eliminarImg(index)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c(
-                                            "i",
-                                            {
-                                              staticClass:
-                                                "material-icons Color4"
-                                            },
-                                            [_vm._v("delete")]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "details" }, [
-                                        _c("span", {
-                                          staticClass: "name",
-                                          domProps: {
-                                            textContent: _vm._s(
-                                              _vm.files[index].name
-                                            )
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("span", {
-                                          staticClass: "size",
-                                          domProps: {
-                                            textContent: _vm._s(
-                                              _vm.getFileSize(
-                                                _vm.files[index].size
-                                              )
-                                            )
-                                          }
-                                        })
-                                      ])
-                                    ]
-                                  )
-                                })
-                              )
-                            ]
-                          )
-                        ])
-                      ]
+                      ],
+                      1
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "md-layout" }, [
@@ -62586,19 +62721,19 @@ if (false) {
 }
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(164)
+  __webpack_require__(165)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(166)
+var __vue_script__ = __webpack_require__(167)
 /* template */
-var __vue_template__ = __webpack_require__(167)
+var __vue_template__ = __webpack_require__(168)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -62637,13 +62772,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(165);
+var content = __webpack_require__(166);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -62663,7 +62798,7 @@ if(false) {
 }
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -62677,7 +62812,7 @@ exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content
 
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62995,7 +63130,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdList"]);
 });
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -63235,19 +63370,19 @@ if (false) {
 }
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(169)
+  __webpack_require__(170)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(171)
+var __vue_script__ = __webpack_require__(172)
 /* template */
-var __vue_template__ = __webpack_require__(172)
+var __vue_template__ = __webpack_require__(173)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -63286,13 +63421,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(170);
+var content = __webpack_require__(171);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -63312,7 +63447,7 @@ if(false) {
 }
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -63326,7 +63461,7 @@ exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content
 
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63644,7 +63779,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdList"]);
 });
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -63886,19 +64021,19 @@ if (false) {
 }
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(174)
+  __webpack_require__(175)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(176)
+var __vue_script__ = __webpack_require__(177)
 /* template */
-var __vue_template__ = __webpack_require__(179)
+var __vue_template__ = __webpack_require__(180)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -63937,13 +64072,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(175);
+var content = __webpack_require__(176);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -63963,7 +64098,7 @@ if(false) {
 }
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -63977,7 +64112,7 @@ exports.push([module.i, "\n.uploader {\r\n  width: 100%;\r\n  background: #2196f
 
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63994,7 +64129,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jspdf__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jspdf_autotable__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jspdf_autotable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jspdf_autotable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_bootstrap_fileinput__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_bootstrap_fileinput__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_bootstrap_fileinput___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_bootstrap_fileinput__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__);
@@ -64002,6 +64137,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -65150,6 +65292,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
       this.form.corregimiento = null;
       this.form.place = null;
       this.form.telephone = null;
+      this.arrayTarget = [];
 
       this.arrayRegl = { id: 0, name: '' };
     },
@@ -65238,6 +65381,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
         corregimiento: this.form.corregimiento.toUpperCase(),
         place: this.form.place.toUpperCase(),
         telephone: this.form.telephone,
+
+        target: this.arrayTarget,
 
         'id_regional': this.arrayRegl.id
       }).then(function (response) {
@@ -65462,7 +65607,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
 });
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -65478,7 +65623,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (factory) {
     'use strict';
     if (true) {
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(178)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(179)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -71839,7 +71984,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 }));
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -82444,7 +82589,7 @@ return jQuery;
 
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -83235,112 +83380,131 @@ var render = function() {
                                       ])
                                     ]),
                                     _vm._v(" "),
-                                    _c(
-                                      "tbody",
-                                      _vm._l(_vm.arrayTarget, function(
-                                        target,
-                                        index
-                                      ) {
-                                        return _c(
-                                          "tr",
-                                          { key: "target-" + index },
-                                          [
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.nameScientific
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.nameCommon
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.state
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.presentation
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.amount
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.weight
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.commercialValue
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
+                                    _vm.arrayTarget.length
+                                      ? _c(
+                                          "tbody",
+                                          _vm._l(_vm.arrayTarget, function(
+                                            target,
+                                            index
+                                          ) {
+                                            return _c(
+                                              "tr",
+                                              { key: "target-" + index },
+                                              [
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.nameScientific
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.nameCommon
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.state
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.presentation
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.amount
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.weight
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.commercialValue
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  _vm._l(_vm.images, function(
+                                                    target,
+                                                    index
+                                                  ) {
+                                                    return _c("div", {
+                                                      key: "target-" + index
+                                                    })
+                                                  })
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _c(
+                                                    "button",
+                                                    {
+                                                      staticClass:
+                                                        "btn btn-danger btn-sm",
+                                                      attrs: {
+                                                        type: "button",
+                                                        "data-tooltip": "",
+                                                        title: "Eliminar"
+                                                      },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.deleteTarget(
+                                                            index
+                                                          )
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("i", {
+                                                        staticClass:
+                                                          "icon-trash"
+                                                      })
+                                                    ]
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          })
+                                        )
+                                      : _c("tbody", [
+                                          _c("tr", [
                                             _c(
                                               "td",
-                                              _vm._l(_vm.images, function(
-                                                target,
-                                                index
-                                              ) {
-                                                return _c("div", {
-                                                  key: "target-" + index
-                                                })
-                                              })
-                                            ),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-danger btn-sm",
-                                                  attrs: {
-                                                    type: "button",
-                                                    "data-tooltip": "",
-                                                    title: "Eliminar"
-                                                  },
-                                                  on: {
-                                                    click: function($event) {
-                                                      _vm.deleteTarget(index)
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass: "icon-trash"
-                                                  })
-                                                ]
-                                              )
-                                            ])
-                                          ]
-                                        )
-                                      })
-                                    ),
+                                              { attrs: { colspan: "6" } },
+                                              [
+                                                _vm._v(
+                                                  "\n                                  NO existen elementos agregados \n                                "
+                                                )
+                                              ]
+                                            )
+                                          ])
+                                        ]),
                                     _vm._v(" "),
                                     _c("tfoot", [
                                       _c("tr", [
@@ -84391,19 +84555,19 @@ if (false) {
 }
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(181)
+  __webpack_require__(182)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(183)
+var __vue_script__ = __webpack_require__(184)
 /* template */
-var __vue_template__ = __webpack_require__(184)
+var __vue_template__ = __webpack_require__(185)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -84442,13 +84606,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(182);
+var content = __webpack_require__(183);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -84468,7 +84632,7 @@ if(false) {
 }
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -84482,7 +84646,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84505,6 +84669,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -86024,6 +86202,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         dateExpedition: this.dateExpedition,
         observation: this.observation.toUpperCase(),
         data: this.arrayReasons,
+        target: this.arrayTarget,
+        target2: this.arrayTarget2,
 
         'id_regional': this.arrayRegl.id
       }).then(function (response) {
@@ -86293,7 +86473,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
 });
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -87234,122 +87414,144 @@ var render = function() {
                                       ])
                                     ]),
                                     _vm._v(" "),
-                                    _c(
-                                      "tbody",
-                                      _vm._l(_vm.arrayTarget, function(
-                                        target,
-                                        index
-                                      ) {
-                                        return _c(
-                                          "tr",
-                                          { key: "target-" + index },
-                                          [
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.nameScientific
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.nameCommon
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.state
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.presentation
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.amount
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.average
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.weight
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.commercialValue
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
+                                    _vm.arrayTarget.length
+                                      ? _c(
+                                          "tbody",
+                                          _vm._l(_vm.arrayTarget, function(
+                                            target,
+                                            index
+                                          ) {
+                                            return _c(
+                                              "tr",
+                                              { key: "target-" + index },
+                                              [
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.nameScientific
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.nameCommon
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.state
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.presentation
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.amount
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.average
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.weight
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.commercialValue
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  _vm._l(_vm.images, function(
+                                                    target,
+                                                    index
+                                                  ) {
+                                                    return _c(
+                                                      "div",
+                                                      { key: "item-" + index },
+                                                      [_c("h3")]
+                                                    )
+                                                  })
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _c(
+                                                    "button",
+                                                    {
+                                                      staticClass:
+                                                        "btn btn-danger btn-sm",
+                                                      attrs: {
+                                                        type: "button",
+                                                        "data-tooltip": "",
+                                                        title: "Eliminar"
+                                                      },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.deleteTarget(
+                                                            index
+                                                          )
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("i", {
+                                                        staticClass:
+                                                          "icon-trash"
+                                                      })
+                                                    ]
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          })
+                                        )
+                                      : _c("tbody", [
+                                          _c("tr", [
                                             _c(
                                               "td",
-                                              _vm._l(_vm.images, function(
-                                                target,
-                                                index
-                                              ) {
-                                                return _c(
-                                                  "div",
-                                                  { key: "item-" + index },
-                                                  [_c("h3")]
+                                              {
+                                                staticClass: "text-center",
+                                                attrs: { colspan: "10" }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                          NO existen elementos agregados \n                        "
                                                 )
-                                              })
-                                            ),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-danger btn-sm",
-                                                  attrs: {
-                                                    type: "button",
-                                                    "data-tooltip": "",
-                                                    title: "Eliminar"
-                                                  },
-                                                  on: {
-                                                    click: function($event) {
-                                                      _vm.deleteTarget(index)
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass: "icon-trash"
-                                                  })
-                                                ]
-                                              )
-                                            ])
-                                          ]
-                                        )
-                                      })
-                                    ),
+                                              ]
+                                            )
+                                          ])
+                                        ]),
                                     _vm._v(" "),
                                     _c("tfoot", [
                                       _c("tr", [
@@ -87598,76 +87800,98 @@ var render = function() {
                                       ])
                                     ]),
                                     _vm._v(" "),
-                                    _c(
-                                      "tbody",
-                                      _vm._l(_vm.arrayTarget2, function(
-                                        target,
-                                        index
-                                      ) {
-                                        return _c(
-                                          "tr",
-                                          { key: "target-" + index },
-                                          [
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.element
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.amount2
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.characterState
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.commercialValue2
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-danger btn-sm",
-                                                  attrs: {
-                                                    type: "button",
-                                                    "data-tooltip": "",
-                                                    title: "Eliminar"
-                                                  },
-                                                  on: {
-                                                    click: function($event) {
-                                                      _vm.deleteTarget2(index)
-                                                    }
+                                    _vm.arrayTarget.length
+                                      ? _c(
+                                          "tbody",
+                                          _vm._l(_vm.arrayTarget2, function(
+                                            target,
+                                            index
+                                          ) {
+                                            return _c(
+                                              "tr",
+                                              { key: "target-" + index },
+                                              [
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.element
+                                                    )
                                                   }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass: "icon-trash"
-                                                  })
-                                                ]
-                                              )
-                                            ])
-                                          ]
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.amount2
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.characterState
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.commercialValue2
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _c(
+                                                    "button",
+                                                    {
+                                                      staticClass:
+                                                        "btn btn-danger btn-sm",
+                                                      attrs: {
+                                                        type: "button",
+                                                        "data-tooltip": "",
+                                                        title: "Eliminar"
+                                                      },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.deleteTarget2(
+                                                            index
+                                                          )
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("i", {
+                                                        staticClass:
+                                                          "icon-trash"
+                                                      })
+                                                    ]
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          })
                                         )
-                                      })
-                                    ),
+                                      : _c("tbody", [
+                                          _c("tr", [
+                                            _c(
+                                              "td",
+                                              {
+                                                staticClass: "text-center",
+                                                attrs: { colspan: "6" }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                          NO existen elementos agregados \n                        "
+                                                )
+                                              ]
+                                            )
+                                          ])
+                                        ]),
                                     _vm._v(" "),
                                     _c("tfoot", [
                                       _c("tr", [
@@ -88923,19 +89147,19 @@ if (false) {
 }
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(186)
+  __webpack_require__(187)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(188)
+var __vue_script__ = __webpack_require__(189)
 /* template */
-var __vue_template__ = __webpack_require__(189)
+var __vue_template__ = __webpack_require__(190)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -88974,13 +89198,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(187);
+var content = __webpack_require__(188);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -89000,7 +89224,7 @@ if(false) {
 }
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -89014,7 +89238,7 @@ exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content
 
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -90255,7 +90479,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
 });
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -92101,19 +92325,19 @@ if (false) {
 }
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(191)
+  __webpack_require__(192)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(193)
+var __vue_script__ = __webpack_require__(194)
 /* template */
-var __vue_template__ = __webpack_require__(194)
+var __vue_template__ = __webpack_require__(195)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -92152,13 +92376,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(192);
+var content = __webpack_require__(193);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -92178,7 +92402,7 @@ if(false) {
 }
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -92192,7 +92416,7 @@ exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content
 
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -92959,7 +93183,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
 });
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -94045,19 +94269,19 @@ if (false) {
 }
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(196)
+  __webpack_require__(197)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(198)
+var __vue_script__ = __webpack_require__(199)
 /* template */
-var __vue_template__ = __webpack_require__(199)
+var __vue_template__ = __webpack_require__(200)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -94096,13 +94320,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(197);
+var content = __webpack_require__(198);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -94122,7 +94346,7 @@ if(false) {
 }
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -94136,7 +94360,7 @@ exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content
 
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -94457,7 +94681,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_material_dist_components__["MdList"]);
 });
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -94717,19 +94941,19 @@ if (false) {
 }
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(201)
+  __webpack_require__(202)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(203)
+var __vue_script__ = __webpack_require__(204)
 /* template */
-var __vue_template__ = __webpack_require__(204)
+var __vue_template__ = __webpack_require__(205)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -94768,13 +94992,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(202);
+var content = __webpack_require__(203);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -94794,7 +95018,7 @@ if(false) {
 }
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -94808,7 +95032,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -95420,7 +95644,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_material_dist_components__["MdList"]);
 });
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

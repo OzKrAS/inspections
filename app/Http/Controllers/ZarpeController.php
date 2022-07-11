@@ -12,6 +12,7 @@ use App\AutoFisher;
 use App\FisheryAuthorized;
 use App\Company;
 use App\DetailFisherAutZarpe;
+use App\FishingGearMaterial;
 
 class ZarpeController extends Controller
 {
@@ -22,6 +23,7 @@ class ZarpeController extends Controller
             $zarpes = Zarpe::join('regions','zarpes.id_region','=','regions.id')
             ->join('ports','zarpes.id_port','=','ports.id')
             ->join('flags','zarpes.id_flag','=','flags.id')
+            ->join('fishing_gear_materials','zarpes.id_material','=','fishing_gear_materials.id')
             ->join('nationalities','zarpes.id_nationality','=','nationalities.id')
             ->join('orops','zarpes.id_orop','=','orops.id')
             ->join('auto_fishers','zarpes.id_zoneAutoFisher','=','auto_fishers.id')
@@ -41,7 +43,7 @@ class ZarpeController extends Controller
                      'zarpes.eyeFlake',
                      'zarpes.typeHook',
                      'zarpes.longNet',
-                     'zarpes.materialArt',
+                    //  'zarpes.materialArt',
                      'zarpes.equipDevi',
                      'zarpes.captain',
                      'zarpes.observation',
@@ -64,6 +66,7 @@ class ZarpeController extends Controller
                      'zarpes.id_region','regions.name as nameReg',
                      'zarpes.id_port','ports.name as namePort',
                      'zarpes.id_flag','flags.name as nameFlag',
+                     'zarpes.id_material','fishing_gear_materials.name as nameMaterial',
                      'zarpes.id_nationality','nationalities.name as nameNationality',
                      'zarpes.id_orop','orops.name as nameOrop',
                      'zarpes.id_zoneAutoFisher','auto_fishers.name as nameZoneAutoFisher',
@@ -95,7 +98,7 @@ class ZarpeController extends Controller
         $zarpes->eyeFlake = $request->eyeFlake;
         $zarpes->typeHook = $request->typeHook;
         $zarpes->longNet = $request->longNet;
-        $zarpes->materialArt = $request->materialArt;
+        // $zarpes->materialArt = $request->materialArt;
         $zarpes->equipDevi = $request->equipDevi;
         $zarpes->captain = $request->captain;
         $zarpes->observation = $request->observation;
@@ -120,19 +123,20 @@ class ZarpeController extends Controller
         $zarpes->id_portZarpe = $request->id_portZarpe;  
         $zarpes->id_portArrival = $request->id_portArrival;  
         $zarpes->id_flag = $request->id_flag;   
+        $zarpes->id_material = $request->id_material;   
         $zarpes->id_nationality = $request->id_nationality;       
         $zarpes->id_orop = $request->id_orop;       
         $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;          
         $zarpes->id_company = $request->id_company;      
         $zarpes->save();
 
-        // $detailsfisheryzarpe = $request->data;
-        // foreach($detailsfisheryzarpe as $fs=>$deta){
-        //     $objeto= new DetailFisherAutZarpe();
-        //     $objeto->id_zarpe = $zarpes->id;
-        //     $objeto->name= $deta['name'];
-        //     $objeto->save();
-        // }
+        $detailsfisheryzarpe = $request->data;
+        foreach($detailsfisheryzarpe as $fs=>$deta){
+            $objeto= new DetailFisherAutZarpe();
+            $objeto->id_fisheryAut = $zarpes->id;
+            $objeto->name= $deta['name'];
+            $objeto->save();
+        }
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'
@@ -159,7 +163,7 @@ class ZarpeController extends Controller
         $zarpes->eyeFlake = $request->eyeFlake;
         $zarpes->typeHook = $request->typeHook;
         $zarpes->longNet = $request->longNet;
-        $zarpes->materialArt = $request->materialArt;
+        // $zarpes->materialArt = $request->materialArt;
         $zarpes->equipDevi = $request->equipDevi;
         $zarpes->captain = $request->captain;
         $zarpes->observation = $request->observation;
@@ -182,6 +186,7 @@ class ZarpeController extends Controller
         $zarpes->id_region = $request->id_region;    
         $zarpes->id_port = $request->id_port;    
         $zarpes->id_flag = $request->id_flag;  
+        $zarpes->id_material = $request->id_material; 
         $zarpes->id_nationality = $request->id_nationality;  
         $zarpes->id_orop = $request->id_orop;  
         $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;  

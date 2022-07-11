@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\CheckDetFlap;
 use App\Company;
 use App\Regional;
+use App\DetailDetFlap;
 
 class CheckDetFlapController extends Controller
 {
@@ -58,7 +59,19 @@ class CheckDetFlapController extends Controller
         $checkDetFlaps->id_company = $request->id_company;  
         $checkDetFlaps->id_regional = $request->id_regional;  
         $checkDetFlaps->save();
-        //esto por ahora no, crear por favor manana la collection de doble solapa los demas metodos
+
+        $detaildetflap = $request->detflap;
+        foreach($detaildetflap as $ep=>$det){
+            $objeto= new DetailDetFlap();
+            $objeto->id_detflap = $checkDetFlaps->id;
+            $objeto->babor3= $det['babor3'];
+            $objeto->babor4= $det['babor4'];
+            $objeto->estribor3= $det['estribor3'];
+            $objeto->estribor4= $det['estribor4'];
+            $objeto->punto2= $det['punto2'];
+            $objeto->tituloModal= $det['tituloModal'];
+            $objeto->save();
+        }
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'

@@ -71,8 +71,8 @@ class CreateArrivalsTable extends Migration
             $table->foreign('id_nationality')->references('id')->on('nationalities');
             $table->integer('id_zoneAutoFisher')->unsigned();
             $table->foreign('id_zoneAutoFisher')->references('id')->on('auto_fishers');
-            $table->integer('id_fisheryAuthorized')->unsigned();
-            $table->foreign('id_fisheryAuthorized')->references('id')->on('fishery_authorizeds');
+            // $table->integer('id_fisheryAuthorized')->unsigned();
+            // $table->foreign('id_fisheryAuthorized')->references('id')->on('fishery_authorizeds');
             $table->integer('id_company')->unsigned();
             $table->foreign('id_company')->references('id')->on('companies');
             $table->timestamps();
