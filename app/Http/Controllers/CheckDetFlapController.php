@@ -115,4 +115,10 @@ class CheckDetFlapController extends Controller
         return response()->json($array,201);
         
     }
+    public function dataTable(Request $request)
+    {
+        $checkDetFlaps = DetailDetFlap::select('id','id_detflap','babor3','babor4','estribor3','estribor4','punto2','tituloModal')
+        ->where('id_detflap', $request->id_Detflap)->get();
+        return ['detflap' =>  $checkDetFlaps];   
+    }
 }

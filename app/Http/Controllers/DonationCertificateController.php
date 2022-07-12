@@ -127,4 +127,10 @@ class DonationCertificateController extends Controller
             );
         return response()->json($array,201);
     }
+    public function dataTable(Request $request)
+    {
+        $donations = DetDonation::select('id','id_donation','nameScientific','nameCommon','state','presentation','amount','weight','commercialValue')
+        ->where('id_donation', $request->id_Donation)->get();
+        return ['donation' =>  $donations];   
+    }
 }

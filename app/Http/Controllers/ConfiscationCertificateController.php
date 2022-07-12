@@ -167,4 +167,22 @@ class ConfiscationCertificateController extends Controller
             );
         return response()->json($array,201);
     }
+    public function dataTable1(Request $request)
+    {
+        $confiscation = DetConfiscationTable1::select('id','id_confiscation','amount','average','commercialValue','nameCommon','nameScientific','presentation','state','weight')
+        ->where('id_confiscation', $request->id_Confiscation)->get();
+        return ['confTable1' =>  $confiscation];   
+    }
+    public function dataTable2(Request $request)
+    {
+        $confiscation = DetConfiscationTable2::select('id','id_confiscation','amount2','characterState','commercialValue2','element')
+        ->where('id_confiscation', $request->id_Confiscation)->get();
+        return ['confTable2' =>  $confiscation];   
+    }
+    public function dataReasons(Request $request)
+    {
+        $confiscation = DetConfiscationReasons::select('id','id_confiscation','name')
+        ->where('id_confiscation', $request->id_Confiscation)->get();
+        return ['reasons' =>  $confiscation];   
+    }
 }

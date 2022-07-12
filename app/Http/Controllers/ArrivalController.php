@@ -251,4 +251,22 @@ class ArrivalController extends Controller
             );
         return response()->json($array,201);
     }
+    public function dataTarget(Request $request)
+    {
+        $arrivals = DetTargCaptArrivals::select('id','id_target','nameCommon1','nameScientific1','capture1')
+        ->where('id_target', $request->id_Target)->get();
+        return ['target' =>  $arrivals];   
+    }
+    public function dataFauna(Request $request)
+    {
+        $arrivals = DetFaunaCaptArrivals::select('id','id_fauna','nameCommon2','nameScientific2','capture2')
+        ->where('id_fauna', $request->id_Fauna)->get();
+        return ['fauna' =>  $arrivals];   
+    }
+    public function dataFishery(Request $request)
+    {
+        $arrivals = DetailFisherAutArrival::select('id','id_fisheryAut','name')
+        ->where('id_fisheryAut', $request->id_FisheryAut)->get();
+        return ['fisheryAut' =>  $arrivals];   
+    }
 }

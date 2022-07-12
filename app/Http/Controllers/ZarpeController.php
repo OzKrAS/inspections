@@ -211,4 +211,10 @@ class ZarpeController extends Controller
             );
         return response()->json($array,201);
     } 
+    public function dataFishery(Request $request)
+    {
+        $zarpes = DetailFisherAutZarpe::select('id','id_fisheryAut','name')
+        ->where('id_fisheryAut', $request->id_FisheryAut)->get();
+        return ['fisheryAut' =>  $zarpes];   
+    }
 }

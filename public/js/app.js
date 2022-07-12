@@ -43819,6 +43819,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       // this.arrayFa.name = data["nameFishery"];
       this.arrayComp.id = data["id_company"];
       this.arrayComp.name = data["nameCompany"];
+      this.dataFishery();
     },
     showData: function showData() {
       this.clearForm();
@@ -44023,6 +44024,18 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         } else if (
         // Read more about handling dismissals
         result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    dataFishery: function dataFishery() {
+      var me = this;
+
+      var url = "/zarpes/fishery?id_FisheryAut=" + this.id_zarpes;
+      axios.get(url).then(function (response) {
+        //console.log(response);
+        var respuesta = response.data;
+        me.arrayFa = respuesta.fisheryAut;
+      }).catch(function (error) {
+        console.log(error);
       });
     },
     message: function message(tipo, crud) {
@@ -50370,6 +50383,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.arrayFa.id = data["arrayFa"];
       this.arrayComp.id = data["id_company"];
       this.arrayComp.name = data["nameCompany"];
+      this.dataTarget();
+      this.dataFauna();
+      this.dataFishery();
     },
     showData: function showData() {
       this.clearForm();
@@ -50611,6 +50627,42 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         me.hideForm();
         me.message("Actualizado", "Actualizó ");
         me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    dataTarget: function dataTarget() {
+      var me = this;
+
+      var url = "/arrivals/target?id_Target=" + this.id_arrival;
+      axios.get(url).then(function (response) {
+        //console.log(response);
+        var respuesta = response.data;
+        me.arrayTarget = respuesta.target;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    dataFauna: function dataFauna() {
+      var me = this;
+
+      var url = "/arrivals/fauna?id_Fauna=" + this.id_arrival;
+      axios.get(url).then(function (response) {
+        //console.log(response);
+        var respuesta = response.data;
+        me.arrayFauna = respuesta.fauna;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    dataFishery: function dataFishery() {
+      var me = this;
+
+      var url = "/arrivals/fishery?id_FisheryAut=" + this.id_arrival;
+      axios.get(url).then(function (response) {
+        //console.log(response);
+        var respuesta = response.data;
+        me.arrayFa = respuesta.fisheryAut;
       }).catch(function (error) {
         console.log(error);
       });
@@ -55409,6 +55461,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.arrayComp.name = data["nameCompany"];
       this.arrayRegl.id = data["id_regional"];
       this.arrayRegl.name = data["nameRegional"];
+      this.dataTable();
     },
     nameWithCompany: function nameWithCompany(_ref2) {
       var name = _ref2.name;
@@ -55549,6 +55602,18 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         } else if (
         // Read more about handling dismissals
         result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    dataTable: function dataTable() {
+      var me = this;
+
+      var url = "/checkDetInchs/dataTable?id_Detinch=" + this.id_CheckDet;
+      axios.get(url).then(function (response) {
+        //console.log(response);
+        var respuesta = response.data;
+        me.arrayDets = respuesta.detinch;
+      }).catch(function (error) {
+        console.log(error);
       });
     },
     message: function message(tipo, crud) {
@@ -58366,6 +58431,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.arrayComp.name = data["nameCompany"];
       this.arrayRegl.id = data["id_regional"];
       this.arrayRegl.name = data["nameRegional"];
+      this.dataTable();
     },
     nameWithCompany: function nameWithCompany(_ref2) {
       var name = _ref2.name;
@@ -58506,6 +58572,18 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         } else if (
         // Read more about handling dismissals
         result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    dataTable: function dataTable() {
+      var me = this;
+
+      var url = "/checkDetFlaps/dataTable?id_Detflap=" + this.id_CheckDet;
+      axios.get(url).then(function (response) {
+        //console.log(response);
+        var respuesta = response.data;
+        me.arrayDets2 = respuesta.detflap;
+      }).catch(function (error) {
+        console.log(error);
       });
     },
     message: function message(tipo, crud) {
@@ -65321,6 +65399,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
 
       this.arrayRegl.id = data["id_regional"];
       this.arrayRegl.name = data["nameRegional"];
+      this.dataTable();
     },
     nameWithRegional: function nameWithRegional(_ref2) {
       var name = _ref2.name;
@@ -65456,6 +65535,18 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
         } else if (
         // Read more about handling dismissals
         result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    dataTable: function dataTable() {
+      var me = this;
+
+      var url = "/donationCertificates/dataTable?id_Donation=" + this.id_donationCertificate;
+      axios.get(url).then(function (response) {
+        //console.log(response);
+        var respuesta = response.data;
+        me.arrayTarget = respuesta.donation;
+      }).catch(function (error) {
+        console.log(error);
       });
     },
     createPdf: function createPdf() {
@@ -86134,6 +86225,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
 
       this.arrayRegl.id = data["id_regional"];
       this.arrayRegl.name = data["nameRegional"];
+      this.dataTable1();
+      this.dataTable2();
+      this.dataReasons();
     },
     nameWithRegional: function nameWithRegional(_ref2) {
       var name = _ref2.name;
@@ -86284,6 +86378,42 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         } else if (
         // Read more about handling dismissals
         result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    dataTable1: function dataTable1() {
+      var me = this;
+
+      var url = "/confiscationCertificates/table1?id_Confiscation=" + this.id_confiscationCert;
+      axios.get(url).then(function (response) {
+        //console.log(response);
+        var respuesta = response.data;
+        me.arrayTarget = respuesta.confTable1;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    dataTable2: function dataTable2() {
+      var me = this;
+
+      var url = "/confiscationCertificates/table2?id_Confiscation=" + this.id_confiscationCert;
+      axios.get(url).then(function (response) {
+        //console.log(response);
+        var respuesta = response.data;
+        me.arrayTarget2 = respuesta.confTable2;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    dataReasons: function dataReasons() {
+      var me = this;
+
+      var url = "/confiscationCertificates/dataReasons?id_Confiscation=" + this.id_confiscationCert;
+      axios.get(url).then(function (response) {
+        //console.log(response);
+        var respuesta = response.data;
+        me.arrayReasons = respuesta.reasons;
+      }).catch(function (error) {
+        console.log(error);
       });
     },
     message: function message(tipo, crud) {

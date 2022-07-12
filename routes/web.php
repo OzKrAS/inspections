@@ -90,6 +90,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/zarpes/selectZoneAutoFisher', 'AutoFisherController@selectZoneAutoFisher');
         Route::get('/zarpes/selectFisheryAuthorized', 'FisheryAuthorizedController@selectFisheryAuthorized');
         Route::get('/zarpes/selectCompanies', 'CompanyController@selectCompanies');
+        Route::get('/zarpes/fishery', 'ZarpeController@dataFishery');
         // arribo
         Route::get('/arrivals', 'ArrivalController@index');
         Route::post('/arrivals/save', 'ArrivalController@store');
@@ -102,6 +103,9 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/arrivals/selectZoneAutoFisher', 'AutoFisherController@selectZoneAutoFisher');
         Route::get('/arrivals/selectFisheryAuthorized', 'FisheryAuthorizedController@selectFisheryAuthorized');
         Route::get('/arrivals/selectCompanies', 'CompanyController@selectCompanies');
+        Route::get('/arrivals/target', 'ArrivalController@dataTarget');
+        Route::get('/arrivals/fauna', 'ArrivalController@dataFauna');
+        Route::get('/arrivals/fishery', 'ArrivalController@dataFishery');
         //verificación 71
         Route::get('/checkDetInchs', 'CheckDetInchController@index');
         Route::post('/checkDetInchs/save', 'CheckDetInchController@store');
@@ -109,6 +113,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/checkDetInchs/delete', 'CheckDetInchController@destroy');
         Route::get('/checkDetInchs/selectCompanies', 'CompanyController@selectCompanies');
         Route::get('/checkDetInchs/selectRegional', 'RegionalController@selectRegional');
+        Route::get('/checkDetInchs/dataTable', 'CheckDetInchController@dataTable');
         //verificacion DET doble solapa
         Route::get('/checkDetFlaps', 'CheckDetFlapController@index');
         Route::post('/checkDetFlaps/save', 'CheckDetFlapController@store');
@@ -116,6 +121,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/checkDetFlaps/delete', 'CheckDetFlapController@destroy');
         Route::get('/checkDetFlaps/selectCompanies', 'CompanyController@selectCompanies');
         Route::get('/checkDetFlaps/selectRegional', 'RegionalController@selectRegional');
+        Route::get('/checkDetFlaps/dataTable', 'CheckDetFlapController@dataTable');
         //verificacion presencia equipo de rescate
         Route::get('/presenVerifics', 'presenVerificController@index');
         Route::post('/presenVerifics/save', 'presenVerificController@store');
@@ -143,12 +149,16 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/donationCertificates/update', 'DonationCertificateController@update');
         Route::post('/donationCertificates/delete', 'DonationCertificateController@destroy');
         Route::get('/donationCertificates/selectRegional', 'RegionalController@selectRegional');
+        Route::get('/donationCertificates/dataTable', 'DonationCertificateController@DataTable');
         // acta de decomiso
         Route::get('/confiscationCertificates', 'ConfiscationCertificateController@index');
         Route::post('/confiscationCertificates/save', 'ConfiscationCertificateController@store');
         Route::put('/confiscationCertificates/update', 'ConfiscationCertificateController@update');
         Route::post('/confiscationCertificates/delete', 'ConfiscationCertificateController@destroy');
         Route::get('/confiscationCertificates/selectRegional', 'RegionalController@selectRegional'); 
+        Route::get('/confiscationCertificates/table1', 'ConfiscationCertificateController@dataTable1');
+        Route::get('/confiscationCertificates/table2', 'ConfiscationCertificateController@dataTable2');
+        Route::get('/confiscationCertificates/dataReasons', 'ConfiscationCertificateController@dataReasons');
         // iNSPECCION EMBARCACION  DE CARGA
         Route::get('/inspectionBoatCargo', 'InspectionBoatCargoController@index');
         Route::post('/inspectionBoatCargo/save', 'InspectionBoatCargoController@store');

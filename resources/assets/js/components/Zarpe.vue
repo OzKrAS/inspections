@@ -1399,6 +1399,7 @@ export default {
 			// this.arrayFa.name = data["nameFishery"];
       this.arrayComp.id = data["id_company"];
 			this.arrayComp.name = data["nameCompany"];
+      this.dataFishery();
  
     },
     showData() {
@@ -1614,6 +1615,21 @@ export default {
         ) {
         }
       });
+    },
+    dataFishery(){
+      let me = this;
+
+      var url = "/zarpes/fishery?id_FisheryAut="+this.id_zarpes;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayFa = respuesta.fisheryAut;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");

@@ -114,4 +114,10 @@ class CheckDetInchController extends Controller
             );
         return response()->json($array,201);
     }
+    public function dataTable(Request $request)
+    {
+        $CheckDetInchs = DetailDetInch::select('id','id_detinch','babor1','babor2','estribor1','estribor2','punto','tituloModal')
+        ->where('id_detinch', $request->id_Detinch)->get();
+        return ['detinch' =>  $CheckDetInchs];   
+    }
 }

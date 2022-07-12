@@ -1227,6 +1227,7 @@ export default {
 			this.arrayComp.name = data["nameCompany"];
       this.arrayRegl.id = data["id_regional"];
 			this.arrayRegl.name = data["nameRegional"];
+      this.dataTable();
     },
     nameWithCompany ({ name }) {
             return `${name}`
@@ -1376,6 +1377,21 @@ export default {
         ) {
         }
       });
+    },
+    dataTable(){
+      let me = this;
+
+      var url = "/checkDetInchs/dataTable?id_Detinch="+this.id_CheckDet;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayDets = respuesta.detinch;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
 
     message(tipo, crud) {

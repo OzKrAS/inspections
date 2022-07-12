@@ -1187,6 +1187,7 @@ export default {
     
       this.arrayRegl.id = data["id_regional"];
 	    this.arrayRegl.name = data["nameRegional"];
+      this.dataTable();
     },
     nameWithRegional ({ name }) {
             return `${name}`
@@ -1333,6 +1334,21 @@ export default {
         ) {
         }
       });
+    },
+    dataTable(){
+      let me = this;
+
+      var url = "/donationCertificates/dataTable?id_Donation="+this.id_donationCertificate;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayTarget = respuesta.donation;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
     createPdf (data = []) {
       let me = this;

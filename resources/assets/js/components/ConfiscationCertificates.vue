@@ -1474,6 +1474,9 @@ export default {
       
       this.arrayRegl.id = data["id_regional"];
 			this.arrayRegl.name = data["nameRegional"];
+      this.dataTable1();
+      this.dataTable2();
+      this.dataReasons();
     },
     nameWithRegional ({ name }) {
             return `${name}`
@@ -1635,6 +1638,51 @@ export default {
         ) {
         }
       });
+    },
+    dataTable1(){
+      let me = this;
+
+      var url = "/confiscationCertificates/table1?id_Confiscation="+this.id_confiscationCert;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayTarget = respuesta.confTable1;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    dataTable2(){
+      let me = this;
+
+      var url = "/confiscationCertificates/table2?id_Confiscation="+this.id_confiscationCert;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayTarget2 = respuesta.confTable2;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    dataReasons(){
+      let me = this;
+
+      var url = "/confiscationCertificates/dataReasons?id_Confiscation="+this.id_confiscationCert;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayReasons = respuesta.reasons;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
 
     message(tipo, crud) {

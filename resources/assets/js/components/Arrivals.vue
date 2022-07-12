@@ -1745,6 +1745,9 @@ export default {
       this.arrayFa.id = data["arrayFa"];
       this.arrayComp.id = data["id_company"];
 			this.arrayComp.name = data["nameCompany"];
+      this.dataTarget();
+      this.dataFauna();
+      this.dataFishery();
     },
     showData() {
       this.clearForm();
@@ -1990,6 +1993,51 @@ export default {
           me.hideForm();
           me.message("Actualizado", "Actualizó ");
           me.listData();
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    dataTarget(){
+      let me = this;
+
+      var url = "/arrivals/target?id_Target="+this.id_arrival;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayTarget = respuesta.target;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    dataFauna(){
+      let me = this;
+
+      var url = "/arrivals/fauna?id_Fauna="+this.id_arrival;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayFauna = respuesta.fauna;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    dataFishery(){
+      let me = this;
+
+      var url = "/arrivals/fishery?id_FisheryAut="+this.id_arrival;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayFa = respuesta.fisheryAut;
         })
         .catch(function(error) {
           console.log(error);

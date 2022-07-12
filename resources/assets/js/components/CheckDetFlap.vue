@@ -1015,6 +1015,7 @@ export default {
 			this.arrayComp.name = data["nameCompany"];
       this.arrayRegl.id = data["id_regional"];
 			this.arrayRegl.name = data["nameRegional"];
+      this.dataTable();
     },
     nameWithCompany ({ name }) {
             return `${name}`
@@ -1164,6 +1165,21 @@ export default {
         ) {
         }
       });
+    },
+    dataTable(){
+      let me = this;
+
+      var url = "/checkDetFlaps/dataTable?id_Detflap="+this.id_CheckDet;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayDets2 = respuesta.detflap;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
 
     message(tipo, crud) {
