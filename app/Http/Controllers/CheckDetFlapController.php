@@ -60,6 +60,12 @@ class CheckDetFlapController extends Controller
         $checkDetFlaps->id_regional = $request->id_regional;  
         $checkDetFlaps->save();
 
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
+
         $detaildetflap = $request->detflap;
         foreach($detaildetflap as $ep=>$det){
             $objeto= new DetailDetFlap();
@@ -72,11 +78,11 @@ class CheckDetFlapController extends Controller
             $objeto->tituloModal= $det['tituloModal'];
             $objeto->save();
         }
-        $array = array(
-            'res' => true,
-            'message' => 'Registro guardado exitosamente'
-            );
-        return response()->json($array,201);
+        // $array = array(
+        //     'res' => true,
+        //     'message' => 'Registro guardado exitosamente'
+        //     );
+        // return response()->json($array,201);
     }
     public function update(Request $request)
     {

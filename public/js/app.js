@@ -49865,6 +49865,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       id_Company: 0,
 
       arrayTarget: [],
+      arrayTa: [],
       arrayFauna: [],
 
       edo: 1,

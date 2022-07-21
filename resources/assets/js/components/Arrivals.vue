@@ -1239,6 +1239,7 @@ export default {
       id_Company: 0,
 
       arrayTarget: [],
+      arrayTa: [],
       arrayFauna: [],
           
       edo: 1,

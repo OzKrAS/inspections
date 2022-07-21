@@ -1089,6 +1089,15 @@ class DataJsonController extends Controller
                         "cons"=>12,
                         "data"=>null
                     ],
+                    [
+                        "type"=>11,
+                        "title"=>"OBSERVACIONES",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"observation",
+                        "cons"=>13,
+                        "data"=>null
+                    ],
 
                 )
                 ]
