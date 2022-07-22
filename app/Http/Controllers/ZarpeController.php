@@ -130,6 +130,12 @@ class ZarpeController extends Controller
         $zarpes->id_company = $request->id_company;      
         $zarpes->save();
 
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
+
         $detailsfisheryzarpe = $request->data;
         foreach($detailsfisheryzarpe as $fs=>$deta){
             $objeto= new DetailFisherAutZarpe();
@@ -137,11 +143,11 @@ class ZarpeController extends Controller
             $objeto->name= $deta['name'];
             $objeto->save();
         }
-        $array = array(
-            'res' => true,
-            'message' => 'Registro guardado exitosamente'
-            );
-        return response()->json($array,201);
+        // $array = array(
+        //     'res' => true,
+        //     'message' => 'Registro guardado exitosamente'
+        //     );
+        // return response()->json($array,201);
     }
 
     public function update(Request $request)

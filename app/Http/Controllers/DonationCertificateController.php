@@ -67,6 +67,12 @@ class DonationCertificateController extends Controller
         $donations->id_regional = $request->id_regional;  
         $donations->save();
 
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
+
         $detaildonation = $request->target;
         foreach($detaildonation as $ep=>$det){
             $objeto= new DetDonation();
@@ -81,11 +87,11 @@ class DonationCertificateController extends Controller
 
             $objeto->save();
         }
-        $array = array(
-            'res' => true,
-            'message' => 'Registro guardado exitosamente'
-            );
-        return response()->json($array,201);
+        // $array = array(
+        //     'res' => true,
+        //     'message' => 'Registro guardado exitosamente'
+        //     );
+        // return response()->json($array,201);
     }
     public function update(Request $request)
     {

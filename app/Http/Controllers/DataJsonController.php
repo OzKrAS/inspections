@@ -300,6 +300,16 @@ class DataJsonController extends Controller
                         "data"=>null
                     ],
                     [
+                        "type"=>11,
+                        "title"=>"OBSERVACIONES",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"observationGeneral",
+                        "cons"=>13,
+                        "data"=>null
+                    ],
+
+                    [
                         "type"=>3,
                         "title"=>"EMPRESA",
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
@@ -966,6 +976,15 @@ class DataJsonController extends Controller
                         "cons"=>54,
                         "data"=>null
                     ],
+                    [
+                        "type"=>11,
+                        "title"=>"OBSERVACIONES",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"observationGeneral",
+                        "cons"=>13,
+                        "data"=>null
+                    ],
                     
                 )
                 ]
@@ -1220,6 +1239,15 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"location",
                         "cons"=>12,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>11,
+                        "title"=>"OBSERVACIONES",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"observation",
+                        "cons"=>13,
                         "data"=>null
                     ],
 

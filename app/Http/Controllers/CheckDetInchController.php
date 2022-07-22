@@ -60,6 +60,12 @@ class CheckDetInchController extends Controller
         $CheckDetInchs->id_regional = $request->id_regional;  
         $CheckDetInchs->save();
 
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
+
         $detaildetinch = $request->detinch;
         foreach($detaildetinch as $ep=>$det){
             $objeto= new DetailDetInch();
@@ -72,11 +78,11 @@ class CheckDetInchController extends Controller
             $objeto->tituloModal= $det['tituloModal'];
             $objeto->save();
         }
-        $array = array(
-            'res' => true,
-            'message' => 'Registro guardado exitosamente'
-            );
-        return response()->json($array,201);
+        // $array = array(
+        //     'res' => true,
+        //     'message' => 'Registro guardado exitosamente'
+        //     );
+        // return response()->json($array,201);
     }
     public function update(Request $request)
     {

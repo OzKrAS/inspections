@@ -81,6 +81,12 @@ class ConfiscationCertificateController extends Controller
         $confiscation->id_regional = $request->id_regional;  
         $confiscation->save();
 
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
+
         $details = $request->data;
         foreach($details as $ep=>$det){
             $objeto= new DetConfiscationReasons();
@@ -114,11 +120,11 @@ class ConfiscationCertificateController extends Controller
 
             $objeto->save();
         }
-        $array = array(
-            'res' => true,
-            'message' => 'Registro guardado exitosamente'
-            );
-        return response()->json($array,201);
+        // $array = array(
+        //     'res' => true,
+        //     'message' => 'Registro guardado exitosamente'
+        //     );
+        // return response()->json($array,201);
     }
     public function update(Request $request)
     {
