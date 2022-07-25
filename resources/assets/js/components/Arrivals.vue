@@ -776,7 +776,7 @@
                       <th style="width: 90px">Opciones</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody v-if="arrayTarget.length">
                     <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
                       <td v-text="target.nameCommon1"></td>
                       <td v-text="target.nameScientific1"></td>
@@ -794,14 +794,21 @@
                       </td>
                     </tr>
                   </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>NOMBRE COMÙN</th>              
-                        <th>NOMBRE CIENTÌFICO</th>    
-                        <th>CAPTURA TON.</th>    
-                        <th style="width: 90px">Opciones</th>
-                      </tr>
-                    </tfoot>
+                  <tbody v-else>
+                    <tr>
+                      <td colspan="6" class="text-center">
+                        No existen elementos agregados 
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>NOMBRE COMÙN</th>              
+                      <th>NOMBRE CIENTÌFICO</th>    
+                      <th>CAPTURA TON.</th>    
+                      <th style="width: 90px">Opciones</th>
+                    </tr>
+                  </tfoot>
                     <tbody>
                     </tbody>
                 </table>
@@ -873,7 +880,7 @@
                       <th style="width: 90px">Opciones</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody v-if="arrayFauna.length">
                     <tr v-for="(fauna,index) in arrayFauna" :key="`fauna-${index}`">
                       <td v-text="fauna.nameCommon2"></td>
                       <td v-text="fauna.nameScientific2"></td>
@@ -888,6 +895,13 @@
                         >
                           <i class="icon-trash"></i>
                         </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody v-else>
+                    <tr>
+                      <td colspan="6" class="text-center">
+                        No existen elementos agregados 
                       </td>
                     </tr>
                   </tbody>
@@ -1486,6 +1500,7 @@ export default {
         capture1:this.capture1
       });
       console.log("arrayTarget " + total1);
+      this.mensaje("Captura objetivo agregado", "success");
       me.clearTarget();  
     },
     addItemFauna() {
@@ -1496,12 +1511,14 @@ export default {
         capture2:this.capture2
       });
       console.log("arrayFauna " + total2);
+      // this.mensaje("Captura fauna incidental agregado", "success");
       me.clearFauna();
        
       
     },
     deleteTarget(index){
        this.arrayTarget.splice(index,1);
+      //  this.mensaje("Captura fauna incidental agregado", "error");
     },
     deleteFauna(index){
        this.arrayFauna.splice(index,1);
@@ -1516,6 +1533,23 @@ export default {
       this.nameScientific2 = null;
       this.capture2 = null;
     },
+    // mensaje(msj, icono) {
+    //     const Toast = Swal.mixin({
+    //         toast: true,
+    //         position: 'top-center',
+    //         showConfirmButton: false,
+    //         timer: 2000,
+    //         timerProgressBar: true,
+    //         didOpen: (toast) => {
+    //             toast.addEventListener('mouseenter', Swal.stopTimer)
+    //             toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //         }
+    //     })
+    //     Toast.fire({
+    //         icon: icono,
+    //         title: msj
+    //     })
+    // },
     clearForm() {
       this.$v.$reset();
       this.form.insNo = null;

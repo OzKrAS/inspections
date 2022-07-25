@@ -49743,6 +49743,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -50114,6 +50128,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         capture1: this.capture1
       });
       console.log("arrayTarget " + total1);
+      this.mensaje("Captura objetivo agregado", "success");
       me.clearTarget();
     },
     addItemFauna: function addItemFauna() {
@@ -50124,10 +50139,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         capture2: this.capture2
       });
       console.log("arrayFauna " + total2);
+      // this.mensaje("Captura fauna incidental agregado", "success");
       me.clearFauna();
     },
     deleteTarget: function deleteTarget(index) {
       this.arrayTarget.splice(index, 1);
+      //  this.mensaje("Captura fauna incidental agregado", "error");
     },
     deleteFauna: function deleteFauna(index) {
       this.arrayFauna.splice(index, 1);
@@ -50142,6 +50159,24 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.nameScientific2 = null;
       this.capture2 = null;
     },
+
+    // mensaje(msj, icono) {
+    //     const Toast = Swal.mixin({
+    //         toast: true,
+    //         position: 'top-center',
+    //         showConfirmButton: false,
+    //         timer: 2000,
+    //         timerProgressBar: true,
+    //         didOpen: (toast) => {
+    //             toast.addEventListener('mouseenter', Swal.stopTimer)
+    //             toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //         }
+    //     })
+    //     Toast.fire({
+    //         icon: icono,
+    //         title: msj
+    //     })
+    // },
     clearForm: function clearForm() {
       this.$v.$reset();
       this.form.insNo = null;
@@ -53068,68 +53103,90 @@ var render = function() {
                                       ])
                                     ]),
                                     _vm._v(" "),
-                                    _c(
-                                      "tbody",
-                                      _vm._l(_vm.arrayTarget, function(
-                                        target,
-                                        index
-                                      ) {
-                                        return _c(
-                                          "tr",
-                                          { key: "target-" + index },
-                                          [
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.nameCommon1
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.nameScientific1
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", {
-                                              domProps: {
-                                                textContent: _vm._s(
-                                                  target.capture1
-                                                )
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-danger btn-sm",
-                                                  attrs: {
-                                                    type: "button",
-                                                    "data-tooltip": "",
-                                                    title: "Eliminar"
-                                                  },
-                                                  on: {
-                                                    click: function($event) {
-                                                      _vm.deleteTarget(index)
-                                                    }
+                                    _vm.arrayTarget.length
+                                      ? _c(
+                                          "tbody",
+                                          _vm._l(_vm.arrayTarget, function(
+                                            target,
+                                            index
+                                          ) {
+                                            return _c(
+                                              "tr",
+                                              { key: "target-" + index },
+                                              [
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.nameCommon1
+                                                    )
                                                   }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass: "icon-trash"
-                                                  })
-                                                ]
-                                              )
-                                            ])
-                                          ]
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.nameScientific1
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", {
+                                                  domProps: {
+                                                    textContent: _vm._s(
+                                                      target.capture1
+                                                    )
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _c(
+                                                    "button",
+                                                    {
+                                                      staticClass:
+                                                        "btn btn-danger btn-sm",
+                                                      attrs: {
+                                                        type: "button",
+                                                        "data-tooltip": "",
+                                                        title: "Eliminar"
+                                                      },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.deleteTarget(
+                                                            index
+                                                          )
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("i", {
+                                                        staticClass:
+                                                          "icon-trash"
+                                                      })
+                                                    ]
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          })
                                         )
-                                      })
-                                    ),
+                                      : _c("tbody", [
+                                          _c("tr", [
+                                            _c(
+                                              "td",
+                                              {
+                                                staticClass: "text-center",
+                                                attrs: { colspan: "6" }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                      No existen elementos agregados \n                    "
+                                                )
+                                              ]
+                                            )
+                                          ])
+                                        ]),
                                     _vm._v(" "),
                                     _c("tfoot", [
                                       _c("tr", [
@@ -53335,68 +53392,85 @@ var render = function() {
                                     ])
                                   ]),
                                   _vm._v(" "),
-                                  _c(
-                                    "tbody",
-                                    _vm._l(_vm.arrayFauna, function(
-                                      fauna,
-                                      index
-                                    ) {
-                                      return _c(
-                                        "tr",
-                                        { key: "fauna-" + index },
-                                        [
-                                          _c("td", {
-                                            domProps: {
-                                              textContent: _vm._s(
-                                                fauna.nameCommon2
-                                              )
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("td", {
-                                            domProps: {
-                                              textContent: _vm._s(
-                                                fauna.nameScientific2
-                                              )
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("td", {
-                                            domProps: {
-                                              textContent: _vm._s(
-                                                fauna.capture2
-                                              )
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass:
-                                                  "btn btn-danger btn-sm",
-                                                attrs: {
-                                                  type: "button",
-                                                  "data-tooltip": "",
-                                                  title: "Eliminar"
-                                                },
-                                                on: {
-                                                  click: function($event) {
-                                                    _vm.deleteFauna(index)
-                                                  }
+                                  _vm.arrayFauna.length
+                                    ? _c(
+                                        "tbody",
+                                        _vm._l(_vm.arrayFauna, function(
+                                          fauna,
+                                          index
+                                        ) {
+                                          return _c(
+                                            "tr",
+                                            { key: "fauna-" + index },
+                                            [
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    fauna.nameCommon2
+                                                  )
                                                 }
-                                              },
-                                              [
-                                                _c("i", {
-                                                  staticClass: "icon-trash"
-                                                })
-                                              ]
-                                            )
-                                          ])
-                                        ]
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    fauna.nameScientific2
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", {
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    fauna.capture2
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-danger btn-sm",
+                                                    attrs: {
+                                                      type: "button",
+                                                      "data-tooltip": "",
+                                                      title: "Eliminar"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        _vm.deleteFauna(index)
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass: "icon-trash"
+                                                    })
+                                                  ]
+                                                )
+                                              ])
+                                            ]
+                                          )
+                                        })
                                       )
-                                    })
-                                  ),
+                                    : _c("tbody", [
+                                        _c("tr", [
+                                          _c(
+                                            "td",
+                                            {
+                                              staticClass: "text-center",
+                                              attrs: { colspan: "6" }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                      No existen elementos agregados \n                    "
+                                              )
+                                            ]
+                                          )
+                                        ])
+                                      ]),
                                   _vm._v(" "),
                                   _c("tfoot", [
                                     _c("tr", [
@@ -54232,6 +54306,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -56808,68 +56889,103 @@ var render = function() {
                                 ])
                               ]),
                               _vm._v(" "),
-                              _c(
-                                "tbody",
-                                _vm._l(_vm.arrayDets, function(dets, index) {
-                                  return _c("tr", { key: "dets-" + index }, [
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(dets.punto)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(dets.tituloModal)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(dets.babor1)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(dets.babor2)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(dets.estribor1)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(dets.estribor2)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-danger btn-sm",
-                                          attrs: {
-                                            type: "button",
-                                            "data-tooltip": "",
-                                            title: "Eliminar"
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.deleteDets(index)
+                              _vm.arrayDets.length
+                                ? _c(
+                                    "tbody",
+                                    _vm._l(_vm.arrayDets, function(
+                                      dets,
+                                      index
+                                    ) {
+                                      return _c(
+                                        "tr",
+                                        { key: "dets-" + index },
+                                        [
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(dets.punto)
                                             }
-                                          }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(
+                                                dets.tituloModal
+                                              )
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(dets.babor1)
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(dets.babor2)
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(
+                                                dets.estribor1
+                                              )
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(
+                                                dets.estribor2
+                                              )
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "btn btn-danger btn-sm",
+                                                attrs: {
+                                                  type: "button",
+                                                  "data-tooltip": "",
+                                                  title: "Eliminar"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    _vm.deleteDets(index)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass: "icon-trash"
+                                                })
+                                              ]
+                                            )
+                                          ])
+                                        ]
+                                      )
+                                    })
+                                  )
+                                : _c("tbody", [
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticClass: "text-center",
+                                          attrs: { colspan: "8" }
                                         },
-                                        [_c("i", { staticClass: "icon-trash" })]
+                                        [
+                                          _vm._v(
+                                            "\n                        No existen elementos agregados \n                      "
+                                          )
+                                        ]
                                       )
                                     ])
-                                  ])
-                                })
-                              ),
+                                  ]),
                               _vm._v(" "),
                               _c("tfoot", [
                                 _c("tr", [
@@ -57419,6 +57535,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -59778,68 +59901,103 @@ var render = function() {
                                 ])
                               ]),
                               _vm._v(" "),
-                              _c(
-                                "tbody",
-                                _vm._l(_vm.arrayDets2, function(dets, index) {
-                                  return _c("tr", { key: "dets-" + index }, [
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(dets.punto2)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(dets.tituloModal)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(dets.babor3)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(dets.babor4)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(dets.estribor3)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", {
-                                      domProps: {
-                                        textContent: _vm._s(dets.estribor4)
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-danger btn-sm",
-                                          attrs: {
-                                            type: "button",
-                                            "data-tooltip": "",
-                                            title: "Eliminar"
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.deleteDets2(index)
+                              _vm.arrayDets2.length
+                                ? _c(
+                                    "tbody",
+                                    _vm._l(_vm.arrayDets2, function(
+                                      dets,
+                                      index
+                                    ) {
+                                      return _c(
+                                        "tr",
+                                        { key: "dets-" + index },
+                                        [
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(dets.punto2)
                                             }
-                                          }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(
+                                                dets.tituloModal
+                                              )
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(dets.babor3)
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(dets.babor4)
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(
+                                                dets.estribor3
+                                              )
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("td", {
+                                            domProps: {
+                                              textContent: _vm._s(
+                                                dets.estribor4
+                                              )
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "btn btn-danger btn-sm",
+                                                attrs: {
+                                                  type: "button",
+                                                  "data-tooltip": "",
+                                                  title: "Eliminar"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    _vm.deleteDets2(index)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass: "icon-trash"
+                                                })
+                                              ]
+                                            )
+                                          ])
+                                        ]
+                                      )
+                                    })
+                                  )
+                                : _c("tbody", [
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticClass: "text-center",
+                                          attrs: { colspan: "8" }
                                         },
-                                        [_c("i", { staticClass: "icon-trash" })]
+                                        [
+                                          _vm._v(
+                                            "\n                          No existen elementos agregados \n                        "
+                                          )
+                                        ]
                                       )
                                     ])
-                                  ])
-                                })
-                              ),
+                                  ]),
                               _vm._v(" "),
                               _c("tfoot", [
                                 _c("tr", [
@@ -62094,10 +62252,13 @@ var render = function() {
                                           _c("tr", [
                                             _c(
                                               "td",
-                                              { attrs: { colspan: "6" } },
+                                              {
+                                                staticClass: "text-center",
+                                                attrs: { colspan: "6" }
+                                              },
                                               [
                                                 _vm._v(
-                                                  "\n                            NO existen elementos agregados \n                          "
+                                                  "\n                            No existen elementos agregados \n                          "
                                                 )
                                               ]
                                             )
@@ -83588,10 +83749,13 @@ var render = function() {
                                           _c("tr", [
                                             _c(
                                               "td",
-                                              { attrs: { colspan: "6" } },
+                                              {
+                                                staticClass: "text-center",
+                                                attrs: { colspan: "9" }
+                                              },
                                               [
                                                 _vm._v(
-                                                  "\n                                  NO existen elementos agregados \n                                "
+                                                  "\n                                  No existen elementos agregados \n                                "
                                                 )
                                               ]
                                             )
@@ -87677,7 +87841,7 @@ var render = function() {
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                          NO existen elementos agregados \n                        "
+                                                  "\n                          No existen elementos agregados \n                        "
                                                 )
                                               ]
                                             )
@@ -87931,7 +88095,7 @@ var render = function() {
                                       ])
                                     ]),
                                     _vm._v(" "),
-                                    _vm.arrayTarget.length
+                                    _vm.arrayTarget2.length
                                       ? _c(
                                           "tbody",
                                           _vm._l(_vm.arrayTarget2, function(
@@ -88017,7 +88181,7 @@ var render = function() {
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                          NO existen elementos agregados \n                        "
+                                                  "\n                          No existen elementos agregados \n                        "
                                                 )
                                               ]
                                             )

@@ -223,8 +223,8 @@
                         </tbody>
                         <tbody v-else>
                           <tr>
-                            <td colspan="6">
-                              NO existen elementos agregados 
+                            <td colspan="6" class="text-center">
+                              No existen elementos agregados 
                             </td>
                           </tr>
                         </tbody>

@@ -348,7 +348,7 @@
                       <tbody v-else>
                         <tr>
                           <td colspan="10" class="text-center">
-                            NO existen elementos agregados 
+                            No existen elementos agregados 
                           </td>
                         </tr>
                       </tbody>
@@ -441,7 +441,7 @@
                           <th style="width: 90px">Opciones</th>
                         </tr>
                       </thead>
-                      <tbody v-if="arrayTarget.length">
+                      <tbody v-if="arrayTarget2.length">
                         <tr v-for="(target,index) in arrayTarget2" :key="`target-${index}`">
                           <td v-text="target.element"></td>
                           <td v-text="target.amount2"></td>
@@ -464,7 +464,7 @@
                       <tbody v-else>
                         <tr>
                           <td colspan="6" class="text-center">
-                            NO existen elementos agregados 
+                            No existen elementos agregados 
                           </td>
                         </tr>
                       </tbody>

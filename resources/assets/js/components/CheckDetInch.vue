@@ -428,7 +428,7 @@
                         <th style="width: 90px">Opciones</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody v-if="arrayDets.length">
                       <tr v-for="(dets,index) in arrayDets" :key="`dets-${index}`">
                         <td v-text="dets.punto"></td>
                         <td v-text="dets.tituloModal"></td>
@@ -446,6 +446,13 @@
                           >
                             <i class="icon-trash"></i>
                           </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tbody v-else>
+                      <tr>
+                        <td colspan="8" class="text-center">
+                          No existen elementos agregados 
                         </td>
                       </tr>
                     </tbody>

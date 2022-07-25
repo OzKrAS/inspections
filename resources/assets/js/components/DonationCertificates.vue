@@ -313,8 +313,8 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                             </tbody>
                             <tbody v-else>
                               <tr>
-                                <td colspan="6">
-                                  NO existen elementos agregados 
+                                <td colspan="9" class="text-center">
+                                  No existen elementos agregados 
                                 </td>
                               </tr>
                             </tbody>
