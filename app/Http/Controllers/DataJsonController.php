@@ -334,7 +334,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayFa",
                         "cons"=>32,
-                        "data"=>$fishery
+                        "data"=>$detailsfisheryzarpe
                     ],
                     [
                         "type"=>3,
