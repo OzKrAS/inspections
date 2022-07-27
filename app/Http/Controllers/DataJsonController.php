@@ -2246,7 +2246,7 @@ class DataJsonController extends Controller
             ,200
         );
     }
-    public function PresenVerificJson(){
+    public function jsonEquipmentDolphin(){
         $flags = Flag::all();
 
 
