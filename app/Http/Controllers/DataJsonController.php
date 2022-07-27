@@ -34,10 +34,10 @@ class DataJsonController extends Controller
         $nationality = Nationality::all();
 
         return response() -> json(
-          
+
                 ["idForm"=>1,
             "questions"=>
-                array(                                      
+                array(
                     [
                         "type"=>2,
                         "title"=>"INSPECCIÓN No",
@@ -486,10 +486,10 @@ class DataJsonController extends Controller
         $nationality = Nationality::all();
 
         return response() -> json(
-        
+
                 ["idForm"=>1,
             "questions"=>
-                array(                                      
+                array(
                     [
                         "type"=>2,
                         "title"=>"INSPECCIÓN No",
@@ -651,7 +651,7 @@ class DataJsonController extends Controller
                         "id"=>"",
                         "cons"=>18,
                         "data"=>null
-                    ],       
+                    ],
                     [
                         "type"=>2,
                         "title"=>"No. DE RESOLUCIÓN",
@@ -759,7 +759,7 @@ class DataJsonController extends Controller
                         "id"=>"",
                         "cons"=>30,
                         "data"=>null
-                    ],  
+                    ],
                     [
                         "type"=>10,
                         "title"=>"PESQUERÍA AUTORIZADA",
@@ -985,7 +985,7 @@ class DataJsonController extends Controller
                         "cons"=>13,
                         "data"=>null
                     ],
-                    
+
                 )
                 ]
             ,200
@@ -996,10 +996,10 @@ class DataJsonController extends Controller
         $company = Company::all();
 
         return response() -> json(
-          
+
                 ["idForm"=>1,
             "questions"=>
-                array(                                      
+                array(
                     [
                         "type"=>4,
                         "title"=>"FECHA",
@@ -1122,17 +1122,17 @@ class DataJsonController extends Controller
                 ]
             ,200
         );
-     
+
     }
     public function jsonDetInch(){
         $regional = Regional::all();
         $company = Company::all();
 
         return response() -> json(
-          
+
                 ["idForm"=>1,
             "questions"=>
-                array(                                      
+                array(
                     [
                         "type"=>4,
                         "title"=>"FECHA",
@@ -1255,14 +1255,14 @@ class DataJsonController extends Controller
                 ]
             ,200
         );
-     
+
     }
     public function jsonTableDetFlap(){
         return response() -> json(
             array(
                 ["idForm"=>1,
             "questions"=>
-                array(                                      
+                array(
                     [
                         "type"=>1,
                         "title"=>"BABOR 1",
@@ -1300,10 +1300,10 @@ class DataJsonController extends Controller
         $flags = Flag::all();
 
         return response() -> json(
-          
+
                 ["idForm"=>1,
             "questions"=>
-                array(                                      
+                array(
                     [
                         "type"=>1,
                         "title"=>"NOMBRE DEL BARCO",
@@ -1367,7 +1367,7 @@ class DataJsonController extends Controller
                         "cons"=>7,
                         "data"=>null
                     ],
-                   
+
                 )
                 ]
             ,200
@@ -1379,7 +1379,7 @@ class DataJsonController extends Controller
         return response() -> json(
                 ["idForm"=>1,
             "questions"=>
-                array(                                      
+                array(
                     [
                         "type"=>2,
                         "title"=>"No. ACTA",
@@ -1634,7 +1634,7 @@ class DataJsonController extends Controller
         return response() -> json(
                 ["idForm"=>1,
             "questions"=>
-                array(                                      
+                array(
                     [
                         "type"=>2,
                         "title"=>"No. ACTA",
@@ -1794,15 +1794,15 @@ class DataJsonController extends Controller
         );
     }
     public function jsonInspectionBoatCargo(){
-        
+
         $ports = Ports::all();
         $flags = Flag::all();
 
         return response() -> json(
-      
+
                 ["idForm"=>1,
             "questions"=>
-                array(                                      
+                array(
                     [
                         "type"=>2,
                         "title"=>"No. FORMULARIO",
@@ -1820,7 +1820,7 @@ class DataJsonController extends Controller
                         "id"=>"place",
                         "cons"=>2,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>4,
                         "title"=>"FECHA",
@@ -1829,7 +1829,7 @@ class DataJsonController extends Controller
                         "id"=>"date",
                         "cons"=>3,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>1,
                         "title"=>"EMPRESA COLOMBIA",
@@ -1838,7 +1838,7 @@ class DataJsonController extends Controller
                         "id"=>"businessColombia",
                         "cons"=>4,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>2,
                         "title"=>"TOTAL CARGA (TON.)",
@@ -1847,7 +1847,7 @@ class DataJsonController extends Controller
                         "id"=>"fullCargo",
                         "cons"=>5,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>1,
                         "title"=>"NOMBRE EMBARCACIÓN DE CRAGA",
@@ -1856,7 +1856,7 @@ class DataJsonController extends Controller
                         "id"=>"nameBoatCargo",
                         "cons"=>6,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>3,
                         "title"=>"PUERTO DE TRANSBORDO DE LA CARGA",
@@ -1865,7 +1865,7 @@ class DataJsonController extends Controller
                         "id"=>"arrayPt",
                         "cons"=>7,
                         "data"=>$ports
-                    ],      
+                    ],
                     [
                         "type"=>3,
                         "title"=>"BANDERA",
@@ -1874,7 +1874,7 @@ class DataJsonController extends Controller
                         "id"=>"arrayFg",
                         "cons"=>8,
                         "data"=>$flags
-                    ],      
+                    ],
                     [
                         "type"=>3,
                         "title"=>"PUERTO DE ZARPE",
@@ -1883,7 +1883,7 @@ class DataJsonController extends Controller
                         "id"=>"arrayPtZarpe",
                         "cons"=>9,
                         "data"=>$ports
-                    ],      
+                    ],
                     [
                         "type"=>3,
                         "title"=>"PUERTO DE DESEMBARQUE",
@@ -1892,7 +1892,7 @@ class DataJsonController extends Controller
                         "id"=>"arrayPtDisemb",
                         "cons"=>10,
                         "data"=>$ports
-                    ],      
+                    ],
                     [
                         "type"=>3,
                         "title"=>"ÁREA DE OPERACIÓN",
@@ -1901,7 +1901,7 @@ class DataJsonController extends Controller
                         "id"=>"areaOperation",
                         "cons"=>11,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>3,
                         "title"=>"NOTIFICACIÓN PREVIA",
@@ -1910,7 +1910,7 @@ class DataJsonController extends Controller
                         "id"=>"notification",
                         "cons"=>12,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>8,
                         "title"=>"INFORMACIÓN DE TRANSBORDO SOBRE EMBARCACIONES DONANTES",
@@ -1919,7 +1919,7 @@ class DataJsonController extends Controller
                         "id"=>"",
                         "cons"=>13,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>1,
                         "title"=>"NOMBRE EMBARCACIÓN",
@@ -1928,7 +1928,7 @@ class DataJsonController extends Controller
                         "id"=>"nameBoat",
                         "cons"=>14,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>3,
                         "title"=>"BANDERA",
@@ -1937,7 +1937,7 @@ class DataJsonController extends Controller
                         "id"=>"arrayFg",
                         "cons"=>15,
                         "data"=>$flags
-                    ],      
+                    ],
                     [
                         "type"=>2,
                         "title"=>"No. IDENTIFICADOR (OMI)",
@@ -1946,7 +1946,7 @@ class DataJsonController extends Controller
                         "id"=>"noIdOmi",
                         "cons"=>16,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>1,
                         "title"=>"LUGAR DE TRANSBORDO",
@@ -1955,7 +1955,7 @@ class DataJsonController extends Controller
                         "id"=>"placeTransfer",
                         "cons"=>17,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>4,
                         "title"=>"FECHA DE TRANSBORDO",
@@ -1964,7 +1964,7 @@ class DataJsonController extends Controller
                         "id"=>"dateTransfer",
                         "cons"=>18,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>1,
                         "title"=>"ÁREAS DE CAPTURA",
@@ -1973,7 +1973,7 @@ class DataJsonController extends Controller
                         "id"=>"areasCapture",
                         "cons"=>19,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>8,
                         "title"=>"PRODUCTO POR ESPECIE (TON.)",
@@ -1982,7 +1982,7 @@ class DataJsonController extends Controller
                         "id"=>"",
                         "cons"=>20,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>1,
                         "title"=>"ESPECIE",
@@ -1991,7 +1991,7 @@ class DataJsonController extends Controller
                         "id"=>"species",
                         "cons"=>21,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>1,
                         "title"=>"FORMATO DEL PODUCTO",
@@ -2000,7 +2000,7 @@ class DataJsonController extends Controller
                         "id"=>"shapeProduct",
                         "cons"=>22,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>2,
                         "title"=>"CANTIDAD",
@@ -2009,7 +2009,7 @@ class DataJsonController extends Controller
                         "id"=>"amount",
                         "cons"=>23,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>2,
                         "title"=>"TOTAL PRODUCTO DESEMBARCADO",
@@ -2018,7 +2018,7 @@ class DataJsonController extends Controller
                         "id"=>"productLanded",
                         "cons"=>24,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>1,
                         "title"=>"NOMBRE FUNCIONARIO",
@@ -2027,7 +2027,7 @@ class DataJsonController extends Controller
                         "id"=>"nameOfficial",
                         "cons"=>25,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>1,
                         "title"=>"NOMBRE CAPITÁN BARCO CARGUERO",
@@ -2036,7 +2036,7 @@ class DataJsonController extends Controller
                         "id"=>"nameCaptain",
                         "cons"=>26,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>1,
                         "title"=>"NOMBRE EMPRESA RESPONSABLE",
@@ -2045,7 +2045,7 @@ class DataJsonController extends Controller
                         "id"=>"nameBusiness",
                         "cons"=>27,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>11,
                         "title"=>"observaciones",
@@ -2054,7 +2054,7 @@ class DataJsonController extends Controller
                         "id"=>"observation",
                         "cons"=>28,
                         "data"=>null
-                    ],      
+                    ],
                 )
                 ]
             ,200
@@ -2066,10 +2066,10 @@ class DataJsonController extends Controller
         $ports = Ports::all();
 
         return response() -> json(
-        
+
                 ["idForm"=>1,
             "questions"=>
-                array(                                      
+                array(
                     [
                         "type"=>4,
                         "title"=>"FECHA",
@@ -2078,7 +2078,7 @@ class DataJsonController extends Controller
                         "id"=>"date",
                         "cons"=>1,
                         "data"=>null
-                    ],         
+                    ],
                     [
                         "type"=>3,
                         "title"=>"EMPRESA",
@@ -2087,7 +2087,7 @@ class DataJsonController extends Controller
                         "id"=>"arrayComp",
                         "cons"=>2,
                         "data"=>$company
-                    ],         
+                    ],
                     [
                         "type"=>1,
                         "title"=>"NOMBRE EMBARCACIÓN",
@@ -2096,7 +2096,7 @@ class DataJsonController extends Controller
                         "id"=>"nameBoat",
                         "cons"=>3,
                         "data"=>null
-                    ],   
+                    ],
                     [
                         "type"=>3,
                         "title"=>"BANDERA",
@@ -2105,7 +2105,7 @@ class DataJsonController extends Controller
                         "id"=>"arrayComp",
                         "cons"=>4,
                         "data"=>$flags
-                    ],  
+                    ],
                     [
                         "type"=>8,
                         "title"=>"CERTIFICA",
@@ -2123,7 +2123,7 @@ class DataJsonController extends Controller
                         "id"=>"dateBeginningFaena",
                         "cons"=>6,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>4,
                         "title"=>"FECHA FIN DE FAENA",
@@ -2132,7 +2132,7 @@ class DataJsonController extends Controller
                         "id"=>"dateEndFaena",
                         "cons"=>7,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>1,
                         "title"=>"ZONA DE PESCA",
@@ -2141,7 +2141,7 @@ class DataJsonController extends Controller
                         "id"=>"ZoneFisher",
                         "cons"=>8,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>3,
                         "title"=>"PUERTO DE DESEMBARQUE",
@@ -2150,7 +2150,7 @@ class DataJsonController extends Controller
                         "id"=>"arrayPt",
                         "cons"=>9,
                         "data"=>$ports
-                    ],      
+                    ],
                     [
                         "type"=>2,
                         "title"=>"ALETA AMARILLA - YFT (Kg.)",
@@ -2159,7 +2159,7 @@ class DataJsonController extends Controller
                         "id"=>"yellowFin",
                         "cons"=>10,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>3,
                         "title"=>"CLASIFICACIÓN EN LIBRAS ALETA AMARILLA",
@@ -2168,7 +2168,7 @@ class DataJsonController extends Controller
                         "id"=>"poundRating1",
                         "cons"=>11,
                         "data"=>null
-                    ],      
+                    ],
                     [
                         "type"=>2,
                         "title"=>"BARRILETE -SKJ (Kg.)",
@@ -2177,7 +2177,7 @@ class DataJsonController extends Controller
                         "id"=>"barrilete",
                         "cons"=>12,
                         "data"=>null
-                    ], 
+                    ],
                     [
                         "type"=>3,
                         "title"=>"CLASIFICACIÓN EN LIBRAS BARRILETE",
@@ -2186,7 +2186,7 @@ class DataJsonController extends Controller
                         "id"=>"poundRating2",
                         "cons"=>13,
                         "data"=>null
-                    ],     
+                    ],
                     [
                         "type"=>2,
                         "title"=>"PATUDO -BET (Kg.)",
@@ -2195,7 +2195,7 @@ class DataJsonController extends Controller
                         "id"=>"patudo",
                         "cons"=>14,
                         "data"=>null
-                    ],     
+                    ],
                     [
                         "type"=>3,
                         "title"=>"CLASIFICACIÓN EN LIBRAS PATUDO",
@@ -2204,7 +2204,7 @@ class DataJsonController extends Controller
                         "id"=>"poundRating3",
                         "cons"=>15,
                         "data"=>null
-                    ],     
+                    ],
                     [
                         "type"=>1,
                         "title"=>"OTRO",
@@ -2213,7 +2213,7 @@ class DataJsonController extends Controller
                         "id"=>"other",
                         "cons"=>16,
                         "data"=>null
-                    ],     
+                    ],
                     [
                         "type"=>3,
                         "title"=>"CLASIFICACIÓN EN LIBRAS OTRO",
@@ -2222,7 +2222,7 @@ class DataJsonController extends Controller
                         "id"=>"poundRating4",
                         "cons"=>17,
                         "data"=>null
-                    ],     
+                    ],
                     [
                         "type"=>11,
                         "title"=>"observaciones",
@@ -2231,7 +2231,7 @@ class DataJsonController extends Controller
                         "id"=>"observation",
                         "cons"=>18,
                         "data"=>null
-                    ],     
+                    ],
                     [
                         "type"=>11,
                         "title"=>"NOMBRE FUNCIONARIO",
@@ -2240,11 +2240,89 @@ class DataJsonController extends Controller
                         "id"=>"nameOfficial",
                         "cons"=>19,
                         "data"=>null
-                    ],     
+                    ],
                 )
                 ]
             ,200
         );
     }
-    
+    public function PresenVerificJson(){
+        $flags = Flag::all();
+
+
+        return response() -> json(
+
+                ["idForm"=>1,
+            "questions"=>
+                array(
+                    [
+                        "type"=>4,
+                        "title"=>"Fecha Zarpe",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"date",
+                        "cons"=>1,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>4,
+                        "title"=>"Fecha Desembarque",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"date",
+                        "cons"=>2,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>3,
+                        "title"=>"NOMBRE DEL BARCO",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"arrayComp",
+                        "cons"=>3,
+                        "data"=>$company
+                    ],
+                    [
+                        "type"=>1,
+                        "title"=>"NUM CRUCERO",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"nameBoat",
+                        "cons"=>4,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>3,
+                        "title"=>"BANDERA",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"arrayComp",
+                        "cons"=>5,
+                        "data"=>$flags
+                    ],
+                    [
+                        "type"=>6,
+                        "title"=>"NOMBRE OBSERVADOR",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"",
+                        "cons"=>5,
+                        "data"=>null
+                    ],
+                [
+                        "type"=>11,
+                        "title"=>"NOMBRE CAPITAN",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"nameOfficial",
+                        "cons"=>19,
+                        "data"=>null
+                    ],
+
+                )
+                ]
+            ,200
+        );
+    }
+
 }
