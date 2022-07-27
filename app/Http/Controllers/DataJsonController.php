@@ -2280,7 +2280,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayComp",
                         "cons"=>3,
-                        "data"=>$company
+                        "data"=>null
                     ],
                     [
                         "type"=>1,
