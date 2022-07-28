@@ -390,7 +390,7 @@
                     </div>  &nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item">
                       <md-field md-clearable :class="getValidationClass('noPatent')">
-                        <label for="first-name">No. de Pantente</label>
+                        <label for="first-name">No. de Patente</label>
                         <md-input
                           name="first-name"
                           id="first-name"

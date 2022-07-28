@@ -47284,7 +47284,7 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("No. de Pantente")]
+                                      [_vm._v("No. de Patente")]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -51994,7 +51994,7 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("No. de Pantente")]
+                                      [_vm._v("No. de Patente")]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
