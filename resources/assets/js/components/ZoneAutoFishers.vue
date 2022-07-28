@@ -179,7 +179,7 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.name = null;
-      this.form.state = 1;
+      this.state = 1;
     },
 
     showUpdate(data = []) {

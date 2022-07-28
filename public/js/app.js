@@ -38378,7 +38378,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_material_dist_components__["MdRadio"]);
     clearForm: function clearForm() {
       this.$v.$reset();
       this.form.name = null;
-      this.form.state = 1;
+      this.state = 1;
     },
     showUpdate: function showUpdate() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
