@@ -327,15 +327,15 @@ class DataJsonController extends Controller
                         "cons"=>31,
                         "data"=>null
                     ],
-                    [
-                        "type"=>10,
-                        "title"=>"PESQUERÍA AUTORIZADA",
-                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
-                        "placeHolder"=>"PLACE HOLDER INPUT",
-                        "id"=>"arrayFa",
-                        "cons"=>32,
-                        "data"=>$detailsfisheryzarpe
-                    ],
+                    // [
+                    //     "type"=>10,
+                    //     "title"=>"PESQUERÍA AUTORIZADA",
+                    //     "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                    //     "placeHolder"=>"PLACE HOLDER INPUT",
+                    //     "id"=>"arrayFa",
+                    //     "cons"=>32,
+                    //     "data"=>$detailsfisheryzarpe
+                    // ],
                     [
                         "type"=>3,
                         "title"=>"ZONA DE PESCA AUTORIZADA",
