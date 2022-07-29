@@ -49756,7 +49756,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -53335,29 +53334,23 @@ var render = function() {
                                 "div",
                                 { staticClass: "md-layout-item" },
                                 [
-                                  _vm.tipoAccion == 1
-                                    ? _c(
-                                        "md-button",
-                                        {
-                                          staticClass:
-                                            "md-dense md-raised md-primary",
-                                          attrs: {
-                                            type: "button",
-                                            disabled: _vm.sending
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.addItemFauna()
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "Agregar\n                      "
-                                          )
-                                        ]
-                                      )
-                                    : _vm._e()
+                                  _c(
+                                    "md-button",
+                                    {
+                                      staticClass:
+                                        "md-dense md-raised md-primary",
+                                      attrs: {
+                                        type: "button",
+                                        disabled: _vm.sending
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.addItemFauna()
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Agregar\n                      ")]
+                                  )
                                 ],
                                 1
                               )

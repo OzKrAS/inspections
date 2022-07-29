@@ -862,7 +862,6 @@
                       <div class="md-layout-item">
                         <md-button
                           type="button"
-                          v-if="tipoAccion==1"
                           class="md-dense md-raised md-primary"
                           :disabled="sending"
                           @click="addItemFauna()"

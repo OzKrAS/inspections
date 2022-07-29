@@ -143,11 +143,11 @@ class ArrivalController extends Controller
         $arrivals->id_company = $request->id_company; 
         $arrivals->save();
 
-        $array = array(
-            'res' => true,
-            'message' => 'Registro guardado exitosamente'
-            );
-        return response()->json($array,201);
+        // $array = array(
+        //     'res' => true,
+        //     'message' => 'Registro guardado exitosamente'
+        //     );
+        // return response()->json($array,201);
 
         $detailarrivals = $request->fishery;
         foreach($detailarrivals as $ep=>$det){
@@ -175,11 +175,11 @@ class ArrivalController extends Controller
             $objeto->save();
         }
 
-        // $array = array(
-        //     'res' => true,
-        //     'message' => 'Registro guardado exitosamente'
-        //     );
-        // return response()->json($array,201);
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
     }
 
     public function update(Request $request)
