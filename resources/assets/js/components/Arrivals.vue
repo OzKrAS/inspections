@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Inspección a Embarcación Pesquera - Arribo</strong>          
+          <strong class="lead">Inspección a Embarcación Pesquera - Arribo</strong>
           <button
             v-if="edo"
             type="button"
@@ -25,15 +25,15 @@
                     <th>Inspeccion No.</th>
                     <th>Región/Municipio</th>
                     <th>Puerto/Muelle de Inspección</th>
-                    <th>Fecha Inspección</th>      
+                    <th>Fecha Inspección</th>
                     <!-- <th>Origen</th> -->
                     <!-- <th>Destino</th>               -->
                     <th>Puerto de Zarpe</th>
-                    <th>Fecha Zarpe</th>    
-                    <th>Nombre Embarcación</th>                                        
+                    <th>Fecha Zarpe</th>
+                    <th>Nombre Embarcación</th>
                     <th>Nombre Capitán de Pesca</th>
                     <th>Nacionalidad</th>
-                    <th>Opciones</th>    
+                    <th>Opciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -43,15 +43,15 @@
                         <th>Inspeccion No.</th>
                         <th>Región/Municipio</th>
                         <th>Puerto/Muelle de Inspección</th>
-                        <th>Fecha Inspección</th>               
+                        <th>Fecha Inspección</th>
                         <!-- <th>Origen</th> -->
                         <!-- <th>Destino</th>                  -->
                         <th>Puerto de Zarpe</th>
-                        <th>Fecha Zarpe</th>        
-                        <th>Nombre Embarcación</th>                            
+                        <th>Fecha Zarpe</th>
+                        <th>Nombre Embarcación</th>
                         <th>Nombre Capitán de Pesca</th>
                         <th>Nacionalidad</th>
-                        <th>Opciones</th>  
+                        <th>Opciones</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -59,7 +59,7 @@
 
               </table>
             </div>
-      
+
           </div>
         </template>
         <template v-else-if="listado==0">
@@ -82,7 +82,7 @@
                             v-if="!$v.form.insNo.required"
                         >Olvidaste ingresar el número de inspección para el arribo
                         </span>
-                    </md-field> 
+                    </md-field>
                   </div>
                 </div>
                 <div class="md-layout">
@@ -104,11 +104,11 @@
                             track-by="name">
                         </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                </div>  
-                <div class="md-layout">     
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <div>
-                      <md-datepicker 
+                      <md-datepicker
                         v-model="dateIns"
                         @input="toString"
                         md-immediately
@@ -117,7 +117,7 @@
                         <label>Fecha de Inspección</label>
                       </md-datepicker>
                     </div>
-                  </div> &nbsp;&nbsp;&nbsp; 
+                  </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                         <md-field>
                           <label class="text-muted">Recibió Notificación Previa</label>
@@ -153,10 +153,10 @@
                                 v-if="!$v.form.stateRectorPort.required"
                             >Olvidaste ingresar el estado rector del puerto
                             </span>
-                        </md-field> 
+                        </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                </div>  
-                <div class="md-layout">   
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
                       <md-field>
                         <label class="text-muted">Origen</label>
@@ -168,7 +168,7 @@
                           <md-option value="pacifico/tumaco">Pacífico/Tumaco</md-option>
                         </md-select>
                       </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                       <md-field>
                         <label class="text-muted">Destino</label>
@@ -179,11 +179,11 @@
                           <md-option value="pacifico/Buenaventura">Pacifico/Buenaventura</md-option>
                           <md-option value="pacifico/tumaco">Pacífico/Tumaco</md-option>
                         </md-select>
-                      </md-field>  
-                  </div>&nbsp;&nbsp;&nbsp; 
+                      </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                       <div>
-                        <md-datepicker 
+                        <md-datepicker
                           v-model="dateScale"
                           @input="toString"
                           md-immediately
@@ -192,9 +192,9 @@
                           <label>Fecha Última Escala</label>
                         </md-datepicker>
                       </div>
-                  </div> &nbsp;&nbsp;&nbsp; 
-                </div>  
-                <div class="md-layout">    
+                  </div> &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item md-size-70">
                       <label class="text-muted">Puerto de Zarpe</label>
                       <multiselect v-model="arrayPtZarpe" :options="arrayPort"
@@ -206,7 +206,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <div>
-                      <md-datepicker 
+                      <md-datepicker
                         v-model="dateZarpe"
                         @input="toString"
                         md-immediately
@@ -215,9 +215,9 @@
                         <label>Fecha de Zarpe</label>
                       </md-datepicker>
                     </div>
-                  </div> &nbsp;&nbsp;&nbsp; 
-                </div>  
-                <div class="md-layout">  
+                  </div> &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item md-size-70">
                       <label class="text-muted">Puerto de Ultimo Arribo</label>
                       <multiselect v-model="arrayPtArrival" :options="arrayPort"
@@ -229,7 +229,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <div>
-                      <md-datepicker 
+                      <md-datepicker
                         v-model="dateLatestArrival"
                         @input="toString"
                         md-immediately
@@ -238,9 +238,9 @@
                         <label>Fecha Último Arribo</label>
                       </md-datepicker>
                     </div>
-                  </div> &nbsp;&nbsp;&nbsp;   
-                </div>          
-                <div class="md-layout">  
+                  </div> &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field>
                       <label class="text-muted">Faena Realizada En</label>
@@ -250,7 +250,7 @@
                         <md-option value="transito">San Andres</md-option>
                       </md-select>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field>
                       <label class="text-muted">Sistema de Localización de Buques/VMS</label>
@@ -260,8 +260,8 @@
                         <md-option value="si OROP">Si OROP</md-option>
                       </md-select>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;  
-                  <div class="md-layout-item">   
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('radioCall')">
                       <label for="first-name">Señal Radiollamada Internacional</label>
                       <md-input
@@ -275,14 +275,14 @@
                         class="md-error"
                         v-if="!$v.form.radioCall.required"
                       >Olvidaste ingresar la señal radiollamada internacional</span>
-                    </md-field>    
-                  </div>&nbsp;&nbsp;&nbsp;         
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                 </div>
 
                 <div style="text-align:center">
                   <strong>PERMISO OTORGADO - ÚLTIMA PRORROGA</strong>
                 </div>
-                
+
                 <div class="md-layout">
                   <div class="md-layout-item md-size-50">
                     <md-field md-clearable :class="getValidationClass('noResolution')">
@@ -302,7 +302,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <div>
-                      <md-datepicker 
+                      <md-datepicker
                         v-model="date"
                         @input="toString"
                         md-immediately
@@ -311,13 +311,13 @@
                         <label>Fecha</label>
                       </md-datepicker>
                     </div>
-                  </div> &nbsp;&nbsp;&nbsp; 
-                </div>   
-                  
+                  </div> &nbsp;&nbsp;&nbsp;
+                </div>
+
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <div>
-                      <md-datepicker 
+                      <md-datepicker
                         v-model="dateValidity"
                         @input="toString"
                         md-immediately
@@ -341,7 +341,7 @@
                           class="md-error"
                           v-if="!$v.form.nameBoat.required"
                         >Olvidaste ingresar un nombre para la embarcación</span>
-                    </md-field>  
+                    </md-field>
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <label class="text-muted">Bandera</label>
@@ -352,8 +352,8 @@
                         track-by="name">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                </div>  
-                <div class="md-layout"> 
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('enrollment')">
                         <label for="first-name">Matrícula</label>
@@ -404,7 +404,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <div>
-                      <md-datepicker 
+                      <md-datepicker
                         v-model="dateValidityPat"
                         @input="toString"
                         md-immediately
@@ -413,9 +413,9 @@
                         <label>Fecha Vigencia Patente</label>
                       </md-datepicker>
                     </div>
-                  </div>&nbsp;&nbsp;&nbsp; 
+                  </div>&nbsp;&nbsp;&nbsp;
                 </div>
-                <div class="md-layout"> 
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('legalRepre')">
                         <label for="first-name">Representante Legal</label>
@@ -441,13 +441,13 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                </div>  
+                </div>
 
                 <div style="text-align:center">
-                  <strong>PESQUERÍA Y ARTES AUTORIZADOS</strong>              
-                </div>                         
-                
-                <div class="md-layout"> 
+                  <strong>PESQUERÍA Y ARTES AUTORIZADOS</strong>
+                </div>
+
+                <div class="md-layout">
                   <!-- <div class="md-layout-item">
                       <label class="text-muted">Pesquería Autorizada</label>
                       <multiselect v-model="arrayFa" :options="arrayFisheryAuthorized"
@@ -460,15 +460,15 @@
                   <div class="md-layout-item">
                     <label class="text-muted">Pesquería Autorizada</label>
                     <multiselect
-                      v-model="arrayFa" 
-                      :options="arrayFisheryAuthorized" 
-                      :multiple="true" 
-                      :close-on-select="false" 
-                      :clear-on-select="false" 
-                      :preserve-search="false" 
-                      placeholder="Seleccione Pesquería Autorizada" 
-                      label="name" 
-                      track-by="name" 
+                      v-model="arrayFa"
+                      :options="arrayFisheryAuthorized"
+                      :multiple="true"
+                      :close-on-select="false"
+                      :clear-on-select="false"
+                      :preserve-search="false"
+                      placeholder="Seleccione Pesquería Autorizada"
+                      label="name"
+                      track-by="name"
                       :preselect-first="false">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -480,14 +480,14 @@
                           label="name"
                           track-by="name">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp; 
-                </div> 
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
 
                 <div style="text-align:center">
-                  <strong>CARACTERÍSTICAS ARTE DE PESCA</strong>                  
+                  <strong>CARACTERÍSTICAS ARTE DE PESCA</strong>
                 </div>
-                      
-                <div class="md-layout"> 
+
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">Ojo de Malla (Pulgadas)</label>
@@ -499,7 +499,7 @@
                           :disabled="sending"
                         />
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;       
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">Ancho de Red (Brazas)</label>
@@ -511,7 +511,7 @@
                           :disabled="sending"
                         />
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;       
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">Ojo de Malla del Copo (Pulgadas)</label>
@@ -523,9 +523,9 @@
                           :disabled="sending"
                         />
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;       
-                </div>      
-                <div class="md-layout"> 
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">Tamaño No. y tipo de Anzuelo</label>
@@ -537,7 +537,7 @@
                           :disabled="sending"
                         />
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;       
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">Longitud de la red (Brazas)</label>
@@ -549,7 +549,7 @@
                           :disabled="sending"
                         />
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;       
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">Material de Arte de Pesca</label>
@@ -561,9 +561,9 @@
                           :disabled="sending"
                         />
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;       
-                </div>      
-                <div class="md-layout">  
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">Equipos o Dispositivos Requeridos</label>
@@ -575,7 +575,7 @@
                           :disabled="sending"
                         />
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;      
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">Nombre Capitán de Pesca</label>
@@ -587,7 +587,7 @@
                           :disabled="sending"
                         />
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;  
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                       <label class="text-muted">Nacionalidad</label>
                       <multiselect v-model="arrayNation" :options="arrayNationality"
@@ -596,9 +596,9 @@
                           label="name"
                           track-by="name">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;    
-                </div>     
-                <div class="md-layout"> 
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">No. Total de Tripulantes</label>
@@ -610,7 +610,7 @@
                           :disabled="sending"
                         />
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;       
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">No. Tripulantes Extranjeros</label>
@@ -622,7 +622,7 @@
                           :disabled="sending"
                         />
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;       
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">No. Tripulantes Nacionales</label>
@@ -634,11 +634,11 @@
                           :disabled="sending"
                         />
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;       
-                </div>     
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
 
                 <div style="text-align:center">
-                  <strong>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</strong>              
+                  <strong>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</strong>
                 </div>
 
                 <div class="md-layout">
@@ -656,8 +656,8 @@
                           class="md-error"
                           v-if="!$v.form.noDays.required"
                         >Olvidaste ingresar el número de días de pesca</span>
-                    </md-field> 
-                  </div>&nbsp;&nbsp;&nbsp;     
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noAllHauls')">
                         <label for="first-name">No. Total de Lances</label>
@@ -672,9 +672,9 @@
                           class="md-error"
                           v-if="!$v.form.noAllHauls.required"
                         >Olvidaste ingresar el número total de lances</span>
-                    </md-field> 
-                  </div>&nbsp;&nbsp;&nbsp;      
-                  <div class="md-layout-item"> 
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noHaulsNacional')">
                         <label for="first-name">No. Lances Nacionales</label>
                         <md-input
@@ -689,7 +689,7 @@
                           v-if="!$v.form.noHaulsNacional.required"
                         >Olvidaste ingresar el número total de lances nacionales</span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;      
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noHaulsInter')">
                         <label for="first-name">No. Lances Internacionales</label>
@@ -704,23 +704,23 @@
                           class="md-error"
                           v-if="!$v.form.noHaulsInter.required"
                         >Olvidaste ingresar el número de lances internacionales</span>
-                    </md-field> 
-                  </div>&nbsp;&nbsp;&nbsp;           
-                </div>      
-                <div class="md-layout"> 
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field>
                             <label>Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)</label>
                             <md-textarea v-model="observation"></md-textarea>
                     </md-field>
-                  </div>    
-                </div>         
-
-                <div style="text-align:center">
-                  <strong>CAPTURA OJETIVO</strong>    
+                  </div>
                 </div>
 
-            <div class="card-body">  
+                <div style="text-align:center">
+                  <strong>CAPTURA OJETIVO</strong>
+                </div>
+
+            <div class="card-body">
                     <div class="md-layout">
                       <div class="md-layout-item">
                         <md-field md-clearable>
@@ -733,7 +733,7 @@
                             :disabled="sending"
                           />
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;  
+                      </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
                         <md-field md-clearable>
                           <label for="first-name">Nombre Científico</label>
@@ -745,7 +745,7 @@
                             :disabled="sending"
                           />
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;  
+                      </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item md-size-25">
                         <md-field md-clearable>
                           <label for="first-name">Captura - Ton.</label>
@@ -757,8 +757,8 @@
                             :disabled="sending"
                           />
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;    
-                    </div>           
+                      </div>&nbsp;&nbsp;&nbsp;
+                    </div>
                     <md-button
                       type="button"
                       class="md-dense md-raised md-primary"
@@ -766,13 +766,13 @@
                       @click="addItemTarget()"
                     >Agregar
                     </md-button>
-              <div class="table-responsive">      
-                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">    
-                  <thead>      
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                  <thead>
                     <tr>
-                      <th>NOMBRE COMÙN</th>              
-                      <th>NOMBRE CIENTÌFICO</th>    
-                      <th>CAPTURA TON.</th>    
+                      <th>NOMBRE COMÙN</th>
+                      <th>NOMBRE CIENTÌFICO</th>
+                      <th>CAPTURA TON.</th>
                       <th style="width: 90px">Opciones</th>
                     </tr>
                   </thead>
@@ -781,7 +781,7 @@
                       <td v-text="target.nameCommon1"></td>
                       <td v-text="target.nameScientific1"></td>
                       <td v-text="target.capture1"></td>
-                      <td>                      
+                      <td>
                         <button
                           type="button"
                           class="btn btn-danger btn-sm"
@@ -797,29 +797,29 @@
                   <tbody v-else>
                     <tr>
                       <td colspan="6" class="text-center">
-                        No existen elementos agregados 
+                        No existen elementos agregados
                       </td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th>NOMBRE COMÙN</th>              
-                      <th>NOMBRE CIENTÌFICO</th>    
-                      <th>CAPTURA TON.</th>    
+                      <th>NOMBRE COMÙN</th>
+                      <th>NOMBRE CIENTÌFICO</th>
+                      <th>CAPTURA TON.</th>
                       <th style="width: 90px">Opciones</th>
                     </tr>
                   </tfoot>
                     <tbody>
                     </tbody>
                 </table>
-              </div>   
-            </div>   
+              </div>
+            </div>
 
             <div style="text-align:center">
-              <strong>CAPTURA FAUNA INCIDENTAL</strong>     
+              <strong>CAPTURA FAUNA INCIDENTAL</strong>
             </div>
-            
-            <div class="card-body"> 
+
+            <div class="card-body">
                     <div class="md-layout">
                       <div class="md-layout-item">
                         <md-field md-clearable>
@@ -833,7 +833,7 @@
                           />
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item"> 
+                      <div class="md-layout-item">
                         <md-field md-clearable>
                           <label for="first-name">Nombre Científico</label>
                           <md-input
@@ -855,28 +855,27 @@
                             v-model="capture2"
                             :disabled="sending"
                           />
-                        </md-field>  
-                      </div>&nbsp;&nbsp;&nbsp;     
-                    </div> 
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                    </div>
                     <div class="md-layout">
                       <div class="md-layout-item">
                         <md-button
                           type="button"
-                          v-if="tipoAccion==1"
                           class="md-dense md-raised md-primary"
                           :disabled="sending"
                           @click="addItemFauna()"
                         >Agregar
                         </md-button>
-                      </div>                  
-                    </div>  
-              <div class="table-responsive">      
+                      </div>
+                    </div>
+              <div class="table-responsive">
                 <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                  <thead>                             
+                  <thead>
                     <tr>
-                      <th>NOMBRE COMÙN</th>              
-                      <th>NOMBRE CIENTÌFICO</th>    
-                      <th>CAPTURA TON.</th>    
+                      <th>NOMBRE COMÙN</th>
+                      <th>NOMBRE CIENTÌFICO</th>
+                      <th>CAPTURA TON.</th>
                       <th style="width: 90px">Opciones</th>
                     </tr>
                   </thead>
@@ -885,7 +884,7 @@
                       <td v-text="fauna.nameCommon2"></td>
                       <td v-text="fauna.nameScientific2"></td>
                       <td v-text="fauna.capture2"></td>
-                      <td>  
+                      <td>
                         <button
                           type="button"
                           class="btn btn-danger btn-sm"
@@ -901,23 +900,23 @@
                   <tbody v-else>
                     <tr>
                       <td colspan="6" class="text-center">
-                        No existen elementos agregados 
+                        No existen elementos agregados
                       </td>
                     </tr>
                   </tbody>
                     <tfoot>
                       <tr>
-                        <th>NOMBRE COMÙN</th>              
-                        <th>NOMBRE CIENTÌFICO</th>    
-                        <th>CAPTURA TON.</th>  
+                        <th>NOMBRE COMÙN</th>
+                        <th>NOMBRE CIENTÌFICO</th>
+                        <th>CAPTURA TON.</th>
                         <th style="width: 90px">Opciones</th>
                       </tr>
                     </tfoot>
                     <tbody>
                     </tbody>
                 </table>
-              </div>    
-            </div>    
+              </div>
+            </div>
                 <div class="md-layout">
                   <div class="md-layout-item md-size-50">
                     <md-field md-clearable :class="getValidationClass('landedWeight')">
@@ -934,38 +933,38 @@
                         v-if="!$v.form.landedWeight.required"
                       >Olvidaste ingresar el peso desembarcado comprobado</span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
-                </div>  
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field>
                         <label>Conclusiones Del Inspector</label>
                         <md-textarea v-model="inspectorConclusions"></md-textarea>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
-                </div>    
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field>
                         <label>Comentarios Adicionales (espacio disponible para el capitan)</label>
                         <md-textarea v-model="additionalComments"></md-textarea>
-                    </md-field> 
-                  </div>&nbsp;&nbsp;&nbsp;     
-                </div>                        
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field>
                         <label>Observaciones</label>
                         <md-textarea v-model="observationGeneral"></md-textarea>
-                    </md-field> 
-                  </div>&nbsp;&nbsp;&nbsp;     
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <!-- SUBIR IMAGEN -->
                 <p>
                   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Subir imagen
                   </button>
-                </p>                                
+                </p>
                 <div class="collapse" id="collapseExample">
                   <div class="card card-body">
                     <div
@@ -1020,16 +1019,16 @@
                           </div>
                         </div>
                       </div>
-                    </div>                      
+                    </div>
                   </div>
-                </div> 
+                </div>
                 <!-- FIL SUBIR IMAGEN -->
                 <!-- SUBIR PDF -->
                  <p>
                   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
                     Subir PDF
                   </button>
-                </p>                                
+                </p>
                 <div class="collapse" id="collapseExample1">
                   <div class="card card-body">
                     <div
@@ -1084,7 +1083,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>                      
+                    </div>
                   </div>
                 </div>
                 <!-- FIN SUBIR PDF -->
@@ -1123,14 +1122,14 @@
 
 <script>
 
- 
-    import format from "date-fns/format"; 
+
+    import format from "date-fns/format";
     import { validationMixin } from "vuelidate";
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
     import vSelect from "vue-select";
     import {
-		MdButton,  
+		MdButton,
 		MdContent,
 		MdField,
 		MdCard,
@@ -1157,7 +1156,7 @@
 export default {
 	mixins: [validationMixin],
 	props: ['ruta'],
-	
+
 	data() {
 
 		Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
@@ -1166,7 +1165,7 @@ export default {
 		Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
 		let now = new Date();
-    
+
       return {form: {
 
         insNo: "",
@@ -1255,7 +1254,11 @@ export default {
       arrayTarget: [],
       arrayTa: [],
       arrayFauna: [],
-          
+
+      arrayTargetAct: [],
+      arrayTaAct: [],
+      arrayFaunaAct: [],
+
       edo: 1,
 
       tipoAccion: 1,
@@ -1271,13 +1274,13 @@ export default {
       selectedFile: null,
       isDragging: false,
       dragCount: 0,
-      files: [],     
+      files: [],
       images: [],
       //variables pdf
       selectedFilePDF: null,
       isDraggingPDF: false,
       dragCountPDF: 0,
-      filesPDF: [],     
+      filesPDF: [],
       pdf: []
     };
   },
@@ -1337,7 +1340,7 @@ export default {
   computed: {
 
   },
-   
+
   methods: {
     OnDragEnter(e) {
       e.preventDefault();
@@ -1458,7 +1461,7 @@ export default {
     // },
     alerta() {
        alert('test');
-    }, 
+    },
 
     toString() {
       this.toDate();
@@ -1499,9 +1502,14 @@ export default {
         nameScientific1:this.nameScientific1,
         capture1:this.capture1
       });
-      console.log("arrayTarget " + total1);
+      var total2 = me.arrayTargetAct.push({
+        nameCommon1:this.nameCommon1,
+        nameScientific1:this.nameScientific1,
+        capture1:this.capture1
+      });
+      console.log("arrayTarget " + total1+total2);
       this.mensaje("Captura objetivo agregado", "success");
-      me.clearTarget();  
+      me.clearTarget();
     },
     addItemFauna() {
       let me = this;
@@ -1510,11 +1518,16 @@ export default {
         nameScientific2:this.nameScientific2,
         capture2:this.capture2
       });
+      var total = me.arrayFaunaAct.push({
+        nameCommon2:this.nameCommon2,
+        nameScientific2:this.nameScientific2,
+        capture2:this.capture2
+      });
       console.log("arrayFauna " + total2);
       // this.mensaje("Captura fauna incidental agregado", "success");
       me.clearFauna();
-       
-      
+
+
     },
     deleteTarget(index){
        this.arrayTarget.splice(index,1);
@@ -1638,7 +1651,7 @@ export default {
           var respuesta = response.data;
           me.arrayArrival = respuesta.arrivals.data;
           me.myTable(me.arrayArrival);
-    
+
 
         })
         .catch(function (error) {
@@ -1768,8 +1781,10 @@ export default {
       this.arrayPt.id = data["id_port"];
 			this.arrayPt.name = data["namePort"];
       this.arrayPtZarpe.id = data["id_portZarpe"];
+      this.id_portZarpe = data["id_portZarpe"];
 			this.arrayPtZarpe.name = data["namePort"];
       this.arrayPtArrival.id = data["id_portArrival"];
+      this.id_portArrival = data["id_portArrival"];
 			this.arrayPtArrival.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
 			this.arrayFg.name = data["nameFlag"];
@@ -1794,7 +1809,7 @@ export default {
       this.listData();
       this.edo = 1;
       this.listado = 1;
-    },    
+    },
     // noApply(){
     //   if (this.eyeMesh == "") {
     //     this.eyeMesh = this.noApply;
@@ -2023,6 +2038,11 @@ export default {
           'id_zoneAutoFisher': this.arrayZoneAuto.id,
           'id_fisheryAuthorized': this.arrayFa.id,
           'id_company': this.arrayComp.id,
+
+
+          'fishery': this.arrayFaAct,
+          'fauna': this.arrayFaunaAct,
+          'target': this.arrayTargetAct,
         })
         .then(function(response) {
           me.hideForm();
@@ -2093,7 +2113,7 @@ export default {
         reverseButtons: true
       }).then(result => {
         if (result.value) {
-          let me = this;      
+          let me = this;
           axios
             .post("/arrivals/delete", {
               id: data["id"],
@@ -2180,13 +2200,13 @@ export default {
 
   mounted() {
     this.listData();
-    this.selectRegion();   
-    this.selectPort();   
-    this.selectFlag();  
-    this.selectNationality(); 
-    this.selectZoneAutoFisher();   
-    this.selectFisheryAuthorized();  
-    this.selectCompanies();   
+    this.selectRegion();
+    this.selectPort();
+    this.selectFlag();
+    this.selectNationality();
+    this.selectZoneAutoFisher();
+    this.selectFisheryAuthorized();
+    this.selectCompanies();
   }
 };
 </script>

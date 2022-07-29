@@ -70,6 +70,8 @@ class ArrivalController extends Controller
                     'arrivals.dateValidity',
                     'arrivals.stateRectorPort',
                     'arrivals.observationGeneral',
+                    'arrivals.id_portArrival',
+                    'arrivals.id_portZarpe',
 
                     'arrivals.id_region','regions.name as nameReg',
                     'arrivals.id_port','ports.name as namePort',
@@ -79,17 +81,17 @@ class ArrivalController extends Controller
                     // 'arrivals.id_fisheryAuthorized','fishery_authorizeds.name as nameFishery',
                     'arrivals.id_company','companies.name as nameCompany',
             )
-        
+
             ->paginate(9999999999999999999999999);
-        
+
         return [
             'arrivals' => $arrivals
         ];
-    }   
+    }
     public function store(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
-        $arrivals = new Arrival(); 
+        $arrivals = new Arrival();
         $arrivals->insNo = $request->insNo;
         $arrivals->radioCall = $request->radioCall;
         $arrivals->noResolution = $request->noResolution;
@@ -133,21 +135,16 @@ class ArrivalController extends Controller
         $arrivals->stateRectorPort = $request->stateRectorPort;
         $arrivals->observationGeneral = $request->observationGeneral;
 
-        $arrivals->id_region = $request->id_region;    
+        $arrivals->id_region = $request->id_region;
         $arrivals->id_port = $request->id_port;
-        $arrivals->id_portZarpe = $request->id_portZarpe;  
-        $arrivals->id_portArrival = $request->id_portArrival;      
-        $arrivals->id_flag = $request->id_flag;    
-        $arrivals->id_nationality = $request->id_nationality; 
-        $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;          
-        $arrivals->id_company = $request->id_company; 
+        $arrivals->id_portZarpe = $request->id_portZarpe;
+        $arrivals->id_portArrival = $request->id_portArrival;
+        $arrivals->id_flag = $request->id_flag;
+        $arrivals->id_nationality = $request->id_nationality;
+        $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;
+        $arrivals->id_company = $request->id_company;
         $arrivals->save();
 
-        $array = array(
-            'res' => true,
-            'message' => 'Registro guardado exitosamente'
-            );
-        return response()->json($array,201);
 
         $detailarrivals = $request->fishery;
         foreach($detailarrivals as $ep=>$det){
@@ -174,18 +171,19 @@ class ArrivalController extends Controller
             $objeto->capture2= $det['capture2'];
             $objeto->save();
         }
+     $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
 
-        // $array = array(
-        //     'res' => true,
-        //     'message' => 'Registro guardado exitosamente'
-        //     );
-        // return response()->json($array,201);
+
     }
 
     public function update(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
-        $arrivals = Arrival::findOrFail($request->id);  
+        $arrivals = Arrival::findOrFail($request->id);
         $arrivals->insNo = $request->insNo;
         $arrivals->radioCall = $request->radioCall;
         $arrivals->noResolution = $request->noResolution;
@@ -229,16 +227,44 @@ class ArrivalController extends Controller
         $arrivals->stateRectorPort = $request->stateRectorPort;
         $arrivals->observationGeneral = $request->observationGeneral;
 
-        $arrivals->id_region = $request->id_region;    
-        $arrivals->id_port = $request->id_port; 
-        $arrivals->id_portZarpe = $request->id_portZarpe;  
-        $arrivals->id_portArrival = $request->id_portArrival;     
-        $arrivals->id_flag = $request->id_flag;    
-        $arrivals->id_nationality = $request->id_nationality; 
-        $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;  
-        // $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized; 
-        $arrivals->id_company = $request->id_company; 
+        $arrivals->id_region = $request->id_region;
+        $arrivals->id_port = $request->id_port;
+        $arrivals->id_portZarpe = $request->id_portZarpe;
+        $arrivals->id_portArrival = $request->id_portArrival;
+        $arrivals->id_flag = $request->id_flag;
+        $arrivals->id_nationality = $request->id_nationality;
+        $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;
+        // $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized;
+        $arrivals->id_company = $request->id_company;
         $arrivals->save();
+
+
+        // $detailarrivals = $request->fishery;
+        // foreach($detailarrivals as $ep=>$det){
+        //     $objeto= new DetailFisherAutArrival();
+        //     $objeto->id_fisheryAut = $arrivals->id;
+        //     $objeto->name= $det['name'];
+        //     $objeto->save();
+        // }
+        $detailarrivalstarget = $request->target;
+        foreach($detailarrivalstarget as $ep=>$det){
+            $objeto= new DetTargCaptArrivals();
+            $objeto->id_target = $arrivals->id;
+            $objeto->nameCommon1= $det['nameCommon1'];
+            $objeto->nameScientific1= $det['nameScientific1'];
+            $objeto->capture1= $det['capture1'];
+            $objeto->save();
+        }
+        $detailarrivalsfauna = $request->fauna;
+        foreach($detailarrivalsfauna as $ep=>$det){
+            $objeto= new DetFaunaCaptArrivals();
+            $objeto->id_fauna = $arrivals->id;
+            $objeto->nameCommon2= $det['nameCommon2'];
+            $objeto->nameScientific2= $det['nameScientific2'];
+            $objeto->capture2= $det['capture2'];
+            $objeto->save();
+        }
+
         $array = array(
             'res' => true,
             'message' => 'Registro actualizado exitosamente'
@@ -261,18 +287,18 @@ class ArrivalController extends Controller
     {
         $arrivals = DetTargCaptArrivals::select('id','id_target','nameCommon1','nameScientific1','capture1')
         ->where('id_target', $request->id_Target)->get();
-        return ['target' =>  $arrivals];   
+        return ['target' =>  $arrivals];
     }
     public function dataFauna(Request $request)
     {
         $arrivals = DetFaunaCaptArrivals::select('id','id_fauna','nameCommon2','nameScientific2','capture2')
         ->where('id_fauna', $request->id_Fauna)->get();
-        return ['fauna' =>  $arrivals];   
+        return ['fauna' =>  $arrivals];
     }
     public function dataFishery(Request $request)
     {
         $arrivals = DetailFisherAutArrival::select('id','id_fisheryAut','name')
         ->where('id_fisheryAut', $request->id_FisheryAut)->get();
-        return ['fisheryAut' =>  $arrivals];   
+        return ['fisheryAut' =>  $arrivals];
     }
 }
