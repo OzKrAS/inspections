@@ -49881,6 +49881,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       arrayTa: [],
       arrayFauna: [],
 
+      arrayTargetAct: [],
+      arrayTaAct: [],
+      arrayFaunaAct: [],
+
       edo: 1,
 
       tipoAccion: 1,
@@ -50126,13 +50130,23 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         nameScientific1: this.nameScientific1,
         capture1: this.capture1
       });
-      console.log("arrayTarget " + total1);
+      var total2 = me.arrayTargetAct.push({
+        nameCommon1: this.nameCommon1,
+        nameScientific1: this.nameScientific1,
+        capture1: this.capture1
+      });
+      console.log("arrayTarget " + total1 + total2);
       this.mensaje("Captura objetivo agregado", "success");
       me.clearTarget();
     },
     addItemFauna: function addItemFauna() {
       var me = this;
       var total2 = me.arrayFauna.push({
+        nameCommon2: this.nameCommon2,
+        nameScientific2: this.nameScientific2,
+        capture2: this.capture2
+      });
+      var total = me.arrayFaunaAct.push({
         nameCommon2: this.nameCommon2,
         nameScientific2: this.nameScientific2,
         capture2: this.capture2
@@ -50406,8 +50420,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.arrayPt.id = data["id_port"];
       this.arrayPt.name = data["namePort"];
       this.arrayPtZarpe.id = data["id_portZarpe"];
+      this.id_portZarpe = data["id_portZarpe"];
       this.arrayPtZarpe.name = data["namePort"];
       this.arrayPtArrival.id = data["id_portArrival"];
+      this.id_portArrival = data["id_portArrival"];
       this.arrayPtArrival.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
       this.arrayFg.name = data["nameFlag"];
@@ -50657,7 +50673,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         'id_nationality': this.arrayNation.id,
         'id_zoneAutoFisher': this.arrayZoneAuto.id,
         'id_fisheryAuthorized': this.arrayFa.id,
-        'id_company': this.arrayComp.id
+        'id_company': this.arrayComp.id,
+
+        'fishery': this.arrayFaAct,
+        'fauna': this.arrayFaunaAct,
+        'target': this.arrayTargetAct
       }).then(function (response) {
         me.hideForm();
         me.message("Actualizado", "Actualizó ");
@@ -51004,7 +51024,7 @@ var render = function() {
                                 1
                               )
                             ]),
-                            _vm._v("     \n                "),
+                            _vm._v("    \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -51258,7 +51278,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("    \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -51341,7 +51361,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("    \n                "),
+                            _vm._v("   \n                "),
                             _c("div", { staticClass: "md-layout-item" }, [
                               _c(
                                 "div",
@@ -51372,7 +51392,7 @@ var render = function() {
                                 1
                               )
                             ]),
-                            _vm._v("     \n              ")
+                            _vm._v("    \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -51430,7 +51450,7 @@ var render = function() {
                                 1
                               )
                             ]),
-                            _vm._v("     \n              ")
+                            _vm._v("    \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -51492,7 +51512,7 @@ var render = function() {
                                 1
                               )
                             ]),
-                            _vm._v("       \n              ")
+                            _vm._v("    \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -51550,7 +51570,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("    \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -51608,7 +51628,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("     \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -51663,7 +51683,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("            \n              ")
+                            _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
                           _c(
@@ -51760,7 +51780,7 @@ var render = function() {
                                 1
                               )
                             ]),
-                            _vm._v("     \n              ")
+                            _vm._v("    \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -52060,7 +52080,7 @@ var render = function() {
                                 1
                               )
                             ]),
-                            _vm._v("    \n              ")
+                            _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -52216,7 +52236,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("    \n              ")
+                            _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
                           _c(
@@ -52265,7 +52285,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("          \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52301,7 +52321,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("          \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52341,7 +52361,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("          \n              ")
+                            _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -52380,7 +52400,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("          \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52416,7 +52436,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("          \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52452,7 +52472,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("          \n              ")
+                            _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -52495,7 +52515,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("         \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52531,7 +52551,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("     \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52559,7 +52579,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("       \n              ")
+                            _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -52598,7 +52618,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("          \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52634,7 +52654,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("          \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52670,7 +52690,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("          \n              ")
+                            _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
                           _c(
@@ -52736,7 +52756,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("        \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52787,7 +52807,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("         \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52844,7 +52864,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("         \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52901,7 +52921,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("              \n              ")
+                            _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -52981,7 +53001,7 @@ var render = function() {
                                   ],
                                   1
                                 ),
-                                _vm._v("     \n                    "),
+                                _vm._v("   \n                    "),
                                 _c(
                                   "div",
                                   { staticClass: "md-layout-item" },
@@ -53017,7 +53037,7 @@ var render = function() {
                                   ],
                                   1
                                 ),
-                                _vm._v("     \n                    "),
+                                _vm._v("   \n                    "),
                                 _c(
                                   "div",
                                   { staticClass: "md-layout-item md-size-25" },
@@ -53053,7 +53073,7 @@ var render = function() {
                                   ],
                                   1
                                 ),
-                                _vm._v("       \n                  ")
+                                _vm._v("   \n                  ")
                               ]),
                               _vm._v(" "),
                               _c(
@@ -53180,7 +53200,7 @@ var render = function() {
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                      No existen elementos agregados \n                    "
+                                                  "\n                      No existen elementos agregados\n                    "
                                                 )
                                               ]
                                             )
@@ -53326,7 +53346,7 @@ var render = function() {
                                 ],
                                 1
                               ),
-                              _vm._v("        \n                  ")
+                              _vm._v("   \n                  ")
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "md-layout" }, [
@@ -53458,7 +53478,7 @@ var render = function() {
                                             },
                                             [
                                               _vm._v(
-                                                "\n                      No existen elementos agregados \n                    "
+                                                "\n                      No existen elementos agregados\n                    "
                                               )
                                             ]
                                           )
@@ -53548,7 +53568,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("    \n              ")
+                            _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -53578,7 +53598,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("    \n              ")
+                            _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -53610,7 +53630,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("        \n              ")
+                            _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -53638,7 +53658,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("        \n              ")
+                            _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
                           _c("p", [
