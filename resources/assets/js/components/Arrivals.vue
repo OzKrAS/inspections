@@ -76,6 +76,7 @@
                         autocomplete="given-name"
                         v-model="form.insNo"
                         :disabled="sending"
+                        type="number"
                         />
                         <span
                             class="md-error"
@@ -279,7 +280,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
 
-                <div style="text-align:center">
+                <div>
                   <strong>PERMISO OTORGADO - ÚLTIMA PRORROGA</strong>
                 </div>
 
@@ -293,6 +294,7 @@
                         autocomplete="given-name"
                         v-model="form.noResolution"
                         :disabled="sending"
+                        type="number"
                       />
                       <span
                         class="md-error"
@@ -379,6 +381,7 @@
                           autocomplete="given-name"
                           v-model="form.noOmi"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -395,6 +398,7 @@
                           autocomplete="given-name"
                           v-model="form.noPatent"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -443,7 +447,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
 
-                <div style="text-align:center">
+                <div>
                   <strong>PESQUERÍA Y ARTES AUTORIZADOS</strong>
                 </div>
 
@@ -483,7 +487,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
 
-                <div style="text-align:center">
+                <div>
                   <strong>CARACTERÍSTICAS ARTE DE PESCA</strong>
                 </div>
 
@@ -497,6 +501,7 @@
                           autocomplete="given-name"
                           v-model="eyeMesh"
                           :disabled="sending"
+                          type="number"
                         />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -509,6 +514,7 @@
                           autocomplete="given-name"
                           v-model="netWidth"
                           :disabled="sending"
+                          type="number"
                         />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -521,6 +527,7 @@
                           autocomplete="given-name"
                           v-model="eyeFlake"
                           :disabled="sending"
+                          type="number"
                         />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -535,6 +542,7 @@
                           autocomplete="given-name"
                           v-model="typeHook"
                           :disabled="sending"
+                          type="number"
                         />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -547,6 +555,7 @@
                           autocomplete="given-name"
                           v-model="longNet"
                           :disabled="sending"
+                          type="number"
                         />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -608,6 +617,7 @@
                           autocomplete="given-name"
                           v-model="noAllCrew"
                           :disabled="sending"
+                          type="number"
                         />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -620,6 +630,7 @@
                           autocomplete="given-name"
                           v-model="noCrewForeign"
                           :disabled="sending"
+                          type="number"
                         />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -632,12 +643,13 @@
                           autocomplete="given-name"
                           v-model="noCrewNational"
                           :disabled="sending"
+                          type="number"
                         />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
 
-                <div style="text-align:center">
+                <div>
                   <strong>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</strong>
                 </div>
 
@@ -651,6 +663,7 @@
                           autocomplete="given-name"
                           v-model="form.noDays"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -667,6 +680,7 @@
                           autocomplete="given-name"
                           v-model="form.noAllHauls"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -683,6 +697,7 @@
                           autocomplete="given-name"
                           v-model="form.noHaulsNacional"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -699,6 +714,7 @@
                           autocomplete="given-name"
                           v-model="form.noHaulsInter"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -755,6 +771,7 @@
                             autocomplete="given-name"
                             v-model="capture1"
                             :disabled="sending"
+                            type="number"
                           />
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
@@ -854,6 +871,7 @@
                             autocomplete="given-name"
                             v-model="capture2"
                             :disabled="sending"
+                            type="number"
                           />
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
@@ -918,7 +936,7 @@
               </div>
             </div>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-50">
+                  <div class="md-layout-item md-size-55">
                     <md-field md-clearable :class="getValidationClass('landedWeight')">
                       <label for="first-name">Peso Desembarcado Comprobado (ingreso planta proceso)(Ton)</label>
                       <md-input
@@ -927,6 +945,7 @@
                         autocomplete="given-name"
                         v-model="form.landedWeight"
                         :disabled="sending"
+                        type="number"
                       />
                       <span
                         class="md-error"

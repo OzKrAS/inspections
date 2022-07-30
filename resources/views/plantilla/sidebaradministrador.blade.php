@@ -92,7 +92,7 @@
                         <div class="sidebar-submenu">
                           <ul>  
                             <li @click="menu=12">
-                                <a href="#"><i class="icon-bag"></i>Países</a>                                                                               
+                                <a href="#"><i class="icon-bag"></i>Nacionalidades</a>                                                                               
                             </li>                                
                             <li @click="menu=3">
                                 <a href="#"><i class="icon-bag"></i>Puertos</a>                                                                               

@@ -96,6 +96,7 @@
                         autocomplete="given-name"
                         v-model="form.cruise"
                         :disabled="sending"
+                        type="number"
                         />
                         <span
                             class="md-error"

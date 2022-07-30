@@ -76,6 +76,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                         autocomplete="given-name"
                         v-model="form.noActa"
                         :disabled="sending"
+                        type="number"
                       />
                       <span
                         class="md-error"
@@ -166,6 +167,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                           autocomplete="given-name"
                           v-model="amount"
                           :disabled="sending"
+                          type="number"
                         />
                       </md-field>
                     </div>&nbsp;&nbsp;&nbsp;  
@@ -178,6 +180,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                           autocomplete="given-name"
                           v-model="weight"
                           :disabled="sending"
+                          type="number"
                         />
                       </md-field>
                     </div>&nbsp;&nbsp;&nbsp;  
@@ -190,6 +193,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                           autocomplete="given-name"
                           v-model="commercialValue"
                           :disabled="sending"
+                          type="number"
                         />
                       </md-field> 
                     </div>&nbsp;&nbsp;&nbsp;  
@@ -467,6 +471,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                           autocomplete="given-name"
                           v-model="form.noDocumentId1"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -503,6 +508,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                           autocomplete="given-name"
                           v-model="form.noDocumentId2"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -617,6 +623,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                           autocomplete="given-name"
                           v-model="form.identification"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"

@@ -70,6 +70,7 @@
                         autocomplete="given-name"
                         v-model="form.noActa"
                         :disabled="sending"
+                        type="number"
                       />
                       <span
                         class="md-error"
@@ -188,6 +189,7 @@
                             autocomplete="given-name"
                             v-model="amount"
                             :disabled="sending"
+                            type="number"
                           />
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
@@ -200,6 +202,7 @@
                             autocomplete="given-name"
                             v-model="average"
                             :disabled="sending"
+                            type="number"
                           />
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;          
@@ -214,6 +217,7 @@
                             autocomplete="given-name"
                             v-model="weight"
                             :disabled="sending"
+                            type="number"
                           />
                         </md-field> 
                       </div>&nbsp;&nbsp;&nbsp;
@@ -226,6 +230,7 @@
                             autocomplete="given-name"
                             v-model="commercialValue"
                             :disabled="sending"
+                            type="number"
                           />
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;             
@@ -394,6 +399,7 @@
                           autocomplete="given-name"
                           v-model="amount2"
                           :disabled="sending"
+                          type="number"
                         />
                       </md-field>  
                     </div>&nbsp;&nbsp;&nbsp;                       
@@ -418,6 +424,7 @@
                           autocomplete="given-name"
                           v-model="commercialValue2"
                           :disabled="sending"
+                          type="number"
                         />
                       </md-field>
                     </div>&nbsp;&nbsp;&nbsp;                                                         
@@ -730,6 +737,7 @@
                           autocomplete="given-name"
                           v-model="form.documentIdOfficial"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -764,6 +772,7 @@
                           autocomplete="given-name"
                           v-model="form.documentIdRepresentative"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -822,6 +831,7 @@
                           autocomplete="given-name"
                           v-model="form.documentIdOffender"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -936,6 +946,7 @@
                           autocomplete="given-name"
                           v-model="form.telephone"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -952,6 +963,7 @@
                           autocomplete="given-name"
                           v-model="form.mobile"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
