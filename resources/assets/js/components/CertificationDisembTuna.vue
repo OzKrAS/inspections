@@ -175,6 +175,7 @@
                         autocomplete="given-name"
                         v-model="form.yellowFin"
                         :disabled="sending"
+                        type="number"
                       />
                       <span
                         class="md-error"
@@ -203,6 +204,7 @@
                         autocomplete="given-name"
                         v-model="form.barrilete"
                         :disabled="sending"
+                        type="number"
                       />
                       <span
                         class="md-error"
@@ -233,6 +235,7 @@
                         autocomplete="given-name"
                         v-model="form.patudo"
                         :disabled="sending"
+                        type="number"
                       />
                       <span
                         class="md-error"
