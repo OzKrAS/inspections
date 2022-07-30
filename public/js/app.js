@@ -50136,7 +50136,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         capture1: this.capture1
       });
       console.log("arrayTarget " + total1 + total2);
-      this.mensaje("Captura objetivo agregado", "success");
+      // this.mensaje("Captura objetivo agregado", "success");
       me.clearTarget();
     },
     addItemFauna: function addItemFauna() {

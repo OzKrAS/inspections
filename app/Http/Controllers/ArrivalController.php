@@ -145,6 +145,7 @@ class ArrivalController extends Controller
         $arrivals->id_company = $request->id_company;
         $arrivals->save();
 
+
         $detailarrivals = $request->fishery;
         foreach($detailarrivals as $ep=>$det){
             $objeto= new DetailFisherAutArrival();
@@ -177,6 +178,7 @@ class ArrivalController extends Controller
         return response()->json($array,201);
 
 
+    }
 
     public function update(Request $request)
     {
