@@ -66,6 +66,7 @@
                         autocomplete="given-name"
                         v-model="form.noForm"
                         :disabled="sending"
+                        type="number"
                       />
                       <span
                         class="md-error"
@@ -131,6 +132,7 @@
                         autocomplete="given-name"
                         v-model="form.fullCargo"
                         :disabled="sending"
+                        type="number"
                       />
                       <span
                         class="md-error"
@@ -260,6 +262,7 @@
                         autocomplete="given-name"
                         v-model="form.noIdOmi"
                         :disabled="sending"
+                        type="number"
                       />
                       <span
                         class="md-error"
@@ -365,6 +368,7 @@
                         autocomplete="given-name"
                         v-model="form.amount"
                         :disabled="sending"
+                        type="number"
                       />
                       <span
                         class="md-error"

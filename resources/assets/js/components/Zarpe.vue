@@ -82,6 +82,7 @@
                         autocomplete="given-name"
                         v-model="form.insNo"
                         :disabled="sending"
+                        type="number"
                         />
                         <span
                             class="md-error"
@@ -312,6 +313,7 @@
                           autocomplete="given-name"
                           v-model="form.noResolution"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -397,6 +399,7 @@
                           autocomplete="given-name"
                           v-model="form.noPatent"
                           :disabled="sending"
+                          type="number"
                         />
                         <span
                           class="md-error"
@@ -518,6 +521,7 @@
                           autocomplete="given-name"
                           v-model="eyeMesh"
                           :disabled="sending"
+                          type="number"
                         />
                       </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
@@ -530,6 +534,7 @@
                         autocomplete="given-name"
                         v-model="netWidth"
                         :disabled="sending"
+                        type="number"
                       />
                     </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
@@ -542,6 +547,7 @@
                         autocomplete="given-name"
                         v-model="eyeFlake"
                         :disabled="sending"
+                        type="number"
                       />
                     </md-field> 
                    </div>&nbsp;&nbsp;&nbsp;
@@ -556,6 +562,7 @@
                         autocomplete="given-name"
                         v-model="typeHook"
                         :disabled="sending"
+                        type="number"
                       />
                     </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
@@ -568,6 +575,7 @@
                         autocomplete="given-name"
                         v-model="longNet"
                         :disabled="sending"
+                        type="number"
                       />
                     </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
