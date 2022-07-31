@@ -1829,41 +1829,6 @@ export default {
       this.edo = 1;
       this.listado = 1;
     },
-    // noApply(){
-    //   if (this.eyeMesh == "") {
-    //     this.eyeMesh = this.noApply;
-    //   }
-    //   if (this.netWidth == "") {
-    //     this.netWidth = this.noApply;
-    //   }
-    //   if (this.eyeFlake == "") {
-    //     this.eyeFlake = this.noApply;
-    //   }
-    //   if (this.typeHook == "") {
-    //     this.typeHook = this.noApply;
-    //   }
-    //   if (this.longNet == "") {
-    //     this.longNet = this.noApply;
-    //   }
-    //   if (this.materialArt == "") {
-    //     this.materialArt = this.noApply;
-    //   }
-    //   if (this.equipDevi == "") {
-    //     this.equipDevi = this.noApply;
-    //   }
-    //   if (this.captain == "") {
-    //     this.captain = this.noApply;
-    //   }
-    //   if (this.noAllCrew == "") {
-    //     this.noAllCrew = this.noApply;
-    //   }
-    //   if (this.noCrewForeign == "") {
-    //     this.noCrewForeign = this.noApply;
-    //   }
-    //   if (this.noCrewNational == "") {
-    //     this.noCrewNational = this.noApply;
-    //   }
-    // },
     saveData() {
       let me = this;
       if (this.eyeMesh == "") {

@@ -43339,6 +43339,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
       arrayFa: [],
+      arrayFaAct: [],
       arrayFisheryAuthorized: [],
       id_fisheryAuthorized: 0,
       arrayComp: { id: 0, name: '' },
@@ -44000,6 +44001,22 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         console.log(error);
       });
     },
+
+    // dataFishery(){
+    //   let me = this;
+
+    //   var url = "/zarpes/fishery?id_FisheryAut="+this.id_zarpes;
+    //   axios
+    //     .get(url)
+    //     .then(function(response) {
+    //       console.log(response);
+    //       var respuesta = response.data;
+    //       me.arrayFa = respuesta.data;
+    //     })
+    //     .catch(function(error) {
+    //       console.log(error);
+    //     });
+    // },
     deleteData: function deleteData() {
       var _this7 = this;
 
@@ -50460,42 +50477,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.edo = 1;
       this.listado = 1;
     },
-
-    // noApply(){
-    //   if (this.eyeMesh == "") {
-    //     this.eyeMesh = this.noApply;
-    //   }
-    //   if (this.netWidth == "") {
-    //     this.netWidth = this.noApply;
-    //   }
-    //   if (this.eyeFlake == "") {
-    //     this.eyeFlake = this.noApply;
-    //   }
-    //   if (this.typeHook == "") {
-    //     this.typeHook = this.noApply;
-    //   }
-    //   if (this.longNet == "") {
-    //     this.longNet = this.noApply;
-    //   }
-    //   if (this.materialArt == "") {
-    //     this.materialArt = this.noApply;
-    //   }
-    //   if (this.equipDevi == "") {
-    //     this.equipDevi = this.noApply;
-    //   }
-    //   if (this.captain == "") {
-    //     this.captain = this.noApply;
-    //   }
-    //   if (this.noAllCrew == "") {
-    //     this.noAllCrew = this.noApply;
-    //   }
-    //   if (this.noCrewForeign == "") {
-    //     this.noCrewForeign = this.noApply;
-    //   }
-    //   if (this.noCrewNational == "") {
-    //     this.noCrewNational = this.noApply;
-    //   }
-    // },
     saveData: function saveData() {
       var me = this;
       if (this.eyeMesh == "") {
@@ -58193,7 +58174,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -58256,6 +58236,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       modal2: 0,
       punto2: "",
       arrayDets2: [],
+      arrayDetsAct: [],
       babor3: 0,
       babor4: 0,
       estribor3: 0,
@@ -58534,7 +58515,16 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.abrirModal2(dets, punto2);
     },
     addDets2: function addDets2() {
-      this.arrayDets2.push({
+      var me = this;
+      me.arrayDets2.push({
+        punto2: this.punto2,
+        tituloModal: this.tituloModal,
+        babor3: this.babor3,
+        babor4: this.babor4,
+        estribor3: this.estribor3,
+        estribor4: this.estribor4
+      });
+      me.arrayDetsAct.push({
         punto2: this.punto2,
         tituloModal: this.tituloModal,
         babor3: this.babor3,
@@ -58716,7 +58706,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         date: this.date,
 
         'id_company': this.arrayComp.id,
-        'id_regional': this.arrayRegl.id
+        'id_regional': this.arrayRegl.id,
+
+        'detflap': this.arrayDetsAct
       }).then(function (response) {
         me.hideForm();
         me.message("Actualizado", "Actualizó ");
@@ -60400,21 +60392,19 @@ var render = function() {
                   _c(
                     "md-card-actions",
                     [
-                      _vm.tipoAccion == 1
-                        ? _c(
-                            "md-button",
-                            {
-                              staticClass: "md-dense md-raised md-primary",
-                              attrs: { type: "submit", disabled: _vm.sending },
-                              on: {
-                                click: function($event) {
-                                  _vm.addDets2()
-                                }
-                              }
-                            },
-                            [_vm._v("registrar")]
-                          )
-                        : _vm._e()
+                      _c(
+                        "md-button",
+                        {
+                          staticClass: "md-dense md-raised md-primary",
+                          attrs: { type: "submit", disabled: _vm.sending },
+                          on: {
+                            click: function($event) {
+                              _vm.addDets2()
+                            }
+                          }
+                        },
+                        [_vm._v("registrar")]
+                      )
                     ],
                     1
                   )

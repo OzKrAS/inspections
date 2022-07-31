@@ -60,12 +60,6 @@ class CheckDetFlapController extends Controller
         $checkDetFlaps->id_regional = $request->id_regional;  
         $checkDetFlaps->save();
 
-        $array = array(
-            'res' => true,
-            'message' => 'Registro guardado exitosamente'
-            );
-        return response()->json($array,201);
-
         $detaildetflap = $request->detflap;
         foreach($detaildetflap as $ep=>$det){
             $objeto= new DetailDetFlap();
@@ -78,11 +72,11 @@ class CheckDetFlapController extends Controller
             $objeto->tituloModal= $det['tituloModal'];
             $objeto->save();
         }
-        // $array = array(
-        //     'res' => true,
-        //     'message' => 'Registro guardado exitosamente'
-        //     );
-        // return response()->json($array,201);
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function update(Request $request)
     {
@@ -103,6 +97,20 @@ class CheckDetFlapController extends Controller
         $checkDetFlaps->id_company = $request->id_company; 
         $checkDetFlaps->id_regional = $request->id_regional; 
         $checkDetFlaps->save();
+
+        $detaildetflap = $request->detflap;
+        foreach($detaildetflap as $ep=>$det){
+            $objeto= new DetailDetFlap();
+            $objeto->id_detflap = $checkDetFlaps->id;
+            $objeto->babor3= $det['babor3'];
+            $objeto->babor4= $det['babor4'];
+            $objeto->estribor3= $det['estribor3'];
+            $objeto->estribor4= $det['estribor4'];
+            $objeto->punto2= $det['punto2'];
+            $objeto->tituloModal= $det['tituloModal'];
+            $objeto->save();
+        }
+
         $array = array(
             'res' => true,
             'message' => 'Registro actualizado exitosamente'

@@ -940,6 +940,7 @@ export default {
 	    arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
       arrayFa:[],
+      arrayFaAct:[],
 	    arrayFisheryAuthorized: [],
       id_fisheryAuthorized: 0,
       arrayComp: {id:0, name:''},
@@ -1589,6 +1590,21 @@ export default {
           console.log(error);
         });
     },
+    // dataFishery(){
+    //   let me = this;
+
+    //   var url = "/zarpes/fishery?id_FisheryAut="+this.id_zarpes;
+    //   axios
+    //     .get(url)
+    //     .then(function(response) {
+    //       console.log(response);
+    //       var respuesta = response.data;
+    //       me.arrayFa = respuesta.data;
+    //     })
+    //     .catch(function(error) {
+    //       console.log(error);
+    //     });
+    // },
     deleteData(data = []) {
       swal({
         title: "Esta seguro de Eliminar este Zarpe " + data["name"],

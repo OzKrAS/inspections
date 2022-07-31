@@ -584,7 +584,6 @@
             <md-card-actions>
               <md-button
                 type="submit"
-                v-if="tipoAccion==1"
                 class="md-dense md-raised md-primary"
                 :disabled="sending"
                 @click="addDets2()"
@@ -672,6 +671,7 @@ export default {
       modal2: 0,
       punto2: "",
       arrayDets2: [],
+      arrayDetsAct: [],
       babor3:0,
       babor4:0,
       estribor3:0,
@@ -940,14 +940,23 @@ export default {
       this.abrirModal2(dets,punto2) 
     },
     addDets2(){
-      this.arrayDets2.push({
+      let me = this;
+      me.arrayDets2.push({
         punto2:this.punto2,
         tituloModal:this.tituloModal,
         babor3:this.babor3,
         babor4:this.babor4,
         estribor3:this.estribor3,
         estribor4:this.estribor4,
-      })
+      });
+      me.arrayDetsAct.push({
+        punto2:this.punto2,
+        tituloModal:this.tituloModal,
+        babor3:this.babor3,
+        babor4:this.babor4,
+        estribor3:this.estribor3,
+        estribor4:this.estribor4,
+      });
       this.clearDets();
       this.cerrarModal();
     },
@@ -1133,6 +1142,8 @@ export default {
 
           'id_company': this.arrayComp.id,
           'id_regional': this.arrayRegl.id,
+
+          'detflap': this.arrayDetsAct,
         })
         .then(function(response) {
           me.hideForm();
