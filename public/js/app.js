@@ -46452,15 +46452,11 @@ var render = function() {
                             _vm._v("   \n                    ")
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticStyle: { "text-align": "center" } },
-                            [
-                              _c("strong", [
-                                _vm._v("PUERTO, ESTADO RECTOR DE PUERTO")
-                              ])
-                            ]
-                          ),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v("PUERTO, ESTADO RECTOR DE PUERTO")
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
@@ -46797,15 +46793,11 @@ var render = function() {
                             _vm._v("    \n                    ")
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticStyle: { "text-align": "center" } },
-                            [
-                              _c("strong", [
-                                _vm._v("SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS")
-                              ])
-                            ]
-                          ),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v("SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS")
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
@@ -47019,15 +47011,11 @@ var render = function() {
                             _vm._v("    \n                    ")
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticStyle: { "text-align": "center" } },
-                            [
-                              _c("strong", [
-                                _vm._v("PERMISO OTORGADO - ÚLTIMA PRORROGA")
-                              ])
-                            ]
-                          ),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v("PERMISO OTORGADO - ÚLTIMA PRORROGA")
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
@@ -47453,15 +47441,11 @@ var render = function() {
                             _vm._v("   \n                ")
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticStyle: { "text-align": "center" } },
-                            [
-                              _c("strong", [
-                                _vm._v("PESQUERÍA Y ARTES AUTORIZADOS")
-                              ])
-                            ]
-                          ),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v("PESQUERÍA Y ARTES AUTORIZADOS")
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
@@ -47527,15 +47511,11 @@ var render = function() {
                             _vm._v("   \n                ")
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticStyle: { "text-align": "center" } },
-                            [
-                              _c("strong", [
-                                _vm._v("CARACTERÍSTICAS ARTE DE PESCA")
-                              ])
-                            ]
-                          ),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v("CARACTERÍSTICAS ARTE DE PESCA")
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
@@ -47867,17 +47847,13 @@ var render = function() {
                             _vm._v("   \n               ")
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticStyle: { "text-align": "center" } },
-                            [
-                              _c("strong", [
-                                _vm._v(
-                                  "LOS DATOS RELACIONADOS CON LAS MEDIDAS DE ORDENAMIENTO APLICABLES"
-                                )
-                              ])
-                            ]
-                          ),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v(
+                                "LOS DATOS RELACIONADOS CON LAS MEDIDAS DE ORDENAMIENTO APLICABLES"
+                              )
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -50170,7 +50146,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         nameScientific1: this.nameScientific1,
         capture1: this.capture1
       });
-      console.log("arrayTarget " + total1 + total2);
+      console.log("arrayTarget " + total2);
       // this.mensaje("Captura objetivo agregado", "success");
       me.clearTarget();
     },
@@ -55110,6 +55086,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -55175,6 +55160,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       estribor3: 0,
       estribor4: 0,
       arrayDets: [],
+      arrayDetsAct: [],
       arrayDets2: [],
       arrayCheckDet: [],
       id_CheckDet: 0,
@@ -55493,7 +55479,16 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       // this.clearForm();
     },
     addDets: function addDets() {
-      this.arrayDets.push({
+      var me = this;
+      me.arrayDets.push({
+        punto: this.punto,
+        tituloModal: this.tituloModal,
+        babor1: this.babor1,
+        babor2: this.babor2,
+        estribor1: this.estribor1,
+        estribor2: this.estribor2
+      });
+      me.arrayDetsAct.push({
         punto: this.punto,
         tituloModal: this.tituloModal,
         babor1: this.babor1,
@@ -55504,19 +55499,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.clearDets();
       this.cerrarModal();
     },
-
-    // addDets2(){
-    //   this.arrayDets2.push({
-    //     punto2:this.punto2,
-    //     tituloModal:this.tituloModal,
-    //     babor3:this.babor3,
-    //     babor4:this.babor4,
-    //     estribor3:this.estribor3,
-    //     estribor4:this.estribor4,
-    //   })
-    //   this.clearDets();
-    //   this.cerrarModal();
-    // },
     clearDets: function clearDets() {
       this.punto = "";
       this.punto2 = "";
@@ -55533,10 +55515,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
     deleteDets: function deleteDets(index) {
       this.arrayDets.splice(index, 1);
     },
-
-    // deleteDets2(index){
-    //    this.arrayDets2.splice(index,1);
-    // },
     getValidationClass: function getValidationClass(fieldName) {
       var field = this.$v.form[fieldName];
       if (field) {
@@ -55571,6 +55549,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.arrayComp = { id: 0, name: '' };
       this.arrayRegl = { id: 0, name: '' };
       this.arrayDets = [];
+      // this.arrayDetsAct = [];
     },
     showUpdate: function showUpdate() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -55666,6 +55645,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         date: this.date,
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
+
         'detinch': this.arrayDets
       }).then(function (response) {
         me.hideForm();
@@ -55694,7 +55674,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         date: this.date,
 
         'id_company': this.arrayComp.id,
-        'id_regional': this.arrayRegl.id
+        'id_regional': this.arrayRegl.id,
+
+        'detinch': this.arrayDetsAct
       }).then(function (response) {
         me.hideForm();
         me.message("Actualizado", "Actualizó ");
@@ -56908,6 +56890,8 @@ var render = function() {
                             })
                           ]),
                           _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
                           _c(
                             "table",
                             {
@@ -57111,6 +57095,25 @@ var render = function() {
                                 },
                                 [_vm._v("Guardar")]
                               )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.tipoAccion == 2
+                            ? _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "submit",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.updateData()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Actualizar")]
+                              )
                             : _vm._e()
                         ],
                         1
@@ -57202,7 +57205,8 @@ var render = function() {
                                     name: "first-name",
                                     id: "first-name",
                                     autocomplete: "given-name",
-                                    disabled: _vm.sending
+                                    disabled: _vm.sending,
+                                    type: "number"
                                   },
                                   model: {
                                     value: _vm.babor1,
@@ -57235,7 +57239,8 @@ var render = function() {
                                     name: "first-name",
                                     id: "first-name",
                                     autocomplete: "given-name",
-                                    disabled: _vm.sending
+                                    disabled: _vm.sending,
+                                    type: "number"
                                   },
                                   model: {
                                     value: _vm.babor2,
@@ -57268,7 +57273,8 @@ var render = function() {
                                     name: "first-name",
                                     id: "first-name",
                                     autocomplete: "given-name",
-                                    disabled: _vm.sending
+                                    disabled: _vm.sending,
+                                    type: "number"
                                   },
                                   model: {
                                     value: _vm.estribor1,
@@ -57301,7 +57307,8 @@ var render = function() {
                                     name: "first-name",
                                     id: "first-name",
                                     autocomplete: "given-name",
-                                    disabled: _vm.sending
+                                    disabled: _vm.sending,
+                                    type: "number"
                                   },
                                   model: {
                                     value: _vm.estribor2,
@@ -57353,21 +57360,19 @@ var render = function() {
                   _c(
                     "md-card-actions",
                     [
-                      _vm.tipoAccion == 1
-                        ? _c(
-                            "md-button",
-                            {
-                              staticClass: "md-dense md-raised md-primary",
-                              attrs: { type: "submit", disabled: _vm.sending },
-                              on: {
-                                click: function($event) {
-                                  _vm.addDets()
-                                }
-                              }
-                            },
-                            [_vm._v("registrar")]
-                          )
-                        : _vm._e()
+                      _c(
+                        "md-button",
+                        {
+                          staticClass: "md-dense md-raised md-primary",
+                          attrs: { type: "submit", disabled: _vm.sending },
+                          on: {
+                            click: function($event) {
+                              _vm.addDets()
+                            }
+                          }
+                        },
+                        [_vm._v("registrar")]
+                      )
                     ],
                     1
                   )
@@ -57586,6 +57591,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -58990,7 +59000,7 @@ var render = function() {
                                         expression: "date"
                                       }
                                     },
-                                    [_c("label", [_vm._v("Fecha")])]
+                                    [_c("label", [_vm._v("Seleccione Fecha")])]
                                   )
                                 ],
                                 1
@@ -59920,6 +59930,8 @@ var render = function() {
                             })
                           ]),
                           _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
                           _c(
                             "table",
                             {
@@ -60233,7 +60245,8 @@ var render = function() {
                                     name: "first-name",
                                     id: "first-name",
                                     autocomplete: "given-name",
-                                    disabled: _vm.sending
+                                    disabled: _vm.sending,
+                                    type: "number"
                                   },
                                   model: {
                                     value: _vm.babor3,
@@ -60266,7 +60279,8 @@ var render = function() {
                                     name: "first-name",
                                     id: "first-name",
                                     autocomplete: "given-name",
-                                    disabled: _vm.sending
+                                    disabled: _vm.sending,
+                                    type: "number"
                                   },
                                   model: {
                                     value: _vm.babor4,
@@ -60299,7 +60313,8 @@ var render = function() {
                                     name: "first-name",
                                     id: "first-name",
                                     autocomplete: "given-name",
-                                    disabled: _vm.sending
+                                    disabled: _vm.sending,
+                                    type: "number"
                                   },
                                   model: {
                                     value: _vm.estribor3,
@@ -60332,7 +60347,8 @@ var render = function() {
                                     name: "first-name",
                                     id: "first-name",
                                     autocomplete: "given-name",
-                                    disabled: _vm.sending
+                                    disabled: _vm.sending,
+                                    type: "number"
                                   },
                                   model: {
                                     value: _vm.estribor4,

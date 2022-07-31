@@ -416,6 +416,7 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div> -->
+                <br>
                 <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
                     <thead>         
                       <tr>
@@ -543,7 +544,6 @@
             <md-card-actions>
               <md-button type="button" class="md-raised" @click="hideForm()">Cerrar</md-button>
             </md-card-actions>
-
             <md-card-actions>
               <md-button
                 type="submit"
@@ -552,6 +552,13 @@
                 :disabled="sending"
                 @click="validateData()"
               >Guardar</md-button>
+              <md-button
+                type="submit"
+                v-if="tipoAccion==2"
+                class="md-dense md-raised md-primary"
+                :disabled="sending"
+                @click="updateData()"
+              >Actualizar</md-button>
             </md-card-actions>
           </div>
         </template>
@@ -588,6 +595,7 @@
                         autocomplete="given-name"
                         v-model="babor1"
                         :disabled="sending"
+                        type="number"
                       />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -600,6 +608,7 @@
                         autocomplete="given-name"
                         v-model="babor2"
                         :disabled="sending"
+                        type="number"
                       />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -612,6 +621,7 @@
                         autocomplete="given-name"
                         v-model="estribor1"
                         :disabled="sending"
+                        type="number"
                       />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -624,6 +634,7 @@
                         autocomplete="given-name"
                         v-model="estribor2"
                         :disabled="sending"
+                        type="number"
                       />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -637,11 +648,9 @@
             <md-card-actions>
               <md-button type="button" class="md-raised" @click="cerrarModal()">Cerrar</md-button>
             </md-card-actions>
-
             <md-card-actions>
               <md-button
                 type="submit"
-                v-if="tipoAccion==1"
                 class="md-dense md-raised md-primary"
                 :disabled="sending"
                 @click="addDets()"
@@ -825,6 +834,7 @@ export default {
       estribor3:0,
       estribor4:0,
       arrayDets: [],
+      arrayDetsAct: [],
       arrayDets2: [],
       arrayCheckDet: [],
       id_CheckDet: 0,
@@ -1136,29 +1146,26 @@ export default {
      // this.clearForm();
     },
     addDets(){
-      this.arrayDets.push({
+      let me = this;
+      me.arrayDets.push({
         punto:this.punto,
         tituloModal:this.tituloModal,
         babor1:this.babor1,
         babor2:this.babor2,
         estribor1:this.estribor1,
         estribor2:this.estribor2,
-      })
+      });
+      me.arrayDetsAct.push({
+        punto:this.punto,
+        tituloModal:this.tituloModal,
+        babor1:this.babor1,
+        babor2:this.babor2,
+        estribor1:this.estribor1,
+        estribor2:this.estribor2,
+      });
       this.clearDets();
       this.cerrarModal();
     },
-    // addDets2(){
-    //   this.arrayDets2.push({
-    //     punto2:this.punto2,
-    //     tituloModal:this.tituloModal,
-    //     babor3:this.babor3,
-    //     babor4:this.babor4,
-    //     estribor3:this.estribor3,
-    //     estribor4:this.estribor4,
-    //   })
-    //   this.clearDets();
-    //   this.cerrarModal();
-    // },
     clearDets() {
        this.punto = "";
        this.punto2 = "";
@@ -1175,9 +1182,7 @@ export default {
     deleteDets(index){
        this.arrayDets.splice(index,1);
     },
-    // deleteDets2(index){
-    //    this.arrayDets2.splice(index,1);
-    // },
+
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
       if (field) {
@@ -1212,6 +1217,7 @@ export default {
       this.arrayComp = {id:0, name:''};
       this.arrayRegl = {id:0, name:''};
       this.arrayDets = [];
+      // this.arrayDetsAct = [];
     },
 
     showUpdate(data = []) {
@@ -1308,6 +1314,7 @@ export default {
         date: this.date,
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
+
         'detinch': this.arrayDets,
         })
         .then(function(response) {
@@ -1337,9 +1344,11 @@ export default {
           location: this.form.location.toUpperCase(),
           observation: this.observation.toUpperCase(),
           date: this.date,
-          
+
           'id_company': this.arrayComp.id,
           'id_regional': this.arrayRegl.id,
+
+          'detinch': this.arrayDetsAct,
         })
         .then(function(response) {
           me.hideForm();

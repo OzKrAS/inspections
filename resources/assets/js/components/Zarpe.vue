@@ -146,7 +146,7 @@
                         <!-- <div class="md-layout-item"> 
                           <label>PUERTO, ESTADO RECTOR DE PUERTO</label>           
                         </div> -->
-                      <div style="text-align:center">
+                      <div>
                           <strong>PUERTO, ESTADO RECTOR DE PUERTO</strong>    
                       </div>
 
@@ -237,7 +237,7 @@
                         <!-- <div class="md-layout-item">          
                           <label>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</label>
                         </div> -->
-                        <div style="text-align:center">
+                        <div>
                             <strong>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</strong>    
                         </div>
                         
@@ -299,7 +299,7 @@
                       </div>  
 
                       <!-- <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label> -->
-                      <div style="text-align:center">
+                      <div>
                             <strong>PERMISO OTORGADO - ÚLTIMA PRORROGA</strong>    
                       </div>
                   
@@ -449,7 +449,7 @@
                   </div> 
  
                   <!-- <label>PESQUERÍA Y ARTES AUTORIZADOS</label> -->
-                  <div style="text-align:center">
+                  <div>
                         <strong>PESQUERÍA Y ARTES AUTORIZADOS</strong>    
                   </div>
 
@@ -507,7 +507,7 @@
                   
 
                   <!-- <label>CARACTERÍSTICAS ARTE DE PESCA</label> -->
-                  <div style="text-align:center">
+                  <div>
                         <strong>CARACTERÍSTICAS ARTE DE PESCA</strong>    
                   </div>
                  
@@ -638,7 +638,7 @@
                  </div>
 
                   <!-- <label>LOS DATOS RELACIONADOS CON LAS MEDIDAS DE ORDENAMIENTO APLICABLES</label> -->
-                  <div style="text-align:center">
+                  <div>
                         <strong>LOS DATOS RELACIONADOS CON LAS MEDIDAS DE ORDENAMIENTO APLICABLES</strong>    
                   </div>
 

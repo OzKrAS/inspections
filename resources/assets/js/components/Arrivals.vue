@@ -1526,7 +1526,7 @@ export default {
         nameScientific1:this.nameScientific1,
         capture1:this.capture1
       });
-      console.log("arrayTarget " + total1+total2);
+      console.log("arrayTarget " + total2);
       // this.mensaje("Captura objetivo agregado", "success");
       me.clearTarget();
     },

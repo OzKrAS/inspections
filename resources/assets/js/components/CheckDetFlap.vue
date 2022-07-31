@@ -71,7 +71,7 @@
                           md-immediately
                           :md-model-type="String"
                           >
-                          <label>Fecha</label>
+                          <label>Seleccione Fecha</label>
                         </md-datepicker>
                       </div>
                   </div> &nbsp;&nbsp;&nbsp;
@@ -414,6 +414,7 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div> -->
+                  <br>
                   <table class="table table-striped table-bordered display" id="dataTable2" width="50%" cellspacing="0">
                       <thead>         
                         <tr>
@@ -526,6 +527,7 @@
                         autocomplete="given-name"
                         v-model="babor3"
                         :disabled="sending"
+                        type="number"
                       />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -538,6 +540,7 @@
                         autocomplete="given-name"
                         v-model="babor4"
                         :disabled="sending"
+                        type="number"
                       />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -550,6 +553,7 @@
                         autocomplete="given-name"
                         v-model="estribor3"
                         :disabled="sending"
+                        type="number"
                       />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -562,6 +566,7 @@
                         autocomplete="given-name"
                         v-model="estribor4"
                         :disabled="sending"
+                        type="number"
                       />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
