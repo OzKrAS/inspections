@@ -16,6 +16,7 @@ use App\Flag;
 use App\Nationality;
 use App\Orop;
 use App\Ports;
+use App\Dock;
 use App\PresenVerific;
 use App\Region;
 use App\Regional;
@@ -26,6 +27,11 @@ class DataJsonController extends Controller
     public function jsonZarpe(){
         $flags = Flag::all();
         $ports = Ports::all();
+        $docks = Dock::join('ports','docks.id_port','=','ports.id')
+            ->select(
+            'docks.id', 'docks.name','docks.arrival','docks.zarpe','docks.id_port',
+            'ports.name as namePort')
+            ->orderBy('docks.name', 'asc')->get();
         $regions = Region::all();
         $orops = Orop::all();
         $company = Company::all();
@@ -72,7 +78,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPt",
                         "cons"=>4,
-                        "data"=>$ports
+                        "data"=>$docks
                     ],
                     [
                         "type"=> 3,
@@ -327,15 +333,15 @@ class DataJsonController extends Controller
                         "cons"=>31,
                         "data"=>null
                     ],
-                    // [
-                    //     "type"=>10,
-                    //     "title"=>"PESQUERÍA AUTORIZADA",
-                    //     "value"=>"VALOR_ASIGNADO_POR_USUARIO",
-                    //     "placeHolder"=>"PLACE HOLDER INPUT",
-                    //     "id"=>"arrayFa",
-                    //     "cons"=>32,
-                    //     "data"=>$detailsfisheryzarpe
-                    // ],
+                    [
+                        "type"=>10,
+                        "title"=>"PESQUERÍA AUTORIZADA",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"arrayFa",
+                        "cons"=>32,
+                        "data"=>$fishery
+                    ],
                     [
                         "type"=>3,
                         "title"=>"ZONA DE PESCA AUTORIZADA",
