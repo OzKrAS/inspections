@@ -65256,6 +65256,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
       arrayRegl: [],
       id_regional: 0,
       arrayTarget: [],
+      arrayTargetAct: [],
 
       date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
 
@@ -65558,6 +65559,15 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
         weight: this.weight,
         commercialValue: this.commercialValue
       });
+      var total2 = me.arrayTargetAct.push({
+        nameScientific: this.nameScientific.toUpperCase(),
+        nameCommon: this.nameCommon.toUpperCase(),
+        state: this.state.toUpperCase(),
+        presentation: this.presentation.toUpperCase(),
+        amount: this.amount,
+        weight: this.weight,
+        commercialValue: this.commercialValue
+      });
       console.log("arrayTarget " + total1);
       me.clearTarget();
     },
@@ -65722,7 +65732,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
         place: this.form.place.toUpperCase(),
         telephone: this.form.telephone,
 
-        'id_regional': this.arrayRegl.id
+        'id_regional': this.arrayRegl.id,
+
+        'target': this.arrayTargetAct
       }).then(function (response) {
         me.hideForm();
         me.message("Actualizado", "Actualizó ");
@@ -86111,6 +86123,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
 
       arrayTarget: [],
       arrayTarget2: [],
+      arrayTargetAct: [],
+      arrayTarget2Act: [],
 
       arrayConfiscationCert: [],
       id_confiscationCert: 0,
@@ -86361,12 +86375,29 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         weight: this.weight,
         commercialValue: this.commercialValue
       });
+      var total2 = me.arrayTargetAct.push({
+        nameScientific: this.nameScientific.toUpperCase(),
+        nameCommon: this.nameCommon.toUpperCase(),
+        state: this.state.toUpperCase(),
+        presentation: this.presentation.toUpperCase(),
+        amount: this.amount,
+        average: this.average,
+        weight: this.weight,
+        commercialValue: this.commercialValue
+      });
       console.log("arrayTarget " + total1);
       me.clearTarget();
     },
     addItemTarget2: function addItemTarget2() {
       var me = this;
       var total1 = me.arrayTarget2.push({
+        element: this.element.toUpperCase(),
+        amount2: this.amount2.toUpperCase(),
+        characterState: this.characterState.toUpperCase(),
+        commercialValue2: this.commercialValue2.toUpperCase()
+
+      });
+      var total2 = me.arrayTarget2Act.push({
         element: this.element.toUpperCase(),
         amount2: this.amount2.toUpperCase(),
         characterState: this.characterState.toUpperCase(),
@@ -86441,6 +86472,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.arrayReasons = [];
       this.arrayTarget = [];
       this.arrayTarget2 = [];
+      this.arrayTargetAct = [];
+      this.arrayTarget2Act = [];
 
       this.arrayRegl = { id: 0, name: '' };
     },
@@ -86587,7 +86620,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         dateExpedition: this.dateExpedition,
         observation: this.observation.toUpperCase(),
 
-        'id_regional': this.arrayRegl.id
+        'id_regional': this.arrayRegl.id,
+
+        'target': this.arrayTargetAct,
+        'target2': this.arrayTarget2Act
       }).then(function (response) {
         me.listData();
         me.hideForm();

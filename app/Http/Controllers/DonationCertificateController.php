@@ -67,12 +67,6 @@ class DonationCertificateController extends Controller
         $donations->id_regional = $request->id_regional;  
         $donations->save();
 
-        $array = array(
-            'res' => true,
-            'message' => 'Registro guardado exitosamente'
-            );
-        return response()->json($array,201);
-
         $detaildonation = $request->target;
         foreach($detaildonation as $ep=>$det){
             $objeto= new DetDonation();
@@ -87,11 +81,11 @@ class DonationCertificateController extends Controller
 
             $objeto->save();
         }
-        // $array = array(
-        //     'res' => true,
-        //     'message' => 'Registro guardado exitosamente'
-        //     );
-        // return response()->json($array,201);
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function update(Request $request)
     {
@@ -116,6 +110,22 @@ class DonationCertificateController extends Controller
 
         $donations->id_regional = $request->id_regional;  
         $donations->save();
+
+        $detaildonation = $request->target;
+        foreach($detaildonation as $ep=>$det){
+            $objeto= new DetDonation();
+            $objeto->id_donation = $donations->id;
+            $objeto->nameScientific= $det['nameScientific'];
+            $objeto->nameCommon= $det['nameCommon'];
+            $objeto->state= $det['state'];
+            $objeto->presentation= $det['presentation'];
+            $objeto->amount= $det['amount'];
+            $objeto->weight= $det['weight'];
+            $objeto->commercialValue= $det['commercialValue'];
+
+            $objeto->save();
+        }
+
         $array = array(
             'res' => true,
             'message' => 'Registro actualizado exitosamente'

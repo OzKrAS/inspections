@@ -829,6 +829,7 @@ export default {
 	    arrayRegl: [],
       id_regional: 0,
 	    arrayTarget: [],
+	    arrayTargetAct: [],
     
       date: format(now, dateFormat),
 
@@ -1126,6 +1127,15 @@ export default {
         weight:this.weight,
         commercialValue:this.commercialValue,
       });
+      var total2 = me.arrayTargetAct.push({
+        nameScientific:this.nameScientific.toUpperCase(),
+        nameCommon:this.nameCommon.toUpperCase(),
+        state:this.state.toUpperCase(),
+        presentation:this.presentation.toUpperCase(),
+        amount:this.amount,
+        weight:this.weight,
+        commercialValue:this.commercialValue,
+      });
       console.log("arrayTarget " + total1);
       me.clearTarget();  
     },
@@ -1297,6 +1307,8 @@ export default {
         telephone: this.form.telephone,
        
         'id_regional': this.arrayRegl.id,
+
+        'target': this.arrayTargetAct
         })
         .then(function(response) {
           me.hideForm();

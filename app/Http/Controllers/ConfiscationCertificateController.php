@@ -81,12 +81,6 @@ class ConfiscationCertificateController extends Controller
         $confiscation->id_regional = $request->id_regional;  
         $confiscation->save();
 
-        $array = array(
-            'res' => true,
-            'message' => 'Registro guardado exitosamente'
-            );
-        return response()->json($array,201);
-
         $details = $request->data;
         foreach($details as $ep=>$det){
             $objeto= new DetConfiscationReasons();
@@ -120,11 +114,11 @@ class ConfiscationCertificateController extends Controller
 
             $objeto->save();
         }
-        // $array = array(
-        //     'res' => true,
-        //     'message' => 'Registro guardado exitosamente'
-        //     );
-        // return response()->json($array,201);
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente'
+            );
+        return response()->json($array,201);
     }
     public function update(Request $request)
     {
@@ -155,6 +149,33 @@ class ConfiscationCertificateController extends Controller
         
         $confiscation->id_regional = $request->id_regional;  
         $confiscation->save();
+
+        $detailconfiscationt1 = $request->target;
+        foreach($detailconfiscationt1 as $ep=>$det){
+            $objeto= new DetConfiscationTable1();
+            $objeto->id_confiscation = $confiscation->id;
+            $objeto->amount= $det['amount'];
+            $objeto->average= $det['average'];
+            $objeto->commercialValue= $det['commercialValue'];
+            $objeto->nameCommon= $det['nameCommon'];
+            $objeto->nameScientific= $det['nameScientific'];
+            $objeto->presentation= $det['presentation'];
+            $objeto->state= $det['state'];
+            $objeto->weight= $det['weight'];
+
+            $objeto->save();
+        }
+        $detaildonationt2 = $request->target2;
+        foreach($detaildonationt2 as $ep=>$det){
+            $objeto= new DetConfiscationTable2();
+            $objeto->id_confiscation = $confiscation->id;
+            $objeto->amount2= $det['amount2'];
+            $objeto->characterState= $det['characterState'];
+            $objeto->commercialValue2= $det['commercialValue2'];
+            $objeto->element= $det['element'];
+
+            $objeto->save();
+        }
 
         $array = array(
             'res' => true,

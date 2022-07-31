@@ -1132,6 +1132,8 @@ export default {
 
       arrayTarget: [],
       arrayTarget2: [],
+      arrayTargetAct: [],
+      arrayTarget2Act: [],
       
       arrayConfiscationCert: [],
       id_confiscationCert: 0,
@@ -1373,12 +1375,29 @@ export default {
         weight:this.weight,
         commercialValue:this.commercialValue,
       });
+      var total2 = me.arrayTargetAct.push({
+        nameScientific:this.nameScientific.toUpperCase(),
+        nameCommon:this.nameCommon.toUpperCase(),
+        state:this.state.toUpperCase(),
+        presentation:this.presentation.toUpperCase(),
+        amount:this.amount,
+        average:this.average,
+        weight:this.weight,
+        commercialValue:this.commercialValue,
+      });
       console.log("arrayTarget " + total1);
       me.clearTarget();  
     },
     addItemTarget2() {
       let me = this;
       var total1 = me.arrayTarget2.push({
+        element:this.element.toUpperCase(),
+        amount2:this.amount2.toUpperCase(),
+        characterState: this.characterState.toUpperCase(),
+        commercialValue2: this.commercialValue2.toUpperCase(),
+        
+      });
+      var total2 = me.arrayTarget2Act.push({
         element:this.element.toUpperCase(),
         amount2:this.amount2.toUpperCase(),
         characterState: this.characterState.toUpperCase(),
@@ -1453,6 +1472,8 @@ export default {
       this.arrayReasons = [];
       this.arrayTarget = [];
       this.arrayTarget2 = [];
+      this.arrayTargetAct = [];
+      this.arrayTarget2Act = [];
       
       this.arrayRegl = {id:0, name:''};
     },
@@ -1521,14 +1542,14 @@ export default {
         });
     },
     selectRegional() {
-            let me = this;
-            var url = "/confiscationCertificates/selectRegional";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayRegional= respuesta.regional;
-                }).catch(function (error) {
-                    console.log(error);
-            });
+        let me = this;
+        var url = "/confiscationCertificates/selectRegional";
+        axios.get(url).then(function (response) {
+                var respuesta = response.data;
+                me.arrayRegional= respuesta.regional;
+            }).catch(function (error) {
+                console.log(error);
+        });
     }, 
     saveData() {
       let me = this;
@@ -1605,7 +1626,10 @@ export default {
       dateExpedition : this.dateExpedition,
       observation : this.observation.toUpperCase(),
 
-        'id_regional': this.arrayRegl.id,
+      'id_regional': this.arrayRegl.id,
+
+      'target':this.arrayTargetAct,
+      'target2':this.arrayTarget2Act,
       })
         .then(function(response) {
           me.listData();
