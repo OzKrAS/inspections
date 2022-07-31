@@ -27,6 +27,13 @@ class CreateCheckDetInchesTable extends Migration
             $table->string('observation'); 
             $table->date('date'); 
 
+            $table->string('flapMeshSize');
+            $table->string('angleDet');
+            $table->string('typeDet');
+            $table->string('materialDet');
+            $table->string('exit');
+            $table->string('float');
+
             $table->integer('id_company')->unsigned();
             $table->foreign('id_company')->references('id')->on('companies');
             $table->integer('id_regional')->unsigned();

@@ -55077,6 +55077,109 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -55124,7 +55227,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         fishLicense: "",
         owner: "",
         fishCaptain: "",
-        location: ""
+        location: "",
+        flapMeshSize: "",
+        angleDet: "",
+        typeDet: "",
+        materialDet: "",
+        exit: "",
+        float: ""
       },
 
       observation: "",
@@ -55153,12 +55262,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       arrayRegl: [],
       id_regional: 0,
 
-      meshSize: "",
-      angleDet: "",
-      typeDet: "",
-      materialDet: "",
-      exit: "",
-      float: "",
+      // meshSize: "",
+      // angleDet: "",
+      // typeDet: "",
+      // materialDet: "",
+      // exit: "",
+      // float: "",
 
       date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
       idCheckDelt: 0,
@@ -55201,6 +55310,24 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       location: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      flapMeshSize: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      angleDet: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      typeDet: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      materialDet: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      exit: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      float: {
         required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       }
     }
@@ -55528,6 +55655,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.observation = null;
       this.date = null;
 
+      this.form.flapMeshSize = null;
+      this.form.angleDet = null;
+      this.form.typeDet = null;
+      this.form.materialDet = null;
+      this.form.exit = null;
+      this.form.float = null;
+
       this.arrayComp = { id: 0, name: '' };
       this.arrayRegl = { id: 0, name: '' };
       this.arrayDets = [];
@@ -55550,6 +55684,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.form.location = data["location"];
       this.observation = data["observation"];
       this.date = data["date"];
+
+      this.form.flapMeshSize = data["flapMeshSize"];
+      this.form.angleDet = data["angleDet"];
+      this.form.typeDet = data["typeDet"];
+      this.form.materialDet = data["materialDet"];
+      this.form.exit = data["exit"];
+      this.form.float = data["float"];
 
       this.arrayComp.id = data["id_company"];
       this.arrayComp.name = data["nameCompany"];
@@ -55625,6 +55766,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
         date: this.date,
+
+        flapMeshSize: this.form.flapMeshSize.toUpperCase(),
+        angleDet: this.form.angleDet.toUpperCase(),
+        typeDet: this.form.typeDet.toUpperCase(),
+        materialDet: this.form.materialDet.toUpperCase(),
+        exit: this.form.exit.toUpperCase(),
+        float: this.form.float,
+
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
 
@@ -55654,6 +55803,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
         date: this.date,
+
+        flapMeshSize: this.form.flapMeshSize.toUpperCase(),
+        angleDet: this.form.angleDet.toUpperCase(),
+        typeDet: this.form.typeDet.toUpperCase(),
+        materialDet: this.form.materialDet.toUpperCase(),
+        exit: this.form.exit.toUpperCase(),
+        float: this.form.float,
 
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
@@ -56479,6 +56635,339 @@ var render = function() {
                               1
                             ),
                             _vm._v("   \n              ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "flapMeshSize"
+                                    ),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Tamaño de malla en la solapa")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.flapMeshSize,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.form,
+                                            "flapMeshSize",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "form.flapMeshSize"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.flapMeshSize.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar el tamaño de malla en la solapa"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass("angleDet"),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Ángulo del DET ")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.angleDet,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "angleDet", $$v)
+                                        },
+                                        expression: "form.angleDet"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.angleDet.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar el ángulo del DET "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass("typeDet"),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Tipo de DET")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.typeDet,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "typeDet", $$v)
+                                        },
+                                        expression: "form.typeDet"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.typeDet.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar el tipo de DET"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n              ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "materialDet"
+                                    ),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Material del DET")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.materialDet,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "materialDet", $$v)
+                                        },
+                                        expression: "form.materialDet"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.materialDet.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar el material del DET"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass("exit"),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Salida (superior ó inferior)")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.exit,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "exit", $$v)
+                                        },
+                                        expression: "form.exit"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.exit.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la salida (superior ó inferior)"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass("float"),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Flotadores (cantidad)")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending,
+                                        type: "number"
+                                      },
+                                      model: {
+                                        value: _vm.form.float,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "float", $$v)
+                                        },
+                                        expression: "form.float"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.float.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la cantidad de flotadores"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n              ")
+                          ]),
+                          _vm._v(" "),
+                          _c("label", [
+                            _vm._v(
+                              'DETs con salida inferior: si la circunferencia del DET es ≥ a 120 ", se requieren 2 boyas, si es menor solo se requiere una boya'
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("label", [
+                            _vm._v(
+                              "Exención: red de prueba (chango)  La longitud de la relinga superior debe ser de 12 pies o menos, y la longitud de la relinga inferior debe ser de 15 pies o menos"
+                            )
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -58175,6 +58664,109 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -58221,7 +58813,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         fishLicense: "",
         owner: "",
         fishCaptain: "",
-        location: ""
+        location: "",
+        flapMeshSize: "",
+        angleDet: "",
+        typeDet: "",
+        materialDet: "",
+        exit: "",
+        float: ""
       },
 
       arrayCheckDet: [],
@@ -58244,12 +58842,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       estribor4: 0,
       observation: "",
 
-      meshSize: "",
-      angleDet: "",
-      typeDet: "",
-      materialDet: "",
-      exit: "",
-      float: "",
+      // meshSize: "",
+      // angleDet: "",
+      // typeDet: "",
+      // materialDet: "",
+      // exit: "",
+      // float: "",
 
       date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
       idCheckFlap: 0,
@@ -58292,6 +58890,24 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       location: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      flapMeshSize: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      angleDet: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      typeDet: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      materialDet: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      exit: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      float: {
         required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       }
     }
@@ -58580,6 +59196,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.form.location = null;
       this.observation = null;
       this.date = null;
+
+      this.form.flapMeshSize = null;
+      this.form.angleDet = null;
+      this.form.typeDet = null;
+      this.form.materialDet = null;
+      this.form.exit = null;
+      this.form.float = null;
+
       this.arrayCheckDet = [];
 
       this.arrayComp = { id: 0, name: '' };
@@ -58602,6 +59226,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.form.location = data["location"];
       this.observation = data["observation"];
       this.date = data["date"];
+
+      this.form.flapMeshSize = data["flapMeshSize"];
+      this.form.angleDet = data["angleDet"];
+      this.form.typeDet = data["typeDet"];
+      this.form.materialDet = data["materialDet"];
+      this.form.exit = data["exit"];
+      this.form.float = data["float"];
 
       this.arrayComp.id = data["id_company"];
       this.arrayComp.name = data["nameCompany"];
@@ -58677,6 +59308,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
         date: this.date,
+
+        flapMeshSize: this.form.flapMeshSize.toUpperCase(),
+        angleDet: this.form.angleDet.toUpperCase(),
+        typeDet: this.form.typeDet.toUpperCase(),
+        materialDet: this.form.materialDet.toUpperCase(),
+        exit: this.form.exit.toUpperCase(),
+        float: this.form.float,
+
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
         'detflap': this.arrayDets2
@@ -58705,6 +59344,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
         date: this.date,
+
+        flapMeshSize: this.form.flapMeshSize.toUpperCase(),
+        angleDet: this.form.angleDet.toUpperCase(),
+        typeDet: this.form.typeDet.toUpperCase(),
+        materialDet: this.form.materialDet.toUpperCase(),
+        exit: this.form.exit.toUpperCase(),
+        float: this.form.float,
 
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
@@ -59530,6 +60176,339 @@ var render = function() {
                               1
                             ),
                             _vm._v("   \n              ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "flapMeshSize"
+                                    ),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Tamaño de malla en la solapa")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.flapMeshSize,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.form,
+                                            "flapMeshSize",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "form.flapMeshSize"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.flapMeshSize.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar el tamaño de malla en la solapa"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass("angleDet"),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Ángulo del DET ")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.angleDet,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "angleDet", $$v)
+                                        },
+                                        expression: "form.angleDet"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.angleDet.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar el ángulo del DET "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass("typeDet"),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Tipo de DET")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.typeDet,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "typeDet", $$v)
+                                        },
+                                        expression: "form.typeDet"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.typeDet.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar el tipo de DET"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n              ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "materialDet"
+                                    ),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Material del DET")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.materialDet,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "materialDet", $$v)
+                                        },
+                                        expression: "form.materialDet"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.materialDet.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar el material del DET"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass("exit"),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Salida (superior ó inferior)")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.exit,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "exit", $$v)
+                                        },
+                                        expression: "form.exit"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.exit.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la salida (superior ó inferior)"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass("float"),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Flotadores (cantidad)")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending,
+                                        type: "number"
+                                      },
+                                      model: {
+                                        value: _vm.form.float,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "float", $$v)
+                                        },
+                                        expression: "form.float"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.float.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la cantidad de flotadores"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n              ")
+                          ]),
+                          _vm._v(" "),
+                          _c("label", [
+                            _vm._v(
+                              'DETs con salida inferior: si la circunferencia del DET es ≥ a 120 ", se requieren 2 boyas, si es menor solo se requiere una boya'
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("label", [
+                            _vm._v(
+                              "Exención: red de prueba (chango)  La longitud de la relinga superior debe ser de 12 pies o menos, y la longitud de la relinga inferior debe ser de 15 pies o menos"
+                            )
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [

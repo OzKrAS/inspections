@@ -27,6 +27,13 @@ class CheckDetFlapController extends Controller
                      'check_det_flaps.location',
                      'check_det_flaps.observation',
                      'check_det_flaps.date',
+
+                     'check_det_flaps.flapMeshSize',
+                     'check_det_flaps.angleDet',
+                     'check_det_flaps.typeDet',
+                     'check_det_flaps.materialDet',
+                     'check_det_flaps.exit',
+                     'check_det_flaps.float',
                      
                      'check_det_flaps.id_company','companies.name as nameCompany',
                      'check_det_flaps.id_regional','regionals.name as nameRegional',
@@ -55,6 +62,13 @@ class CheckDetFlapController extends Controller
         $checkDetFlaps->location = $request->location;
         $checkDetFlaps->observation = $request->observation;
         $checkDetFlaps->date = $request->date;
+
+        $checkDetFlaps->flapMeshSize = $request->flapMeshSize;
+        $checkDetFlaps->angleDet = $request->angleDet;
+        $checkDetFlaps->typeDet = $request->typeDet;
+        $checkDetFlaps->materialDet = $request->materialDet;
+        $checkDetFlaps->exit = $request->exit;
+        $checkDetFlaps->float = $request->float;
 
         $checkDetFlaps->id_company = $request->id_company;  
         $checkDetFlaps->id_regional = $request->id_regional;  
@@ -93,6 +107,13 @@ class CheckDetFlapController extends Controller
         $checkDetFlaps->location = $request->location;
         $checkDetFlaps->observation = $request->observation;
         $checkDetFlaps->date = $request->date; 
+
+        $checkDetFlaps->flapMeshSize = $request->flapMeshSize;
+        $checkDetFlaps->angleDet = $request->angleDet;
+        $checkDetFlaps->typeDet = $request->typeDet;
+        $checkDetFlaps->materialDet = $request->materialDet;
+        $checkDetFlaps->exit = $request->exit;
+        $checkDetFlaps->float = $request->float;
 
         $checkDetFlaps->id_company = $request->id_company; 
         $checkDetFlaps->id_regional = $request->id_regional; 

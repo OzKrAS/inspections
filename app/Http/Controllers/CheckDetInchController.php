@@ -28,6 +28,13 @@ class CheckDetInchController extends Controller
                      'check_det_inches.location',
                      'check_det_inches.observation',
                      'check_det_inches.date',
+
+                     'check_det_inches.flapMeshSize',
+                     'check_det_inches.angleDet',
+                     'check_det_inches.typeDet',
+                     'check_det_inches.materialDet',
+                     'check_det_inches.exit',
+                     'check_det_inches.float',
                      
                      'check_det_inches.id_company','companies.name as nameCompany',
                      'check_det_inches.id_regional','regionals.name as nameRegional',
@@ -55,6 +62,13 @@ class CheckDetInchController extends Controller
         $CheckDetInchs->location = $request->location;
         $CheckDetInchs->observation = $request->observation;
         $CheckDetInchs->date = $request->date;
+
+        $CheckDetInchs->flapMeshSize = $request->flapMeshSize;
+        $CheckDetInchs->angleDet = $request->angleDet;
+        $CheckDetInchs->typeDet = $request->typeDet;
+        $CheckDetInchs->materialDet = $request->materialDet;
+        $CheckDetInchs->exit = $request->exit;
+        $CheckDetInchs->float = $request->float;
 
         $CheckDetInchs->id_company = $request->id_company;  
         $CheckDetInchs->id_regional = $request->id_regional;  
@@ -93,6 +107,13 @@ class CheckDetInchController extends Controller
         $CheckDetInchs->location = $request->location;
         $CheckDetInchs->observation = $request->observation;
         $CheckDetInchs->date = $request->date; 
+
+        $CheckDetInchs->flapMeshSize = $request->flapMeshSize;
+        $CheckDetInchs->angleDet = $request->angleDet;
+        $CheckDetInchs->typeDet = $request->typeDet;
+        $CheckDetInchs->materialDet = $request->materialDet;
+        $CheckDetInchs->exit = $request->exit;
+        $CheckDetInchs->float = $request->float;
 
         $CheckDetInchs->id_company = $request->id_company;  
         $CheckDetInchs->id_regional = $request->id_regional;  

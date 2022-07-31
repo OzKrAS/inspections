@@ -244,6 +244,109 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('flapMeshSize')">
+                      <label for="first-name">Tamaño de malla en la solapa</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.flapMeshSize"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.flapMeshSize.required"
+                      >Olvidaste ingresar el tamaño de malla en la solapa</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('angleDet')">
+                      <label for="first-name">Ángulo del DET </label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.angleDet"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.angleDet.required"
+                      >Olvidaste ingresar el ángulo del DET </span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('typeDet')">
+                      <label for="first-name">Tipo de DET</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.typeDet"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.typeDet.required"
+                      >Olvidaste ingresar el tipo de DET</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('materialDet')">
+                      <label for="first-name">Material del DET</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.materialDet"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.materialDet.required"
+                      >Olvidaste ingresar el material del DET</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('exit')">
+                      <label for="first-name">Salida (superior ó inferior)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.exit"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.exit.required"
+                      >Olvidaste ingresar la salida (superior ó inferior)</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('float')">
+                      <label for="first-name">Flotadores (cantidad)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.float"
+                        :disabled="sending"
+                        type="number"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.float.required"
+                      >Olvidaste ingresar la cantidad de flotadores</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <label>DETs con salida inferior: si la circunferencia del DET es ≥ a 120 ", se requieren 2 boyas, si es menor solo se requiere una boya</label>
+                <label>Exención: red de prueba (chango)  La longitud de la relinga superior debe ser de 12 pies o menos, y la longitud de la relinga inferior debe ser de 15 pies o menos</label>
                 <div class="md-layout"> 
                   <div class="md-layout-item">
                     <md-field>
@@ -656,6 +759,12 @@ export default {
         owner: "",
         fishCaptain: "",
         location: "",
+        flapMeshSize: "",
+        angleDet: "",
+        typeDet: "",
+        materialDet: "",
+        exit: "",
+        float: "",
       },
 
       arrayCheckDet: [],
@@ -678,12 +787,13 @@ export default {
       estribor4:0,
       observation: "",
 
-      meshSize: "",
-      angleDet: "",
-      typeDet: "",
-      materialDet: "",
-      exit: "",
-      float: "",
+
+      // meshSize: "",
+      // angleDet: "",
+      // typeDet: "",
+      // materialDet: "",
+      // exit: "",
+      // float: "",
 
       date: format(now, dateFormat),
       idCheckFlap: 0,
@@ -733,6 +843,24 @@ export default {
         required
       },
       location:  {
+        required
+      },
+      flapMeshSize:  {
+        required
+      },
+      angleDet:  {
+        required
+      },
+      typeDet:  {
+        required
+      },
+      materialDet:  {
+        required
+      },
+      exit:  {
+        required
+      },
+      float:  {
         required
       },
     }
@@ -1010,6 +1138,14 @@ export default {
       this.form.location = null;
       this.observation = null;
       this.date = null;
+
+      this.form.flapMeshSize = null;
+      this.form.angleDet = null;
+      this.form.typeDet = null;
+      this.form.materialDet = null;
+      this.form.exit = null;
+      this.form.float = null;
+
       this.arrayCheckDet = [];
 
       this.arrayComp = {id:0, name:''};
@@ -1031,6 +1167,13 @@ export default {
       this.form.location = data["location"];
       this.observation = data["observation"];
       this.date = data["date"];
+
+      this.form.flapMeshSize = data["flapMeshSize"];
+      this.form.angleDet = data["angleDet"];
+      this.form.typeDet = data["typeDet"];
+      this.form.materialDet = data["materialDet"];
+      this.form.exit = data["exit"];
+      this.form.float = data["float"];
 
       this.arrayComp.id = data["id_company"];
 			this.arrayComp.name = data["nameCompany"];
@@ -1108,6 +1251,14 @@ export default {
         location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
         date: this.date,
+
+        flapMeshSize: this.form.flapMeshSize.toUpperCase(),
+        angleDet: this.form.angleDet.toUpperCase(),
+        typeDet: this.form.typeDet.toUpperCase(),
+        materialDet: this.form.materialDet.toUpperCase(),
+        exit: this.form.exit.toUpperCase(),
+        float: this.form.float,
+
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
         'detflap': this.arrayDets2,
@@ -1139,6 +1290,13 @@ export default {
           location: this.form.location.toUpperCase(),
           observation: this.observation.toUpperCase(),
           date: this.date,
+
+          flapMeshSize: this.form.flapMeshSize.toUpperCase(),
+          angleDet: this.form.angleDet.toUpperCase(),
+          typeDet: this.form.typeDet.toUpperCase(),
+          materialDet: this.form.materialDet.toUpperCase(),
+          exit: this.form.exit.toUpperCase(),
+          float: this.form.float,
 
           'id_company': this.arrayComp.id,
           'id_regional': this.arrayRegl.id,
