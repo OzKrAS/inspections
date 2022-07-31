@@ -121,6 +121,9 @@
                             <li @click="menu=19">
                                 <a href="#"><i class="icon-bag"></i>Perfiles</a>                                                                               
                             </li> 
+                            <li @click="menu=20">
+                                <a href="#"><i class="icon-bag"></i>Embarcaciones</a>                                                                               
+                            </li> 
                           </ul>                            
                         </div>                        
                     </li>

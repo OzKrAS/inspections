@@ -206,6 +206,11 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/materials/delete', 'FishingGearMaterialController@destroy');
         //PROFILES
         Route::get('/profiles', 'ProfileController@index');
+        //EMBARCACIONES
+        Route::get('/boats', 'BoatController@index');
+        Route::post('/boats/save', 'BoatController@store');
+        Route::put('/boats/update', 'BoatController@update');
+        Route::post('/boats/delete', 'BoatController@destroy');
 
 
        

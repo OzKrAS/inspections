@@ -1457,7 +1457,7 @@ export default {
           noResolution: this.form.noResolution.toUpperCase(),
           nameBoat: this.form.nameBoat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
-          noPatent: this.form.noPatent.toUpperCase(),
+          noPatent: this.form.noPatent,
           representative: this.form.representative.toUpperCase(),
           eyeMesh: this.eyeMesh.toUpperCase(),
           netWidth: this.netWidth.toUpperCase(),

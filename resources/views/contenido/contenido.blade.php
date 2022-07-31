@@ -63,6 +63,9 @@
             <template v-if="menu==19">
                 <profiles></profiles>
             </template>
+            <template v-if="menu==20">
+                <boats></boats>
+            </template>
             <!-- <template v-if="menu==18">
                 <noticepreviouszarpe></noticepreviouszarpe>
             </template>

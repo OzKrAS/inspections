@@ -14636,6 +14636,7 @@ Vue.component('inspectioncargos', __webpack_require__(186));
 Vue.component('certificationtuna', __webpack_require__(191));
 Vue.component('materials', __webpack_require__(196));
 Vue.component('profiles', __webpack_require__(201));
+Vue.component('boats', __webpack_require__(371));
 // Vue.component('noticepreviouszarpe', require('./components/noticePreviousZarpe.vue'));
 // Vue.component('processingplant', require('./components/processingPlant.vue'));
 
@@ -43874,7 +43875,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         noResolution: this.form.noResolution.toUpperCase(),
         nameBoat: this.form.nameBoat.toUpperCase(),
         enrollment: this.form.enrollment.toUpperCase(),
-        noPatent: this.form.noPatent.toUpperCase(),
+        noPatent: this.form.noPatent,
         representative: this.form.representative.toUpperCase(),
         eyeMesh: this.eyeMesh.toUpperCase(),
         netWidth: this.netWidth.toUpperCase(),
@@ -96885,6 +96886,1164 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-144b3603", module.exports)
+  }
+}
+
+/***/ }),
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(372)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(374)
+/* template */
+var __vue_template__ = __webpack_require__(375)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Boats.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0ce200cc", Component.options)
+  } else {
+    hotAPI.reload("data-v-0ce200cc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 372 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(373);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("1fadae52", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ce200cc\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Boats.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ce200cc\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Boats.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 373 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\n.material-icons.Color1 { color: rgb(31, 33, 34);\n}\n.material-icons.Color2 { color: rgba(167, 142, 5, 0.849);\n}\n.material-icons.Color3 { color: rgb(12, 170, 91);\n}\n.material-icons.Color4 { color: rgba(228, 54, 54, 0.863);\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 374 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns_format__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuelidate__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuelidate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuelidate__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_multiselect__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_multiselect__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_toasted__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_toasted___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_toasted__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_select__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_select__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jspdf__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jspdf_autotable__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jspdf_autotable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jspdf_autotable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_toasted___default.a, {
+  iconPack: 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
+});
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdButton"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdContent"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdField"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdCard"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdMenu"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdSwitch"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdList"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDatepicker"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [__WEBPACK_IMPORTED_MODULE_1_vuelidate__["validationMixin"]],
+
+  data: function data() {
+
+    Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+    Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+    Vue.material.locale.shortMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    var dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
+    var now = new Date();
+
+    return _defineProperty({
+      form: {
+        nameBoat: "",
+        enrollment: "",
+        noPatent: ""
+      },
+      arrayFg: { id: 0, name: '' },
+      arrayFlag: [],
+      id_flag: 0,
+      dateValidityPat: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+
+      edo: 1,
+      tipoAccion: 1,
+      listado: 1,
+      idFlag: 0,
+      sending: false,
+
+      arrayData: [],
+      arrayBoat: [],
+      id_boats: 0,
+      modal: 0
+    }, "tipoAccion", 0);
+  },
+
+  components: {
+    vSelect: __WEBPACK_IMPORTED_MODULE_4_vue_select___default.a,
+    Multiselect: __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___default.a
+  },
+
+  validations: {
+    form: {
+      nameBoat: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      enrollment: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      noPatent: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      }
+    }
+  },
+
+  computed: {},
+  methods: {
+    getValidationClass: function getValidationClass(fieldName) {
+      var field = this.$v.form[fieldName];
+      if (field) {
+        return {
+          "md-invalid": field.$invalid && field.$dirty
+        };
+      }
+    },
+    validateData: function validateData() {
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.saveData();
+        this.clearForm();
+      }
+    },
+    clearForm: function clearForm() {
+      this.$v.$reset();
+      this.form.nameBoat = null;
+      this.form.enrollment = null;
+      this.form.noPatent = null;
+      this.dateValidityPat = null;
+
+      this.arrayFg = { id: 0, name: '' };
+    },
+    nameWithFlag: function nameWithFlag(_ref2) {
+      var name = _ref2.name;
+
+      return "" + name;
+    },
+    showUpdate: function showUpdate() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      var me = this;
+      this.tipoAccion = 2, me.listado = 0;
+      this.id_boats = data["id"];
+
+      this.form.nameBoat = data["nameBoat"];
+      this.form.enrollment = data["enrollment"];
+      this.form.noPatent = data["noPatent"];
+      this.dateValidityPat = data["dateValidityPat"];
+
+      this.arrayFg.id = data["id_flag"];
+      this.arrayFg.name = data["nameFlag"];
+    },
+    showData: function showData() {
+      this.clearForm();
+      var me = this;
+      this.tipoAccion = 1, me.listado = 0;
+      this.edo = 0;
+    },
+    hideForm: function hideForm() {
+      this.edo = 1;
+      this.listado = 1;
+      this.listData();
+    },
+    selectFlag: function selectFlag() {
+      var me = this;
+      var url = "flags/selectFlags";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayFlag = respuesta.flag;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    listData: function listData() {
+      var me = this;
+      var url = "/boats";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayBoat = respuesta.data;
+        me.myTable(me.arrayBoat.data);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    saveData: function saveData() {
+      var me = this;
+
+      axios.post("/boats/save", {
+        nameBoat: this.form.nameBoat.toUpperCase(),
+        enrollment: this.form.enrollment.toUpperCase(),
+        noPatent: this.form.noPatent,
+        dateValidityPat: this.dateValidityPat,
+
+        'id_flag': this.arrayFg.id
+      }).then(function (response) {
+        me.hideForm();
+        me.message("Guardado", "Guardo ");
+        me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    updateData: function updateData() {
+      var me = this;
+
+      axios.put("/boats/update", {
+        id: this.id_boats,
+        nameBoat: this.form.nameBoat.toUpperCase(),
+        enrollment: this.form.enrollment.toUpperCase(),
+        noPatent: this.form.noPatent,
+        dateValidityPat: this.dateValidityPat,
+
+        'id_flag': this.arrayFg.id
+
+      }).then(function (response) {
+        me.hideForm();
+        me.message("Actualizado", "Actualizó ");
+        me.listData();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    deleteData: function deleteData() {
+      var _this = this;
+
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      swal({
+        title: "Esta seguro de Eliminar la embarcacion " + data["nameBoat"],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.value) {
+          var me = _this;
+          axios.post("/boats/delete", {
+            id: data["id"]
+          }).then(function (response) {
+            me.hideForm();
+            me.message("Eliminado", "Eliminó ");
+            me.listData();
+          }).catch(function (error) {
+            console.log(error);
+          });
+        } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    message: function message(tipo, crud) {
+      swal(tipo, "El registro se " + crud + " con éxito.", "success");
+    },
+    myTable: function myTable(datas) {
+      var me = this;
+
+      $(document).ready(function () {
+
+        var table = $('#dataTable').DataTable({ destroy: true,
+          stateSave: true,
+          data: datas,
+          "createdRow": function createdRow(row, data, dataIndex) {
+            if (data[6] == "0") {
+              $(row).addClass('redClass');
+            }
+          },
+          "language": {
+            "lengthMenu": "Ver _MENU_ registros por página",
+            "zeroRecords": "NO existen Datos",
+            "info": "mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "search": "Buscar:",
+            "paginate": {
+              "first": "Prim",
+              "last": "Ant",
+              "next": "Sig",
+              "previous": "Ant"
+            },
+            "infoFiltered": "(filtrado de _MAX_ total registros)"
+          },
+          responsive: "true",
+          "columns": [{ "data": "nameBoat" }, { "data": "enrollment" }, { "data": "noPatent" }, { "data": "dateValidityPat" }, { "data": "nameFlag" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>" }]
+
+        });
+
+        $('#dataTable tbody').on('click', '.editar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.showUpdate(me.datos);
+        });
+        $('#dataTable tbody').on('click', '.eliminar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.deleteData(me.datos);
+        });
+      });
+    }
+  },
+
+  mounted: function mounted() {
+    this.listData();
+    this.selectFlag();
+  }
+});
+
+/***/ }),
+/* 375 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", { staticClass: "main" }, [
+    _c("div", { staticClass: "container-fluid" }, [
+      _c(
+        "div",
+        { staticClass: "card" },
+        [
+          _c("div", { staticClass: "card-header" }, [
+            _c("i", {
+              staticClass: "m-0 font-weight-bold text-primary fas fa-car"
+            }),
+            _vm._v(" "),
+            _c("strong", { staticClass: "lead" }, [
+              _vm._v("Gestión de Embarcaciones")
+            ]),
+            _vm._v(" "),
+            _vm.edo
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-sm",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.showData()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "icon-plus" }),
+                    _vm._v(" Nuevo\n        ")
+                  ]
+                )
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _vm.listado == 1
+            ? [_vm._m(0)]
+            : _vm.listado == 0
+              ? [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "form",
+                      {
+                        staticClass: "form-horizontal",
+                        attrs: {
+                          action: "",
+                          method: "post",
+                          enctype: "multipart/form-data"
+                        }
+                      },
+                      [
+                        _c("md-card-content", [
+                          _c("div", { staticClass: "md-layout" }, [
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass("nameBoat"),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Nombre Embarcación")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.nameBoat,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "nameBoat", $$v)
+                                        },
+                                        expression: "form.nameBoat"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.nameBoat.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar un nombre para la embarcación"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                  "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout" },
+                              [
+                                _c("label", { staticClass: "text-muted" }, [
+                                  _vm._v("Bandera")
+                                ]),
+                                _vm._v(" "),
+                                _c("multiselect", {
+                                  attrs: {
+                                    options: _vm.arrayFlag,
+                                    placeholder: "Seleccione una bandera",
+                                    "custom-label": _vm.nameWithFlag,
+                                    label: "name",
+                                    "track-by": "name"
+                                  },
+                                  model: {
+                                    value: _vm.arrayFg,
+                                    callback: function($$v) {
+                                      _vm.arrayFg = $$v
+                                    },
+                                    expression: "arrayFg"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass("enrollment"),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Matrícula")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.enrollment,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "enrollment", $$v)
+                                        },
+                                        expression: "form.enrollment"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.enrollment.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la matrícula"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("     \n                  "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass("noPatent"),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("No. de Patente")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending,
+                                        type: "number"
+                                      },
+                                      model: {
+                                        value: _vm.form.noPatent,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "noPatent", $$v)
+                                        },
+                                        expression: "form.noPatent"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.noPatent.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar el número de patente"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("    \n                  "),
+                            _c("div", { staticClass: "md-layout-item" }, [
+                              _c(
+                                "div",
+                                [
+                                  _c(
+                                    "md-datepicker",
+                                    {
+                                      attrs: {
+                                        "md-immediately": "",
+                                        "md-model-type": String
+                                      },
+                                      on: { input: _vm.toString },
+                                      model: {
+                                        value: _vm.dateValidityPat,
+                                        callback: function($$v) {
+                                          _vm.dateValidityPat = $$v
+                                        },
+                                        expression: "dateValidityPat"
+                                      }
+                                    },
+                                    [
+                                      _c("label", [
+                                        _vm._v("Fecha Vigencia Patente")
+                                      ])
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ]),
+                            _vm._v("    \n                ")
+                          ])
+                        ])
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "modal-footer" },
+                    [
+                      _c(
+                        "md-card-actions",
+                        [
+                          _c(
+                            "md-button",
+                            {
+                              staticClass: "md-raised",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.hideForm()
+                                }
+                              }
+                            },
+                            [_vm._v("Cerrar")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "md-card-actions",
+                        [
+                          _vm.tipoAccion == 1
+                            ? _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "submit",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.validateData()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Guardar")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.tipoAccion == 2
+                            ? _c(
+                                "md-button",
+                                {
+                                  staticClass: "md-dense md-raised md-primary",
+                                  attrs: {
+                                    type: "button",
+                                    disabled: _vm.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.updateData()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Actualizar")]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]
+              : _vm._e()
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          {
+            staticClass: "table table-striped table-bordered display",
+            attrs: { id: "dataTable", width: "100%", cellspacing: "0" }
+          },
+          [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("Nombre Embarcación")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Bandera")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Matrícula")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("No. Patente")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha Vigencia Patente")]),
+                _vm._v(" "),
+                _c("th", { staticStyle: { width: "90px" } }, [
+                  _vm._v("Opciones")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody"),
+            _vm._v(" "),
+            _c("tfoot", [
+              _c("tr", [
+                _c("th", [_vm._v("Nombre Embarcación")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Bandera")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Matrícula")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("No. Patente")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha Vigencia Patente")]),
+                _vm._v(" "),
+                _c("th", { staticStyle: { width: "90px" } }, [
+                  _vm._v("Opciones")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody")
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0ce200cc", module.exports)
   }
 }
 

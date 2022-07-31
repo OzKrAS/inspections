@@ -39,6 +39,7 @@ Vue.component('inspectioncargos', require('./components/InspectionBoatCargo.vue'
 Vue.component('certificationtuna', require('./components/CertificationDisembTuna.vue'));
 Vue.component('materials', require('./components/FishingGearMaterials.vue'));
 Vue.component('profiles', require('./components/Perfil.vue'));
+Vue.component('boats', require('./components/Boats.vue'));
 // Vue.component('noticepreviouszarpe', require('./components/noticePreviousZarpe.vue'));
 // Vue.component('processingplant', require('./components/processingPlant.vue'));
 
