@@ -85196,17 +85196,13 @@ var render = function() {
                             _vm._v("   \n                  ")
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticStyle: { "text-align": "center" } },
-                            [
-                              _c("strong", [
-                                _vm._v(
-                                  "DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN"
-                                )
-                              ])
-                            ]
-                          ),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v(
+                                "DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN"
+                              )
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
@@ -89324,15 +89320,11 @@ var render = function() {
                             1
                           ),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticStyle: { "text-align": "center" } },
-                            [
-                              _c("strong", [
-                                _vm._v("MOTIVOS DEL DECOMISO PREVENTIVO")
-                              ])
-                            ]
-                          ),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v("MOTIVOS DEL DECOMISO PREVENTIVO")
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
@@ -89401,17 +89393,13 @@ var render = function() {
                             _vm._v("   \n                ")
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticStyle: { "text-align": "center" } },
-                            [
-                              _c("strong", [
-                                _vm._v(
-                                  "Para constancia se firma la presente acta por cada uno de los que intervienen en el decomiso preventivo."
-                                )
-                              ])
-                            ]
-                          ),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v(
+                                "Para constancia se firma la presente acta por cada uno de los que intervienen en el decomiso preventivo."
+                              )
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
@@ -89754,15 +89742,11 @@ var render = function() {
                             _vm._v("   \n                ")
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticStyle: { "text-align": "center" } },
-                            [
-                              _c("strong", [
-                                _vm._v("DATOS DEL PRESUNTO INFRACTOR")
-                              ])
-                            ]
-                          ),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v("DATOS DEL PRESUNTO INFRACTOR")
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
@@ -92478,17 +92462,13 @@ var render = function() {
                             _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticStyle: { "text-align": "center" } },
-                            [
-                              _c("strong", [
-                                _vm._v(
-                                  "INFORMACIÓN DE TRANSBORDO SOBRE EMBARCACIONES DONANTES"
-                                )
-                              ])
-                            ]
-                          ),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v(
+                                "INFORMACIÓN DE TRANSBORDO SOBRE EMBARCACIONES DONANTES"
+                              )
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
@@ -92772,15 +92752,11 @@ var render = function() {
                             _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticStyle: { "text-align": "center" } },
-                            [
-                              _c("strong", [
-                                _vm._v("PRODUCTO POR ESPECIE (TON.)")
-                              ])
-                            ]
-                          ),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v("PRODUCTO POR ESPECIE (TON.)")
+                            ])
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(

@@ -538,7 +538,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                     </div>&nbsp;&nbsp;&nbsp;
                   </div>
                     
-                  <div style="text-align:center">
+                  <div>
                     <strong>DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN</strong>    
                   </div>  
                   <!-- <label>DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN</label> -->

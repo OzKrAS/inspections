@@ -662,7 +662,7 @@
                   </md-field> -->
 
                   <!-- <label align-center>MOTIVOS DEL DECOMISO PREVENTIVO</label>  -->
-                  <div style="text-align:center">
+                  <div>
                       <strong>MOTIVOS DEL DECOMISO PREVENTIVO</strong>    
                   </div>
 
@@ -692,7 +692,7 @@
                     </div>&nbsp;&nbsp;&nbsp;
                   </div> 
 
-                  <div style="text-align:center">
+                  <div>
                       <strong>Para constancia se firma la presente acta por cada uno de los que intervienen en el decomiso preventivo.</strong>    
                   </div>
                   <!-- <label>Para constancia se firma la presente acta por cada uno de los que intervienen en el decomiso preventivo.</label> -->
@@ -801,7 +801,7 @@
                   </div>
                   
                   <!-- <label>DATOS DEL PRESUNTO INFRACTOR</label> -->
-                  <div style="text-align:center">
+                  <div>
                       <strong>DATOS DEL PRESUNTO INFRACTOR</strong>    
                   </div>
 

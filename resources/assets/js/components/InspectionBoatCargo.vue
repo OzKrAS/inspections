@@ -219,7 +219,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 
-                <div style="text-align:center">
+                <div>
                   <strong>INFORMACIÓN DE TRANSBORDO SOBRE EMBARCACIONES DONANTES</strong>    
                 </div>
                 <!-- <label>INFORMACIÓN DE TRANSBORDO SOBRE EMBARCACIONES DONANTES</label> -->
@@ -320,7 +320,7 @@
                 </div>
                 
                 <!-- <label>PRODUCTO POR ESPECIE (TON.)</label> -->
-                <div style="text-align:center">
+                <div>
                   <strong>PRODUCTO POR ESPECIE (TON.)</strong>    
                 </div>
 
