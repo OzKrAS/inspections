@@ -123,11 +123,12 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/checkDetFlaps/selectRegional', 'RegionalController@selectRegional');
         Route::get('/checkDetFlaps/dataTable', 'CheckDetFlapController@dataTable');
         //verificacion presencia equipo de rescate
-        Route::get('/presenVerifics', 'presenVerificController@index');
-        Route::post('/presenVerifics/save', 'presenVerificController@store');
-        Route::put('/presenVerifics/update', 'presenVerificController@update');
-        Route::post('/presenVerifics/delete', 'presenVerificController@destroy');
+        Route::get('/presenVerifics', 'PresenVerificController@index');
+        Route::post('/presenVerifics/save', 'PresenVerificController@store');
+        Route::put('/presenVerifics/update', 'PresenVerificController@update');
+        Route::post('/presenVerifics/delete', 'PresenVerificController@destroy');
         Route::get('/flags/selectFlags', 'FlagController@selectFlag');
+        Route::get('/presenVerifics/target', 'PresenVerificController@dataTable');
         //pais
         Route::get('/nationality', 'NationalityController@index');
         Route::post('/nationality/save', 'NationalityController@store');

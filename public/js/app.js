@@ -62077,13 +62077,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -62145,6 +62138,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       id_presenVerific: 0,
 
       arrayTarget: [],
+      arrayTargetAct: [],
 
       arrayTable: [{ nameTeam: 'Marcas del PPD*', zarpe: '', disemb: '', photoRecord: '', observation: '' }, { nameTeam: 'Balsa', zarpe: '', disemb: '', photoRecord: '', observation: '' }, { nameTeam: 'Reflector', zarpe: '', disemb: '', photoRecord: '', observation: '' }, { nameTeam: 'Visores de Buceo', zarpe: '', disemb: '', photoRecord: '', observation: '' }, { nameTeam: 'Lanchas con Bridas', zarpe: '', disemb: '', photoRecord: '', observation: '' }],
 
@@ -62377,6 +62371,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.dateZarpe = null;
       this.dateDesemb = null;
       this.arrayFg = { id: 0, name: '' };
+      this.arrayTarget = [];
+      this.arrayTargetAct = [];
     },
     nameWithFlag: function nameWithFlag(_ref2) {
       var name = _ref2.name;
@@ -62391,9 +62387,25 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         regFot: this.regFot,
         observation: this.observation
       });
+      this.arrayTargetAct.push({
+        element: this.element,
+        zarpe: this.zarpe,
+        characterState: this.characterState,
+        regFot: this.regFot,
+        observation: this.observation
+      });
+      this.clearTarget();
+      this.cerrarModal();
     },
     deleteTarget: function deleteTarget(index) {
       this.arrayTarget.splice(index, 1);
+    },
+    clearTarget: function clearTarget() {
+      this.element = null;
+      this.zarpe = null;
+      this.characterState = null;
+      this.regFot = null;
+      this.observation = null;
     },
     listData: function listData() {
       var me = this;
@@ -62431,6 +62443,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
 
       this.arrayFg.id = data["id_flag"];
       this.arrayFg.name = data["nameFlag"];
+      this.dataTarget();
     },
     showData: function showData() {
       this.clearForm();
@@ -62453,7 +62466,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         nameCaptain: this.form.nameCaptain.toUpperCase(),
         dateZarpe: this.dateZarpe,
         dateDesemb: this.dateDesemb,
-        'id_flag': this.arrayFg.id
+        'id_flag': this.arrayFg.id,
+        'target': this.arrayTarget
       }).then(function (response) {
         me.hideForm();
         me.message("Guardado", "Guardo ");
@@ -62473,7 +62487,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         dateZarpe: this.dateZarpe,
         dateDesemb: this.dateDesemb,
 
-        'id_flag': this.arrayFg.id
+        'id_flag': this.arrayFg.id,
+        'target': this.arrayTargetAct
       }).then(function (response) {
         me.hideForm();
         me.message("Actualizado", "Actualizó ");
@@ -62514,6 +62529,18 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         } else if (
         // Read more about handling dismissals
         result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    dataTarget: function dataTarget() {
+      var me = this;
+
+      var url = "/presenVerifics/target?id_PresenVerific=" + this.id_presenVerific;
+      axios.get(url).then(function (response) {
+        //console.log(response);
+        var respuesta = response.data;
+        me.arrayTarget = respuesta.presenVerific;
+      }).catch(function (error) {
+        console.log(error);
       });
     },
     message: function message(tipo, crud) {
@@ -63899,21 +63926,19 @@ var render = function() {
                   _c(
                     "md-card-actions",
                     [
-                      _vm.tipoAccion == 1
-                        ? _c(
-                            "md-button",
-                            {
-                              staticClass: "md-dense md-raised md-primary",
-                              attrs: { type: "submit", disabled: _vm.sending },
-                              on: {
-                                click: function($event) {
-                                  _vm.addDets()
-                                }
-                              }
-                            },
-                            [_vm._v("registrar")]
-                          )
-                        : _vm._e()
+                      _c(
+                        "md-button",
+                        {
+                          staticClass: "md-dense md-raised md-primary",
+                          attrs: { type: "submit", disabled: _vm.sending },
+                          on: {
+                            click: function($event) {
+                              _vm.addItemTarget()
+                            }
+                          }
+                        },
+                        [_vm._v("registrar")]
+                      )
                     ],
                     1
                   )

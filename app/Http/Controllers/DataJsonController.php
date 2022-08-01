@@ -1115,12 +1115,66 @@ class DataJsonController extends Controller
                         "data"=>null
                     ],
                     [
+                        "type"=>1,
+                        "title"=>"TAMAÑO DE LA MALLA EN LA SOLAPA",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"flapMeshSize",
+                        "cons"=>13,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>1,
+                        "title"=>"ÁNGULO DEL DET ",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"angleDet",
+                        "cons"=>14,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>1,
+                        "title"=>"TIPO DE DET",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"typeDet",
+                        "cons"=>15,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>1,
+                        "title"=>"MATERIAL DEL DET",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"materialDet",
+                        "cons"=>16,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>1,
+                        "title"=>"SALIDA (SUPERIOR Ó INFERIOR)",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"exit",
+                        "cons"=>17,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>1,
+                        "title"=>"FLOTADORES (CANTIDAD)",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"float",
+                        "cons"=>18,
+                        "data"=>null
+                    ],
+                    [
                         "type"=>11,
                         "title"=>"OBSERVACIONES",
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"observation",
-                        "cons"=>13,
+                        "cons"=>19,
                         "data"=>null
                     ],
 
@@ -1248,12 +1302,66 @@ class DataJsonController extends Controller
                         "data"=>null
                     ],
                     [
+                        "type"=>1,
+                        "title"=>"TAMAÑO DE LA MALLA EN LA SOLAPA",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"flapMeshSize",
+                        "cons"=>13,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>1,
+                        "title"=>"ÁNGULO DEL DET ",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"angleDet",
+                        "cons"=>14,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>1,
+                        "title"=>"TIPO DE DET",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"typeDet",
+                        "cons"=>15,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>1,
+                        "title"=>"MATERIAL DEL DET",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"materialDet",
+                        "cons"=>16,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>1,
+                        "title"=>"SALIDA (SUPERIOR Ó INFERIOR)",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"exit",
+                        "cons"=>17,
+                        "data"=>null
+                    ],
+                    [
+                        "type"=>1,
+                        "title"=>"FLOTADORES (CANTIDAD)",
+                        "value"=>"VALOR_ASIGNADO_POR_USUARIO",
+                        "placeHolder"=>"PLACE HOLDER INPUT",
+                        "id"=>"float",
+                        "cons"=>18,
+                        "data"=>null
+                    ],
+                    [
                         "type"=>11,
                         "title"=>"OBSERVACIONES",
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"observation",
-                        "cons"=>13,
+                        "cons"=>19,
                         "data"=>null
                     ],
 

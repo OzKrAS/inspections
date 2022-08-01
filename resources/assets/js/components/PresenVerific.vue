@@ -326,13 +326,7 @@
                     <div>
                       <md-radio  v-model="regFot" value="1"><small>SI</small></md-radio>
                       <md-radio  v-model="regFot" value="0" class="md-primary"><small>NO</small></md-radio>
-                    </div>
-                    
-                    <!-- <div v-if="regFot == 1">
-                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Subir foto
-                      </button>                  
-                    </div>                                      -->
+                    </div>                                    
                 </div>&nbsp;&nbsp;&nbsp;
                 <v-collapse-wrapper v-if="this.regFot == 1">
                         <div class="content" v-collapse-content>
@@ -466,10 +460,9 @@
             <md-card-actions>
               <md-button
                 type="submit"
-                v-if="tipoAccion==1"
                 class="md-dense md-raised md-primary"
                 :disabled="sending"
-                @click="addDets()"
+                @click="addItemTarget()"
               >registrar</md-button>
             </md-card-actions>
           </div>
@@ -553,6 +546,7 @@ export default {
       id_presenVerific: 0,
 
       arrayTarget: [],
+      arrayTargetAct: [],
       
       arrayTable: [{ nameTeam: 'Marcas del PPD*', zarpe: '', disemb: '', photoRecord: '', observation: ''},
                    { nameTeam: 'Balsa', zarpe: '', disemb: '', photoRecord: '', observation: ''},
@@ -782,6 +776,8 @@ export default {
       this.dateZarpe = null;
       this.dateDesemb = null;
       this.arrayFg = {id:0, name:''};
+      this.arrayTarget = [];
+      this.arrayTargetAct = [];
     },
     nameWithFlag ({ name }) {
             return `${name}`
@@ -794,9 +790,25 @@ export default {
         regFot:this.regFot,
         observation:this.observation,
       });
+      this.arrayTargetAct.push({
+        element:this.element,
+        zarpe:this.zarpe,
+        characterState:this.characterState,
+        regFot:this.regFot,
+        observation:this.observation,
+      });
+      this.clearTarget();
+      this.cerrarModal();
     },
     deleteTarget(index){
        this.arrayTarget.splice(index,1);
+    },
+    clearTarget() {
+      this.element = null;
+      this.zarpe = null;
+      this.characterState = null;
+      this.regFot = null;
+      this.observation = null;
     },
     listData() {
       let me = this;
@@ -838,6 +850,7 @@ export default {
       
       this.arrayFg.id = data["id_flag"];
 			this.arrayFg.name = data["nameFlag"];
+      this.dataTarget();
     },
     showData() {
       this.clearForm();
@@ -862,6 +875,7 @@ export default {
           dateZarpe: this.dateZarpe,
           dateDesemb: this.dateDesemb,
           'id_flag': this.arrayFg.id,
+          'target':this.arrayTarget,
         })
         .then(function(response) {
           me.hideForm();
@@ -885,6 +899,7 @@ export default {
           dateDesemb: this.dateDesemb,
         
           'id_flag': this.arrayFg.id,
+          'target':this.arrayTargetAct,
         })
         .then(function(response) {
           me.hideForm();
@@ -929,6 +944,21 @@ export default {
         ) {
         }
       });
+    },
+    dataTarget(){
+      let me = this;
+
+      var url = "/presenVerifics/target?id_PresenVerific="+this.id_presenVerific;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayTarget = respuesta.presenVerific;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
 
     message(tipo, crud) {
