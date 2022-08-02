@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Verificaión Presencia del Equipo de Rescate de Delfines Abordo de Barcos Atuneros de Cerco</strong>          
+          <strong class="lead">Verificación Presencia del Equipo de Rescate de Delfines Abordo de Barcos Atuneros de Cerco</strong>          
           <button
             v-if="edo"
             type="button"

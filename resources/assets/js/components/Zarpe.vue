@@ -562,7 +562,6 @@
                         autocomplete="given-name"
                         v-model="typeHook"
                         :disabled="sending"
-                        type="number"
                       />
                     </md-field>
                    </div>&nbsp;&nbsp;&nbsp;

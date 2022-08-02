@@ -43234,7 +43234,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -47673,8 +47672,7 @@ var render = function() {
                                         name: "first-name",
                                         id: "first-name",
                                         autocomplete: "given-name",
-                                        disabled: _vm.sending,
-                                        type: "number"
+                                        disabled: _vm.sending
                                       },
                                       model: {
                                         value: _vm.typeHook,
@@ -62626,7 +62624,7 @@ var render = function() {
             _vm._v(" "),
             _c("strong", { staticClass: "lead" }, [
               _vm._v(
-                "Verificaión Presencia del Equipo de Rescate de Delfines Abordo de Barcos Atuneros de Cerco"
+                "Verificación Presencia del Equipo de Rescate de Delfines Abordo de Barcos Atuneros de Cerco"
               )
             ]),
             _vm._v(" "),
