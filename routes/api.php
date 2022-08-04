@@ -33,9 +33,9 @@ Route::group(['middleware' => 'auth:api'], function (){
     Route::post('/checkDetInchs/save', 'CheckDetInchController@store');
     Route::put('/checkDetInchs/update', 'CheckDetInchController@update');
     Route::post('/checkDetInchs/delete', 'CheckDetInchController@destroy');
-    Route::post('/presenVerifics/save', 'presenVerificController@store');
-    Route::put('/presenVerifics/update', 'presenVerificController@update');
-    Route::post('/presenVerifics/delete', 'presenVerificController@destroy');
+    Route::post('/presenVerifics/save', 'PresenVerificController@store');
+    Route::put('/presenVerifics/update', 'PresenVerificController@update');
+    Route::post('/presenVerifics/delete', 'PresenVerificController@destroy');
     Route::post('/donationCertificates/save', 'DonationCertificateController@store');
     Route::put('/donationCertificates/update', 'DonationCertificateController@update');
     Route::post('/donationCertificates/delete', 'DonationCertificateController@destroy');
