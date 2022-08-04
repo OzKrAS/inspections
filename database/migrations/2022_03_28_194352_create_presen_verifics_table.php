@@ -19,8 +19,8 @@ class CreatePresenVerificsTable extends Migration
             $table->string('cruise'); 
             $table->string('nameFish'); 
             $table->string('nameCaptain'); 
-            $table->string('dateZarpe'); 
-            $table->string('dateDesemb'); 
+            $table->date('dateZarpe'); 
+            $table->date('dateDesemb'); 
            
             $table->integer('id_flag')->unsigned();
             $table->foreign('id_flag')->references('id')->on('flags');
