@@ -538,8 +538,8 @@ export default {
       regFot: null,
       characterState: null,
       observation: "",
-      dateZarpe: 0,
-      dateDesemb: 0,
+      dateZarpe: format(now, dateFormat),
+      dateDesemb: format(now, dateFormat),
       
 
       arrayPresenVerifics: [],
@@ -912,7 +912,7 @@ export default {
     },
     deleteData(data = []) {
       swal({
-        title: "Esta seguro de Eliminar el registro",
+        title: "¿Esta seguro de Eliminar el registro?",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
