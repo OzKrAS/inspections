@@ -62501,7 +62501,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
       swal({
-        title: "Esta seguro de Eliminar este Zarpe " + data["name"],
+        title: "Esta seguro de Eliminar el registro",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
