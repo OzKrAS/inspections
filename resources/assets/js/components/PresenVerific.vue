@@ -869,7 +869,7 @@ export default {
         .post("/presenVerifics/save", {
   
           nameShip: this.form.nameShip.toUpperCase(),
-          cruise: this.form.cruise.toUpperCase(),
+          cruise: this.form.cruise,
           nameFish: this.form.nameFish.toUpperCase(),
           nameCaptain: this.form.nameCaptain.toUpperCase(),
           dateZarpe: this.dateZarpe,

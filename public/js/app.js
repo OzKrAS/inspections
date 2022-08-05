@@ -62129,8 +62129,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       regFot: null,
       characterState: null,
       observation: "",
-      dateZarpe: 0,
-      dateDesemb: 0,
+      dateZarpe: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+      dateDesemb: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
 
       arrayPresenVerifics: [],
       id_presenVerific: 0,
@@ -62501,7 +62501,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
       swal({
-        title: "Esta seguro de Eliminar el registro",
+        title: "¿Esta seguro de Eliminar el registro?",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
