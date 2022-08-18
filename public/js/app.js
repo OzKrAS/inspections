@@ -43210,30 +43210,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -43307,8 +43283,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       dateValidityPat: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
       notification: "",
       finalityZarpe: "",
-      origin: "",
-      destination: "",
       national: "",
       orop: "",
 
@@ -43602,8 +43576,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.dateValidityPat = null;
       this.notification = null;
       this.finalityZarpe = null;
-      this.origin = null;
-      this.destination = null;
       this.national = null;
 
       this.arrayReg = { id: 0, name: '', nameMuni: '' };
@@ -43802,8 +43774,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.dateValidityPat = data["dateValidityPat"];
       this.notification = data["notification"];
       this.finalityZarpe = data["finalityZarpe"];
-      this.origin = data["origin"];
-      this.destination = data["destination"];
       this.national = data["national"];
 
       this.arrayReg.id = data["id_region"];
@@ -43897,8 +43867,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         dateValidityPat: this.dateValidityPat,
         notification: this.notification,
         finalityZarpe: this.finalityZarpe,
-        origin: this.origin,
-        destination: this.destination,
         national: this.national,
 
         'id_region': this.arrayReg.id,
@@ -43978,8 +43946,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         dateValidityPat: this.dateValidityPat,
         notification: this.notification,
         finalityZarpe: this.finalityZarpe,
-        origin: this.origin,
-        destination: this.destination,
         national: this.national,
 
         'id_region': this.arrayReg.id,
@@ -44115,7 +44081,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
             "infoFiltered": "(filtrado de _MAX_ total registros)"
           },
           responsive: "true",
-          "columns": [{ "data": "insNo" }, { "data": "nameReg" }, { "data": "finalityZarpe" }, { "data": "origin" }, { "data": "destination" }, { "data": "namePort" }, { "data": "dateZarpe" }, { "data": "nameBoat" }, { "data": "enrollment" }, { "data": "captain" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>" }]
+          "columns": [{ "data": "insNo" }, { "data": "nameReg" }, { "data": "finalityZarpe" }, { "data": "namePort" }, { "data": "dateZarpe" }, { "data": "nameBoat" }, { "data": "enrollment" }, { "data": "captain" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>" }]
 
         });
 
@@ -46478,212 +46444,38 @@ var render = function() {
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
                               "div",
-                              { staticClass: "md-layout-item" },
+                              { staticClass: "md-layout-item md-size-30" },
                               [
                                 _c(
-                                  "md-field",
+                                  "div",
                                   [
                                     _c(
-                                      "label",
-                                      {
-                                        staticClass: "text-muted",
-                                        attrs: { for: "origin" }
-                                      },
-                                      [_vm._v("Origen")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-select",
+                                      "md-datepicker",
                                       {
                                         attrs: {
-                                          name: "origin",
-                                          id: "origin",
-                                          placeholder: "Origen"
+                                          "md-immediately": "",
+                                          "md-model-type": String
                                         },
+                                        on: { input: _vm.toString },
                                         model: {
-                                          value: _vm.origin,
+                                          value: _vm.dateScale,
                                           callback: function($$v) {
-                                            _vm.origin = $$v
+                                            _vm.dateScale = $$v
                                           },
-                                          expression: "origin"
+                                          expression: "dateScale"
                                         }
                                       },
                                       [
-                                        _c(
-                                          "md-option",
-                                          {
-                                            attrs: { value: "caribe/Cartagena" }
-                                          },
-                                          [_vm._v("Caribe/Cartagena")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "md-option",
-                                          {
-                                            attrs: {
-                                              value: "caribe/Barranquilla"
-                                            }
-                                          },
-                                          [_vm._v("Caribe/Barranquilla")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "md-option",
-                                          {
-                                            attrs: {
-                                              value: "pacifico/Bahia Solano"
-                                            }
-                                          },
-                                          [_vm._v("Pacifico/Bahía Solano")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "md-option",
-                                          {
-                                            attrs: {
-                                              value: "pacifico/Buenaventura"
-                                            }
-                                          },
-                                          [_vm._v("Pacifico/Buenaventura")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "md-option",
-                                          {
-                                            attrs: { value: "pacifico/tumaco" }
-                                          },
-                                          [_vm._v("Pacífico/Tumaco")]
-                                        )
-                                      ],
-                                      1
+                                        _c("label", [
+                                          _vm._v("Fecha Última Escala")
+                                        ])
+                                      ]
                                     )
                                   ],
                                   1
                                 )
-                              ],
-                              1
+                              ]
                             ),
-                            _vm._v("    \n                      "),
-                            _c(
-                              "div",
-                              { staticClass: "md-layout-item" },
-                              [
-                                _c(
-                                  "md-field",
-                                  [
-                                    _c(
-                                      "label",
-                                      {
-                                        staticClass: "text-muted",
-                                        attrs: { for: "destination" }
-                                      },
-                                      [_vm._v("Destino")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-select",
-                                      {
-                                        attrs: {
-                                          name: "destination",
-                                          id: "destination",
-                                          placeholder: "Destino"
-                                        },
-                                        model: {
-                                          value: _vm.destination,
-                                          callback: function($$v) {
-                                            _vm.destination = $$v
-                                          },
-                                          expression: "destination"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "md-option",
-                                          {
-                                            attrs: { value: "caribe/Cartagena" }
-                                          },
-                                          [_vm._v("Caribe/Cartagena")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "md-option",
-                                          {
-                                            attrs: {
-                                              value: "caribe/Barranquilla"
-                                            }
-                                          },
-                                          [_vm._v("Caribe/Barranquilla")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "md-option",
-                                          {
-                                            attrs: {
-                                              value: "pacifico/Bahia Solano"
-                                            }
-                                          },
-                                          [_vm._v("Pacifico/Bahía Solano")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "md-option",
-                                          {
-                                            attrs: {
-                                              value: "pacifico/Buenaventura"
-                                            }
-                                          },
-                                          [_vm._v("Pacifico/Buenaventura")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "md-option",
-                                          {
-                                            attrs: { value: "pacifico/tumaco" }
-                                          },
-                                          [_vm._v("Pacífico/Tumaco")]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(
-                              "                        \n                      "
-                            ),
-                            _c("div", { staticClass: "md-layout-item" }, [
-                              _c(
-                                "div",
-                                [
-                                  _c(
-                                    "md-datepicker",
-                                    {
-                                      attrs: {
-                                        "md-immediately": "",
-                                        "md-model-type": String
-                                      },
-                                      on: { input: _vm.toString },
-                                      model: {
-                                        value: _vm.dateScale,
-                                        callback: function($$v) {
-                                          _vm.dateScale = $$v
-                                        },
-                                        expression: "dateScale"
-                                      }
-                                    },
-                                    [
-                                      _c("label", [
-                                        _vm._v("Fecha Última Escala")
-                                      ])
-                                    ]
-                                  )
-                                ],
-                                1
-                              )
-                            ]),
                             _vm._v("     \n                    ")
                           ]),
                           _vm._v(" "),

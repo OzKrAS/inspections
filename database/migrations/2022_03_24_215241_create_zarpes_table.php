@@ -44,8 +44,6 @@ class CreateZarpesTable extends Migration
             $table->date('dateValidityPat');        
             $table->string('notification');
             $table->string('finalityZarpe');
-            $table->string('origin');
-            $table->string('destination');
             $table->string('national');
 
             $table->integer('id_port')->unsigned();

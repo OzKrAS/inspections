@@ -59,8 +59,6 @@ class ZarpeController extends Controller
                      'zarpes.dateValidityPat',
                      'zarpes.notification',
                      'zarpes.finalityZarpe',
-                     'zarpes.origin',
-                     'zarpes.destination',
                      'zarpes.national',
 
                      'zarpes.id_region','regions.name as nameReg',
@@ -114,8 +112,6 @@ class ZarpeController extends Controller
         $zarpes->dateValidityPat = $request->dateValidityPat;
         $zarpes->notification = $request->notification;
         $zarpes->finalityZarpe = $request->finalityZarpe;
-        $zarpes->origin = $request->origin;
-        $zarpes->destination = $request->destination;
         $zarpes->national = $request->national;
 
         $zarpes->id_region = $request->id_region;    
@@ -185,8 +181,6 @@ class ZarpeController extends Controller
         $zarpes->dateValidityPat = $request->dateValidityPat;
         $zarpes->notification = $request->notification;
         $zarpes->finalityZarpe = $request->finalityZarpe;
-        $zarpes->origin = $request->origin;
-        $zarpes->destination = $request->destination;
         $zarpes->national = $request->national;
 
         $zarpes->id_region = $request->id_region;    

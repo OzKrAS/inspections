@@ -150,43 +150,19 @@
                           <strong>PUERTO, ESTADO RECTOR DE PUERTO</strong>    
                       </div>
 
-                      <div class="md-layout"> 
-                        <div class="md-layout-item">
-                          <md-field>
-                            <label for="origin" class="text-muted">Origen</label> 
-                            <md-select v-model="origin" name="origin" id="origin" placeholder="Origen">
-                              <md-option value="caribe/Cartagena">Caribe/Cartagena</md-option>
-                              <md-option value="caribe/Barranquilla">Caribe/Barranquilla</md-option>
-                              <md-option value="pacifico/Bahia Solano">Pacifico/Bahía Solano</md-option>
-                              <md-option value="pacifico/Buenaventura">Pacifico/Buenaventura</md-option>
-                              <md-option value="pacifico/tumaco">Pacífico/Tumaco</md-option>
-                            </md-select>
-                          </md-field>
-                        </div>&nbsp;&nbsp;&nbsp; 
-                        <div class="md-layout-item">
-                          <md-field>
-                            <label for="destination" class="text-muted">Destino</label>
-                            <md-select v-model="destination" name="destination" id="destination" placeholder="Destino">
-                              <md-option value="caribe/Cartagena">Caribe/Cartagena</md-option>
-                              <md-option value="caribe/Barranquilla">Caribe/Barranquilla</md-option>
-                              <md-option value="pacifico/Bahia Solano">Pacifico/Bahía Solano</md-option>
-                              <md-option value="pacifico/Buenaventura">Pacifico/Buenaventura</md-option>
-                              <md-option value="pacifico/tumaco">Pacífico/Tumaco</md-option>
-                            </md-select>
-                          </md-field>
-                        </div>&nbsp;&nbsp;&nbsp;                     
-                        <div class="md-layout-item">                     
-                          <div>
-                            <md-datepicker 
-                              v-model="dateScale"
-                              @input="toString"
-                              md-immediately
-                              :md-model-type="String"
-                            >
-                              <label>Fecha Última Escala</label>
-                            </md-datepicker>
-                          </div>
-                        </div> &nbsp;&nbsp;&nbsp; 
+                      <div class="md-layout">    
+                          <div class="md-layout-item md-size-30">                     
+                            <div>
+                              <md-datepicker 
+                                v-model="dateScale"
+                                @input="toString"
+                                md-immediately
+                                :md-model-type="String"
+                              >
+                                <label>Fecha Última Escala</label>
+                              </md-datepicker>
+                            </div>
+                          </div> &nbsp;&nbsp;&nbsp; 
                       </div>
                       <div class="md-layout">               
                         <div class="md-layout-item md-size-70">
@@ -907,8 +883,6 @@ export default {
       dateValidityPat: format(now, dateFormat),
       notification: "",
       finalityZarpe: "",
-      origin: "",
-      destination: "",
       national: "",
       orop: "",
       
@@ -1199,8 +1173,6 @@ export default {
       this.dateValidityPat = null;
       this.notification = null;
       this.finalityZarpe = null;
-      this.origin = null;
-      this.destination = null;
       this.national = null;
   
       this.arrayReg = {id:0, name:'', nameMuni:''};
@@ -1381,8 +1353,6 @@ export default {
       this.dateValidityPat = data["dateValidityPat"];
       this.notification = data["notification"];
       this.finalityZarpe = data["finalityZarpe"];
-      this.origin = data["origin"];
-      this.destination = data["destination"];
       this.national = data["national"];
   
       this.arrayReg.id = data["id_region"];
@@ -1479,8 +1449,6 @@ export default {
           dateValidityPat: this.dateValidityPat,
           notification: this.notification,
           finalityZarpe: this.finalityZarpe,
-          origin: this.origin,
-          destination: this.destination,
           national: this.national,
 
           'id_region': this.arrayReg.id,
@@ -1564,8 +1532,6 @@ export default {
           dateValidityPat: this.dateValidityPat,
           notification: this.notification,
           finalityZarpe: this.finalityZarpe,
-          origin: this.origin,
-          destination: this.destination,
           national: this.national,
 
           'id_region': this.arrayReg.id,
@@ -1747,8 +1713,6 @@ ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
             { "data": "insNo" },
             { "data": "nameReg" },
             { "data": "finalityZarpe" },
-            { "data": "origin" },
-            { "data": "destination" },
             { "data": "namePort" },
             { "data": "dateZarpe" },
             { "data": "nameBoat" },
