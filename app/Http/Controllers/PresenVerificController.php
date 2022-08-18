@@ -7,7 +7,7 @@ use App\PresenVerific;
 use App\Flag;
 use App\DetPresenVerific;
 
-class presenVerificController extends Controller
+class PresenVerificController extends Controller
 {
     public function index(Request $request)
     {
