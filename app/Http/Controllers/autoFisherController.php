@@ -16,6 +16,7 @@ class AutoFisherController extends Controller
             'data' => $autoFisher
         ];
     } 
+    
     public function selectZoneAutoFisher(Request $request)
     {
         $autoFisher = AutoFisher::select('id','name')
