@@ -62459,7 +62459,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       axios.post("/presenVerifics/save", {
 
         nameShip: this.form.nameShip.toUpperCase(),
-        cruise: this.form.cruise.toUpperCase(),
+        cruise: this.form.cruise,
         nameFish: this.form.nameFish.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
         dateZarpe: this.dateZarpe,

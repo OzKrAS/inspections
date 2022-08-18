@@ -211,7 +211,6 @@ export default {
           var respuesta = response.data;
           me.arrayData = respuesta.data;
           me.myTable(me.arrayData);
-
         })
         .catch(function (error) {
           console.log(error);
