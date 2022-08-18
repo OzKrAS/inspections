@@ -43827,8 +43827,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.listado = 1;
     },
     saveData: function saveData() {
-      var _axios$post;
-
       var me = this;
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
@@ -43860,7 +43858,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       if (this.captain == "") {
         this.captain = this.noApply;
       }
-      axios.post("/zarpes/save", (_axios$post = {
+      axios.post("/zarpes/save", {
         insNo: this.form.insNo.toUpperCase(),
         radioCall: this.form.radioCall.toUpperCase(),
         idOmi: this.form.idOmi.toUpperCase(),
@@ -43873,8 +43871,40 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         netWidth: this.netWidth.toUpperCase(),
         eyeFlake: this.eyeFlake.toUpperCase(),
         typeHook: this.typeHook.toUpperCase(),
-        longNet: this.longNet.toUpperCase()
-      }, _defineProperty(_axios$post, "longNet", this.totalLongline), _defineProperty(_axios$post, "longNet", this.other.toUpperCase()), _defineProperty(_axios$post, "equipDevi", this.equipDevi.toUpperCase()), _defineProperty(_axios$post, "captain", this.captain.toUpperCase()), _defineProperty(_axios$post, "observation", this.observation.toUpperCase()), _defineProperty(_axios$post, "observationGeneral", this.observationGeneral.toUpperCase()), _defineProperty(_axios$post, "conclusions", this.conclusions.toUpperCase()), _defineProperty(_axios$post, "comments", this.comments.toUpperCase()), _defineProperty(_axios$post, "dateIns", this.dateIns), _defineProperty(_axios$post, "dateScale", this.dateScale), _defineProperty(_axios$post, "dateZarpe", this.dateZarpe), _defineProperty(_axios$post, "dateResolution", this.dateResolution), _defineProperty(_axios$post, "dateValid", this.dateValid), _defineProperty(_axios$post, "dateLatestArrival", this.dateLatestArrival), _defineProperty(_axios$post, "dateValidityPat", this.dateValidityPat), _defineProperty(_axios$post, "notification", this.notification), _defineProperty(_axios$post, "finalityZarpe", this.finalityZarpe), _defineProperty(_axios$post, "national", this.national), _defineProperty(_axios$post, 'id_region', this.arrayReg.id), _defineProperty(_axios$post, 'id_port', this.arrayPt.id), _defineProperty(_axios$post, 'id_portZarpe', this.arrayPtZarpe.id), _defineProperty(_axios$post, 'id_portArrival', this.arrayPtArrival.id), _defineProperty(_axios$post, 'id_flag', this.arrayFg.id), _defineProperty(_axios$post, 'id_material', this.arrayMaterial.id), _defineProperty(_axios$post, 'id_nationality', this.arrayNation.id), _defineProperty(_axios$post, 'id_orop', this.arrayOr.id), _defineProperty(_axios$post, 'id_zoneAutoFisher', this.arrayZoneAuto.id), _defineProperty(_axios$post, 'id_company', this.arrayComp.id), _defineProperty(_axios$post, 'data', this.arrayFa), _axios$post)).then(function (response) {
+        longNet: this.longNet.toUpperCase(),
+        totalLongline: this.totalLongline,
+        other: this.other.toUpperCase(),
+        // materialArt: this.materialArt.toUpperCase(),
+        equipDevi: this.equipDevi.toUpperCase(),
+        captain: this.captain.toUpperCase(),
+        observation: this.observation.toUpperCase(),
+        observationGeneral: this.observationGeneral.toUpperCase(),
+        conclusions: this.conclusions.toUpperCase(),
+        comments: this.comments.toUpperCase(),
+        dateIns: this.dateIns,
+        dateScale: this.dateScale,
+        dateZarpe: this.dateZarpe,
+        dateResolution: this.dateResolution,
+        dateValid: this.dateValid,
+        dateLatestArrival: this.dateLatestArrival,
+        dateValidityPat: this.dateValidityPat,
+        notification: this.notification,
+        finalityZarpe: this.finalityZarpe,
+        national: this.national,
+
+        'id_region': this.arrayReg.id,
+        'id_port': this.arrayPt.id,
+        'id_portZarpe': this.arrayPtZarpe.id,
+        'id_portArrival': this.arrayPtArrival.id,
+        'id_flag': this.arrayFg.id,
+        'id_material': this.arrayMaterial.id,
+        'id_nationality': this.arrayNation.id,
+        'id_orop': this.arrayOr.id,
+        'id_zoneAutoFisher': this.arrayZoneAuto.id,
+        'id_company': this.arrayComp.id,
+        'data': this.arrayFa
+
+      }).then(function (response) {
         me.hideForm();
         me.message("Guardado", "Guardo ");
         me.listData();
@@ -43883,8 +43913,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       });
     },
     updateData: function updateData() {
-      var _axios$put;
-
       var me = this;
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
@@ -43916,7 +43944,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       if (this.captain == "") {
         this.captain = this.noApply;
       }
-      axios.put("/zarpes/update", (_axios$put = {
+      axios.put("/zarpes/update", {
         id: this.id_zarpes,
         insNo: this.form.insNo.toUpperCase(),
         radioCall: this.form.radioCall.toUpperCase(),
@@ -43930,8 +43958,39 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         netWidth: this.netWidth.toUpperCase(),
         eyeFlake: this.eyeFlake.toUpperCase(),
         typeHook: this.typeHook.toUpperCase(),
-        longNet: this.longNet.toUpperCase()
-      }, _defineProperty(_axios$put, "longNet", this.totalLongline), _defineProperty(_axios$put, "longNet", this.other.toUpperCase()), _defineProperty(_axios$put, "equipDevi", this.equipDevi.toUpperCase()), _defineProperty(_axios$put, "captain", this.captain.toUpperCase()), _defineProperty(_axios$put, "observation", this.observation.toUpperCase()), _defineProperty(_axios$put, "observationGeneral", this.observationGeneral.toUpperCase()), _defineProperty(_axios$put, "conclusions", this.conclusions.toUpperCase()), _defineProperty(_axios$put, "comments", this.comments.toUpperCase()), _defineProperty(_axios$put, "dateIns", this.dateIns), _defineProperty(_axios$put, "dateScale", this.dateScale), _defineProperty(_axios$put, "dateZarpe", this.dateZarpe), _defineProperty(_axios$put, "dateResolution", this.dateResolution), _defineProperty(_axios$put, "dateValid", this.dateValid), _defineProperty(_axios$put, "dateLatestArrival", this.dateLatestArrival), _defineProperty(_axios$put, "dateValidityPat", this.dateValidityPat), _defineProperty(_axios$put, "notification", this.notification), _defineProperty(_axios$put, "finalityZarpe", this.finalityZarpe), _defineProperty(_axios$put, "national", this.national), _defineProperty(_axios$put, 'id_region', this.arrayReg.id), _defineProperty(_axios$put, 'id_port', this.arrayPt.id), _defineProperty(_axios$put, 'id_portZarpe', this.arrayPtZarpe.id), _defineProperty(_axios$put, 'id_portArrival', this.arrayPtArrival.id), _defineProperty(_axios$put, 'id_flag', this.arrayFg.id), _defineProperty(_axios$put, 'id_material', this.arrayMaterial.id), _defineProperty(_axios$put, 'id_nationality', this.arrayNation.id), _defineProperty(_axios$put, 'id_orop', this.arrayOr.id), _defineProperty(_axios$put, 'id_zoneAutoFisher', this.arrayZoneAuto.id), _defineProperty(_axios$put, 'id_company', this.arrayComp.id), _axios$put)).then(function (response) {
+        longNet: this.longNet.toUpperCase(),
+        totalLongline: this.totalLongline,
+        other: this.other.toUpperCase(),
+        // materialArt: this.materialArt.toUpperCase(),
+        equipDevi: this.equipDevi.toUpperCase(),
+        captain: this.captain.toUpperCase(),
+        observation: this.observation.toUpperCase(),
+        observationGeneral: this.observationGeneral.toUpperCase(),
+        conclusions: this.conclusions.toUpperCase(),
+        comments: this.comments.toUpperCase(),
+        dateIns: this.dateIns,
+        dateScale: this.dateScale,
+        dateZarpe: this.dateZarpe,
+        dateResolution: this.dateResolution,
+        dateValid: this.dateValid,
+        dateLatestArrival: this.dateLatestArrival,
+        dateValidityPat: this.dateValidityPat,
+        notification: this.notification,
+        finalityZarpe: this.finalityZarpe,
+        national: this.national,
+
+        'id_region': this.arrayReg.id,
+        'id_port': this.arrayPt.id,
+        'id_portZarpe': this.arrayPtZarpe.id,
+        'id_portArrival': this.arrayPtArrival.id,
+        'id_flag': this.arrayFg.id,
+        'id_material': this.arrayMaterial.id,
+        'id_nationality': this.arrayNation.id,
+        'id_orop': this.arrayOr.id,
+        'id_zoneAutoFisher': this.arrayZoneAuto.id,
+        // 'id_fisheryAuthorized': this.arrayFa.id,
+        'id_company': this.arrayComp.id
+      }).then(function (response) {
         me.hideForm();
         me.message("Actualizado", "Actualizó ");
         me.listData();
