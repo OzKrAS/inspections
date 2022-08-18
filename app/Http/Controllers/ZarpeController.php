@@ -43,6 +43,8 @@ class ZarpeController extends Controller
                      'zarpes.eyeFlake',
                      'zarpes.typeHook',
                      'zarpes.longNet',
+                     'zarpes.totalLongline',
+                     'zarpes.other',
                     //  'zarpes.materialArt',
                      'zarpes.equipDevi',
                      'zarpes.captain',
@@ -96,6 +98,8 @@ class ZarpeController extends Controller
         $zarpes->eyeFlake = $request->eyeFlake;
         $zarpes->typeHook = $request->typeHook;
         $zarpes->longNet = $request->longNet;
+        $zarpes->totalLongline = $request->totalLongline;
+        $zarpes->other = $request->other;
         // $zarpes->materialArt = $request->materialArt;
         $zarpes->equipDevi = $request->equipDevi;
         $zarpes->captain = $request->captain;
@@ -165,6 +169,8 @@ class ZarpeController extends Controller
         $zarpes->eyeFlake = $request->eyeFlake;
         $zarpes->typeHook = $request->typeHook;
         $zarpes->longNet = $request->longNet;
+        $zarpes->totalLongline = $request->totalLongline;
+        $zarpes->other = $request->other;
         // $zarpes->materialArt = $request->materialArt;
         $zarpes->equipDevi = $request->equipDevi;
         $zarpes->captain = $request->captain;

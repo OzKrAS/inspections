@@ -28,6 +28,8 @@ class CreateZarpesTable extends Migration
             $table->string('eyeFlake'); 
             $table->string('typeHook'); 
             $table->string('longNet'); 
+            $table->string('totalLongline'); 
+            $table->string('other'); 
             // $table->string('materialArt'); 
             $table->string('equipDevi'); 
             $table->string('captain'); 

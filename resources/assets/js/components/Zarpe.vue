@@ -32,8 +32,6 @@
                     <th>Inspección No.</th>        
                     <th>Región/Municipio</th>        
                     <th>Finalidad Zarpe</th>
-                    <th>Origen</th>
-                    <th>Destino</th>
                     <th>Puerto de Zarpe</th>
                     <th>Fecha Zarpe</th>  
                     <th>Nombre Embarcación</th>
@@ -48,9 +46,7 @@
                      <tr>
                         <th>Inspección No.</th> 
                         <th>Región/Municipio</th>
-                        <th>Finalidad Zarpe</th>
-                        <th>Origen</th>
-                        <th>Destino</th>    
+                        <th>Finalidad Zarpe</th>   
                         <th>Puerto de Zarpe</th>
                         <th>Fecha Zarpe</th>
                         <th>Nombre Embarcación</th>
@@ -151,7 +147,7 @@
                       </div>
 
                       <div class="md-layout">    
-                          <div class="md-layout-item md-size-30">                     
+                          <div class="md-layout-item md-size-40">                     
                             <div>
                               <md-datepicker 
                                 v-model="dateScale"
@@ -488,6 +484,19 @@
                   </div>
                  
                  <div class="md-layout">
+                  <div class="md-layout-item"> 
+                    <md-field md-clearable>
+                      <label for="first-name">Ancho de Red (Brazas)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="netWidth"
+                        :disabled="sending"
+                        type="number"
+                      />
+                    </md-field>
+                   </div>&nbsp;&nbsp;&nbsp;
                    <div class="md-layout-item"> 
                     <md-field md-clearable>
                         <label for="first-name">Ojo de Malla (Pulgadas)</label>
@@ -500,15 +509,30 @@
                           type="number"
                         />
                       </md-field>
-                   </div>&nbsp;&nbsp;&nbsp;
+                   </div>&nbsp;&nbsp;&nbsp;              
                    <div class="md-layout-item"> 
                     <md-field md-clearable>
-                      <label for="first-name">Ancho de Red (Brazas)</label>
+                        <label for="first-name">Cantidad total de anzuelos del palangre</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="totalLongline"
+                          :disabled="sending"
+                          type="number"
+                        />
+                      </md-field>
+                   </div>&nbsp;&nbsp;&nbsp;              
+                 </div>
+                 <div class="md-layout">
+                  <div class="md-layout-item"> 
+                    <md-field md-clearable>
+                      <label for="first-name">Longitud de la red (Brazas)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
                         autocomplete="given-name"
-                        v-model="netWidth"
+                        v-model="longNet"
                         :disabled="sending"
                         type="number"
                       />
@@ -527,8 +551,6 @@
                       />
                     </md-field> 
                    </div>&nbsp;&nbsp;&nbsp;
-                 </div>
-                 <div class="md-layout">
                    <div class="md-layout-item"> 
                     <md-field md-clearable>
                       <label for="first-name">Tamaño No. y tipo de Anzuelo</label>
@@ -540,33 +562,10 @@
                         :disabled="sending"
                       />
                     </md-field>
-                   </div>&nbsp;&nbsp;&nbsp;
-                   <div class="md-layout-item"> 
-                    <md-field md-clearable>
-                      <label for="first-name">Longitud de la red (Brazas)</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="longNet"
-                        :disabled="sending"
-                        type="number"
-                      />
-                    </md-field>
-                   </div>&nbsp;&nbsp;&nbsp;
-                   <!-- <div class="md-layout-item"> 
-                    <md-field md-clearable>
-                      <label for="first-name">Material de Arte de Pesca</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="materialArt"
-                        :disabled="sending"
-                      />
-                    </md-field>
-                   </div>&nbsp;&nbsp;&nbsp; -->
-                    <div class="md-layout-item">
+                   </div>&nbsp;&nbsp;&nbsp;           
+                 </div>
+                 <div class="md-layout">
+                   <div class="md-layout-item">
                       <label>Material de Arte de Pesca</label>
                       <multiselect v-model="arrayMaterial" :options="arrayMaterialArt"
                           placeholder="Seleccione el material de arte de pesca"
@@ -575,21 +574,31 @@
                           track-by="name">
                       </multiselect>
                     </div>&nbsp;&nbsp;&nbsp;
-                 </div>
-                 <div class="md-layout">
+                    <div class="md-layout-item">
+                      <md-field>
+                        <label for="equipDevi" class="text-muted">Equipos o Dispositivos Requeridos</label> 
+                        <md-select v-model="equipDevi" name="equipDevi" id="equipDevi" placeholder="Seleccione un equipo o dispositivo">
+                          <md-option value="Dispositivo Agregado de preces - DAPs (FADs)">Dispositivo Agregado de preces - DAPs (FADs)</md-option>
+                          <md-option value="Dispositivo Excluidor de Tortugas - DETs">Dispositivo Excluidor de Tortugas - DETs</md-option>
+                          <md-option value="Otro">Otro</md-option>
+                        </md-select>
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp;
                    <div class="md-layout-item"> 
                     <md-field md-clearable>
-                      <label for="first-name">Equipos o Dispositivos Requeridos</label>
+                      <label for="first-name">Otro</label>
                       <md-input
                         name="first-name"
                         id="first-name"
                         autocomplete="given-name"
-                        v-model="equipDevi"
+                        v-model="other"
                         :disabled="sending"
                       />
                     </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
-                   <div class="md-layout-item"> 
+                 </div>
+                 <div class="md-layout">
+                  <div class="md-layout-item"> 
                     <md-field md-clearable>
                       <label for="first-name">Nombre Capitán de Pesca</label>
                       <md-input
@@ -869,6 +878,8 @@ export default {
       equipDevi: "",
       captain: "",
       typeHook: "",
+      totalLongline: "",
+      other: "",
 
       observation: "",
       observationGeneral: "",
@@ -1157,6 +1168,8 @@ export default {
       this.eyeFlake = null;
       this.typeHook = null;
       this.longNet = null;
+      this.totalLongline = null;
+      this.other = null;
       // this.materialArt = null;
       this.equipDevi = null;
       this.captain = null;
@@ -1337,6 +1350,8 @@ export default {
       this.eyeFlake = data["eyeFlake"];
       this.typeHook = data["typeHook"];
       this.longNet = data["longNet"];
+      this.totalLongline = data["totalLongline"];
+      this.other = data["other"];
       // this.materialArt = data["materialArt"];
       this.equipDevi = data["equipDevi"];
       this.captain = data["captain"];
@@ -1397,6 +1412,12 @@ export default {
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
       }
+      if (this.other == "") {
+        this.other = this.noApply;
+      }
+      if (this.totalLongline == "") {
+        this.totalLongline = this.noApply;
+      }
       if (this.netWidth == "") {
         this.netWidth = this.noApply;
       }
@@ -1433,6 +1454,8 @@ export default {
           eyeFlake: this.eyeFlake.toUpperCase(),
           typeHook: this.typeHook.toUpperCase(),
           longNet: this.longNet.toUpperCase(),
+          longNet: this.totalLongline,
+          longNet: this.other.toUpperCase(),
           // materialArt: this.materialArt.toUpperCase(),
           equipDevi: this.equipDevi.toUpperCase(),
           captain: this.captain.toUpperCase(),
@@ -1479,6 +1502,12 @@ export default {
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
       }
+      if (this.totalLongline == "") {
+        this.totalLongline = this.noApply;
+      }
+      if (this.other == "") {
+        this.other = this.noApply;
+      }
       if (this.netWidth == "") {
         this.netWidth = this.noApply;
       }
@@ -1516,6 +1545,8 @@ export default {
           eyeFlake: this.eyeFlake.toUpperCase(),
           typeHook: this.typeHook.toUpperCase(),
           longNet: this.longNet.toUpperCase(),
+          longNet: this.totalLongline,
+          longNet: this.other.toUpperCase(),
           // materialArt: this.materialArt.toUpperCase(),
           equipDevi: this.equipDevi.toUpperCase(),
           captain: this.captain.toUpperCase(),

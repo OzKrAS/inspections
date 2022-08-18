@@ -43210,6 +43210,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -43269,6 +43278,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       equipDevi: "",
       captain: "",
       typeHook: "",
+      totalLongline: "",
+      other: "",
 
       observation: "",
       observationGeneral: "",
@@ -43560,6 +43571,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.eyeFlake = null;
       this.typeHook = null;
       this.longNet = null;
+      this.totalLongline = null;
+      this.other = null;
       // this.materialArt = null;
       this.equipDevi = null;
       this.captain = null;
@@ -43758,6 +43771,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.eyeFlake = data["eyeFlake"];
       this.typeHook = data["typeHook"];
       this.longNet = data["longNet"];
+      this.totalLongline = data["totalLongline"];
+      this.other = data["other"];
       // this.materialArt = data["materialArt"];
       this.equipDevi = data["equipDevi"];
       this.captain = data["captain"];
@@ -43812,9 +43827,17 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.listado = 1;
     },
     saveData: function saveData() {
+      var _axios$post;
+
       var me = this;
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
+      }
+      if (this.other == "") {
+        this.other = this.noApply;
+      }
+      if (this.totalLongline == "") {
+        this.totalLongline = this.noApply;
       }
       if (this.netWidth == "") {
         this.netWidth = this.noApply;
@@ -43837,7 +43860,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       if (this.captain == "") {
         this.captain = this.noApply;
       }
-      axios.post("/zarpes/save", {
+      axios.post("/zarpes/save", (_axios$post = {
         insNo: this.form.insNo.toUpperCase(),
         radioCall: this.form.radioCall.toUpperCase(),
         idOmi: this.form.idOmi.toUpperCase(),
@@ -43850,38 +43873,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         netWidth: this.netWidth.toUpperCase(),
         eyeFlake: this.eyeFlake.toUpperCase(),
         typeHook: this.typeHook.toUpperCase(),
-        longNet: this.longNet.toUpperCase(),
-        // materialArt: this.materialArt.toUpperCase(),
-        equipDevi: this.equipDevi.toUpperCase(),
-        captain: this.captain.toUpperCase(),
-        observation: this.observation.toUpperCase(),
-        observationGeneral: this.observationGeneral.toUpperCase(),
-        conclusions: this.conclusions.toUpperCase(),
-        comments: this.comments.toUpperCase(),
-        dateIns: this.dateIns,
-        dateScale: this.dateScale,
-        dateZarpe: this.dateZarpe,
-        dateResolution: this.dateResolution,
-        dateValid: this.dateValid,
-        dateLatestArrival: this.dateLatestArrival,
-        dateValidityPat: this.dateValidityPat,
-        notification: this.notification,
-        finalityZarpe: this.finalityZarpe,
-        national: this.national,
-
-        'id_region': this.arrayReg.id,
-        'id_port': this.arrayPt.id,
-        'id_portZarpe': this.arrayPtZarpe.id,
-        'id_portArrival': this.arrayPtArrival.id,
-        'id_flag': this.arrayFg.id,
-        'id_material': this.arrayMaterial.id,
-        'id_nationality': this.arrayNation.id,
-        'id_orop': this.arrayOr.id,
-        'id_zoneAutoFisher': this.arrayZoneAuto.id,
-        'id_company': this.arrayComp.id,
-        'data': this.arrayFa
-
-      }).then(function (response) {
+        longNet: this.longNet.toUpperCase()
+      }, _defineProperty(_axios$post, "longNet", this.totalLongline), _defineProperty(_axios$post, "longNet", this.other.toUpperCase()), _defineProperty(_axios$post, "equipDevi", this.equipDevi.toUpperCase()), _defineProperty(_axios$post, "captain", this.captain.toUpperCase()), _defineProperty(_axios$post, "observation", this.observation.toUpperCase()), _defineProperty(_axios$post, "observationGeneral", this.observationGeneral.toUpperCase()), _defineProperty(_axios$post, "conclusions", this.conclusions.toUpperCase()), _defineProperty(_axios$post, "comments", this.comments.toUpperCase()), _defineProperty(_axios$post, "dateIns", this.dateIns), _defineProperty(_axios$post, "dateScale", this.dateScale), _defineProperty(_axios$post, "dateZarpe", this.dateZarpe), _defineProperty(_axios$post, "dateResolution", this.dateResolution), _defineProperty(_axios$post, "dateValid", this.dateValid), _defineProperty(_axios$post, "dateLatestArrival", this.dateLatestArrival), _defineProperty(_axios$post, "dateValidityPat", this.dateValidityPat), _defineProperty(_axios$post, "notification", this.notification), _defineProperty(_axios$post, "finalityZarpe", this.finalityZarpe), _defineProperty(_axios$post, "national", this.national), _defineProperty(_axios$post, 'id_region', this.arrayReg.id), _defineProperty(_axios$post, 'id_port', this.arrayPt.id), _defineProperty(_axios$post, 'id_portZarpe', this.arrayPtZarpe.id), _defineProperty(_axios$post, 'id_portArrival', this.arrayPtArrival.id), _defineProperty(_axios$post, 'id_flag', this.arrayFg.id), _defineProperty(_axios$post, 'id_material', this.arrayMaterial.id), _defineProperty(_axios$post, 'id_nationality', this.arrayNation.id), _defineProperty(_axios$post, 'id_orop', this.arrayOr.id), _defineProperty(_axios$post, 'id_zoneAutoFisher', this.arrayZoneAuto.id), _defineProperty(_axios$post, 'id_company', this.arrayComp.id), _defineProperty(_axios$post, 'data', this.arrayFa), _axios$post)).then(function (response) {
         me.hideForm();
         me.message("Guardado", "Guardo ");
         me.listData();
@@ -43890,9 +43883,17 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       });
     },
     updateData: function updateData() {
+      var _axios$put;
+
       var me = this;
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
+      }
+      if (this.totalLongline == "") {
+        this.totalLongline = this.noApply;
+      }
+      if (this.other == "") {
+        this.other = this.noApply;
       }
       if (this.netWidth == "") {
         this.netWidth = this.noApply;
@@ -43915,7 +43916,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       if (this.captain == "") {
         this.captain = this.noApply;
       }
-      axios.put("/zarpes/update", {
+      axios.put("/zarpes/update", (_axios$put = {
         id: this.id_zarpes,
         insNo: this.form.insNo.toUpperCase(),
         radioCall: this.form.radioCall.toUpperCase(),
@@ -43929,37 +43930,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         netWidth: this.netWidth.toUpperCase(),
         eyeFlake: this.eyeFlake.toUpperCase(),
         typeHook: this.typeHook.toUpperCase(),
-        longNet: this.longNet.toUpperCase(),
-        // materialArt: this.materialArt.toUpperCase(),
-        equipDevi: this.equipDevi.toUpperCase(),
-        captain: this.captain.toUpperCase(),
-        observation: this.observation.toUpperCase(),
-        observationGeneral: this.observationGeneral.toUpperCase(),
-        conclusions: this.conclusions.toUpperCase(),
-        comments: this.comments.toUpperCase(),
-        dateIns: this.dateIns,
-        dateScale: this.dateScale,
-        dateZarpe: this.dateZarpe,
-        dateResolution: this.dateResolution,
-        dateValid: this.dateValid,
-        dateLatestArrival: this.dateLatestArrival,
-        dateValidityPat: this.dateValidityPat,
-        notification: this.notification,
-        finalityZarpe: this.finalityZarpe,
-        national: this.national,
-
-        'id_region': this.arrayReg.id,
-        'id_port': this.arrayPt.id,
-        'id_portZarpe': this.arrayPtZarpe.id,
-        'id_portArrival': this.arrayPtArrival.id,
-        'id_flag': this.arrayFg.id,
-        'id_material': this.arrayMaterial.id,
-        'id_nationality': this.arrayNation.id,
-        'id_orop': this.arrayOr.id,
-        'id_zoneAutoFisher': this.arrayZoneAuto.id,
-        // 'id_fisheryAuthorized': this.arrayFa.id,
-        'id_company': this.arrayComp.id
-      }).then(function (response) {
+        longNet: this.longNet.toUpperCase()
+      }, _defineProperty(_axios$put, "longNet", this.totalLongline), _defineProperty(_axios$put, "longNet", this.other.toUpperCase()), _defineProperty(_axios$put, "equipDevi", this.equipDevi.toUpperCase()), _defineProperty(_axios$put, "captain", this.captain.toUpperCase()), _defineProperty(_axios$put, "observation", this.observation.toUpperCase()), _defineProperty(_axios$put, "observationGeneral", this.observationGeneral.toUpperCase()), _defineProperty(_axios$put, "conclusions", this.conclusions.toUpperCase()), _defineProperty(_axios$put, "comments", this.comments.toUpperCase()), _defineProperty(_axios$put, "dateIns", this.dateIns), _defineProperty(_axios$put, "dateScale", this.dateScale), _defineProperty(_axios$put, "dateZarpe", this.dateZarpe), _defineProperty(_axios$put, "dateResolution", this.dateResolution), _defineProperty(_axios$put, "dateValid", this.dateValid), _defineProperty(_axios$put, "dateLatestArrival", this.dateLatestArrival), _defineProperty(_axios$put, "dateValidityPat", this.dateValidityPat), _defineProperty(_axios$put, "notification", this.notification), _defineProperty(_axios$put, "finalityZarpe", this.finalityZarpe), _defineProperty(_axios$put, "national", this.national), _defineProperty(_axios$put, 'id_region', this.arrayReg.id), _defineProperty(_axios$put, 'id_port', this.arrayPt.id), _defineProperty(_axios$put, 'id_portZarpe', this.arrayPtZarpe.id), _defineProperty(_axios$put, 'id_portArrival', this.arrayPtArrival.id), _defineProperty(_axios$put, 'id_flag', this.arrayFg.id), _defineProperty(_axios$put, 'id_material', this.arrayMaterial.id), _defineProperty(_axios$put, 'id_nationality', this.arrayNation.id), _defineProperty(_axios$put, 'id_orop', this.arrayOr.id), _defineProperty(_axios$put, 'id_zoneAutoFisher', this.arrayZoneAuto.id), _defineProperty(_axios$put, 'id_company', this.arrayComp.id), _axios$put)).then(function (response) {
         me.hideForm();
         me.message("Actualizado", "Actualizó ");
         me.listData();
@@ -46444,7 +46416,7 @@ var render = function() {
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
                               "div",
-                              { staticClass: "md-layout-item md-size-30" },
+                              { staticClass: "md-layout-item md-size-40" },
                               [
                                 _c(
                                   "div",
@@ -47338,6 +47310,43 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
+                                      [_vm._v("Ancho de Red (Brazas)")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending,
+                                        type: "number"
+                                      },
+                                      model: {
+                                        value: _vm.netWidth,
+                                        callback: function($$v) {
+                                          _vm.netWidth = $$v
+                                        },
+                                        expression: "netWidth"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                 "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  { attrs: { "md-clearable": "" } },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
                                       [_vm._v("Ojo de Malla (Pulgadas)")]
                                     ),
                                     _vm._v(" "),
@@ -47363,7 +47372,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("   \n                 "),
+                            _vm._v("                 \n                 "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -47375,7 +47384,11 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("Ancho de Red (Brazas)")]
+                                      [
+                                        _vm._v(
+                                          "Cantidad total de anzuelos del palangre"
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -47387,11 +47400,51 @@ var render = function() {
                                         type: "number"
                                       },
                                       model: {
-                                        value: _vm.netWidth,
+                                        value: _vm.totalLongline,
                                         callback: function($$v) {
-                                          _vm.netWidth = $$v
+                                          _vm.totalLongline = $$v
                                         },
-                                        expression: "netWidth"
+                                        expression: "totalLongline"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("                 \n               ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  { attrs: { "md-clearable": "" } },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("Longitud de la red (Brazas)")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending,
+                                        type: "number"
+                                      },
+                                      model: {
+                                        value: _vm.longNet,
+                                        callback: function($$v) {
+                                          _vm.longNet = $$v
+                                        },
+                                        expression: "longNet"
                                       }
                                     })
                                   ],
@@ -47441,10 +47494,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("   \n               ")
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "md-layout" }, [
+                            _vm._v("   \n                 "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -47480,45 +47530,10 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("   \n                 "),
-                            _c(
-                              "div",
-                              { staticClass: "md-layout-item" },
-                              [
-                                _c(
-                                  "md-field",
-                                  { attrs: { "md-clearable": "" } },
-                                  [
-                                    _c(
-                                      "label",
-                                      { attrs: { for: "first-name" } },
-                                      [_vm._v("Longitud de la red (Brazas)")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("md-input", {
-                                      attrs: {
-                                        name: "first-name",
-                                        id: "first-name",
-                                        autocomplete: "given-name",
-                                        disabled: _vm.sending,
-                                        type: "number"
-                                      },
-                                      model: {
-                                        value: _vm.longNet,
-                                        callback: function($$v) {
-                                          _vm.longNet = $$v
-                                        },
-                                        expression: "longNet"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v("   \n                 "),
-                            _vm._v(" "),
+                            _vm._v("              \n               ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -47547,10 +47562,90 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("   \n               ")
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "md-layout" }, [
+                            _vm._v("   \n                  "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "text-muted",
+                                        attrs: { for: "equipDevi" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "Equipos o Dispositivos Requeridos"
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "md-select",
+                                      {
+                                        attrs: {
+                                          name: "equipDevi",
+                                          id: "equipDevi",
+                                          placeholder:
+                                            "Seleccione un equipo o dispositivo"
+                                        },
+                                        model: {
+                                          value: _vm.equipDevi,
+                                          callback: function($$v) {
+                                            _vm.equipDevi = $$v
+                                          },
+                                          expression: "equipDevi"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "md-option",
+                                          {
+                                            attrs: {
+                                              value:
+                                                "Dispositivo Agregado de preces - DAPs (FADs)"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Dispositivo Agregado de preces - DAPs (FADs)"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "md-option",
+                                          {
+                                            attrs: {
+                                              value:
+                                                "Dispositivo Excluidor de Tortugas - DETs"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Dispositivo Excluidor de Tortugas - DETs"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "md-option",
+                                          { attrs: { value: "Otro" } },
+                                          [_vm._v("Otro")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                 "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -47562,11 +47657,7 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [
-                                        _vm._v(
-                                          "Equipos o Dispositivos Requeridos"
-                                        )
-                                      ]
+                                      [_vm._v("Otro")]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -47577,11 +47668,11 @@ var render = function() {
                                         disabled: _vm.sending
                                       },
                                       model: {
-                                        value: _vm.equipDevi,
+                                        value: _vm.other,
                                         callback: function($$v) {
-                                          _vm.equipDevi = $$v
+                                          _vm.other = $$v
                                         },
-                                        expression: "equipDevi"
+                                        expression: "other"
                                       }
                                     })
                                   ],
@@ -47590,7 +47681,10 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("   \n                 "),
+                            _vm._v("   \n               ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -48260,10 +48354,6 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("th", [_vm._v("Finalidad Zarpe")]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Origen")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Destino")]),
-                _vm._v(" "),
                 _c("th", [_vm._v("Puerto de Zarpe")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Fecha Zarpe")]),
@@ -48287,10 +48377,6 @@ var staticRenderFns = [
                 _c("th", [_vm._v("Región/Municipio")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Finalidad Zarpe")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Origen")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Destino")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Puerto de Zarpe")]),
                 _vm._v(" "),
