@@ -15,6 +15,7 @@ class AutoFisherController extends Controller
         return [     
             'data' => $autoFisher
         ];
+        
     } 
     
     public function selectZoneAutoFisher(Request $request)
