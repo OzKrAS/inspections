@@ -18,7 +18,10 @@ class CreateBoatsTable extends Migration
             $table->string('nameBoat'); 
             $table->string('enrollment'); 
             $table->string('noPatent'); 
+            $table->string('noResolution'); 
             $table->date('dateValidityPat');
+            $table->date('dateValid');
+            $table->date('dateResolution');
 
             $table->integer('id_flag')->unsigned();
             $table->foreign('id_flag')->references('id')->on('flags');

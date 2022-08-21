@@ -22,11 +22,14 @@
               <table class="table table-striped table-bordered display" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <th>No. Resolución</th>
                     <th>Nombre Embarcación</th>
                     <th>Bandera</th>
                     <th>Matrícula</th>
                     <th>No. Patente</th>
                     <th>Fecha Vigencia Patente</th>
+                    <th>Fecha Resolución</th>
+                    <th>Fecha Vigencia</th>
                     <th style="width: 90px">Opciones</th>    
                   </tr>
                 </thead>
@@ -34,11 +37,14 @@
                 </tbody>
                   <tfoot>
                     <tr>
+                      <th>No. Resolución</th>
                       <th>Nombre Embarcación</th>
                       <th>Bandera</th>
                       <th>Matrícula</th>
                       <th>No. Patente</th>
                       <th>Fecha Vigencia Patente</th>
+                      <th>Fecha Resolución</th>
+                      <th>Fecha Vigencia</th>
                       <th style="width: 90px">Opciones</th>  
                     </tr>
                   </tfoot>
@@ -54,6 +60,47 @@
           <div class="card-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-35"> 
+                      <md-field md-clearable :class="getValidationClass('noResolution')">
+                        <label for="first-name">No. Resolución</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noResolution"
+                          :disabled="sending"
+                          type="number"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.noResolution.required"
+                        >Olvidaste ingresar el número de resolución</span>
+                      </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;       
+                  <div class="md-layout-item md-size-30">
+                        <div>
+                          <md-datepicker 
+                            v-model="dateResolution"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                          >
+                            <label>Fecha Resolución</label>
+                          </md-datepicker>
+                        </div>
+                    </div> &nbsp;&nbsp;&nbsp; 
+                    <div class="md-layout-item md-size-30">                 
+                          <md-datepicker 
+                            v-model="dateValid"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                            >
+                            <label>Fecha Vigencia</label>
+                          </md-datepicker>                   
+                    </div> &nbsp;&nbsp;&nbsp;
+                </div>
                 <div class="md-layout">
                     <div class="md-layout-item">
                       <md-field md-clearable :class="getValidationClass('nameBoat')">
@@ -211,12 +258,15 @@ export default {
       form: {
         nameBoat: "",
         enrollment: "",
-        noPatent: ""
+        noPatent: "",
+        noResolution: ""
       },
       arrayFg: {id:0, name:''},
 	    arrayFlag: [],
       id_flag: 0,
       dateValidityPat: format(now, dateFormat),
+      dateResolution: format(now, dateFormat),
+      dateValid: format(now, dateFormat),
 
       edo:1,
       tipoAccion: 1,
@@ -246,7 +296,10 @@ export default {
       },
         noPatent: {
         required
-      }
+      },
+        noResolution: {
+        required
+      },
     }
   },
 
@@ -275,7 +328,10 @@ export default {
       this.form.nameBoat = null;
       this.form.enrollment = null;
       this.form.noPatent = null;
+      this.form.noResolution = null;
       this.dateValidityPat = null;
+      this.dateValid = null;
+      this.dateResolution = null;
 
       this.arrayFg = {id:0, name:''};
    
@@ -292,10 +348,13 @@ export default {
       this.form.nameBoat = data["nameBoat"];
       this.form.enrollment = data["enrollment"];
       this.form.noPatent = data["noPatent"];
+      this.form.noResolution = data["noResolution"];
       this.dateValidityPat = data["dateValidityPat"];
+      this.dateValid = data["dateValid"];
+      this.dateResolution = data["dateResolution"];
   
       this.arrayFg.id = data["id_flag"];
-	  this.arrayFg.name = data["nameFlag"];
+	    this.arrayFg.name = data["nameFlag"];
     },
     showData() {
       this.clearForm();
@@ -341,7 +400,10 @@ export default {
           nameBoat: this.form.nameBoat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
           noPatent: this.form.noPatent,
+          noResolution: this.form.noResolution,
           dateValidityPat: this.dateValidityPat,
+          dateValid: this.dateValid,
+          dateResolution: this.dateResolution,
 
           'id_flag': this.arrayFg.id,
         })
@@ -363,7 +425,10 @@ export default {
           nameBoat: this.form.nameBoat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
           noPatent: this.form.noPatent,
+          noResolution: this.form.noResolution,
           dateValidityPat: this.dateValidityPat,
+          dateValid: this.dateValid,
+          dateResolution: this.dateResolution,
 
           'id_flag': this.arrayFg.id,
           
@@ -447,11 +512,14 @@ export default {
             responsive: "true",
           "columns": [
 
+            { "data": "noResolution" },
             { "data": "nameBoat" },
+            { "data": "nameFlag" },
             { "data": "enrollment" },
             { "data": "noPatent" },
             { "data": "dateValidityPat" },
-            { "data": "nameFlag" },
+            { "data": "dateResolution" },
+            { "data": "dateValid" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>"},
               // <button type='button'id=carta' class='carta btn btn-success btn-sm' data-tooltip title='carta' > <i class='fas fa-trash-alt'></i> </button> 
 

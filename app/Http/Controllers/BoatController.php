@@ -17,7 +17,10 @@ class BoatController extends Controller
                      'boats.nameBoat',
                      'boats.enrollment',
                      'boats.noPatent',
+                     'boats.noResolution',
                      'boats.dateValidityPat',
+                     'boats.dateValid',
+                     'boats.dateResolution',
 
                      'boats.id_flag','flags.name as nameFlag',                
             )
@@ -35,7 +38,10 @@ class BoatController extends Controller
         $boats->nameBoat = $request->nameBoat;
         $boats->enrollment = $request->enrollment;
         $boats->noPatent = $request->noPatent;
+        $boats->noResolution = $request->noResolution;
         $boats->dateValidityPat = $request->dateValidityPat;
+        $boats->dateValid = $request->dateValid;
+        $boats->dateResolution = $request->dateResolution;
 
         $boats->id_flag = $request->id_flag;     
         $boats->save();
@@ -54,7 +60,10 @@ class BoatController extends Controller
         $boats->nameBoat = $request->nameBoat;
         $boats->enrollment = $request->enrollment;
         $boats->noPatent = $request->noPatent;
+        $boats->noResolution = $request->noResolution;
         $boats->dateValidityPat = $request->dateValidityPat;
+        $boats->dateValid = $request->dateValid;
+        $boats->dateResolution = $request->dateResolution;
 
         $boats->id_flag = $request->id_flag;  
         $boats->save();

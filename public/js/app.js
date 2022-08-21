@@ -98083,6 +98083,53 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -98122,12 +98169,15 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       form: {
         nameBoat: "",
         enrollment: "",
-        noPatent: ""
+        noPatent: "",
+        noResolution: ""
       },
       arrayFg: { id: 0, name: '' },
       arrayFlag: [],
       id_flag: 0,
       dateValidityPat: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+      dateResolution: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+      dateValid: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
 
       edo: 1,
       tipoAccion: 1,
@@ -98157,6 +98207,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       },
       noPatent: {
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      noResolution: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       }
     }
   },
@@ -98184,7 +98237,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.nameBoat = null;
       this.form.enrollment = null;
       this.form.noPatent = null;
+      this.form.noResolution = null;
       this.dateValidityPat = null;
+      this.dateValid = null;
+      this.dateResolution = null;
 
       this.arrayFg = { id: 0, name: '' };
     },
@@ -98203,7 +98259,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.nameBoat = data["nameBoat"];
       this.form.enrollment = data["enrollment"];
       this.form.noPatent = data["noPatent"];
+      this.form.noResolution = data["noResolution"];
       this.dateValidityPat = data["dateValidityPat"];
+      this.dateValid = data["dateValid"];
+      this.dateResolution = data["dateResolution"];
 
       this.arrayFg.id = data["id_flag"];
       this.arrayFg.name = data["nameFlag"];
@@ -98247,7 +98306,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         nameBoat: this.form.nameBoat.toUpperCase(),
         enrollment: this.form.enrollment.toUpperCase(),
         noPatent: this.form.noPatent,
+        noResolution: this.form.noResolution,
         dateValidityPat: this.dateValidityPat,
+        dateValid: this.dateValid,
+        dateResolution: this.dateResolution,
 
         'id_flag': this.arrayFg.id
       }).then(function (response) {
@@ -98266,7 +98328,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         nameBoat: this.form.nameBoat.toUpperCase(),
         enrollment: this.form.enrollment.toUpperCase(),
         noPatent: this.form.noPatent,
+        noResolution: this.form.noResolution,
         dateValidityPat: this.dateValidityPat,
+        dateValid: this.dateValid,
+        dateResolution: this.dateResolution,
 
         'id_flag': this.arrayFg.id
 
@@ -98343,7 +98408,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
             "infoFiltered": "(filtrado de _MAX_ total registros)"
           },
           responsive: "true",
-          "columns": [{ "data": "nameBoat" }, { "data": "enrollment" }, { "data": "noPatent" }, { "data": "dateValidityPat" }, { "data": "nameFlag" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>" }]
+          "columns": [{ "data": "noResolution" }, { "data": "nameBoat" }, { "data": "nameFlag" }, { "data": "enrollment" }, { "data": "noPatent" }, { "data": "dateValidityPat" }, { "data": "dateResolution" }, { "data": "dateValid" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>" }]
 
         });
 
@@ -98425,6 +98490,128 @@ var render = function() {
                       },
                       [
                         _c("md-card-content", [
+                          _c("div", { staticClass: "md-layout" }, [
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item md-size-35" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "noResolution"
+                                    ),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [_vm._v("No. Resolución")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending,
+                                        type: "number"
+                                      },
+                                      model: {
+                                        value: _vm.form.noResolution,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.form,
+                                            "noResolution",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "form.noResolution"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.noResolution.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar el número de resolución"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("          \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item md-size-30" },
+                              [
+                                _c(
+                                  "div",
+                                  [
+                                    _c(
+                                      "md-datepicker",
+                                      {
+                                        attrs: {
+                                          "md-immediately": "",
+                                          "md-model-type": String
+                                        },
+                                        on: { input: _vm.toString },
+                                        model: {
+                                          value: _vm.dateResolution,
+                                          callback: function($$v) {
+                                            _vm.dateResolution = $$v
+                                          },
+                                          expression: "dateResolution"
+                                        }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Fecha Resolución")
+                                        ])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]
+                            ),
+                            _vm._v("     \n                  "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item md-size-30" },
+                              [
+                                _c(
+                                  "md-datepicker",
+                                  {
+                                    attrs: {
+                                      "md-immediately": "",
+                                      "md-model-type": String
+                                    },
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.dateValid,
+                                      callback: function($$v) {
+                                        _vm.dateValid = $$v
+                                      },
+                                      expression: "dateValid"
+                                    }
+                                  },
+                                  [_c("label", [_vm._v("Fecha Vigencia")])]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("    \n              ")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
                               "div",
@@ -98745,6 +98932,8 @@ var staticRenderFns = [
           [
             _c("thead", [
               _c("tr", [
+                _c("th", [_vm._v("No. Resolución")]),
+                _vm._v(" "),
                 _c("th", [_vm._v("Nombre Embarcación")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Bandera")]),
@@ -98754,6 +98943,10 @@ var staticRenderFns = [
                 _c("th", [_vm._v("No. Patente")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Fecha Vigencia Patente")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha Resolución")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha Vigencia")]),
                 _vm._v(" "),
                 _c("th", { staticStyle: { width: "90px" } }, [
                   _vm._v("Opciones")
@@ -98765,6 +98958,8 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("tfoot", [
               _c("tr", [
+                _c("th", [_vm._v("No. Resolución")]),
+                _vm._v(" "),
                 _c("th", [_vm._v("Nombre Embarcación")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Bandera")]),
@@ -98774,6 +98969,10 @@ var staticRenderFns = [
                 _c("th", [_vm._v("No. Patente")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Fecha Vigencia Patente")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha Resolución")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Fecha Vigencia")]),
                 _vm._v(" "),
                 _c("th", { staticStyle: { width: "90px" } }, [
                   _vm._v("Opciones")
