@@ -43219,6 +43219,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -43267,7 +43299,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         nameBoat: "",
         enrollment: "",
         noPatent: "",
-        representative: ""
+        representative: "",
+        dateIns: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        dateScale: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        dateZarpe: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        dateResolution: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        dateValid: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        dateLatestArrival: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        dateValidityPat: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat)
 
       },
       eyeMesh: "",
@@ -43285,13 +43324,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       observationGeneral: "",
       conclusions: "",
       comments: "",
-      dateIns: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      dateScale: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      dateZarpe: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      dateResolution: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      dateValid: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      dateLatestArrival: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      dateValidityPat: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
       notification: "",
       finalityZarpe: "",
       national: "",
@@ -43378,6 +43410,27 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
       representative: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      dateIns: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      dateScale: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      dateZarpe: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      dateLatestArrival: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      dateResolution: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      dateValid: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      dateValidityPat: {
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       }
 
@@ -43580,13 +43633,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.observationGeneral = null;
       this.conclusions = null;
       this.comments = null;
-      this.dateIns = null;
-      this.dateScale = null;
-      this.dateZarpe = null;
-      this.dateResolution = null;
-      this.dateValid = null;
-      this.dateLatestArrival = null;
-      this.dateValidityPat = null;
+      this.form.dateIns = null;
+      this.form.dateScale = null;
+      this.form.dateZarpe = null;
+      this.form.dateResolution = null;
+      this.form.dateValid = null;
+      this.form.dateLatestArrival = null;
+      this.form.dateValidityPat = null;
       this.notification = null;
       this.finalityZarpe = null;
       this.national = null;
@@ -43780,13 +43833,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.observationGeneral = data["observationGeneral"];
       this.conclusions = data["conclusions"];
       this.comments = data["comments"];
-      this.dateIns = data["dateIns"];
-      this.dateScale = data["dateScale"];
-      this.dateZarpe = data["dateZarpe"];
-      this.dateResolution = data["dateResolution"];
-      this.dateValid = data["dateValid"];
-      this.dateLatestArrival = data["dateLatestArrival"];
-      this.dateValidityPat = data["dateValidityPat"];
+      this.form.dateIns = data["dateIns"];
+      this.form.dateScale = data["dateScale"];
+      this.form.dateZarpe = data["dateZarpe"];
+      this.form.dateResolution = data["dateResolution"];
+      this.form.dateValid = data["dateValid"];
+      this.form.dateLatestArrival = data["dateLatestArrival"];
+      this.form.dateValidityPat = data["dateValidityPat"];
       this.notification = data["notification"];
       this.finalityZarpe = data["finalityZarpe"];
       this.national = data["national"];
@@ -43881,13 +43934,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         observationGeneral: this.observationGeneral.toUpperCase(),
         conclusions: this.conclusions.toUpperCase(),
         comments: this.comments.toUpperCase(),
-        dateIns: this.dateIns,
-        dateScale: this.dateScale,
-        dateZarpe: this.dateZarpe,
-        dateResolution: this.dateResolution,
-        dateValid: this.dateValid,
-        dateLatestArrival: this.dateLatestArrival,
-        dateValidityPat: this.dateValidityPat,
+        dateIns: this.form.dateIns,
+        dateScale: this.form.dateScale,
+        dateZarpe: this.form.dateZarpe,
+        dateResolution: this.form.dateResolution,
+        dateValid: this.form.dateValid,
+        dateLatestArrival: this.form.dateLatestArrival,
+        dateValidityPat: this.form.dateValidityPat,
         notification: this.notification,
         finalityZarpe: this.finalityZarpe,
         national: this.national,
@@ -43968,13 +44021,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         observationGeneral: this.observationGeneral.toUpperCase(),
         conclusions: this.conclusions.toUpperCase(),
         comments: this.comments.toUpperCase(),
-        dateIns: this.dateIns,
-        dateScale: this.dateScale,
-        dateZarpe: this.dateZarpe,
-        dateResolution: this.dateResolution,
-        dateValid: this.dateValid,
-        dateLatestArrival: this.dateLatestArrival,
-        dateValidityPat: this.dateValidityPat,
+        dateIns: this.form.dateIns,
+        dateScale: this.form.dateScale,
+        dateZarpe: this.form.dateZarpe,
+        dateResolution: this.form.dateResolution,
+        dateValid: this.form.dateValid,
+        dateLatestArrival: this.form.dateLatestArrival,
+        dateValidityPat: this.form.dateValidityPat,
         notification: this.notification,
         finalityZarpe: this.finalityZarpe,
         national: this.national,
@@ -46257,30 +46310,48 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "div",
-                              { staticClass: "md-layout-item " },
+                              { staticClass: "md-layout-item" },
                               [
                                 _c(
                                   "md-datepicker",
                                   {
+                                    class: _vm.getValidationClass("dateIns"),
                                     attrs: {
+                                      "md-clearable": "",
                                       "md-immediately": "",
                                       "md-model-type": String
                                     },
                                     on: { input: _vm.toString },
                                     model: {
-                                      value: _vm.dateIns,
+                                      value: _vm.form.dateIns,
                                       callback: function($$v) {
-                                        _vm.dateIns = $$v
+                                        _vm.$set(_vm.form, "dateIns", $$v)
                                       },
-                                      expression: "dateIns"
+                                      expression: "form.dateIns"
                                     }
                                   },
-                                  [_c("label", [_vm._v("Fecha de Inspección")])]
+                                  [
+                                    _c("label", [
+                                      _vm._v("Fecha de Inspección")
+                                    ]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateIns.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha de inspección\n                      "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
                                 )
                               ],
                               1
                             ),
-                            _vm._v("     \n              ")
+                            _vm._v("    \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -46478,36 +46549,45 @@ var render = function() {
                               { staticClass: "md-layout-item md-size-40" },
                               [
                                 _c(
-                                  "div",
-                                  [
-                                    _c(
-                                      "md-datepicker",
-                                      {
-                                        attrs: {
-                                          "md-immediately": "",
-                                          "md-model-type": String
-                                        },
-                                        on: { input: _vm.toString },
-                                        model: {
-                                          value: _vm.dateScale,
-                                          callback: function($$v) {
-                                            _vm.dateScale = $$v
-                                          },
-                                          expression: "dateScale"
-                                        }
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass("dateScale"),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
+                                    },
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.dateScale,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "dateScale", $$v)
                                       },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Fecha Última Escala")
-                                        ])
-                                      ]
-                                    )
-                                  ],
-                                  1
+                                      expression: "form.dateScale"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [
+                                      _vm._v("Fecha Última Escala")
+                                    ]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateScale.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha de última escala\n                            "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
                                 )
-                              ]
+                              ],
+                              1
                             ),
-                            _vm._v("     \n                    ")
+                            _vm._v("    \n                    ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -46539,33 +46619,48 @@ var render = function() {
                               1
                             ),
                             _vm._v("   \n                      "),
-                            _c("div", { staticClass: "md-layout-item" }, [
-                              _c(
-                                "div",
-                                [
-                                  _c(
-                                    "md-datepicker",
-                                    {
-                                      attrs: {
-                                        "md-immediately": "",
-                                        "md-model-type": String
-                                      },
-                                      on: { input: _vm.toString },
-                                      model: {
-                                        value: _vm.dateZarpe,
-                                        callback: function($$v) {
-                                          _vm.dateZarpe = $$v
-                                        },
-                                        expression: "dateZarpe"
-                                      }
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass("dateZarpe"),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
                                     },
-                                    [_c("label", [_vm._v("Fecha Zarpe")])]
-                                  )
-                                ],
-                                1
-                              )
-                            ]),
-                            _vm._v("      \n                    ")
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.dateZarpe,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "dateZarpe", $$v)
+                                      },
+                                      expression: "form.dateZarpe"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [_vm._v("Fecha de Zarpe")]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateZarpe.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha de zarpe\n                            "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("    \n                    ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -46597,40 +46692,57 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v(
-                              "                    \n                      "
-                            ),
-                            _c("div", { staticClass: "md-layout-item" }, [
-                              _c(
-                                "div",
-                                [
-                                  _c(
-                                    "md-datepicker",
-                                    {
-                                      attrs: {
-                                        "md-immediately": "",
-                                        "md-model-type": String
-                                      },
-                                      on: { input: _vm.toString },
-                                      model: {
-                                        value: _vm.dateLatestArrival,
-                                        callback: function($$v) {
-                                          _vm.dateLatestArrival = $$v
-                                        },
-                                        expression: "dateLatestArrival"
-                                      }
+                            _vm._v("    \n                      "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "dateLatestArrival"
+                                    ),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
                                     },
-                                    [
-                                      _c("label", [
-                                        _vm._v("Fecha Último Arribo")
-                                      ])
-                                    ]
-                                  )
-                                ],
-                                1
-                              )
-                            ]),
-                            _vm._v("    \n                    ")
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.dateLatestArrival,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "dateLatestArrival",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "form.dateLatestArrival"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [
+                                      _vm._v("Fecha Último Arribo")
+                                    ]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateLatestArrival.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha de último arribo\n                            "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("                    \n                    ")
                           ]),
                           _vm._v(" "),
                           _c("div", [
@@ -46919,32 +47031,53 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
-                            _c("div", { staticClass: "md-layout-item" }, [
-                              _c(
-                                "div",
-                                [
-                                  _c(
-                                    "md-datepicker",
-                                    {
-                                      attrs: {
-                                        "md-immediately": "",
-                                        "md-model-type": String
-                                      },
-                                      on: { input: _vm.toString },
-                                      model: {
-                                        value: _vm.dateResolution,
-                                        callback: function($$v) {
-                                          _vm.dateResolution = $$v
-                                        },
-                                        expression: "dateResolution"
-                                      }
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "dateResolution"
+                                    ),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
                                     },
-                                    [_c("label", [_vm._v("Fecha Resolución")])]
-                                  )
-                                ],
-                                1
-                              )
-                            ]),
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.dateResolution,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "dateResolution",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "form.dateResolution"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [_vm._v("Fecha Resolución")]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateResolution.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha de resolución\n                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
                             _vm._v("     \n                  "),
                             _c(
                               "div",
@@ -46953,20 +47086,36 @@ var render = function() {
                                 _c(
                                   "md-datepicker",
                                   {
+                                    class: _vm.getValidationClass("dateValid"),
                                     attrs: {
+                                      "md-clearable": "",
                                       "md-immediately": "",
                                       "md-model-type": String
                                     },
                                     on: { input: _vm.toString },
                                     model: {
-                                      value: _vm.dateValid,
+                                      value: _vm.form.dateValid,
                                       callback: function($$v) {
-                                        _vm.dateValid = $$v
+                                        _vm.$set(_vm.form, "dateValid", $$v)
                                       },
-                                      expression: "dateValid"
+                                      expression: "form.dateValid"
                                     }
                                   },
-                                  [_c("label", [_vm._v("Fecha Vigencia")])]
+                                  [
+                                    _c("label", [_vm._v("Fecha Vigencia")]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateValid.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha de vigencia\n                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
                                 )
                               ],
                               1
@@ -47160,37 +47309,56 @@ var render = function() {
                               1
                             ),
                             _vm._v("    \n                  "),
-                            _c("div", { staticClass: "md-layout-item" }, [
-                              _c(
-                                "div",
-                                [
-                                  _c(
-                                    "md-datepicker",
-                                    {
-                                      attrs: {
-                                        "md-immediately": "",
-                                        "md-model-type": String
-                                      },
-                                      on: { input: _vm.toString },
-                                      model: {
-                                        value: _vm.dateValidityPat,
-                                        callback: function($$v) {
-                                          _vm.dateValidityPat = $$v
-                                        },
-                                        expression: "dateValidityPat"
-                                      }
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "dateValidityPat"
+                                    ),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
                                     },
-                                    [
-                                      _c("label", [
-                                        _vm._v("Fecha Vigencia Patente")
-                                      ])
-                                    ]
-                                  )
-                                ],
-                                1
-                              )
-                            ]),
-                            _vm._v("    \n                ")
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.dateValidityPat,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "dateValidityPat",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "form.dateValidityPat"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [
+                                      _vm._v("Fecha Vigencia Patente")
+                                    ]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateValidityPat.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha de vigencia patente\n                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("    \n                ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
