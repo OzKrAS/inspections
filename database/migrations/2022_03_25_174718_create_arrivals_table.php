@@ -42,8 +42,6 @@ class CreateArrivalsTable extends Migration
             $table->string('observation'); 
             $table->string('notification'); 
             $table->string('finalityArrival'); 
-            $table->string('origin'); 
-            $table->string('destination'); 
             $table->string('workDone'); 
             $table->string('locationSystem'); 
             $table->string('inspectorConclusions'); 

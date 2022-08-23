@@ -26,8 +26,6 @@
                     <th>Región/Municipio</th>
                     <th>Puerto/Muelle de Inspección</th>
                     <th>Fecha Inspección</th>
-                    <!-- <th>Origen</th> -->
-                    <!-- <th>Destino</th>               -->
                     <th>Puerto de Zarpe</th>
                     <th>Fecha Zarpe</th>
                     <th>Nombre Embarcación</th>
@@ -44,8 +42,6 @@
                         <th>Región/Municipio</th>
                         <th>Puerto/Muelle de Inspección</th>
                         <th>Fecha Inspección</th>
-                        <!-- <th>Origen</th> -->
-                        <!-- <th>Destino</th>                  -->
                         <th>Puerto de Zarpe</th>
                         <th>Fecha Zarpe</th>
                         <th>Nombre Embarcación</th>
@@ -107,7 +103,23 @@
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
-                  <div class="md-layout-item">
+                  <div class="md-layout-item">                 
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('dateIns')"
+                        v-model="form.dateIns"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Fecha de Inspección</label>
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.dateIns.required"
+                          >Olvidaste ingresar la fecha de inspección
+                        </span>
+                      </md-datepicker>                   
+                  </div> &nbsp;&nbsp;&nbsp;
+                  <!-- <div class="md-layout-item">
                     <div>
                       <md-datepicker
                         v-model="dateIns"
@@ -118,7 +130,7 @@
                         <label>Fecha de Inspección</label>
                       </md-datepicker>
                     </div>
-                  </div> &nbsp;&nbsp;&nbsp;
+                  </div> &nbsp;&nbsp;&nbsp; -->
                   <div class="md-layout-item">
                         <md-field>
                           <label class="text-muted">Recibió Notificación Previa</label>
@@ -158,7 +170,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
-                  <div class="md-layout-item">
+                  <!-- <div class="md-layout-item">
                       <md-field>
                         <label class="text-muted">Origen</label>
                         <md-select v-model="origin" name="origin" id="origin" placeholder="Origen">
@@ -181,18 +193,22 @@
                           <md-option value="pacifico/tumaco">Pacífico/Tumaco</md-option>
                         </md-select>
                       </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                      <div>
-                        <md-datepicker
-                          v-model="dateScale"
-                          @input="toString"
-                          md-immediately
-                          :md-model-type="String"
-                          >
-                          <label>Fecha Última Escala</label>
-                        </md-datepicker>
-                      </div>
+                  </div>&nbsp;&nbsp;&nbsp; -->
+                  <div class="md-layout-item md-size-30">                 
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('dateScale')"
+                        v-model="form.dateScale"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Fecha Última Escala</label>
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.dateScale.required"
+                          >Olvidaste ingresar la fecha de vigencia
+                        </span>
+                      </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
@@ -205,17 +221,21 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <div>
-                      <md-datepicker
-                        v-model="dateZarpe"
+                  <div class="md-layout-item">                 
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('dateZarpe')"
+                        v-model="form.dateZarpe"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
                         >
                         <label>Fecha de Zarpe</label>
-                      </md-datepicker>
-                    </div>
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.dateZarpe.required"
+                          >Olvidaste ingresar la fecha de zarpe
+                        </span>
+                      </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
@@ -228,17 +248,21 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <div>
-                      <md-datepicker
-                        v-model="dateLatestArrival"
+                  <div class="md-layout-item">                 
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('dateLatestArrival')"
+                        v-model="form.dateLatestArrival"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
                         >
                         <label>Fecha Último Arribo</label>
-                      </md-datepicker>
-                    </div>
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.dateLatestArrival.required"
+                          >Olvidaste ingresar la fecha de último arribo
+                        </span>
+                      </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
@@ -302,32 +326,39 @@
                       >Olvidaste ingresar el número de resolución</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <div>
-                      <md-datepicker
-                        v-model="date"
+                  <div class="md-layout-item">                 
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('date')"
+                        v-model="form.date"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
                         >
                         <label>Fecha</label>
-                      </md-datepicker>
-                    </div>
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.date.required"
+                          >Olvidaste ingresar la fecha
+                        </span>
+                      </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
-
                 <div class="md-layout">
-                  <div class="md-layout-item">
-                    <div>
-                      <md-datepicker
-                        v-model="dateValidity"
+                  <div class="md-layout-item">                 
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('dateValidity')"
+                        v-model="form.dateValidity"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
                         >
-                        <label>Seleccione Fecha Vigencia</label>
-                      </md-datepicker>
-                    </div>
+                        <label>Fecha Vigencia</label>
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.dateValidity.required"
+                          >Olvidaste ingresar la fecha de vigencia
+                        </span>
+                      </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameBoat')">
@@ -406,18 +437,22 @@
                         >Olvidaste ingresar el número de patente</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <div>
-                      <md-datepicker
-                        v-model="dateValidityPat"
+                  <div class="md-layout-item">                 
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('dateValidityPat')"
+                        v-model="form.dateValidityPat"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
                         >
                         <label>Fecha Vigencia Patente</label>
-                      </md-datepicker>
-                    </div>
-                  </div>&nbsp;&nbsp;&nbsp;
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.dateValidityPat.required"
+                          >Olvidaste ingresar la fecha de vigencia
+                        </span>
+                      </md-datepicker>                   
+                  </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
@@ -725,9 +760,14 @@
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
-                    <md-field>
+                    <md-field md-clearable :class="getValidationClass('observation')">
                             <label>Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)</label>
-                            <md-textarea v-model="observation"></md-textarea>
+                            <md-textarea v-model="form.observation"></md-textarea>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.observation.required"
+                            >Olvidaste ingresar una observación
+                            </span>
                     </md-field>
                   </div>
                 </div>
@@ -956,19 +996,29 @@
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
-                    <md-field>
-                        <label>Conclusiones Del Inspector</label>
-                        <md-textarea v-model="inspectorConclusions"></md-textarea>
+                    <md-field md-clearable :class="getValidationClass('inspectorConclusions')">
+                            <label>Conclusiones Del Inspector</label>
+                            <md-textarea v-model="form.inspectorConclusions"></md-textarea>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.inspectorConclusions.required"
+                            >Olvidaste ingresar las conclusiones del inspector
+                            </span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
-                    <md-field>
-                        <label>Comentarios Adicionales (espacio disponible para el capitan)</label>
-                        <md-textarea v-model="additionalComments"></md-textarea>
+                    <md-field md-clearable :class="getValidationClass('inspectorConclusions')">
+                            <label>Conclusiones Del Inspector</label>
+                            <md-textarea v-model="form.inspectorConclusions"></md-textarea>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.inspectorConclusions.required"
+                            >Olvidaste ingresar las conclusiones del inspector
+                            </span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
@@ -1201,6 +1251,15 @@ export default {
         noHaulsInter: "",
         landedWeight: "",
         stateRectorPort: "",
+        dateScale: format(now, dateFormat),
+        dateZarpe: format(now, dateFormat),
+        dateLatestArrival: format(now, dateFormat),
+        date: format(now, dateFormat),
+        dateValidityPat: format(now, dateFormat),
+        dateValidity: format(now, dateFormat),
+        dateIns: format(now, dateFormat),
+        observation: "",
+        inspectorConclusions: "",
       },
       eyeMesh: "",
       netWidth: "",
@@ -1221,25 +1280,14 @@ export default {
       nameCommon2: "",
       nameScientific2: "",
       capture2: "",
-      observation: "",
       notification: "",
       finalityArrival: "",
-      origin: "",
-      destination: "",
       workDone: "",
       locationSystem: "",
-      inspectorConclusions: "",
       additionalComments: "",
 
       noApply: "No aplica",
 
-      dateIns: format(now, dateFormat),
-      dateScale: format(now, dateFormat),
-      dateZarpe: format(now, dateFormat),
-      dateLatestArrival: format(now, dateFormat),
-      dateValidityPat: format(now, dateFormat),
-      date: format(now, dateFormat),
-      dateValidity: format(now, dateFormat),
 
       arrayArrival: [],
       id_arrival: 0,
@@ -1351,6 +1399,33 @@ export default {
         required
       },
       stateRectorPort: {
+        required
+      },
+      dateScale: {
+        required
+      },
+      dateZarpe: {
+        required
+      },
+      dateLatestArrival: {
+        required
+      },
+      date: {
+        required
+      },
+      dateValidity: {
+        required
+      },
+      dateValidityPat: {
+        required
+      },
+      dateIns: {
+        required
+      },
+      observation: {
+        required
+      },
+      inspectorConclusions: {
         required
       },
     }
@@ -1609,22 +1684,20 @@ export default {
       this.form.noHaulsInter = null;
       this.form.landedWeight = null;
       this.form.stateRectorPort = null;
-      this.observation = null;
+      this.form.observation = null;
       this.notification = null;
       this.finalityArrival = null;
-      this.origin = null;
-      this.destination = null;
       this.workDone = null;
       this.locationSystem = null;
-      this.inspectorConclusions = null;
+      this.form.inspectorConclusions = null;
       this.additionalComments = null;
-      this.dateIns = null;
-      this.dateScale = null;
-      this.dateZarpe = null;
-      this.dateLatestArrival = null;
-      this.dateValidityPat = null;
-      this.date = null;
-      this.dateValidity = null;
+      this.form.dateIns = null;
+      this.form.dateScale = null;
+      this.form.dateZarpe = null;
+      this.form.dateLatestArrival = null;
+      this.form.dateValidityPat = null;
+      this.form.date = null;
+      this.form.dateValidity = null;
       this.observationGeneral = null;
 
       this.arrayReg = {id:0, name:'', nameMuni:''};
@@ -1776,22 +1849,20 @@ export default {
       this.form.noHaulsNacional = data["noHaulsNacional"];
       this.form.noHaulsInter = data["noHaulsInter"];
       this.form.landedWeight = data["landedWeight"];
-      this.observation = data["observation"];
+      this.form.observation = data["observation"];
       this.notification = data["notification"];
       this.finalityArrival = data["finalityArrival"];
-      this.origin = data["origin"];
-      this.destination = data["destination"];
       this.workDone = data["workDone"];
       this.locationSystem = data["locationSystem"];
-      this.inspectorConclusions = data["inspectorConclusions"];
+      this.form.inspectorConclusions = data["inspectorConclusions"];
       this.additionalComments = data["additionalComments"];
-      this.dateIns = data["dateIns"];
-      this.dateScale = data["dateScale"];
-      this.dateZarpe = data["dateZarpe"];
-      this.dateLatestArrival = data["dateLatestArrival"];
-      this.dateValidityPat = data["dateValidityPat"];
-      this.date = data["date"];
-      this.dateValidity = data["dateValidity"];
+      this.form.dateIns = data["dateIns"];
+      this.form.dateScale = data["dateScale"];
+      this.form.dateZarpe = data["dateZarpe"];
+      this.form.dateLatestArrival = data["dateLatestArrival"];
+      this.form.dateValidityPat = data["dateValidityPat"];
+      this.form.date = data["date"];
+      this.form.dateValidity = data["dateValidity"];
       this.observationGeneral = data["observationGeneral"];
       this.form.stateRectorPort = data["stateRectorPort"];
 
@@ -1890,23 +1961,21 @@ export default {
           noHaulsNacional: this.form.noHaulsNacional.toUpperCase(),
           noHaulsInter: this.form.noHaulsInter.toUpperCase(),
           landedWeight: this.form.landedWeight.toUpperCase(),
-          observation: this.observation.toUpperCase(),
+          observation: this.form.observation.toUpperCase(),
           notification: this.notification,
           finalityArrival: this.finalityArrival,
-          origin: this.origin,
-          destination: this.destination,
           workDone: this.workDone,
           locationSystem: this.locationSystem,
-          inspectorConclusions :this.inspectorConclusions.toUpperCase(),
+          inspectorConclusions :this.form.inspectorConclusions.toUpperCase(),
           additionalComments :this.additionalComments.toUpperCase(),
           stateRectorPort :this.form.stateRectorPort.toUpperCase(),
-          dateIns :this.dateIns,
-          dateScale :this.dateScale,
-          dateZarpe :this.dateZarpe,
-          dateLatestArrival: this.dateLatestArrival,
-          dateValidityPat: this.dateValidityPat,
-          date: this.date,
-          dateValidity: this.dateValidity,
+          dateIns :this.form.dateIns,
+          dateScale :this.form.dateScale,
+          dateZarpe :this.form.dateZarpe,
+          dateLatestArrival: this.form.dateLatestArrival,
+          dateValidityPat: this.form.dateValidityPat,
+          date: this.form.date,
+          dateValidity: this.form.dateValidity,
           observationGeneral: this.observationGeneral,
 
           'id_region': this.arrayReg.id,
@@ -1994,23 +2063,21 @@ export default {
           noHaulsNacional :this.form.noHaulsNacional.toUpperCase(),
           noHaulsInter :this.form.noHaulsInter.toUpperCase(),
           landedWeight :this.form.landedWeight.toUpperCase(),
-          observation :this.observation.toUpperCase(),
+          observation :this.form.observation.toUpperCase(),
           notification: this.notification,
           finalityArrival: this.finalityArrival,
-          origin: this.origin,
-          destination: this.destination,
           workDone: this.workDone,
           locationSystem: this.locationSystem,
-          inspectorConclusions :this.inspectorConclusions.toUpperCase(),
+          inspectorConclusions :this.form.inspectorConclusions.toUpperCase(),
           additionalComments :this.additionalComments.toUpperCase(),
           stateRectorPort :this.form.stateRectorPort.toUpperCase(),
-          dateIns :this.dateIns,
-          dateScale :this.dateScale,
-          dateZarpe :this.dateZarpe,
-          dateLatestArrival: this.dateLatestArrival,
-          dateValidityPat: this.dateValidityPat,
-          date: this.date,
-          dateValidity: this.dateValidity,
+          dateIns :this.form.dateIns,
+          dateScale :this.form.dateScale,
+          dateZarpe :this.form.dateZarpe,
+          dateLatestArrival: this.form.dateLatestArrival,
+          dateValidityPat: this.form.dateValidityPat,
+          date: this.form.date,
+          dateValidity: this.form.dateValidity,
           observationGeneral: this.observationGeneral,
 
           'id_region': this.arrayReg.id,
@@ -2155,8 +2222,6 @@ export default {
             { "data": "nameReg" },
             { "data": "namePort" },
             { "data": "dateIns" },
-            // { "data": "origin" },
-            // { "data": "destination" },
             { "data": "namePort" },
             { "data": "dateZarpe" },
             { "data": "nameBoat" },

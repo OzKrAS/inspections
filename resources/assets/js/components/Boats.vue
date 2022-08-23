@@ -81,24 +81,36 @@
                   <div class="md-layout-item md-size-30">
                         <div>
                           <md-datepicker 
-                            v-model="dateResolution"
+                            md-clearable :class="getValidationClass('dateResolution')"
+                            v-model="form.dateResolution"
                             @input="toString"
                             md-immediately
                             :md-model-type="String"
                           >
                             <label>Fecha Resolución</label>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.dateResolution.required"
+                              >Olvidaste ingresar la fecha de resolución
+                            </span>
                           </md-datepicker>
                         </div>
                     </div> &nbsp;&nbsp;&nbsp; 
                     <div class="md-layout-item md-size-30">                 
-                          <md-datepicker 
-                            v-model="dateValid"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                            >
-                            <label>Fecha Vigencia</label>
-                          </md-datepicker>                   
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('dateValid')"
+                        v-model="form.dateValid"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Fecha Vigencia</label>
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.dateValid.required"
+                          >Olvidaste ingresar la fecha de vigencia
+                        </span>
+                      </md-datepicker>                   
                     </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
@@ -163,16 +175,23 @@
                       </md-field>
                     </div>&nbsp;&nbsp;&nbsp; 
                     <div class="md-layout-item">
-                      <div>
-                        <md-datepicker 
-                          v-model="dateValidityPat"
-                          @input="toString"
-                          md-immediately
-                          :md-model-type="String"
-                        >
-                          <label>Fecha Vigencia Patente</label>
-                        </md-datepicker>
-                      </div>
+                        <div>
+                          <md-datepicker 
+                            md-clearable :class="getValidationClass('dateValidityPat')"
+                            v-model="form.dateValidityPat"
+                            @input="toString"
+                            md-immediately
+                            :md-model-type="String"
+                          >
+                            <label>Fecha Vigencia Patente</label>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.dateValidityPat.required"
+                              >Olvidaste ingresar la fecha de vigencia
+                            </span>
+                          </md-datepicker>
+                          
+                        </div>           
                     </div>&nbsp;&nbsp;&nbsp; 
                   </div>
               </md-card-content>
@@ -259,14 +278,17 @@ export default {
         nameBoat: "",
         enrollment: "",
         noPatent: "",
-        noResolution: ""
+        noResolution: "",
+        dateValidityPat: format(now, dateFormat),
+        dateResolution: format(now, dateFormat),
+        dateValid: format(now, dateFormat),
       },
       arrayFg: {id:0, name:''},
 	    arrayFlag: [],
       id_flag: 0,
-      dateValidityPat: format(now, dateFormat),
-      dateResolution: format(now, dateFormat),
-      dateValid: format(now, dateFormat),
+      // dateValidityPat: format(now, dateFormat),
+      // dateResolution: format(now, dateFormat),
+      // dateValid: format(now, dateFormat),
 
       edo:1,
       tipoAccion: 1,
@@ -300,6 +322,15 @@ export default {
         noResolution: {
         required
       },
+        dateValidityPat: {
+        required
+      },
+        dateResolution: {
+        required
+      },
+        dateValid: {
+        required
+      },
     }
   },
 
@@ -329,9 +360,9 @@ export default {
       this.form.enrollment = null;
       this.form.noPatent = null;
       this.form.noResolution = null;
-      this.dateValidityPat = null;
-      this.dateValid = null;
-      this.dateResolution = null;
+      this.form.dateValidityPat = null;
+      this.form.dateValid = null;
+      this.form.dateResolution = null;
 
       this.arrayFg = {id:0, name:''};
    
@@ -349,9 +380,9 @@ export default {
       this.form.enrollment = data["enrollment"];
       this.form.noPatent = data["noPatent"];
       this.form.noResolution = data["noResolution"];
-      this.dateValidityPat = data["dateValidityPat"];
-      this.dateValid = data["dateValid"];
-      this.dateResolution = data["dateResolution"];
+      this.form.dateValidityPat = data["dateValidityPat"];
+      this.form.dateValid = data["dateValid"];
+      this.form.dateResolution = data["dateResolution"];
   
       this.arrayFg.id = data["id_flag"];
 	    this.arrayFg.name = data["nameFlag"];
@@ -401,9 +432,9 @@ export default {
           enrollment: this.form.enrollment.toUpperCase(),
           noPatent: this.form.noPatent,
           noResolution: this.form.noResolution,
-          dateValidityPat: this.dateValidityPat,
-          dateValid: this.dateValid,
-          dateResolution: this.dateResolution,
+          dateValidityPat: this.form.dateValidityPat,
+          dateValid: this.form.dateValid,
+          dateResolution: this.form.dateResolution,
 
           'id_flag': this.arrayFg.id,
         })
@@ -426,9 +457,9 @@ export default {
           enrollment: this.form.enrollment.toUpperCase(),
           noPatent: this.form.noPatent,
           noResolution: this.form.noResolution,
-          dateValidityPat: this.dateValidityPat,
-          dateValid: this.dateValid,
-          dateResolution: this.dateResolution,
+          dateValidityPat: this.form.dateValidityPat,
+          dateValid: this.form.dateValid,
+          dateResolution: this.form.dateResolution,
 
           'id_flag': this.arrayFg.id,
           

@@ -55,8 +55,6 @@ class ArrivalController extends Controller
                     'arrivals.observation',
                     'arrivals.notification',
                     'arrivals.finalityArrival',
-                    'arrivals.origin',
-                    'arrivals.destination',
                     'arrivals.workDone',
                     'arrivals.locationSystem',
                     'arrivals.inspectorConclusions',
@@ -119,8 +117,6 @@ class ArrivalController extends Controller
         $arrivals->observation = $request->observation;
         $arrivals->notification = $request->notification;
         $arrivals->finalityArrival = $request->finalityArrival;
-        $arrivals->origin = $request->origin;
-        $arrivals->destination = $request->destination;
         $arrivals->workDone = $request->workDone;
         $arrivals->locationSystem = $request->locationSystem;
         $arrivals->inspectorConclusions = $request->inspectorConclusions;
@@ -211,8 +207,6 @@ class ArrivalController extends Controller
         $arrivals->observation = $request->observation;
         $arrivals->notification = $request->notification;
         $arrivals->finalityArrival = $request->finalityArrival;
-        $arrivals->origin = $request->origin;
-        $arrivals->destination = $request->destination;
         $arrivals->workDone = $request->workDone;
         $arrivals->locationSystem = $request->locationSystem;
         $arrivals->inspectorConclusions = $request->inspectorConclusions;
