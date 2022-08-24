@@ -43245,32 +43245,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -46290,7 +46264,7 @@ var render = function() {
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
                               "div",
-                              { staticClass: "md-layout-item md-size-70" },
+                              { staticClass: "md-layout-item md-size-65" },
                               [
                                 _c(
                                   "md-field",
@@ -46302,7 +46276,7 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("Inspección No.")]
+                                      [_vm._v("Inspección No. (Inspection)")]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -46364,7 +46338,9 @@ var render = function() {
                                   },
                                   [
                                     _c("label", [
-                                      _vm._v("Fecha de Inspección")
+                                      _vm._v(
+                                        "Fecha de Inspección (Inspection Date)"
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     !_vm.$v.form.dateIns.required
@@ -46397,7 +46373,11 @@ var render = function() {
                                     staticClass: "text-muted",
                                     attrs: { for: "first-name" }
                                   },
-                                  [_vm._v("Región/Municipio")]
+                                  [
+                                    _vm._v(
+                                      "Región/Municipio (Region / Municipality)"
+                                    )
+                                  ]
                                 ),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -46431,7 +46411,11 @@ var render = function() {
                                     staticClass: "text-muted",
                                     attrs: { for: "first-name" }
                                   },
-                                  [_vm._v("Puerto/Muelle de inspección")]
+                                  [
+                                    _vm._v(
+                                      "Puerto/Muelle de inspección (Port / Dock)"
+                                    )
+                                  ]
                                 ),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -46471,7 +46455,11 @@ var render = function() {
                                         staticClass: "text-muted",
                                         attrs: { for: "notification" }
                                       },
-                                      [_vm._v("Recibió Notificación Previa")]
+                                      [
+                                        _vm._v(
+                                          "Recibió Notificación Previa (Prior Notification)"
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c(
@@ -46526,7 +46514,11 @@ var render = function() {
                                         staticClass: "text-muted",
                                         attrs: { for: "finalityZarpe" }
                                       },
-                                      [_vm._v("Finalidad Zarpe")]
+                                      [
+                                        _vm._v(
+                                          "Finalidad Zarpe (Departure’s Purpose)"
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c(
@@ -46625,10 +46617,10 @@ var render = function() {
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
                               "div",
-                              { staticClass: "md-layout-item md-size-70" },
+                              { staticClass: "md-layout-item md-size-65" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Puerto de Zarpe")
+                                  _vm._v("Puerto de Zarpe (Departure’s Port)")
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -46674,7 +46666,11 @@ var render = function() {
                                     }
                                   },
                                   [
-                                    _c("label", [_vm._v("Fecha de Zarpe")]),
+                                    _c("label", [
+                                      _vm._v(
+                                        "Fecha de Zarpe (Departure’s Date)"
+                                      )
+                                    ]),
                                     _vm._v(" "),
                                     !_vm.$v.form.dateZarpe.required
                                       ? _c(
@@ -46698,10 +46694,12 @@ var render = function() {
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
                               "div",
-                              { staticClass: "md-layout-item md-size-70" },
+                              { staticClass: "md-layout-item md-size-65" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Puerto de Último Arribo")
+                                  _vm._v(
+                                    "Puerto de Último Arribo (Last Arrival’s Port)"
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -46755,7 +46753,9 @@ var render = function() {
                                   },
                                   [
                                     _c("label", [
-                                      _vm._v("Fecha Último Arribo")
+                                      _vm._v(
+                                        "Fecha Último Arribo (Last Arrival’s Date)"
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     !_vm.$v.form.dateLatestArrival.required
@@ -46900,7 +46900,7 @@ var render = function() {
                                       { attrs: { for: "first-name" } },
                                       [
                                         _vm._v(
-                                          "Señal Radiollamada Internacional"
+                                          "Señal Radiollamada Internacional (International Radio Call Signal)"
                                         )
                                       ]
                                     ),
@@ -46956,7 +46956,11 @@ var render = function() {
                                         staticClass: "text-muted",
                                         attrs: { for: "first-name" }
                                       },
-                                      [_vm._v("Identificador OMI")]
+                                      [
+                                        _vm._v(
+                                          "Identificador OMI (IMO Identifier)"
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -47018,7 +47022,11 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("No. Resolución")]
+                                      [
+                                        _vm._v(
+                                          "No. Resolución (Resolution No.)"
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -47092,7 +47100,11 @@ var render = function() {
                                     }
                                   },
                                   [
-                                    _c("label", [_vm._v("Fecha Resolución")]),
+                                    _c("label", [
+                                      _vm._v(
+                                        "Fecha Resolución (Resolution Date)"
+                                      )
+                                    ]),
                                     _vm._v(" "),
                                     !_vm.$v.form.dateResolution.required
                                       ? _c(
@@ -47134,7 +47146,9 @@ var render = function() {
                                     }
                                   },
                                   [
-                                    _c("label", [_vm._v("Fecha Vigencia")]),
+                                    _c("label", [
+                                      _vm._v("Fecha Vigencia (Validity Date)")
+                                    ]),
                                     _vm._v(" "),
                                     !_vm.$v.form.dateValid.required
                                       ? _c(
@@ -47170,7 +47184,7 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("Nombre Embarcación")]
+                                      [_vm._v("Nombre Embarcación (Ship Name)")]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -47212,7 +47226,7 @@ var render = function() {
                               { staticClass: "md-layout" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Bandera")
+                                  _vm._v("Bandera (Flag)")
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -47252,7 +47266,11 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("Matrícula")]
+                                      [
+                                        _vm._v(
+                                          "Matrícula (Vessel Registration)"
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -47303,7 +47321,7 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("No. de Patente")]
+                                      [_vm._v("No. de Patente (Patent)")]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -47371,7 +47389,9 @@ var render = function() {
                                   },
                                   [
                                     _c("label", [
-                                      _vm._v("Fecha Vigencia Patente")
+                                      _vm._v(
+                                        "Fecha Vigencia Patente (Validity Name)"
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     !_vm.$v.form.dateValidityPat.required
@@ -47410,7 +47430,11 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("Representante Legal")]
+                                      [
+                                        _vm._v(
+                                          "Representante Legal (Legal Representative)"
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -47456,7 +47480,7 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Empresa")
+                                  _vm._v("Empresa (Enterprise)")
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -47493,7 +47517,7 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Pesquería Autorizada")
+                                  _vm._v("Pesquería Autorizad (Fishery)")
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -47526,7 +47550,9 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c("label", [
-                                  _vm._v("Zona de Pesca Autorizada")
+                                  _vm._v(
+                                    "Zona de Pesca Autorizada (Fishing Zone)"
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -47955,7 +47981,11 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("Nombre Capitán de Pesca")]
+                                      [
+                                        _vm._v(
+                                          "Nombre Capitán de Pesca (Captain Name)"
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -48029,7 +48059,7 @@ var render = function() {
                                 [
                                   _c("label", [
                                     _vm._v(
-                                      "Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)"
+                                      "Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)(Observations on compliance)"
                                     )
                                   ]),
                                   _vm._v(" "),
@@ -48069,7 +48099,9 @@ var render = function() {
                                 },
                                 [
                                   _c("label", [
-                                    _vm._v("Conclusiones del Inspector")
+                                    _vm._v(
+                                      "Conclusiones del Inspector (Inspector’s Conclusions)"
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("md-textarea", {
@@ -48109,7 +48141,7 @@ var render = function() {
                                 [
                                   _c("label", [
                                     _vm._v(
-                                      "Comentarios Adicionales (Espacio disponible para el capitan)"
+                                      "Comentarios Adicionales (Espacio disponible para el capitan)(Additional Comments)"
                                     )
                                   ]),
                                   _vm._v(" "),
@@ -48150,7 +48182,11 @@ var render = function() {
                                   attrs: { "md-clearable": "" }
                                 },
                                 [
-                                  _c("label", [_vm._v("Observaciones")]),
+                                  _c("label", [
+                                    _vm._v(
+                                      "Observaciones (General Observations)"
+                                    )
+                                  ]),
                                   _vm._v(" "),
                                   _c("md-textarea", {
                                     model: {
@@ -66381,14 +66417,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
         corregimiento: "",
         place: "",
         telephone: "",
-
-        nameScientific1: "",
-        nameCommon1: "",
-        state1: "",
-        presentation1: "",
-        amount1: "",
-        weight1: "",
-        commercialValue1: "",
         date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat)
       },
 
@@ -66429,9 +66457,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
       noActa: {
         required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
       },
-      // commercialValue: {
-      //   required
-      // },
       nameOfficial: {
         required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
       },
@@ -66472,27 +66497,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
         required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
       },
       telephone: {
-        required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
-      },
-      nameScientific1: {
-        required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
-      },
-      nameCommon1: {
-        required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
-      },
-      state1: {
-        required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
-      },
-      presentation1: {
-        required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
-      },
-      amount1: {
-        required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
-      },
-      weight1: {
-        required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
-      },
-      commercialValue1: {
         required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
       },
       date: {
@@ -66743,7 +66747,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
       this.form.presentation = null;
       this.form.amount = null;
       this.form.weight = null;
-      // this.form.commercialValue = null;
+      this.commercialValue = null;
       this.form.date = null;
       this.form.nameOfficial = null;
       this.form.noDocumentId1 = null;

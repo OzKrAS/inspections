@@ -714,15 +714,7 @@ export default {
         municipality: "",
         corregimiento: "",
         place: "",
-        telephone: "",
-
-        nameScientific1: "",
-        nameCommon1: "",
-        state1: "",
-        presentation1: "",
-        amount1: "",
-        weight1: "",
-        commercialValue1: "",          
+        telephone: "",        
         date: format(now, dateFormat),
       },
 
@@ -772,9 +764,6 @@ export default {
       noActa: {
         required
       },
-      // commercialValue: {
-      //   required
-      // },
       nameOfficial: {
         required
       },
@@ -815,27 +804,6 @@ export default {
         required
       },
       telephone: {
-        required
-      },
-      nameScientific1: {
-        required
-      },
-        nameCommon1: {
-        required
-      },
-        state1: {
-        required
-      },
-        presentation1: {
-        required
-      },
-        amount1: {
-        required
-      },
-        weight1: {
-        required
-      },
-        commercialValue1: {
         required
       },
         date: {
@@ -1072,7 +1040,7 @@ export default {
       this.form.presentation = null;
       this.form.amount = null;
       this.form.weight = null;
-      // this.form.commercialValue = null;
+      this.commercialValue = null;
       this.form.date = null;
       this.form.nameOfficial = null;
       this.form.noDocumentId1 = null;
