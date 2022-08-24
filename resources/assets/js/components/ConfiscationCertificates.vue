@@ -1409,9 +1409,7 @@ export default {
     }, 
     saveData() {
       let me = this;
-
-      console.log("entro guardar");
-
+      
       axios
         .post("/confiscationCertificates/save", {
     

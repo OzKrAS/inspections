@@ -987,13 +987,11 @@ export default {
       }
     },
     validateData() {
-      this.saveData();
       this.$v.$touch();
 
       if (!this.$v.$invalid) {
-        console.log(" validateSave");
+        this.saveData();
         this.clearForm();
-      console.log(" validateSaveSale");
       }
     },
     addItemTarget() {
@@ -1132,22 +1130,22 @@ export default {
       axios
         .post("/donationCertificates/save", {
     
-        noActa: this.form.noActa,
-        date: this.form.date,
-        nameOfficial: this.form.nameOfficial,
-        noDocumentId1: this.form.noDocumentId1,
-        nameRepresentative: this.form.nameRepresentative,
-        noDocumentId2: this.form.noDocumentId2,
+        noActa: this.form.noActa.toUpperCase(),
+        date: this.form.date.toUpperCase(),
+        nameOfficial: this.form.nameOfficial.toUpperCase(),
+        noDocumentId1: this.form.noDocumentId1.toUpperCase(),
+        nameRepresentative: this.form.nameRepresentative.toUpperCase(),
+        noDocumentId2: this.form.noDocumentId2.toUpperCase(),
         noPlateCertificate: this.form.noPlateCertificate,
-        name: this.form.name,
-        legalStatus: this.form.legalStatus,
-        address: this.form.address,
-        representativeDonation: this.form.representativeDonation,
-        identification: this.form.identification,
-        municipality: this.form.municipality,
-        corregimiento: this.form.corregimiento,
-        place: this.form.place,
-        telephone: this.form.telephone,
+        name: this.form.name.toUpperCase(),
+        legalStatus: this.form.legalStatus.toUpperCase(),
+        address: this.form.address.toUpperCase(),
+        representativeDonation: this.form.representativeDonation.toUpperCase(),
+        identification: this.form.identification.toUpperCase(),
+        municipality: this.form.municipality.toUpperCase(),
+        corregimiento: this.form.corregimiento.toUpperCase(),
+        place: this.form.place.toUpperCase(),
+        telephone: this.form.telephone.toUpperCase(),
 
         target: this.arrayTarget,
        
