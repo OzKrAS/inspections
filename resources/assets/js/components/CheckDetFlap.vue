@@ -63,17 +63,21 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <div class="md-layout-item">
-                      <div>
-                        <md-datepicker 
-                          v-model="date"
-                          @input="toString"
-                          md-immediately
-                          :md-model-type="String"
-                          >
-                          <label>Seleccione Fecha</label>
-                        </md-datepicker>
-                      </div>
+                  <div class="md-layout-item">                 
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('date')"
+                        v-model="form.date"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Seleccione Fecha</label>
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.date.required"
+                          >Olvidaste ingresar la fecha
+                        </span>
+                      </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                       <label class="text-muted">Regional</label>
@@ -765,6 +769,7 @@ export default {
         materialDet: "",
         exit: "",
         float: "",
+        date: format(now, dateFormat),
       },
 
       arrayCheckDet: [],
@@ -795,7 +800,6 @@ export default {
       // exit: "",
       // float: "",
 
-      date: format(now, dateFormat),
       idCheckFlap: 0,
 
       edo:1,
@@ -861,6 +865,9 @@ export default {
         required
       },
       float:  {
+        required
+      },
+      date:  {
         required
       },
     }
@@ -1137,7 +1144,7 @@ export default {
       this.form.fishCaptain = null;
       this.form.location = null;
       this.observation = null;
-      this.date = null;
+      this.form.date = null;
 
       this.form.flapMeshSize = null;
       this.form.angleDet = null;
@@ -1166,7 +1173,7 @@ export default {
       this.form.fishCaptain = data["fishCaptain"];
       this.form.location = data["location"];
       this.observation = data["observation"];
-      this.date = data["date"];
+      this.form.date = data["date"];
 
       this.form.flapMeshSize = data["flapMeshSize"];
       this.form.angleDet = data["angleDet"];
@@ -1250,7 +1257,7 @@ export default {
         fishCaptain: this.form.fishCaptain.toUpperCase(),
         location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
-        date: this.date,
+        date: this.form.date,
 
         flapMeshSize: this.form.flapMeshSize.toUpperCase(),
         angleDet: this.form.angleDet.toUpperCase(),
@@ -1289,7 +1296,7 @@ export default {
           fishCaptain: this.form.fishCaptain.toUpperCase(),
           location: this.form.location.toUpperCase(),
           observation: this.observation.toUpperCase(),
-          date: this.date,
+          date: this.form.date,
 
           flapMeshSize: this.form.flapMeshSize.toUpperCase(),
           angleDet: this.form.angleDet.toUpperCase(),

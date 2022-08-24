@@ -140,30 +140,38 @@
                         >Olvidaste ingresar el nombre del capitán</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                          <div>
-                            <md-datepicker 
-                              v-model="dateZarpe"
-                              @input="toString"
-                              md-immediately
-                              :md-model-type="String"
-                            >
-                              <label>Fecha Zarpe</label>
-                            </md-datepicker>
-                          </div>
-                    </div> &nbsp;&nbsp;&nbsp;
-                    <div class="md-layout-item">
-                        <div>
-                          <md-datepicker 
-                            v-model="dateDesemb"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
-                          >
-                            <label>Fecha Desembarque</label>
-                          </md-datepicker>
-                        </div>
-                    </div> &nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">                 
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('dateZarpe')"
+                        v-model="form.dateZarpe"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Fecha Zarpe</label>
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.dateZarpe.required"
+                          >Olvidaste ingresar la fecha de zarpe
+                        </span>
+                      </md-datepicker>                   
+                  </div> &nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">                 
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('dateDesemb')"
+                        v-model="form.dateDesemb"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Fecha Desembarque</label>
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.dateDesemb.required"
+                          >Olvidaste ingresar la fecha de desembarque
+                        </span>
+                      </md-datepicker>                   
+                  </div> &nbsp;&nbsp;&nbsp;
                 </div>                
                 <div class="md-layout">                   
                         <div class="card-body">   
@@ -531,6 +539,8 @@ export default {
         // equipment: "",
         // desemb: "",
         // photoRecord: "",
+        dateZarpe: format(now, dateFormat),
+        dateDesemb: format(now, dateFormat),
       },
 
       element: "",
@@ -538,8 +548,6 @@ export default {
       regFot: null,
       characterState: null,
       observation: "",
-      dateZarpe: format(now, dateFormat),
-      dateDesemb: format(now, dateFormat),
       
 
       arrayPresenVerifics: [],
@@ -597,6 +605,12 @@ export default {
         required
       },
       nameCaptain: {
+        required
+      },
+      dateZarpe: {
+        required
+      },
+      dateDesemb: {
         required
       },
       // equipment: {
@@ -773,8 +787,8 @@ export default {
       this.form.cruise = null;
       this.form.nameFish = null;
       this.form.nameCaptain = null;
-      this.dateZarpe = null;
-      this.dateDesemb = null;
+      this.form.dateZarpe = null;
+      this.form.dateDesemb = null;
       this.arrayFg = {id:0, name:''};
       this.arrayTarget = [];
       this.arrayTargetAct = [];
@@ -845,8 +859,8 @@ export default {
       this.form.cruise = data["cruise"];
       this.form.nameFish = data["nameFish"];
       this.form.nameCaptain = data["nameCaptain"];
-      this.dateZarpe = data["dateZarpe"];
-      this.dateDesemb = data["dateDesemb"];
+      this.form.dateZarpe = data["dateZarpe"];
+      this.form.dateDesemb = data["dateDesemb"];
       
       this.arrayFg.id = data["id_flag"];
 			this.arrayFg.name = data["nameFlag"];
@@ -872,8 +886,8 @@ export default {
           cruise: this.form.cruise,
           nameFish: this.form.nameFish.toUpperCase(),
           nameCaptain: this.form.nameCaptain.toUpperCase(),
-          dateZarpe: this.dateZarpe,
-          dateDesemb: this.dateDesemb,
+          dateZarpe: this.form.dateZarpe,
+          dateDesemb: this.form.dateDesemb,
           'id_flag': this.arrayFg.id,
           'target':this.arrayTarget,
         })
@@ -895,8 +909,8 @@ export default {
           cruise: this.form.cruise.toUpperCase(),
           nameFish: this.form.nameFish.toUpperCase(),
           nameCaptain: this.form.nameCaptain.toUpperCase(),
-          dateZarpe: this.dateZarpe,
-          dateDesemb: this.dateDesemb,
+          dateZarpe: this.form.dateZarpe,
+          dateDesemb: this.form.dateDesemb,
         
           'id_flag': this.arrayFg.id,
           'target':this.arrayTargetAct,

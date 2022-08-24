@@ -53,17 +53,21 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-16">
-                        <div>
-                          <md-datepicker 
-                            v-model="date"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
+                  <div class="md-layout-item md-size-16">                 
+                        <md-datepicker 
+                          md-clearable :class="getValidationClass('date')"
+                          v-model="form.date"
+                          @input="toString"
+                          md-immediately
+                          :md-model-type="String"
                           >
-                            <label>Seleccione Fecha</label>
-                          </md-datepicker>
-                        </div>
+                          <label>Seleccione Fecha</label>
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.date.required"
+                            >Olvidaste ingresar la fecha
+                          </span>
+                        </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout">
                     <div class="md-layout-item">
@@ -112,30 +116,38 @@
                 </div>
 
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-16">
-                    <div>
-                      <md-datepicker 
-                        v-model="dateBeginningFaena"
-                        @input="toString"
-                        md-immediately
-                        :md-model-type="String"
-                      >
-                        <label>Fecha Inicio de Faena</label>
-                      </md-datepicker>
-                    </div>
+                  <div class="md-layout-item md-size-16">                 
+                        <md-datepicker 
+                          md-clearable :class="getValidationClass('dateBeginningFaena')"
+                          v-model="form.dateBeginningFaena"
+                          @input="toString"
+                          md-immediately
+                          :md-model-type="String"
+                          >
+                          <label>Fecha Inicio de Faena</label>
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.dateBeginningFaena.required"
+                            >Olvidaste ingresar la fecha inicio de faena
+                          </span>
+                        </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-16">
-                    <div>
-                      <md-datepicker 
-                        v-model="dateEndFaena"
-                        @input="toString"
-                        md-immediately
-                        :md-model-type="String"
-                      >
-                        <label>Fecha Fin de Faena</label>
-                      </md-datepicker>
-                    </div>
-                  </div> &nbsp;&nbsp;&nbsp;              
+                  <div class="md-layout-item md-size-16">                 
+                        <md-datepicker 
+                          md-clearable :class="getValidationClass('dateEndFaena')"
+                          v-model="form.dateEndFaena"
+                          @input="toString"
+                          md-immediately
+                          :md-model-type="String"
+                          >
+                          <label>Fecha Fin de Faena</label>
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.dateEndFaena.required"
+                            >Olvidaste ingresar la fecha fin de faena
+                          </span>
+                        </md-datepicker>                   
+                  </div> &nbsp;&nbsp;&nbsp;
                 </div>  
                 <div class="md-layout">
                   <div class="md-layout-item">
@@ -282,11 +294,16 @@
                 </div>     
                 <div class="md-layout">
                   <div class="md-layout-item">
-                    <md-field>
-                          <label>Observaciones</label>
-                          <md-textarea v-model="observation"></md-textarea>
+                    <md-field md-clearable :class="getValidationClass('observation')">
+                            <label>Observaciones</label>
+                            <md-textarea v-model="form.observation"></md-textarea>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.observation.required"
+                            >Olvidaste ingresar las observaciones
+                            </span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;  
+                  </div> 
                 </div>        
                 <div class="md-layout">
                   <div class="md-layout-item md-size-70">
@@ -391,13 +408,13 @@ export default {
           yellowFin: "", 
           barrilete: "", 
           patudo: "", 
+          observation: "",
+          date: format(now, dateFormat),
+          dateBeginningFaena: format(now, dateFormat),
+          dateEndFaena: format(now, dateFormat),
 
       },
       
-      date: format(now, dateFormat),
-      dateBeginningFaena: format(now, dateFormat),
-      dateEndFaena: format(now, dateFormat),
-      observation: "",
       other: "",
       poundRating1: "",
       poundRating2: "",
@@ -448,6 +465,18 @@ export default {
         patudo: {
           required
         },  
+        observation: {
+          required
+        },  
+        dateEndFaena: {
+          required
+        },  
+        dateBeginningFaena: {
+          required
+        },  
+        date: {
+          required
+        },  
       
     }
   },
@@ -495,11 +524,11 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.nameBoat = null;
-      this.date = null;
-      this.dateBeginningFaena = null;
-      this.dateEndFaena = null;
+      this.form.date = null;
+      this.form.dateBeginningFaena = null;
+      this.form.dateEndFaena = null;
       this.form.ZoneFisher = null;
-      this.observation = null;
+      this.form.observation = null;
       this.form.nameOfficial = null;
       this.form.yellowFin = null;
       this.poundRating1 = null;
@@ -521,11 +550,11 @@ export default {
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_disembTuna = data["id"]);
       this.form.nameBoat = data["nameBoat"];
-      this.date = data["date"];
-      this.dateBeginningFaena = data["dateBeginningFaena"];
-      this.dateEndFaena = data["dateEndFaena"];
+      this.form.date = data["date"];
+      this.form.dateBeginningFaena = data["dateBeginningFaena"];
+      this.form.dateEndFaena = data["dateEndFaena"];
       this.form.ZoneFisher = data["ZoneFisher"];
-      this.observation = data["observation"];
+      this.form.observation = data["observation"];
       this.form.nameOfficial = data["nameOfficial"];
       this.form.yellowFin = data["yellowFin"];
       this.poundRating1 = data["poundRating1"];
@@ -616,11 +645,11 @@ export default {
         .post("/certificationDisembTuna/save", {
     
         nameBoat: this.form.nameBoat.toUpperCase(),
-        date: this.date,
-        dateBeginningFaena: this.dateBeginningFaena,
-        dateEndFaena: this.dateEndFaena,
+        date: this.form.date,
+        dateBeginningFaena: this.form.dateBeginningFaena,
+        dateEndFaena: this.form.dateEndFaena,
         ZoneFisher: this.form.ZoneFisher.toUpperCase(),
-        observation: this.observation.toUpperCase(),
+        observation: this.form.observation.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         yellowFin: this.form.yellowFin.toUpperCase(),
         poundRating1: this.poundRating1.toUpperCase(),
@@ -652,11 +681,11 @@ export default {
         .put("/certificationDisembTuna/update", {
         id: this.id_disembTuna,
         nameBoat: this.form.nameBoat.toUpperCase(),
-        date: this.date,
-        dateBeginningFaena: this.dateBeginningFaena,
-        dateEndFaena: this.dateEndFaena,
+        date: this.form.date,
+        dateBeginningFaena: this.form.dateBeginningFaena,
+        dateEndFaena: this.form.dateEndFaena,
         ZoneFisher: this.form.ZoneFisher.toUpperCase(),
-        observation: this.observation.toUpperCase(),
+        observation: this.form.observation.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         yellowFin: this.form.yellowFin.toUpperCase(),
         poundRating1: this.poundRating1.toUpperCase(),

@@ -339,110 +339,24 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                               </tbody>
                     </table>   
                   </div>                
-                </div>    
-
-
-
-
-
-
-                  <!-- <md-field md-clearable :class="getValidationClass('nameScientific')">
-                    <label for="first-name">Nombre Científico</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameScientific"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameScientific.required"
-                    >Olvidaste ingresar el nombre nombre común</span>
-                  </md-field> -->
-                  <!-- <md-field md-clearable :class="getValidationClass('nameCommon')">
-                    <label for="first-name">Nombre Común</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameCommon"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameCommon.required"
-                    >Olvidaste ingresar el nombre nombre común</span>
-                  </md-field> -->
-                  <!-- <md-field md-clearable :class="getValidationClass('presentation')">
-                    <label for="first-name">Presentación</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.presentation"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.presentation.required"
-                    >Olvidaste ingresar la presentación</span>
-                  </md-field> -->
-                  <!-- <md-field md-clearable :class="getValidationClass('amount')">
-                    <label for="first-name">Cantidad</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.amount"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.amount.required"
-                    >Olvidaste ingresar la cantidad</span>
-                  </md-field> -->
-                  <!-- <md-field md-clearable :class="getValidationClass('weight')">
-                    <label for="first-name">Peso</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.weight"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.weight.required"
-                    >Olvidaste ingresar el peso</span>
-                  </md-field> -->
-                  <!-- <md-field md-clearable :class="getValidationClass('commercialValue')">
-                    <label for="first-name">Valor Comercial</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.commercialValue"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.commercialValue.required"
-                    >Olvidaste ingresar el valor comercial</span>
-                  </md-field> -->
+                </div> 
                   <div class="md-layout">
-                    <div class="md-layout-item md-size-50">
-                        <div>
-                          <md-datepicker 
-                            v-model="date"
-                            @input="toString"
-                            md-immediately
-                            :md-model-type="String"
+                    <div class="md-layout-item md-size-50">                 
+                        <md-datepicker 
+                          md-clearable :class="getValidationClass('date')"
+                          v-model="form.date"
+                          @input="toString"
+                          md-immediately
+                          :md-model-type="String"
                           >
-                            <label>Seleccione Fecha</label>
-                          </md-datepicker>
-                        </div>
-                    </div>&nbsp;&nbsp;&nbsp;
+                          <label>Seleccione Fecha</label>
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.date.required"
+                            >Olvidaste ingresar la fecha
+                          </span>
+                        </md-datepicker>                   
+                    </div> &nbsp;&nbsp;&nbsp;
                   </div>
                   <div class="md-layout">                  
                     <div class="md-layout-item md-size-70"> 
@@ -786,10 +700,7 @@ export default {
 		let now = new Date();
     return {
       form: {
-        noActa: "",
-        
-        
-        
+        noActa: "",      
         nameOfficial: "",
         noDocumentId1: "",
         nameRepresentative: "",
@@ -812,6 +723,7 @@ export default {
         amount1: "",
         weight1: "",
         commercialValue1: "",          
+        date: format(now, dateFormat),
       },
 
       nameScientific: "",
@@ -831,7 +743,6 @@ export default {
 	    arrayTarget: [],
 	    arrayTargetAct: [],
     
-      date: format(now, dateFormat),
 
       img1: null,
 
@@ -861,9 +772,9 @@ export default {
       noActa: {
         required
       },
-      commercialValue: {
-        required
-      },
+      // commercialValue: {
+      //   required
+      // },
       nameOfficial: {
         required
       },
@@ -906,8 +817,6 @@ export default {
       telephone: {
         required
       },
-
-
       nameScientific1: {
         required
       },
@@ -927,6 +836,9 @@ export default {
         required
       },
         commercialValue1: {
+        required
+      },
+        date: {
         required
       },
       
@@ -1160,8 +1072,8 @@ export default {
       this.form.presentation = null;
       this.form.amount = null;
       this.form.weight = null;
-      this.form.commercialValue = null;
-      this.date = null;
+      // this.form.commercialValue = null;
+      this.form.date = null;
       this.form.nameOfficial = null;
       this.form.noDocumentId1 = null;
       this.form.nameRepresentative = null;
@@ -1186,7 +1098,7 @@ export default {
       (this.tipoAccion = 2),(me.listado = 0);
       (this.id_donationCertificate = data["id"]);
       this.form.noActa = data["noActa"];
-      this.date = data["date"];
+      this.form.date = data["date"];
       this.form.nameOfficial = data["nameOfficial"];
       this.form.noDocumentId1 = data["noDocumentId1"];
       this.form.nameRepresentative = data["nameRepresentative"];
@@ -1247,27 +1159,26 @@ export default {
         });
     }, 
     saveData() {
-      console.log(" metodo guardar");
       let me = this;
 
       axios
         .post("/donationCertificates/save", {
     
-        noActa: this.form.noActa.toUpperCase(),
-        date: this.date,
-        nameOfficial: this.form.nameOfficial.toUpperCase(),
+        noActa: this.form.noActa,
+        date: this.form.date,
+        nameOfficial: this.form.nameOfficial,
         noDocumentId1: this.form.noDocumentId1,
-        nameRepresentative: this.form.nameRepresentative.toUpperCase(),
+        nameRepresentative: this.form.nameRepresentative,
         noDocumentId2: this.form.noDocumentId2,
-        noPlateCertificate: this.form.noPlateCertificate.toUpperCase(),
-        name: this.form.name.toUpperCase(),
-        legalStatus: this.form.legalStatus.toUpperCase(),
-        address: this.form.address.toUpperCase(),
-        representativeDonation: this.form.representativeDonation.toUpperCase(),
+        noPlateCertificate: this.form.noPlateCertificate,
+        name: this.form.name,
+        legalStatus: this.form.legalStatus,
+        address: this.form.address,
+        representativeDonation: this.form.representativeDonation,
         identification: this.form.identification,
-        municipality: this.form.municipality.toUpperCase(),
-        corregimiento: this.form.corregimiento.toUpperCase(),
-        place: this.form.place.toUpperCase(),
+        municipality: this.form.municipality,
+        corregimiento: this.form.corregimiento,
+        place: this.form.place,
         telephone: this.form.telephone,
 
         target: this.arrayTarget,
@@ -1289,8 +1200,8 @@ export default {
       axios
         .put("/donationCertificates/update", {
         id: this.id_donationCertificate,
-        noActa: this.form.noActa.toUpperCase(),
-        date: this.date,
+        noActa: this.form.noActa,
+        date: this.form.date,
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         noDocumentId1: this.form.noDocumentId1,
         nameRepresentative: this.form.nameRepresentative.toUpperCase(),

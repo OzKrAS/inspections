@@ -55324,6 +55324,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -55377,7 +55381,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         typeDet: "",
         materialDet: "",
         exit: "",
-        float: ""
+        float: "",
+        date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat)
       },
 
       observation: "",
@@ -55413,7 +55418,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       // exit: "",
       // float: "",
 
-      date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
       idCheckDelt: 0,
 
       edo: 1,
@@ -55472,6 +55476,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       float: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      date: {
         required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       }
     }
@@ -55797,7 +55804,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.form.fishCaptain = null;
       this.form.location = null;
       this.observation = null;
-      this.date = null;
+      this.form.date = null;
 
       this.form.flapMeshSize = null;
       this.form.angleDet = null;
@@ -55827,7 +55834,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.form.fishCaptain = data["fishCaptain"];
       this.form.location = data["location"];
       this.observation = data["observation"];
-      this.date = data["date"];
+      this.form.date = data["date"];
 
       this.form.flapMeshSize = data["flapMeshSize"];
       this.form.angleDet = data["angleDet"];
@@ -55909,7 +55916,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         fishCaptain: this.form.fishCaptain.toUpperCase(),
         location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
-        date: this.date,
+        date: this.form.date,
 
         flapMeshSize: this.form.flapMeshSize.toUpperCase(),
         angleDet: this.form.angleDet.toUpperCase(),
@@ -55946,7 +55953,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         fishCaptain: this.form.fishCaptain.toUpperCase(),
         location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
-        date: this.date,
+        date: this.form.date,
 
         flapMeshSize: this.form.flapMeshSize.toUpperCase(),
         angleDet: this.form.angleDet.toUpperCase(),
@@ -56222,32 +56229,47 @@ var render = function() {
                       [
                         _c("md-card-content", [
                           _c("div", { staticClass: "md-layout" }, [
-                            _c("div", { staticClass: "md-layout-item" }, [
-                              _c(
-                                "div",
-                                [
-                                  _c(
-                                    "md-datepicker",
-                                    {
-                                      attrs: {
-                                        "md-immediately": "",
-                                        "md-model-type": String
-                                      },
-                                      on: { input: _vm.toString },
-                                      model: {
-                                        value: _vm.date,
-                                        callback: function($$v) {
-                                          _vm.date = $$v
-                                        },
-                                        expression: "date"
-                                      }
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass("date"),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
                                     },
-                                    [_c("label", [_vm._v("Seleccione Fecha")])]
-                                  )
-                                ],
-                                1
-                              )
-                            ]),
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.date,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "date", $$v)
+                                      },
+                                      expression: "form.date"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [_vm._v("Seleccione Fecha")]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.date.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha\n                      "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
                             _vm._v("    \n                "),
                             _c(
                               "div",
@@ -58911,6 +58933,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -58963,7 +58989,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         typeDet: "",
         materialDet: "",
         exit: "",
-        float: ""
+        float: "",
+        date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat)
       },
 
       arrayCheckDet: [],
@@ -58993,7 +59020,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       // exit: "",
       // float: "",
 
-      date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
       idCheckFlap: 0,
 
       edo: 1,
@@ -59052,6 +59078,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       float: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      date: {
         required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       }
     }
@@ -59339,7 +59368,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.form.fishCaptain = null;
       this.form.location = null;
       this.observation = null;
-      this.date = null;
+      this.form.date = null;
 
       this.form.flapMeshSize = null;
       this.form.angleDet = null;
@@ -59369,7 +59398,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.form.fishCaptain = data["fishCaptain"];
       this.form.location = data["location"];
       this.observation = data["observation"];
-      this.date = data["date"];
+      this.form.date = data["date"];
 
       this.form.flapMeshSize = data["flapMeshSize"];
       this.form.angleDet = data["angleDet"];
@@ -59451,7 +59480,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         fishCaptain: this.form.fishCaptain.toUpperCase(),
         location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
-        date: this.date,
+        date: this.form.date,
 
         flapMeshSize: this.form.flapMeshSize.toUpperCase(),
         angleDet: this.form.angleDet.toUpperCase(),
@@ -59487,7 +59516,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         fishCaptain: this.form.fishCaptain.toUpperCase(),
         location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
-        date: this.date,
+        date: this.form.date,
 
         flapMeshSize: this.form.flapMeshSize.toUpperCase(),
         angleDet: this.form.angleDet.toUpperCase(),
@@ -59763,32 +59792,47 @@ var render = function() {
                       [
                         _c("md-card-content", [
                           _c("div", { staticClass: "md-layout" }, [
-                            _c("div", { staticClass: "md-layout-item" }, [
-                              _c(
-                                "div",
-                                [
-                                  _c(
-                                    "md-datepicker",
-                                    {
-                                      attrs: {
-                                        "md-immediately": "",
-                                        "md-model-type": String
-                                      },
-                                      on: { input: _vm.toString },
-                                      model: {
-                                        value: _vm.date,
-                                        callback: function($$v) {
-                                          _vm.date = $$v
-                                        },
-                                        expression: "date"
-                                      }
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass("date"),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
                                     },
-                                    [_c("label", [_vm._v("Seleccione Fecha")])]
-                                  )
-                                ],
-                                1
-                              )
-                            ]),
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.date,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "date", $$v)
+                                      },
+                                      expression: "form.date"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [_vm._v("Seleccione Fecha")]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.date.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha\n                      "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
                             _vm._v("    \n                "),
                             _c(
                               "div",
@@ -62221,6 +62265,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -62264,10 +62316,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         nameShip: "",
         cruise: "",
         nameFish: "",
-        nameCaptain: ""
+        nameCaptain: "",
         // equipment: "",
         // desemb: "",
         // photoRecord: "",
+        dateZarpe: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        dateDesemb: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat)
       },
 
       element: "",
@@ -62275,8 +62329,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       regFot: null,
       characterState: null,
       observation: "",
-      dateZarpe: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      dateDesemb: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
 
       arrayPresenVerifics: [],
       id_presenVerific: 0,
@@ -62321,6 +62373,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       },
       nameCaptain: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      dateZarpe: {
+        required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
+      },
+      dateDesemb: {
         required: __WEBPACK_IMPORTED_MODULE_7_vuelidate_lib_validators__["required"]
       }
       // equipment: {
@@ -62512,8 +62570,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.form.cruise = null;
       this.form.nameFish = null;
       this.form.nameCaptain = null;
-      this.dateZarpe = null;
-      this.dateDesemb = null;
+      this.form.dateZarpe = null;
+      this.form.dateDesemb = null;
       this.arrayFg = { id: 0, name: '' };
       this.arrayTarget = [];
       this.arrayTargetAct = [];
@@ -62582,8 +62640,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
       this.form.cruise = data["cruise"];
       this.form.nameFish = data["nameFish"];
       this.form.nameCaptain = data["nameCaptain"];
-      this.dateZarpe = data["dateZarpe"];
-      this.dateDesemb = data["dateDesemb"];
+      this.form.dateZarpe = data["dateZarpe"];
+      this.form.dateDesemb = data["dateDesemb"];
 
       this.arrayFg.id = data["id_flag"];
       this.arrayFg.name = data["nameFlag"];
@@ -62608,8 +62666,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         cruise: this.form.cruise,
         nameFish: this.form.nameFish.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
-        dateZarpe: this.dateZarpe,
-        dateDesemb: this.dateDesemb,
+        dateZarpe: this.form.dateZarpe,
+        dateDesemb: this.form.dateDesemb,
         'id_flag': this.arrayFg.id,
         'target': this.arrayTarget
       }).then(function (response) {
@@ -62628,8 +62686,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_material_dist_components__["MdDialog"]);
         cruise: this.form.cruise.toUpperCase(),
         nameFish: this.form.nameFish.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
-        dateZarpe: this.dateZarpe,
-        dateDesemb: this.dateDesemb,
+        dateZarpe: this.form.dateZarpe,
+        dateDesemb: this.form.dateDesemb,
 
         'id_flag': this.arrayFg.id,
         'target': this.arrayTargetAct
@@ -63053,59 +63111,89 @@ var render = function() {
                               1
                             ),
                             _vm._v("   \n                "),
-                            _c("div", { staticClass: "md-layout-item" }, [
-                              _c(
-                                "div",
-                                [
-                                  _c(
-                                    "md-datepicker",
-                                    {
-                                      attrs: {
-                                        "md-immediately": "",
-                                        "md-model-type": String
-                                      },
-                                      on: { input: _vm.toString },
-                                      model: {
-                                        value: _vm.dateZarpe,
-                                        callback: function($$v) {
-                                          _vm.dateZarpe = $$v
-                                        },
-                                        expression: "dateZarpe"
-                                      }
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass("dateZarpe"),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
                                     },
-                                    [_c("label", [_vm._v("Fecha Zarpe")])]
-                                  )
-                                ],
-                                1
-                              )
-                            ]),
-                            _vm._v("    \n                  "),
-                            _c("div", { staticClass: "md-layout-item" }, [
-                              _c(
-                                "div",
-                                [
-                                  _c(
-                                    "md-datepicker",
-                                    {
-                                      attrs: {
-                                        "md-immediately": "",
-                                        "md-model-type": String
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.dateZarpe,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "dateZarpe", $$v)
                                       },
-                                      on: { input: _vm.toString },
-                                      model: {
-                                        value: _vm.dateDesemb,
-                                        callback: function($$v) {
-                                          _vm.dateDesemb = $$v
-                                        },
-                                        expression: "dateDesemb"
-                                      }
+                                      expression: "form.dateZarpe"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [_vm._v("Fecha Zarpe")]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateZarpe.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha de zarpe\n                      "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("    \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass("dateDesemb"),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
                                     },
-                                    [_c("label", [_vm._v("Fecha Desembarque")])]
-                                  )
-                                ],
-                                1
-                              )
-                            ]),
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.dateDesemb,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "dateDesemb", $$v)
+                                      },
+                                      expression: "form.dateDesemb"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [_vm._v("Fecha Desembarque")]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateDesemb.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha de desembarque\n                      "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
                             _vm._v("    \n              ")
                           ]),
                           _vm._v(" "),
@@ -66238,92 +66326,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -66365,7 +66367,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
     return _ref = {
       form: {
         noActa: "",
-
         nameOfficial: "",
         noDocumentId1: "",
         nameRepresentative: "",
@@ -66387,7 +66388,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
         presentation1: "",
         amount1: "",
         weight1: "",
-        commercialValue1: ""
+        commercialValue1: "",
+        date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat)
       },
 
       nameScientific: "",
@@ -66406,8 +66408,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
       id_regional: 0,
       arrayTarget: [],
       arrayTargetAct: [],
-
-      date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
 
       img1: null,
 
@@ -66429,9 +66429,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
       noActa: {
         required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
       },
-      commercialValue: {
-        required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
-      },
+      // commercialValue: {
+      //   required
+      // },
       nameOfficial: {
         required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
       },
@@ -66474,7 +66474,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
       telephone: {
         required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
       },
-
       nameScientific1: {
         required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
       },
@@ -66494,6 +66493,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
         required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
       },
       commercialValue1: {
+        required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
+      },
+      date: {
         required: __WEBPACK_IMPORTED_MODULE_9_vuelidate_lib_validators__["required"]
       }
 
@@ -66741,8 +66743,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
       this.form.presentation = null;
       this.form.amount = null;
       this.form.weight = null;
-      this.form.commercialValue = null;
-      this.date = null;
+      // this.form.commercialValue = null;
+      this.form.date = null;
       this.form.nameOfficial = null;
       this.form.noDocumentId1 = null;
       this.form.nameRepresentative = null;
@@ -66768,7 +66770,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
       this.tipoAccion = 2, me.listado = 0;
       this.id_donationCertificate = data["id"];
       this.form.noActa = data["noActa"];
-      this.date = data["date"];
+      this.form.date = data["date"];
       this.form.nameOfficial = data["nameOfficial"];
       this.form.noDocumentId1 = data["noDocumentId1"];
       this.form.nameRepresentative = data["nameRepresentative"];
@@ -66826,26 +66828,25 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
       });
     },
     saveData: function saveData() {
-      console.log(" metodo guardar");
       var me = this;
 
       axios.post("/donationCertificates/save", {
 
-        noActa: this.form.noActa.toUpperCase(),
-        date: this.date,
-        nameOfficial: this.form.nameOfficial.toUpperCase(),
+        noActa: this.form.noActa,
+        date: this.form.date,
+        nameOfficial: this.form.nameOfficial,
         noDocumentId1: this.form.noDocumentId1,
-        nameRepresentative: this.form.nameRepresentative.toUpperCase(),
+        nameRepresentative: this.form.nameRepresentative,
         noDocumentId2: this.form.noDocumentId2,
-        noPlateCertificate: this.form.noPlateCertificate.toUpperCase(),
-        name: this.form.name.toUpperCase(),
-        legalStatus: this.form.legalStatus.toUpperCase(),
-        address: this.form.address.toUpperCase(),
-        representativeDonation: this.form.representativeDonation.toUpperCase(),
+        noPlateCertificate: this.form.noPlateCertificate,
+        name: this.form.name,
+        legalStatus: this.form.legalStatus,
+        address: this.form.address,
+        representativeDonation: this.form.representativeDonation,
         identification: this.form.identification,
-        municipality: this.form.municipality.toUpperCase(),
-        corregimiento: this.form.corregimiento.toUpperCase(),
-        place: this.form.place.toUpperCase(),
+        municipality: this.form.municipality,
+        corregimiento: this.form.corregimiento,
+        place: this.form.place,
         telephone: this.form.telephone,
 
         target: this.arrayTarget,
@@ -66864,8 +66865,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_material_dist_components__["MdDialog"]);
 
       axios.put("/donationCertificates/update", {
         id: this.id_donationCertificate,
-        noActa: this.form.noActa.toUpperCase(),
-        date: this.date,
+        noActa: this.form.noActa,
+        date: this.form.date,
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         noDocumentId1: this.form.noDocumentId1,
         nameRepresentative: this.form.nameRepresentative.toUpperCase(),
@@ -85033,36 +85034,43 @@ var render = function() {
                               { staticClass: "md-layout-item md-size-50" },
                               [
                                 _c(
-                                  "div",
-                                  [
-                                    _c(
-                                      "md-datepicker",
-                                      {
-                                        attrs: {
-                                          "md-immediately": "",
-                                          "md-model-type": String
-                                        },
-                                        on: { input: _vm.toString },
-                                        model: {
-                                          value: _vm.date,
-                                          callback: function($$v) {
-                                            _vm.date = $$v
-                                          },
-                                          expression: "date"
-                                        }
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass("date"),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
+                                    },
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.date,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "date", $$v)
                                       },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Seleccione Fecha")
-                                        ])
-                                      ]
-                                    )
-                                  ],
-                                  1
+                                      expression: "form.date"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [_vm._v("Seleccione Fecha")]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.date.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha\n                          "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
                                 )
-                              ]
+                              ],
+                              1
                             ),
-                            _vm._v("   \n                  ")
+                            _vm._v("    \n                  ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -87028,161 +87036,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -87240,8 +87093,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         neighborhood: "",
         telephone: "",
         mobile: "",
-        email: ""
-
+        email: "",
+        date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        dateExpedition: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        observation: "",
+        text4: ""
       },
       element: "",
       amount2: "",
@@ -87250,18 +87106,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       nameScientific: "",
       nameCommon: "",
 
-      text4: "",
-
       state: "",
       presentation: "",
       amount: "",
       average: "",
       weight: "",
       commercialValue: "",
-
-      date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      dateExpedition: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      observation: "",
 
       arrayReasons: [],
       arrayValue: [{ name: 'Sin Permiso', id: '1' }, { name: 'Sin patente', id: '2' }, { name: 'Sin salvoconducto', id: '3' }, { name: 'Documentos adulterados', id: '4' }, { name: 'Especie en época de veda', id: '5' }, { name: 'Especie no autorizada', id: '6' }, { name: 'Incumplimiento tallas mínimas', id: '7' }, { name: 'Artes de pesca no autorizados', id: '8' }, { name: 'Pesca en áreas no autorizadas', id: '9' }, { name: 'Pesca en áreas protegidas', id: '10' }, { name: 'Malas prácticas de pesca', id: '11' }],
@@ -87343,6 +87193,18 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
       email: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      date: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      dateExpedition: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      observation: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      text4: {
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       }
     }
@@ -87595,7 +87457,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.noActa = null;
       this.form.departament = null;
       this.form.municipality = null;
-      this.text4 = null;
+      this.form.text4 = null;
       this.form.officialName = null;
       this.form.documentIdOfficial = null;
       this.form.representativeName = null;
@@ -87611,9 +87473,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.telephone = null;
       this.form.mobile = null;
       this.form.email = null;
-      this.date = null;
-      this.dateExpedition = null;
-      this.observation = null;
+      this.form.date = null;
+      this.form.dateExpedition = null;
+      this.form.observation = null;
       this.arrayReasons = [];
       this.arrayTarget = [];
       this.arrayTarget2 = [];
@@ -87631,7 +87493,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.noActa = data["noActa"];
       this.form.departament = data["departament"];
       this.form.municipality = data["municipality"];
-      this.text4 = data["text4"];
+      this.form.text4 = data["text4"];
       this.form.officialName = data["officialName"];
       this.form.documentIdOfficial = data["documentIdOfficial"];
       this.form.representativeName = data["representativeName"];
@@ -87647,9 +87509,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.telephone = data["telephone"];
       this.form.mobile = data["mobile"];
       this.form.email = data["email"];
-      this.date = data["date"];
-      this.dateExpedition = data["dateExpedition"];
-      this.observation = data["observation"];
+      this.form.date = data["date"];
+      this.form.dateExpedition = data["dateExpedition"];
+      this.form.observation = data["observation"];
 
       this.arrayRegl.id = data["id_regional"];
       this.arrayRegl.name = data["nameRegional"];
@@ -87704,7 +87566,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         noActa: this.form.noActa.toUpperCase(),
         departament: this.form.departament.toUpperCase(),
         municipality: this.form.municipality.toUpperCase(),
-        text4: this.text4.toUpperCase(),
+        text4: this.form.text4.toUpperCase(),
         officialName: this.form.officialName.toUpperCase(),
         documentIdOfficial: this.form.documentIdOfficial.toUpperCase(),
         representativeName: this.form.representativeName.toUpperCase(),
@@ -87720,9 +87582,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         telephone: this.form.telephone,
         mobile: this.form.mobile,
         email: this.form.email,
-        date: this.date,
-        dateExpedition: this.dateExpedition,
-        observation: this.observation.toUpperCase(),
+        date: this.form.date,
+        dateExpedition: this.form.dateExpedition,
+        observation: this.form.observation.toUpperCase(),
         data: this.arrayReasons,
         target: this.arrayTarget,
         target2: this.arrayTarget2,
@@ -87745,7 +87607,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         noActa: this.form.noActa.toUpperCase(),
         departament: this.form.departament.toUpperCase(),
         municipality: this.form.municipality.toUpperCase(),
-        text4: this.text4.toUpperCase(),
+        text4: this.form.text4.toUpperCase(),
         officialName: this.form.officialName.toUpperCase(),
         documentIdOfficial: this.form.documentIdOfficial.toUpperCase(),
         representativeName: this.form.representativeName.toUpperCase(),
@@ -87761,9 +87623,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         telephone: this.form.telephone,
         mobile: this.form.mobile,
         email: this.form.email,
-        date: this.date,
-        dateExpedition: this.dateExpedition,
-        observation: this.observation.toUpperCase(),
+        date: this.form.date,
+        dateExpedition: this.form.dateExpedition,
+        observation: this.form.observation.toUpperCase(),
 
         'id_regional': this.arrayRegl.id,
 
@@ -89537,6 +89399,10 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
+                                  {
+                                    class: _vm.getValidationClass("text4"),
+                                    attrs: { "md-clearable": "" }
+                                  },
                                   [
                                     _c("label", [
                                       _vm._v(
@@ -89546,20 +89412,31 @@ var render = function() {
                                     _vm._v(" "),
                                     _c("md-textarea", {
                                       model: {
-                                        value: _vm.text4,
+                                        value: _vm.form.text4,
                                         callback: function($$v) {
-                                          _vm.text4 = $$v
+                                          _vm.$set(_vm.form, "text4", $$v)
                                         },
-                                        expression: "text4"
+                                        expression: "form.text4"
                                       }
-                                    })
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.text4.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar los recursos, productos y elementos que fueron decomisados\n                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
                                   ],
                                   1
                                 )
                               ],
                               1
-                            ),
-                            _vm._v("   \n                ")
+                            )
                           ]),
                           _vm._v(" "),
                           _c("div", [
@@ -89576,34 +89453,41 @@ var render = function() {
                               { staticClass: "md-layout-item md-size-40" },
                               [
                                 _c(
-                                  "div",
-                                  [
-                                    _c(
-                                      "md-datepicker",
-                                      {
-                                        attrs: {
-                                          "md-immediately": "",
-                                          "md-model-type": String
-                                        },
-                                        on: { input: _vm.toString },
-                                        model: {
-                                          value: _vm.date,
-                                          callback: function($$v) {
-                                            _vm.date = $$v
-                                          },
-                                          expression: "date"
-                                        }
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass("date"),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
+                                    },
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.date,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "date", $$v)
                                       },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Seleccione Fecha")
-                                        ])
-                                      ]
-                                    )
-                                  ],
-                                  1
+                                      expression: "form.date"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [_vm._v("Seleccione Fecha")]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.date.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha\n                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
                                 )
-                              ]
+                              ],
+                              1
                             ),
                             _vm._v("    \n                ")
                           ]),
@@ -90035,36 +89919,51 @@ var render = function() {
                               { staticClass: "md-layout-item md-size-30" },
                               [
                                 _c(
-                                  "div",
-                                  [
-                                    _c(
-                                      "md-datepicker",
-                                      {
-                                        attrs: {
-                                          "md-immediately": "",
-                                          "md-model-type": String
-                                        },
-                                        on: { input: _vm.toString },
-                                        model: {
-                                          value: _vm.dateExpedition,
-                                          callback: function($$v) {
-                                            _vm.dateExpedition = $$v
-                                          },
-                                          expression: "dateExpedition"
-                                        }
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "dateExpedition"
+                                    ),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
+                                    },
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.dateExpedition,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "dateExpedition",
+                                          $$v
+                                        )
                                       },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Fecha de expediciòn C.C.")
-                                        ])
-                                      ]
-                                    )
-                                  ],
-                                  1
+                                      expression: "form.dateExpedition"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [
+                                      _vm._v("Fecha de expediciòn C.C.")
+                                    ]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateExpedition.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha de expedición del documento\n                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
                                 )
-                              ]
+                              ],
+                              1
                             ),
-                            _vm._v("        \n                  "),
+                            _vm._v("    \n                  "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -90509,32 +90408,42 @@ var render = function() {
                             _vm._v("       \n                ")
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "md-layout" }, [
-                            _c(
-                              "div",
-                              { staticClass: "md-layout-item" },
-                              [
-                                _c(
-                                  "md-field",
-                                  [
-                                    _c("label", [_vm._v("Observaciones")]),
-                                    _vm._v(" "),
-                                    _c("md-textarea", {
-                                      model: {
-                                        value: _vm.observation,
-                                        callback: function($$v) {
-                                          _vm.observation = $$v
-                                        },
-                                        expression: "observation"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ])
+                          _c(
+                            "div",
+                            { staticClass: "md-layout" },
+                            [
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass("observation"),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c("label", [_vm._v("Observaciones")]),
+                                  _vm._v(" "),
+                                  _c("md-textarea", {
+                                    model: {
+                                      value: _vm.form.observation,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "observation", $$v)
+                                      },
+                                      expression: "form.observation"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.observation.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar las observaciones\n                          "
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
                         ])
                       ],
                       1
@@ -91434,6 +91343,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -91486,15 +91408,15 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         productLanded: "",
         nameOfficial: "",
         nameCaptain: "",
-        nameBusiness: ""
+        nameBusiness: "",
+        date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        dateTransfer: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        observation: ""
 
       },
 
-      date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      dateTransfer: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
       notification: "",
       areaOperation: "",
-      observation: "",
 
       arrayInspectionBoatCargo: [],
       id_inspectionBoatCargo: 0,
@@ -91571,6 +91493,15 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
       nameBusiness: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      date: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      dateTransfer: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      observation: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       }
 
@@ -91756,7 +91687,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
     clearForm: function clearForm() {
       this.$v.$reset();
       this.form.place = null;
-      this.date = null;
+      this.form.date = null;
       this.form.noForm = null;
       this.form.businessColombia = null;
       this.form.fullCargo = null;
@@ -91766,7 +91697,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.form.nameBoat = null;
       this.form.noIdOmi = null;
       this.form.placeTransfer = null;
-      this.dateTransfer = null;
+      this.form.dateTransfer = null;
       this.form.areasCapture = null;
       this.form.species = null;
       this.form.shapeProduct = null;
@@ -91775,7 +91706,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.form.nameOfficial = null;
       this.form.nameCaptain = null;
       this.form.nameBusiness = null;
-      this.observation = null;
+      this.form.observation = null;
 
       this.arrayPt = { id: 0, namePort: '', name: '' };
       this.arrayPtZarpe = { id: 0, namePort: '', name: '' };
@@ -91790,7 +91721,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.tipoAccion = 2, me.listado = 0;
       this.id_inspectionBoatCargo = data["id"];
       this.form.place = data["place"];
-      this.date = data["date"];
+      this.form.date = data["date"];
       this.form.noForm = data["noForm"];
       this.form.businessColombia = data["businessColombia"];
       this.form.fullCargo = data["fullCargo"];
@@ -91800,7 +91731,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.form.nameBoat = data["nameBoat"];
       this.form.noIdOmi = data["noIdOmi"];
       this.form.placeTransfer = data["placeTransfer"];
-      this.dateTransfer = data["dateTransfer"];
+      this.form.dateTransfer = data["dateTransfer"];
       this.form.areasCapture = data["areasCapture"];
       this.form.species = data["species"];
       this.form.shapeProduct = data["shapeProduct"];
@@ -91809,7 +91740,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.form.nameOfficial = data["nameOfficial"];
       this.form.nameCaptain = data["nameCaptain"];
       this.form.nameBusiness = data["nameBusiness"];
-      this.observation = data["observation"];
+      this.form.observation = data["observation"];
 
       this.arrayPt.id = data["id_port"];
       this.arrayPt.name = data["namePort"];
@@ -91881,7 +91812,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       axios.post("/inspectionBoatCargo/save", {
 
         place: this.form.place.toUpperCase(),
-        date: this.date,
+        date: this.form.date,
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
         fullCargo: this.form.fullCargo,
@@ -91891,7 +91822,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         nameBoat: this.form.nameBoat.toUpperCase(),
         noIdOmi: this.form.noIdOmi.toUpperCase(),
         placeTransfer: this.form.placeTransfer.toUpperCase(),
-        dateTransfer: this.dateTransfer.toUpperCase(),
+        dateTransfer: this.form.dateTransfer.toUpperCase(),
         areasCapture: this.form.areasCapture.toUpperCase(),
         species: this.form.species.toUpperCase(),
         shapeProduct: this.form.shapeProduct,
@@ -91900,7 +91831,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
         nameBusiness: this.form.nameBusiness.toUpperCase(),
-        observation: this.observation.toUpperCase(),
+        observation: this.form.observation.toUpperCase(),
 
         'id_port': this.arrayPt.id,
         'id_portZarpe': this.arrayPtZarpe.id,
@@ -91921,7 +91852,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       axios.put("/inspectionBoatCargo/update", {
         id: this.id_inspectionBoatCargo,
         place: this.form.place.toUpperCase(),
-        date: this.date,
+        date: this.form.date,
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
         fullCargo: this.form.fullCargo,
@@ -91931,7 +91862,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         nameBoat: this.form.nameBoat.toUpperCase(),
         noIdOmi: this.form.noIdOmi.toUpperCase(),
         placeTransfer: this.form.placeTransfer.toUpperCase(),
-        dateTransfer: this.dateTransfer.toUpperCase(),
+        dateTransfer: this.form.dateTransfer.toUpperCase(),
         areasCapture: this.form.areasCapture.toUpperCase(),
         species: this.form.species.toUpperCase(),
         shapeProduct: this.form.shapeProduct,
@@ -91940,7 +91871,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
         nameBusiness: this.form.nameBusiness.toUpperCase(),
-        observation: this.observation.toUpperCase(),
+        observation: this.form.observation.toUpperCase(),
 
         'id_port': this.arrayPt.id,
         'id_portZarpe': this.arrayPtZarpe.id,
@@ -92214,36 +92145,43 @@ var render = function() {
                               { staticClass: "md-layout-item md-size-16" },
                               [
                                 _c(
-                                  "div",
-                                  [
-                                    _c(
-                                      "md-datepicker",
-                                      {
-                                        attrs: {
-                                          "md-immediately": "",
-                                          "md-model-type": String
-                                        },
-                                        on: { input: _vm.toString },
-                                        model: {
-                                          value: _vm.date,
-                                          callback: function($$v) {
-                                            _vm.date = $$v
-                                          },
-                                          expression: "date"
-                                        }
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass("date"),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
+                                    },
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.date,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "date", $$v)
                                       },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Seleccione Fecha")
-                                        ])
-                                      ]
-                                    )
-                                  ],
-                                  1
+                                      expression: "form.date"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [_vm._v("Seleccione Fecha")]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.date.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha\n                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
                                 )
-                              ]
+                              ],
+                              1
                             ),
-                            _vm._v("   \n                "),
+                            _vm._v("    \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -92831,36 +92769,51 @@ var render = function() {
                               1
                             ),
                             _vm._v("   \n                "),
-                            _c("div", { staticClass: "md-layout-item" }, [
-                              _c(
-                                "div",
-                                [
-                                  _c(
-                                    "md-datepicker",
-                                    {
-                                      attrs: {
-                                        "md-immediately": "",
-                                        "md-model-type": String
-                                      },
-                                      on: { input: _vm.toString },
-                                      model: {
-                                        value: _vm.dateTransfer,
-                                        callback: function($$v) {
-                                          _vm.dateTransfer = $$v
-                                        },
-                                        expression: "dateTransfer"
-                                      }
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "dateTransfer"
+                                    ),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
                                     },
-                                    [
-                                      _c("label", [
-                                        _vm._v("Fecha de Transbordo")
-                                      ])
-                                    ]
-                                  )
-                                ],
-                                1
-                              )
-                            ]),
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.dateTransfer,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "dateTransfer", $$v)
+                                      },
+                                      expression: "form.dateTransfer"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [
+                                      _vm._v("Fecha de Transbordo")
+                                    ]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateTransfer.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha de transbordo\n                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
                             _vm._v("    \n                "),
                             _c(
                               "div",
@@ -93324,18 +93277,36 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "observation"
+                                    ),
+                                    attrs: { "md-clearable": "" }
+                                  },
                                   [
                                     _c("label", [_vm._v("Observaciones")]),
                                     _vm._v(" "),
                                     _c("md-textarea", {
                                       model: {
-                                        value: _vm.observation,
+                                        value: _vm.form.observation,
                                         callback: function($$v) {
-                                          _vm.observation = $$v
+                                          _vm.$set(_vm.form, "observation", $$v)
                                         },
-                                        expression: "observation"
+                                        expression: "form.observation"
                                       }
-                                    })
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.observation.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar las observaciones\n                          "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
                                   ],
                                   1
                                 )
@@ -94338,6 +94309,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -94379,14 +94367,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
         nameOfficial: "",
         yellowFin: "",
         barrilete: "",
-        patudo: ""
+        patudo: "",
+        observation: "",
+        date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        dateBeginningFaena: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        dateEndFaena: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat)
 
       },
 
-      date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      dateBeginningFaena: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      dateEndFaena: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-      observation: "",
       other: "",
       poundRating1: "",
       poundRating2: "",
@@ -94436,6 +94424,18 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       },
       patudo: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      observation: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      dateEndFaena: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      dateBeginningFaena: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      date: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       }
 
     }
@@ -94477,11 +94477,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
     clearForm: function clearForm() {
       this.$v.$reset();
       this.form.nameBoat = null;
-      this.date = null;
-      this.dateBeginningFaena = null;
-      this.dateEndFaena = null;
+      this.form.date = null;
+      this.form.dateBeginningFaena = null;
+      this.form.dateEndFaena = null;
       this.form.ZoneFisher = null;
-      this.observation = null;
+      this.form.observation = null;
       this.form.nameOfficial = null;
       this.form.yellowFin = null;
       this.poundRating1 = null;
@@ -94503,11 +94503,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       this.tipoAccion = 2, me.listado = 0;
       this.id_disembTuna = data["id"];
       this.form.nameBoat = data["nameBoat"];
-      this.date = data["date"];
-      this.dateBeginningFaena = data["dateBeginningFaena"];
-      this.dateEndFaena = data["dateEndFaena"];
+      this.form.date = data["date"];
+      this.form.dateBeginningFaena = data["dateBeginningFaena"];
+      this.form.dateEndFaena = data["dateEndFaena"];
       this.form.ZoneFisher = data["ZoneFisher"];
-      this.observation = data["observation"];
+      this.form.observation = data["observation"];
       this.form.nameOfficial = data["nameOfficial"];
       this.form.yellowFin = data["yellowFin"];
       this.poundRating1 = data["poundRating1"];
@@ -94599,11 +94599,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       axios.post("/certificationDisembTuna/save", {
 
         nameBoat: this.form.nameBoat.toUpperCase(),
-        date: this.date,
-        dateBeginningFaena: this.dateBeginningFaena,
-        dateEndFaena: this.dateEndFaena,
+        date: this.form.date,
+        dateBeginningFaena: this.form.dateBeginningFaena,
+        dateEndFaena: this.form.dateEndFaena,
         ZoneFisher: this.form.ZoneFisher.toUpperCase(),
-        observation: this.observation.toUpperCase(),
+        observation: this.form.observation.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         yellowFin: this.form.yellowFin.toUpperCase(),
         poundRating1: this.poundRating1.toUpperCase(),
@@ -94631,11 +94631,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDialog"]);
       axios.put("/certificationDisembTuna/update", {
         id: this.id_disembTuna,
         nameBoat: this.form.nameBoat.toUpperCase(),
-        date: this.date,
-        dateBeginningFaena: this.dateBeginningFaena,
-        dateEndFaena: this.dateEndFaena,
+        date: this.form.date,
+        dateBeginningFaena: this.form.dateBeginningFaena,
+        dateEndFaena: this.form.dateEndFaena,
         ZoneFisher: this.form.ZoneFisher.toUpperCase(),
-        observation: this.observation.toUpperCase(),
+        observation: this.form.observation.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         yellowFin: this.form.yellowFin.toUpperCase(),
         poundRating1: this.poundRating1.toUpperCase(),
@@ -94814,34 +94814,41 @@ var render = function() {
                               { staticClass: "md-layout-item md-size-16" },
                               [
                                 _c(
-                                  "div",
-                                  [
-                                    _c(
-                                      "md-datepicker",
-                                      {
-                                        attrs: {
-                                          "md-immediately": "",
-                                          "md-model-type": String
-                                        },
-                                        on: { input: _vm.toString },
-                                        model: {
-                                          value: _vm.date,
-                                          callback: function($$v) {
-                                            _vm.date = $$v
-                                          },
-                                          expression: "date"
-                                        }
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass("date"),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
+                                    },
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.date,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "date", $$v)
                                       },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Seleccione Fecha")
-                                        ])
-                                      ]
-                                    )
-                                  ],
-                                  1
+                                      expression: "form.date"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [_vm._v("Seleccione Fecha")]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.date.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha\n                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
                                 )
-                              ]
+                              ],
+                              1
                             ),
                             _vm._v("    \n                "),
                             _c("div", { staticClass: "md-layout" }, [
@@ -94970,34 +94977,49 @@ var render = function() {
                               { staticClass: "md-layout-item md-size-16" },
                               [
                                 _c(
-                                  "div",
-                                  [
-                                    _c(
-                                      "md-datepicker",
-                                      {
-                                        attrs: {
-                                          "md-immediately": "",
-                                          "md-model-type": String
-                                        },
-                                        on: { input: _vm.toString },
-                                        model: {
-                                          value: _vm.dateBeginningFaena,
-                                          callback: function($$v) {
-                                            _vm.dateBeginningFaena = $$v
-                                          },
-                                          expression: "dateBeginningFaena"
-                                        }
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "dateBeginningFaena"
+                                    ),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
+                                    },
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.dateBeginningFaena,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.form,
+                                          "dateBeginningFaena",
+                                          $$v
+                                        )
                                       },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Fecha Inicio de Faena")
-                                        ])
-                                      ]
-                                    )
-                                  ],
-                                  1
+                                      expression: "form.dateBeginningFaena"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [
+                                      _vm._v("Fecha Inicio de Faena")
+                                    ]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateBeginningFaena.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha inicio de faena\n                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
                                 )
-                              ]
+                              ],
+                              1
                             ),
                             _vm._v("    \n                "),
                             _c(
@@ -95005,36 +95027,45 @@ var render = function() {
                               { staticClass: "md-layout-item md-size-16" },
                               [
                                 _c(
-                                  "div",
-                                  [
-                                    _c(
-                                      "md-datepicker",
-                                      {
-                                        attrs: {
-                                          "md-immediately": "",
-                                          "md-model-type": String
-                                        },
-                                        on: { input: _vm.toString },
-                                        model: {
-                                          value: _vm.dateEndFaena,
-                                          callback: function($$v) {
-                                            _vm.dateEndFaena = $$v
-                                          },
-                                          expression: "dateEndFaena"
-                                        }
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "dateEndFaena"
+                                    ),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
+                                    },
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.dateEndFaena,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "dateEndFaena", $$v)
                                       },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Fecha Fin de Faena")
-                                        ])
-                                      ]
-                                    )
-                                  ],
-                                  1
+                                      expression: "form.dateEndFaena"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [_vm._v("Fecha Fin de Faena")]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateEndFaena.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha fin de faena\n                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
                                 )
-                              ]
+                              ],
+                              1
                             ),
-                            _vm._v("                  \n              ")
+                            _vm._v("    \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -95601,25 +95632,42 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "observation"
+                                    ),
+                                    attrs: { "md-clearable": "" }
+                                  },
                                   [
                                     _c("label", [_vm._v("Observaciones")]),
                                     _vm._v(" "),
                                     _c("md-textarea", {
                                       model: {
-                                        value: _vm.observation,
+                                        value: _vm.form.observation,
                                         callback: function($$v) {
-                                          _vm.observation = $$v
+                                          _vm.$set(_vm.form, "observation", $$v)
                                         },
-                                        expression: "observation"
+                                        expression: "form.observation"
                                       }
-                                    })
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.observation.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar las observaciones\n                          "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
                                   ],
                                   1
                                 )
                               ],
                               1
-                            ),
-                            _vm._v("     \n              ")
+                            )
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [

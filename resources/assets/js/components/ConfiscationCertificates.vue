@@ -490,177 +490,6 @@
                     </table>
                   </div>  
                 </div>  
-                  <!-- <md-field md-clearable :class="getValidationClass('nameScientific')">
-                    <label for="first-name">Nombre Científico</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameScientific"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameScientific.required"
-                    >Olvidaste ingresar el nombre científico</span>
-                  </md-field> -->
-                   <!-- <md-field md-clearable :class="getValidationClass('nameCommon')">
-                    <label for="first-name">Nombre Común</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.nameCommon"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.nameCommon.required"
-                    >Olvidaste ingresar el nombre nombre común</span>
-                  </md-field> -->
-                 <!-- <div class="md-layout-item">
-                    <md-field>
-                      <label class="text-muted">Estado</label>
-                      <md-select v-model="state" name="state" id="state" placeholder="Estado">
-                        <md-option value="fresco entero">Fresco entero</md-option>
-                        <md-option value="fresco eviscerado ">Fresco eviscerado </md-option>
-                        <md-option value="congelado entero">Congelado entero </md-option>
-                        <md-option value="congelado eviscerado">Congelado eviscerado</md-option>
-                        <md-option value="descabezado">Descabezado</md-option>
-                        <md-option value="tronco">Tronco</md-option>
-                        <md-option value="aletas">Aletas</md-option>
-                        <md-option value="seco">Seco</md-option>
-                        <md-option value="vivos">Vivos</md-option>
-                        <md-option value="otros">Otros</md-option>
-                      </md-select>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;   -->
-                  <!-- <div class="md-layout-item">
-                    <md-field>
-                      <label class="text-muted">Presentación</label>
-                      <md-select v-model="presentation" name="presentation" id="presentation" placeholder="presentación">
-                        <md-option value="unidades">Unidades</md-option>
-                        <md-option value="zartas ">Zartas </md-option>
-                        <md-option value="bolsas o bultos">Bolsas o Bultos </md-option>
-                        <md-option value="canastas">Canastas</md-option>
-                        <md-option value="grupos">Grupos</md-option>
-                        <md-option value="otros">Otros</md-option>
-                      </md-select>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;   -->
-                  <!-- <md-field md-clearable :class="getValidationClass('amount')">
-                    <label for="first-name">Cantidad (Un)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.amount"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.amount.required"
-                    >Olvidaste ingresar la cantidad</span>
-                  </md-field> -->
-                  <!-- <md-field md-clearable :class="getValidationClass('average')">
-                    <label for="first-name">Promedio Talla (Cm)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.average"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.average.required"
-                    >Olvidaste ingresar el promedio talla</span>
-                  </md-field> -->
-                  <!-- <md-field md-clearable :class="getValidationClass('weight')">
-                    <label for="first-name">Peso (Kg)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.weight"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.weight.required"
-                    >Olvidaste ingresar el peso</span>
-                  </md-field>  -->
-                  <!-- <md-field md-clearable :class="getValidationClass('commercialValue')">
-                    <label for="first-name">Valor Comercial</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.commercialValue"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.commercialValue.required"
-                    >Olvidaste ingresar el valor comercial</span>
-                  </md-field> -->
-                  <!-- <md-field md-clearable :class="getValidationClass('element')">
-                    <label for="first-name">Elemento</label>
-                    <md-input
-                       name="first-name"
-                       id="first-name"
-                       autocomplete="given-name"
-                       v-model="form.element"
-                       :disabled="sending"
-                     />
-                     <span
-                       class="md-error"
-                       v-if="!$v.form.element.required"
-                     >Olvidaste ingresar el nombre del elemento</span>
-                  </md-field> -->
-                  <!-- <md-field md-clearable :class="getValidationClass('amount2')">
-                    <label for="first-name">Cantidad (Un)</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.amount2"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.amount2.required"
-                    >Olvidaste ingresar la cantidad</span>
-                  </md-field> -->
-                  <!-- <md-field md-clearable :class="getValidationClass('featuresState')">
-                    <label for="first-name">Características y Estado</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.featuresState"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.featuresState.required"
-                    >Olvidaste ingresar las características y estado</span>
-                  </md-field> -->
-                  <!-- <md-field md-clearable :class="getValidationClass('commercialValue2')">
-                    <label for="first-name">Valor Comercial</label>
-                    <md-input
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      v-model="form.commercialValue2"
-                      :disabled="sending"
-                    />
-                    <span
-                      class="md-error"
-                      v-if="!$v.form.commercialValue2.required"
-                    >Olvidaste ingresar el valor comercial</span>
-                  </md-field> -->
-
                   <!-- <label align-center>MOTIVOS DEL DECOMISO PREVENTIVO</label>  -->
                   <div>
                       <strong>MOTIVOS DEL DECOMISO PREVENTIVO</strong>    
@@ -685,11 +514,16 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout">
                     <div class="md-layout-item">
-                      <md-field>
-                            <label>Los recursos, productos pesqueros y/o elementos fueron decomisados cuando se encontraban en (describa la situación):</label>
-                            <md-textarea v-model="text4"></md-textarea>
+                      <md-field md-clearable :class="getValidationClass('text4')">
+                          <label>Los recursos, productos pesqueros y/o elementos fueron decomisados cuando se encontraban en (describa la situación):</label>
+                          <md-textarea v-model="form.text4"></md-textarea>
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.text4.required"
+                          >Olvidaste ingresar los recursos, productos y elementos que fueron decomisados
+                          </span>
                       </md-field>
-                    </div>&nbsp;&nbsp;&nbsp;
+                    </div>
                   </div> 
 
                   <div>
@@ -698,17 +532,21 @@
                   <!-- <label>Para constancia se firma la presente acta por cada uno de los que intervienen en el decomiso preventivo.</label> -->
 
                   <div class="md-layout">
-                    <div class="md-layout-item md-size-40">
-                      <div>
-                          <md-datepicker 
-                          v-model="date"
+                    <div class="md-layout-item md-size-40">                 
+                        <md-datepicker 
+                          md-clearable :class="getValidationClass('date')"
+                          v-model="form.date"
                           @input="toString"
                           md-immediately
                           :md-model-type="String"
                           >
                           <label>Seleccione Fecha</label>
-                          </md-datepicker>
-                      </div>
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.date.required"
+                            >Olvidaste ingresar la fecha
+                          </span>
+                        </md-datepicker>                   
                     </div> &nbsp;&nbsp;&nbsp;
                   </div>
                   <div class="md-layout">
@@ -841,18 +679,22 @@
                     </div>&nbsp;&nbsp;&nbsp;    
                   </div>   
                   <div class="md-layout">
-                    <div class="md-layout-item md-size-30"> 
-                      <div>
-                          <md-datepicker 
-                          v-model="dateExpedition"
+                    <div class="md-layout-item md-size-30">                 
+                        <md-datepicker 
+                          md-clearable :class="getValidationClass('dateExpedition')"
+                          v-model="form.dateExpedition"
                           @input="toString"
                           md-immediately
                           :md-model-type="String"
                           >
                           <label>Fecha de expediciòn C.C.</label>
-                          </md-datepicker>
-                      </div>
-                    </div>&nbsp;&nbsp;&nbsp;     
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.dateExpedition.required"
+                            >Olvidaste ingresar la fecha de expedición del documento
+                          </span>
+                        </md-datepicker>                   
+                    </div> &nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item"> 
                       <md-field md-clearable :class="getValidationClass('expeditionPlace')">
                         <label for="first-name">Lugar de Expedidión C.C.</label>
@@ -989,12 +831,15 @@
                     </div>&nbsp;&nbsp;&nbsp;    
                   </div> 
                   <div class="md-layout">
-                    <div class="md-layout-item">
-                      <md-field>
+                    <md-field md-clearable :class="getValidationClass('observation')">
                             <label>Observaciones</label>
-                            <md-textarea v-model="observation"></md-textarea>
-                      </md-field>   
-                    </div>    
+                            <md-textarea v-model="form.observation"></md-textarea>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.observation.required"
+                            >Olvidaste ingresar las observaciones
+                            </span>
+                    </md-field>
                   </div>      
               </md-card-content>
             </form>
@@ -1092,8 +937,11 @@ export default {
         neighborhood: "",
         telephone: "",
         mobile: "",
-        email: "",
-          
+        email: "",  
+        date: format(now, dateFormat),
+        dateExpedition: format(now, dateFormat),
+        observation: "",
+        text4: "",
       },
       element: "",
       amount2: "",
@@ -1102,7 +950,6 @@ export default {
       nameScientific: "",
       nameCommon: "",
 
-      text4: "",
 
       state: "",
       presentation: "",
@@ -1111,9 +958,6 @@ export default {
       weight: "",
       commercialValue: "",
 
-      date: format(now, dateFormat),
-      dateExpedition: format(now, dateFormat),
-      observation: "",
 
       arrayReasons:[],
       arrayValue:[
@@ -1214,6 +1058,18 @@ export default {
         required
       },
       email:  {
+        required
+      },  
+      date:  {
+        required
+      },  
+      dateExpedition:  {
+        required
+      },  
+      observation:  {
+        required
+      },  
+      text4:  {
         required
       },  
     }
@@ -1450,7 +1306,7 @@ export default {
       this.form.noActa = null;
       this.form.departament = null;
       this.form.municipality = null;
-      this.text4 = null;
+      this.form.text4 = null;
       this.form.officialName = null;
       this.form.documentIdOfficial = null;
       this.form.representativeName = null;
@@ -1466,9 +1322,9 @@ export default {
       this.form.telephone = null;
       this.form.mobile = null;
       this.form.email = null;
-      this.date = null;
-      this.dateExpedition = null;
-      this.observation = null;
+      this.form.date = null;
+      this.form.dateExpedition = null;
+      this.form.observation = null;
       this.arrayReasons = [];
       this.arrayTarget = [];
       this.arrayTarget2 = [];
@@ -1485,7 +1341,7 @@ export default {
       this.form.noActa = data["noActa"];
       this.form.departament = data["departament"];
       this.form.municipality = data["municipality"];
-      this.text4 = data["text4"];
+      this.form.text4 = data["text4"];
       this.form.officialName = data["officialName"];
       this.form.documentIdOfficial = data["documentIdOfficial"];
       this.form.representativeName = data["representativeName"];
@@ -1501,9 +1357,9 @@ export default {
       this.form.telephone = data["telephone"];
       this.form.mobile = data["mobile"];
       this.form.email = data["email"];
-      this.date = data["date"];
-      this.dateExpedition = data["dateExpedition"];
-      this.observation = data["observation"];
+      this.form.date = data["date"];
+      this.form.dateExpedition = data["dateExpedition"];
+      this.form.observation = data["observation"];
       
       this.arrayRegl.id = data["id_regional"];
 			this.arrayRegl.name = data["nameRegional"];
@@ -1562,7 +1418,7 @@ export default {
       noActa : this.form.noActa.toUpperCase(),
       departament : this.form.departament.toUpperCase(),
       municipality : this.form.municipality.toUpperCase(),
-      text4 : this.text4.toUpperCase(),
+      text4 : this.form.text4.toUpperCase(),
       officialName : this.form.officialName.toUpperCase(),
       documentIdOfficial : this.form.documentIdOfficial.toUpperCase(),
       representativeName : this.form.representativeName.toUpperCase(),
@@ -1578,9 +1434,9 @@ export default {
       telephone : this.form.telephone,
       mobile : this.form.mobile,
       email : this.form.email,
-      date : this.date,
-      dateExpedition : this.dateExpedition,
-      observation : this.observation.toUpperCase(),
+      date : this.form.date,
+      dateExpedition : this.form.dateExpedition,
+      observation : this.form.observation.toUpperCase(),
       data:this.arrayReasons,
       target:this.arrayTarget,
       target2:this.arrayTarget2,
@@ -1606,7 +1462,7 @@ export default {
       noActa : this.form.noActa.toUpperCase(),
       departament : this.form.departament.toUpperCase(),
       municipality : this.form.municipality.toUpperCase(),
-      text4 : this.text4.toUpperCase(),
+      text4 : this.form.text4.toUpperCase(),
       officialName : this.form.officialName.toUpperCase(),
       documentIdOfficial : this.form.documentIdOfficial.toUpperCase(),
       representativeName : this.form.representativeName.toUpperCase(),
@@ -1622,9 +1478,9 @@ export default {
       telephone : this.form.telephone,
       mobile : this.form.mobile,
       email : this.form.email,
-      date : this.date,
-      dateExpedition : this.dateExpedition,
-      observation : this.observation.toUpperCase(),
+      date : this.form.date,
+      dateExpedition : this.form.dateExpedition,
+      observation : this.form.observation.toUpperCase(),
 
       'id_regional': this.arrayRegl.id,
 

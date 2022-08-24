@@ -94,18 +94,22 @@
                       <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-16">
-                    <div>
-                      <md-datepicker 
-                        v-model="date"
-                        @input="toString"
-                        md-immediately
-                        :md-model-type="String"
-                      >
-                        <label>Seleccione Fecha</label>
-                      </md-datepicker>
-                    </div>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item md-size-16">                 
+                        <md-datepicker 
+                          md-clearable :class="getValidationClass('date')"
+                          v-model="form.date"
+                          @input="toString"
+                          md-immediately
+                          :md-model-type="String"
+                          >
+                          <label>Seleccione Fecha</label>
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.date.required"
+                            >Olvidaste ingresar la fecha
+                          </span>
+                        </md-datepicker>                   
+                  </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('businessColombia')">
                       <label for="first-name">Empresa Colombia</label>
@@ -288,17 +292,21 @@
                       <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                      <div>
+                  <div class="md-layout-item">                 
                         <md-datepicker 
-                          v-model="dateTransfer"
+                          md-clearable :class="getValidationClass('dateTransfer')"
+                          v-model="form.dateTransfer"
                           @input="toString"
                           md-immediately
                           :md-model-type="String"
-                        >
+                          >
                           <label>Fecha de Transbordo</label>
-                        </md-datepicker>
-                      </div>
+                          <span
+                            class="md-error"
+                            v-if="!$v.form.dateTransfer.required"
+                            >Olvidaste ingresar la fecha de transbordo
+                          </span>
+                        </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('areasCapture')">
@@ -448,13 +456,18 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
-                <div class="md-layout">  
-                  <div class="md-layout-item">       
-                    <md-field>
-                          <label>Observaciones</label>
-                          <md-textarea v-model="observation"></md-textarea>
-                    </md-field> 
-                  </div>
+                <div class="md-layout"> 
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('observation')">
+                            <label>Observaciones</label>
+                            <md-textarea v-model="form.observation"></md-textarea>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.observation.required"
+                            >Olvidaste ingresar las observaciones
+                            </span>
+                    </md-field>
+                  </div> 
                 </div>
                 <p>
                   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -675,14 +688,14 @@ export default {
         nameOfficial: "",
         nameCaptain: "",
         nameBusiness: "",
+        date: format(now, dateFormat),
+        dateTransfer: format(now, dateFormat),
+        observation: "",
       
       },
       
-      date: format(now, dateFormat),
-      dateTransfer: format(now, dateFormat),
       notification: "",
       areaOperation: "",
-      observation: "",
 
       arrayInspectionBoatCargo: [],
       id_inspectionBoatCargo: 0,
@@ -773,6 +786,15 @@ export default {
         required
       },
       nameBusiness: {
+        required
+      },
+      date: {
+        required
+      },
+      dateTransfer: {
+        required
+      },
+      observation: {
         required
       },
       
@@ -942,7 +964,7 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.place = null;
-      this.date = null;
+      this.form.date = null;
       this.form.noForm = null;
       this.form.businessColombia = null;
       this.form.fullCargo = null;
@@ -952,7 +974,7 @@ export default {
       this.form.nameBoat = null;
       this.form.noIdOmi = null;
       this.form.placeTransfer = null;
-      this.dateTransfer = null;
+      this.form.dateTransfer = null;
       this.form.areasCapture = null;
       this.form.species = null;
       this.form.shapeProduct = null;
@@ -961,7 +983,7 @@ export default {
       this.form.nameOfficial = null;
       this.form.nameCaptain = null;
       this.form.nameBusiness = null;
-      this.observation = null;
+      this.form.observation = null;
       
       this.arrayPt = {id:0, namePort:'',name:''};
       this.arrayPtZarpe = {id:0, namePort:'',name:''};
@@ -975,7 +997,7 @@ export default {
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_inspectionBoatCargo = data["id"]);
       this.form.place = data["place"];
-      this.date = data["date"];
+      this.form.date = data["date"];
       this.form.noForm = data["noForm"];
       this.form.businessColombia = data["businessColombia"];
       this.form.fullCargo = data["fullCargo"];
@@ -985,7 +1007,7 @@ export default {
       this.form.nameBoat = data["nameBoat"];
       this.form.noIdOmi = data["noIdOmi"];
       this.form.placeTransfer = data["placeTransfer"];
-      this.dateTransfer = data["dateTransfer"];
+      this.form.dateTransfer = data["dateTransfer"];
       this.form.areasCapture = data["areasCapture"];
       this.form.species = data["species"];
       this.form.shapeProduct = data["shapeProduct"];
@@ -994,7 +1016,7 @@ export default {
       this.form.nameOfficial = data["nameOfficial"];
       this.form.nameCaptain = data["nameCaptain"];
       this.form.nameBusiness = data["nameBusiness"];
-      this.observation = data["observation"];
+      this.form.observation = data["observation"];
 
       this.arrayPt.id = data["id_port"];
       this.arrayPt.name = data["namePort"];
@@ -1067,7 +1089,7 @@ export default {
         .post("/inspectionBoatCargo/save", {
     
         place: this.form.place.toUpperCase(),
-        date: this.date,
+        date: this.form.date,
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
         fullCargo: this.form.fullCargo,
@@ -1077,7 +1099,7 @@ export default {
         nameBoat: this.form.nameBoat.toUpperCase(),
         noIdOmi: this.form.noIdOmi.toUpperCase(),
         placeTransfer: this.form.placeTransfer.toUpperCase(),
-        dateTransfer: this.dateTransfer.toUpperCase(),
+        dateTransfer: this.form.dateTransfer.toUpperCase(),
         areasCapture: this.form.areasCapture.toUpperCase(),
         species: this.form.species.toUpperCase(),
         shapeProduct: this.form.shapeProduct,
@@ -1086,7 +1108,7 @@ export default {
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
         nameBusiness: this.form.nameBusiness.toUpperCase(),
-        observation: this.observation.toUpperCase(),
+        observation: this.form.observation.toUpperCase(),
        
         'id_port': this.arrayPt.id,
         'id_portZarpe': this.arrayPtZarpe.id,
@@ -1110,7 +1132,7 @@ export default {
         .put("/inspectionBoatCargo/update", {
         id: this.id_inspectionBoatCargo,
         place: this.form.place.toUpperCase(),
-        date: this.date,
+        date: this.form.date,
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
         fullCargo: this.form.fullCargo,
@@ -1120,7 +1142,7 @@ export default {
         nameBoat: this.form.nameBoat.toUpperCase(),
         noIdOmi: this.form.noIdOmi.toUpperCase(),
         placeTransfer: this.form.placeTransfer.toUpperCase(),
-        dateTransfer: this.dateTransfer.toUpperCase(),
+        dateTransfer: this.form.dateTransfer.toUpperCase(),
         areasCapture: this.form.areasCapture.toUpperCase(),
         species: this.form.species.toUpperCase(),
         shapeProduct: this.form.shapeProduct,
@@ -1129,7 +1151,7 @@ export default {
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
         nameBusiness: this.form.nameBusiness.toUpperCase(),
-        observation: this.observation.toUpperCase(),
+        observation: this.form.observation.toUpperCase(),
        
         'id_port': this.arrayPt.id,
         'id_portZarpe': this.arrayPtZarpe.id,
