@@ -1009,24 +1009,29 @@
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('inspectorConclusions')">
-                            <label>Conclusiones Del Inspector</label>
-                            <md-textarea v-model="form.inspectorConclusions"></md-textarea>
+                    <md-field md-clearable :class="getValidationClass('additionalComments')">
+                            <label>Comentarios Adicionales (espacio disponible para el capitan)</label>
+                            <md-textarea v-model="form.additionalComments"></md-textarea>
                             <span
                               class="md-error"
-                              v-if="!$v.form.inspectorConclusions.required"
-                            >Olvidaste ingresar las conclusiones del inspector
+                              v-if="!$v.form.additionalComments.required"
+                            >Olvidaste ingresar los comentarios adicionales
                             </span>
                     </md-field>
                   </div>
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
-                    <md-field>
-                        <label>Observaciones</label>
-                        <md-textarea v-model="observationGeneral"></md-textarea>
+                    <md-field md-clearable :class="getValidationClass('observationGeneral')">
+                            <label>Observaciones</label>
+                            <md-textarea v-model="form.observationGeneral"></md-textarea>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.observationGeneral.required"
+                            >Olvidaste ingresar las observaciones
+                            </span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>
                 </div>
                 <!-- SUBIR IMAGEN -->
                 <p>
@@ -1260,6 +1265,8 @@ export default {
         dateIns: format(now, dateFormat),
         observation: "",
         inspectorConclusions: "",
+        additionalComments: "",
+        observationGeneral: "",
       },
       eyeMesh: "",
       netWidth: "",
@@ -1272,7 +1279,6 @@ export default {
       noAllCrew: "",
       noCrewForeign: "",
       noCrewNational: "",
-      observationGeneral: "",
 
       nameCommon1: "",
       nameScientific1: "",
@@ -1284,7 +1290,6 @@ export default {
       finalityArrival: "",
       workDone: "",
       locationSystem: "",
-      additionalComments: "",
 
       noApply: "No aplica",
 
@@ -1426,6 +1431,12 @@ export default {
         required
       },
       inspectorConclusions: {
+        required
+      },
+      additionalComments: {
+        required
+      },
+      observationGeneral: {
         required
       },
     }
@@ -1690,7 +1701,7 @@ export default {
       this.workDone = null;
       this.locationSystem = null;
       this.form.inspectorConclusions = null;
-      this.additionalComments = null;
+      this.form.additionalComments = null;
       this.form.dateIns = null;
       this.form.dateScale = null;
       this.form.dateZarpe = null;
@@ -1698,7 +1709,7 @@ export default {
       this.form.dateValidityPat = null;
       this.form.date = null;
       this.form.dateValidity = null;
-      this.observationGeneral = null;
+      this.form.observationGeneral = null;
 
       this.arrayReg = {id:0, name:'', nameMuni:''};
       this.arrayPt = {id:0, namePort:'',name:''};
@@ -1855,7 +1866,7 @@ export default {
       this.workDone = data["workDone"];
       this.locationSystem = data["locationSystem"];
       this.form.inspectorConclusions = data["inspectorConclusions"];
-      this.additionalComments = data["additionalComments"];
+      this.form.additionalComments = data["additionalComments"];
       this.form.dateIns = data["dateIns"];
       this.form.dateScale = data["dateScale"];
       this.form.dateZarpe = data["dateZarpe"];
@@ -1863,7 +1874,7 @@ export default {
       this.form.dateValidityPat = data["dateValidityPat"];
       this.form.date = data["date"];
       this.form.dateValidity = data["dateValidity"];
-      this.observationGeneral = data["observationGeneral"];
+      this.form.observationGeneral = data["observationGeneral"];
       this.form.stateRectorPort = data["stateRectorPort"];
 
       this.arrayReg.id = data["id_region"];
@@ -1967,7 +1978,7 @@ export default {
           workDone: this.workDone,
           locationSystem: this.locationSystem,
           inspectorConclusions :this.form.inspectorConclusions.toUpperCase(),
-          additionalComments :this.additionalComments.toUpperCase(),
+          additionalComments :this.form.additionalComments.toUpperCase(),
           stateRectorPort :this.form.stateRectorPort.toUpperCase(),
           dateIns :this.form.dateIns,
           dateScale :this.form.dateScale,
@@ -1976,7 +1987,7 @@ export default {
           dateValidityPat: this.form.dateValidityPat,
           date: this.form.date,
           dateValidity: this.form.dateValidity,
-          observationGeneral: this.observationGeneral,
+          observationGeneral: this.form.observationGeneral,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
@@ -2069,7 +2080,7 @@ export default {
           workDone: this.workDone,
           locationSystem: this.locationSystem,
           inspectorConclusions :this.form.inspectorConclusions.toUpperCase(),
-          additionalComments :this.additionalComments.toUpperCase(),
+          additionalComments :this.form.additionalComments.toUpperCase(),
           stateRectorPort :this.form.stateRectorPort.toUpperCase(),
           dateIns :this.form.dateIns,
           dateScale :this.form.dateScale,
@@ -2078,7 +2089,7 @@ export default {
           dateValidityPat: this.form.dateValidityPat,
           date: this.form.date,
           dateValidity: this.form.dateValidity,
-          observationGeneral: this.observationGeneral,
+          observationGeneral: this.form.observationGeneral,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,

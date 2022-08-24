@@ -43251,6 +43251,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -43306,7 +43326,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         dateResolution: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateValid: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateLatestArrival: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-        dateValidityPat: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat)
+        dateValidityPat: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        observation: "",
+        conclusions: "",
+        comments: "",
+        observationGeneral: ""
 
       },
       eyeMesh: "",
@@ -43320,10 +43344,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       totalLongline: "",
       other: "",
 
-      observation: "",
-      observationGeneral: "",
-      conclusions: "",
-      comments: "",
       notification: "",
       finalityZarpe: "",
       national: "",
@@ -43431,6 +43451,18 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
       dateValidityPat: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      observation: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      conclusions: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      comments: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
+      observationGeneral: {
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       }
 
@@ -43629,10 +43661,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       // this.materialArt = null;
       this.equipDevi = null;
       this.captain = null;
-      this.observation = null;
-      this.observationGeneral = null;
-      this.conclusions = null;
-      this.comments = null;
+      this.form.observation = null;
+      this.form.observationGeneral = null;
+      this.form.conclusions = null;
+      this.form.comments = null;
       this.form.dateIns = null;
       this.form.dateScale = null;
       this.form.dateZarpe = null;
@@ -43829,10 +43861,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       // this.materialArt = data["materialArt"];
       this.equipDevi = data["equipDevi"];
       this.captain = data["captain"];
-      this.observation = data["observation"];
-      this.observationGeneral = data["observationGeneral"];
-      this.conclusions = data["conclusions"];
-      this.comments = data["comments"];
+      this.form.observation = data["observation"];
+      this.form.observationGeneral = data["observationGeneral"];
+      this.form.conclusions = data["conclusions"];
+      this.form.comments = data["comments"];
       this.form.dateIns = data["dateIns"];
       this.form.dateScale = data["dateScale"];
       this.form.dateZarpe = data["dateZarpe"];
@@ -43930,10 +43962,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         // materialArt: this.materialArt.toUpperCase(),
         equipDevi: this.equipDevi.toUpperCase(),
         captain: this.captain.toUpperCase(),
-        observation: this.observation.toUpperCase(),
-        observationGeneral: this.observationGeneral.toUpperCase(),
-        conclusions: this.conclusions.toUpperCase(),
-        comments: this.comments.toUpperCase(),
+        observation: this.form.observation.toUpperCase(),
+        observationGeneral: this.form.observationGeneral.toUpperCase(),
+        conclusions: this.form.conclusions.toUpperCase(),
+        comments: this.form.comments.toUpperCase(),
         dateIns: this.form.dateIns,
         dateScale: this.form.dateScale,
         dateZarpe: this.form.dateZarpe,
@@ -44017,10 +44049,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         // materialArt: this.materialArt.toUpperCase(),
         equipDevi: this.equipDevi.toUpperCase(),
         captain: this.captain.toUpperCase(),
-        observation: this.observation.toUpperCase(),
-        observationGeneral: this.observationGeneral.toUpperCase(),
-        conclusions: this.conclusions.toUpperCase(),
-        comments: this.comments.toUpperCase(),
+        observation: this.form.observation.toUpperCase(),
+        observationGeneral: this.form.observationGeneral.toUpperCase(),
+        conclusions: this.form.conclusions.toUpperCase(),
+        comments: this.form.comments.toUpperCase(),
         dateIns: this.form.dateIns,
         dateScale: this.form.dateScale,
         dateZarpe: this.form.dateZarpe,
@@ -47990,6 +48022,10 @@ var render = function() {
                             [
                               _c(
                                 "md-field",
+                                {
+                                  class: _vm.getValidationClass("observation"),
+                                  attrs: { "md-clearable": "" }
+                                },
                                 [
                                   _c("label", [
                                     _vm._v(
@@ -47999,13 +48035,21 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("md-textarea", {
                                     model: {
-                                      value: _vm.observation,
+                                      value: _vm.form.observation,
                                       callback: function($$v) {
-                                        _vm.observation = $$v
+                                        _vm.$set(_vm.form, "observation", $$v)
                                       },
-                                      expression: "observation"
+                                      expression: "form.observation"
                                     }
-                                  })
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.observation.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar las observaciones\n                          "
+                                        )
+                                      ])
+                                    : _vm._e()
                                 ],
                                 1
                               )
@@ -48019,6 +48063,10 @@ var render = function() {
                             [
                               _c(
                                 "md-field",
+                                {
+                                  class: _vm.getValidationClass("conclusions"),
+                                  attrs: { "md-clearable": "" }
+                                },
                                 [
                                   _c("label", [
                                     _vm._v("Conclusiones del Inspector")
@@ -48026,13 +48074,21 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("md-textarea", {
                                     model: {
-                                      value: _vm.conclusions,
+                                      value: _vm.form.conclusions,
                                       callback: function($$v) {
-                                        _vm.conclusions = $$v
+                                        _vm.$set(_vm.form, "conclusions", $$v)
                                       },
-                                      expression: "conclusions"
+                                      expression: "form.conclusions"
                                     }
-                                  })
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.conclusions.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar las conclusiones del inspector\n                          "
+                                        )
+                                      ])
+                                    : _vm._e()
                                 ],
                                 1
                               )
@@ -48046,6 +48102,10 @@ var render = function() {
                             [
                               _c(
                                 "md-field",
+                                {
+                                  class: _vm.getValidationClass("comments"),
+                                  attrs: { "md-clearable": "" }
+                                },
                                 [
                                   _c("label", [
                                     _vm._v(
@@ -48055,13 +48115,21 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("md-textarea", {
                                     model: {
-                                      value: _vm.comments,
+                                      value: _vm.form.comments,
                                       callback: function($$v) {
-                                        _vm.comments = $$v
+                                        _vm.$set(_vm.form, "comments", $$v)
                                       },
-                                      expression: "comments"
+                                      expression: "form.comments"
                                     }
-                                  })
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.comments.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar los comentarios adicionales\n                          "
+                                        )
+                                      ])
+                                    : _vm._e()
                                 ],
                                 1
                               )
@@ -48075,18 +48143,36 @@ var render = function() {
                             [
                               _c(
                                 "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "observationGeneral"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
                                 [
                                   _c("label", [_vm._v("Observaciones")]),
                                   _vm._v(" "),
                                   _c("md-textarea", {
                                     model: {
-                                      value: _vm.observationGeneral,
+                                      value: _vm.form.observationGeneral,
                                       callback: function($$v) {
-                                        _vm.observationGeneral = $$v
+                                        _vm.$set(
+                                          _vm.form,
+                                          "observationGeneral",
+                                          $$v
+                                        )
                                       },
-                                      expression: "observationGeneral"
+                                      expression: "form.observationGeneral"
                                     }
-                                  })
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.observationGeneral.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar las observaciones\n                          "
+                                        )
+                                      ])
+                                    : _vm._e()
                                 ],
                                 1
                               )
@@ -49938,6 +50024,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -49998,7 +50089,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         dateValidity: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateIns: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         observation: "",
-        inspectorConclusions: ""
+        inspectorConclusions: "",
+        additionalComments: "",
+        observationGeneral: ""
       },
       eyeMesh: "",
       netWidth: "",
@@ -50011,7 +50104,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       noAllCrew: "",
       noCrewForeign: "",
       noCrewNational: "",
-      observationGeneral: "",
 
       nameCommon1: "",
       nameScientific1: "",
@@ -50023,7 +50115,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       finalityArrival: "",
       workDone: "",
       locationSystem: "",
-      additionalComments: "",
 
       noApply: "No aplica",
 
@@ -50151,6 +50242,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
       inspectorConclusions: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      additionalComments: {
+        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
+      },
+      observationGeneral: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       }
     }
@@ -50429,7 +50526,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.workDone = null;
       this.locationSystem = null;
       this.form.inspectorConclusions = null;
-      this.additionalComments = null;
+      this.form.additionalComments = null;
       this.form.dateIns = null;
       this.form.dateScale = null;
       this.form.dateZarpe = null;
@@ -50437,7 +50534,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.form.dateValidityPat = null;
       this.form.date = null;
       this.form.dateValidity = null;
-      this.observationGeneral = null;
+      this.form.observationGeneral = null;
 
       this.arrayReg = { id: 0, name: '', nameMuni: '' };
       this.arrayPt = { id: 0, namePort: '', name: '' };
@@ -50606,7 +50703,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.workDone = data["workDone"];
       this.locationSystem = data["locationSystem"];
       this.form.inspectorConclusions = data["inspectorConclusions"];
-      this.additionalComments = data["additionalComments"];
+      this.form.additionalComments = data["additionalComments"];
       this.form.dateIns = data["dateIns"];
       this.form.dateScale = data["dateScale"];
       this.form.dateZarpe = data["dateZarpe"];
@@ -50614,7 +50711,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.form.dateValidityPat = data["dateValidityPat"];
       this.form.date = data["date"];
       this.form.dateValidity = data["dateValidity"];
-      this.observationGeneral = data["observationGeneral"];
+      this.form.observationGeneral = data["observationGeneral"];
       this.form.stateRectorPort = data["stateRectorPort"];
 
       this.arrayReg.id = data["id_region"];
@@ -50717,7 +50814,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         workDone: this.workDone,
         locationSystem: this.locationSystem,
         inspectorConclusions: this.form.inspectorConclusions.toUpperCase(),
-        additionalComments: this.additionalComments.toUpperCase(),
+        additionalComments: this.form.additionalComments.toUpperCase(),
         stateRectorPort: this.form.stateRectorPort.toUpperCase(),
         dateIns: this.form.dateIns,
         dateScale: this.form.dateScale,
@@ -50726,7 +50823,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         dateValidityPat: this.form.dateValidityPat,
         date: this.form.date,
         dateValidity: this.form.dateValidity,
-        observationGeneral: this.observationGeneral,
+        observationGeneral: this.form.observationGeneral,
 
         'id_region': this.arrayReg.id,
         'id_port': this.arrayPt.id,
@@ -50816,7 +50913,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         workDone: this.workDone,
         locationSystem: this.locationSystem,
         inspectorConclusions: this.form.inspectorConclusions.toUpperCase(),
-        additionalComments: this.additionalComments.toUpperCase(),
+        additionalComments: this.form.additionalComments.toUpperCase(),
         stateRectorPort: this.form.stateRectorPort.toUpperCase(),
         dateIns: this.form.dateIns,
         dateScale: this.form.dateScale,
@@ -50825,7 +50922,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         dateValidityPat: this.form.dateValidityPat,
         date: this.form.date,
         dateValidity: this.form.dateValidity,
-        observationGeneral: this.observationGeneral,
+        observationGeneral: this.form.observationGeneral,
 
         'id_region': this.arrayReg.id,
         'id_port': this.arrayPt.id,
@@ -53753,36 +53850,38 @@ var render = function() {
                                   "md-field",
                                   {
                                     class: _vm.getValidationClass(
-                                      "inspectorConclusions"
+                                      "additionalComments"
                                     ),
                                     attrs: { "md-clearable": "" }
                                   },
                                   [
                                     _c("label", [
-                                      _vm._v("Conclusiones Del Inspector")
+                                      _vm._v(
+                                        "Comentarios Adicionales (espacio disponible para el capitan)"
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     _c("md-textarea", {
                                       model: {
-                                        value: _vm.form.inspectorConclusions,
+                                        value: _vm.form.additionalComments,
                                         callback: function($$v) {
                                           _vm.$set(
                                             _vm.form,
-                                            "inspectorConclusions",
+                                            "additionalComments",
                                             $$v
                                           )
                                         },
-                                        expression: "form.inspectorConclusions"
+                                        expression: "form.additionalComments"
                                       }
                                     }),
                                     _vm._v(" "),
-                                    !_vm.$v.form.inspectorConclusions.required
+                                    !_vm.$v.form.additionalComments.required
                                       ? _c(
                                           "span",
                                           { staticClass: "md-error" },
                                           [
                                             _vm._v(
-                                              "Olvidaste ingresar las conclusiones del inspector\n                          "
+                                              "Olvidaste ingresar los comentarios adicionales\n                          "
                                             )
                                           ]
                                         )
@@ -53802,25 +53901,46 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
+                                  {
+                                    class: _vm.getValidationClass(
+                                      "observationGeneral"
+                                    ),
+                                    attrs: { "md-clearable": "" }
+                                  },
                                   [
                                     _c("label", [_vm._v("Observaciones")]),
                                     _vm._v(" "),
                                     _c("md-textarea", {
                                       model: {
-                                        value: _vm.observationGeneral,
+                                        value: _vm.form.observationGeneral,
                                         callback: function($$v) {
-                                          _vm.observationGeneral = $$v
+                                          _vm.$set(
+                                            _vm.form,
+                                            "observationGeneral",
+                                            $$v
+                                          )
                                         },
-                                        expression: "observationGeneral"
+                                        expression: "form.observationGeneral"
                                       }
-                                    })
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.observationGeneral.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar las observaciones\n                          "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
                                   ],
                                   1
                                 )
                               ],
                               1
-                            ),
-                            _vm._v("   \n              ")
+                            )
                           ]),
                           _vm._v(" "),
                           _c("p", [

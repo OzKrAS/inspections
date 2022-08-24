@@ -658,30 +658,50 @@
                         <strong>LOS DATOS RELACIONADOS CON LAS MEDIDAS DE ORDENAMIENTO APLICABLES</strong>    
                   </div>
 
-                   <div class="md-layout-item">
-                      <md-field>
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('observation')">
                             <label>Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)</label>
-                            <md-textarea v-model="observation"></md-textarea>
-                      </md-field>
-                   </div>
-                   <div class="md-layout-item">
-                      <md-field>
+                            <md-textarea v-model="form.observation"></md-textarea>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.observation.required"
+                            >Olvidaste ingresar las observaciones
+                            </span>
+                    </md-field>
+                  </div>
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('conclusions')">
                             <label>Conclusiones del Inspector</label>
-                            <md-textarea v-model="conclusions"></md-textarea>
-                      </md-field>
-                   </div>
-                   <div class="md-layout-item">
-                      <md-field>
+                            <md-textarea v-model="form.conclusions"></md-textarea>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.conclusions.required"
+                            >Olvidaste ingresar las conclusiones del inspector
+                            </span>
+                    </md-field>
+                  </div>
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('comments')">
                             <label>Comentarios Adicionales (Espacio disponible para el capitan)</label>
-                            <md-textarea v-model="comments"></md-textarea>
-                      </md-field>
-                   </div>
-                   <div class="md-layout-item">
-                      <md-field>
+                            <md-textarea v-model="form.comments"></md-textarea>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.comments.required"
+                            >Olvidaste ingresar los comentarios adicionales
+                            </span>
+                    </md-field>
+                  </div>
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('observationGeneral')">
                             <label>Observaciones</label>
-                            <md-textarea v-model="observationGeneral"></md-textarea>
-                      </md-field>
-                   </div>
+                            <md-textarea v-model="form.observationGeneral"></md-textarea>
+                            <span
+                              class="md-error"
+                              v-if="!$v.form.observationGeneral.required"
+                            >Olvidaste ingresar las observaciones
+                            </span>
+                    </md-field>
+                  </div>
                    <p>
                       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Subir imagen
@@ -907,6 +927,10 @@ export default {
         dateValid: format(now, dateFormat),
         dateLatestArrival: format(now, dateFormat),
         dateValidityPat: format(now, dateFormat),
+        observation: "",
+        conclusions: "",
+        comments: "",
+        observationGeneral: "",
         
       },
       eyeMesh: "",
@@ -920,10 +944,6 @@ export default {
       totalLongline: "",
       other: "",
 
-      observation: "",
-      observationGeneral: "",
-      conclusions: "",
-      comments: "",
       notification: "",
       finalityZarpe: "",
       national: "",
@@ -1044,6 +1064,18 @@ export default {
         required
       },
       dateValidityPat: {
+        required
+      },    
+      observation: {
+        required
+      },
+      conclusions: {
+        required
+      },
+      comments: {
+        required
+      },
+      observationGeneral: {
         required
       },
       
@@ -1226,10 +1258,10 @@ export default {
       // this.materialArt = null;
       this.equipDevi = null;
       this.captain = null;
-      this.observation = null;
-      this.observationGeneral = null;
-      this.conclusions = null;
-      this.comments = null;
+      this.form.observation = null;
+      this.form.observationGeneral = null;
+      this.form.conclusions = null;
+      this.form.comments = null;
       this.form.dateIns = null;
       this.form.dateScale = null;
       this.form.dateZarpe = null;
@@ -1408,10 +1440,10 @@ export default {
       // this.materialArt = data["materialArt"];
       this.equipDevi = data["equipDevi"];
       this.captain = data["captain"];
-      this.observation = data["observation"];
-      this.observationGeneral = data["observationGeneral"];
-      this.conclusions = data["conclusions"];
-      this.comments = data["comments"];
+      this.form.observation = data["observation"];
+      this.form.observationGeneral = data["observationGeneral"];
+      this.form.conclusions = data["conclusions"];
+      this.form.comments = data["comments"];
       this.form.dateIns = data["dateIns"];
       this.form.dateScale = data["dateScale"];
       this.form.dateZarpe = data["dateZarpe"];
@@ -1512,10 +1544,10 @@ export default {
           // materialArt: this.materialArt.toUpperCase(),
           equipDevi: this.equipDevi.toUpperCase(),
           captain: this.captain.toUpperCase(),
-          observation: this.observation.toUpperCase(),
-          observationGeneral: this.observationGeneral.toUpperCase(),
-          conclusions: this.conclusions.toUpperCase(),
-          comments: this.comments.toUpperCase(),
+          observation: this.form.observation.toUpperCase(),
+          observationGeneral: this.form.observationGeneral.toUpperCase(),
+          conclusions: this.form.conclusions.toUpperCase(),
+          comments: this.form.comments.toUpperCase(),
           dateIns: this.form.dateIns,
           dateScale: this.form.dateScale,
           dateZarpe: this.form.dateZarpe,
@@ -1603,10 +1635,10 @@ export default {
           // materialArt: this.materialArt.toUpperCase(),
           equipDevi: this.equipDevi.toUpperCase(),
           captain: this.captain.toUpperCase(),
-          observation: this.observation.toUpperCase(),
-          observationGeneral: this.observationGeneral.toUpperCase(),
-          conclusions: this.conclusions.toUpperCase(),
-          comments: this.comments.toUpperCase(),
+          observation: this.form.observation.toUpperCase(),
+          observationGeneral: this.form.observationGeneral.toUpperCase(),
+          conclusions: this.form.conclusions.toUpperCase(),
+          comments: this.form.comments.toUpperCase(),
           dateIns: this.form.dateIns,
           dateScale: this.form.dateScale,
           dateZarpe: this.form.dateZarpe,
