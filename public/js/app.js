@@ -43245,6 +43245,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -43295,7 +43305,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         noPatent: "",
         representative: "",
         dateIns: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-        dateScale: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateZarpe: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateResolution: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateValid: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
@@ -43307,12 +43316,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         observationGeneral: ""
 
       },
+      dateScale: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
       eyeMesh: "",
       netWidth: "",
       eyeFlake: "",
       longNet: "",
       // materialArt: "",
-      equipDevi: "",
       captain: "",
       typeHook: "",
       totalLongline: "",
@@ -43359,6 +43368,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       arrayMaterial: { id: 0, name: '' },
       arrayMaterialArt: [],
       id_material: 0,
+
+      arrayValue: [{ name: 'Dispositivo Agregado de preces - DAPs (FADs)', id: '1' }, { name: 'Dispositivo Excluidor de Tortugas - DETs', id: '2' }, { name: 'otro', id: '3' }],
+      id_value: 0,
+      equipDevi: { id: 0, name: '' },
+      equipDeviName: "",
 
       noApply: "No aplica",
 
@@ -43409,9 +43423,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       dateIns: {
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
-      dateScale: {
-        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
-      },
+      // dateScale: {
+      //   required
+      // },
       dateZarpe: {
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
@@ -43634,13 +43648,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.other = null;
       // this.materialArt = null;
       this.equipDevi = null;
+      this.equipDeviName = null;
       this.captain = null;
       this.form.observation = null;
       this.form.observationGeneral = null;
       this.form.conclusions = null;
       this.form.comments = null;
       this.form.dateIns = null;
-      this.form.dateScale = null;
+      this.dateScale = null;
       this.form.dateZarpe = null;
       this.form.dateResolution = null;
       this.form.dateValid = null;
@@ -43840,7 +43855,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.conclusions = data["conclusions"];
       this.form.comments = data["comments"];
       this.form.dateIns = data["dateIns"];
-      this.form.dateScale = data["dateScale"];
+      this.dateScale = data["dateScale"];
       this.form.dateZarpe = data["dateZarpe"];
       this.form.dateResolution = data["dateResolution"];
       this.form.dateValid = data["dateValid"];
@@ -43887,6 +43902,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
     },
     saveData: function saveData() {
       var me = this;
+      this.equipDeviName = this.equipDevi.name;
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
       }
@@ -43934,14 +43950,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         totalLongline: this.totalLongline,
         other: this.other.toUpperCase(),
         // materialArt: this.materialArt.toUpperCase(),
-        equipDevi: this.equipDevi.toUpperCase(),
+        equipDevi: this.equipDeviName.toUpperCase(),
         captain: this.captain.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
         observationGeneral: this.form.observationGeneral.toUpperCase(),
         conclusions: this.form.conclusions.toUpperCase(),
         comments: this.form.comments.toUpperCase(),
         dateIns: this.form.dateIns,
-        dateScale: this.form.dateScale,
+        dateScale: this.dateScale,
         dateZarpe: this.form.dateZarpe,
         dateResolution: this.form.dateResolution,
         dateValid: this.form.dateValid,
@@ -43969,6 +43985,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         me.listData();
       }).catch(function (error) {
         console.log(error);
+        console.log(this.equipDeviName + " naombreEqupo");
       });
     },
     updateData: function updateData() {
@@ -44028,7 +44045,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         conclusions: this.form.conclusions.toUpperCase(),
         comments: this.form.comments.toUpperCase(),
         dateIns: this.form.dateIns,
-        dateScale: this.form.dateScale,
+        dateScale: this.dateScale,
         dateZarpe: this.form.dateZarpe,
         dateResolution: this.form.dateResolution,
         dateValid: this.form.dateValid,
@@ -46469,7 +46486,7 @@ var render = function() {
                                           name: "notification",
                                           id: "notification",
                                           placeholder:
-                                            "Recibió Notificación Previa"
+                                            "Recibió Notificación Previa (Prior Notification)"
                                         },
                                         model: {
                                           value: _vm.notification,
@@ -46527,7 +46544,8 @@ var render = function() {
                                         attrs: {
                                           name: "finalityZarpe",
                                           id: "finalityZarpe",
-                                          placeholder: "Finalidad Zarpe"
+                                          placeholder:
+                                            "Finalidad Zarpe (Departure’s Purpose)"
                                         },
                                         model: {
                                           value: _vm.finalityZarpe,
@@ -46567,52 +46585,7 @@ var render = function() {
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "md-layout" }, [
-                            _c(
-                              "div",
-                              { staticClass: "md-layout-item md-size-40" },
-                              [
-                                _c(
-                                  "md-datepicker",
-                                  {
-                                    class: _vm.getValidationClass("dateScale"),
-                                    attrs: {
-                                      "md-clearable": "",
-                                      "md-immediately": "",
-                                      "md-model-type": String
-                                    },
-                                    on: { input: _vm.toString },
-                                    model: {
-                                      value: _vm.form.dateScale,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "dateScale", $$v)
-                                      },
-                                      expression: "form.dateScale"
-                                    }
-                                  },
-                                  [
-                                    _c("label", [
-                                      _vm._v("Fecha Última Escala")
-                                    ]),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.dateScale.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar la fecha de última escala\n                            "
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
-                                  ]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v("    \n                    ")
-                          ]),
+                          _c("div", { staticClass: "md-layout" }),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
@@ -47001,7 +46974,9 @@ var render = function() {
                           _vm._v(" "),
                           _c("div", [
                             _c("strong", [
-                              _vm._v("PERMISO OTORGADO - ÚLTIMA PRORROGA")
+                              _vm._v(
+                                "PERMISO OTORGADO - ÚLTIMA PRORROGA (Permission / Last extension)"
+                              )
                             ])
                           ]),
                           _vm._v(" "),
@@ -47517,7 +47492,7 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Pesquería Autorizad (Fishery)")
+                                  _vm._v("Pesquería Autorizada (Fishery)")
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -47579,7 +47554,9 @@ var render = function() {
                           _vm._v(" "),
                           _c("div", [
                             _c("strong", [
-                              _vm._v("CARACTERÍSTICAS ARTE DE PESCA")
+                              _vm._v(
+                                "CARACTERÍSTICAS ARTE DE PESCA (Fishing gear: net, longline)"
+                              )
                             ])
                           ]),
                           _vm._v(" "),
@@ -47824,113 +47801,30 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c("label", [
-                                  _vm._v("Material de Arte de Pesca")
+                                  _vm._v("Equipos o Dispositivos Requeridos")
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
                                   attrs: {
-                                    options: _vm.arrayMaterialArt,
+                                    options: _vm.arrayValue,
                                     placeholder:
-                                      "Seleccione el material de arte de pesca",
-                                    "custom-label": _vm.nameWithMaterialArt,
+                                      "Seleccione un equipo o dispositivo",
                                     label: "name",
                                     "track-by": "name"
                                   },
                                   model: {
-                                    value: _vm.arrayMaterial,
+                                    value: _vm.equipDevi,
                                     callback: function($$v) {
-                                      _vm.arrayMaterial = $$v
+                                      _vm.equipDevi = $$v
                                     },
-                                    expression: "arrayMaterial"
+                                    expression: "equipDevi"
                                   }
                                 })
                               ],
                               1
                             ),
-                            _vm._v("   \n                  "),
-                            _c(
-                              "div",
-                              { staticClass: "md-layout-item" },
-                              [
-                                _c(
-                                  "md-field",
-                                  [
-                                    _c(
-                                      "label",
-                                      {
-                                        staticClass: "text-muted",
-                                        attrs: { for: "equipDevi" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "Equipos o Dispositivos Requeridos"
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-select",
-                                      {
-                                        attrs: {
-                                          name: "equipDevi",
-                                          id: "equipDevi",
-                                          placeholder:
-                                            "Seleccione un equipo o dispositivo"
-                                        },
-                                        model: {
-                                          value: _vm.equipDevi,
-                                          callback: function($$v) {
-                                            _vm.equipDevi = $$v
-                                          },
-                                          expression: "equipDevi"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "md-option",
-                                          {
-                                            attrs: {
-                                              value:
-                                                "Dispositivo Agregado de preces - DAPs (FADs)"
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "Dispositivo Agregado de preces - DAPs (FADs)"
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "md-option",
-                                          {
-                                            attrs: {
-                                              value:
-                                                "Dispositivo Excluidor de Tortugas - DETs"
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "Dispositivo Excluidor de Tortugas - DETs"
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "md-option",
-                                          { attrs: { value: "Otro" } },
-                                          [_vm._v("Otro")]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v("   \n                 "),
+                            _vm._v("    \n                  "),
+                            _vm._v(" "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -47963,6 +47857,38 @@ var render = function() {
                                   ],
                                   1
                                 )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n               ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item md-size-50" },
+                              [
+                                _c("label", [
+                                  _vm._v("Material de Arte de Pesca")
+                                ]),
+                                _vm._v(" "),
+                                _c("multiselect", {
+                                  attrs: {
+                                    options: _vm.arrayMaterialArt,
+                                    placeholder:
+                                      "Seleccione el material de arte de pesca",
+                                    "custom-label": _vm.nameWithMaterialArt,
+                                    label: "name",
+                                    "track-by": "name"
+                                  },
+                                  model: {
+                                    value: _vm.arrayMaterial,
+                                    callback: function($$v) {
+                                      _vm.arrayMaterial = $$v
+                                    },
+                                    expression: "arrayMaterial"
+                                  }
+                                })
                               ],
                               1
                             ),
@@ -48014,7 +47940,9 @@ var render = function() {
                               "div",
                               { staticClass: "md-layout-item" },
                               [
-                                _c("label", [_vm._v("Nacionalidad")]),
+                                _c("label", [
+                                  _vm._v("Nacionalidad (Nationality)")
+                                ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
                                   attrs: {

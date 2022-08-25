@@ -128,7 +128,7 @@
                         <div class="md-layout-item">
                           <md-field>
                             <label for="notification" class="text-muted">Recibió Notificación Previa (Prior Notification)</label> 
-                            <md-select v-model="notification" name="notification" id="notification" placeholder="Recibió Notificación Previa">
+                            <md-select v-model="notification" name="notification" id="notification" placeholder="Recibió Notificación Previa (Prior Notification)">
                               <md-option value="si">Si</md-option>
                               <md-option value="no">No</md-option>
                             </md-select>
@@ -137,7 +137,7 @@
                         <div class="md-layout-item">
                           <md-field>
                             <label for="finalityZarpe" class="text-muted">Finalidad Zarpe (Departure’s Purpose)</label> 
-                            <md-select v-model="finalityZarpe" name="finalityZarpe" id="finalityZarpe" placeholder="Finalidad Zarpe">
+                            <md-select v-model="finalityZarpe" name="finalityZarpe" id="finalityZarpe" placeholder="Finalidad Zarpe (Departure’s Purpose)">
                               <md-option value="pesca">Pesca</md-option>
                               <md-option value="transito">Tránsito</md-option>
                               <!-- <md-option value="desembarque">Desembarque</md-option> -->
@@ -153,7 +153,7 @@
                       </div>
 
                       <div class="md-layout">
-                        <div class="md-layout-item md-size-40">                 
+                        <!-- <div class="md-layout-item md-size-40">                 
                             <md-datepicker 
                               md-clearable :class="getValidationClass('dateScale')"
                               v-model="form.dateScale"
@@ -168,7 +168,7 @@
                                 >Olvidaste ingresar la fecha de última escala
                               </span>
                             </md-datepicker>                   
-                        </div> &nbsp;&nbsp;&nbsp;
+                        </div> &nbsp;&nbsp;&nbsp; -->
                       </div>
                       <div class="md-layout">               
                         <div class="md-layout-item md-size-65">
@@ -290,7 +290,7 @@
 
                       <!-- <label>PERMISO OTORGADO - ÚLTIMA PRORROGA</label> -->
                       <div>
-                            <strong>PERMISO OTORGADO - ÚLTIMA PRORROGA</strong>    
+                            <strong>PERMISO OTORGADO - ÚLTIMA PRORROGA (Permission / Last extension)</strong>    
                       </div>
                   
                   <div class="md-layout">
@@ -459,7 +459,7 @@
         
                   <div class="md-layout"> 
                     <div class="md-layout-item">
-                      <label class="text-muted">Pesquería Autorizad (Fishery)</label>
+                      <label class="text-muted">Pesquería Autorizada (Fishery)</label>
                       <multiselect
                         v-model="arrayFa" 
                         :options="arrayFisheryAuthorized" 
@@ -486,7 +486,7 @@
 
                   <!-- <label>CARACTERÍSTICAS ARTE DE PESCA</label> -->
                   <div>
-                        <strong>CARACTERÍSTICAS ARTE DE PESCA</strong>    
+                        <strong>CARACTERÍSTICAS ARTE DE PESCA (Fishing gear: net, longline)</strong>    
                   </div>
                  
                  <div class="md-layout">
@@ -570,26 +570,25 @@
                     </md-field>
                    </div>&nbsp;&nbsp;&nbsp;           
                  </div>
-                 <div class="md-layout">
-                   <div class="md-layout-item">
-                      <label>Material de Arte de Pesca</label>
-                      <multiselect v-model="arrayMaterial" :options="arrayMaterialArt"
-                          placeholder="Seleccione el material de arte de pesca"
-                          :custom-label="nameWithMaterialArt"
+                 <div class="md-layout"> 
+                  <div class="md-layout-item">
+                      <label>Equipos o Dispositivos Requeridos</label>
+                      <multiselect v-model="equipDevi" :options="arrayValue"
+                          placeholder="Seleccione un equipo o dispositivo"
                           label="name"
                           track-by="name">
                       </multiselect>
-                    </div>&nbsp;&nbsp;&nbsp;
-                    <div class="md-layout-item">
+                  </div>&nbsp;&nbsp;&nbsp; 
+                    <!-- <div class="md-layout-item">
                       <md-field>
                         <label for="equipDevi" class="text-muted">Equipos o Dispositivos Requeridos</label> 
-                        <md-select v-model="equipDevi" name="equipDevi" id="equipDevi" placeholder="Seleccione un equipo o dispositivo">
-                          <md-option value="Dispositivo Agregado de preces - DAPs (FADs)">Dispositivo Agregado de preces - DAPs (FADs)</md-option>
-                          <md-option value="Dispositivo Excluidor de Tortugas - DETs">Dispositivo Excluidor de Tortugas - DETs</md-option>
+                        <md-select v-model="equipDevi" name="equipDevi" id="equipDevi" placeholder="Seleccione un equipo o dispositivo" md-dense>
+                          <md-option value="Dispositivo Agregado de preces-DAPs (FADs)">Dispositivo Agregado de preces-DAPs (FADs)</md-option>
+                          <md-option value="Dispositivo Excluidor de Tortugas-DETs">Dispositivo Excluidor de Tortugas-DETs</md-option>
                           <md-option value="Otro">Otro</md-option>
                         </md-select>
                       </md-field>
-                    </div>&nbsp;&nbsp;&nbsp;
+                    </div>&nbsp;&nbsp;&nbsp; -->
                    <div class="md-layout-item"> 
                     <md-field md-clearable>
                       <label for="first-name">Otro</label>
@@ -602,6 +601,17 @@
                       />
                     </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
+                 </div>
+                 <div class="md-layout">
+                    <div class="md-layout-item md-size-50">
+                      <label>Material de Arte de Pesca</label>
+                      <multiselect v-model="arrayMaterial" :options="arrayMaterialArt"
+                          placeholder="Seleccione el material de arte de pesca"
+                          :custom-label="nameWithMaterialArt"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                    </div>&nbsp;&nbsp;&nbsp;
                  </div>
                  <div class="md-layout">
                   <div class="md-layout-item"> 
@@ -617,7 +627,7 @@
                     </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
                    <div class="md-layout-item">
-                      <label>Nacionalidad</label>
+                      <label>Nacionalidad (Nationality)</label>
                       <multiselect v-model="arrayNation" :options="arrayNationality"
                           placeholder="Seleccione un pais"
                           :custom-label="nameWithNationality"
@@ -895,7 +905,6 @@ export default {
         noPatent: "",
         representative: "", 
         dateIns: format(now, dateFormat),
-        dateScale: format(now, dateFormat),
         dateZarpe: format(now, dateFormat),
         dateResolution: format(now, dateFormat),
         dateValid: format(now, dateFormat),
@@ -907,12 +916,12 @@ export default {
         observationGeneral: "",
         
       },
+      dateScale: format(now, dateFormat),
       eyeMesh: "",
       netWidth: "",
       eyeFlake: "",
       longNet: "",
       // materialArt: "",
-      equipDevi: "",
       captain: "",
       typeHook: "",
       totalLongline: "",
@@ -959,6 +968,15 @@ export default {
       arrayMaterial: {id:0, name:''},
 	    arrayMaterialArt: [],
       id_material: 0,
+
+      arrayValue:[
+                   { name: 'Dispositivo Agregado de preces - DAPs (FADs)', id: '1' },
+                   { name: 'Dispositivo Excluidor de Tortugas - DETs', id: '2' },
+                   { name: 'otro', id: '3' },
+                 ],
+      id_value: 0,
+      equipDevi: {id:0, name:''},
+      equipDeviName: "",
       
       noApply: "No aplica",
       
@@ -1022,9 +1040,9 @@ export default {
       dateIns: {
         required
       },
-      dateScale: {
-        required
-      },
+      // dateScale: {
+      //   required
+      // },
       dateZarpe: {
         required
       },
@@ -1231,13 +1249,14 @@ export default {
       this.other = null;
       // this.materialArt = null;
       this.equipDevi = null;
+      this.equipDeviName = null;
       this.captain = null;
       this.form.observation = null;
       this.form.observationGeneral = null;
       this.form.conclusions = null;
       this.form.comments = null;
       this.form.dateIns = null;
-      this.form.dateScale = null;
+      this.dateScale = null;
       this.form.dateZarpe = null;
       this.form.dateResolution = null;
       this.form.dateValid = null;
@@ -1419,7 +1438,7 @@ export default {
       this.form.conclusions = data["conclusions"];
       this.form.comments = data["comments"];
       this.form.dateIns = data["dateIns"];
-      this.form.dateScale = data["dateScale"];
+      this.dateScale = data["dateScale"];
       this.form.dateZarpe = data["dateZarpe"];
       this.form.dateResolution = data["dateResolution"];
       this.form.dateValid = data["dateValid"];
@@ -1468,6 +1487,7 @@ export default {
  
     saveData() {
       let me = this;
+      this.equipDeviName = this.equipDevi.name;
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
       }
@@ -1516,14 +1536,14 @@ export default {
           totalLongline: this.totalLongline,
           other: this.other.toUpperCase(),
           // materialArt: this.materialArt.toUpperCase(),
-          equipDevi: this.equipDevi.toUpperCase(),
+          equipDevi: this.equipDeviName.toUpperCase(),
           captain: this.captain.toUpperCase(),
           observation: this.form.observation.toUpperCase(),
           observationGeneral: this.form.observationGeneral.toUpperCase(),
           conclusions: this.form.conclusions.toUpperCase(),
           comments: this.form.comments.toUpperCase(),
           dateIns: this.form.dateIns,
-          dateScale: this.form.dateScale,
+          dateScale: this.dateScale,
           dateZarpe: this.form.dateZarpe,
           dateResolution: this.form.dateResolution,
           dateValid: this.form.dateValid,
@@ -1554,6 +1574,7 @@ export default {
         })
         .catch(function(error) {
           console.log(error);
+          console.log(this.equipDeviName + " naombreEqupo");
         });
     },
     updateData() {
@@ -1614,7 +1635,7 @@ export default {
           conclusions: this.form.conclusions.toUpperCase(),
           comments: this.form.comments.toUpperCase(),
           dateIns: this.form.dateIns,
-          dateScale: this.form.dateScale,
+          dateScale: this.dateScale,
           dateZarpe: this.form.dateZarpe,
           dateResolution: this.form.dateResolution,
           dateValid: this.form.dateValid,
