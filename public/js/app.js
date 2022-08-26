@@ -50044,6 +50044,97 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -50095,7 +50186,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         noHaulsNacional: "",
         noHaulsInter: "",
         landedWeight: "",
-        stateRectorPort: "",
         dateScale: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateZarpe: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateLatestArrival: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
@@ -50106,8 +50196,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         observation: "",
         inspectorConclusions: "",
         additionalComments: "",
-        observationGeneral: ""
+        observationGeneral: "",
+        idOmi: ""
       },
+      totalLongline: "",
+      stateRectorPort: "",
+      other: "",
       eyeMesh: "",
       netWidth: "",
       eyeFlake: "",
@@ -50130,6 +50224,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       finalityArrival: "",
       workDone: "",
       locationSystem: "",
+      // destination: "",
 
       noApply: "No aplica",
 
@@ -50161,6 +50256,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       arrayComp: { id: 0, name: '' },
       arrayCompany: [],
       id_Company: 0,
+      orop: "",
+      arrayOr: { id: 0, name: '' },
+      arrayOrop: [],
+      id_orop: 0,
+      arrayMaterial: { id: 0, name: '' },
+      arrayMaterialArt: [],
+      id_material: 0,
 
       arrayTarget: [],
       arrayTa: [],
@@ -50229,7 +50331,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       landedWeight: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
-      stateRectorPort: {
+      idOmi: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
       dateScale: {
@@ -50256,6 +50358,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       observation: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
+      // totalLongline: {
+      //   required
+      // },
       inspectorConclusions: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
@@ -50529,6 +50634,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.noAllCrew = null;
       this.noCrewForeign = null;
       this.noCrewNational = null;
+      // this.destination = null;
       this.form.noDays = null;
       this.form.noAllHauls = null;
       this.form.noHaulsNacional = null;
@@ -50536,9 +50642,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.form.landedWeight = null;
       this.form.stateRectorPort = null;
       this.form.observation = null;
+      this.totalLongline = null;
       this.notification = null;
       this.finalityArrival = null;
       this.workDone = null;
+      this.other = null;
       this.locationSystem = null;
       this.form.inspectorConclusions = null;
       this.form.additionalComments = null;
@@ -50550,6 +50658,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.form.date = null;
       this.form.dateValidity = null;
       this.form.observationGeneral = null;
+      this.form.idOmi = null;
 
       this.arrayReg = { id: 0, name: '', nameMuni: '' };
       this.arrayPt = { id: 0, namePort: '', name: '' };
@@ -50562,6 +50671,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.arrayComp = { id: 0, name: '' };
       this.arrayTarget = [];
       this.arrayFauna = [];
+      this.arrayMaterial = { id: 0, name: '' };
     },
     nameWithRegion: function nameWithRegion(_ref2) {
       var nameMuni = _ref2.nameMuni,
@@ -50597,6 +50707,16 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
     },
     nameWithCompany: function nameWithCompany(_ref8) {
       var name = _ref8.name;
+
+      return "" + name;
+    },
+    nameWithOrop: function nameWithOrop(_ref9) {
+      var name = _ref9.name;
+
+      return "" + name;
+    },
+    nameWithMaterialArt: function nameWithMaterialArt(_ref10) {
+      var name = _ref10.name;
 
       return "" + name;
     },
@@ -50682,6 +50802,27 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         console.log(error);
       });
     },
+    selectOrop: function selectOrop() {
+      var me = this;
+      var url = "orops/selectOrops";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayOrop = respuesta.orops;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    selectMaterial: function selectMaterial() {
+      var me = this;
+      var url = "/materials/selectMaterials";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayMaterialArt = respuesta.materials;
+        console.log(me.arrayMaterialArt + " arrayMAterial");
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
     showUpdate: function showUpdate() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
@@ -50707,12 +50848,15 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.noAllCrew = data["noAllCrew"];
       this.noCrewForeign = data["noCrewForeign"];
       this.noCrewNational = data["noCrewNational"];
+      this.idOmi = data["idOmi"];
+      this.other = data["other"];
       this.form.noDays = data["noDays"];
       this.form.noAllHauls = data["noAllHauls"];
       this.form.noHaulsNacional = data["noHaulsNacional"];
       this.form.noHaulsInter = data["noHaulsInter"];
       this.form.landedWeight = data["landedWeight"];
       this.form.observation = data["observation"];
+      this.totalLongline = data["totalLongline"];
       this.notification = data["notification"];
       this.finalityArrival = data["finalityArrival"];
       this.workDone = data["workDone"];
@@ -50748,6 +50892,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.arrayFa.id = data["arrayFa"];
       this.arrayComp.id = data["id_company"];
       this.arrayComp.name = data["nameCompany"];
+      this.arrayOr.id = data["id_orop"];
+      this.arrayOr.name = data["nameOrop"];
+      this.arrayMaterial.id = data["id_material"];
+      this.arrayMaterial.name = data["nameMaterial"];
       this.dataTarget();
       this.dataFauna();
       this.dataFishery();
@@ -50767,6 +50915,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       var me = this;
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
+      }
+      if (this.totalLongline == "") {
+        this.totalLongline = this.noApply;
       }
       if (this.netWidth == "") {
         this.netWidth = this.noApply;
@@ -50818,12 +50969,15 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         noAllCrew: this.noAllCrew.toUpperCase(),
         noCrewForeign: this.noCrewForeign.toUpperCase(),
         noCrewNational: this.noCrewNational.toUpperCase(),
+        idOmi: this.idOmi.toUpperCase(),
+        other: this.other.toUpperCase(),
         noDays: this.form.noDays.toUpperCase(),
         noAllHauls: this.form.noAllHauls.toUpperCase(),
         noHaulsNacional: this.form.noHaulsNacional.toUpperCase(),
         noHaulsInter: this.form.noHaulsInter.toUpperCase(),
         landedWeight: this.form.landedWeight.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
+        totalLongline: this.totalLongline,
         notification: this.notification,
         finalityArrival: this.finalityArrival,
         workDone: this.workDone,
@@ -50849,6 +51003,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         'id_zoneAutoFisher': this.arrayZoneAuto.id,
         'id_fisheryAuthorized': this.arrayFa.id,
         'id_company': this.arrayComp.id,
+        'id_orop': this.arrayOr.id,
+        'id_material': this.arrayMaterial.id,
 
         'fishery': this.arrayFa,
         'fauna': this.arrayFauna,
@@ -50865,6 +51021,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       var me = this;
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
+      }
+      if (this.totalLongline == "") {
+        this.totalLongline = this.noApply;
       }
       if (this.netWidth == "") {
         this.netWidth = this.noApply;
@@ -50917,12 +51076,15 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         noAllCrew: this.noAllCrew.toUpperCase(),
         noCrewForeign: this.noCrewForeign.toUpperCase(),
         noCrewNational: this.noCrewNational.toUpperCase(),
+        idOmi: this.idOmi.toUpperCase(),
+        other: this.other.toUpperCase(),
         noDays: this.form.noDays.toUpperCase(),
         noAllHauls: this.form.noAllHauls.toUpperCase(),
         noHaulsNacional: this.form.noHaulsNacional.toUpperCase(),
         noHaulsInter: this.form.noHaulsInter.toUpperCase(),
         landedWeight: this.form.landedWeight.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
+        totalLongline: this.totalLongline,
         notification: this.notification,
         finalityArrival: this.finalityArrival,
         workDone: this.workDone,
@@ -50948,6 +51110,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         'id_zoneAutoFisher': this.arrayZoneAuto.id,
         'id_fisheryAuthorized': this.arrayFa.id,
         'id_company': this.arrayComp.id,
+        'id_orop': this.arrayOr.id,
+        'id_material': this.arrayMaterial.id,
 
         'fishery': this.arrayFaAct,
         'fauna': this.arrayFaunaAct,
@@ -51089,6 +51253,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
     this.selectZoneAutoFisher();
     this.selectFisheryAuthorized();
     this.selectCompanies();
+    this.selectOrop();
+    this.selectMaterial();
   }
 });
 
@@ -51155,7 +51321,7 @@ var render = function() {
                           _c("div", { staticClass: "md-layout" }, [
                             _c(
                               "div",
-                              { staticClass: "md-layout-item md-size-50" },
+                              { staticClass: "md-layout-item md-size-65" },
                               [
                                 _c(
                                   "md-field",
@@ -51167,7 +51333,7 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("Inspección No.")]
+                                      [_vm._v("Inspección No. (Inspection)")]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -51203,7 +51369,54 @@ var render = function() {
                                 )
                               ],
                               1
-                            )
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-datepicker",
+                                  {
+                                    class: _vm.getValidationClass("dateIns"),
+                                    attrs: {
+                                      "md-clearable": "",
+                                      "md-immediately": "",
+                                      "md-model-type": String
+                                    },
+                                    on: { input: _vm.toString },
+                                    model: {
+                                      value: _vm.form.dateIns,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "dateIns", $$v)
+                                      },
+                                      expression: "form.dateIns"
+                                    }
+                                  },
+                                  [
+                                    _c("label", [
+                                      _vm._v(
+                                        "Fecha de Inspección (Inspection Date)"
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.dateIns.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar la fecha de inspección\n                      "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("    \n              ")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
@@ -51212,7 +51425,9 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Región/Municipio")
+                                  _vm._v(
+                                    "Región/Municipio (Region / Municipality)"
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -51240,7 +51455,9 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Puerto/Muelle de Inspección")
+                                  _vm._v(
+                                    "Puerto/Muelle de Inspección (Port / Dock)"
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -51271,55 +51488,12 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c(
-                                  "md-datepicker",
-                                  {
-                                    class: _vm.getValidationClass("dateIns"),
-                                    attrs: {
-                                      "md-clearable": "",
-                                      "md-immediately": "",
-                                      "md-model-type": String
-                                    },
-                                    on: { input: _vm.toString },
-                                    model: {
-                                      value: _vm.form.dateIns,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "dateIns", $$v)
-                                      },
-                                      expression: "form.dateIns"
-                                    }
-                                  },
-                                  [
-                                    _c("label", [
-                                      _vm._v("Fecha de Inspección")
-                                    ]),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.dateIns.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar la fecha de inspección\n                      "
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
-                                  ]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v("    \n                "),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "md-layout-item" },
-                              [
-                                _c(
                                   "md-field",
                                   [
                                     _c("label", { staticClass: "text-muted" }, [
-                                      _vm._v("Recibió Notificación Previa")
+                                      _vm._v(
+                                        "Recibió Notificación Previa (Prior Notification)"
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     _c(
@@ -51369,7 +51543,9 @@ var render = function() {
                                   "md-field",
                                   [
                                     _c("label", { staticClass: "text-muted" }, [
-                                      _vm._v("Finalidad Arribo")
+                                      _vm._v(
+                                        "Finalidad Arribo (Arrival's Purpose)"
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     _c(
@@ -51421,120 +51597,70 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("   \n                "),
+                            _vm._v("   \n                ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v("PUERTO, ESTADO RECTOR DE PUERTO")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
                             _c(
                               "div",
-                              { staticClass: "md-layout-item" },
+                              { staticClass: "md-layout-item md-size-40" },
                               [
                                 _c(
                                   "md-field",
-                                  {
-                                    class: _vm.getValidationClass(
-                                      "stateRectorPort"
-                                    ),
-                                    attrs: { "md-clearable": "" }
-                                  },
                                   [
+                                    _c("label", { staticClass: "text-muted" }, [
+                                      _vm._v(
+                                        "Puerto/Estado Rector del Puerto (Port / Port State)"
+                                      )
+                                    ]),
+                                    _vm._v(" "),
                                     _c(
-                                      "label",
-                                      { attrs: { for: "first-name" } },
-                                      [_vm._v("Estado Rector de Puerto.")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("md-input", {
-                                      attrs: {
-                                        name: "first-name",
-                                        id: "first-name",
-                                        autocomplete: "given-name",
-                                        disabled: _vm.sending
-                                      },
-                                      model: {
-                                        value: _vm.form.stateRectorPort,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form,
-                                            "stateRectorPort",
-                                            $$v
-                                          )
+                                      "md-select",
+                                      {
+                                        attrs: {
+                                          name: "stateRectorPort",
+                                          id: "stateRectorPort",
+                                          placeholder:
+                                            "Puerto/Estado Rector del Puerto"
                                         },
-                                        expression: "form.stateRectorPort"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.stateRectorPort.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar el estado rector del puerto\n                          "
-                                            )
-                                          ]
+                                        model: {
+                                          value: _vm.stateRectorPort,
+                                          callback: function($$v) {
+                                            _vm.stateRectorPort = $$v
+                                          },
+                                          expression: "stateRectorPort"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "md-option",
+                                          { attrs: { value: "colombia" } },
+                                          [_vm._v("Colombia")]
                                         )
-                                      : _vm._e()
+                                      ],
+                                      1
+                                    )
                                   ],
                                   1
                                 )
                               ],
                               1
                             ),
-                            _vm._v("   \n              ")
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "md-layout" }, [
-                            _c(
-                              "div",
-                              { staticClass: "md-layout-item md-size-30" },
-                              [
-                                _c(
-                                  "md-datepicker",
-                                  {
-                                    class: _vm.getValidationClass("dateScale"),
-                                    attrs: {
-                                      "md-clearable": "",
-                                      "md-immediately": "",
-                                      "md-model-type": String
-                                    },
-                                    on: { input: _vm.toString },
-                                    model: {
-                                      value: _vm.form.dateScale,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "dateScale", $$v)
-                                      },
-                                      expression: "form.dateScale"
-                                    }
-                                  },
-                                  [
-                                    _c("label", [
-                                      _vm._v("Fecha Última Escala")
-                                    ]),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.dateScale.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar la fecha de vigencia\n                      "
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
-                                  ]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v("    \n              ")
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "md-layout" }, [
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item md-size-70" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Puerto de Zarpe")
+                                  _vm._v("Puerto de Zarpe (Departure’s Port)")
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -51580,7 +51706,11 @@ var render = function() {
                                     }
                                   },
                                   [
-                                    _c("label", [_vm._v("Fecha de Zarpe")]),
+                                    _c("label", [
+                                      _vm._v(
+                                        "Fecha de Zarpe (Departure’s Date)"
+                                      )
+                                    ]),
                                     _vm._v(" "),
                                     !_vm.$v.form.dateZarpe.required
                                       ? _c(
@@ -51607,7 +51737,9 @@ var render = function() {
                               { staticClass: "md-layout-item md-size-70" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Puerto de Ultimo Arribo")
+                                  _vm._v(
+                                    "Puerto de Ultimo Arribo (Last Arrival’s Port)"
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -51660,7 +51792,9 @@ var render = function() {
                                   },
                                   [
                                     _c("label", [
-                                      _vm._v("Fecha Último Arribo")
+                                      _vm._v(
+                                        "Fecha Último Arribo (Last Arrival’s Date)"
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     !_vm.$v.form.dateLatestArrival.required
@@ -51682,7 +51816,82 @@ var render = function() {
                             _vm._v("    \n              ")
                           ]),
                           _vm._v(" "),
+                          _c("div", [
+                            _c("strong", [
+                              _vm._v("SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS")
+                            ])
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "text-muted",
+                                        attrs: { for: "locationSystem" }
+                                      },
+                                      [_vm._v("Nacional")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "md-select",
+                                      {
+                                        attrs: {
+                                          name: "locationSystem",
+                                          id: "locationSystem",
+                                          placeholder:
+                                            "Seleccione un sistema Nacional"
+                                        },
+                                        model: {
+                                          value: _vm.locationSystem,
+                                          callback: function($$v) {
+                                            _vm.locationSystem = $$v
+                                          },
+                                          expression: "locationSystem"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "md-option",
+                                          { attrs: { value: "no" } },
+                                          [_vm._v("No")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "md-option",
+                                          { attrs: { value: "nacional-AIS" } },
+                                          [_vm._v("Nacional - AIS")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "md-option",
+                                          { attrs: { value: "nacional-VMS" } },
+                                          [_vm._v("Nacional - VMS")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "md-option",
+                                          {
+                                            attrs: { value: "nacional-AIS/VMS" }
+                                          },
+                                          [_vm._v("Nacional - AIS/VMS")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -51744,64 +51953,6 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  [
-                                    _c("label", { staticClass: "text-muted" }, [
-                                      _vm._v(
-                                        "Sistema de Localización de Buques/VMS"
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "md-select",
-                                      {
-                                        attrs: {
-                                          name: "locationSystem",
-                                          id: "locationSystem",
-                                          placeholder:
-                                            "Sistema de Localización de Buques/VMS"
-                                        },
-                                        model: {
-                                          value: _vm.locationSystem,
-                                          callback: function($$v) {
-                                            _vm.locationSystem = $$v
-                                          },
-                                          expression: "locationSystem"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "md-option",
-                                          { attrs: { value: "no" } },
-                                          [_vm._v("No")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "md-option",
-                                          { attrs: { value: "si nacional" } },
-                                          [_vm._v("Si Nacional")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "md-option",
-                                          { attrs: { value: "si OROP" } },
-                                          [_vm._v("Si OROP")]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v("   \n                "),
-                            _c(
-                              "div",
-                              { staticClass: "md-layout-item" },
-                              [
-                                _c(
-                                  "md-field",
                                   {
                                     class: _vm.getValidationClass("radioCall"),
                                     attrs: { "md-clearable": "" }
@@ -51812,7 +51963,7 @@ var render = function() {
                                       { attrs: { for: "first-name" } },
                                       [
                                         _vm._v(
-                                          "Señal Radiollamada Internacional"
+                                          "Señal Radiollamada Internacional (International Radio Call Signal)"
                                         )
                                       ]
                                     ),
@@ -51853,6 +52004,95 @@ var render = function() {
                             _vm._v("   \n              ")
                           ]),
                           _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c("label", { staticClass: "text-muted" }, [
+                                  _vm._v("OROP")
+                                ]),
+                                _vm._v(" "),
+                                _c("multiselect", {
+                                  attrs: {
+                                    options: _vm.arrayOrop,
+                                    placeholder: "Seleccione una opción OROP",
+                                    "custom-label": _vm.nameWithOrop,
+                                    label: "name",
+                                    "track-by": "name"
+                                  },
+                                  model: {
+                                    value: _vm.arrayOr,
+                                    callback: function($$v) {
+                                      _vm.arrayOr = $$v
+                                    },
+                                    expression: "arrayOr"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  {
+                                    class: _vm.getValidationClass("idOmi"),
+                                    attrs: { "md-clearable": "" }
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "text-muted",
+                                        attrs: { for: "first-name" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "Identificador OMI (IMO Identifier)"
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.form.idOmi,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "idOmi", $$v)
+                                        },
+                                        expression: "form.idOmi"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    !_vm.$v.form.idOmi.required
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "md-error" },
+                                          [
+                                            _vm._v(
+                                              "Olvidaste ingresar el identificador OMI"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("    \n              ")
+                          ]),
+                          _vm._v(" "),
                           _c("div", [
                             _c("strong", [
                               _vm._v("PERMISO OTORGADO - ÚLTIMA PRORROGA")
@@ -51876,7 +52116,11 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("No. de Resolución")]
+                                      [
+                                        _vm._v(
+                                          "No. Resolución (Resolution No.)"
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -51917,7 +52161,10 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("   \n                "),
+                            _vm._v("   \n              ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -51941,7 +52188,11 @@ var render = function() {
                                     }
                                   },
                                   [
-                                    _c("label", [_vm._v("Fecha")]),
+                                    _c("label", [
+                                      _vm._v(
+                                        "Fecha Resolución (Resolution Date)"
+                                      )
+                                    ]),
                                     _vm._v(" "),
                                     !_vm.$v.form.date.required
                                       ? _c(
@@ -51949,7 +52200,7 @@ var render = function() {
                                           { staticClass: "md-error" },
                                           [
                                             _vm._v(
-                                              "Olvidaste ingresar la fecha\n                      "
+                                              "Olvidaste ingresar la fecha de resolución\n                      "
                                             )
                                           ]
                                         )
@@ -51959,10 +52210,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("    \n              ")
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "md-layout" }, [
+                            _vm._v("    \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -51988,7 +52236,9 @@ var render = function() {
                                     }
                                   },
                                   [
-                                    _c("label", [_vm._v("Fecha Vigencia")]),
+                                    _c("label", [
+                                      _vm._v("Fecha Vigencia (Validity Date)")
+                                    ]),
                                     _vm._v(" "),
                                     !_vm.$v.form.dateValidity.required
                                       ? _c(
@@ -52006,7 +52256,10 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("    \n                "),
+                            _vm._v("    \n              ")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52021,7 +52274,7 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("Nombre Embarcación")]
+                                      [_vm._v("Nombre Embarcación (Ship Name)")]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -52063,7 +52316,7 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Bandera")
+                                  _vm._v("Bandera (Flag)")
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -52103,7 +52356,11 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("Matrícula")]
+                                      [
+                                        _vm._v(
+                                          "Matrícula (Vessel Registration)"
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -52140,58 +52397,7 @@ var render = function() {
                               1
                             ),
                             _vm._v("   \n                "),
-                            _c(
-                              "div",
-                              { staticClass: "md-layout-item" },
-                              [
-                                _c(
-                                  "md-field",
-                                  {
-                                    class: _vm.getValidationClass("noOmi"),
-                                    attrs: { "md-clearable": "" }
-                                  },
-                                  [
-                                    _c(
-                                      "label",
-                                      { attrs: { for: "first-name" } },
-                                      [_vm._v("No. OMI")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("md-input", {
-                                      attrs: {
-                                        name: "first-name",
-                                        id: "first-name",
-                                        autocomplete: "given-name",
-                                        disabled: _vm.sending,
-                                        type: "number"
-                                      },
-                                      model: {
-                                        value: _vm.form.noOmi,
-                                        callback: function($$v) {
-                                          _vm.$set(_vm.form, "noOmi", $$v)
-                                        },
-                                        expression: "form.noOmi"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    !_vm.$v.form.noOmi.required
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "md-error" },
-                                          [
-                                            _vm._v(
-                                              "Olvidaste ingresar el identificador OMI"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v("   \n                "),
+                            _vm._v(" "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52206,7 +52412,7 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("No. de Patente")]
+                                      [_vm._v("No. de Patente (Patent)")]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -52274,7 +52480,9 @@ var render = function() {
                                   },
                                   [
                                     _c("label", [
-                                      _vm._v("Fecha Vigencia Patente")
+                                      _vm._v(
+                                        "Fecha Vigencia Patente (Validity Name)"
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     !_vm.$v.form.dateValidityPat.required
@@ -52311,7 +52519,11 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("Representante Legal")]
+                                      [
+                                        _vm._v(
+                                          "Representante Legal (Legal Representative)"
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -52353,7 +52565,7 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Empresa")
+                                  _vm._v("Empresa (Enterprise)")
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -52390,7 +52602,7 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Pesquería Autorizada")
+                                  _vm._v("Pesquería Autorizada (Fishery)")
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -52423,7 +52635,9 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Zona de Pesca Autorizada")
+                                  _vm._v(
+                                    "Zona de Pesca Autorizada (Fishing Zone)"
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -52455,43 +52669,6 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
-                            _c(
-                              "div",
-                              { staticClass: "md-layout-item" },
-                              [
-                                _c(
-                                  "md-field",
-                                  { attrs: { "md-clearable": "" } },
-                                  [
-                                    _c(
-                                      "label",
-                                      { attrs: { for: "first-name" } },
-                                      [_vm._v("Ojo de Malla (Pulgadas)")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("md-input", {
-                                      attrs: {
-                                        name: "first-name",
-                                        id: "first-name",
-                                        autocomplete: "given-name",
-                                        disabled: _vm.sending,
-                                        type: "number"
-                                      },
-                                      model: {
-                                        value: _vm.eyeMesh,
-                                        callback: function($$v) {
-                                          _vm.eyeMesh = $$v
-                                        },
-                                        expression: "eyeMesh"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52540,9 +52717,46 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
+                                      [_vm._v("Ojo de Malla (Pulgadas)")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending,
+                                        type: "number"
+                                      },
+                                      model: {
+                                        value: _vm.eyeMesh,
+                                        callback: function($$v) {
+                                          _vm.eyeMesh = $$v
+                                        },
+                                        expression: "eyeMesh"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  { attrs: { "md-clearable": "" } },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
                                       [
                                         _vm._v(
-                                          "Ojo de Malla del Copo (Pulgadas)"
+                                          "Cantidad total de anzuelos del palangre"
                                         )
                                       ]
                                     ),
@@ -52556,11 +52770,11 @@ var render = function() {
                                         type: "number"
                                       },
                                       model: {
-                                        value: _vm.eyeFlake,
+                                        value: _vm.totalLongline,
                                         callback: function($$v) {
-                                          _vm.eyeFlake = $$v
+                                          _vm.totalLongline = $$v
                                         },
-                                        expression: "eyeFlake"
+                                        expression: "totalLongline"
                                       }
                                     })
                                   ],
@@ -52573,43 +52787,6 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "md-layout" }, [
-                            _c(
-                              "div",
-                              { staticClass: "md-layout-item" },
-                              [
-                                _c(
-                                  "md-field",
-                                  { attrs: { "md-clearable": "" } },
-                                  [
-                                    _c(
-                                      "label",
-                                      { attrs: { for: "first-name" } },
-                                      [_vm._v("Tamaño No. y tipo de Anzuelo")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("md-input", {
-                                      attrs: {
-                                        name: "first-name",
-                                        id: "first-name",
-                                        autocomplete: "given-name",
-                                        disabled: _vm.sending,
-                                        type: "number"
-                                      },
-                                      model: {
-                                        value: _vm.typeHook,
-                                        callback: function($$v) {
-                                          _vm.typeHook = $$v
-                                        },
-                                        expression: "typeHook"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
@@ -52646,6 +52823,47 @@ var render = function() {
                               ],
                               1
                             ),
+                            _vm._v("      \n                "),
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  { attrs: { "md-clearable": "" } },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [
+                                        _vm._v(
+                                          "Ojo de Malla del Copo (Pulgadas)"
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending,
+                                        type: "number"
+                                      },
+                                      model: {
+                                        value: _vm.eyeFlake,
+                                        callback: function($$v) {
+                                          _vm.eyeFlake = $$v
+                                        },
+                                        expression: "eyeFlake"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
                             _vm._v("   \n                "),
                             _c(
                               "div",
@@ -52658,7 +52876,7 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("Material de Arte de Pesca")]
+                                      [_vm._v("Tamaño No. y tipo de Anzuelo")]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -52666,14 +52884,15 @@ var render = function() {
                                         name: "first-name",
                                         id: "first-name",
                                         autocomplete: "given-name",
-                                        disabled: _vm.sending
+                                        disabled: _vm.sending,
+                                        type: "number"
                                       },
                                       model: {
-                                        value: _vm.materialArt,
+                                        value: _vm.typeHook,
                                         callback: function($$v) {
-                                          _vm.materialArt = $$v
+                                          _vm.typeHook = $$v
                                         },
-                                        expression: "materialArt"
+                                        expression: "typeHook"
                                       }
                                     })
                                   ],
@@ -52692,11 +52911,13 @@ var render = function() {
                               [
                                 _c(
                                   "md-field",
-                                  { attrs: { "md-clearable": "" } },
                                   [
                                     _c(
                                       "label",
-                                      { attrs: { for: "first-name" } },
+                                      {
+                                        staticClass: "text-muted",
+                                        attrs: { for: "equipDevi" }
+                                      },
                                       [
                                         _vm._v(
                                           "Equipos o Dispositivos Requeridos"
@@ -52704,21 +52925,63 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _c("md-input", {
-                                      attrs: {
-                                        name: "first-name",
-                                        id: "first-name",
-                                        autocomplete: "given-name",
-                                        disabled: _vm.sending
-                                      },
-                                      model: {
-                                        value: _vm.equipDevi,
-                                        callback: function($$v) {
-                                          _vm.equipDevi = $$v
+                                    _c(
+                                      "md-select",
+                                      {
+                                        attrs: {
+                                          name: "equipDevi",
+                                          id: "equipDevi",
+                                          placeholder:
+                                            "Seleccione un equipo o dispositivo",
+                                          "md-dense": ""
                                         },
-                                        expression: "equipDevi"
-                                      }
-                                    })
+                                        model: {
+                                          value: _vm.equipDevi,
+                                          callback: function($$v) {
+                                            _vm.equipDevi = $$v
+                                          },
+                                          expression: "equipDevi"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "md-option",
+                                          {
+                                            attrs: {
+                                              value:
+                                                "Dispositivo Agregado de preces-DAPs (FADs)"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Dispositivo Agregado de preces-DAPs (FADs)"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "md-option",
+                                          {
+                                            attrs: {
+                                              value:
+                                                "Dispositivo Excluidor de Tortugas-DETs"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Dispositivo Excluidor de Tortugas-DETs"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "md-option",
+                                          { attrs: { value: "Otro" } },
+                                          [_vm._v("Otro")]
+                                        )
+                                      ],
+                                      1
+                                    )
                                   ],
                                   1
                                 )
@@ -52737,7 +53000,81 @@ var render = function() {
                                     _c(
                                       "label",
                                       { attrs: { for: "first-name" } },
-                                      [_vm._v("Nombre Capitán de Pesca")]
+                                      [_vm._v("Otro")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("md-input", {
+                                      attrs: {
+                                        name: "first-name",
+                                        id: "first-name",
+                                        autocomplete: "given-name",
+                                        disabled: _vm.sending
+                                      },
+                                      model: {
+                                        value: _vm.other,
+                                        callback: function($$v) {
+                                          _vm.other = $$v
+                                        },
+                                        expression: "other"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v("   \n                 "),
+                            _c("div", { staticClass: "md-layout" }, [
+                              _c(
+                                "div",
+                                { staticClass: "md-layout-item" },
+                                [
+                                  _c("label", [
+                                    _vm._v("Material de Arte de Pesca")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("multiselect", {
+                                    attrs: {
+                                      options: _vm.arrayMaterialArt,
+                                      placeholder:
+                                        "Seleccione el material de arte de pesca",
+                                      "custom-label": _vm.nameWithMaterialArt,
+                                      label: "name",
+                                      "track-by": "name"
+                                    },
+                                    model: {
+                                      value: _vm.arrayMaterial,
+                                      callback: function($$v) {
+                                        _vm.arrayMaterial = $$v
+                                      },
+                                      expression: "arrayMaterial"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v("   \n               ")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "md-layout" }, [
+                            _c(
+                              "div",
+                              { staticClass: "md-layout-item" },
+                              [
+                                _c(
+                                  "md-field",
+                                  { attrs: { "md-clearable": "" } },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "first-name" } },
+                                      [
+                                        _vm._v(
+                                          "Nombre Capitán de Pesca (Captain Name)"
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c("md-input", {
@@ -52767,7 +53104,7 @@ var render = function() {
                               { staticClass: "md-layout-item" },
                               [
                                 _c("label", { staticClass: "text-muted" }, [
-                                  _vm._v("Nacionalidad")
+                                  _vm._v("Nacionalidad (Nationality)")
                                 ]),
                                 _vm._v(" "),
                                 _c("multiselect", {
@@ -53153,7 +53490,7 @@ var render = function() {
                                   [
                                     _c("label", [
                                       _vm._v(
-                                        "Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)"
+                                        "Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)(Observations on compliance)"
                                       )
                                     ]),
                                     _vm._v(" "),
@@ -53189,7 +53526,7 @@ var render = function() {
                           _c(
                             "div",
                             { staticStyle: { "text-align": "center" } },
-                            [_c("strong", [_vm._v("CAPTURA OJETIVO")])]
+                            [_c("strong", [_vm._v("CAPTURA OBJETIVO")])]
                           ),
                           _vm._v(" "),
                           _c(
@@ -53340,16 +53677,16 @@ var render = function() {
                                   [
                                     _c("thead", [
                                       _c("tr", [
-                                        _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                        _c("th", [_vm._v("NOMBRE COMÚN")]),
                                         _vm._v(" "),
-                                        _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
+                                        _c("th", [_vm._v("NOMBRE CIENTÍFICO")]),
                                         _vm._v(" "),
                                         _c("th", [_vm._v("CAPTURA TON.")]),
                                         _vm._v(" "),
                                         _c(
                                           "th",
                                           { staticStyle: { width: "90px" } },
-                                          [_vm._v("Opciones")]
+                                          [_vm._v("OPCIONES")]
                                         )
                                       ])
                                     ]),
@@ -53441,16 +53778,16 @@ var render = function() {
                                     _vm._v(" "),
                                     _c("tfoot", [
                                       _c("tr", [
-                                        _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                        _c("th", [_vm._v("NOMBRE COMÚN")]),
                                         _vm._v(" "),
-                                        _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
+                                        _c("th", [_vm._v("NOMBRE CIENTÍFICO")]),
                                         _vm._v(" "),
                                         _c("th", [_vm._v("CAPTURA TON.")]),
                                         _vm._v(" "),
                                         _c(
                                           "th",
                                           { staticStyle: { width: "90px" } },
-                                          [_vm._v("Opciones")]
+                                          [_vm._v("OPCIONES")]
                                         )
                                       ])
                                     ]),
@@ -53624,16 +53961,16 @@ var render = function() {
                                 [
                                   _c("thead", [
                                     _c("tr", [
-                                      _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                      _c("th", [_vm._v("NOMBRE COMÚN")]),
                                       _vm._v(" "),
-                                      _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
+                                      _c("th", [_vm._v("NOMBRE CIENTÍFICO")]),
                                       _vm._v(" "),
                                       _c("th", [_vm._v("CAPTURA TON.")]),
                                       _vm._v(" "),
                                       _c(
                                         "th",
                                         { staticStyle: { width: "90px" } },
-                                        [_vm._v("Opciones")]
+                                        [_vm._v("OPCIONES")]
                                       )
                                     ])
                                   ]),
@@ -53720,16 +54057,16 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("tfoot", [
                                     _c("tr", [
-                                      _c("th", [_vm._v("NOMBRE COMÙN")]),
+                                      _c("th", [_vm._v("NOMBRE COMÚN")]),
                                       _vm._v(" "),
-                                      _c("th", [_vm._v("NOMBRE CIENTÌFICO")]),
+                                      _c("th", [_vm._v("NOMBRE CIENTÍFICO")]),
                                       _vm._v(" "),
                                       _c("th", [_vm._v("CAPTURA TON.")]),
                                       _vm._v(" "),
                                       _c(
                                         "th",
                                         { staticStyle: { width: "90px" } },
-                                        [_vm._v("Opciones")]
+                                        [_vm._v("OPCIONES")]
                                       )
                                     ])
                                   ]),
@@ -53820,7 +54157,9 @@ var render = function() {
                                   },
                                   [
                                     _c("label", [
-                                      _vm._v("Conclusiones Del Inspector")
+                                      _vm._v(
+                                        "Conclusiones Del Inspector (Inspector’s Conclusions)"
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     _c("md-textarea", {
@@ -53872,7 +54211,7 @@ var render = function() {
                                   [
                                     _c("label", [
                                       _vm._v(
-                                        "Comentarios Adicionales (espacio disponible para el capitan)"
+                                        "Comentarios Adicionales (espacio disponible para el capitan)(Additional Comments)"
                                       )
                                     ]),
                                     _vm._v(" "),
@@ -53923,7 +54262,11 @@ var render = function() {
                                     attrs: { "md-clearable": "" }
                                   },
                                   [
-                                    _c("label", [_vm._v("Observaciones")]),
+                                    _c("label", [
+                                      _vm._v(
+                                        "Observaciones (General Observations)"
+                                      )
+                                    ]),
                                     _vm._v(" "),
                                     _c("md-textarea", {
                                       model: {

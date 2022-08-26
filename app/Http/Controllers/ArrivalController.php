@@ -13,6 +13,7 @@ use App\Company;
 use App\DetailFisherAutArrival;
 use App\DetTargCaptArrivals;
 use App\DetFaunaCaptArrivals;
+use App\FishingGearMaterial;
 
 class ArrivalController extends Controller
 {
@@ -27,6 +28,8 @@ class ArrivalController extends Controller
             ->join('auto_fishers','arrivals.id_zoneAutoFisher','=','auto_fishers.id')
             // ->join('fishery_authorizeds','arrivals.id_fisheryAuthorized','=','fishery_authorizeds.id')
             ->join('companies','arrivals.id_company','=','companies.id')
+            ->join('orops','arrivals.id_orop','=','orops.id')
+            ->join('fishing_gear_materials','arrivals.id_material','=','fishing_gear_materials.id')
             ->select('arrivals.id',
                     'arrivals.insNo',
                     'arrivals.radioCall',
@@ -43,10 +46,13 @@ class ArrivalController extends Controller
                     'arrivals.equipDevi',
                     'arrivals.captain',
                     'arrivals.noOmi',
+                    'arrivals.totalLongline',
                     'arrivals.legalRepre',
                     'arrivals.noAllCrew',
                     'arrivals.noCrewForeign',
                     'arrivals.noCrewNational',
+                    'arrivals.idOmi',
+                    'arrivals.other',
                     'arrivals.noDays',
                     'arrivals.noAllHauls',
                     'arrivals.noHaulsNacional',
@@ -74,10 +80,12 @@ class ArrivalController extends Controller
                     'arrivals.id_region','regions.name as nameReg',
                     'arrivals.id_port','ports.name as namePort',
                     'arrivals.id_flag','flags.name as nameFlag',
+                    'arrivals.id_material','fishing_gear_materials.name as nameMaterial',
                     'arrivals.id_nationality','nationalities.name as nameNationality',
                     'arrivals.id_zoneAutoFisher','auto_fishers.name as nameZoneAutoFisher',
                     // 'arrivals.id_fisheryAuthorized','fishery_authorizeds.name as nameFishery',
                     'arrivals.id_company','companies.name as nameCompany',
+                    'arrivals.id_orop','orops.name as nameOrop',
             )
 
             ->paginate(9999999999999999999999999);
@@ -109,6 +117,9 @@ class ArrivalController extends Controller
         $arrivals->noAllCrew = $request->noAllCrew;
         $arrivals->noCrewForeign = $request->noCrewForeign;
         $arrivals->noCrewNational = $request->noCrewNational;
+        $arrivals->idOmi = $request->idOmi;
+        $arrivals->other = $request->other;
+        $arrivals->totalLongline = $request->totalLongline;
         $arrivals->noDays = $request->noDays;
         $arrivals->noAllHauls = $request->noAllHauls;
         $arrivals->noHaulsNacional = $request->noHaulsNacional;
@@ -137,6 +148,8 @@ class ArrivalController extends Controller
         $arrivals->id_portArrival = $request->id_portArrival;
         $arrivals->id_flag = $request->id_flag;
         $arrivals->id_nationality = $request->id_nationality;
+        $arrivals->id_orop = $request->id_orop; 
+        $arrivals->id_material = $request->id_material;
         $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;
         $arrivals->id_company = $request->id_company;
         $arrivals->save();
@@ -199,6 +212,9 @@ class ArrivalController extends Controller
         $arrivals->noAllCrew = $request->noAllCrew;
         $arrivals->noCrewForeign = $request->noCrewForeign;
         $arrivals->noCrewNational = $request->noCrewNational;
+        $arrivals->idOmi = $request->idOmi;
+        $arrivals->other = $request->other;
+        $arrivals->totalLongline = $request->totalLongline;
         $arrivals->noDays = $request->noDays;
         $arrivals->noAllHauls = $request->noAllHauls;
         $arrivals->noHaulsNacional = $request->noHaulsNacional;
@@ -228,6 +244,8 @@ class ArrivalController extends Controller
         $arrivals->id_flag = $request->id_flag;
         $arrivals->id_nationality = $request->id_nationality;
         $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;
+        $arrivals->id_orop = $request->id_orop;
+        $arrivals->id_material = $request->id_material;
         // $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized;
         $arrivals->id_company = $request->id_company;
         $arrivals->save();

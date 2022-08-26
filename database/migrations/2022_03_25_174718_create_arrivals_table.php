@@ -30,6 +30,8 @@ class CreateArrivalsTable extends Migration
             $table->string('equipDevi'); 
             $table->string('captain'); 
             $table->string('noOmi'); 
+            $table->string('idOmi'); 
+            $table->string('totalLongline'); 
             $table->string('legalRepre'); 
             $table->string('noAllCrew'); 
             $table->string('noCrewForeign'); 
@@ -73,6 +75,10 @@ class CreateArrivalsTable extends Migration
             // $table->foreign('id_fisheryAuthorized')->references('id')->on('fishery_authorizeds');
             $table->integer('id_company')->unsigned();
             $table->foreign('id_company')->references('id')->on('companies');
+            $table->integer('id_orop')->unsigned();
+            $table->foreign('id_orop')->references('id')->on('orops');
+            $table->integer('id_material')->unsigned();
+            $table->foreign('id_material')->references('id')->on('fishing_gear_materials');
             $table->timestamps();
         });
     }
