@@ -571,15 +571,15 @@
                    </div>&nbsp;&nbsp;&nbsp;           
                  </div>
                  <div class="md-layout"> 
-                  <div class="md-layout-item">
+                  <!-- <div class="md-layout-item">
                       <label>Equipos o Dispositivos Requeridos</label>
                       <multiselect v-model="equipDevi" :options="arrayValue"
                           placeholder="Seleccione un equipo o dispositivo"
                           label="name"
                           track-by="name">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp; 
-                    <!-- <div class="md-layout-item">
+                  </div>&nbsp;&nbsp;&nbsp;  -->
+                    <div class="md-layout-item">
                       <md-field>
                         <label for="equipDevi" class="text-muted">Equipos o Dispositivos Requeridos</label> 
                         <md-select v-model="equipDevi" name="equipDevi" id="equipDevi" placeholder="Seleccione un equipo o dispositivo" md-dense>
@@ -588,7 +588,7 @@
                           <md-option value="Otro">Otro</md-option>
                         </md-select>
                       </md-field>
-                    </div>&nbsp;&nbsp;&nbsp; -->
+                    </div>&nbsp;&nbsp;&nbsp;
                    <div class="md-layout-item"> 
                     <md-field md-clearable>
                       <label for="first-name">Otro</label>
@@ -1487,7 +1487,7 @@ export default {
  
     saveData() {
       let me = this;
-      this.equipDeviName = this.equipDevi.name;
+
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
       }
@@ -1509,9 +1509,6 @@ export default {
       if (this.typeHook == "") {
         this.typeHook = this.noApply;
       }
-      // if (this.materialArt == "") {
-      //   this.materialArt = this.noApply;
-      // }
       if (this.equipDevi == "") {
         this.equipDevi = this.noApply;
       }
@@ -1536,7 +1533,7 @@ export default {
           totalLongline: this.totalLongline,
           other: this.other.toUpperCase(),
           // materialArt: this.materialArt.toUpperCase(),
-          equipDevi: this.equipDeviName.toUpperCase(),
+          equipDevi: this.equipDevi.toUpperCase(),
           captain: this.captain.toUpperCase(),
           observation: this.form.observation.toUpperCase(),
           observationGeneral: this.form.observationGeneral.toUpperCase(),
@@ -1574,7 +1571,6 @@ export default {
         })
         .catch(function(error) {
           console.log(error);
-          console.log(this.equipDeviName + " naombreEqupo");
         });
     },
     updateData() {

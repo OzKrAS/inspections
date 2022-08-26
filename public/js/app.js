@@ -43902,7 +43902,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
     },
     saveData: function saveData() {
       var me = this;
-      this.equipDeviName = this.equipDevi.name;
+
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
       }
@@ -43924,9 +43924,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       if (this.typeHook == "") {
         this.typeHook = this.noApply;
       }
-      // if (this.materialArt == "") {
-      //   this.materialArt = this.noApply;
-      // }
       if (this.equipDevi == "") {
         this.equipDevi = this.noApply;
       }
@@ -43950,7 +43947,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         totalLongline: this.totalLongline,
         other: this.other.toUpperCase(),
         // materialArt: this.materialArt.toUpperCase(),
-        equipDevi: this.equipDeviName.toUpperCase(),
+        equipDevi: this.equipDevi.toUpperCase(),
         captain: this.captain.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
         observationGeneral: this.form.observationGeneral.toUpperCase(),
@@ -43985,7 +43982,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         me.listData();
       }).catch(function (error) {
         console.log(error);
-        console.log(this.equipDeviName + " naombreEqupo");
       });
     },
     updateData: function updateData() {
@@ -47800,31 +47796,86 @@ var render = function() {
                               "div",
                               { staticClass: "md-layout-item" },
                               [
-                                _c("label", [
-                                  _vm._v("Equipos o Dispositivos Requeridos")
-                                ]),
-                                _vm._v(" "),
-                                _c("multiselect", {
-                                  attrs: {
-                                    options: _vm.arrayValue,
-                                    placeholder:
-                                      "Seleccione un equipo o dispositivo",
-                                    label: "name",
-                                    "track-by": "name"
-                                  },
-                                  model: {
-                                    value: _vm.equipDevi,
-                                    callback: function($$v) {
-                                      _vm.equipDevi = $$v
-                                    },
-                                    expression: "equipDevi"
-                                  }
-                                })
+                                _c(
+                                  "md-field",
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "text-muted",
+                                        attrs: { for: "equipDevi" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "Equipos o Dispositivos Requeridos"
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "md-select",
+                                      {
+                                        attrs: {
+                                          name: "equipDevi",
+                                          id: "equipDevi",
+                                          placeholder:
+                                            "Seleccione un equipo o dispositivo",
+                                          "md-dense": ""
+                                        },
+                                        model: {
+                                          value: _vm.equipDevi,
+                                          callback: function($$v) {
+                                            _vm.equipDevi = $$v
+                                          },
+                                          expression: "equipDevi"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "md-option",
+                                          {
+                                            attrs: {
+                                              value:
+                                                "Dispositivo Agregado de preces-DAPs (FADs)"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Dispositivo Agregado de preces-DAPs (FADs)"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "md-option",
+                                          {
+                                            attrs: {
+                                              value:
+                                                "Dispositivo Excluidor de Tortugas-DETs"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Dispositivo Excluidor de Tortugas-DETs"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "md-option",
+                                          { attrs: { value: "Otro" } },
+                                          [_vm._v("Otro")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
                               ],
                               1
                             ),
-                            _vm._v("    \n                  "),
-                            _vm._v(" "),
+                            _vm._v("   \n                 "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item" },
