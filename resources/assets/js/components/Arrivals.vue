@@ -218,7 +218,7 @@
                   <div class="md-layout-item">
                       <md-field>
                         <label class="text-muted">Estado Rector del Puerto (Port / Port State)</label>
-                        <md-select v-model="stateRectorPort" name="stateRectorPort" id="stateRectorPort" placeholder="Puerto/Estado Rector del Puerto">
+                        <md-select v-model="stateRectorPort" name="stateRectorPort" id="stateRectorPort" placeholder="Estado Rector del Puerto">
                           <md-option value="colombia">Colombia</md-option>
                         </md-select>
                       </md-field>
@@ -382,8 +382,8 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                       <md-datepicker
-                        md-clearable :class="getValidationClass('date')"
-                        v-model="form.date"
+                        md-clearable :class="getValidationClass('dateResolution')"
+                        v-model="form.dateResolution"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
@@ -391,7 +391,7 @@
                         <label>Fecha Resolución (Resolution Date)</label>
                         <span
                           class="md-error"
-                          v-if="!$v.form.date.required"
+                          v-if="!$v.form.dateResolution.required"
                           >Olvidaste ingresar la fecha de resolución
                         </span>
                       </md-datepicker>
@@ -1265,8 +1265,8 @@
                 type="submit"
                 v-if="tipoAccion==1"
                 class="md-dense md-raised md-primary"
-                :disabled="sending"
-                @click="validateData()"
+
+                @click="validateData"
               >Guardar</md-button>
               <md-button
                 type="submit"
@@ -1349,7 +1349,7 @@ export default {
         dateScale: format(now, dateFormat),
         dateZarpe: format(now, dateFormat),
         dateLatestArrival: format(now, dateFormat),
-        date: format(now, dateFormat),
+        dateResolution: format(now, dateFormat),
         dateValidityPat: format(now, dateFormat),
         dateValidity: format(now, dateFormat),
         dateIns: format(now, dateFormat),
@@ -1484,9 +1484,6 @@ export default {
       noPatent: {
         required
       },
-      noOmi: {
-        required
-      },
       legalRepre: {
         required
       },
@@ -1508,16 +1505,14 @@ export default {
       idOmi: {
         required
       },
-      dateScale: {
-        required
-      },
+
       dateZarpe: {
         required
       },
       dateLatestArrival: {
         required
       },
-      date: {
+      dateResolution: {
         required
       },
       dateValidity: {
@@ -1800,7 +1795,7 @@ export default {
       this.form.noHaulsNacional = null;
       this.form.noHaulsInter = null;
       this.form.landedWeight = null;
-      this.form.stateRectorPort = null;
+      this.stateRectorPort = null;
       this.form.observation = null;
       this.totalLongline = null;
       this.notification = null;
@@ -1987,7 +1982,7 @@ export default {
       this.materialArt = data["materialArt"];
       this.equipDevi = data["equipDevi"];
       this.captain = data["captain"];
-      this.form.noOmi = data["noOmi"];
+     // this.form.noOmi = data["noOmi"];
       this.form.legalRepre = data["legalRepre"];
       this.noAllCrew = data["noAllCrew"];
       this.noCrewForeign = data["noCrewForeign"];
@@ -2015,7 +2010,7 @@ export default {
       this.form.date = data["date"];
       this.form.dateValidity = data["dateValidity"];
       this.form.observationGeneral = data["observationGeneral"];
-      this.form.stateRectorPort = data["stateRectorPort"];
+      this.stateRectorPort = data["stateRectorPort"];
 
       this.arrayReg.id = data["id_region"];
 			this.arrayReg.name = data["nameReg"];
@@ -2106,15 +2101,15 @@ export default {
           eyeFlake: this.eyeFlake.toUpperCase(),
           typeHook: this.typeHook.toUpperCase(),
           longNet: this.longNet.toUpperCase(),
-          materialArt: this.materialArt.toUpperCase(),
+          materialArt: this.materialArt,
           equipDevi: this.equipDevi.toUpperCase(),
           captain: this.captain.toUpperCase(),
-          noOmi: this.form.noOmi.toUpperCase(),
+         // noOmi: this.form.noOmi.toUpperCase(),
           legalRepre: this.form.legalRepre.toUpperCase(),
           noAllCrew: this.noAllCrew.toUpperCase(),
           noCrewForeign: this.noCrewForeign.toUpperCase(),
           noCrewNational: this.noCrewNational.toUpperCase(),
-          idOmi: this.idOmi.toUpperCase(),
+          idOmi: this.idOmi,
           other: this.other.toUpperCase(),
           noDays: this.form.noDays.toUpperCase(),
           noAllHauls: this.form.noAllHauls.toUpperCase(),
@@ -2129,13 +2124,13 @@ export default {
           locationSystem: this.locationSystem,
           inspectorConclusions :this.form.inspectorConclusions.toUpperCase(),
           additionalComments :this.form.additionalComments.toUpperCase(),
-          stateRectorPort :this.form.stateRectorPort.toUpperCase(),
+          stateRectorPort :this.stateRectorPort,
           dateIns :this.form.dateIns,
           dateScale :this.form.dateScale,
           dateZarpe :this.form.dateZarpe,
           dateLatestArrival: this.form.dateLatestArrival,
           dateValidityPat: this.form.dateValidityPat,
-          date: this.form.date,
+          date: this.form.dateResolution,
           dateValidity: this.form.dateValidity,
           observationGeneral: this.form.observationGeneral,
 
@@ -2219,12 +2214,12 @@ export default {
           materialArt :this.materialArt.toUpperCase(),
           equipDevi :this.equipDevi.toUpperCase(),
           captain :this.captain.toUpperCase(),
-          noOmi :this.form.noOmi.toUpperCase(),
+          //noOmi :this.form.noOmi.toUpperCase(),
           legalRepre :this.form.legalRepre.toUpperCase(),
           noAllCrew :this.noAllCrew.toUpperCase(),
           noCrewForeign :this.noCrewForeign.toUpperCase(),
           noCrewNational :this.noCrewNational.toUpperCase(),
-          idOmi :this.idOmi.toUpperCase(),
+          idOmi :this.idOmi,
           other :this.other.toUpperCase(),
           noDays :this.form.noDays.toUpperCase(),
           noAllHauls :this.form.noAllHauls.toUpperCase(),
@@ -2239,7 +2234,7 @@ export default {
           locationSystem: this.locationSystem,
           inspectorConclusions :this.form.inspectorConclusions.toUpperCase(),
           additionalComments :this.form.additionalComments.toUpperCase(),
-          stateRectorPort :this.form.stateRectorPort.toUpperCase(),
+          stateRectorPort :this.stateRectorPort,
           dateIns :this.form.dateIns,
           dateScale :this.form.dateScale,
           dateZarpe :this.form.dateZarpe,

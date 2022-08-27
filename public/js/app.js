@@ -50284,7 +50284,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         dateScale: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateZarpe: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateLatestArrival: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
-        date: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
+        dateResolution: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateValidityPat: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateValidity: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateIns: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
@@ -50405,9 +50405,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       noPatent: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
-      noOmi: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
       legalRepre: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
@@ -50429,16 +50426,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       idOmi: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
-      dateScale: {
-        required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
-      },
+
       dateZarpe: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
       dateLatestArrival: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
-      date: {
+      dateResolution: {
         required: __WEBPACK_IMPORTED_MODULE_6_vuelidate_lib_validators__["required"]
       },
       dateValidity: {
@@ -50735,7 +50730,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.form.noHaulsNacional = null;
       this.form.noHaulsInter = null;
       this.form.landedWeight = null;
-      this.form.stateRectorPort = null;
+      this.stateRectorPort = null;
       this.form.observation = null;
       this.totalLongline = null;
       this.notification = null;
@@ -50938,7 +50933,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.materialArt = data["materialArt"];
       this.equipDevi = data["equipDevi"];
       this.captain = data["captain"];
-      this.form.noOmi = data["noOmi"];
+      // this.form.noOmi = data["noOmi"];
       this.form.legalRepre = data["legalRepre"];
       this.noAllCrew = data["noAllCrew"];
       this.noCrewForeign = data["noCrewForeign"];
@@ -50966,7 +50961,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
       this.form.date = data["date"];
       this.form.dateValidity = data["dateValidity"];
       this.form.observationGeneral = data["observationGeneral"];
-      this.form.stateRectorPort = data["stateRectorPort"];
+      this.stateRectorPort = data["stateRectorPort"];
 
       this.arrayReg.id = data["id_region"];
       this.arrayReg.name = data["nameReg"];
@@ -51056,15 +51051,15 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         eyeFlake: this.eyeFlake.toUpperCase(),
         typeHook: this.typeHook.toUpperCase(),
         longNet: this.longNet.toUpperCase(),
-        materialArt: this.materialArt.toUpperCase(),
+        materialArt: this.materialArt,
         equipDevi: this.equipDevi.toUpperCase(),
         captain: this.captain.toUpperCase(),
-        noOmi: this.form.noOmi.toUpperCase(),
+        // noOmi: this.form.noOmi.toUpperCase(),
         legalRepre: this.form.legalRepre.toUpperCase(),
         noAllCrew: this.noAllCrew.toUpperCase(),
         noCrewForeign: this.noCrewForeign.toUpperCase(),
         noCrewNational: this.noCrewNational.toUpperCase(),
-        idOmi: this.idOmi.toUpperCase(),
+        idOmi: this.idOmi,
         other: this.other.toUpperCase(),
         noDays: this.form.noDays.toUpperCase(),
         noAllHauls: this.form.noAllHauls.toUpperCase(),
@@ -51079,13 +51074,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         locationSystem: this.locationSystem,
         inspectorConclusions: this.form.inspectorConclusions.toUpperCase(),
         additionalComments: this.form.additionalComments.toUpperCase(),
-        stateRectorPort: this.form.stateRectorPort.toUpperCase(),
+        stateRectorPort: this.stateRectorPort,
         dateIns: this.form.dateIns,
         dateScale: this.form.dateScale,
         dateZarpe: this.form.dateZarpe,
         dateLatestArrival: this.form.dateLatestArrival,
         dateValidityPat: this.form.dateValidityPat,
-        date: this.form.date,
+        date: this.form.dateResolution,
         dateValidity: this.form.dateValidity,
         observationGeneral: this.form.observationGeneral,
 
@@ -51166,12 +51161,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         materialArt: this.materialArt.toUpperCase(),
         equipDevi: this.equipDevi.toUpperCase(),
         captain: this.captain.toUpperCase(),
-        noOmi: this.form.noOmi.toUpperCase(),
+        //noOmi :this.form.noOmi.toUpperCase(),
         legalRepre: this.form.legalRepre.toUpperCase(),
         noAllCrew: this.noAllCrew.toUpperCase(),
         noCrewForeign: this.noCrewForeign.toUpperCase(),
         noCrewNational: this.noCrewNational.toUpperCase(),
-        idOmi: this.idOmi.toUpperCase(),
+        idOmi: this.idOmi,
         other: this.other.toUpperCase(),
         noDays: this.form.noDays.toUpperCase(),
         noAllHauls: this.form.noAllHauls.toUpperCase(),
@@ -51186,7 +51181,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_material_dist_components__["MdDatepicker
         locationSystem: this.locationSystem,
         inspectorConclusions: this.form.inspectorConclusions.toUpperCase(),
         additionalComments: this.form.additionalComments.toUpperCase(),
-        stateRectorPort: this.form.stateRectorPort.toUpperCase(),
+        stateRectorPort: this.stateRectorPort,
         dateIns: this.form.dateIns,
         dateScale: this.form.dateScale,
         dateZarpe: this.form.dateZarpe,
@@ -51724,7 +51719,7 @@ var render = function() {
                                           name: "stateRectorPort",
                                           id: "stateRectorPort",
                                           placeholder:
-                                            "Puerto/Estado Rector del Puerto"
+                                            "Estado Rector del Puerto"
                                         },
                                         model: {
                                           value: _vm.stateRectorPort,
@@ -52267,7 +52262,9 @@ var render = function() {
                                 _c(
                                   "md-datepicker",
                                   {
-                                    class: _vm.getValidationClass("date"),
+                                    class: _vm.getValidationClass(
+                                      "dateResolution"
+                                    ),
                                     attrs: {
                                       "md-clearable": "",
                                       "md-immediately": "",
@@ -52275,11 +52272,15 @@ var render = function() {
                                     },
                                     on: { input: _vm.toString },
                                     model: {
-                                      value: _vm.form.date,
+                                      value: _vm.form.dateResolution,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.form, "date", $$v)
+                                        _vm.$set(
+                                          _vm.form,
+                                          "dateResolution",
+                                          $$v
+                                        )
                                       },
-                                      expression: "form.date"
+                                      expression: "form.dateResolution"
                                     }
                                   },
                                   [
@@ -52289,7 +52290,7 @@ var render = function() {
                                       )
                                     ]),
                                     _vm._v(" "),
-                                    !_vm.$v.form.date.required
+                                    !_vm.$v.form.dateResolution.required
                                       ? _c(
                                           "span",
                                           { staticClass: "md-error" },
@@ -54815,15 +54816,8 @@ var render = function() {
                                 "md-button",
                                 {
                                   staticClass: "md-dense md-raised md-primary",
-                                  attrs: {
-                                    type: "submit",
-                                    disabled: _vm.sending
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.validateData()
-                                    }
-                                  }
+                                  attrs: { type: "submit" },
+                                  on: { click: _vm.validateData }
                                 },
                                 [_vm._v("Guardar")]
                               )
