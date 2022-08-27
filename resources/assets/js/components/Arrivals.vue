@@ -81,8 +81,8 @@
                         </span>
                     </md-field>
                   </div>
-                  <div class="md-layout-item">                 
-                      <md-datepicker 
+                  <div class="md-layout-item">
+                      <md-datepicker
                         md-clearable :class="getValidationClass('dateIns')"
                         v-model="form.dateIns"
                         @input="toString"
@@ -95,7 +95,7 @@
                           v-if="!$v.form.dateIns.required"
                           >Olvidaste ingresar la fecha de inspección
                         </span>
-                      </md-datepicker>                   
+                      </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
@@ -194,8 +194,8 @@
                         </md-select>
                       </md-field>
                   </div>&nbsp;&nbsp;&nbsp; -->
-                  <!-- <div class="md-layout-item md-size-30">                 
-                      <md-datepicker 
+                  <!-- <div class="md-layout-item md-size-30">
+                      <md-datepicker
                         md-clearable :class="getValidationClass('dateScale')"
                         v-model="form.dateScale"
                         @input="toString"
@@ -208,16 +208,16 @@
                           v-if="!$v.form.dateScale.required"
                           >Olvidaste ingresar la fecha de vigencia
                         </span>
-                      </md-datepicker>                   
+                      </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp; -->
                 </div>
                 <div>
-                    <strong>PUERTO, ESTADO RECTOR DE PUERTO</strong>    
+                    <strong>PUERTO, ESTADO RECTOR DE PUERTO</strong>
                 </div>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-40">
+                  <div class="md-layout-item">
                       <md-field>
-                        <label class="text-muted">Puerto/Estado Rector del Puerto (Port / Port State)</label>
+                        <label class="text-muted">Estado Rector del Puerto (Port / Port State)</label>
                         <md-select v-model="stateRectorPort" name="stateRectorPort" id="stateRectorPort" placeholder="Puerto/Estado Rector del Puerto">
                           <md-option value="colombia">Colombia</md-option>
                         </md-select>
@@ -232,8 +232,8 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">                 
-                      <md-datepicker 
+                  <div class="md-layout-item">
+                      <md-datepicker
                         md-clearable :class="getValidationClass('dateZarpe')"
                         v-model="form.dateZarpe"
                         @input="toString"
@@ -246,7 +246,7 @@
                           v-if="!$v.form.dateZarpe.required"
                           >Olvidaste ingresar la fecha de zarpe
                         </span>
-                      </md-datepicker>                   
+                      </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
@@ -259,8 +259,8 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">                 
-                      <md-datepicker 
+                  <div class="md-layout-item">
+                      <md-datepicker
                         md-clearable :class="getValidationClass('dateLatestArrival')"
                         v-model="form.dateLatestArrival"
                         @input="toString"
@@ -273,11 +273,11 @@
                           v-if="!$v.form.dateLatestArrival.required"
                           >Olvidaste ingresar la fecha de último arribo
                         </span>
-                      </md-datepicker>                   
+                      </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div>
-                    <strong>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</strong>    
+                    <strong>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</strong>
                 </div>
                 <div class="md-layout">
                   <!-- <div class="md-layout-item">
@@ -292,7 +292,7 @@
                   </div>&nbsp;&nbsp;&nbsp; -->
                   <div class="md-layout-item">
                     <md-field>
-                      <label for="locationSystem" class="text-muted">Nacional</label> 
+                      <label for="locationSystem" class="text-muted">Nacional</label>
                       <md-select v-model="locationSystem" name="locationSystem" id="locationSystem" placeholder="Seleccione un sistema Nacional">
                         <md-option value="no">No</md-option>
                         <md-option value="nacional-AIS">Nacional - AIS</md-option>
@@ -330,7 +330,7 @@
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
-                        <label class="text-muted">OROP</label> 
+                        <label class="text-muted">OROP</label>
                         <multiselect v-model="arrayOr" :options="arrayOrop"
                             placeholder="Seleccione una opción OROP"
                             :custom-label="nameWithOrop"
@@ -338,7 +338,7 @@
                             track-by="name">
                         </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">  
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('idOmi')">
                       <label for="first-name" class="text-muted">Identificador OMI (IMO Identifier)</label>
                       <md-input
@@ -353,7 +353,7 @@
                         v-if="!$v.form.idOmi.required"
                       >Olvidaste ingresar el identificador OMI</span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
+                  </div>&nbsp;&nbsp;&nbsp;
                 </div>
 
                 <div>
@@ -361,7 +361,7 @@
                 </div>
 
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-50"> 
+                  <div class="md-layout-item md-size-50">
                     <md-field md-clearable :class="getValidationClass('noResolution')">
                       <label for="first-name">No. Resolución (Resolution No.)</label>
                       <md-input
@@ -380,8 +380,8 @@
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
-                  <div class="md-layout-item">                 
-                      <md-datepicker 
+                  <div class="md-layout-item">
+                      <md-datepicker
                         md-clearable :class="getValidationClass('date')"
                         v-model="form.date"
                         @input="toString"
@@ -394,10 +394,10 @@
                           v-if="!$v.form.date.required"
                           >Olvidaste ingresar la fecha de resolución
                         </span>
-                      </md-datepicker>                   
+                      </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">                 
-                      <md-datepicker 
+                  <div class="md-layout-item">
+                      <md-datepicker
                         md-clearable :class="getValidationClass('dateValidity')"
                         v-model="form.dateValidity"
                         @input="toString"
@@ -410,7 +410,7 @@
                           v-if="!$v.form.dateValidity.required"
                           >Olvidaste ingresar la fecha de vigencia
                         </span>
-                      </md-datepicker>                   
+                      </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
@@ -491,8 +491,8 @@
                         >Olvidaste ingresar el número de patente</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">                 
-                      <md-datepicker 
+                  <div class="md-layout-item">
+                      <md-datepicker
                         md-clearable :class="getValidationClass('dateValidityPat')"
                         v-model="form.dateValidityPat"
                         @input="toString"
@@ -505,7 +505,7 @@
                           v-if="!$v.form.dateValidityPat.required"
                           >Olvidaste ingresar la fecha de vigencia
                         </span>
-                      </md-datepicker>                   
+                      </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
@@ -607,7 +607,7 @@
                         />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item"> 
+                  <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">Cantidad total de anzuelos del palangre</label>
                         <md-input
@@ -620,8 +620,8 @@
                         />
                       </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
-                </div>  
-                <div class="md-layout"> 
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">Longitud de la red (Brazas)</label>
@@ -634,7 +634,7 @@
                           type="number"
                         />
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;   
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">Ojo de Malla del Copo (Pulgadas)</label>
@@ -677,7 +677,7 @@
                   </div>&nbsp;&nbsp;&nbsp; -->
                   <div class="md-layout-item">
                       <md-field>
-                        <label for="equipDevi" class="text-muted">Equipos o Dispositivos Requeridos</label> 
+                        <label for="equipDevi" class="text-muted">Equipos o Dispositivos Requeridos</label>
                         <md-select v-model="equipDevi" name="equipDevi" id="equipDevi" placeholder="Seleccione un equipo o dispositivo" md-dense>
                           <md-option value="Dispositivo Agregado de preces-DAPs (FADs)">Dispositivo Agregado de preces-DAPs (FADs)</md-option>
                           <md-option value="Dispositivo Excluidor de Tortugas-DETs">Dispositivo Excluidor de Tortugas-DETs</md-option>
@@ -685,7 +685,7 @@
                         </md-select>
                       </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item"> 
+                  <div class="md-layout-item">
                     <md-field md-clearable>
                       <label for="first-name">Otro</label>
                       <md-input
@@ -710,7 +710,7 @@
                  </div>
                 </div>
                 <div class="md-layout">
-                  
+
                   <div class="md-layout-item">
                     <md-field md-clearable>
                         <label for="first-name">Nombre Capitán de Pesca (Captain Name)</label>
