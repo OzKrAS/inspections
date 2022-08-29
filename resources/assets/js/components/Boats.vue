@@ -22,10 +22,10 @@
               <table class="table table-striped table-bordered display" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <th>Nombre Embarcación</th>
                     <th>No. Resolución</th>
                     <th>Fecha Resolución</th>
                     <th>Fecha Vigencia</th>
-                    <th>Nombre Embarcación</th>
                     <th>Bandera</th>
                     <th>Matrícula</th>
                     <th>No. Patente</th>
@@ -568,10 +568,10 @@ export default {
             responsive: "true",
           "columns": [
 
+            { "data": "nameBoat" },
             { "data": "noResolution" },
             { "data": "dateResolution" },
             { "data": "dateValid" },
-            { "data": "nameBoat" },
             { "data": "nameFlag" },
             { "data": "enrollment" },
             { "data": "noPatent" },

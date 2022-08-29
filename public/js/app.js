@@ -99180,7 +99180,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
             "infoFiltered": "(filtrado de _MAX_ total registros)"
           },
           responsive: "true",
-          "columns": [{ "data": "noResolution" }, { "data": "dateResolution" }, { "data": "dateValid" }, { "data": "nameBoat" }, { "data": "nameFlag" }, { "data": "enrollment" }, { "data": "noPatent" }, { "data": "dateValidityPat" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>" }]
+          "columns": [{ "data": "nameBoat" }, { "data": "noResolution" }, { "data": "dateResolution" }, { "data": "dateValid" }, { "data": "nameFlag" }, { "data": "enrollment" }, { "data": "noPatent" }, { "data": "dateValidityPat" }, { "defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>" }]
 
         });
 
@@ -99805,13 +99805,13 @@ var staticRenderFns = [
           [
             _c("thead", [
               _c("tr", [
+                _c("th", [_vm._v("Nombre Embarcación")]),
+                _vm._v(" "),
                 _c("th", [_vm._v("No. Resolución")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Fecha Resolución")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Fecha Vigencia")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Nombre Embarcación")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Bandera")]),
                 _vm._v(" "),
