@@ -23,13 +23,13 @@
                 <thead>
                   <tr>
                     <th>No. Resolución</th>
+                    <th>Fecha Resolución</th>
+                    <th>Fecha Vigencia</th>
                     <th>Nombre Embarcación</th>
                     <th>Bandera</th>
                     <th>Matrícula</th>
                     <th>No. Patente</th>
                     <th>Fecha Vigencia Patente</th>
-                    <th>Fecha Resolución</th>
-                    <th>Fecha Vigencia</th>
                     <th style="width: 90px">Opciones</th>
                   </tr>
                 </thead>
@@ -569,13 +569,13 @@ export default {
           "columns": [
 
             { "data": "noResolution" },
+            { "data": "dateResolution" },
+            { "data": "dateValid" },
             { "data": "nameBoat" },
             { "data": "nameFlag" },
             { "data": "enrollment" },
             { "data": "noPatent" },
             { "data": "dateValidityPat" },
-            { "data": "dateResolution" },
-            { "data": "dateValid" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>"},
               // <button type='button'id=carta' class='carta btn btn-success btn-sm' data-tooltip title='carta' > <i class='fas fa-trash-alt'></i> </button>
 
