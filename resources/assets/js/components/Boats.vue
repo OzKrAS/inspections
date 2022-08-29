@@ -78,7 +78,7 @@
                         >Olvidaste ingresar el número de resolución</span>
                       </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-30">
+                  <div class="md-layout-item">
                         <div>
                           <md-datepicker
                             md-clearable :class="getValidationClass('dateResolution')"
@@ -96,7 +96,7 @@
                           </md-datepicker>
                         </div>
                     </div> &nbsp;&nbsp;&nbsp;
-                    <div class="md-layout-item md-size-30">
+                    <div class="md-layout-item">
                       <md-datepicker
                         md-clearable :class="getValidationClass('dateValid')"
                         v-model="form.dateValid"
@@ -203,7 +203,7 @@
                           autocomplete="given-name"
                           v-model="form.nameRepresent"
                           :disabled="sending"
-                          type="number"
+                          type="text"
                         />
                         <span
                           class="md-error"
@@ -402,7 +402,7 @@ export default {
       this.form.enrollment = data["enrollment"];
       this.form.noPatent = data["noPatent"];
       this.form.noResolution = data["noResolution"];
-      this.form.noResolution = data["nameRepresent"];
+      this.form.nameRepresent = data["nameRepresent"];
       this.form.dateValidityPat = data["dateValidityPat"];
       this.form.dateValid = data["dateValid"];
       this.form.dateResolution = data["dateResolution"];

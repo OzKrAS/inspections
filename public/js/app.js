@@ -99029,7 +99029,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.enrollment = data["enrollment"];
       this.form.noPatent = data["noPatent"];
       this.form.noResolution = data["noResolution"];
-      this.form.noResolution = data["nameRepresent"];
+      this.form.nameRepresent = data["nameRepresent"];
       this.form.dateValidityPat = data["dateValidityPat"];
       this.form.dateValid = data["dateValid"];
       this.form.dateResolution = data["dateResolution"];
@@ -99321,64 +99321,58 @@ var render = function() {
                               1
                             ),
                             _vm._v("   \n                "),
-                            _c(
-                              "div",
-                              { staticClass: "md-layout-item md-size-30" },
-                              [
-                                _c(
-                                  "div",
-                                  [
-                                    _c(
-                                      "md-datepicker",
-                                      {
-                                        class: _vm.getValidationClass(
-                                          "dateResolution"
-                                        ),
-                                        attrs: {
-                                          "md-clearable": "",
-                                          "md-immediately": "",
-                                          "md-model-type": String
-                                        },
-                                        on: { input: _vm.toString },
-                                        model: {
-                                          value: _vm.form.dateResolution,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.form,
-                                              "dateResolution",
-                                              $$v
-                                            )
-                                          },
-                                          expression: "form.dateResolution"
-                                        }
+                            _c("div", { staticClass: "md-layout-item" }, [
+                              _c(
+                                "div",
+                                [
+                                  _c(
+                                    "md-datepicker",
+                                    {
+                                      class: _vm.getValidationClass(
+                                        "dateResolution"
+                                      ),
+                                      attrs: {
+                                        "md-clearable": "",
+                                        "md-immediately": "",
+                                        "md-model-type": String
                                       },
-                                      [
-                                        _c("label", [
-                                          _vm._v("Fecha Resolución")
-                                        ]),
-                                        _vm._v(" "),
-                                        !_vm.$v.form.dateResolution.required
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "md-error" },
-                                              [
-                                                _vm._v(
-                                                  "Olvidaste ingresar la fecha de resolución\n                          "
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ]
-                            ),
+                                      on: { input: _vm.toString },
+                                      model: {
+                                        value: _vm.form.dateResolution,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.form,
+                                            "dateResolution",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "form.dateResolution"
+                                      }
+                                    },
+                                    [
+                                      _c("label", [_vm._v("Fecha Resolución")]),
+                                      _vm._v(" "),
+                                      !_vm.$v.form.dateResolution.required
+                                        ? _c(
+                                            "span",
+                                            { staticClass: "md-error" },
+                                            [
+                                              _vm._v(
+                                                "Olvidaste ingresar la fecha de resolución\n                          "
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ]),
                             _vm._v("    \n                  "),
                             _c(
                               "div",
-                              { staticClass: "md-layout-item md-size-30" },
+                              { staticClass: "md-layout-item" },
                               [
                                 _c(
                                   "md-datepicker",
@@ -99684,7 +99678,7 @@ var render = function() {
                                       id: "first-name",
                                       autocomplete: "given-name",
                                       disabled: _vm.sending,
-                                      type: "number"
+                                      type: "text"
                                     },
                                     model: {
                                       value: _vm.form.nameRepresent,
