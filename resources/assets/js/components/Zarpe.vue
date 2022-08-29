@@ -420,7 +420,7 @@
                           md-immediately
                           :md-model-type="String"
                           >
-                          <label>Fecha Vigencia Patente (Validity Name)</label>
+                          <label>Fecha Vigencia Patente (Validity Date)</label>
                           <span
                             class="md-error"
                             v-if="!$v.form.dateValidityPat.required"
@@ -602,8 +602,8 @@
                       <md-field>
                         <label for="equipDevi" class="text-muted">Equipos o Dispositivos Requeridos</label>
                         <md-select  v-model="equipDevi" name="equipDevi" id="equipDevi" placeholder="Seleccione un equipo o dispositivo">
-                          <md-option value="Dispositivo Agregado de peces-DAPs (FADs)">Dispositivo Agregador de Peces - DAP (FAD)</md-option>
-                          <md-option value="Dispositivo Excluidor de Tortugas-DETs">Dispositivo Excluidor de Tortugas - DET</md-option>
+                          <md-option value="Dispositivo Agregado de peces-DAPs (FAD)">Dispositivo Agregador de Peces - DAP (FAD)</md-option>
+                          <md-option value="Dispositivo Excluidor de Tortugas-DET">Dispositivo Excluidor de Tortugas - DET</md-option>
                           <md-option value="Otro">Otro</md-option>
                         </md-select>
                       </md-field>
