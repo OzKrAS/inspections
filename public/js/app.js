@@ -47409,7 +47409,7 @@ var render = function() {
                                     [
                                       _c("label", [
                                         _vm._v(
-                                          "Fecha Vigencia Patente (Validity Name)"
+                                          "Fecha Vigencia Patente (Validity Date)"
                                         )
                                       ]),
                                       _vm._v(" "),
@@ -47927,7 +47927,7 @@ var render = function() {
                                             {
                                               attrs: {
                                                 value:
-                                                  "Dispositivo Agregado de peces-DAPs (FADs)"
+                                                  "Dispositivo Agregado de peces-DAPs (FAD)"
                                               }
                                             },
                                             [
@@ -47942,7 +47942,7 @@ var render = function() {
                                             {
                                               attrs: {
                                                 value:
-                                                  "Dispositivo Excluidor de Tortugas-DETs"
+                                                  "Dispositivo Excluidor de Tortugas-DET"
                                               }
                                             },
                                             [
@@ -97367,6 +97367,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var user = document.head.querySelector('meta[name="user"]');
 // console.log(user.content);
@@ -97416,6 +97425,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_material_dist_components__["MdList"]);
       files: [],
       images: [],
       direccion: "",
+      cargo: "",
       telefono: "",
       arrayDatos: [],
       arrayImg: [],
@@ -97956,7 +97966,7 @@ var render = function() {
                                       "md-field",
                                       { attrs: { "md-clearable": "" } },
                                       [
-                                        _c("label", [_vm._v("Celular")]),
+                                        _c("label", [_vm._v("Teléfono")]),
                                         _vm._v(" "),
                                         _c(
                                           "span",
@@ -98030,7 +98040,43 @@ var render = function() {
                                     "md-field",
                                     { attrs: { "md-clearable": "" } },
                                     [
-                                      _c("label", [_vm._v("Dirección")]),
+                                      _c("label", [_vm._v("Cargo")]),
+                                      _vm._v(" "),
+                                      _c("span", { staticClass: "md-prefix" }, [
+                                        _c(
+                                          "i",
+                                          { staticClass: "material-icons" },
+                                          [_vm._v("house")]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("md-input", {
+                                        model: {
+                                          value: _vm.cargo,
+                                          callback: function($$v) {
+                                            _vm.cargo = $$v
+                                          },
+                                          expression: "cargo"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "md-layout" },
+                                [
+                                  _c(
+                                    "md-field",
+                                    { attrs: { "md-clearable": "" } },
+                                    [
+                                      _c("label", [
+                                        _vm._v("Dirección de Oficina")
+                                      ]),
                                       _vm._v(" "),
                                       _c("span", { staticClass: "md-prefix" }, [
                                         _c(
@@ -98067,7 +98113,9 @@ var render = function() {
                                       attrs: { "md-clearable": "" }
                                     },
                                     [
-                                      _c("label", [_vm._v("E-mail")]),
+                                      _c("label", [
+                                        _vm._v("Correo Institucional")
+                                      ]),
                                       _vm._v(" "),
                                       _c("span", { staticClass: "md-prefix" }, [
                                         _c(

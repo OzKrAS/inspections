@@ -64,7 +64,7 @@
       </md-card-media>
       <md-card-expand>
         <md-card-actions md-alignment="space-between">
-      
+
 
           <md-card-expand-trigger>
             <md-button class="md-icon-button">
@@ -128,7 +128,7 @@
                   <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                      <label>Celular</label>
+                      <label>Teléfono</label>
                       <span class="md-prefix">
                         <i class="material-icons">phone_iphone</i>
                       </span>
@@ -147,9 +147,18 @@
                     </md-datepicker>
                   </div>
                   </div>
+                     <div class="md-layout">
+                    <md-field md-clearable>
+                      <label>Cargo</label>
+                      <span class="md-prefix">
+                        <i class="material-icons">house</i>
+                      </span>
+                      <md-input v-model="cargo"></md-input>
+                    </md-field>
+                  </div>
                   <div class="md-layout">
                     <md-field md-clearable>
-                      <label>Dirección</label>
+                      <label>Dirección de Oficina</label>
                       <span class="md-prefix">
                         <i class="material-icons">house</i>
                       </span>
@@ -158,7 +167,7 @@
                   </div>
                   <div class="md-layout">
                     <md-field md-clearable :class="getValidationClass('email')">
-                      <label>E-mail</label>
+                      <label>Correo Institucional</label>
                       <span class="md-prefix">
                         <i class="material-icons">email</i>
                       </span>
@@ -210,7 +219,7 @@
               <label for="file">Selecciona una Imágen</label>
               <input type="file" id="file" @change="onInputChange" multiple>
             </div>
-         
+
           </div>
 
           <div class="images-preview" v-show="images.length">
@@ -273,7 +282,7 @@
             </md-card-actions>
             <md-card-actions>
               <md-button
-                type="submit"               
+                type="submit"
                 class="md-dense md-raised md-primary"
                 :disabled="sending"
                 @click="actualizarPw()"
@@ -345,6 +354,7 @@ export default {
       files: [],
       images: [],
       direccion: "",
+      cargo: "",
       telefono: "",
       arrayDatos: [],
       arrayImg: [],
@@ -514,7 +524,7 @@ form: {
         this.listado=1;
         this.getImg();
         me.mensaje("Guardado", "Todas las imagenes se han almacenado ");
-       
+
         // this.$toastr.s("All images uplaoded successfully");
         this.images = [];
         this.files = [];
@@ -522,7 +532,7 @@ form: {
     },
       getUsuario(buscar) {
       let me = this;
-    
+
       var url = "/persona/getusuario?buscar=" + user.content;
       axios
         .get(url)
@@ -545,7 +555,7 @@ form: {
     },
       getImg() {
       let me = this;
-    
+
       var url = "/user/getImg?buscar=" + user.content;
       axios
         .get(url)
@@ -568,7 +578,7 @@ form: {
         .put("/user/actualizarPw", {
           id: user.content,
           password: this.password
-        
+
         })
         .then(function(response) {
           me.cerrarModal();
@@ -579,7 +589,7 @@ form: {
           console.log(error);
         });
     },
- 
+
     clearForm() {
       this.$v.$reset();
       this.form.nombre = null;
