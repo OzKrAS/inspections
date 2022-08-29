@@ -98865,6 +98865,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -98906,6 +98923,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         enrollment: "",
         noPatent: "",
         noResolution: "",
+        nameRepresent: "",
         dateValidityPat: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateResolution: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat),
         dateValid: Object(__WEBPACK_IMPORTED_MODULE_0_date_fns_format__["a" /* default */])(now, dateFormat)
@@ -98949,6 +98967,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       noResolution: {
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
+      nameRepresent: {
+        required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
+      },
       dateValidityPat: {
         required: __WEBPACK_IMPORTED_MODULE_8_vuelidate_lib_validators__["required"]
       },
@@ -98985,6 +99006,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.enrollment = null;
       this.form.noPatent = null;
       this.form.noResolution = null;
+      this.form.nameRepresent = null;
       this.form.dateValidityPat = null;
       this.form.dateValid = null;
       this.form.dateResolution = null;
@@ -99007,6 +99029,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
       this.form.enrollment = data["enrollment"];
       this.form.noPatent = data["noPatent"];
       this.form.noResolution = data["noResolution"];
+      this.form.noResolution = data["nameRepresent"];
       this.form.dateValidityPat = data["dateValidityPat"];
       this.form.dateValid = data["dateValid"];
       this.form.dateResolution = data["dateResolution"];
@@ -99054,6 +99077,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         enrollment: this.form.enrollment.toUpperCase(),
         noPatent: this.form.noPatent,
         noResolution: this.form.noResolution,
+        nameRepresent: this.form.nameRepresent,
         dateValidityPat: this.form.dateValidityPat,
         dateValid: this.form.dateValid,
         dateResolution: this.form.dateResolution,
@@ -99076,6 +99100,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_material_dist_components__["MdDialog"]);
         enrollment: this.form.enrollment.toUpperCase(),
         noPatent: this.form.noPatent,
         noResolution: this.form.noResolution,
+        nameRepresent: this.form.nameRepresent,
         dateValidityPat: this.form.dateValidityPat,
         dateValid: this.form.dateValid,
         dateResolution: this.form.dateResolution,
@@ -99295,7 +99320,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("          \n                "),
+                            _vm._v("   \n                "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item md-size-30" },
@@ -99350,7 +99375,7 @@ var render = function() {
                                 )
                               ]
                             ),
-                            _vm._v("     \n                  "),
+                            _vm._v("    \n                  "),
                             _c(
                               "div",
                               { staticClass: "md-layout-item md-size-30" },
@@ -99580,7 +99605,7 @@ var render = function() {
                               ],
                               1
                             ),
-                            _vm._v("    \n                  "),
+                            _vm._v("   \n                  "),
                             _c("div", { staticClass: "md-layout-item" }, [
                               _c(
                                 "div",
@@ -99631,8 +99656,59 @@ var render = function() {
                                 1
                               )
                             ]),
-                            _vm._v("    \n                ")
-                          ])
+                            _vm._v("   \n                ")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "md-layout" },
+                            [
+                              _c(
+                                "md-field",
+                                {
+                                  class: _vm.getValidationClass(
+                                    "nameRepresent"
+                                  ),
+                                  attrs: { "md-clearable": "" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "first-name" } },
+                                    [_vm._v("Representante Legal")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("md-input", {
+                                    attrs: {
+                                      name: "first-name",
+                                      id: "first-name",
+                                      autocomplete: "given-name",
+                                      disabled: _vm.sending,
+                                      type: "number"
+                                    },
+                                    model: {
+                                      value: _vm.form.nameRepresent,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "nameRepresent", $$v)
+                                      },
+                                      expression: "form.nameRepresent"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  !_vm.$v.form.nameRepresent.required
+                                    ? _c("span", { staticClass: "md-error" }, [
+                                        _vm._v(
+                                          "Olvidaste ingresar el nombre del representante"
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v("   \n            ")
                         ])
                       ],
                       1

@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Gestión de Embarcaciones</strong>          
+          <strong class="lead">Gestión de Embarcaciones</strong>
           <button
             v-if="edo"
             type="button"
@@ -30,7 +30,7 @@
                     <th>Fecha Vigencia Patente</th>
                     <th>Fecha Resolución</th>
                     <th>Fecha Vigencia</th>
-                    <th style="width: 90px">Opciones</th>    
+                    <th style="width: 90px">Opciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -45,7 +45,7 @@
                       <th>Fecha Vigencia Patente</th>
                       <th>Fecha Resolución</th>
                       <th>Fecha Vigencia</th>
-                      <th style="width: 90px">Opciones</th>  
+                      <th style="width: 90px">Opciones</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -53,7 +53,7 @@
 
               </table>
             </div>
-      
+
           </div>
         </template>
         <template v-else-if="listado==0">
@@ -61,7 +61,7 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-35"> 
+                  <div class="md-layout-item md-size-35">
                       <md-field md-clearable :class="getValidationClass('noResolution')">
                         <label for="first-name">No. Resolución</label>
                         <md-input
@@ -77,10 +77,10 @@
                           v-if="!$v.form.noResolution.required"
                         >Olvidaste ingresar el número de resolución</span>
                       </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;       
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item md-size-30">
                         <div>
-                          <md-datepicker 
+                          <md-datepicker
                             md-clearable :class="getValidationClass('dateResolution')"
                             v-model="form.dateResolution"
                             @input="toString"
@@ -95,9 +95,9 @@
                             </span>
                           </md-datepicker>
                         </div>
-                    </div> &nbsp;&nbsp;&nbsp; 
-                    <div class="md-layout-item md-size-30">                 
-                      <md-datepicker 
+                    </div> &nbsp;&nbsp;&nbsp;
+                    <div class="md-layout-item md-size-30">
+                      <md-datepicker
                         md-clearable :class="getValidationClass('dateValid')"
                         v-model="form.dateValid"
                         @input="toString"
@@ -110,7 +110,7 @@
                           v-if="!$v.form.dateValid.required"
                           >Olvidaste ingresar la fecha de vigencia
                         </span>
-                      </md-datepicker>                   
+                      </md-datepicker>
                     </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
@@ -139,7 +139,7 @@
                               track-by="name">
                           </multiselect>
                     </div>&nbsp;&nbsp;&nbsp;
-                  </div>  
+                  </div>
                   <div class="md-layout">
                     <div class="md-layout-item">
                       <md-field md-clearable :class="getValidationClass('enrollment')">
@@ -173,10 +173,10 @@
                           v-if="!$v.form.noPatent.required"
                         >Olvidaste ingresar el número de patente</span>
                       </md-field>
-                    </div>&nbsp;&nbsp;&nbsp; 
+                    </div>&nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item">
                         <div>
-                          <md-datepicker 
+                          <md-datepicker
                             md-clearable :class="getValidationClass('dateValidityPat')"
                             v-model="form.dateValidityPat"
                             @input="toString"
@@ -190,10 +190,27 @@
                               >Olvidaste ingresar la fecha de vigencia
                             </span>
                           </md-datepicker>
-                          
-                        </div>           
-                    </div>&nbsp;&nbsp;&nbsp; 
+
+                        </div>
+                    </div>&nbsp;&nbsp;&nbsp;
                   </div>
+                       <div class="md-layout">
+                      <md-field md-clearable :class="getValidationClass('nameRepresent')">
+                        <label for="first-name">Representante Legal</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.nameRepresent"
+                          :disabled="sending"
+                          type="number"
+                        />
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.nameRepresent.required"
+                        >Olvidaste ingresar el nombre del representante</span>
+                      </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
               </md-card-content>
             </form>
           </div>
@@ -229,7 +246,7 @@
 </template>
 
 <script>
-    import format from "date-fns/format"; 
+    import format from "date-fns/format";
     import { validationMixin } from "vuelidate";
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
@@ -237,7 +254,7 @@
     import jsPDF from 'jspdf';
     import 'jspdf-autotable';
     import {
-		MdButton,  
+		MdButton,
 		MdContent,
 		MdField,
 		MdCard,
@@ -279,6 +296,7 @@ export default {
         enrollment: "",
         noPatent: "",
         noResolution: "",
+        nameRepresent: "",
         dateValidityPat: format(now, dateFormat),
         dateResolution: format(now, dateFormat),
         dateValid: format(now, dateFormat),
@@ -322,6 +340,9 @@ export default {
         noResolution: {
         required
       },
+        nameRepresent: {
+        required
+      },
         dateValidityPat: {
         required
       },
@@ -360,12 +381,13 @@ export default {
       this.form.enrollment = null;
       this.form.noPatent = null;
       this.form.noResolution = null;
+      this.form.nameRepresent = null;
       this.form.dateValidityPat = null;
       this.form.dateValid = null;
       this.form.dateResolution = null;
 
       this.arrayFg = {id:0, name:''};
-   
+
     },
     nameWithFlag ({ name }) {
             return `${name}`
@@ -375,15 +397,16 @@ export default {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_boats = data["id"]);
-     
+
       this.form.nameBoat = data["nameBoat"];
       this.form.enrollment = data["enrollment"];
       this.form.noPatent = data["noPatent"];
       this.form.noResolution = data["noResolution"];
+      this.form.noResolution = data["nameRepresent"];
       this.form.dateValidityPat = data["dateValidityPat"];
       this.form.dateValid = data["dateValid"];
       this.form.dateResolution = data["dateResolution"];
-  
+
       this.arrayFg.id = data["id_flag"];
 	    this.arrayFg.name = data["nameFlag"];
     },
@@ -397,7 +420,7 @@ export default {
       this.edo = 1;
       this.listado = 1;
       this.listData();
-    }, 
+    },
     selectFlag() {
         let me = this;
         var url = "flags/selectFlags";
@@ -407,7 +430,7 @@ export default {
             }).catch(function (error) {
                 console.log(error);
         });
-    },  
+    },
     listData() {
       let me = this;
       var url = "/boats";
@@ -422,7 +445,7 @@ export default {
         .catch(function (error) {
           console.log(error);
         });
-    }, 
+    },
     saveData() {
       let me = this;
 
@@ -432,6 +455,7 @@ export default {
           enrollment: this.form.enrollment.toUpperCase(),
           noPatent: this.form.noPatent,
           noResolution: this.form.noResolution,
+          nameRepresent: this.form.nameRepresent,
           dateValidityPat: this.form.dateValidityPat,
           dateValid: this.form.dateValid,
           dateResolution: this.form.dateResolution,
@@ -452,17 +476,18 @@ export default {
 
       axios
         .put("/boats/update", {
-          id: this.id_boats,  
+          id: this.id_boats,
           nameBoat: this.form.nameBoat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
           noPatent: this.form.noPatent,
           noResolution: this.form.noResolution,
+          nameRepresent: this.form.nameRepresent,
           dateValidityPat: this.form.dateValidityPat,
           dateValid: this.form.dateValid,
           dateResolution: this.form.dateResolution,
 
           'id_flag': this.arrayFg.id,
-          
+
         })
         .then(function(response) {
           me.hideForm();
@@ -488,7 +513,7 @@ export default {
         reverseButtons: true
       }).then(result => {
         if (result.value) {
-          let me = this;      
+          let me = this;
           axios
             .post("/boats/delete", {
               id: data["id"],
@@ -552,7 +577,7 @@ export default {
             { "data": "dateResolution" },
             { "data": "dateValid" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>"},
-              // <button type='button'id=carta' class='carta btn btn-success btn-sm' data-tooltip title='carta' > <i class='fas fa-trash-alt'></i> </button> 
+              // <button type='button'id=carta' class='carta btn btn-success btn-sm' data-tooltip title='carta' > <i class='fas fa-trash-alt'></i> </button>
 
         ]
 
@@ -572,7 +597,7 @@ export default {
 
   mounted() {
     this.listData();
-    this.selectFlag(); 
+    this.selectFlag();
   }
 };
 </script>
