@@ -28,7 +28,7 @@
                     <th>Funcionario</th>
                     <th>Embarcación</th>
                     <th>Matrícula</th>
-                    <th>Pesquería Autorizada</th>
+                    <!-- <th>Pesquería Autorizada</th> -->
                     <th>Empresa</th>
                     <th>Capitán de Pesca</th>
                     <th>Localización</th>
@@ -45,7 +45,7 @@
                       <th>Funcionario</th>
                       <th>Embarcación</th>
                       <th>Matrícula</th>
-                      <th>Pesquería Autorizada</th>
+                      <!-- <th>Pesquería Autorizada</th> -->
                       <th>Empresa</th>
                       <th>Capitán de Pesca</th>
                       <th>Localización</th>
@@ -63,7 +63,7 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <div class="md-layout-item">                 
+                  <div class="md-layout-item md-size-35">                 
                       <md-datepicker 
                         md-clearable :class="getValidationClass('date')"
                         v-model="form.date"
@@ -79,6 +79,10 @@
                         </span>
                       </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
+
+                  <!-- ESPACIO PARA LA HORA       -->
+                </div>  
+                <div class="md-layout">
                   <div class="md-layout-item">
                       <label class="text-muted">Regional</label>
                       <multiselect v-model="arrayRegl" :options="arrayRegional"
@@ -87,8 +91,21 @@
                           label="name"
                           track-by="name">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp; 
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
+                    <md-field>
+                      <label for="office" class="text-muted">Oficina</label>
+                      <md-select v-model="office" name="office" id="office" placeholder="Seleccione una oficina">
+                        <md-option value="Barranquilla">Barranquilla</md-option>
+                        <md-option value="Cartagena">Cartagena</md-option>
+                        <md-option value="Tolú">Tolú</md-option>
+                        <md-option value="Bahía Solano">Bahía Solano</md-option>
+                        <md-option value="Buenaventua">Buenaventua</md-option>
+                        <md-option value="Tumaco">Tumaco</md-option>
+                      </md-select>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <!-- <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('office')">
                       <label for="first-name">Oficina</label>
                       <md-input
@@ -103,9 +120,7 @@
                         v-if="!$v.form.office.required"
                       >Olvidaste ingresar el nombre de la oficina</span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
-                </div>
-                <div class="md-layout">
+                  </div>&nbsp;&nbsp;&nbsp; -->
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('official')">
                       <label for="first-name">Funcionario</label>
@@ -121,7 +136,14 @@
                         v-if="!$v.form.official.required"
                       >Olvidaste ingresar el nombre del funcionario</span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div> 
+                <md-divider style="background-color: #2090E8 " ></md-divider>
+                <div>
+                  <br>
+                    <strong class="text-muted">DATOS DE LA EMBARCACIÓN</strong>
+                </div> 
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('boat')">
                       <label for="first-name">Embarcación</label>
@@ -137,7 +159,7 @@
                         v-if="!$v.form.boat.required"
                       >Olvidaste ingresar el nombre de la embarcación</span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('enrollment')">
                       <label for="first-name">Matrícula</label>
@@ -152,24 +174,6 @@
                         class="md-error"
                         v-if="!$v.form.enrollment.required"
                       >Olvidaste ingresar el nombre de la matrícula</span>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; 
-                </div>
-                <div class="md-layout">
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('outhFhisher')">
-                      <label for="first-name">Pesquería Autorizada</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.outhFhisher"
-                        :disabled="sending"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.outhFhisher.required"
-                      >Olvidaste ingresar el nombre de la pesqueria autorizada</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
@@ -187,18 +191,18 @@
                         v-if="!$v.form.fishLicense.required"
                       >Olvidaste ingresar el nombre de la patente de pesca</span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>&nbsp;&nbsp;&nbsp;      
+                </div>
+                <div class="md-layout">  
                   <div class="md-layout-item">
                       <label class="text-muted">Empresa</label>
                       <multiselect v-model="arrayComp" :options="arrayCompany"
-                          placeholder="Seleccione una empresa"
+                          placeholder="Seleccione una Empresa"
                           :custom-label="nameWithCompany"
                           label="name"
                           track-by="name">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-                </div>
-                <div class="md-layout">
+                  </div>&nbsp;&nbsp;&nbsp;                             
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('owner')">
                       <label for="first-name">Armador</label>
@@ -230,8 +234,41 @@
                         v-if="!$v.form.fishCaptain.required"
                       >Olvidaste ingresar el nombre del capitán de pesca</span>
                     </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;              
+                </div>   
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-35">
+                    <label class="text-muted">Pesquería Autorizada (Fishery)</label>
+                    <multiselect
+                      v-model="arrayFa"
+                      :options="arrayFisheryAuthorized"
+                      :multiple="true"
+                      :close-on-select="false"
+                      :clear-on-select="false"
+                      :preserve-search="true"
+                      placeholder="Seleccione Pesquería Autorizada"
+                      label="name"
+                      track-by="name"
+                      :preselect-first="false">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
+                  <!-- <div class="md-layout-item md-size-35">
+                    <md-field md-clearable :class="getValidationClass('outhFhisher')">
+                      <label for="first-name">Pesquería Autorizada</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.outhFhisher"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.outhFhisher.required"
+                      >Olvidaste ingresar el nombre de la pesqueria autorizada</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;         -->
+                  <div class="md-layout-item md-size-35">
                     <md-field md-clearable :class="getValidationClass('location')">
                       <label for="first-name">Localización</label>
                       <md-input
@@ -247,183 +284,15 @@
                       >Olvidaste ingresar el nombre de la localización</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                </div>
-                <div class="md-layout">
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('flapMeshSize')">
-                      <label for="first-name">Tamaño de malla en la solapa</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.flapMeshSize"
-                        :disabled="sending"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.flapMeshSize.required"
-                      >Olvidaste ingresar el tamaño de malla en la solapa</span>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('angleDet')">
-                      <label for="first-name">Ángulo del DET </label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.angleDet"
-                        :disabled="sending"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.angleDet.required"
-                      >Olvidaste ingresar el ángulo del DET </span>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('typeDet')">
-                      <label for="first-name">Tipo de DET</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.typeDet"
-                        :disabled="sending"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.typeDet.required"
-                      >Olvidaste ingresar el tipo de DET</span>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                </div>
-                <div class="md-layout">
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('materialDet')">
-                      <label for="first-name">Material del DET</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.materialDet"
-                        :disabled="sending"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.materialDet.required"
-                      >Olvidaste ingresar el material del DET</span>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('exit')">
-                      <label for="first-name">Salida (superior ó inferior)</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.exit"
-                        :disabled="sending"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.exit.required"
-                      >Olvidaste ingresar la salida (superior ó inferior)</span>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('float')">
-                      <label for="first-name">Flotadores (cantidad)</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.float"
-                        :disabled="sending"
-                        type="number"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.float.required"
-                      >Olvidaste ingresar la cantidad de flotadores</span>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                </div>
-                <label>DETs con salida inferior: si la circunferencia del DET es ≥ a 120 ", se requieren 2 boyas, si es menor solo se requiere una boya</label>
-                <label>Exención: red de prueba (chango)  La longitud de la relinga superior debe ser de 12 pies o menos, y la longitud de la relinga inferior debe ser de 15 pies o menos</label>
-                <div class="md-layout"> 
-                  <div class="md-layout-item">
-                    <md-field>
-                            <label>Observaciones</label>
-                            <md-textarea v-model="observation"></md-textarea>
-                    </md-field>
-                  </div>    
                 </div> 
-                <p>
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                      Subir imagen
-                    </button>
-                  </p>                                 
-                  <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                      <div
-                        class="uploader"
-                        @dragenter="OnDragEnter"
-                        @dragleave="OnDragLeave"
-                        @dragover.prevent
-                        @drop="onDrop"
-                        :class="{ dragging: isDragging }"
-                      >
-                        <div class="upload-control" v-show="images.length">
-                          <!-- <label for="file">Anexar otra Imágen</label> -->
-                          <!-- <button @click="upload">Guardar Imágenes</button>
-                          <button @click="abrirList">Cancelar</button> -->
-                        </div>
 
-                        <div v-show="!images.length">
-                          <i class="fa fa-cloud-upload"></i>
-                          <p>Arrastra tus imágenes aquí</p>
-                          <div>O</div>
-                          <div class="file-input">
-                            <label for="file">Selecciona una Imágen</label>
-                            <input
-                              type="file"
-                              id="file"
-                              @change="onInputChange"
-                              multiple
-                            />
-                          </div>
-                        </div>
-
-                        <div class="images-preview" v-show="images.length">
-                          <div
-                            class="img-wrapper"
-                            v-for="(image, index) in images"
-                            :key="index"
-                          >
-                            <img :src="image" :alt="`Image Uplaoder ${index}`" />
-                              <button
-                                type="button"
-                                @click="eliminarImg(index)"
-                                class="btn btn-dark btn-sm"
-                              >
-                                <i class="material-icons Color4">delete</i>
-                              </button>
-                            <div class="details">
-                              <span class="name" v-text="files[index].name"></span>
-                              <span
-                                class="size"
-                                v-text="getFileSize(files[index].size)"
-                              ></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>                      
-                    </div>
-                  </div>    
-
-                <label>Nota: Para completar los datos de la tabla debe hacer click en cada uno de los puntos de la imagen (A, B, C, D, E, F, G, H, I).</label>
-
+                <md-divider style="background-color: #2090E8 " ></md-divider>
+                <div>
+                  <br>
+                    <strong class="text-muted">Nota: Para completar los datos de la tabla debe hacer click en cada uno de los puntos de la imagen (A, B, C, D, E, F, G, H, I).</strong>
+                </div>    
+                <br> 
+                  
                 <div class="md-layout"> 
                    <img src="/img/img5.png" alt="Workplace" usemap="#workmap4" width="263" height="278">
                   <map name="workmap4">
@@ -575,7 +444,181 @@
                         </tfoot>
                         <tbody>
                       </tbody>
-                  </table>            
+                  </table>
+                  <md-divider style="background-color: #2090E8 " ></md-divider>
+                <div class="md-layout">  
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('flapMeshSize')">
+                      <label for="first-name">Tamaño de malla en la solapa</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.flapMeshSize"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.flapMeshSize.required"
+                      >Olvidaste ingresar el tamaño de malla en la solapa</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp; 
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('angleDet')">
+                      <label for="first-name">Ángulo del DET </label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.angleDet"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.angleDet.required"
+                      >Olvidaste ingresar el ángulo del DET </span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('typeDet')">
+                      <label for="first-name">Tipo de DET</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.typeDet"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.typeDet.required"
+                      >Olvidaste ingresar el tipo de DET</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;         
+                </div>  
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('materialDet')">
+                      <label for="first-name">Material del DET</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.materialDet"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.materialDet.required"
+                      >Olvidaste ingresar el material del DET</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('exit')">
+                      <label for="first-name">Salida (superior ó inferior)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.exit"
+                        :disabled="sending"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.exit.required"
+                      >Olvidaste ingresar la salida (superior ó inferior)</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable :class="getValidationClass('float')">
+                      <label for="first-name">Flotadores (cantidad)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="form.float"
+                        :disabled="sending"
+                        type="number"
+                      />
+                      <span
+                        class="md-error"
+                        v-if="!$v.form.float.required"
+                      >Olvidaste ingresar la cantidad de flotadores</span>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>  
+                <label>DETs con salida inferior: si la circunferencia del DET es ≥ a 120 ", se requieren 2 boyas, si es menor solo se requiere una boya</label>
+                <label>Exención: red de prueba (chango)  La longitud de la relinga superior debe ser de 12 pies o menos, y la longitud de la relinga inferior debe ser de 15 pies o menos</label>
+                <div class="md-layout"> 
+                  <div class="md-layout-item">
+                    <md-field>
+                            <label>Observaciones</label>
+                            <md-textarea v-model="observation"></md-textarea>
+                    </md-field>
+                  </div>    
+                </div>
+                <p>
+                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Subir imagen
+                  </button>
+                </p>                                 
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                    <div
+                      class="uploader"
+                      @dragenter="OnDragEnter"
+                      @dragleave="OnDragLeave"
+                      @dragover.prevent
+                      @drop="onDrop"
+                      :class="{ dragging: isDragging }"
+                    >
+                      <div class="upload-control" v-show="images.length">
+                        <!-- <label for="file">Anexar otra Imágen</label> -->
+                        <!-- <button @click="upload">Guardar Imágenes</button>
+                        <button @click="abrirList">Cancelar</button> -->
+                      </div>
+
+                      <div v-show="!images.length">
+                        <i class="fa fa-cloud-upload"></i>
+                        <p>Arrastra tus imágenes aquí</p>
+                        <div>O</div>
+                        <div class="file-input">
+                          <label for="file">Selecciona una Imágen</label>
+                          <input
+                            type="file"
+                            id="file"
+                            @change="onInputChange"
+                            multiple
+                          />
+                        </div>
+                      </div>
+
+                      <div class="images-preview" v-show="images.length">
+                        <div
+                          class="img-wrapper"
+                          v-for="(image, index) in images"
+                          :key="index"
+                        >
+                          <img :src="image" :alt="`Image Uplaoder ${index}`" />
+                            <button
+                              type="button"
+                              @click="eliminarImg(index)"
+                              class="btn btn-dark btn-sm"
+                            >
+                              <i class="material-icons Color4">delete</i>
+                            </button>
+                          <div class="details">
+                            <span class="name" v-text="files[index].name"></span>
+                            <span
+                              class="size"
+                              v-text="getFileSize(files[index].size)"
+                            ></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>                      
+                  </div>
+                </div>            
               </md-card-content>
             </form>
           </div>
@@ -754,11 +797,10 @@ export default {
 		let now = new Date();
     return {
       form: {
-        office: "",
         official: "",
         boat: "",
         enrollment: "",
-        outhFhisher: "",
+        // outhFhisher: "",
         fishLicense: "",
         owner: "",
         fishCaptain: "",
@@ -771,6 +813,7 @@ export default {
         float: "",
         date: format(now, dateFormat),
       },
+        office: "",
 
       arrayCheckDet: [],
       id_CheckDet: 0,
@@ -791,6 +834,11 @@ export default {
       estribor3:0,
       estribor4:0,
       observation: "",
+
+      arrayFa:[],
+      arrayFaAct:[],
+	    arrayFisheryAuthorized: [],
+      id_fisheryAuthorized: 0,
 
 
       // meshSize: "",
@@ -822,9 +870,9 @@ export default {
 
   validations: {
     form: {
-      office: {
-        required
-      },
+      // office: {
+      //   required
+      // },
       official:  {
         required
       },
@@ -834,9 +882,9 @@ export default {
       enrollment:  {
         required
       },
-      outhFhisher:  {
-        required
-      },
+      // outhFhisher:  {
+      //   required
+      // },
       fishLicense:  {
         required
       },
@@ -1134,11 +1182,11 @@ export default {
     clearForm() {
       this.$v.$reset();
   
-      this.form.office = null;
+      this.office = null;
       this.form.official = null;
       this.form.boat = null;
       this.form.enrollment = null;
-      this.form.outhFhisher = null;
+      // this.form.outhFhisher = null;
       this.form.fishLicense = null;
       this.form.owner = null;
       this.form.fishCaptain = null;
@@ -1154,6 +1202,7 @@ export default {
       this.form.float = null;
 
       this.arrayCheckDet = [];
+      this.arrayFa = [];
 
       this.arrayComp = {id:0, name:''};
       this.arrayRegl = {id:0, name:''};
@@ -1163,11 +1212,11 @@ export default {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_CheckDet = data["id"]);
-      this.form.office = data["office"];
+      this.office = data["office"];
       this.form.official = data["official"];
       this.form.boat = data["boat"];
       this.form.enrollment = data["enrollment"];
-      this.form.outhFhisher = data["outhFhisher"];
+      // this.form.outhFhisher = data["outhFhisher"];
       this.form.fishLicense = data["fishLicense"];
       this.form.owner = data["owner"];
       this.form.fishCaptain = data["fishCaptain"];
@@ -1186,12 +1235,17 @@ export default {
 			this.arrayComp.name = data["nameCompany"];
       this.arrayRegl.id = data["id_regional"];
 			this.arrayRegl.name = data["nameRegional"];
+      this.arrayFa.id = data["arrayFa"];
       this.dataTable();
+      this.dataFishery();
     },
     nameWithCompany ({ name }) {
             return `${name}`
     },
     nameWithRegional ({ name }) {
+            return `${name}`
+    },
+    nameWithFisheryAuthorized ({ name }) {
             return `${name}`
     },
     selectCompanies() {
@@ -1214,6 +1268,17 @@ export default {
                     console.log(error);
             });
     }, 
+    selectFisheryAuthorized() {
+            let me = this;
+            me.arrayFa=[];
+            var url = "/zarpes/selectFisheryAuthorized";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayFisheryAuthorized= respuesta.fishery;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
     showData() {
       this.clearForm();
       let me = this;
@@ -1247,11 +1312,11 @@ export default {
       axios
         .post("/checkDetFlaps/save", {
     
-        office: this.form.office.toUpperCase(),
+        office: this.office.toUpperCase(),
         official: this.form.official.toUpperCase(),
         boat: this.form.boat.toUpperCase(),
         enrollment: this.form.enrollment.toUpperCase(),
-        outhFhisher: this.form.outhFhisher.toUpperCase(),
+        // outhFhisher: this.form.outhFhisher.toUpperCase(),
         fishLicense: this.form.fishLicense.toUpperCase(),
         owner: this.form.owner.toUpperCase(),
         fishCaptain: this.form.fishCaptain.toUpperCase(),
@@ -1269,6 +1334,7 @@ export default {
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
         'detflap': this.arrayDets2,
+        'data': this.arrayFa,
         })
         .then(function(response) {
           me.hideForm();
@@ -1286,11 +1352,11 @@ export default {
         .put("/checkDetFlaps/update", {
       
           id: this.id_CheckDet,
-          office: this.form.office.toUpperCase(),
+          office: this.office.toUpperCase(),
           official: this.form.official.toUpperCase(),
           boat: this.form.boat.toUpperCase(),
           enrollment: this.form.enrollment.toUpperCase(),
-          outhFhisher: this.form.outhFhisher.toUpperCase(),
+          // outhFhisher: this.form.outhFhisher.toUpperCase(),
           fishLicense: this.form.fishLicense.toUpperCase(),
           owner: this.form.owner.toUpperCase(),
           fishCaptain: this.form.fishCaptain.toUpperCase(),
@@ -1353,6 +1419,21 @@ export default {
         ) {
         }
       });
+    },
+    dataFishery(){
+      let me = this;
+
+      var url = "/checkDetFlaps/fishery?id_FisheryAut="+this.id_CheckDet;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayFa = respuesta.fisheryAut;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
     dataTable(){
       let me = this;
@@ -1421,7 +1502,7 @@ export default {
         doc.setFontSize(10);
         doc.text("Localización: " + me.datos.location, 15, 60,);
         doc.setFontSize(10);
-        doc.text("Pesquería: " + me.datos.outhFhisher, 110, 60,);
+        // doc.text("Pesquería: " + me.datos.outhFhisher, 110, 60,);
 
             columns = [    
               { title: "Punto", dataKey: "nomCientifico" },
@@ -1518,7 +1599,7 @@ export default {
             { "data": "official" },
             { "data": "boat" },
             { "data": "enrollment" },
-            { "data": "outhFhisher" },
+            // { "data": "outhFhisher" },
             { "data": "nameCompany" },
             { "data": "fishCaptain" },
             { "data": "location" },
@@ -1548,6 +1629,7 @@ export default {
     this.listData();
     this.selectCompanies();
     this.selectRegional();
+    this.selectFisheryAuthorized();
   }
 };
 </script>

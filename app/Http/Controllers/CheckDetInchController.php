@@ -7,6 +7,7 @@ use App\CheckDetInch;
 use App\Company;
 use App\Regional;
 use App\DetailDetInch;
+use App\DetailFisherAutDetIc;
 
 class CheckDetInchController extends Controller
 {
@@ -21,7 +22,7 @@ class CheckDetInchController extends Controller
                      'check_det_inches.official',
                      'check_det_inches.boat',
                      'check_det_inches.enrollment',
-                     'check_det_inches.outhFhisher',
+                    //  'check_det_inches.outhFhisher',
                      'check_det_inches.fishLicense',
                      'check_det_inches.owner',
                      'check_det_inches.fishCaptain',
@@ -55,7 +56,7 @@ class CheckDetInchController extends Controller
         $CheckDetInchs->official = $request->official;
         $CheckDetInchs->boat = $request->boat;
         $CheckDetInchs->enrollment = $request->enrollment;
-        $CheckDetInchs->outhFhisher = $request->outhFhisher;
+        // $CheckDetInchs->outhFhisher = $request->outhFhisher;
         $CheckDetInchs->fishLicense = $request->fishLicense;
         $CheckDetInchs->owner = $request->owner;
         $CheckDetInchs->fishCaptain = $request->fishCaptain;
@@ -86,6 +87,14 @@ class CheckDetInchController extends Controller
             $objeto->tituloModal= $det['tituloModal'];
             $objeto->save();
         }
+
+        $detailsfisheryDet = $request->data;
+        foreach($detailsfisheryDet as $fs=>$deta){
+            $objeto= new DetailFisherAutDetIc();
+            $objeto->id_fisheryAut = $CheckDetInchs->id;
+            $objeto->name= $deta['name'];
+            $objeto->save();
+        }
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'
@@ -100,7 +109,7 @@ class CheckDetInchController extends Controller
         $CheckDetInchs->official = $request->official;
         $CheckDetInchs->boat = $request->boat;
         $CheckDetInchs->enrollment = $request->enrollment;
-        $CheckDetInchs->outhFhisher = $request->outhFhisher;
+        // $CheckDetInchs->outhFhisher = $request->outhFhisher;
         $CheckDetInchs->fishLicense = $request->fishLicense;
         $CheckDetInchs->owner = $request->owner;
         $CheckDetInchs->fishCaptain = $request->fishCaptain;
@@ -152,7 +161,13 @@ class CheckDetInchController extends Controller
     public function dataTable(Request $request)
     {
         $CheckDetInchs = DetailDetInch::select('id','id_detinch','babor1','babor2','estribor1','estribor2','punto','tituloModal')
-        ->where('id_detinch', $request->id_Detinch)->get();
+        ->where('id_detinch', $request->id_Detnch)->get();
         return ['detinch' =>  $CheckDetInchs];   
+    }
+    public function dataFishery(Request $request)
+    {
+        $CheckDetInchs = DetailFisherAutDetIc::select('id','id_fisheryAut','name')
+        ->where('id_fisheryAut', $request->id_FisheryAut)->get();
+        return ['fisheryAut' =>  $CheckDetInchs];   
     }
 }

@@ -19,7 +19,7 @@ class CreateCheckDetInchesTable extends Migration
             $table->string('official'); 
             $table->string('boat'); 
             $table->string('enrollment'); 
-            $table->string('outhFhisher'); 
+            // $table->string('outhFhisher'); 
             $table->string('fishLicense'); 
             $table->string('owner'); 
             $table->string('fishCaptain'); 

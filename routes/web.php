@@ -114,6 +114,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/checkDetInchs/selectCompanies', 'CompanyController@selectCompanies');
         Route::get('/checkDetInchs/selectRegional', 'RegionalController@selectRegional');
         Route::get('/checkDetInchs/dataTable', 'CheckDetInchController@dataTable');
+        Route::get('/checkDetInchs/fishery', 'CheckDetInchController@dataFishery');
         //verificacion DET doble solapa
         Route::get('/checkDetFlaps', 'CheckDetFlapController@index');
         Route::post('/checkDetFlaps/save', 'CheckDetFlapController@store');
@@ -122,6 +123,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/checkDetFlaps/selectCompanies', 'CompanyController@selectCompanies');
         Route::get('/checkDetFlaps/selectRegional', 'RegionalController@selectRegional');
         Route::get('/checkDetFlaps/dataTable', 'CheckDetFlapController@dataTable');
+        Route::get('/checkDetFlaps/fishery', 'CheckDetInchController@dataFishery');
         //verificacion presencia equipo de rescate
         Route::get('/presenVerifics', 'PresenVerificController@index');
         Route::post('/presenVerifics/save', 'PresenVerificController@store');

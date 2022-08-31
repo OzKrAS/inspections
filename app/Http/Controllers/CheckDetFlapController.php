@@ -7,6 +7,7 @@ use App\CheckDetFlap;
 use App\Company;
 use App\Regional;
 use App\DetailDetFlap;
+use App\DetailFisherAutDetFl;
 
 class CheckDetFlapController extends Controller
 {
@@ -20,7 +21,7 @@ class CheckDetFlapController extends Controller
                      'check_det_flaps.official',
                      'check_det_flaps.boat',
                      'check_det_flaps.enrollment',
-                     'check_det_flaps.outhFhisher',
+                    //  'check_det_flaps.outhFhisher',
                      'check_det_flaps.fishLicense',
                      'check_det_flaps.owner',
                      'check_det_flaps.fishCaptain',
@@ -55,7 +56,7 @@ class CheckDetFlapController extends Controller
         $checkDetFlaps->official = $request->official;
         $checkDetFlaps->boat = $request->boat;
         $checkDetFlaps->enrollment = $request->enrollment;
-        $checkDetFlaps->outhFhisher = $request->outhFhisher;
+        // $checkDetFlaps->outhFhisher = $request->outhFhisher;
         $checkDetFlaps->fishLicense = $request->fishLicense;
         $checkDetFlaps->owner = $request->owner;
         $checkDetFlaps->fishCaptain = $request->fishCaptain;
@@ -86,6 +87,13 @@ class CheckDetFlapController extends Controller
             $objeto->tituloModal= $det['tituloModal'];
             $objeto->save();
         }
+        $detailsfisheryDet = $request->data;
+        foreach($detailsfisheryDet as $fs=>$deta){
+            $objeto= new DetailFisherAutDetFl();
+            $objeto->id_fisheryAut = $checkDetFlaps->id;
+            $objeto->name= $deta['name'];
+            $objeto->save();
+        }
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'
@@ -100,7 +108,7 @@ class CheckDetFlapController extends Controller
         $checkDetFlaps->official = $request->official;
         $checkDetFlaps->boat = $request->boat;
         $checkDetFlaps->enrollment = $request->enrollment;
-        $checkDetFlaps->outhFhisher = $request->outhFhisher;
+        // $checkDetFlaps->outhFhisher = $request->outhFhisher;
         $checkDetFlaps->fishLicense = $request->fishLicense;
         $checkDetFlaps->owner = $request->owner;
         $checkDetFlaps->fishCaptain = $request->fishCaptain;
@@ -155,5 +163,11 @@ class CheckDetFlapController extends Controller
         $checkDetFlaps = DetailDetFlap::select('id','id_detflap','babor3','babor4','estribor3','estribor4','punto2','tituloModal')
         ->where('id_detflap', $request->id_Detflap)->get();
         return ['detflap' =>  $checkDetFlaps];   
+    }
+    public function dataFishery(Request $request)
+    {
+        $checkDetFlaps = DetailFisherAutDetFl::select('id','id_fisheryAut','name')
+        ->where('id_fisheryAut', $request->id_FisheryAut)->get();
+        return ['fisheryAut' =>  $checkDetFlaps];   
     }
 }
