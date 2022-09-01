@@ -57,9 +57,9 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-70">
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noForm')">
-                      <label for="first-name">No. Formulario</label>
+                      <label for="first-name">No. Formulario (Form Number)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -74,12 +74,10 @@
                       >Olvidaste ingresar el número de formulario</span>
                       <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field>
-                  </div>
-                </div>
-                <div class="md-layout">
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('place')">
-                      <label for="first-name">lugar</label>
+                      <label for="first-name">Lugar de Inspección (Inspection Place)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -94,7 +92,7 @@
                       <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-16">                 
+                  <div class="md-layout-item">                 
                         <md-datepicker 
                           md-clearable :class="getValidationClass('date')"
                           v-model="form.date"
@@ -102,7 +100,7 @@
                           md-immediately
                           :md-model-type="String"
                           >
-                          <label>Seleccione Fecha</label>
+                          <label>Seleccione Fecha (Date)</label>
                           <span
                             class="md-error"
                             v-if="!$v.form.date.required"
@@ -110,9 +108,11 @@
                           </span>
                         </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
+                </div>
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-40">
                     <md-field md-clearable :class="getValidationClass('businessColombia')">
-                      <label for="first-name">Empresa Colombia</label>
+                      <label for="first-name">Empresa Colombia (Colombian Company)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -127,9 +127,9 @@
                       <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-15">
+                  <div class="md-layout-item md-size-40">
                     <md-field md-clearable :class="getValidationClass('fullCargo')">
-                      <label for="first-name">Total Carga (Ton.)</label>
+                      <label for="first-name">Total Carga (Ton.)(Total Cargo)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -147,9 +147,9 @@
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-70">
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameBoatCargo')">
-                      <label for="first-name">Nombre Embarcación de Carga</label>
+                      <label for="first-name">Nombre Embarcación de Carga (Cargo Ship Name)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -164,10 +164,28 @@
                       <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <label class="text-muted">Bandera (Flag)</label>
+                        <multiselect v-model="arrayFg" :options="arrayFlag"
+                            placeholder="Seleccione una bandera"
+                            :custom-label="nameWithFlag"
+                            label="name"
+                            track-by="name">
+                        </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
-                    <label class="text-muted">Puerto de Transbordo de la Carga</label>
+                    <label class="text-muted">Puerto de Zarpe (Departure Port)</label>
+                      <multiselect v-model="arrayPtZarpe" :options="arrayPort"
+                          placeholder="Seleccione puerto de zarpe"
+                          :custom-label="nameWithPort"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <label class="text-muted">Puerto de Transbordo (Transshipment Port)</label>
                       <multiselect v-model="arrayPt" :options="arrayPort"
                           placeholder="Seleccione puerto de transbordo de la carga"
                           :custom-label="nameWithPort"
@@ -176,52 +194,49 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                    <label class="text-muted">Bandera</label>
-                        <multiselect v-model="arrayFg" :options="arrayFlag"
-                            placeholder="Seleccione una bandera"
-                            :custom-label="nameWithFlag"
-                            label="name"
-                            track-by="name">
-                        </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <label class="text-muted">Puerto de Zarpe</label>
-                      <multiselect v-model="arrayPtZarpe" :options="arrayPort"
-                          placeholder="Seleccione puerto de zarpe"
-                          :custom-label="nameWithPort"
-                          label="name"
-                          track-by="name">
-                      </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-                </div>
-                <div class="md-layout">
-                  <div class="md-layout-item">
-                    <label class="text-muted">Puerto de Desembarque</label>
+                    <label class="text-muted">Puerto de Desembarque (Landing Port)</label>
                       <multiselect v-model="arrayPtDisemb" :options="arrayPort"
                           placeholder="Seleccione puerto de desembarque"
                           :custom-label="nameWithPort"
                           label="name"
                           track-by="name">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp; 
+                  </div>&nbsp;&nbsp;&nbsp;   
+                </div>
+                <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field>
-                      <label class="text-muted">Área de Operación</label>
-                      <md-select v-model="areaOperation" name="areaOperation" id="areaOperation" placeholder="Área de operación">
-                        <md-option value="atlantico">Atlantico</md-option>
-                        <md-option value="pacifico - OPO">Pacifico - OPO</md-option>
-                      </md-select>
+                        <label class="text-muted">Área de Operación (Operations área)</label>
+                        <md-select v-model="areaOperation" name="areaOperation" id="areaOperation" placeholder="Área de operación">
+                          <md-option value="atlantico">Atlantico</md-option>
+                          <md-option value="pacifico - OPO">Pacifico - OPO</md-option>
+                    </md-select>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Otra (Another)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="another"
+                        :disabled="sending"
+                      />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field>
-                      <md-select v-model="notification" name="notification" id="notification" placeholder="Notificación Previa">
+                      <label class="text-muted">Notificación Previa (Prior Notification)</label>
+                      <md-select v-model="notification" name="notification" id="notification" placeholder="Notificación Previa (Prior Notification)">
                         <md-option value="si">Si</md-option>
                         <md-option value="no">No</md-option>
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                </div>
+                </div>  
+
+                <md-divider style="background-color: #2090E8 " ></md-divider>
                 
                 <div>
                   <strong>INFORMACIÓN DE TRANSBORDO SOBRE EMBARCACIONES DONANTES</strong>    
@@ -693,7 +708,7 @@ export default {
         observation: "",
       
       },
-      
+      another:"",
       notification: "",
       areaOperation: "",
 
@@ -984,6 +999,7 @@ export default {
       this.form.nameCaptain = null;
       this.form.nameBusiness = null;
       this.form.observation = null;
+      this.another = null;
       
       this.arrayPt = {id:0, namePort:'',name:''};
       this.arrayPtZarpe = {id:0, namePort:'',name:''};
@@ -1109,6 +1125,7 @@ export default {
         nameCaptain: this.form.nameCaptain.toUpperCase(),
         nameBusiness: this.form.nameBusiness.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
+        another: this.another.toUpperCase(),
        
         'id_port': this.arrayPt.id,
         'id_portZarpe': this.arrayPtZarpe.id,
@@ -1152,6 +1169,7 @@ export default {
         nameCaptain: this.form.nameCaptain.toUpperCase(),
         nameBusiness: this.form.nameBusiness.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
+        another: this.another.toUpperCase(),
        
         'id_port': this.arrayPt.id,
         'id_portZarpe': this.arrayPtZarpe.id,
