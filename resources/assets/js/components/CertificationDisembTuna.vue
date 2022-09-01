@@ -24,7 +24,7 @@
                   <tr>
                     <th>Fecha</th>
                     <th>Nombre Embarcación de Carga</th>
-                    <th>Nombre Representante</th>
+                    <!-- <th>Nombre Representante</th> -->
                     <th>Fecha Inicio de Faena</th>                   
                     <th>Fecha Fin de Faena</th>                   
                     <th style="width: 90px">Opciones</th>    
@@ -36,7 +36,7 @@
                     <tr>
                       <th>Fecha</th>
                       <th>Nombre Embarcación de Carga</th>
-                      <th>Nombre Representante</th>
+                      <!-- <th>Nombre Representante</th> -->
                       <th>Fecha Inicio de Faena</th>
                       <th>Fecha Fin de Faena</th>
                       <th style="width: 90px">Opciones</th>  
@@ -53,7 +53,7 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-16">                 
+                  <div class="md-layout-item">                 
                         <md-datepicker 
                           md-clearable :class="getValidationClass('date')"
                           v-model="form.date"
@@ -61,7 +61,7 @@
                           md-immediately
                           :md-model-type="String"
                           >
-                          <label>Seleccione Fecha</label>
+                          <label>Seleccione Fecha (Date)</label>
                           <span
                             class="md-error"
                             v-if="!$v.form.date.required"
@@ -71,7 +71,7 @@
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout">
                     <div class="md-layout-item">
-                      <label class="text-muted">Empresa</label>
+                      <label class="text-muted">Empresa (Company)</label>
                         <multiselect v-model="arrayComp" :options="arrayCompany"
                             placeholder="Seleccione una empresa"
                             :custom-label="nameWithCompany"
@@ -84,7 +84,7 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameBoat')">
-                      <label for="first-name">Nombre Embarcación</label>
+                      <label for="first-name">Nombre Embarcación (Ship Name)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -100,7 +100,7 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                    <label class="text-muted">Bandera</label>
+                    <label class="text-muted">Bandera (Flag)</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
                             placeholder="Seleccione una bandera"
                             :custom-label="nameWithFlag"
@@ -110,13 +110,15 @@
                   </div>&nbsp;&nbsp;&nbsp;  
                 </div>  
                   
-                  <!-- <label>CERTIFICA</label> -->
-                  <div style="text-align:center">
+                <div style="text-align:center">
                   <strong>CERTIFICA</strong>    
+                </div>
+                <div style="text-align:center">
+                  <strong>QUE LA EMBARCACIÓN EN CUESTIÓN, DESEMBARCÓ EN PUERTO COLOMBIANO EL SIGUIENTE PRODUCTO CAPTURADO DURANTE LA FAENA DESCRITA A CONTINUACIÓN:</strong>    
                 </div>
 
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-16">                 
+                  <div class="md-layout-item md-size-40">                 
                         <md-datepicker 
                           md-clearable :class="getValidationClass('dateBeginningFaena')"
                           v-model="form.dateBeginningFaena"
@@ -124,7 +126,7 @@
                           md-immediately
                           :md-model-type="String"
                           >
-                          <label>Fecha Inicio de Faena</label>
+                          <label>Fecha Inicio de Faena (Fishing Task Start Date)</label>
                           <span
                             class="md-error"
                             v-if="!$v.form.dateBeginningFaena.required"
@@ -132,7 +134,7 @@
                           </span>
                         </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-16">                 
+                  <div class="md-layout-item md-size-40">                 
                         <md-datepicker 
                           md-clearable :class="getValidationClass('dateEndFaena')"
                           v-model="form.dateEndFaena"
@@ -140,7 +142,7 @@
                           md-immediately
                           :md-model-type="String"
                           >
-                          <label>Fecha Fin de Faena</label>
+                          <label>Fecha Fin de Faena (Fishing Task End Date)</label>
                           <span
                             class="md-error"
                             v-if="!$v.form.dateEndFaena.required"
@@ -152,7 +154,7 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('ZoneFisher')">
-                      <label for="first-name">Zona de Pesca</label>
+                      <label for="first-name">Zona de Pesca (Fishing Zone)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -168,7 +170,7 @@
                     </md-field>
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                    <label class="text-muted">Puerto de Desembarque</label>
+                    <label class="text-muted">Puerto de Desembarque (Landing Port)</label>
                       <multiselect v-model="arrayPt" :options="arrayPort"
                           placeholder="Seleccione puerto de desembarque"
                           :custom-label="nameWithPort"
@@ -177,121 +179,136 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
-                <div class="md-layout">
-                  <div class="md-layout-item md-size-16">
-                    <md-field md-clearable :class="getValidationClass('yellowFin')">
-                      <label for="first-name">Aleta Amarilla - YFT (Kg.)</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.yellowFin"
-                        :disabled="sending"
-                        type="number"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.yellowFin.required"
-                      >Olvidaste ingresar la cantidad de aleta amarilla</span>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field>
-                      <label class="text-muted">Clasificación en Libras Aleta Amarilla</label>
-                      <md-select v-model="poundRating1" name="poundRating1" id="poundRating1" placeholder="Clasificación en Libras Aleta Amarilla">
-                        <md-option value="menos de 3">Menos de 3</md-option>
-                        <md-option value="de 3 a 6">De 3 a 6</md-option>
-                        <md-option value="de 7 a 20">De 7 a 20</md-option>
-                        <md-option value="de 21 a 30">De 21 a 30</md-option>
-                        <md-option value="más de 30">Mas de 30</md-option>
-                      </md-select>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('barrilete')">
-                      <label for="first-name">Barrilete - SKJ (Kg.)</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.barrilete"
-                        :disabled="sending"
-                        type="number"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.barrilete.required"
-                      >Olvidaste ingresar la cantidad de barrilete</span>
-                    </md-field>   
-                  </div>&nbsp;&nbsp;&nbsp; 
-                  <div class="md-layout-item">
-                    <md-field>
-                      <label class="text-muted">Clasificación en Libras Barrilete</label>
-                      <md-select v-model="poundRating2" name="poundRating2" id="poundRating2" placeholder="Clasificación en Libras Barrilete">
-                        <md-option value="menos de 3">Menos de 3</md-option>
-                        <md-option value="de 3 a 6">De 3 a 6</md-option>
-                        <md-option value="de 7 a 20">De 7 a 20</md-option>
-                        <md-option value="de 21 a 30">De 21 a 30</md-option>
-                        <md-option value="más de 30">Mas de 30</md-option>
-                      </md-select>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;  
-                </div>    
-                <div class="md-layout">
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('patudo')">
-                      <label for="first-name">Patudo - BET (Kg.)</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.patudo"
-                        :disabled="sending"
-                        type="number"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.patudo.required"
-                      >Olvidaste ingresar la cantidad de patudo</span>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field>
-                      <label class="text-muted">Clasificación en Libras Patudo</label>
-                      <md-select v-model="poundRating3" name="poundRating3" id="poundRating3" placeholder="Clasificación en Libras Patudo">
-                        <md-option value="menos de 3">Menos de 3</md-option>
-                        <md-option value="de 3 a 6">De 3 a 6</md-option>
-                        <md-option value="de 7 a 20">De 7 a 20</md-option>
-                        <md-option value="de 21 a 30">De 21 a 30</md-option>
-                        <md-option value="más de 30">Mas de 30</md-option>
-                      </md-select>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable>
-                      <label for="first-name">Otro</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="other"
-                        :disabled="sending"
-                      />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field>
-                      <label class="text-muted">Clasificación en Libras Otro</label>
-                      <md-select v-model="poundRating4" name="poundRating4" id="poundRating4" placeholder="Clasificación en Libras otro">
-                        <md-option value="menos de 3">Menos de 3</md-option>
-                        <md-option value="de 3 a 6">De 3 a 6</md-option>
-                        <md-option value="de 7 a 20">De 7 a 20</md-option>
-                        <md-option value="de 21 a 30">De 21 a 30</md-option>
-                        <md-option value="más de 30">Mas de 30</md-option>
-                      </md-select>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                </div>     
+                <div class="card-body">
+                    <div class="md-layout">
+                      <div class="md-layout-item md-size-40">
+                        <md-field>
+                          <label class="text-muted">Clasificación en Libras</label>
+                          <md-select v-model="poundRating" name="poundRating" id="poundRating" placeholder="Clasificación en Libras">
+                            <md-option value="menos de 3">Menos de 3</md-option>
+                            <md-option value="de 3 a 6">De 3 a 6</md-option>
+                            <md-option value="de 7 a 20">De 7 a 20</md-option>
+                            <md-option value="de 21 a 30">De 21 a 30</md-option>
+                            <md-option value="más de 30">Mas de 30</md-option>
+                            <md-option value="otra">Otra</md-option>
+                          </md-select>
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                    </div>  
+                    <div class="md-layout">
+                      <div class="md-layout-item">
+                        <md-field md-clearable>
+                          <label for="first-name">Aleta Amarilla - YFT (Kg.)</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="yellowFin"
+                            :disabled="sending"
+                            type="number"
+                          />
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                        <md-field md-clearable>
+                          <label for="first-name">Barrilete - SKJ (Kg.)</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="barrilete"
+                            :disabled="sending"
+                            type="number"
+                          />
+                        </md-field>   
+                      </div>&nbsp;&nbsp;&nbsp;
+                      <div class="md-layout-item">
+                        <md-field md-clearable>
+                          <label for="first-name">Patudo - BET (Kg.)</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="patudo"
+                            :disabled="sending"
+                            type="number"
+                          />
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp; 
+                      <div class="md-layout-item">
+                        <md-field md-clearable>
+                          <label for="first-name">Otro</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="other"
+                            :disabled="sending"
+                          />
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp; 
+                    </div>    
+                    <md-button
+                      type="button"
+                      class="md-dense md-raised md-primary"
+                      :disabled="sending"
+                      @click="addItemTarget()"
+                    >Agregar
+                    </md-button>
+                  <div class="table-responsive">        
+                    <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                      <thead>    
+                        <tr>
+                          <th>CLASIFICACIÓN EN LIBRAS</th>    
+                          <th>ALETA AMARILLA - YFT (Kg.)</th>              
+                          <th>BARRILETE - SKJ (Kg.)</th>    
+                          <th>PATUDO - BET (Kg.)</th>    
+                          <th>OTRO</th>       
+                          <th style="width: 90px">Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody v-if="arrayTarget.length">
+                        <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
+                          <td v-text="target.poundRating"></td>
+                          <td v-text="target.yellowFin"></td>
+                          <td v-text="target.barrilete"></td>
+                          <td v-text="target.patudo"></td>
+                          <td v-text="target.other"></td>
+                          <td>                      
+                            <button
+                              type="button"
+                              class="btn btn-danger btn-sm"
+                              data-tooltip
+                              title="Eliminar"
+                              @click="deleteTarget(index)"
+                            >
+                              <i class="icon-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tbody v-else>
+                        <tr>
+                          <td colspan="10" class="text-center">
+                            No existen elementos agregados 
+                          </td>
+                        </tr>
+                      </tbody>
+                        <tfoot>
+                          <tr>
+                            <th>CLASIFICACIÓN EN LIBRAS</th>    
+                            <th>ALETA AMARILLA - YFT (Kg.)</th>              
+                            <th>BARRILETE - SKJ (Kg.)</th>    
+                            <th>PATUDO - BET (Kg.)</th>    
+                            <th>OTRO</th>        
+                            <th style="width: 90px">Opciones</th>
+                          </tr>
+                        </tfoot>
+                        <tbody>
+                        </tbody>
+                    </table>
+                  </div>  
+                </div>  
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('observation')">
@@ -305,7 +322,7 @@
                     </md-field>
                   </div> 
                 </div>        
-                <div class="md-layout">
+                <!-- <div class="md-layout">
                   <div class="md-layout-item md-size-70">
                     <md-field md-clearable :class="getValidationClass('nameOfficial')">
                       <label for="first-name">Nombre funcionario</label>
@@ -320,10 +337,9 @@
                         class="md-error"
                         v-if="!$v.form.nameOfficial.required"
                       >Olvidaste ingresar nombre del funcionario</span>
-                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;                                               
-                </div>
+                </div> -->
               </md-card-content>
             </form>
           </div>
@@ -404,22 +420,22 @@ export default {
       form: {
           nameBoat: "",
           ZoneFisher: "",
-          nameOfficial: "", 
-          yellowFin: "", 
-          barrilete: "", 
-          patudo: "", 
+          // nameOfficial: "", 
           observation: "",
           date: format(now, dateFormat),
           dateBeginningFaena: format(now, dateFormat),
           dateEndFaena: format(now, dateFormat),
-
       },
       
+      poundRating: "",
+      yellowFin: "", 
+      barrilete: "", 
+      patudo: "", 
       other: "",
-      poundRating1: "",
-      poundRating2: "",
-      poundRating3: "",
-      poundRating4: "",
+      arrayTarget: [],
+      // poundRating2: "",
+      // poundRating3: "",
+      // poundRating4: "",
 
       arrayDisembTuna: [],
       id_disembTuna: 0,
@@ -453,18 +469,18 @@ export default {
         ZoneFisher: {
           required
         }, 
-        nameOfficial: {
-          required
-        },  
-        yellowFin: {
-          required
-        },  
-        barrilete: {
-          required
-        },  
-        patudo: {
-          required
-        },  
+        // nameOfficial: {
+        //   required
+        // },  
+        // yellowFin: {
+        //   required
+        // },  
+        // barrilete: {
+        //   required
+        // },  
+        // patudo: {
+        //   required
+        // },  
         observation: {
           required
         },  
@@ -529,15 +545,15 @@ export default {
       this.form.dateEndFaena = null;
       this.form.ZoneFisher = null;
       this.form.observation = null;
-      this.form.nameOfficial = null;
-      this.form.yellowFin = null;
-      this.poundRating1 = null;
-      this.form.barrilete = null;
-      this.poundRating2 = null;
-      this.form.patudo = null;
-      this.poundRating3 = null;
-      this.other = null;
-      this.poundRating4 = null;
+      // this.form.nameOfficial = null;
+      // this.form.yellowFin = null;
+      // this.poundRating1 = null;
+      // this.form.barrilete = null;
+      // this.poundRating2 = null;
+      // this.form.patudo = null;
+      // this.poundRating3 = null;
+      // this.other = null;
+      // this.poundRating4 = null;
   
       
       this.arrayPt = {id:0, namePort:'',name:''};
@@ -555,15 +571,15 @@ export default {
       this.form.dateEndFaena = data["dateEndFaena"];
       this.form.ZoneFisher = data["ZoneFisher"];
       this.form.observation = data["observation"];
-      this.form.nameOfficial = data["nameOfficial"];
-      this.form.yellowFin = data["yellowFin"];
-      this.poundRating1 = data["poundRating1"];
-      this.form.barrilete = data["barrilete"];
-      this.poundRating2 = data["poundRating2"];
-      this.form.patudo = data["patudo"];
-      this.poundRating3 = data["poundRating3"];
-      this.other = data["other"];
-      this.poundRating4 = data["poundRating4"];
+      // this.form.nameOfficial = data["nameOfficial"];
+      // this.form.yellowFin = data["yellowFin"];
+      // this.poundRating1 = data["poundRating1"];
+      // this.form.barrilete = data["barrilete"];
+      // this.poundRating2 = data["poundRating2"];
+      // this.form.patudo = data["patudo"];
+      // this.poundRating3 = data["poundRating3"];
+      // this.other = data["other"];
+      // this.poundRating4 = data["poundRating4"];
        
       this.arrayPt.id = data["id_port"];
       this.arrayPt.name = data["namePort"];
@@ -650,15 +666,15 @@ export default {
         dateEndFaena: this.form.dateEndFaena,
         ZoneFisher: this.form.ZoneFisher.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
-        nameOfficial: this.form.nameOfficial.toUpperCase(),
-        yellowFin: this.form.yellowFin.toUpperCase(),
-        poundRating1: this.poundRating1.toUpperCase(),
-        barrilete: this.form.barrilete.toUpperCase(),
-        poundRating2: this.poundRating2.toUpperCase(),
-        patudo: this.form.patudo.toUpperCase(),
-        poundRating3: this.poundRating3.toUpperCase(),
-        other: this.other.toUpperCase(),
-        poundRating4: this.poundRating4.toUpperCase(),
+        // nameOfficial: this.form.nameOfficial.toUpperCase(),
+        // yellowFin: this.form.yellowFin.toUpperCase(),
+        // poundRating1: this.poundRating1.toUpperCase(),
+        // barrilete: this.form.barrilete.toUpperCase(),
+        // poundRating2: this.poundRating2.toUpperCase(),
+        // patudo: this.form.patudo.toUpperCase(),
+        // poundRating3: this.poundRating3.toUpperCase(),
+        // other: this.other.toUpperCase(),
+        // poundRating4: this.poundRating4.toUpperCase(),
        
     
         'id_port': this.arrayPt.id,
@@ -686,15 +702,15 @@ export default {
         dateEndFaena: this.form.dateEndFaena,
         ZoneFisher: this.form.ZoneFisher.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
-        nameOfficial: this.form.nameOfficial.toUpperCase(),
-        yellowFin: this.form.yellowFin.toUpperCase(),
-        poundRating1: this.poundRating1.toUpperCase(),
-        barrilete: this.form.barrilete.toUpperCase(),
-        poundRating2: this.poundRating2.toUpperCase(),
-        patudo: this.form.patudo.toUpperCase(),
-        poundRating3: this.poundRating3.toUpperCase(),
-        other: this.other.toUpperCase(),
-        poundRating4: this.poundRating4.toUpperCase(),
+        // nameOfficial: this.form.nameOfficial.toUpperCase(),
+        // yellowFin: this.form.yellowFin.toUpperCase(),
+        // poundRating1: this.poundRating1.toUpperCase(),
+        // barrilete: this.form.barrilete.toUpperCase(),
+        // poundRating2: this.poundRating2.toUpperCase(),
+        // patudo: this.form.patudo.toUpperCase(),
+        // poundRating3: this.poundRating3.toUpperCase(),
+        // other: this.other.toUpperCase(),
+        // poundRating4: this.poundRating4.toUpperCase(),
     
         'id_port': this.arrayPt.id,
         'id_flag': this.arrayFg.id,
@@ -780,7 +796,7 @@ export default {
 
             { "data": "date" },
             { "data": "nameBoat" },
-            { "data": "nameOfficial" },
+            // { "data": "nameOfficial" },
             { "data": "dateBeginningFaena" },
             { "data": "dateEndFaena" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},

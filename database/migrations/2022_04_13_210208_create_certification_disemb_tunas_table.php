@@ -17,19 +17,19 @@ class CreateCertificationDisembTunasTable extends Migration
             $table->increments('id');
             $table->string('nameBoat');
             $table->string('ZoneFisher');
-            $table->string('nameOfficial'); 
-            $table->string('yellowFin'); 
-            $table->string('barrilete'); 
-            $table->string('patudo');    
+            // $table->string('nameOfficial'); 
+            // $table->string('yellowFin'); 
+            // $table->string('barrilete'); 
+            // $table->string('patudo');    
             $table->date('date');
             $table->date('dateBeginningFaena');
             $table->date('dateEndFaena');
             $table->string('observation');
-            $table->string('other');
-            $table->string('poundRating1');
-            $table->string('poundRating2');
-            $table->string('poundRating3');
-            $table->string('poundRating4');
+            // $table->string('other');
+            // $table->string('poundRating1');
+            // $table->string('poundRating2');
+            // $table->string('poundRating3');
+            // $table->string('poundRating4');
            
             $table->integer('id_port')->unsigned();
             $table->foreign('id_port')->references('id')->on('ports');
