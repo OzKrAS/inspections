@@ -7,6 +7,7 @@ use App\CertificationDisembTuna;
 use App\Port;
 use App\Flag;
 use App\Company;
+use App\DetailDisembTuna;
 
 class CertificationDisembTunaController extends Controller
 {
@@ -20,19 +21,10 @@ class CertificationDisembTunaController extends Controller
             ->select('certification_disemb_tunas.id',
                      'certification_disemb_tunas.nameBoat',
                      'certification_disemb_tunas.ZoneFisher',
-                    //  'certification_disemb_tunas.nameOfficial', 
-                    //  'certification_disemb_tunas.yellowFin', 
-                    //  'certification_disemb_tunas.barrilete', 
-                    //  'certification_disemb_tunas.patudo', 
                      'certification_disemb_tunas.date',
                      'certification_disemb_tunas.dateBeginningFaena',
                      'certification_disemb_tunas.dateEndFaena',
                      'certification_disemb_tunas.observation',
-                    //  'certification_disemb_tunas.other',
-                    //  'certification_disemb_tunas.poundRating1',
-                    //  'certification_disemb_tunas.poundRating2',
-                    //  'certification_disemb_tunas.poundRating3',
-                    //  'certification_disemb_tunas.poundRating4',
                                     
                      'certification_disemb_tunas.id_company','companies.name as nameCompany',
                      'certification_disemb_tunas.id_port','ports.name as namePort',
@@ -52,24 +44,29 @@ class CertificationDisembTunaController extends Controller
         $tunas = new CertificationDisembTuna();
         $tunas->nameBoat = $request->nameBoat;
         $tunas->ZoneFisher = $request->ZoneFisher;
-        // $tunas->nameOfficial = $request->nameOfficial; 
-        // $tunas->yellowFin = $request->yellowFin; 
-        // $tunas->barrilete = $request->barrilete; 
-        // $tunas->patudo = $request->patudo; 
         $tunas->date = $request->date;
         $tunas->dateBeginningFaena = $request->dateBeginningFaena;
         $tunas->dateEndFaena = $request->dateEndFaena;
         $tunas->observation = $request->observation;
-        // $tunas->other = $request->other;
-        // $tunas->poundRating1 = $request->poundRating1;
-        // $tunas->poundRating2 = $request->poundRating2;
-        // $tunas->poundRating3 = $request->poundRating3;
-        // $tunas->poundRating4 = $request->poundRating4;
         
         $tunas->id_company = $request->id_company;  
         $tunas->id_port = $request->id_port;  
         $tunas->id_flag = $request->id_flag;  
         $tunas->save();
+
+        $detaildisembtuna = $request->target;
+        foreach($detaildisembtuna as $ep=>$det){
+            $objeto= new DetailDisembTuna();
+            $objeto->id_disembTuna = $tunas->id;
+            $objeto->poundRating = $det['poundRating'];
+            $objeto->yellowFin = $det['yellowFin'];
+            $objeto->barrilete = $det['barrilete'];
+            $objeto->patudo = $det['patudo'];
+            $objeto->other = $det['other'];
+
+            $objeto->save();
+        }
+
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'
@@ -82,19 +79,10 @@ class CertificationDisembTunaController extends Controller
         $tunas = CertificationDisembTuna::findOrFail($request->id); 
         $tunas->nameBoat = $request->nameBoat;
         $tunas->ZoneFisher = $request->ZoneFisher;
-        // $tunas->nameOfficial = $request->nameOfficial; 
-        // $tunas->yellowFin = $request->yellowFin; 
-        // $tunas->barrilete = $request->barrilete; 
-        // $tunas->patudo = $request->patudo; 
         $tunas->date = $request->date;
         $tunas->dateBeginningFaena = $request->dateBeginningFaena;
         $tunas->dateEndFaena = $request->dateEndFaena;
         $tunas->observation = $request->observation;
-        // $tunas->other = $request->other;
-        // $tunas->poundRating1 = $request->poundRating1;
-        // $tunas->poundRating2 = $request->poundRating2;
-        // $tunas->poundRating3 = $request->poundRating3;
-        // $tunas->poundRating4 = $request->poundRating4;
          
         $tunas->id_company = $request->id_company;  
         $tunas->id_port = $request->id_port;  
@@ -116,5 +104,11 @@ class CertificationDisembTunaController extends Controller
             'message' => 'Registro eliminado exitosamente'
             );
         return response()->json($array,201);
+    }
+    public function dataTable1(Request $request)
+    {
+        $tunas = DetailDisembTuna::select('id','id_disembTuna','poundRating','yellowFin','barrilete','patudo','other')
+        ->where('id_disembTuna', $request->id_DisembTuna)->get();
+        return ['confTable1' =>  $tunas];   
     }
 }

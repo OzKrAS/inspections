@@ -179,6 +179,7 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
+                <md-divider style="background-color: #2090E8 " ></md-divider>
                 <div class="card-body">
                     <div class="md-layout">
                       <div class="md-layout-item md-size-40">
@@ -433,6 +434,7 @@ export default {
       patudo: "", 
       other: "",
       arrayTarget: [],
+      arrayTargetAct: [],
       // poundRating2: "",
       // poundRating3: "",
       // poundRating4: "",
@@ -537,6 +539,35 @@ export default {
         this.clearForm();
       }
     },
+    addItemTarget() {
+      let me = this;
+      var total1 = me.arrayTarget.push({
+        poundRating:this.poundRating.toUpperCase(),
+        yellowFin:this.yellowFin.toUpperCase(),
+        barrilete:this.barrilete.toUpperCase(),
+        patudo:this.patudo.toUpperCase(),
+        other:this.other,
+      });
+      var total2 = me.arrayTargetAct.push({
+        poundRating:this.poundRating.toUpperCase(),
+        yellowFin:this.yellowFin.toUpperCase(),
+        barrilete:this.barrilete.toUpperCase(),
+        patudo:this.patudo.toUpperCase(),
+        other:this.other,
+      });
+      console.log("arrayTarget " + total1);
+      me.clearTarget();  
+    },
+    deleteTarget(index){
+       this.arrayTarget.splice(index,1);
+    },
+    clearTarget() {
+      this.poundRating = null;
+      this.yellowFin = null;
+      this.barrilete = null;
+      this.patudo = null;
+      this.other = null;
+    },
     clearForm() {
       this.$v.$reset();
       this.form.nameBoat = null;
@@ -554,6 +585,9 @@ export default {
       // this.poundRating3 = null;
       // this.other = null;
       // this.poundRating4 = null;
+      this.arrayTarget = [];
+      this.arrayTargetAct = [];
+      
   
       
       this.arrayPt = {id:0, namePort:'',name:''};
@@ -587,6 +621,7 @@ export default {
 	    this.arrayFg.name = data["nameFlag"];
       this.arrayComp.id = data["id_company"];
 	    this.arrayComp.name = data["nameCompany"];
+      this.dataTable1();
     },
     nameWithPort ({ namePort,name }) {
             return `${namePort} / ${name}  `
@@ -675,6 +710,7 @@ export default {
         // poundRating3: this.poundRating3.toUpperCase(),
         // other: this.other.toUpperCase(),
         // poundRating4: this.poundRating4.toUpperCase(),
+        target:this.arrayTarget,
        
     
         'id_port': this.arrayPt.id,
@@ -711,6 +747,7 @@ export default {
         // poundRating3: this.poundRating3.toUpperCase(),
         // other: this.other.toUpperCase(),
         // poundRating4: this.poundRating4.toUpperCase(),
+        'target':this.arrayTargetAct,
     
         'id_port': this.arrayPt.id,
         'id_flag': this.arrayFg.id,
@@ -759,6 +796,21 @@ export default {
         ) {
         }
       });
+    },
+    dataTable1(){
+      let me = this;
+
+      var url = "/certificationDisembTuna/table1?id_DisembTuna="+this.id_disembTuna;
+      axios
+        .get(url)
+        .then(function(response) {
+          //console.log(response);
+          var respuesta = response.data;
+          me.arrayTarget = respuesta.confTable1;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
 
     message(tipo, crud) {

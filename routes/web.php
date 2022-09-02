@@ -177,6 +177,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/certificationDisembTuna/selectPorts', 'PortsController@selectPort');
         Route::get('/certificationDisembTuna/selectFlags', 'FlagController@selectFlag');
         Route::get('/certificationDisembTuna/selectCompanies', 'CompanyController@selectCompanies');
+        Route::get('/certificationDisembTuna/table1', 'CertificationDisembTunaController@dataTable1');
         // FORMATO DE AVISO PREVIO DE ZARPE DE BUQUE
         Route::get('/noticePreviousZarpe', 'NoticePreviousZarpeController@index');
         Route::post('/noticePreviousZarpe/save', 'NoticePreviousZarpeController@store');
