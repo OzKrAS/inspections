@@ -296,14 +296,27 @@
                         </tr>
                       </tbody>
                         <tfoot>
-                          <tr>
+                          <tr style="background-color: darkgray;">
+                              <td align="center"><strong>SubTotal Kg.</strong></td>
+                              <td align="center">{{totalYellow}}</td>                         
+                              <td align="center">{{totalBarrilete}}</td>                        
+                              <td align="center">{{totalPatudo}}</td>                          
+                              <td align="center">{{totalOther}}</td>                           
+                              <!-- <td colspan="1"> </td>     -->
+                          </tr>
+                          <tr style="background-color: darkgray;">
+                              <td align="center"><strong>TOTAL DESEMBARCADO Kg.</strong></td>   
+                              <td align="center">{{totalDesemb}}</td>             
+                              <!-- <td colspan="1"> </td>     -->
+                          </tr>
+                          <!-- <tr>
                             <th>CLASIFICACIÓN EN LIBRAS</th>    
                             <th>ALETA AMARILLA - YFT (Kg.)</th>              
                             <th>BARRILETE - SKJ (Kg.)</th>    
                             <th>PATUDO - BET (Kg.)</th>    
                             <th>OTRO</th>        
                             <th style="width: 90px">Opciones</th>
-                          </tr>
+                          </tr> -->
                         </tfoot>
                         <tbody>
                         </tbody>
@@ -429,15 +442,12 @@ export default {
       },
       
       poundRating: "",
-      yellowFin: "", 
-      barrilete: "", 
-      patudo: "", 
-      other: "",
+      yellowFin: 0, 
+      barrilete: 0, 
+      patudo: 0, 
+      other: 0,
       arrayTarget: [],
       arrayTargetAct: [],
-      // poundRating2: "",
-      // poundRating3: "",
-      // poundRating4: "",
 
       arrayDisembTuna: [],
       id_disembTuna: 0,
@@ -459,7 +469,13 @@ export default {
 
       arrayData: [],
       modal: 0,
-      tipoAccion: 0
+      tipoAccion: 0,
+
+      arrayYellow: [],
+      arrayBarrilete: [],
+      arrayPatudo: [],
+      arrayOther: [],
+
     };
   },
 
@@ -500,7 +516,42 @@ export default {
   },
 
   computed: {
-
+  
+    totalYellow: function(){
+            var total = 0;
+            for (var i = 0; i < this.arrayYellow.length; i++) {
+                total = total + parseInt(this.arrayYellow[i].saldo);              
+            }
+            return total;
+    },
+    totalBarrilete: function(){
+            var total2 = 0;
+            for (var i = 0; i < this.arrayBarrilete.length; i++) {
+                total2 = total2 + parseInt(this.arrayBarrilete[i].saldo);              
+            }
+            return total2;
+    },
+    totalPatudo: function(){
+            var total3 = 0;
+            for (var i = 0; i < this.arrayPatudo.length; i++) {
+                total3 = total3 + parseInt(this.arrayPatudo[i].saldo);              
+            }
+            return total3;
+    },
+    totalOther: function(){
+            var total4 = 0;
+            for (var i = 0; i < this.arrayOther.length; i++) {
+                total4 = total4 + parseInt(this.arrayOther[i].saldo);              
+            }
+            return total4;
+    },
+    totalDesemb: function(){
+            var total5 = 0;
+            for (var i = 0; i < this.arrayOther.length; i++) {
+                total5 += + parseInt(this.arrayOther[i].saldo) + parseInt(this.arrayYellow[i].saldo) + parseInt(this.arrayBarrilete[i].saldo) + parseInt(this.arrayPatudo[i].saldo);              
+            }
+            return total5;
+    },
   },
   components: {
 		vSelect,
@@ -541,21 +592,26 @@ export default {
     },
     addItemTarget() {
       let me = this;
+      
+      this.arrayYellow.push({ saldo:this.yellowFin});
+      this.arrayBarrilete.push({ saldo:this.barrilete});
+      this.arrayPatudo.push({ saldo:this.patudo});
+      this.arrayOther.push({ saldo:this.other});
+    
       var total1 = me.arrayTarget.push({
-        poundRating:this.poundRating.toUpperCase(),
-        yellowFin:this.yellowFin.toUpperCase(),
-        barrilete:this.barrilete.toUpperCase(),
-        patudo:this.patudo.toUpperCase(),
+        poundRating:this.poundRating,
+        yellowFin:this.yellowFin,
+        barrilete:this.barrilete,
+        patudo:this.patudo,
         other:this.other,
       });
       var total2 = me.arrayTargetAct.push({
-        poundRating:this.poundRating.toUpperCase(),
-        yellowFin:this.yellowFin.toUpperCase(),
-        barrilete:this.barrilete.toUpperCase(),
-        patudo:this.patudo.toUpperCase(),
+        poundRating:this.poundRating,
+        yellowFin:this.yellowFin,
+        barrilete:this.barrilete,
+        patudo:this.patudo,
         other:this.other,
       });
-      console.log("arrayTarget " + total1);
       me.clearTarget();  
     },
     deleteTarget(index){
@@ -563,10 +619,10 @@ export default {
     },
     clearTarget() {
       this.poundRating = null;
-      this.yellowFin = null;
-      this.barrilete = null;
-      this.patudo = null;
-      this.other = null;
+      this.yellowFin = 0;
+      this.barrilete = 0;
+      this.patudo = 0;
+      this.other = 0;
     },
     clearForm() {
       this.$v.$reset();
@@ -576,19 +632,8 @@ export default {
       this.form.dateEndFaena = null;
       this.form.ZoneFisher = null;
       this.form.observation = null;
-      // this.form.nameOfficial = null;
-      // this.form.yellowFin = null;
-      // this.poundRating1 = null;
-      // this.form.barrilete = null;
-      // this.poundRating2 = null;
-      // this.form.patudo = null;
-      // this.poundRating3 = null;
-      // this.other = null;
-      // this.poundRating4 = null;
       this.arrayTarget = [];
       this.arrayTargetAct = [];
-      
-  
       
       this.arrayPt = {id:0, namePort:'',name:''};
       this.arrayFg = {id:0, name:''};
@@ -605,15 +650,6 @@ export default {
       this.form.dateEndFaena = data["dateEndFaena"];
       this.form.ZoneFisher = data["ZoneFisher"];
       this.form.observation = data["observation"];
-      // this.form.nameOfficial = data["nameOfficial"];
-      // this.form.yellowFin = data["yellowFin"];
-      // this.poundRating1 = data["poundRating1"];
-      // this.form.barrilete = data["barrilete"];
-      // this.poundRating2 = data["poundRating2"];
-      // this.form.patudo = data["patudo"];
-      // this.poundRating3 = data["poundRating3"];
-      // this.other = data["other"];
-      // this.poundRating4 = data["poundRating4"];
        
       this.arrayPt.id = data["id_port"];
       this.arrayPt.name = data["namePort"];
@@ -701,15 +737,6 @@ export default {
         dateEndFaena: this.form.dateEndFaena,
         ZoneFisher: this.form.ZoneFisher.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
-        // nameOfficial: this.form.nameOfficial.toUpperCase(),
-        // yellowFin: this.form.yellowFin.toUpperCase(),
-        // poundRating1: this.poundRating1.toUpperCase(),
-        // barrilete: this.form.barrilete.toUpperCase(),
-        // poundRating2: this.poundRating2.toUpperCase(),
-        // patudo: this.form.patudo.toUpperCase(),
-        // poundRating3: this.poundRating3.toUpperCase(),
-        // other: this.other.toUpperCase(),
-        // poundRating4: this.poundRating4.toUpperCase(),
         target:this.arrayTarget,
        
     
