@@ -71,7 +71,7 @@
                         md-immediately
                         :md-model-type="String"
                         >
-                        <label>Seleccione Fecha</label>
+                        <label>Seleccione Fecha (Date)</label>
                         <span
                           class="md-error"
                           v-if="!$v.form.date.required"
@@ -84,7 +84,7 @@
                 </div>  
                 <div class="md-layout">
                   <div class="md-layout-item">
-                      <label class="text-muted">Regional</label>
+                      <label class="text-muted">Regional (Regional)</label>
                       <multiselect v-model="arrayRegl" :options="arrayRegional"
                           placeholder="Seleccione una opción"
                           :custom-label="nameWithRegional"
@@ -94,8 +94,8 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field>
-                      <label for="office" class="text-muted">Oficina</label>
-                      <md-select v-model="office" name="office" id="office" placeholder="Seleccione una oficina">
+                      <label for="office" class="text-muted">Oficina (Office)</label>
+                      <md-select v-model="office" name="office" id="office" placeholder="Seleccione una oficina (Office)">
                         <md-option value="Barranquilla">Barranquilla</md-option>
                         <md-option value="Cartagena">Cartagena</md-option>
                         <md-option value="Tolú">Tolú</md-option>
@@ -123,7 +123,7 @@
                   </div>&nbsp;&nbsp;&nbsp; -->
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('official')">
-                      <label for="first-name">Funcionario</label>
+                      <label for="first-name">Funcionario (Official)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -146,7 +146,7 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('boat')">
-                      <label for="first-name">Embarcación</label>
+                      <label for="first-name">Embarcación (Ship Name)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -162,7 +162,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('enrollment')">
-                      <label for="first-name">Matrícula</label>
+                      <label for="first-name">Matrícula (Vessel Registration)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -178,7 +178,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('fishLicense')">
-                      <label for="first-name">Pantente de Pesca</label>
+                      <label for="first-name">Pantente de Pesca (Patent)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -195,7 +195,7 @@
                 </div>
                 <div class="md-layout">  
                   <div class="md-layout-item">
-                      <label class="text-muted">Empresa</label>
+                      <label class="text-muted">Empresa (Company/Permit Holder)</label>
                       <multiselect v-model="arrayComp" :options="arrayCompany"
                           placeholder="Seleccione una Empresa"
                           :custom-label="nameWithCompany"
@@ -205,7 +205,7 @@
                   </div>&nbsp;&nbsp;&nbsp;                             
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('owner')">
-                      <label for="first-name">Armador</label>
+                      <label for="first-name">Armador (Shipowner)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -221,7 +221,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('fishCaptain')">
-                      <label for="first-name">Capitán de Pesca</label>
+                      <label for="first-name">Capitán de Pesca (Fishing Captain)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -252,25 +252,9 @@
                       :preselect-first="false">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <!-- <div class="md-layout-item md-size-35">
-                    <md-field md-clearable :class="getValidationClass('outhFhisher')">
-                      <label for="first-name">Pesquería Autorizada</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.outhFhisher"
-                        :disabled="sending"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.outhFhisher.required"
-                      >Olvidaste ingresar el nombre de la pesqueria autorizada</span>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;         -->
                   <div class="md-layout-item md-size-35">
                     <md-field md-clearable :class="getValidationClass('location')">
-                      <label for="first-name">Localización</label>
+                      <label for="first-name">Localización (Location)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -314,82 +298,6 @@
                   </map>
                   <img alt="Graficos" width="263" height="278" src="/img/img4.png">
                 </div>
-                 <!-- <div class="md-layout"> 
-                  <div class="md-layout-item">
-                    <md-field md-clearable>
-                      <label for="first-name">Tamaño de malla en la solapa</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="meshSize"
-                        :disabled="sending"
-                      />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable>
-                      <label for="first-name">Ángulo del DET</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="angleDet"
-                        :disabled="sending"
-                      />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable>
-                      <label for="first-name">Tipo de DET</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="typeDet"
-                        :disabled="sending"
-                      />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                </div>
-                <div class="md-layout"> 
-                  <div class="md-layout-item">
-                    <md-field md-clearable>
-                      <label for="first-name">Material del DET</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="materialDet"
-                        :disabled="sending"
-                      />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable>
-                      <label for="first-name">Salida (superior ó inferior)</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="exit"
-                        :disabled="sending"
-                      />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable>
-                      <label for="first-name">Flotadores (cantidad)</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="float"
-                        :disabled="sending"
-                      />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                </div> -->
                   <br>
                   <table class="table table-striped table-bordered display" id="dataTable2" width="50%" cellspacing="0">
                       <thead>         
@@ -449,7 +357,7 @@
                 <div class="md-layout">  
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('flapMeshSize')">
-                      <label for="first-name">Tamaño de malla en la solapa</label>
+                      <label for="first-name">Tamaño de malla en la solapa (Mesh Size on Flap)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -465,7 +373,7 @@
                   </div>&nbsp;&nbsp;&nbsp; 
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('angleDet')">
-                      <label for="first-name">Ángulo del DET </label>
+                      <label for="first-name">Ángulo del DET (DET Angle)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -481,7 +389,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('typeDet')">
-                      <label for="first-name">Tipo de DET</label>
+                      <label for="first-name">Tipo de DET (DET Type)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -499,7 +407,7 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('materialDet')">
-                      <label for="first-name">Material del DET</label>
+                      <label for="first-name">Material del DET (DET Material)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -515,7 +423,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('exit')">
-                      <label for="first-name">Salida (superior ó inferior)</label>
+                      <label for="first-name">Salida (superior ó inferior)(Outlet)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -531,7 +439,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('float')">
-                      <label for="first-name">Flotadores (cantidad)</label>
+                      <label for="first-name">Flotadores (cantidad)(Number of Floats)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -552,7 +460,7 @@
                 <div class="md-layout"> 
                   <div class="md-layout-item">
                     <md-field>
-                            <label>Observaciones</label>
+                            <label>Observaciones (Observations)</label>
                             <md-textarea v-model="observation"></md-textarea>
                     </md-field>
                   </div>    

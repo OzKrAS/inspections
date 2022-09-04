@@ -97,7 +97,7 @@
                   <div class="md-layout-item">
                     <md-field>
                       <label for="office" class="text-muted">Oficina (Office)</label>
-                      <md-select v-model="office" name="office" id="office" placeholder="Seleccione una oficina">
+                      <md-select v-model="office" name="office" id="office" placeholder="Seleccione una oficina (Office)">
                         <md-option value="Barranquilla">Barranquilla</md-option>
                         <md-option value="Cartagena">Cartagena</md-option>
                         <md-option value="Tolú">Tolú</md-option>
@@ -656,100 +656,6 @@
       </div>
       <!-- /.modal-dialog -->
     </div>
-    <!-- modal 2 -->
-    <!-- <div
-      class="modal fade"
-      tabindex="-1"
-      :class="{'mostrar' : modal2}"
-      role="dialog"
-      aria-labelledby="myModalLabel"
-      style="display: none;"
-      aria-hidden="true" 
-    >
-      <div class="modal-dialog modal-primary modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" v-text="tituloModal"></h4>
-            <button type="button" class="close" @click="cerrarModal()" aria-label="Close">
-              <span aria-hidden="true">X</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action method="post" enctype="multipart/form-data" class="form-horizontal">
-              <md-card-content>
-                <div class="md-layout">
-                  <div class="md-layout-item md-size-60">
-                    <md-field>
-                      <label for="first-name">Babor 1</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="babor3"
-                        :disabled="sending"
-                      />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-60">
-                    <md-field>
-                      <label for="first-name">Babor 2</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="babor4"
-                        :disabled="sending"
-                      />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-60">
-                    <md-field>
-                      <label for="first-name">Estribor 1</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="estribor3"
-                        :disabled="sending"
-                      />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-60">
-                    <md-field>
-                      <label for="first-name">Estribor 2</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="estribor4"
-                        :disabled="sending"
-                      />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-25">
-                  </div>
-                </div>
-              </md-card-content>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <md-card-actions>
-              <md-button type="button" class="md-raised" @click="cerrarModal()">Cerrar</md-button>
-            </md-card-actions>
-
-            <md-card-actions>
-              <md-button
-                type="submit"
-                v-if="tipoAccion==1"
-                class="md-dense md-raised md-primary"
-                :disabled="sending"
-                @click="addDets2()"
-              >registrar</md-button>
-            </md-card-actions>
-          </div>
-        </div>
-      </div>
-    </div> -->
 
   </main>
 </template>
