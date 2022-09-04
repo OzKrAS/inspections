@@ -302,12 +302,12 @@
                               <td align="center">{{totalBarrilete}}</td>                        
                               <td align="center">{{totalPatudo}}</td>                          
                               <td align="center">{{totalOther}}</td>                           
-                              <!-- <td colspan="1"> </td>     -->
+                              <td colspan="8"> </td>    
                           </tr>
                           <tr style="background-color: darkgray;">
                               <td align="center"><strong>TOTAL DESEMBARCADO Kg.</strong></td>   
                               <td align="center">{{totalDesemb}}</td>             
-                              <!-- <td colspan="1"> </td>     -->
+                              <td colspan="8"> </td>    
                           </tr>
                           <!-- <tr>
                             <th>CLASIFICACIÓN EN LIBRAS</th>    
@@ -765,15 +765,6 @@ export default {
         dateEndFaena: this.form.dateEndFaena,
         ZoneFisher: this.form.ZoneFisher.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
-        // nameOfficial: this.form.nameOfficial.toUpperCase(),
-        // yellowFin: this.form.yellowFin.toUpperCase(),
-        // poundRating1: this.poundRating1.toUpperCase(),
-        // barrilete: this.form.barrilete.toUpperCase(),
-        // poundRating2: this.poundRating2.toUpperCase(),
-        // patudo: this.form.patudo.toUpperCase(),
-        // poundRating3: this.poundRating3.toUpperCase(),
-        // other: this.other.toUpperCase(),
-        // poundRating4: this.poundRating4.toUpperCase(),
         'target':this.arrayTargetAct,
     
         'id_port': this.arrayPt.id,
