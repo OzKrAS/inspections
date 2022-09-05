@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Verificación Presencia del Equipo de Rescate de Delfines Abordo de Barcos Atuneros de Cerco</strong>          
+          <strong class="lead">Verificación Presencia del Equipo de Rescate de Delfines Abordo de Barcos Atuneros de Cerco</strong>
           <button
             v-if="edo"
             type="button"
@@ -28,8 +28,8 @@
                     <th>Nombre Pescador</th>
                     <th>Fecha de Zarpe</th>
                     <th>Fecha desembarque</th>
-                    <th>Nombre Capitán</th> 
-                    <th>Opciones</th> 
+                    <th>Nombre Capitán</th>
+                    <th>Opciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -42,8 +42,8 @@
                         <th>Nombre Pescador</th>
                         <th>Fecha de Zarpe</th>
                         <th>Fecha desembarque</th>
-                        <th>Nombre Capitán</th> 
-                        <th>Opciones</th>  
+                        <th>Nombre Capitán</th>
+                        <th>Opciones</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -51,7 +51,7 @@
 
               </table>
             </div>
-      
+
           </div>
         </template>
         <template v-else-if="listado==0">
@@ -61,7 +61,7 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameShip')">
-                        <label for="first-name">Nombre del Barco</label>
+                        <label for="first-name">Nombre de la Embarcación (Ship Name)</label>
                         <md-input
                         name="first-name"
                         id="first-name"
@@ -72,15 +72,15 @@
                         <span
                             class="md-error"
                             v-if="!$v.form.nameShip.required"
-                        >Olvidaste ingresar el nombre del barco
+                        >Olvidaste ingresar el nombre de la embarcación
                         </span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;   
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <label class="text-muted">Bandera</label>
+                      <label class="text-muted">Bandera (Flag)</label>
                       <multiselect v-model="arrayFg" :options="arrayFlag"
                           placeholder="Seleccione una bandera"
-                          :custom-label="nameWithFlag"
+                          :custom-label="nameWithName"
                           label="name"
                           track-by="name">
                       </multiselect>
@@ -89,7 +89,7 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('cruise')">
-                        <label for="first-name">No. Crucero/RSA</label>
+                        <label for="first-name">No. Crucero/RSA (Cruise Number/RSA)</label>
                         <md-input
                         name="first-name"
                         id="first-name"
@@ -107,7 +107,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameFish')">
-                        <label for="first-name">Nombre Observador</label>
+                        <label for="first-name">Nombre Observador (Observer Name)</label>
                         <md-input
                         name="first-name"
                         id="first-name"
@@ -122,11 +122,11 @@
                         </span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                </div>      
+                </div>
                 <div class="md-layout">
                   <div class="md-layout-item md-size-45">
                     <md-field md-clearable :class="getValidationClass('nameCaptain')">
-                        <label for="first-name">Nombre Capitán</label>
+                        <label for="first-name">Nombre Capitán (Capitan Name)</label>
                         <md-input
                             name="first-name"
                             id="first-name"
@@ -140,41 +140,41 @@
                         >Olvidaste ingresar el nombre del capitán</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">                 
-                      <md-datepicker 
+                  <div class="md-layout-item">
+                      <md-datepicker
                         md-clearable :class="getValidationClass('dateZarpe')"
                         v-model="form.dateZarpe"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
                         >
-                        <label>Fecha Zarpe</label>
+                        <label>Fecha Zarpe (Departure Date)</label>
                         <span
                           class="md-error"
                           v-if="!$v.form.dateZarpe.required"
                           >Olvidaste ingresar la fecha de zarpe
                         </span>
-                      </md-datepicker>                   
+                      </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">                 
-                      <md-datepicker 
+                  <div class="md-layout-item">
+                      <md-datepicker
                         md-clearable :class="getValidationClass('dateDesemb')"
                         v-model="form.dateDesemb"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
                         >
-                        <label>Fecha Desembarque</label>
+                        <label>Fecha Desembarque (Landing Date)</label>
                         <span
                           class="md-error"
                           v-if="!$v.form.dateDesemb.required"
                           >Olvidaste ingresar la fecha de desembarque
                         </span>
-                      </md-datepicker>                   
+                      </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
-                </div>                
-                <div class="md-layout">                   
-                        <div class="card-body">   
+                </div>
+                <div class="md-layout">
+                        <div class="card-body">
                           <md-button
                             type="button"
                             class="md-dense md-raised md-primary"
@@ -182,14 +182,14 @@
                             @click="abrirModal()"
                           >Agregar
                           </md-button>
-                      <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">      
-                        <thead>    
+                      <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                        <thead>
                           <tr>
-                            <th>EQUIPO</th>    
-                            <th>ZARPE (S/N)</th>    
-                            <th>DESEMBARQUE (S/N)</th>    
-                            <th>REGISTRO FOTOGRAFICO (S/N)</th>    
-                            <th>OBSERVACIONES</th>    
+                            <th>EQUIPO</th>
+                            <th>ZARPE (S/N)</th>
+                            <th>DESEMBARQUE (S/N)</th>
+                            <th>REGISTRO FOTOGRAFICO (S/N)</th>
+                            <th>OBSERVACIONES</th>
                             <th style="width: 90px">Opciones</th>
                           </tr>
                         </thead>
@@ -199,25 +199,25 @@
                               <md-field>
                                   <md-textarea v-model="target.element" md-autogrow></md-textarea>
                               </md-field>
-                            </td>               
-                            <td>
-                               <md-radio  v-model="target.zarpe" value="1"><small>SI</small></md-radio>
-                               <md-radio  v-model="target.zarpe" value="0" class="md-primary"><small>NO</small></md-radio>
                             </td>
                             <td>
-                               <md-radio  v-model="target.characterState" value="1"><small>SI</small></md-radio>
-                               <md-radio  v-model="target.characterState" value="0" class="md-primary"><small>NO</small></md-radio>
+                               <md-radio  v-model="target.zarpe" value="1" class="md-primary" ><small>SI</small></md-radio>
+                               <md-radio  v-model="target.zarpe" value="0"><small>NO</small></md-radio>
                             </td>
                             <td>
-                               <md-radio  v-model="target.regFot" value="1"><small>SI</small></md-radio>
-                               <md-radio  v-model="target.regFot" value="0" class="md-primary"><small>NO</small></md-radio>
-                            </td>                       
+                               <md-radio  v-model="target.characterState" value="1" class="md-primary"><small>SI</small></md-radio>
+                               <md-radio  v-model="target.characterState" value="0" ><small>NO</small></md-radio>
+                            </td>
+                            <td>
+                               <md-radio  v-model="target.regFot" value="1" class="md-primary"><small>SI</small></md-radio>
+                               <md-radio  v-model="target.regFot" value="0" ><small>NO</small></md-radio>
+                            </td>
                             <td>
                               <md-field>
                                   <md-textarea v-model="target.observation" md-autogrow></md-textarea>
                               </md-field>
-                            </td>                           
-                            <td>                      
+                            </td>
+                            <td>
                               <button
                                 type="button"
                                 class="btn btn-danger btn-sm"
@@ -233,24 +233,24 @@
                         <tbody v-else>
                           <tr>
                             <td colspan="6" class="text-center">
-                              No existen elementos agregados 
+                              No existen elementos agregados
                             </td>
                           </tr>
                         </tbody>
                           <tfoot>
                             <tr>
-                              <th>EQUIPO</th>    
-                              <th>ZARPE (S/N)</th>    
-                              <th>DESEMBARQUE (S/N)</th>    
-                              <th>REGISTRO FOTOGRAFICO (S/N)</th> 
-                              <th>OBSERVACIONES</th> 
+                              <th>EQUIPO</th>
+                              <th>ZARPE (S/N)</th>
+                              <th>DESEMBARQUE (S/N)</th>
+                              <th>REGISTRO FOTOGRAFICO (S/N)</th>
+                              <th>OBSERVACIONES</th>
                               <th style="width: 90px">Opciones</th>
                             </tr>
                           </tfoot>
                           <tbody>
                           </tbody>
                     </table>
-                  </div>  
+                  </div>
                 </div>
               </md-card-content>
             </form>
@@ -288,7 +288,7 @@
       role="dialog"
       aria-labelledby="myModalLabel"
       style="display: none;"
-      aria-hidden="true" 
+      aria-hidden="true"
     >
       <div class="modal-dialog modal-primary modal-lg" role="document">
         <div class="modal-content">
@@ -301,40 +301,37 @@
           <div class="modal-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <div class="md-layout">
-                  <div class="md-layout-item md-size-50">
-                    <md-field md-clearable>
                         <label for="first-name">Equipo</label>
-                        <md-input
-                            name="first-name"
-                            id="first-name"
-                            autocomplete="given-name"
-                            v-model="element"
-                            :disabled="sending"
-                        />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;              
-              </div>
+                       <multiselect v-model="element" :options="arrayTable"
+                          placeholder="Seleccione un equipo"
+                          :custom-label="nameWithName"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+
+                  </div>&nbsp;&nbsp;&nbsp;
+
               <div class="md-layout">
-                <div class="md-layout-item md-size-30">                 
+                <div class="md-layout-item md-size-30">
                     <label for="first-name">Zarpe (S/N)</label>
                     <div>
-                      <md-radio  v-model="zarpe" value="1"><small>SI</small></md-radio>
-                      <md-radio  v-model="zarpe" value="0" class="md-primary"><small>NO</small></md-radio>
-                    </div>                     
+                      <md-radio  v-model="zarpe" value="1" class="md-primary"><small>SI</small></md-radio>
+                      <md-radio  v-model="zarpe" value="0" ><small>NO</small></md-radio>
+                    </div>
                 </div>&nbsp;&nbsp;&nbsp;
-                <div class="md-layout-item md-size-30">                 
+                <div class="md-layout-item md-size-30">
                     <label for="first-name">Desembarque (S/N)</label>
                     <div>
-                      <md-radio  v-model="characterState" value="1"><small>SI</small></md-radio>
-                      <md-radio  v-model="characterState" value="0" class="md-primary"><small>NO</small></md-radio>
-                    </div>                     
+                      <md-radio  v-model="characterState" value="1" class="md-primary"><small>SI</small></md-radio>
+                      <md-radio  v-model="characterState" value="0" ><small>NO</small></md-radio>
+                    </div>
                 </div>&nbsp;&nbsp;&nbsp;
-                <div class="md-layout-item md-size-30">                 
+                <div class="md-layout-item md-size-30">
                     <label for="first-name">Registro fotográfico (S/N)</label>
                     <div>
-                      <md-radio  v-model="regFot" value="1"><small>SI</small></md-radio>
-                      <md-radio  v-model="regFot" value="0" class="md-primary"><small>NO</small></md-radio>
-                    </div>                                    
+                      <md-radio  v-model="regFot" value="1" class="md-primary"><small>SI</small></md-radio>
+                      <md-radio  v-model="regFot" value="0" ><small>NO</small></md-radio>
+                    </div>
                 </div>&nbsp;&nbsp;&nbsp;
                 <v-collapse-wrapper v-if="this.regFot == 1">
                         <div class="content" v-collapse-content>
@@ -390,10 +387,10 @@
                                   </div>
                                 </div>
                               </div>
-                            </div> 
+                            </div>
                         </div>
-                </v-collapse-wrapper>                   
-              </div> 
+                </v-collapse-wrapper>
+              </div>
               <!-- <div class="md-layout"> -->
                   <!-- <div class="collapse" id="collapseExample" >
                       <div class="card card-body">
@@ -446,8 +443,8 @@
                               </div>
                             </div>
                           </div>
-                        </div> 
-                          
+                        </div>
+
                       </div>
                   </div> -->
                 <!-- </div>  -->
@@ -456,9 +453,12 @@
                     <md-field>
                         <label>Observaciones</label>
                         <md-textarea v-model="observation"></md-textarea>
-                    </md-field> 
-                  </div>&nbsp;&nbsp;&nbsp;     
-              </div>                      
+                    </md-field>
+                    <span>
+                      PPD: Paño Protector de Delfines de 1 ¼ pulgadas, según los criterios establecidos en el APICD, Apéndice IV.
+                    </span>
+                  </div>&nbsp;&nbsp;&nbsp;
+              </div>
             </form>
           </div>
           <div class="modal-footer">
@@ -485,14 +485,14 @@
 
 <script>
 
-   import format from "date-fns/format"; 
+   import format from "date-fns/format";
     import { validationMixin } from "vuelidate";
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
     import vSelect from "vue-select";
     import VueCollapse from "vue2-collapse";
     import {
-		MdButton,  
+		MdButton,
 		MdContent,
 		MdField,
 		MdCard,
@@ -520,7 +520,7 @@
 export default {
 	mixins: [validationMixin],
 	props: ['ruta'],
-	
+
 	data() {
 
 		Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
@@ -529,13 +529,13 @@ export default {
 		Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
 		let now = new Date();
-    
+
       return {form: {
 
         nameShip: "",
         cruise: "",
         nameFish: "",
-        nameCaptain: "",     
+        nameCaptain: "",
         // equipment: "",
         // desemb: "",
         // photoRecord: "",
@@ -548,25 +548,25 @@ export default {
       regFot: null,
       characterState: null,
       observation: "",
-      
+
 
       arrayPresenVerifics: [],
       id_presenVerific: 0,
 
       arrayTarget: [],
       arrayTargetAct: [],
-      
-      arrayTable: [{ nameTeam: 'Marcas del PPD*', zarpe: '', disemb: '', photoRecord: '', observation: ''},
-                   { nameTeam: 'Balsa', zarpe: '', disemb: '', photoRecord: '', observation: ''},
-                   { nameTeam: 'Reflector', zarpe: '', disemb: '', photoRecord: '', observation: ''},
-                   { nameTeam: 'Visores de Buceo', zarpe: '', disemb: '', photoRecord: '', observation: ''},
-                   { nameTeam: 'Lanchas con Bridas', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+
+      arrayTable: [{ name: 'Marcas del PPD*', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                   { name: 'Balsa', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                   { name: 'Reflector', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                   { name: 'Visores de Buceo', zarpe: '', disemb: '', photoRecord: '', observation: ''},
+                   { name: 'Lanchas con Bridas', zarpe: '', disemb: '', photoRecord: '', observation: ''},
                   ],
-    
+
       arrayFg: {id:0, name:''},
 	    arrayFlag: [],
       id_flag: 0,
-      
+
       edo: 1,
       modal2: 0,
       modal: 0,
@@ -583,7 +583,7 @@ export default {
       selectedFile: null,
       isDragging: false,
       dragCount: 0,
-      files: [],     
+      files: [],
       images: [],
     };
   },
@@ -793,19 +793,19 @@ export default {
       this.arrayTarget = [];
       this.arrayTargetAct = [];
     },
-    nameWithFlag ({ name }) {
+    nameWithName ({ name }) {
             return `${name}`
     },
     addItemTarget(){
       this.arrayTarget.push({
-        element:this.element,
+        element:this.element.name,
         zarpe:this.zarpe,
         characterState:this.characterState,
         regFot:this.regFot,
         observation:this.observation,
       });
       this.arrayTargetAct.push({
-        element:this.element,
+        element:this.element.name,
         zarpe:this.zarpe,
         characterState:this.characterState,
         regFot:this.regFot,
@@ -834,7 +834,7 @@ export default {
           var respuesta = response.data;
           me.arrayPresenVerifics= respuesta.presenVerifics.data;
           me.myTable(me.arrayPresenVerifics);
-    
+
 
         })
         .catch(function (error) {
@@ -861,7 +861,7 @@ export default {
       this.form.nameCaptain = data["nameCaptain"];
       this.form.dateZarpe = data["dateZarpe"];
       this.form.dateDesemb = data["dateDesemb"];
-      
+
       this.arrayFg.id = data["id_flag"];
 			this.arrayFg.name = data["nameFlag"];
       this.dataTarget();
@@ -876,12 +876,12 @@ export default {
       this.listData();
       this.edo = 1;
       this.listado = 1;
-    },    
+    },
     saveData() {
       let me = this;
       axios
         .post("/presenVerifics/save", {
-  
+
           nameShip: this.form.nameShip.toUpperCase(),
           cruise: this.form.cruise,
           nameFish: this.form.nameFish.toUpperCase(),
@@ -911,7 +911,7 @@ export default {
           nameCaptain: this.form.nameCaptain.toUpperCase(),
           dateZarpe: this.form.dateZarpe,
           dateDesemb: this.form.dateDesemb,
-        
+
           'id_flag': this.arrayFg.id,
           'target':this.arrayTargetAct,
         })
@@ -939,7 +939,7 @@ export default {
         reverseButtons: true
       }).then(result => {
         if (result.value) {
-          let me = this;      
+          let me = this;
           axios
             .post("/presenVerifics/delete", {
               id: data["id"],
@@ -1035,8 +1035,8 @@ export default {
   },
 
   mounted() {
-    this.listData();  
-    this.selectFlag();   
+    this.listData();
+    this.selectFlag();
   }
 };
 </script>
@@ -1050,10 +1050,6 @@ export default {
   color: red !important;
   font-weight: bold;
 }
-.material-icons.Color1 { color: rgb(31, 33, 34); }
-.material-icons.Color2 { color: rgba(167, 142, 5, 0.849); }
-.material-icons.Color3 { color: rgb(12, 170, 91); }
-.material-icons.Color4 { color: rgba(228, 54, 54, 0.863); }
 
 .uploader {
   width: 100%;
