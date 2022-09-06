@@ -130,15 +130,6 @@
                         >Olvidaste ingresar un nombre para la embarcación</span>
                       </md-field>
                     </div>&nbsp;&nbsp;&nbsp;
-                    <div class="md-layout">
-                      <label class="text-muted">Bandera</label>
-                          <multiselect v-model="arrayFg" :options="arrayFlag"
-                              placeholder="Seleccione una bandera"
-                              :custom-label="nameWithFlag"
-                              label="name"
-                              track-by="name">
-                          </multiselect>
-                    </div>&nbsp;&nbsp;&nbsp;
                   </div>
                   <div class="md-layout">
                     <div class="md-layout-item">
@@ -194,6 +185,24 @@
                         </div>
                     </div>&nbsp;&nbsp;&nbsp;
                   </div>
+                    <div class="md-layout">
+                      <label class="text-muted">Bandera</label>
+                          <multiselect v-model="arrayFg" :options="arrayFlag"
+                              placeholder="Seleccione una bandera"
+                              :custom-label="nameWithName"
+                              label="name"
+                              track-by="name">
+                          </multiselect>
+                    </div>&nbsp;&nbsp;&nbsp;
+                        <div class="md-layout">
+                           <label class="text-muted">Empresa</label>
+                        <multiselect v-model="arrayComp" :options="arrayCompany"
+                            placeholder="Seleccione una empresa"
+                            :custom-label="nameWithName"
+                            label="name"
+                            track-by="name">
+                        </multiselect>
+                  </div>
                        <div class="md-layout">
                       <md-field md-clearable :class="getValidationClass('nameRepresent')">
                         <label for="first-name">Representante Legal</label>
@@ -210,7 +219,8 @@
                           v-if="!$v.form.nameRepresent.required"
                         >Olvidaste ingresar el nombre del representante</span>
                       </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>
+
               </md-card-content>
             </form>
           </div>
@@ -316,6 +326,8 @@ export default {
 
       arrayData: [],
       arrayBoat: [],
+      arrayComp: {id:0, name:''},
+	    arrayCompany: [],
       id_boats: 0,
       modal: 0,
       tipoAccion: 0
@@ -389,7 +401,7 @@ export default {
       this.arrayFg = {id:0, name:''};
 
     },
-    nameWithFlag ({ name }) {
+    nameWithName ({ name }) {
             return `${name}`
     },
 
@@ -406,7 +418,7 @@ export default {
       this.form.dateValidityPat = data["dateValidityPat"];
       this.form.dateValid = data["dateValid"];
       this.form.dateResolution = data["dateResolution"];
-
+      this.arrayComp.name=data['nameCompany'];
       this.arrayFg.id = data["id_flag"];
 	    this.arrayFg.name = data["nameFlag"];
     },
@@ -427,6 +439,16 @@ export default {
         axios.get(url).then(function (response) {
                 var respuesta = response.data;
                 me.arrayFlag = respuesta.flag;
+            }).catch(function (error) {
+                console.log(error);
+        });
+    },
+    selectCompanies() {
+        let me = this;
+        var url = "/zarpes/selectCompanies";
+        axios.get(url).then(function (response) {
+                var respuesta = response.data;
+                me.arrayCompany= respuesta.company;
             }).catch(function (error) {
                 console.log(error);
         });
@@ -459,7 +481,7 @@ export default {
           dateValidityPat: this.form.dateValidityPat,
           dateValid: this.form.dateValid,
           dateResolution: this.form.dateResolution,
-
+          id_company: this.arrayComp.id,
           'id_flag': this.arrayFg.id,
         })
         .then(function(response) {
@@ -485,7 +507,7 @@ export default {
           dateValidityPat: this.form.dateValidityPat,
           dateValid: this.form.dateValid,
           dateResolution: this.form.dateResolution,
-
+          id_company: this.arrayComp.id,
           'id_flag': this.arrayFg.id,
 
         })
@@ -598,6 +620,7 @@ export default {
   mounted() {
     this.listData();
     this.selectFlag();
+    this.selectCompanies();
   }
 };
 </script>

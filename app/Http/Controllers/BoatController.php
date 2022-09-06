@@ -13,6 +13,7 @@ class BoatController extends Controller
         if (!$request->ajax()) return redirect('/');
 
             $boats = Boat::join('flags','boats.id_flag','=','flags.id')
+            ->join('companies','boats.id_company','=','companies.id')
             ->select('boats.id',
                      'boats.nameBoat',
                      'boats.enrollment',
@@ -22,7 +23,8 @@ class BoatController extends Controller
                      'boats.dateValidityPat',
                      'boats.dateValid',
                      'boats.dateResolution',
-
+                     'boats.id_company',
+                     'companies.name as nameCompany',
                      'boats.id_flag','flags.name as nameFlag',
             )
 
@@ -46,8 +48,8 @@ class BoatController extends Controller
         $boats->dateResolution = $request->dateResolution;
 
         $boats->id_flag = $request->id_flag;
+        $boats->id_company = $request->id_company;
         $boats->save();
-
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'
@@ -67,7 +69,7 @@ class BoatController extends Controller
         $boats->dateValidityPat = $request->dateValidityPat;
         $boats->dateValid = $request->dateValid;
         $boats->dateResolution = $request->dateResolution;
-
+        $boats->id_company = $request->id_company;
         $boats->id_flag = $request->id_flag;
         $boats->save();
 
