@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Formato Certificación Desembarque de Atún para Exportación</strong>          
+          <strong class="lead">Formato Certificación Desembarque de Atún para Exportación</strong>
           <button
             v-if="edo"
             type="button"
@@ -25,9 +25,9 @@
                     <th>Fecha</th>
                     <th>Nombre Embarcación de Carga</th>
                     <!-- <th>Nombre Representante</th> -->
-                    <th>Fecha Inicio de Faena</th>                   
-                    <th>Fecha Fin de Faena</th>                   
-                    <th style="width: 90px">Opciones</th>    
+                    <th>Fecha Inicio de Faena</th>
+                    <th>Fecha Fin de Faena</th>
+                    <th style="width: 90px">Opciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -39,7 +39,7 @@
                       <!-- <th>Nombre Representante</th> -->
                       <th>Fecha Inicio de Faena</th>
                       <th>Fecha Fin de Faena</th>
-                      <th style="width: 90px">Opciones</th>  
+                      <th style="width: 90px">Opciones</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -53,8 +53,8 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <div class="md-layout-item">                 
-                        <md-datepicker 
+                  <div class="md-layout-item">
+                        <md-datepicker
                           md-clearable :class="getValidationClass('date')"
                           v-model="form.date"
                           @input="toString"
@@ -67,7 +67,7 @@
                             v-if="!$v.form.date.required"
                             >Olvidaste ingresar la fecha
                           </span>
-                        </md-datepicker>                   
+                        </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout">
                     <div class="md-layout-item">
@@ -107,19 +107,19 @@
                             label="name"
                             track-by="name">
                         </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;  
-                </div>  
-                  
+                  </div>&nbsp;&nbsp;&nbsp;
+                </div>
+
                 <div style="text-align:center">
-                  <strong>CERTIFICA</strong>    
+                  <strong>CERTIFICA</strong>
                 </div>
                 <div style="text-align:center">
-                  <strong>QUE LA EMBARCACIÓN EN CUESTIÓN, DESEMBARCÓ EN PUERTO COLOMBIANO EL SIGUIENTE PRODUCTO CAPTURADO DURANTE LA FAENA DESCRITA A CONTINUACIÓN:</strong>    
+                  <strong>QUE LA EMBARCACIÓN EN CUESTIÓN, DESEMBARCÓ EN PUERTO COLOMBIANO EL SIGUIENTE PRODUCTO CAPTURADO DURANTE LA FAENA DESCRITA A CONTINUACIÓN:</strong>
                 </div>
 
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-40">                 
-                        <md-datepicker 
+                  <div class="md-layout-item md-size-40">
+                        <md-datepicker
                           md-clearable :class="getValidationClass('dateBeginningFaena')"
                           v-model="form.dateBeginningFaena"
                           @input="toString"
@@ -132,10 +132,10 @@
                             v-if="!$v.form.dateBeginningFaena.required"
                             >Olvidaste ingresar la fecha inicio de faena
                           </span>
-                        </md-datepicker>                   
+                        </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-40">                 
-                        <md-datepicker 
+                  <div class="md-layout-item md-size-40">
+                        <md-datepicker
                           md-clearable :class="getValidationClass('dateEndFaena')"
                           v-model="form.dateEndFaena"
                           @input="toString"
@@ -148,9 +148,9 @@
                             v-if="!$v.form.dateEndFaena.required"
                             >Olvidaste ingresar la fecha fin de faena
                           </span>
-                        </md-datepicker>                   
+                        </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
-                </div>  
+                </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('ZoneFisher')">
@@ -181,6 +181,7 @@
                 </div>
                 <md-divider style="background-color: #2090E8 " ></md-divider>
                 <div class="card-body">
+
                     <div class="md-layout">
                       <div class="md-layout-item md-size-40">
                         <md-field>
@@ -195,8 +196,6 @@
                           </md-select>
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
-                    </div>  
-                    <div class="md-layout">
                       <div class="md-layout-item">
                         <md-field md-clearable>
                           <label for="first-name">Aleta Amarilla - YFT (Kg.)</label>
@@ -221,7 +220,7 @@
                             :disabled="sending"
                             type="number"
                           />
-                        </md-field>   
+                        </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
                         <md-field md-clearable>
@@ -235,7 +234,7 @@
                             type="number"
                           />
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp; 
+                      </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
                         <md-field md-clearable>
                           <label for="first-name">Otro</label>
@@ -247,8 +246,8 @@
                             :disabled="sending"
                           />
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp; 
-                    </div>    
+                      </div>&nbsp;&nbsp;&nbsp;
+                    </div>
                     <md-button
                       type="button"
                       class="md-dense md-raised md-primary"
@@ -256,15 +255,15 @@
                       @click="addItemTarget()"
                     >Agregar
                     </md-button>
-                  <div class="table-responsive">        
+                  <div class="table-responsive">
                     <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                      <thead>    
+                      <thead>
                         <tr>
-                          <th>CLASIFICACIÓN EN LIBRAS</th>    
-                          <th>ALETA AMARILLA - YFT (Kg.)</th>              
-                          <th>BARRILETE - SKJ (Kg.)</th>    
-                          <th>PATUDO - BET (Kg.)</th>    
-                          <th>OTRO</th>       
+                          <th>CLASIFICACIÓN EN LIBRAS</th>
+                          <th>ALETA AMARILLA - YFT (Kg.)</th>
+                          <th>BARRILETE - SKJ (Kg.)</th>
+                          <th>PATUDO - BET (Kg.)</th>
+                          <th>OTRO</th>
                           <th style="width: 90px">Opciones</th>
                         </tr>
                       </thead>
@@ -275,7 +274,7 @@
                           <td v-text="target.barrilete"></td>
                           <td v-text="target.patudo"></td>
                           <td v-text="target.other"></td>
-                          <td>                      
+                          <td>
                             <button
                               type="button"
                               class="btn btn-danger btn-sm"
@@ -291,38 +290,38 @@
                       <tbody v-else>
                         <tr>
                           <td colspan="10" class="text-center">
-                            No existen elementos agregados 
+                            No existen elementos agregados
                           </td>
                         </tr>
                       </tbody>
                         <tfoot>
                           <tr style="background-color: darkgray;">
                               <td align="center"><strong>SubTotal Kg.</strong></td>
-                              <td align="center">{{totalYellow}}</td>                         
-                              <td align="center">{{totalBarrilete}}</td>                        
-                              <td align="center">{{totalPatudo}}</td>                          
-                              <td align="center">{{totalOther}}</td>                           
-                              <td colspan="8"> </td>    
+                              <td align="center">{{totalYellow}}</td>
+                              <td align="center">{{totalBarrilete}}</td>
+                              <td align="center">{{totalPatudo}}</td>
+                              <td align="center">{{totalOther}}</td>
+                              <td colspan="8"> </td>
                           </tr>
                           <tr style="background-color: darkgray;">
-                              <td align="center"><strong>TOTAL DESEMBARCADO Kg.</strong></td>   
-                              <td align="center">{{totalDesemb}}</td>             
-                              <td colspan="8"> </td>    
+                              <td align="center"><strong>TOTAL DESEMBARCADO Kg.</strong></td>
+                              <td align="center">{{totalDesemb}}</td>
+                              <td colspan="8"> </td>
                           </tr>
                           <!-- <tr>
-                            <th>CLASIFICACIÓN EN LIBRAS</th>    
-                            <th>ALETA AMARILLA - YFT (Kg.)</th>              
-                            <th>BARRILETE - SKJ (Kg.)</th>    
-                            <th>PATUDO - BET (Kg.)</th>    
-                            <th>OTRO</th>        
+                            <th>CLASIFICACIÓN EN LIBRAS</th>
+                            <th>ALETA AMARILLA - YFT (Kg.)</th>
+                            <th>BARRILETE - SKJ (Kg.)</th>
+                            <th>PATUDO - BET (Kg.)</th>
+                            <th>OTRO</th>
                             <th style="width: 90px">Opciones</th>
                           </tr> -->
                         </tfoot>
                         <tbody>
                         </tbody>
                     </table>
-                  </div>  
-                </div>  
+                  </div>
+                </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('observation')">
@@ -334,8 +333,8 @@
                             >Olvidaste ingresar las observaciones
                             </span>
                     </md-field>
-                  </div> 
-                </div>        
+                  </div>
+                </div>
                 <!-- <div class="md-layout">
                   <div class="md-layout-item md-size-70">
                     <md-field md-clearable :class="getValidationClass('nameOfficial')">
@@ -352,7 +351,7 @@
                         v-if="!$v.form.nameOfficial.required"
                       >Olvidaste ingresar nombre del funcionario</span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;                                               
+                  </div>&nbsp;&nbsp;&nbsp;
                 </div> -->
               </md-card-content>
             </form>
@@ -387,13 +386,13 @@
 </template>
 
 <script>
-import format from "date-fns/format"; 
+import format from "date-fns/format";
     import { validationMixin } from "vuelidate";
     import Multiselect from "vue-multiselect";
     import Toasted from 'vue-toasted';
     import vSelect from "vue-select";
     import {
-		MdButton,  
+		MdButton,
 		MdContent,
 		MdField,
 		MdCard,
@@ -421,7 +420,7 @@ import format from "date-fns/format";
 export default {
 	mixins: [validationMixin],
 	props: ['ruta'],
-	
+
 	data() {
 
 		Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
@@ -434,17 +433,17 @@ export default {
       form: {
           nameBoat: "",
           ZoneFisher: "",
-          // nameOfficial: "", 
+          // nameOfficial: "",
           observation: "",
           date: format(now, dateFormat),
           dateBeginningFaena: format(now, dateFormat),
           dateEndFaena: format(now, dateFormat),
       },
-      
+
       poundRating: "",
-      yellowFin: 0, 
-      barrilete: 0, 
-      patudo: 0, 
+      yellowFin: 0,
+      barrilete: 0,
+      patudo: 0,
       other: 0,
       arrayTarget: [],
       arrayTargetAct: [],
@@ -486,69 +485,69 @@ export default {
         },
         ZoneFisher: {
           required
-        }, 
+        },
         // nameOfficial: {
         //   required
-        // },  
+        // },
         // yellowFin: {
         //   required
-        // },  
+        // },
         // barrilete: {
         //   required
-        // },  
+        // },
         // patudo: {
         //   required
-        // },  
+        // },
         observation: {
           required
-        },  
+        },
         dateEndFaena: {
           required
-        },  
+        },
         dateBeginningFaena: {
           required
-        },  
+        },
         date: {
           required
-        },  
-      
+        },
+
     }
   },
 
   computed: {
-  
+
     totalYellow: function(){
             var total = 0;
             for (var i = 0; i < this.arrayYellow.length; i++) {
-                total = total + parseInt(this.arrayYellow[i].saldo);              
+                total = total + parseInt(this.arrayYellow[i].saldo);
             }
             return total;
     },
     totalBarrilete: function(){
             var total2 = 0;
             for (var i = 0; i < this.arrayBarrilete.length; i++) {
-                total2 = total2 + parseInt(this.arrayBarrilete[i].saldo);              
+                total2 = total2 + parseInt(this.arrayBarrilete[i].saldo);
             }
             return total2;
     },
     totalPatudo: function(){
             var total3 = 0;
             for (var i = 0; i < this.arrayPatudo.length; i++) {
-                total3 = total3 + parseInt(this.arrayPatudo[i].saldo);              
+                total3 = total3 + parseInt(this.arrayPatudo[i].saldo);
             }
             return total3;
     },
     totalOther: function(){
             var total4 = 0;
             for (var i = 0; i < this.arrayOther.length; i++) {
-                total4 = total4 + parseInt(this.arrayOther[i].saldo);              
+                total4 = total4 + parseInt(this.arrayOther[i].saldo);
             }
             return total4;
     },
     totalDesemb: function(){
             var total5 = 0;
             for (var i = 0; i < this.arrayOther.length; i++) {
-                total5 += + parseInt(this.arrayOther[i].saldo) + parseInt(this.arrayYellow[i].saldo) + parseInt(this.arrayBarrilete[i].saldo) + parseInt(this.arrayPatudo[i].saldo);              
+                total5 += + parseInt(this.arrayOther[i].saldo) + parseInt(this.arrayYellow[i].saldo) + parseInt(this.arrayBarrilete[i].saldo) + parseInt(this.arrayPatudo[i].saldo);
             }
             return total5;
     },
@@ -592,12 +591,12 @@ export default {
     },
     addItemTarget() {
       let me = this;
-      
+
       this.arrayYellow.push({ saldo:this.yellowFin});
       this.arrayBarrilete.push({ saldo:this.barrilete});
       this.arrayPatudo.push({ saldo:this.patudo});
       this.arrayOther.push({ saldo:this.other});
-    
+
       var total1 = me.arrayTarget.push({
         poundRating:this.poundRating,
         yellowFin:this.yellowFin,
@@ -612,7 +611,7 @@ export default {
         patudo:this.patudo,
         other:this.other,
       });
-      me.clearTarget();  
+      me.clearTarget();
     },
     deleteTarget(index){
        this.arrayTarget.splice(index,1);
@@ -634,7 +633,7 @@ export default {
       this.form.observation = null;
       this.arrayTarget = [];
       this.arrayTargetAct = [];
-      
+
       this.arrayPt = {id:0, namePort:'',name:''};
       this.arrayFg = {id:0, name:''};
       this.arrayComp = {id:0, name:''};
@@ -650,7 +649,7 @@ export default {
       this.form.dateEndFaena = data["dateEndFaena"];
       this.form.ZoneFisher = data["ZoneFisher"];
       this.form.observation = data["observation"];
-       
+
       this.arrayPt.id = data["id_port"];
       this.arrayPt.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
@@ -708,7 +707,7 @@ export default {
       this.edo = 1;
       this.listado = 1;
       this.listData();
-    },   
+    },
     listData() {
       let me = this;
       var url =
@@ -724,13 +723,13 @@ export default {
         .catch(function (error) {
           console.log(error);
         });
-    }, 
+    },
     saveData() {
       let me = this;
 
       axios
         .post("/certificationDisembTuna/save", {
-    
+
         nameBoat: this.form.nameBoat.toUpperCase(),
         date: this.form.date,
         dateBeginningFaena: this.form.dateBeginningFaena,
@@ -738,8 +737,8 @@ export default {
         ZoneFisher: this.form.ZoneFisher.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
         target:this.arrayTarget,
-       
-    
+
+
         'id_port': this.arrayPt.id,
         'id_flag': this.arrayFg.id,
         'id_company': this.arrayComp.id,
@@ -766,7 +765,7 @@ export default {
         ZoneFisher: this.form.ZoneFisher.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
         'target':this.arrayTargetAct,
-    
+
         'id_port': this.arrayPt.id,
         'id_flag': this.arrayFg.id,
         'id_company': this.arrayComp.id,
@@ -795,7 +794,7 @@ export default {
         reverseButtons: true
       }).then(result => {
         if (result.value) {
-          let me = this;      
+          let me = this;
           axios
             .post("/certificationDisembTuna/delete", {
               id: data["id"],
