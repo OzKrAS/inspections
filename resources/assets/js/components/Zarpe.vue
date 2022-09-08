@@ -1456,7 +1456,8 @@ export default {
       this.form.dateValidityPat= this.arrayBt.dateValidityPat;
       this.form.dateValid= this.arrayBt.dateValid;
       this.form.nameBoat= this.arrayBt.nameBoat;
-      this.form.nameFlag= this.arrayFg.nameFlag;
+      this.form.noPatent= this.arrayBt.noPatent;
+      this.arrayFg.name= this.arrayBt.nameFlag;
     },
     showUpdate(data = []) {
       let me = this;
