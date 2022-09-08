@@ -269,11 +269,11 @@
                       </thead>
                       <tbody v-if="arrayTarget.length">
                         <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
-                          <td v-text="target.poundRating"></td>
-                          <td v-text="target.yellowFin"></td>
-                          <td v-text="target.barrilete"></td>
-                          <td v-text="target.patudo"></td>
-                          <td v-text="target.other"></td>
+                          <td align="right" v-text="target.poundRating"></td>
+                          <td align="right" v-text="target.yellowFin"></td>
+                          <td align="right" v-text="target.barrilete"></td>
+                          <td align="right" v-text="target.patudo"></td>
+                          <td align="right" v-text="target.other"></td>
                           <td>
                             <button
                               type="button"
@@ -296,16 +296,16 @@
                       </tbody>
                         <tfoot>
                           <tr style="background-color: darkgray;">
-                              <td align="right"><strong>SubTotal Kg.</strong></td>
-                              <td align="right">{{totalYellow}}</td>
-                              <td align="right">{{totalBarrilete}}</td>
-                              <td align="right">{{totalPatudo}}</td>
-                              <td align="right">{{totalOther}}</td>
+                              <td align="right"><h4><strong>SubTotal Kg.</strong></h4></td>
+                              <td align="right">{{totalYellow.toLocaleString('es-MX')}}</td>
+                              <td align="right">{{totalBarrilete.toLocaleString('es-MX')}}</td>
+                              <td align="right">{{totalPatudo.toLocaleString('es-MX')}}</td>
+                              <td align="right">{{totalOther.toLocaleString('es-MX')}}</td>
                               <td colspan="8"> </td>
                           </tr>
                           <tr style="background-color: darkgray;">
                               <td align="right"><h3><strong>TOTAL DESEMBARCADO Kg.</strong></h3></td>
-                              <td align="right">{{totalDesemb.toLocaleString('es-MX')}}</td>
+                              <td align="right"><h3><strong>{{totalDesemb.toLocaleString('es-MX')}}</strong></h3></td>
                               <td colspan="8"> </td>
                           </tr>
                           <!-- <tr>
@@ -518,36 +518,36 @@ export default {
 
     totalYellow: function(){
             var total = 0;
-            for (var i = 0; i < this.arrayYellow.length; i++) {
-                total = total + parseInt(this.arrayYellow[i].saldo);
+            for (let i = 0; i < this.arrayYellow.length; i++) {
+                total +=  parseInt(this.arrayYellow[i].saldo);
             }
             return total;
     },
     totalBarrilete: function(){
             var total2 = 0;
-            for (var i = 0; i < this.arrayBarrilete.length; i++) {
+            for (let i = 0; i < this.arrayBarrilete.length; i++) {
                 total2 = total2 + parseInt(this.arrayBarrilete[i].saldo);
             }
             return total2;
     },
     totalPatudo: function(){
             var total3 = 0;
-            for (var i = 0; i < this.arrayPatudo.length; i++) {
+            for (let i = 0; i < this.arrayPatudo.length; i++) {
                 total3 = total3 + parseInt(this.arrayPatudo[i].saldo);
             }
             return total3;
     },
     totalOther: function(){
             var total4 = 0;
-            for (var i = 0; i < this.arrayOther.length; i++) {
+            for (let i = 0; i < this.arrayOther.length; i++) {
                 total4 = total4 + parseInt(this.arrayOther[i].saldo);
             }
             return total4;
     },
     totalDesemb: function(){
             var total5 = 0;
-            for (var i = 0; i < this.arrayOther.length; i++) {
-                total5 += + parseInt(this.arrayOther[i].saldo) + parseInt(this.arrayYellow[i].saldo) + parseInt(this.arrayBarrilete[i].saldo) + parseInt(this.arrayPatudo[i].saldo);
+            for (let i = 0; i < this.arrayOther.length; i++) {
+                total5 += + parseInt(this.totalOther) + parseInt(this.totalYellow) + parseInt(this.totalBarrilete) + parseInt(this.totalPatudo);
             }
             return total5;
     },

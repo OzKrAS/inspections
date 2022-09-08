@@ -986,7 +986,7 @@ export default {
       id_fisheryAuthorized: 0,
       arrayComp: {id:0, name:''},
 	    arrayCompany: [],
-      arrayBt: {id:0, nameBoat:'', nameCompany:''},
+      arrayBt: {id:0, nameBoat:''},
 	    arrayBoat: [],
       id_Company: 0,
       arrayMaterial: {id:0, name:''},
@@ -1302,8 +1302,8 @@ export default {
       this.arrayFa = [];
       this.arrayComp = {id:0, name:''};
     },
-    nameWithBoat ({ nameBoat,nameCompany  }) {
-            return `${nameBoat} - Empresa ${nameCompany}`
+    nameWithBoat ({ nameBoat  }) {
+            return `${nameBoat}`
     },
     nameWithRegion ({ nameMuni,name  }) {
             return `${nameMuni} / ${name}`
@@ -1455,6 +1455,7 @@ export default {
       this.form.dateResolution= this.arrayBt.dateResolution;
       this.form.dateValidityPat= this.arrayBt.dateValidityPat;
       this.form.dateValid= this.arrayBt.dateValid;
+      this.arrayComp.name= this.arrayBt.nameCompany;
       this.form.nameBoat= this.arrayBt.nameBoat;
       this.form.noPatent= this.arrayBt.noPatent;
       this.arrayFg.name= this.arrayBt.nameFlag;
