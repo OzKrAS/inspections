@@ -296,16 +296,16 @@
                       </tbody>
                         <tfoot>
                           <tr style="background-color: darkgray;">
-                              <td align="center"><strong>SubTotal Kg.</strong></td>
-                              <td align="center">{{totalYellow}}</td>
-                              <td align="center">{{totalBarrilete}}</td>
-                              <td align="center">{{totalPatudo}}</td>
-                              <td align="center">{{totalOther}}</td>
+                              <td align="right"><strong>SubTotal Kg.</strong></td>
+                              <td align="right">{{totalYellow}}</td>
+                              <td align="right">{{totalBarrilete}}</td>
+                              <td align="right">{{totalPatudo}}</td>
+                              <td align="right">{{totalOther}}</td>
                               <td colspan="8"> </td>
                           </tr>
                           <tr style="background-color: darkgray;">
-                              <td align="center"><strong>TOTAL DESEMBARCADO Kg.</strong></td>
-                              <td align="center">{{totalDesemb}}</td>
+                              <td align="right"><h3><strong>TOTAL DESEMBARCADO Kg.</strong></h3></td>
+                              <td align="right">{{totalDesemb.toLocaleString('es-MX')}}</td>
                               <td colspan="8"> </td>
                           </tr>
                           <!-- <tr>

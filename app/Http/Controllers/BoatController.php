@@ -34,6 +34,32 @@ class BoatController extends Controller
             'data' => $boats
         ];
     }
+    public function selectBoats(Request $request)
+    {
+     //   if (!$request->ajax()) return redirect('/');
+
+            $boats = Boat::join('flags','boats.id_flag','=','flags.id')
+            ->join('companies','boats.id_company','=','companies.id')
+            ->select('boats.id',
+                     'boats.nameBoat',
+                     'boats.enrollment',
+                     'boats.noPatent',
+                     'boats.noResolution',
+                     'boats.nameRepresent',
+                     'boats.dateValidityPat',
+                     'boats.dateValid',
+                     'boats.dateResolution',
+                     'boats.id_company',
+                     'companies.name as nameCompany',
+                     'boats.id_flag','flags.name as nameFlag',
+            )
+
+            ->get();
+
+        return [
+            'boat' => $boats
+        ];
+    }
     public function store(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');

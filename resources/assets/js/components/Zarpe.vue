@@ -298,6 +298,16 @@
                             <strong class="text-muted">PERMISO OTORGADO - ÚLTIMA PRORROGA (Permission / Last extension)</strong>
                       </div>
 
+                    <div class="md-layout">
+                      <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
+                          <multiselect v-model="arrayBt" :options="arrayBoat"
+                              @input="setBoats()"
+                              placeholder="Seleccione una embarcación"
+                              :custom-label="nameWithBoat"
+                              label="nameBoat"
+                              track-by="nameBoat">
+                          </multiselect>
+                    </div>
                   <div class="md-layout">
                     <div class="md-layout-item">
                       <md-field md-clearable :class="getValidationClass('noResolution')">
@@ -308,7 +318,7 @@
                           autocomplete="given-name"
                           v-model="form.noResolution"
                           :disabled="sending"
-                          type="number"
+                          type="text"
                         />
                         <span
                           class="md-error"
@@ -976,16 +986,18 @@ export default {
       id_fisheryAuthorized: 0,
       arrayComp: {id:0, name:''},
 	    arrayCompany: [],
+      arrayBt: {id:0, nameBoat:'', nameCompany:''},
+	    arrayBoat: [],
       id_Company: 0,
       arrayMaterial: {id:0, name:''},
 	    arrayMaterialArt: [],
       id_material: 0,
 
       arrayValue:[
-                   { name: 'Dispositivo Agregado de preces - DAPs (FADs)', id: '1' },
-                   { name: 'Dispositivo Excluidor de Tortugas - DETs', id: '2' },
-                   { name: 'otro', id: '3' },
-                 ],
+        { name: 'Dispositivo Agregado de preces - DAPs (FADs)', id: '1' },
+        { name: 'Dispositivo Excluidor de Tortugas - DETs', id: '2' },
+        { name: 'otro', id: '3' },
+      ],
       id_value: 0,
       equipDevi: {id:0, name:''},
       equipDeviName: "",
@@ -1290,6 +1302,9 @@ export default {
       this.arrayFa = [];
       this.arrayComp = {id:0, name:''};
     },
+    nameWithBoat ({ nameBoat,nameCompany  }) {
+            return `${nameBoat} - Empresa ${nameCompany}`
+    },
     nameWithRegion ({ nameMuni,name  }) {
             return `${nameMuni} / ${name}`
     },
@@ -1331,6 +1346,16 @@ export default {
         .catch(function (error) {
           console.log(error);
         });
+    },
+    selectBoats() {
+            let me = this;
+            var url = "/selectboats";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayBoat = respuesta.boat;
+                }).catch(function (error) {
+                    console.log(error);
+            });
     },
     selectPort() {
             let me = this;
@@ -1422,6 +1447,16 @@ export default {
                 }).catch(function (error) {
                     console.log(error);
             });
+    },
+    setBoats(){
+
+      this.form.noResolution= this.arrayBt.noResolution;
+      this.form.enrollment= this.arrayBt.enrollment;
+      this.form.dateResolution= this.arrayBt.dateResolution;
+      this.form.dateValidityPat= this.arrayBt.dateValidityPat;
+      this.form.dateValid= this.arrayBt.dateValid;
+      this.form.nameBoat= this.arrayBt.nameBoat;
+      this.form.nameFlag= this.arrayFg.nameFlag;
     },
     showUpdate(data = []) {
       let me = this;
@@ -1866,6 +1901,7 @@ ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
     this.selectZoneAutoFisher();
     this.selectFisheryAuthorized();
     this.selectCompanies();
+    this.selectBoats();
   }
 };
 </script>

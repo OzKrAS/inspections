@@ -26,19 +26,19 @@ Route::get('/clear-cache', function() {
     return 'DONE'; //Return anything
 });
 Route::group(['middleware'=>['auth']],function(){
-    
+
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
-    
+
     Route::get('/main', function () {
         return view('contenido/contenido');
     })->name('main');
-    
+
 
 
 
 
     Route::group(['middleware' => ['Administrador']], function () {
-        
+
         // region
         Route::get('/region', 'RegionController@index');
         Route::post('/region/save', 'RegionController@store');
@@ -146,7 +146,7 @@ Route::group(['middleware'=>['auth']],function(){
         // Route::post('/regionals/save', 'RegionalController@store');
         // Route::put('/regionals/update', 'RegionalController@update');
         // Route::post('/regionals/delete', 'RegionalController@destroy');
-        // acta de donacion 
+        // acta de donacion
         Route::get('/donationCertificates', 'DonationCertificateController@index');
         Route::post('/donationCertificates/save', 'DonationCertificateController@store');
         Route::put('/donationCertificates/update', 'DonationCertificateController@update');
@@ -158,7 +158,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/confiscationCertificates/save', 'ConfiscationCertificateController@store');
         Route::put('/confiscationCertificates/update', 'ConfiscationCertificateController@update');
         Route::post('/confiscationCertificates/delete', 'ConfiscationCertificateController@destroy');
-        Route::get('/confiscationCertificates/selectRegional', 'RegionalController@selectRegional'); 
+        Route::get('/confiscationCertificates/selectRegional', 'RegionalController@selectRegional');
         Route::get('/confiscationCertificates/table1', 'ConfiscationCertificateController@dataTable1');
         Route::get('/confiscationCertificates/table2', 'ConfiscationCertificateController@dataTable2');
         Route::get('/confiscationCertificates/dataReasons', 'ConfiscationCertificateController@dataReasons');
@@ -169,7 +169,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/inspectionBoatCargo/delete', 'InspectionBoatCargoController@destroy');
         Route::get('/inspectionBoatCargo/selectPorts', 'PortsController@selectPort');
         Route::get('/inspectionBoatCargo/selectFlags', 'FlagController@selectFlag');
-        // CERTIFICACIÓN DESEMBARQUE DE ATÚN PARA EXPORTACIÓN 
+        // CERTIFICACIÓN DESEMBARQUE DE ATÚN PARA EXPORTACIÓN
         Route::get('/certificationDisembTuna', 'CertificationDisembTunaController@index');
         Route::post('/certificationDisembTuna/save', 'CertificationDisembTunaController@store');
         Route::put('/certificationDisembTuna/update', 'CertificationDisembTunaController@update');
@@ -212,12 +212,13 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/profiles', 'ProfileController@index');
         //EMBARCACIONES
         Route::get('/boats', 'BoatController@index');
+        Route::get('/selectboats', 'BoatController@selectBoats');
         Route::post('/boats/save', 'BoatController@store');
         Route::put('/boats/update', 'BoatController@update');
         Route::post('/boats/delete', 'BoatController@destroy');
 
 
-       
+
     });
 
 });

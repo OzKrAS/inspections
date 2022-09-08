@@ -186,6 +186,7 @@
                     </div>&nbsp;&nbsp;&nbsp;
                   </div>
                     <div class="md-layout">
+                    <div class="md-layout-item">
                       <label class="text-muted">Bandera</label>
                           <multiselect v-model="arrayFg" :options="arrayFlag"
                               placeholder="Seleccione una bandera"
@@ -194,7 +195,7 @@
                               track-by="name">
                           </multiselect>
                     </div>&nbsp;&nbsp;&nbsp;
-                        <div class="md-layout">
+                        <div class="md-layout-item">
                            <label class="text-muted">Empresa</label>
                         <multiselect v-model="arrayComp" :options="arrayCompany"
                             placeholder="Seleccione una empresa"
@@ -203,7 +204,8 @@
                             track-by="name">
                         </multiselect>
                   </div>
-                       <div class="md-layout">
+                  </div>
+                       <!-- <div class="md-layout">
                       <md-field md-clearable :class="getValidationClass('nameRepresent')">
                         <label for="first-name">Representante Legal</label>
                         <md-input
@@ -219,7 +221,7 @@
                           v-if="!$v.form.nameRepresent.required"
                         >Olvidaste ingresar el nombre del representante</span>
                       </md-field>
-                  </div>
+                  </div> -->
 
               </md-card-content>
             </form>
