@@ -1781,6 +1781,7 @@ export default {
     },
     carta(data = []) {
       let me = this;
+      var demo = "Hola Demo Prueba Nombre";
       var doc = new jsPDF('p','mm','letter');
       // (this.id_flag = data["id"]);
       // console.log("ID " + me.datos.id);
@@ -1791,48 +1792,70 @@ export default {
         // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
         doc.setFont("arial");
         doc.setFontSize(11);
-        doc.text(`_____________, ____ de ________ de 201_
+        doc.text(`${demo}, ____ de ________ de 201_`, 30, 40,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
 
+        doc.setFont(undefined, 'bold')
+        doc.text("Señor(a) (es)", 30, 60); 
+        doc.setFontSize(11).setFont(undefined, 'normal');
+        
+        doc.text(`${demo}`, 30, 74, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+        doc.line(30, 75, 104, 75);
 
+        doc.text(`${demo}`, 30, 79, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+        doc.line(30, 80, 104, 80);
 
-Señor(a) (res)
+        doc.text(`Ciudad: ${demo}`, 30, 84, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
 
-_________________________________
-__________________________________
-Ciudad: ___________________________
+        doc.setFont(undefined, 'bold')
+        doc.text("Asunto: Autorización para Zarpe.", 30, 105); 
+        doc.setFontSize(11).setFont(undefined, 'normal');
 
-
-
-Respetado(s) señor(a) (res):
-
-
-
-Asunto: Autorización para Zarpe.
-
-
-Para su información y fines pertinentes le comunico que una vez realizada la inspección a la
-Motonave _________________________________________ con matrícula ________________
-vinculada al permiso de pesca comercial industrial según Resolución # ___________ otorgado al
-señor ___________________________________ identificado con la cedula de ciudadanía número
-______________________________, se constató que cumple con los requisitos mínimos
+        doc.setFont("arial");
+        doc.setFontSize(11);
+        doc.setFontSize(11).setFont(undefined, 'normal');    
+        doc.text(`Para su información y fines pertinentes, le comunico que, una vez realizada la inspección a la
+Motonave ${demo} con matrícula No. ${demo}
+vinculada al Permiso de Pesca comercial Industrial según Resolución No. ${demo} otorgado al
+señor ${demo} identificado con la cedula de ciudadanía No.
+${demo}, se constató que CUMPLE con los requisitos mínimos
 establecidos en la Resolución 1026 del 2014, para realizar faenas de pesca dirigida a la captura de
-___________________
-
-
-Por la AUNAP
+${demo}
 
 
 
-Nombre: ____________________________
-Cargo: ______________________________
-Dirección oficina: _____________________
-Teléfono oficina: ______________________
-Correo Electrónico: ___________________
-`, 30, 45);
+Por la AUNAP,`, 30, 125,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} ); 
+
+    doc.text(`${demo}`, 32, 188, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+    doc.line(30, 190, 104, 190);
+    doc.setFontSize(10);
+    doc.text("Nombre", 62, 193);
+
+    doc.text(`${demo}`, 117, 188, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+    doc.line(115, 190, 190, 190);
+    doc.setFontSize(10);
+    doc.text("Cargo", 148, 193);
+
+    doc.text(`${demo}`, 32, 208, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+    doc.line(30, 210, 104, 210);
+    doc.setFontSize(10);
+    doc.text("Dirección de la Oficina", 50, 213);
+
+    doc.text(`${demo}`, 117, 208, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+    doc.line(115, 210, 190, 210);
+    doc.setFontSize(10);
+    doc.text("Teléfono de la Oficina", 138, 213);
+
+    doc.text(`${demo}`, 32, 228, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+    doc.line(30, 230, 104, 230);
+    doc.setFontSize(10);
+    doc.text("Correo Electrónico", 53, 233);
+
+
         doc.setFontSize(8);
         doc.setTextColor(100);
         doc.text(`Nota: Si este documento se encuentra impreso se considera Copia no Controlada. La versión vigente está publicada en la
 ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
+
 
 
       window.open(doc.output('bloburl'))
