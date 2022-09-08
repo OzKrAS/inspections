@@ -1667,7 +1667,27 @@ export default {
     alerta() {
        alert('test');
     },
-
+    setBoats(){
+      this.form.noResolution= this.arrayBt.noResolution;
+      this.form.enrollment= this.arrayBt.enrollment;
+      this.form.dateResolution= this.arrayBt.dateResolution;
+      this.form.dateValidityPat= this.arrayBt.dateValidityPat;
+      this.form.dateValid= this.arrayBt.dateValid;
+      this.arrayComp.name= this.arrayBt.nameCompany;
+      this.form.nameBoat= this.arrayBt.nameBoat;
+      this.form.noPatent= this.arrayBt.noPatent;
+      this.arrayFg.name= this.arrayBt.nameFlag;
+    },
+        selectBoats() {
+            let me = this;
+            var url = "/selectboats";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayBoat = respuesta.boat;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
     toString() {
       this.toDate();
       this.dynamicByModel =
@@ -2424,6 +2444,7 @@ export default {
     this.selectCompanies();
     this.selectOrop();
     this.selectMaterial();
+     this.selectBoats();
   }
 };
 </script>
