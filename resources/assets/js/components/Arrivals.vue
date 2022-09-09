@@ -211,6 +211,8 @@
                       </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp; -->
                 </div>
+                 <md-divider style="background-color: #2090E8 " ></md-divider>
+                 <br>
                 <div>
                     <strong>PUERTO, ESTADO RECTOR DE PUERTO</strong>
                 </div>
@@ -223,7 +225,7 @@
                         </md-select>
                       </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-70">
+                  <div class="md-layout-item">
                       <label class="text-muted">Puerto de Zarpe (Departure’s Port)</label>
                       <multiselect v-model="arrayPtZarpe" :options="arrayPort"
                           placeholder="Puerto de Zarpe"
@@ -276,6 +278,8 @@
                       </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
+                 <md-divider style="background-color: #2090E8 " ></md-divider>
+                 <br>
                 <div>
                     <strong>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</strong>
                 </div>
@@ -355,13 +359,23 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
-
+            <md-divider style="background-color: #2090E8 " ></md-divider>
+          <br>
                 <div>
                   <strong>PERMISO OTORGADO - ÚLTIMA PRORROGA</strong>
                 </div>
-
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-50">
+                <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
+                    <multiselect v-model="arrayBt" :options="arrayBoat"
+                        @input="setBoats()"
+                        placeholder="Seleccione una embarcación"
+                        :custom-label="nameWithBoat"
+                        label="nameBoat"
+                        track-by="nameBoat">
+                    </multiselect>
+                    </div>
+                <div class="md-layout">
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noResolution')">
                       <label for="first-name">No. Resolución (Resolution No.)</label>
                       <md-input
@@ -378,8 +392,8 @@
                       >Olvidaste ingresar el número de resolución</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                </div>
-                <div class="md-layout">
+
+
                   <div class="md-layout-item">
                       <md-datepicker
                         md-clearable :class="getValidationClass('dateResolution')"
@@ -412,7 +426,7 @@
                         </span>
                       </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
-                </div>
+                  </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameBoat')">
@@ -535,7 +549,8 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
-
+                 <md-divider style="background-color: #2090E8 " ></md-divider>
+                 <br>
                 <div>
                   <strong>PESQUERÍA Y ARTES AUTORIZADOS</strong>
                 </div>
@@ -575,7 +590,8 @@
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
-
+                <md-divider style="background-color: #2090E8 " ></md-divider>
+                <br>
                 <div>
                   <strong>CARACTERÍSTICAS ARTE DE PESCA</strong>
                 </div>
@@ -663,31 +679,27 @@
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
-                  <!-- <div class="md-layout-item">
-                    <md-field md-clearable>
-                        <label for="first-name">Material de Arte de Pesca</label>
-                        <md-input
-                          name="first-name"
-                          id="first-name"
-                          autocomplete="given-name"
-                          v-model="materialArt"
-                          :disabled="sending"
-                        />
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp; -->
+                <div class="md-layout-item">
+                      <label>Material de Arte de Pesca</label>
+                      <multiselect v-model="arrayMaterial" :options="arrayMaterialArt"
+                          placeholder="Seleccione el material de arte de pesca"
+                          :custom-label="nameWithMaterialArt"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                    </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <md-field>
-                        <label for="equipDevi" class="text-muted">Equipos o Dispositivos Requeridos</label>
-                        <md-select v-model="equipDevi" name="equipDevi" id="equipDevi" placeholder="Seleccione un equipo o dispositivo" md-dense>
-                          <md-option value="Dispositivo Agregado de preces-DAPs (FADs)">Dispositivo Agregado de preces-DAPs (FADs)</md-option>
-                          <md-option value="Dispositivo Excluidor de Tortugas-DETs">Dispositivo Excluidor de Tortugas-DETs</md-option>
-                          <md-option value="Otro">Otro</md-option>
-                        </md-select>
-                      </md-field>
+                       <label class="text-muted">Equipos o Dispositivos Requeridos</label>
+                        <multiselect v-model="arrayEquipDevi" :options="arrayValue"
+                          placeholder="Equipos o Dispositivo"
+                          :custom-label="nameWithName"
+                          label="name"
+                          track-by="name">
+                        </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                      <label for="first-name">Otro</label>
+                      <label for="first-name md-size-20">Otro</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -697,17 +709,7 @@
                       />
                     </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
-                   <div class="md-layout">
-                    <div class="md-layout-item">
-                      <label>Material de Arte de Pesca</label>
-                      <multiselect v-model="arrayMaterial" :options="arrayMaterialArt"
-                          placeholder="Seleccione el material de arte de pesca"
-                          :custom-label="nameWithMaterialArt"
-                          label="name"
-                          track-by="name">
-                      </multiselect>
-                    </div>&nbsp;&nbsp;&nbsp;
-                 </div>
+
                 </div>
                 <div class="md-layout">
 
@@ -774,7 +776,8 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
-
+                 <md-divider style="background-color: #2090E8 " ></md-divider>
+                 <br>
                 <div>
                   <strong>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</strong>
                 </div>
@@ -862,7 +865,8 @@
                     </md-field>
                   </div>
                 </div>
-
+          <md-divider style="background-color: #2090E8 " ></md-divider>
+          <br>
                 <div style="text-align:center">
                   <strong>CAPTURA OBJETIVO</strong>
                 </div>
@@ -962,7 +966,8 @@
                 </table>
               </div>
             </div>
-
+             <md-divider style="background-color: #2090E8 " ></md-divider>
+             <br>
             <div style="text-align:center">
               <strong>CAPTURA FAUNA INCIDENTAL</strong>
             </div>
@@ -1416,6 +1421,8 @@ export default {
       id_fisheryAuthorized: 0,
       arrayComp: {id:0, name:''},
 	    arrayCompany: [],
+      arrayBt: {id:0, nameBoat:''},
+	    arrayBoat: [],
       id_Company: 0,
       orop: "",
       arrayOr: {id:0, name:''},
@@ -1432,6 +1439,12 @@ export default {
       arrayTargetAct: [],
       arrayTaAct: [],
       arrayFaunaAct: [],
+      arrayEquipDevi: [{name:"",id:0}],
+      arrayValue:[
+        { name: 'Dispositivo Agregado de peces - DAPs (FAD)', id: '1' },
+        { name: 'Dispositivo Excluidor de Tortugas - DET', id: '2' },
+        { name: 'otro', id: '3' },
+      ],
 
       edo: 1,
 
@@ -1672,7 +1685,7 @@ export default {
       this.form.enrollment= this.arrayBt.enrollment;
       this.form.dateResolution= this.arrayBt.dateResolution;
       this.form.dateValidityPat= this.arrayBt.dateValidityPat;
-      this.form.dateValid= this.arrayBt.dateValid;
+      this.form.dateValidity= this.arrayBt.dateValid;
       this.arrayComp.name= this.arrayBt.nameCompany;
       this.form.nameBoat= this.arrayBt.nameBoat;
       this.form.noPatent= this.arrayBt.noPatent;
@@ -1847,6 +1860,9 @@ export default {
       this.arrayTarget = [];
       this.arrayFauna = [];
       this.arrayMaterial = {id:0, name:''};
+    },
+    nameWithBoat ({ nameBoat  }) {
+            return `${nameBoat}`
     },
     nameWithRegion ({ nameMuni,name  }) {
             return `${nameMuni} / ${name}`
@@ -2122,7 +2138,7 @@ export default {
           typeHook: this.typeHook.toUpperCase(),
           longNet: this.longNet.toUpperCase(),
           materialArt: this.materialArt,
-          equipDevi: this.equipDevi.toUpperCase(),
+          equipDevi: this.arrayEquipDevi.name,
           captain: this.captain.toUpperCase(),
          // noOmi: this.form.noOmi.toUpperCase(),
           legalRepre: this.form.legalRepre.toUpperCase(),
@@ -2232,7 +2248,7 @@ export default {
           typeHook :this.typeHook.toUpperCase(),
           longNet :this.longNet.toUpperCase(),
           materialArt :this.materialArt.toUpperCase(),
-          equipDevi :this.equipDevi.toUpperCase(),
+          equipDevi: this.arrayEquipDevi.name,
           captain :this.captain.toUpperCase(),
           //noOmi :this.form.noOmi.toUpperCase(),
           legalRepre :this.form.legalRepre.toUpperCase(),

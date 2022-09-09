@@ -608,17 +608,23 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;  -->
-                    <div class="md-layout" >
-                      <md-field>
-                        <label for="equipDevi" class="text-muted">Equipos o Dispositivos Requeridos</label>
-                        <md-select  v-model="equipDevi" name="equipDevi" id="equipDevi" placeholder="Seleccione un equipo o dispositivo">
+                    <div class="md-layout-item" >
+
+                        <label class="text-muted">Equipos o Dispositivos Requeridos</label>
+                        <multiselect v-model="arrayEquipDevi" :options="arrayValue"
+                          placeholder="Equipos o Dispositivo"
+                          :custom-label="nameWithName"
+                          label="name"
+                          track-by="name">
+                        </multiselect>
+                        <!-- <md-select  v-model="equipDevi" name="equipDevi" id="equipDevi" placeholder="Seleccione un equipo o dispositivo">
                           <md-option value="Dispositivo Agregado de peces-DAPs (FAD)">Dispositivo Agregador de Peces - DAP (FAD)</md-option>
                           <md-option value="Dispositivo Excluidor de Tortugas-DET">Dispositivo Excluidor de Tortugas - DET</md-option>
                           <md-option value="Otro">Otro</md-option>
-                        </md-select>
-                      </md-field>
+                        </md-select> -->
+
                     </div>&nbsp;&nbsp;&nbsp;
-                   <div class="md-layout-item">
+                   <div class="md-layout-item md-size-20">
                     <md-field md-clearable>
                       <label for="first-name">Otro</label>
                       <md-input
@@ -993,9 +999,10 @@ export default {
 	    arrayMaterialArt: [],
       id_material: 0,
 
+	    arrayEquipDevi: [{name:"",id:0}],
       arrayValue:[
-        { name: 'Dispositivo Agregado de preces - DAPs (FADs)', id: '1' },
-        { name: 'Dispositivo Excluidor de Tortugas - DETs', id: '2' },
+        { name: 'Dispositivo Agregado de peces - DAPs (FAD)', id: '1' },
+        { name: 'Dispositivo Excluidor de Tortugas - DET', id: '2' },
         { name: 'otro', id: '3' },
       ],
       id_value: 0,
@@ -1305,6 +1312,9 @@ export default {
     nameWithBoat ({ nameBoat  }) {
             return `${nameBoat}`
     },
+    nameWithName ({ name  }) {
+            return `${name}`
+    },
     nameWithRegion ({ nameMuni,name  }) {
             return `${nameMuni} / ${name}`
     },
@@ -1582,7 +1592,7 @@ export default {
           totalLongline: this.totalLongline,
           other: this.other.toUpperCase(),
           // materialArt: this.materialArt.toUpperCase(),
-          equipDevi: this.equipDevi.toUpperCase(),
+          equipDevi: this.arrayEquipDevi.name,
           captain: this.captain.toUpperCase(),
           observation: this.form.observation.toUpperCase(),
           observationGeneral: this.form.observationGeneral.toUpperCase(),
@@ -1673,7 +1683,7 @@ export default {
           totalLongline: this.totalLongline,
           other: this.other.toUpperCase(),
           // materialArt: this.materialArt.toUpperCase(),
-          equipDevi: this.equipDevi.toUpperCase(),
+          equipDevi: this.arrayEquipDevi.name,
           captain: this.captain.toUpperCase(),
           observation: this.form.observation.toUpperCase(),
           observationGeneral: this.form.observationGeneral.toUpperCase(),
@@ -1795,9 +1805,9 @@ export default {
         doc.text(`${demo}, ____ de ________ de 201_`, 30, 40,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
 
         doc.setFont(undefined, 'bold')
-        doc.text("Señor(a) (es)", 30, 60); 
+        doc.text("Señor(a) (es)", 30, 60);
         doc.setFontSize(11).setFont(undefined, 'normal');
-        
+
         doc.text(`${demo}`, 30, 74, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
         doc.line(30, 75, 104, 75);
 
@@ -1807,12 +1817,12 @@ export default {
         doc.text(`Ciudad: ${demo}`, 30, 84, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
 
         doc.setFont(undefined, 'bold')
-        doc.text("Asunto: Autorización para Zarpe.", 30, 105); 
+        doc.text("Asunto: Autorización para Zarpe.", 30, 105);
         doc.setFontSize(11).setFont(undefined, 'normal');
 
         doc.setFont("arial");
         doc.setFontSize(11);
-        doc.setFontSize(11).setFont(undefined, 'normal');    
+        doc.setFontSize(11).setFont(undefined, 'normal');
         doc.text(`Para su información y fines pertinentes, le comunico que, una vez realizada la inspección a la
 Motonave ${demo} con matrícula No. ${demo}
 vinculada al Permiso de Pesca comercial Industrial según Resolución No. ${demo} otorgado al
@@ -1823,7 +1833,7 @@ ${demo}
 
 
 
-Por la AUNAP,`, 30, 125,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} ); 
+Por la AUNAP,`, 30, 125,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
 
     doc.text(`${demo}`, 32, 188, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
     doc.line(30, 190, 104, 190);
