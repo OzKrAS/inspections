@@ -134,7 +134,7 @@
                   <div class="md-layout-item">
                         <md-field>
                           <label class="text-muted">Recibió Notificación Previa (Prior Notification)</label>
-                          <md-select v-model="notification" name="notification" id="notification" placeholder="Recibió Notificación Previa">
+                          <md-select v-model="notification" name="notification" id="notification" placeholder="Recibió Notificación Previa (Prior Notification)">
                             <md-option value="si">Si</md-option>
                             <md-option value="no">No</md-option>
                           </md-select>
@@ -143,7 +143,7 @@
                   <div class="md-layout-item">
                         <md-field>
                           <label class="text-muted">Finalidad Arribo (Arrival's Purpose)</label>
-                          <md-select v-model="finalityArrival" name="finalityArrival" id="finalityArrival" placeholder="Finalidad Arribo">
+                          <md-select v-model="finalityArrival" name="finalityArrival" id="finalityArrival" placeholder="Finalidad Arribo (Arrival's Purpose)">
                             <md-option value="pesca">Pesca</md-option>
                             <md-option value="transito">Tránsito</md-option>
                             <md-option value="desembarque">Desembarque</md-option>
