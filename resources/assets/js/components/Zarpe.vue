@@ -5,7 +5,7 @@
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
         <div class="card-header">
-          <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
+          <i class="m-0 font-weight-bold text-primary fa fa-ship"></i>
           <strong class="lead">Inspección a Embarcación Pesquera - Zarpe</strong>
           <button
             v-if="edo"
@@ -69,7 +69,7 @@
               <md-card-content>
                 <!-- <div class="md-layout"> -->
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-65">
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('insNo')">
                         <label for="first-name">Inspección No. (Inspection)</label>
                         <md-input
@@ -78,7 +78,7 @@
                         autocomplete="given-name"
                         v-model="form.insNo"
                         :disabled="sending"
-                        type="number"
+                        type="text"
                         />
                         <span
                             class="md-error"
@@ -155,6 +155,14 @@
                       </div>
 
                       <div class="md-layout">
+                   
+                      <md-field>
+                        <label class="text-muted">Estado Rector del Puerto (Port / Port State)</label>
+                        <md-select v-model="stateRectorPort" name="stateRectorPort" id="stateRectorPort" placeholder="Estado Rector del Puerto">
+                          <md-option value="colombia">Colombia</md-option>
+                        </md-select>
+                      </md-field>
+               
                         <!-- <div class="md-layout-item md-size-40">
                             <md-datepicker
                               md-clearable :class="getValidationClass('dateScale')"
@@ -457,7 +465,7 @@
                       </md-field>
                     </div>&nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item">
-                      <label class="text-muted">Empresa (Enterprise)</label>
+                      <label class="text-muted">Empresa (Company)</label>
                         <multiselect v-model="arrayComp" :options="arrayCompany"
                             placeholder="Seleccione una empresa"
                             :custom-label="nameWithCompany"
@@ -692,7 +700,7 @@
                   </div>
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('comments')">
-                            <label>Comentarios Adicionales (Espacio disponible para el capitan)(Additional Comments)</label>
+                            <label>Comentarios Adicionales (Espacio disponible para el capitan)(Captain's Additional Comments)</label>
                             <md-textarea v-model="form.comments"></md-textarea>
                             <span
                               class="md-error"
@@ -712,6 +720,8 @@
                             </span>
                     </md-field>
                   </div>
+
+
                    <p>
                       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Subir imagen
@@ -1001,9 +1011,9 @@ export default {
 
 	    arrayEquipDevi: [{name:"",id:0}],
       arrayValue:[
-        { name: 'Dispositivo Agregado de peces - DAPs (FAD)', id: '1' },
+        { name: 'Dispositivo Agregador de Peces - DAPs (FADs)', id: '1' },
         { name: 'Dispositivo Excluidor de Tortugas - DET', id: '2' },
-        { name: 'otro', id: '3' },
+        { name: 'Otro', id: '3' },
       ],
       id_value: 0,
       equipDevi: {id:0, name:''},

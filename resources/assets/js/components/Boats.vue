@@ -5,7 +5,7 @@
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
         <div class="card-header">
-          <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
+          <i class="m-0 font-weight-bold text-primary fa fa-ship"></i>
           <strong class="lead">Gestión de Embarcaciones</strong>
           <button
             v-if="edo"

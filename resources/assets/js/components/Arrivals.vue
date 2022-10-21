@@ -5,7 +5,7 @@
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
         <div class="card-header">
-          <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
+          <i class="m-0 font-weight-bold text-primary fa fa-ship"></i>
           <strong class="lead">Inspección a Embarcación Pesquera - Arribo</strong>
           <button
             v-if="edo"
@@ -72,7 +72,7 @@
                         autocomplete="given-name"
                         v-model="form.insNo"
                         :disabled="sending"
-                        type="number"
+                        type="text"
                         />
                         <span
                             class="md-error"
@@ -217,14 +217,14 @@
                     <strong>PUERTO, ESTADO RECTOR DE PUERTO</strong>
                 </div>
                 <div class="md-layout">
-                  <div class="md-layout-item">
-                      <md-field>
-                        <label class="text-muted">Estado Rector del Puerto (Port / Port State)</label>
-                        <md-select v-model="stateRectorPort" name="stateRectorPort" id="stateRectorPort" placeholder="Estado Rector del Puerto">
-                          <md-option value="colombia">Colombia</md-option>
-                        </md-select>
-                      </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  <md-field>
+                    <label class="text-muted">Estado Rector del Puerto (Port State)</label>
+                    <md-select v-model="stateRectorPort" name="stateRectorPort" id="stateRectorPort" placeholder="Estado Rector del Puerto">
+                      <md-option value="colombia">Colombia</md-option>
+                    </md-select>
+                  </md-field>
+                </div>&nbsp;&nbsp;&nbsp;
+                <div class="md-layout">
                   <div class="md-layout-item">
                       <label class="text-muted">Puerto de Zarpe (Departure’s Port)</label>
                       <multiselect v-model="arrayPtZarpe" :options="arrayPort"
@@ -278,6 +278,16 @@
                       </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
+                <div class="md-layout">
+                    <md-field>
+                      <label class="text-muted">Faena Realizada En (Fishing Task Place)</label>
+                      <md-select v-model="workDone" name="workDone" id="workDone" placeholder="Faena Realizada En">
+                        <md-option value="pesca">Pacífico</md-option>
+                        <md-option value="transito">Caribe</md-option>
+                        <md-option value="transito">San Andres</md-option>
+                      </md-select>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                  <md-divider style="background-color: #2090E8 " ></md-divider>
                  <br>
                 <div>
@@ -305,16 +315,19 @@
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field>
-                      <label class="text-muted">Faena Realizada En</label>
-                      <md-select v-model="workDone" name="workDone" id="workDone" placeholder="Faena Realizada En">
-                        <md-option value="pesca">Pacífico</md-option>
-                        <md-option value="transito">Caribe</md-option>
-                        <md-option value="transito">San Andres</md-option>
-                      </md-select>
-                    </md-field>
+       
+                       <div class="md-layout-item">
+                        <label class="text-muted">OROP</label>
+                        <multiselect v-model="arrayOr" :options="arrayOrop"
+                            placeholder="Seleccione una opción OROP"
+                            :custom-label="nameWithOrop"
+                            label="name"
+                            track-by="name">
+                        </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="md-layout">
+                   
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('radioCall')">
                       <label for="first-name">Señal Radiollamada Internacional (International Radio Call Signal)</label>
@@ -330,17 +343,6 @@
                         v-if="!$v.form.radioCall.required"
                       >Olvidaste ingresar la señal radiollamada internacional</span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                </div>
-                <div class="md-layout">
-                  <div class="md-layout-item">
-                        <label class="text-muted">OROP</label>
-                        <multiselect v-model="arrayOr" :options="arrayOrop"
-                            placeholder="Seleccione una opción OROP"
-                            :custom-label="nameWithOrop"
-                            label="name"
-                            track-by="name">
-                        </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('idOmi')">
@@ -364,7 +366,7 @@
                 <div>
                   <strong>PERMISO OTORGADO - ÚLTIMA PRORROGA</strong>
                 </div>
-                <div class="md-layout">
+                <div class="md-layout-item">
                 <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
                     <multiselect v-model="arrayBt" :options="arrayBoat"
                         @input="setBoats()"
@@ -540,7 +542,7 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <label class="text-muted">Empresa (Enterprise)</label>
+                      <label class="text-muted">Empresa (Company)</label>
                       <multiselect v-model="arrayComp" :options="arrayCompany"
                           placeholder="Seleccione una Empresa"
                           :custom-label="nameWithCompany"
@@ -673,7 +675,7 @@
                           autocomplete="given-name"
                           v-model="typeHook"
                           :disabled="sending"
-                          type="number"
+                          type="text"
                         />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -738,7 +740,7 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">No. Total de Tripulantes</label>
+                        <label for="first-name">No. Total de Tripulantes (Total Crew)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -751,7 +753,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">No. Tripulantes Extranjeros</label>
+                        <label for="first-name">No. Tripulantes Extranjeros (International Crew)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -764,7 +766,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">No. Tripulantes Nacionales</label>
+                        <label for="first-name">No. Tripulantes Nacionales (National Crew)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -785,7 +787,7 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noDays')">
-                        <label for="first-name">No. Días de Pesca</label>
+                        <label for="first-name">No. Días de Pesca (Fishing Days)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -802,7 +804,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noAllHauls')">
-                        <label for="first-name">No. Total de Lances</label>
+                        <label for="first-name">No. Total de Lances (Total Fishing Sets)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -819,7 +821,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noHaulsNacional')">
-                        <label for="first-name">No. Lances Nacionales</label>
+                        <label for="first-name">No. Lances Nacionales (National Sets)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -831,7 +833,7 @@
                         <span
                           class="md-error"
                           v-if="!$v.form.noHaulsNacional.required"
-                        >Olvidaste ingresar el número total de lances nacionales</span>
+                        >Olvidaste ingresar el número total de lances nacionales (International Sets)</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
@@ -868,14 +870,14 @@
           <md-divider style="background-color: #2090E8 " ></md-divider>
           <br>
                 <div style="text-align:center">
-                  <strong>CAPTURA OBJETIVO</strong>
+                  <strong>CAPTURA OBJETIVO (TARGET CAPTURE)</strong>
                 </div>
 
             <div class="card-body">
                     <div class="md-layout">
                       <div class="md-layout-item">
                         <md-field md-clearable>
-                          <label for="first-name">Nombre Común</label>
+                          <label for="first-name">Nombre Común (Common Name)</label>
                           <md-input
                             name="first-name"
                             id="first-name"
@@ -887,7 +889,7 @@
                       </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
                         <md-field md-clearable>
-                          <label for="first-name">Nombre Científico</label>
+                          <label for="first-name">Nombre Científico (Scientific Name)</label>
                           <md-input
                             name="first-name"
                             id="first-name"
@@ -899,7 +901,7 @@
                       </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item md-size-25">
                         <md-field md-clearable>
-                          <label for="first-name">Captura - Ton.</label>
+                          <label for="first-name">Captura - Ton. (Capture - Ton)</label>
                           <md-input
                             name="first-name"
                             id="first-name"
@@ -969,14 +971,14 @@
              <md-divider style="background-color: #2090E8 " ></md-divider>
              <br>
             <div style="text-align:center">
-              <strong>CAPTURA FAUNA INCIDENTAL</strong>
+              <strong>CAPTURA FAUNA INCIDENTAL (BYCATCH)</strong>
             </div>
 
             <div class="card-body">
                     <div class="md-layout">
                       <div class="md-layout-item">
                         <md-field md-clearable>
-                          <label for="first-name">Nombre Común</label>
+                          <label for="first-name">Nombre Común (Common Name)</label>
                           <md-input
                             name="first-name"
                             id="first-name"
@@ -988,7 +990,7 @@
                       </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
                         <md-field md-clearable>
-                          <label for="first-name">Nombre Científico</label>
+                          <label for="first-name">Nombre Científico (Scientific Name)</label>
                           <md-input
                             name="first-name"
                             id="first-name"
@@ -1000,7 +1002,7 @@
                       </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item md-size-25">
                         <md-field md-clearable>
-                          <label for="first-name">Captura - Ton.</label>
+                          <label for="first-name">Captura - Ton. (Capture - Ton)</label>
                           <md-input
                             name="first-name"
                             id="first-name"
@@ -1074,7 +1076,7 @@
                 <div class="md-layout">
                   <div class="md-layout-item md-size-55">
                     <md-field md-clearable :class="getValidationClass('landedWeight')">
-                      <label for="first-name">Peso Desembarcado Comprobado (ingreso planta proceso)(Ton)</label>
+                      <label for="first-name">Peso Desembarcado Comprobado (ingreso planta proceso)(Ton) (Checked Unloaded Weight)</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -1106,7 +1108,7 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('additionalComments')">
-                            <label>Comentarios Adicionales (espacio disponible para el capitan)(Additional Comments)</label>
+                            <label>Comentarios Adicionales (espacio disponible para el capitan) (Captain’s Additional Comments)</label>
                             <md-textarea v-model="form.additionalComments"></md-textarea>
                             <span
                               class="md-error"
@@ -1441,9 +1443,9 @@ export default {
       arrayFaunaAct: [],
       arrayEquipDevi: [{name:"",id:0}],
       arrayValue:[
-        { name: 'Dispositivo Agregado de peces - DAPs (FAD)', id: '1' },
+        { name: 'Dispositivo Agregado de Peces - DAPs (FADs)', id: '1' },
         { name: 'Dispositivo Excluidor de Tortugas - DET', id: '2' },
-        { name: 'otro', id: '3' },
+        { name: 'Otro', id: '3' },
       ],
 
       edo: 1,
