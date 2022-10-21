@@ -252,7 +252,7 @@
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-70">
+                  <div class="md-layout-item" >
                       <label class="text-muted">Puerto de Ultimo Arribo (Last Arrival’s Port)</label>
                       <multiselect v-model="arrayPtArrival" :options="arrayPort"
                           placeholder="Puerto de Ultimo Arribo"
@@ -282,9 +282,9 @@
                     <md-field>
                       <label class="text-muted">Faena Realizada En (Fishing Task Place)</label>
                       <md-select v-model="workDone" name="workDone" id="workDone" placeholder="Faena Realizada En">
-                        <md-option value="pesca">Pacífico</md-option>
-                        <md-option value="transito">Caribe</md-option>
-                        <md-option value="transito">San Andres</md-option>
+                        <md-option value="Mar Caribe colombiano">Mar Caribe colombiano</md-option>
+                        <md-option value="Pacífico colombiano">Pacífico colombiano</md-option>
+                        <md-option value="OPO (atún, bandera nacional, jurisdicción CIAT)">OPO (atún, bandera nacional, jurisdicción CIAT)</md-option>
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -833,12 +833,12 @@
                         <span
                           class="md-error"
                           v-if="!$v.form.noHaulsNacional.required"
-                        >Olvidaste ingresar el número total de lances nacionales (International Sets)</span>
+                        >Olvidaste ingresar el número total de lances nacionales </span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noHaulsInter')">
-                        <label for="first-name">No. Lances Internacionales</label>
+                        <label for="first-name">No. Lances Internacionales (International Sets)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
