@@ -7,7 +7,7 @@ use App\CheckDetInch;
 use App\Company;
 use App\Regional;
 use App\DetailDetInch;
-use App\DetailFisherAutDetIc;
+use App\DetailFisherAutDetInchs;
 
 class CheckDetInchController extends Controller
 {
@@ -90,7 +90,7 @@ class CheckDetInchController extends Controller
 
         $detailsfisheryDet = $request->data;
         foreach($detailsfisheryDet as $fs=>$deta){
-            $objeto= new DetailFisherAutDetIc();
+            $objeto= new DetailFisherAutDetInchs();
             $objeto->id_fisheryAut = $CheckDetInchs->id;
             $objeto->name= $deta['name'];
             $objeto->save();

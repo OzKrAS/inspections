@@ -30,48 +30,47 @@ class ZarpeController extends Controller
             // ->join('fishery_authorizeds','zarpes.id_fisheryAuthorized','=','fishery_authorizeds.id')
             ->join('companies','zarpes.id_company','=','companies.id')
             ->select('zarpes.id',
-                     'zarpes.insNo',
-                     'zarpes.radioCall',
-                     'zarpes.idOmi',
-                     'zarpes.noResolution',
-                     'zarpes.nameBoat',
-                     'zarpes.enrollment',
-                     'zarpes.noPatent',
-                     'zarpes.representative',
-                     'zarpes.eyeMesh',
-                     'zarpes.netWidth',
-                     'zarpes.eyeFlake',
-                     'zarpes.typeHook',
-                     'zarpes.longNet',
-                     'zarpes.totalLongline',
-                     'zarpes.other',
-                    //  'zarpes.materialArt',
-                     'zarpes.equipDevi',
-                     'zarpes.captain',
-                     'zarpes.observation',
-                     'zarpes.observationGeneral',
-                     'zarpes.conclusions',
-                     'zarpes.comments',
-                     'zarpes.dateIns',
-                     'zarpes.dateScale',
-                     'zarpes.dateZarpe',
-                     'zarpes.dateResolution',
-                     'zarpes.dateValid',
-                     'zarpes.dateLatestArrival',
-                     'zarpes.dateValidityPat',
-                     'zarpes.notification',
-                     'zarpes.finalityZarpe',
-                     'zarpes.national',
-
-                     'zarpes.id_region','regions.name as nameReg',
-                     'zarpes.id_port','ports.name as namePort',
-                     'zarpes.id_flag','flags.name as nameFlag',
-                     'zarpes.id_material','fishing_gear_materials.name as nameMaterial',
-                     'zarpes.id_nationality','nationalities.name as nameNationality',
-                     'zarpes.id_orop','orops.name as nameOrop',
-                     'zarpes.id_zoneAutoFisher','auto_fishers.name as nameZoneAutoFisher',
-                    //  'zarpes.id_fisheryAuthorized','fishery_authorizeds.name as nameFishery',
-                     'zarpes.id_company','companies.name as nameCompany',
+                    'zarpes.insNo',
+                    'zarpes.radioCall',
+                    'zarpes.idOmi',
+                    'zarpes.noResolution',
+                    'zarpes.nameBoat',
+                    'zarpes.enrollment',
+                    'zarpes.noPatent',
+                    'zarpes.representative',
+                    'zarpes.eyeMesh',
+                    'zarpes.netWidth',
+                    'zarpes.eyeFlake',
+                    'zarpes.typeHook',
+                    'zarpes.longNet',
+                    'zarpes.totalLongline',
+                    'zarpes.other',
+                //  'zarpes.materialArt',
+                    'zarpes.equipDevi',
+                    'zarpes.captain',
+                    'zarpes.observation',
+                    'zarpes.observationGeneral',
+                    'zarpes.conclusions',
+                    'zarpes.comments',
+                    'zarpes.dateIns',
+                    'zarpes.dateZarpe',
+                    'zarpes.dateResolution',
+                    'zarpes.dateValid',
+                    'zarpes.dateLatestArrival',
+                    'zarpes.dateValidityPat',
+                    'zarpes.notification',
+                    'zarpes.finalityZarpe',
+                    'zarpes.national',
+                    'zarpes.autorization',
+                    'zarpes.id_region','regions.name as nameReg',
+                    'zarpes.id_port','ports.name as namePort',
+                    'zarpes.id_flag','flags.name as nameFlag',
+                    'zarpes.id_material','fishing_gear_materials.name as nameMaterial',
+                    'zarpes.id_nationality','nationalities.name as nameNationality',
+                    'zarpes.id_orop','orops.name as nameOrop',
+                    'zarpes.id_zoneAutoFisher','auto_fishers.name as nameZoneAutoFisher',
+                //  'zarpes.id_fisheryAuthorized','fishery_authorizeds.name as nameFishery',
+                    'zarpes.id_company','companies.name as nameCompany',
                      
             )
         
@@ -108,7 +107,6 @@ class ZarpeController extends Controller
         $zarpes->conclusions = $request->conclusions;
         $zarpes->comments = $request->comments;
         $zarpes->dateIns = $request->dateIns;
-        $zarpes->dateScale = $request->dateScale;
         $zarpes->dateZarpe = $request->dateZarpe;
         $zarpes->dateResolution = $request->dateResolution;
         $zarpes->dateValid = $request->dateValid;
@@ -128,6 +126,7 @@ class ZarpeController extends Controller
         $zarpes->id_orop = $request->id_orop;       
         $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;          
         $zarpes->id_company = $request->id_company;      
+        $zarpes->autorization = $request->autorization;      
         $zarpes->save();
 
         $array = array(
@@ -179,7 +178,6 @@ class ZarpeController extends Controller
         $zarpes->conclusions = $request->conclusions;
         $zarpes->comments = $request->comments;
         $zarpes->dateIns = $request->dateIns;
-        $zarpes->dateScale = $request->dateScale;
         $zarpes->dateZarpe = $request->dateZarpe;
         $zarpes->dateResolution = $request->dateResolution;
         $zarpes->dateValid = $request->dateValid;

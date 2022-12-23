@@ -538,7 +538,7 @@
                           autocomplete="given-name"
                           v-model="eyeMesh"
                           :disabled="sending"
-                          type="number"
+                          type="text"
                         />
                       </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
@@ -720,8 +720,17 @@
                             </span>
                     </md-field>
                   </div>
-
-
+                  <md-divider style="background-color: #2090E8 " ></md-divider>
+                  <br>
+                  <strong><label>RESULTADO DE LA INSPECCIÓN (Inspection Result)</label></strong>
+                    <div class="md-layout-item">
+                        <label>Se autoriza el zarpe (Departure Authorization)</label>
+                      <md-radio v-model="autorization" value="1"><small>SI</small></md-radio>
+                      <md-radio v-model="autorization" value="0" class="md-primary">NO</md-radio>
+                    </div>
+                    <md-divider style="background-color: #2090E8 " ></md-divider>
+                  <br>  
+                  <br>  
                    <p>
                       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Subir imagen
@@ -901,7 +910,8 @@
 		MdDatepicker,
     MdDialog,
     MdDivider,
-		MdList
+		MdList,
+    MdRadio,
     } from "vue-material/dist/components";
 
     Vue.use(Toasted,  {
@@ -917,6 +927,7 @@
     Vue.use(MdDatepicker);
     Vue.use(MdDialog);
     Vue.use(MdDivider);
+    Vue.use(MdRadio);
     import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
 
 export default {
@@ -934,7 +945,7 @@ export default {
 
       return {form: {
 
-        insNo: "",
+        insNo: "",  
         radioCall: "",
         idOmi: "",
         noResolution: "",
@@ -954,8 +965,9 @@ export default {
         observationGeneral: "",
 
       },
-      dateScale: format(now, dateFormat),
+      autorization: "0",
       eyeMesh: "",
+      stateRectorPort:"",
       netWidth: "",
       eyeFlake: "",
       longNet: "",
@@ -1297,7 +1309,6 @@ export default {
       this.form.conclusions = null;
       this.form.comments = null;
       this.form.dateIns = null;
-      this.dateScale = null;
       this.form.dateZarpe = null;
       this.form.dateResolution = null;
       this.form.dateValid = null;
@@ -1475,9 +1486,11 @@ export default {
       this.form.dateResolution= this.arrayBt.dateResolution;
       this.form.dateValidityPat= this.arrayBt.dateValidityPat;
       this.form.dateValid= this.arrayBt.dateValid;
+      this.arrayComp.id= this.arrayBt.id_company;
       this.arrayComp.name= this.arrayBt.nameCompany;
       this.form.nameBoat= this.arrayBt.nameBoat;
       this.form.noPatent= this.arrayBt.noPatent;
+      this.arrayFg.id= this.arrayBt.id;
       this.arrayFg.name= this.arrayBt.nameFlag;
     },
     showUpdate(data = []) {
@@ -1507,7 +1520,6 @@ export default {
       this.form.conclusions = data["conclusions"];
       this.form.comments = data["comments"];
       this.form.dateIns = data["dateIns"];
-      this.dateScale = data["dateScale"];
       this.form.dateZarpe = data["dateZarpe"];
       this.form.dateResolution = data["dateResolution"];
       this.form.dateValid = data["dateValid"];
@@ -1539,6 +1551,7 @@ export default {
 			// this.arrayFa.name = data["nameFishery"];
       this.arrayComp.id = data["id_company"];
 			this.arrayComp.name = data["nameCompany"];
+			this.autorization = data["autorization"];
       this.dataFishery();
 
     },
@@ -1609,7 +1622,6 @@ export default {
           conclusions: this.form.conclusions.toUpperCase(),
           comments: this.form.comments.toUpperCase(),
           dateIns: this.form.dateIns,
-          dateScale: this.dateScale,
           dateZarpe: this.form.dateZarpe,
           dateResolution: this.form.dateResolution,
           dateValid: this.form.dateValid,
@@ -1618,6 +1630,7 @@ export default {
           notification: this.notification,
           finalityZarpe: this.finalityZarpe,
           national: this.national,
+          autorization: this.autorization,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
@@ -1700,7 +1713,6 @@ export default {
           conclusions: this.form.conclusions.toUpperCase(),
           comments: this.form.comments.toUpperCase(),
           dateIns: this.form.dateIns,
-          dateScale: this.dateScale,
           dateZarpe: this.form.dateZarpe,
           dateResolution: this.form.dateResolution,
           dateValid: this.form.dateValid,
@@ -1709,6 +1721,7 @@ export default {
           notification: this.notification,
           finalityZarpe: this.finalityZarpe,
           national: this.national,
+          autorization: this.autorization,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,

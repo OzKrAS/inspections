@@ -64,26 +64,7 @@
           <div class="card-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
-                <div class="md-layout">
-                  <div class="md-layout-item md-size-35">                 
-                      <md-datepicker 
-                        md-clearable :class="getValidationClass('date')"
-                        v-model="form.date"
-                        @input="toString"
-                        md-immediately
-                        :md-model-type="String"
-                        >
-                        <label>Seleccione Fecha (Date)</label>
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.date.required"
-                          >Olvidaste ingresar la fecha
-                        </span>
-                      </md-datepicker>                   
-                  </div> &nbsp;&nbsp;&nbsp;
-
-                  <!-- ESPACIO PARA LA HORA       -->
-                </div>  
+    
                 <div class="md-layout">
                   <div class="md-layout-item">
                       <label class="text-muted">Regional (Regional)</label>
@@ -139,6 +120,22 @@
                       >Olvidaste ingresar el nombre del funcionario</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
+                             <div class="md-layout-item ">                 
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('date')"
+                        v-model="form.date"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Seleccione Fecha (Date)</label>
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.date.required"
+                          >Olvidaste ingresar la fecha
+                        </span>
+                      </md-datepicker>                   
+                  </div> &nbsp;&nbsp;&nbsp;
                 </div> 
                 <md-divider style="background-color: #2090E8 " ></md-divider>
                 <div>
@@ -239,7 +236,7 @@
                   </div>&nbsp;&nbsp;&nbsp;              
                 </div>   
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-35">
+                  <div class="md-layout-item">
                     <label class="text-muted">Pesquería Autorizada (Fishery)</label>
                     <multiselect
                       v-model="arrayFa"
@@ -254,7 +251,7 @@
                       :preselect-first="false">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-35">
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('location')">
                       <label for="first-name">Localización (Location)</label>
                       <md-input

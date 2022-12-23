@@ -43,6 +43,7 @@ class CreateNoticePreviousZarpesTable extends Migration
             $table->string('slbVms');
             $table->date('dateExp');
             $table->date('dateExpiration');
+            $table->string('autorization');
 
             $table->integer('id_port')->unsigned();
             $table->foreign('id_port')->references('id')->on('ports');

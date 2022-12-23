@@ -216,7 +216,8 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/boats/save', 'BoatController@store');
         Route::put('/boats/update', 'BoatController@update');
         Route::post('/boats/delete', 'BoatController@destroy');
-
+        
+        Route::get('/species', 'CommonSpeciesController@selectSpecie');
 
 
     });

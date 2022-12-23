@@ -38,7 +38,6 @@ class CreateZarpesTable extends Migration
             $table->string('conclusions'); 
             $table->string('comments');   
             $table->date('dateIns');
-            $table->date('dateScale');
             $table->date('dateZarpe');
             $table->date('dateResolution');
             $table->date('dateValid');

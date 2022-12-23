@@ -693,8 +693,7 @@
                   <div class="md-layout-item">
                        <label class="text-muted">Equipos o Dispositivos Requeridos</label>
                         <multiselect v-model="arrayEquipDevi" :options="arrayValue"
-                          placeholder="Equipos o Dispositivo"
-                          :custom-label="nameWithName"
+                          placeholder="Equipos o Dispositivo"                
                           label="name"
                           track-by="name">
                         </multiselect>
@@ -875,7 +874,17 @@
 
             <div class="card-body">
                     <div class="md-layout">
-                      <div class="md-layout-item">
+                  <div class="md-layout-item">
+                      <label class="text-muted">Nombre Común (Common Name)</label>
+                      <multiselect v-model="arrayCName" :options="arrayCommonName"
+                          @input="setCommonName()"
+                          placeholder="Seleccione una especie"
+                          :custom-label="nameWithCommonName"
+                          label="commonname"
+                          track-by="commonname">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                      <!-- <div class="md-layout-item">
                         <md-field md-clearable>
                           <label for="first-name">Nombre Común (Common Name)</label>
                           <md-input
@@ -886,7 +895,7 @@
                             :disabled="sending"
                           />
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;
+                      </div>&nbsp;&nbsp;&nbsp; -->
                       <div class="md-layout-item">
                         <md-field md-clearable>
                           <label for="first-name">Nombre Científico (Scientific Name)</label>
@@ -894,8 +903,8 @@
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="nameScientific1"
-                            :disabled="sending"
+                            v-model="nameScientific1"                          
+                            disabled
                           />
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
@@ -976,7 +985,17 @@
 
             <div class="card-body">
                     <div class="md-layout">
-                      <div class="md-layout-item">
+                    <div class="md-layout-item">
+                      <label class="text-muted">Nombre Común (Common Name)</label>
+                      <multiselect v-model="arrayCName2" :options="arrayCommonName"
+                          @input="setCommonName2()"
+                          placeholder="Seleccione una especie"
+                          :custom-label="nameWithCommonName"
+                          label="commonname"
+                          track-by="commonname">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                      <!-- <div class="md-layout-item">
                         <md-field md-clearable>
                           <label for="first-name">Nombre Común (Common Name)</label>
                           <md-input
@@ -987,7 +1006,7 @@
                             :disabled="sending"
                           />
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;
+                      </div>&nbsp;&nbsp;&nbsp; -->
                       <div class="md-layout-item">
                         <md-field md-clearable>
                           <label for="first-name">Nombre Científico (Scientific Name)</label>
@@ -996,7 +1015,7 @@
                             id="first-name"
                             autocomplete="given-name"
                             v-model="nameScientific2"
-                            :disabled="sending"
+                            disabled
                           />
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
@@ -1074,7 +1093,7 @@
               </div>
             </div>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-55">
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('landedWeight')">
                       <label for="first-name">Peso Desembarcado Comprobado (ingreso planta proceso)(Ton) (Checked Unloaded Weight)</label>
                       <md-input
@@ -1399,6 +1418,9 @@ export default {
       arrayArrival: [],
       id_arrival: 0,
 
+      arrayCName: {id:0, commonname:''},
+      arrayCName2: {id:0, commonname:''},
+      arrayCommonName:[],
       arrayReg: {id:0, name:'', nameMuni:''},
 	    arrayRegion: [],
       id_region: 0,
@@ -1688,10 +1710,20 @@ export default {
       this.form.dateResolution= this.arrayBt.dateResolution;
       this.form.dateValidityPat= this.arrayBt.dateValidityPat;
       this.form.dateValidity= this.arrayBt.dateValid;
+      this.arrayComp.id= this.arrayBt.id_company;
       this.arrayComp.name= this.arrayBt.nameCompany;
       this.form.nameBoat= this.arrayBt.nameBoat;
       this.form.noPatent= this.arrayBt.noPatent;
+      this.arrayFg.id= this.arrayBt.id;
       this.arrayFg.name= this.arrayBt.nameFlag;
+    },
+    setCommonName(){
+      this.nameScientific1= this.arrayCName.scientificname;
+      this.nameCommon1= this.arrayCName.commonname;
+    },
+    setCommonName2(){
+      this.nameScientific2= this.arrayCName2.scientificname;
+      this.nameCommon2= this.arrayCName2.commonname;
     },
         selectBoats() {
             let me = this;
@@ -1763,7 +1795,7 @@ export default {
         nameScientific2:this.nameScientific2,
         capture2:this.capture2
       });
-      console.log("arrayFauna " + total2);
+      //console.log("arrayFauna " + total2);
       // this.mensaje("Captura fauna incidental agregado", "success");
       me.clearFauna();
 
@@ -1892,6 +1924,25 @@ export default {
     },
     nameWithMaterialArt ({ name }) {
             return `${name}`
+    },
+    nameWithCommonName ({ commonname }) {
+            return `${commonname}`
+    },
+    getCommonName() {
+      let me = this;
+      var url =
+        "/species";
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.arrayCommonName = respuesta.species;
+
+
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
     listData() {
       let me = this;
@@ -2249,7 +2300,7 @@ export default {
           eyeFlake :this.eyeFlake.toUpperCase(),
           typeHook :this.typeHook.toUpperCase(),
           longNet :this.longNet.toUpperCase(),
-          materialArt :this.materialArt.toUpperCase(),
+          materialArt :this.materialArt,
           equipDevi: this.arrayEquipDevi.name,
           captain :this.captain.toUpperCase(),
           //noOmi :this.form.noOmi.toUpperCase(),
@@ -2462,7 +2513,8 @@ export default {
     this.selectCompanies();
     this.selectOrop();
     this.selectMaterial();
-     this.selectBoats();
+    this.selectBoats();
+    this.getCommonName();
   }
 };
 </script>
