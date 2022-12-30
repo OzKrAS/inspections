@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth:api'], function (){
     Route::put('/certificationDisembTuna/update', 'CertificationDisembTunaController@update');
     Route::post('/certificationDisembTuna/delete', 'CertificationDisembTunaController@destroy');
     Route::post('/logout', 'UserController@logout');  
+    Route::get('/selectboats', 'BoatController@selectBoats');
    
     Route::get('/zarpeJson', 'DataJsonController@jsonZarpe');
     Route::get('/ArrivalJson', 'DataJsonController@jsonArrival');
