@@ -133,15 +133,15 @@ class ZarpeController extends Controller
             'res' => true,
             'message' => 'Registro guardado exitosamente'
             );
-        return response()->json($array,201);
-
-        $detailsfisheryzarpe = $request->data;
+            
+            $detailsfisheryzarpe = $request->data;
         foreach($detailsfisheryzarpe as $fs=>$deta){
             $objeto= new DetailFisherAutZarpe();
             $objeto->id_fisheryAut = $zarpes->id;
             $objeto->name= $deta['name'];
             $objeto->save();
         }
+        return response()->json($array,201);
         // $array = array(
         //     'res' => true,
         //     'message' => 'Registro guardado exitosamente'
