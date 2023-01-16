@@ -118,7 +118,7 @@
                 </div>
 
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-40">
+                  <div class="md-layout-item">
                         <md-datepicker
                           md-clearable :class="getValidationClass('dateBeginningFaena')"
                           v-model="form.dateBeginningFaena"
@@ -134,7 +134,7 @@
                           </span>
                         </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-40">
+                  <div class="md-layout-item">
                         <md-datepicker
                           md-clearable :class="getValidationClass('dateEndFaena')"
                           v-model="form.dateEndFaena"
@@ -183,7 +183,7 @@
                 <div class="card-body">
 
                     <div class="md-layout">
-                      <div class="md-layout-item md-size-40">
+                      <div class="md-layout-item">
                         <md-field>
                           <label class="text-muted">Clasificación en Libras</label>
                           <md-select v-model="poundRating" name="poundRating" id="poundRating" placeholder="Clasificación en Libras">
@@ -297,15 +297,15 @@
                         <tfoot>
                           <tr style="background-color: darkgray;">
                               <td align="right"><h4><strong>SubTotal Kg.</strong></h4></td>
-                              <td align="right">{{totalYellow.toLocaleString('es-MX')}}</td>
-                              <td align="right">{{totalBarrilete.toLocaleString('es-MX')}}</td>
-                              <td align="right">{{totalPatudo.toLocaleString('es-MX')}}</td>
-                              <td align="right">{{totalOther.toLocaleString('es-MX')}}</td>
+                              <td align="right">{{totalYellow.toLocaleString('de-DE')}}</td>
+                              <td align="right">{{totalBarrilete.toLocaleString('de-DE')}}</td>
+                              <td align="right">{{totalPatudo.toLocaleString('de-DE')}}</td>
+                              <td align="right">{{totalOther.toLocaleString('de-DE')}}</td>
                               <td colspan="8"> </td>
                           </tr>
                           <tr style="background-color: darkgray;">
                               <td align="right"><h3><strong>TOTAL DESEMBARCADO Kg.</strong></h3></td>
-                              <td align="right"><h3><strong>{{totalDesemb.toLocaleString('es-MX')}}</strong></h3></td>
+                              <td align="right"><h3><strong>{{totalDesemb.toLocaleString('de-DE')}}</strong></h3></td>
                               <td colspan="8"> </td>
                           </tr>
                           <!-- <tr>

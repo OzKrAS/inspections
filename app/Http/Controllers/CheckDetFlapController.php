@@ -41,7 +41,7 @@ class CheckDetFlapController extends Controller
                      
             )
         
-            ->paginate(9999999999999999999999999);
+            ->paginate(9999999999);
 
         return [     
             'checkDetFlaps' => $checkDetFlaps
