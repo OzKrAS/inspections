@@ -116,6 +116,10 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/checkDetInchs/dataTable', 'CheckDetInchController@dataTable');
         Route::get('/checkDetInchs/fishery', 'CheckDetInchController@dataFishery');
         //verificacion DET doble solapa
+        Route::get('/DetailsFlaps', 'DetailDetFlapController@index');
+        Route::get('/DetailsInchs', 'DetailDetInchController@index');
+
+
         Route::get('/checkDetFlaps', 'CheckDetFlapController@index');
         Route::post('/checkDetFlaps/save', 'CheckDetFlapController@store');
         Route::put('/checkDetFlaps/update', 'CheckDetFlapController@update');

@@ -1187,6 +1187,7 @@ export default {
       this.arrayFa.id = data["arrayFa"];
       this.dataTable();
       this.dataFishery();
+      this.listDetailFlap();
     },
     nameWithCompany ({ name }) {
             return `${name}`
@@ -1218,6 +1219,21 @@ export default {
           var respuesta = response.data;
           me.arrayCheckDet = respuesta.CheckDetInchs.data;
           me.myTable(me.arrayCheckDet);
+
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+      async listDetailFlap() {
+      let me = this;
+      var url =
+        "/DetailsInchs?id="+this.id_CheckDet;
+      await axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.arrayDets = respuesta.checkDetFlaps;
 
         })
         .catch(function (error) {

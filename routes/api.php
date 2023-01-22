@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/users', function (Request $request) {
 Route::group(['middleware' => 'auth:api'], function (){
   
     Route::get('/donationCertificates', 'DonationCertificateController@index');
+    Route::get('/DetailsFlaps', 'DetailDetFlapController@index');
+    Route::get('/DetailsInchs', 'DetailDetInchController@index');
     Route::get('/ports', 'PortsController@index');
     Route::post('/ports/save', 'PortsController@store');
     Route::post('/checkDetFlaps/save', 'CheckDetFlapController@store');
