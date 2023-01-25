@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Verificación DETs 71 Pulgadas</strong>          
+          <strong class="lead">Verificación DETs 71 Pulgadas.</strong>          
           <button
             v-if="edo"
             type="button"
