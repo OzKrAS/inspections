@@ -16,8 +16,9 @@
             <i class="icon-plus"></i>&nbsp;Nuevo
           </button>
           <button
+          v-if="generarCarta"
             type="button"
-            @click="carta()"
+            @click="abrirModal()"
             class="btn btn-primary btn-sm"
           >
             <i class="icon-plus"></i>&nbsp;Autorización
@@ -887,6 +888,86 @@
       </div>
 
     </div>
+       <div
+      class="modal fade"
+      tabindex="-1"
+      :class="{'mostrar' : modal2}"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      style="display: none;"
+      aria-hidden="true" 
+    >
+      <div class="modal-dialog modal-primary modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" v-text="tituloModal"></h4>
+            <button type="button" class="close" @click="cerrarModal()" aria-label="Close">
+              <span aria-hidden="true">X</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action method="post" enctype="multipart/form-data" class="form-horizontal">
+              <md-card-content>
+                  <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Señor (a) (es)</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="senor"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                   </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Asunto</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="asunto"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                   </div>&nbsp;&nbsp;&nbsp;
+                         <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Ciudad</label>
+                      <md-input
+                        name="first-name"
+                        id="first-name"
+                        autocomplete="given-name"
+                        v-model="ciudad"
+                        :disabled="sending"
+                      />
+                    </md-field>
+                   </div>&nbsp;&nbsp;&nbsp;
+              
+                 </div>
+              </md-card-content>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <md-card-actions>
+              <md-button type="button" class="md-raised" @click="cerrarModal()">Cerrar</md-button>
+            </md-card-actions>
+            <md-card-actions>
+              <md-button
+                type="submit"
+                class="md-dense md-raised md-primary"
+                :disabled="sending"
+                @click="carta()"
+              >Generar Carta de Autorización</md-button>
+            </md-card-actions>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
 
   </main>
 </template>
@@ -963,6 +1044,7 @@ export default {
         conclusions: "",
         comments: "",
         observationGeneral: "",
+        dataFisherySelect: ""
 
       },
       autorization: "0",
@@ -976,11 +1058,15 @@ export default {
       typeHook: "",
       totalLongline: "",
       other: "",
+      generarCarta: false,
 
       notification: "",
       finalityZarpe: "",
       national: "",
       orop: "",
+      senor: "",
+      asunto: "",
+      ciudad: "",
 
       arrayZarpes: [],
       id_zarpes: 0,
@@ -1020,6 +1106,7 @@ export default {
       arrayMaterial: {id:0, name:''},
 	    arrayMaterialArt: [],
       id_material: 0,
+      tituloModal:"",
 
 	    arrayEquipDevi: [{name:"",id:0}],
       arrayValue:[
@@ -1042,6 +1129,7 @@ export default {
 
       arrayData: [],
       modal: 0,
+      modal2: 0,
       tipoAccion: 0,
 
       //variables imagen
@@ -1495,6 +1583,7 @@ export default {
     },
     showUpdate(data = []) {
       let me = this;
+      this.generarCarta=true;
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_zarpes = data["id"]);
       this.form.insNo = data["insNo"];
@@ -1794,16 +1883,19 @@ export default {
         }
       });
     },
-    dataFishery(){
+    async dataFishery(){
       let me = this;
 
       var url = "/zarpes/fishery?id_FisheryAut="+this.id_zarpes;
-      axios
+      await axios
         .get(url)
         .then(function(response) {
           //console.log(response);
           var respuesta = response.data;
           me.arrayFa = respuesta.fisheryAut;
+          me.form.dataFisherySelect+= me.arrayFa.map(function(element){        
+            return element.name
+          })
         })
         .catch(function(error) {
           console.log(error);
@@ -1811,6 +1903,13 @@ export default {
     },
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
+    },
+    abrirModal(){
+      this.modal2=1;
+      this.tituloModal="Ingrese los datos a quien va dirigida la utorización "
+    },
+    cerrarModal(){
+      this.modal2=0;
     },
     carta(data = []) {
       let me = this;
@@ -1831,13 +1930,13 @@ export default {
         doc.text("Señor(a) (es)", 30, 60);
         doc.setFontSize(11).setFont(undefined, 'normal');
 
-        doc.text(`${demo}`, 30, 74, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+        doc.text(`${this.senor}`, 30, 74, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
         doc.line(30, 75, 104, 75);
 
-        doc.text(`${demo}`, 30, 79, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+        doc.text(`${this.asunto}`, 30, 79, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
         doc.line(30, 80, 104, 80);
 
-        doc.text(`Ciudad: ${demo}`, 30, 84, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+        doc.text(`Ciudad: ${this.ciudad}`, 30, 84, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
 
         doc.setFont(undefined, 'bold')
         doc.text("Asunto: Autorización para Zarpe.", 30, 105);
@@ -1846,14 +1945,10 @@ export default {
         doc.setFont("arial");
         doc.setFontSize(11);
         doc.setFontSize(11).setFont(undefined, 'normal');
-        doc.text(`Para su información y fines pertinentes, le comunico que, una vez realizada la inspección a la
-Motonave ${demo} con matrícula No. ${demo}
-vinculada al Permiso de Pesca comercial Industrial según Resolución No. ${demo} otorgado al
-señor ${demo} identificado con la cedula de ciudadanía No.
-${demo}, se constató que CUMPLE con los requisitos mínimos
-establecidos en la Resolución 1026 del 2014, para realizar faenas de pesca dirigida a la captura de
-${demo}
-
+        doc.text(`Para su información y fines pertinentes, le comunico que, una vez realizada la inspección a la motonave ${this.form.nameBoat} con matrícula No. ${this.form.enrollment}
+vinculada al Permiso de Pesca Comercial Industrial según la Resolución No. ${this.form.noResolution} otorgado al señor ${this.form.representative} identificado con la cedula de ciudadanía No.
+${demo}, se constató que ${this.autorization == 1 ? 'SI' : 'NO'} CUMPLE con los requisitos mínimos
+establecidos en la Resolución 1026 del 2014, para realizar faenas de pesca dirigida a la captura de ${this.form.dataFisherySelect} en la zona de pesca correspondiente a ${this.arrayZoneAuto.name}, por lo tanto, ${this.autorization == 1 ? 'SI' : 'NO'} Se le autoriza el zarpe.
 
 
 Por la AUNAP,`, 30, 125,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
@@ -1972,7 +2067,16 @@ ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
   color: red !important;
   font-weight: bold;
 }
-
+.modal-content {
+  width: 100% !important;
+  position: absolute !important;
+}
+.mostrar {
+  display: list-item !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  background-color: #3c29297a !important;
+}
 
 .uploader {
   width: 100%;
