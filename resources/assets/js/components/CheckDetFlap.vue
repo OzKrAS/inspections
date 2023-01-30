@@ -237,7 +237,7 @@
                   </div>&nbsp;&nbsp;&nbsp;              
                 </div>   
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-35">
+                  <div class="md-layout-item">
                     <label class="text-muted">Pesquería Autorizada (Fishery)</label>
                     <multiselect
                       v-model="arrayFa"
@@ -252,7 +252,7 @@
                       :preselect-first="false">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-35">
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('location')">
                       <label for="first-name">Localización (Location)</label>
                       <md-input

@@ -580,7 +580,7 @@
                         autocomplete="given-name"
                         v-model="eyeFlake"
                         :disabled="sending"
-                        type="number"
+                        type="text"
                       />
                     </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
@@ -923,7 +923,7 @@
                    </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                      <label for="first-name">Asunto</label>
+                      <label for="first-name">Entidad/cargo</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -1930,13 +1930,13 @@ export default {
         doc.text("Señor(a) (es)", 30, 60);
         doc.setFontSize(11).setFont(undefined, 'normal');
 
-        doc.text(`${this.senor}`, 30, 74, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+        doc.text(`${this.senor}`, 30, 74, {align: 'justify',maxWidth:80});
         doc.line(30, 75, 104, 75);
 
-        doc.text(`${this.asunto}`, 30, 79, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+        doc.text(`${this.asunto}`, 30, 79, {align: 'justify',maxWidth:80});
         doc.line(30, 80, 104, 80);
 
-        doc.text(`Ciudad: ${this.ciudad}`, 30, 84, {align: 'justify',lineHeightFactor: 1,maxWidth:80});
+        doc.text(`Ciudad: ${this.ciudad}`, 30, 84, {align: 'justify',maxWidth:80});
 
         doc.setFont(undefined, 'bold')
         doc.text("Asunto: Autorización para Zarpe.", 30, 105);
