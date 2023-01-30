@@ -726,8 +726,8 @@
                   <strong><label>RESULTADO DE LA INSPECCIÓN (Inspection Result)</label></strong>
                     <div class="md-layout-item">
                         <label>Se autoriza el zarpe (Departure Authorization)</label>
-                      <md-radio v-model="autorization" value="1"><small>SI</small></md-radio>
-                      <md-radio v-model="autorization" value="0" class="md-primary">NO</md-radio>
+                      <md-radio v-model="autorization" class="md-primary" value="1"><small>SI</small></md-radio>
+                      <md-radio v-model="autorization" value="0" >NO</md-radio>
                     </div>
                     <md-divider style="background-color: #2090E8 " ></md-divider>
                   <br>  

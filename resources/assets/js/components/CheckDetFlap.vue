@@ -63,7 +63,12 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-35">                 
+               
+
+                  <!-- ESPACIO PARA LA HORA       -->
+                </div>  
+                <div class="md-layout">
+                     <div class="md-layout-item">                 
                       <md-datepicker 
                         md-clearable :class="getValidationClass('date')"
                         v-model="form.date"
@@ -79,10 +84,6 @@
                         </span>
                       </md-datepicker>                   
                   </div> &nbsp;&nbsp;&nbsp;
-
-                  <!-- ESPACIO PARA LA HORA       -->
-                </div>  
-                <div class="md-layout">
                   <div class="md-layout-item">
                       <label class="text-muted">Regional (Regional)</label>
                       <multiselect v-model="arrayRegl" :options="arrayRegional"
