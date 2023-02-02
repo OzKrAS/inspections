@@ -621,7 +621,7 @@
                           autocomplete="given-name"
                           v-model="eyeMesh"
                           :disabled="sending"
-                          type="number"
+                          type="text"
                         />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -662,7 +662,7 @@
                           autocomplete="given-name"
                           v-model="eyeFlake"
                           :disabled="sending"
-                          type="number"
+                          type="text"
                         />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
