@@ -304,8 +304,8 @@
                               <td colspan="8"> </td>
                           </tr>
                           <tr style="background-color: darkgray;">
-                              <td align="right"><h3><strong>TOTAL DESEMBARCADO Kg.</strong></h3></td>
-                              <td align="right"><h3><strong>{{totalDesemb.toLocaleString('de-DE')}}</strong></h3></td>
+                              <td align="right"><h5><strong>TOTAL DESEMBARCADO Kg.</strong></h5></td>
+                              <td align="right"><h5><strong>{{totalDesemb.toLocaleString('de-DE')}}</strong></h5></td>
                               <td colspan="8"> </td>
                           </tr>
                           <!-- <tr>

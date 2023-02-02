@@ -21,7 +21,7 @@ class AutoFisherController extends Controller
     public function selectZoneAutoFisher(Request $request)
     {
         $autoFisher = AutoFisher::select('id','name')
-            ->orderBy('name', 'asc')->get();
+            ->orderBy('id', 'asc')->get();
         return [
             'autoFisher' => $autoFisher
         ];
