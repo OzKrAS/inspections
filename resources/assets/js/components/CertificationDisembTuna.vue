@@ -296,16 +296,16 @@
                       </tbody>
                         <tfoot>
                           <tr style="background-color: darkgray;">
-                              <td align="right"><h4><strong>SubTotal Kg.</strong></h4></td>
-                              <td align="right">{{totalYellow.toLocaleString('de-DE')}}</td>
-                              <td align="right">{{totalBarrilete.toLocaleString('de-DE')}}</td>
-                              <td align="right">{{totalPatudo.toLocaleString('de-DE')}}</td>
-                              <td align="right">{{totalOther.toLocaleString('de-DE')}}</td>
+                              <td align="right"><strong>SubTotal Kg.</strong></td>
+                              <td align="right"><strong> {{totalYellow.toLocaleString('de-DE')}}</strong></td>
+                              <td align="right"><strong> {{totalBarrilete.toLocaleString('de-DE')}}</strong></td>
+                              <td align="right"><strong> {{totalPatudo.toLocaleString('de-DE')}}</strong></td>
+                              <td align="right"><strong> {{totalOther.toLocaleString('de-DE')}}</strong></td>
                               <td colspan="8"> </td>
                           </tr>
                           <tr style="background-color: darkgray;">
-                              <td align="right"><h5><strong>TOTAL DESEMBARCADO Kg.</strong></h5></td>
-                              <td align="right"><h5><strong>{{totalDesemb.toLocaleString('de-DE')}}</strong></h5></td>
+                              <td align="right"><strong>TOTAL DESEMBARCADO Kg.</strong></td>
+                              <td align="right"><strong>{{totalDesemb.toLocaleString('de-DE')}}</strong></td>
                               <td colspan="8"> </td>
                           </tr>
                           <!-- <tr>
@@ -440,7 +440,7 @@ export default {
           dateEndFaena: format(now, dateFormat),
       },
 
-      poundRating: "",
+      poundRating:"menos de 3",
       yellowFin: 0,
       barrilete: 0,
       patudo: 0,
@@ -518,36 +518,36 @@ export default {
 
     totalYellow: function(){
             var total = 0;
-            for (let i = 0; i < this.arrayYellow.length; i++) {
-                total +=  parseInt(this.arrayYellow[i].saldo);
+            for (let i = 0; i < this.arrayTarget.length; i++) {
+                total +=  parseInt(this.arrayTarget[i].yellowFin);
             }
             return total;
     },
     totalBarrilete: function(){
             var total2 = 0;
-            for (let i = 0; i < this.arrayBarrilete.length; i++) {
-                total2 = total2 + parseInt(this.arrayBarrilete[i].saldo);
+            for (let i = 0; i < this.arrayTarget.length; i++) {
+                total2 = total2 + parseInt(this.arrayTarget[i].barrilete);
             }
             return total2;
     },
     totalPatudo: function(){
             var total3 = 0;
-            for (let i = 0; i < this.arrayPatudo.length; i++) {
-                total3 = total3 + parseInt(this.arrayPatudo[i].saldo);
+            for (let i = 0; i < this.arrayTarget.length; i++) {
+                total3 = total3 + parseInt(this.arrayTarget[i].patudo);
             }
             return total3;
     },
     totalOther: function(){
             var total4 = 0;
-            for (let i = 0; i < this.arrayOther.length; i++) {
-                total4 = total4 + parseInt(this.arrayOther[i].saldo);
+            for (let i = 0; i < this.arrayTarget.length; i++) {
+                total4 = total4 + parseInt(this.arrayTarget[i].other);
             }
             return total4;
     },
     totalDesemb: function(){
             var total5 = 0;
-            for (let i = 0; i < this.arrayOther.length; i++) {
-                total5 += + parseInt(this.totalOther) + parseInt(this.totalYellow) + parseInt(this.totalBarrilete) + parseInt(this.totalPatudo);
+            for (let i = 0; i < this.arrayTarget.length; i++) {
+                total5 =  parseInt(this.totalOther) + parseInt(this.totalYellow) + parseInt(this.totalBarrilete) + parseInt(this.totalPatudo);
             }
             return total5;
     },
@@ -617,7 +617,7 @@ export default {
        this.arrayTarget.splice(index,1);
     },
     clearTarget() {
-      this.poundRating = null;
+      this.poundRating = "menos de 3";
       this.yellowFin = 0;
       this.barrilete = 0;
       this.patudo = 0;

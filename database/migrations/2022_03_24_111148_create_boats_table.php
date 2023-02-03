@@ -22,6 +22,7 @@ class CreateBoatsTable extends Migration
             $table->date('dateValidityPat');
             $table->date('dateValid');
             $table->date('dateResolution');
+            $table->string('tp_boat');
 
             $table->integer('id_flag')->unsigned();
             $table->foreign('id_flag')->references('id')->on('flags');
