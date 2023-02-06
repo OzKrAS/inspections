@@ -1070,8 +1070,8 @@ export default {
       var total1 = me.arrayTarget.push({
         nameCommon1:this.nameCommon1,
         nameBoat:this.form.nameBoat,
-        flag:this.arrayFg.name,
-        id_flag:this.arrayFg.id,
+        flag:this.arrayFgDonor.name,
+        id_flag:this.arrayFgDonor.id,
         noIdOmi:this.form.noIdOmi,
         placeTransfer:this.form.placeTransfer,
         dateTransfer:this.form.dateTransfer,
@@ -1083,8 +1083,8 @@ export default {
       var total2 = me.arrayTargetAct.push({
       nameCommon1:this.nameCommon1,
         nameBoat:this.form.nameBoat,
-        flag:this.arrayFg.name,
-        id_flag:this.arrayFg.id,
+        flag:this.arrayFgDonor.name,
+        id_flag:this.arrayFgDonor.id,
         noIdOmi:this.form.noIdOmi,
         placeTransfer:this.form.placeTransfer,
         dateTransfer:this.form.dateTransfer,
