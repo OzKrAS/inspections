@@ -434,7 +434,7 @@
                       </thead>
                       <tbody v-if="arrayTarget.length">
                         <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
-                          <td v-text="target.nameBoatCargo"></td>
+                          <td v-text="target.nameBoat"></td>
                           <td v-text="target.flag"></td>
                           <td v-text="target.noIdOmi"></td>
                           <td v-text="target.placeTransfer"></td>
@@ -1070,7 +1070,8 @@ export default {
       var total1 = me.arrayTarget.push({
         nameCommon1:this.nameCommon1,
         nameBoat:this.form.nameBoat,
-        flag:this.arrayFg.id,
+        flag:this.arrayFg.name,
+        id_flag:this.arrayFg.id,
         noIdOmi:this.form.noIdOmi,
         placeTransfer:this.form.placeTransfer,
         dateTransfer:this.form.dateTransfer,
@@ -1081,8 +1082,9 @@ export default {
       });
       var total2 = me.arrayTargetAct.push({
       nameCommon1:this.nameCommon1,
-        nameBoat:this.form.nameBoatCargo,
-        flag:this.arrayFg.id,
+        nameBoat:this.form.nameBoat,
+        flag:this.arrayFg.name,
+        id_flag:this.arrayFg.id,
         noIdOmi:this.form.noIdOmi,
         placeTransfer:this.form.placeTransfer,
         dateTransfer:this.form.dateTransfer,
