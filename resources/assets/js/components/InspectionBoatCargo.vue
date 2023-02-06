@@ -405,15 +405,16 @@
                       <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field> 
                   </div>
-                  <br>
-                    <md-button
-                      type="button"
+                  <md-button
+                  type="button"
                       class="md-dense md-raised md-primary"
                       :disabled="sending"
                       @click="addItemTarget()"
                     >Agregar
-                    </md-button>
-                    </div>
+                  </md-button>
+                </div>
+                <br>
+                <br>
       
                 <div class="table-responsive">        
                     <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
@@ -784,10 +785,8 @@ export default {
         noIdOmi: "",
         placeTransfer: "",
         areasCapture: "",
-        species: "",
         shapeProduct: "",
         amount: "",
-        productLanded: "",
         nameOfficial: "",
         nameCaptain: "",
         nameBusiness: "",
@@ -878,18 +877,12 @@ export default {
       areasCapture: {
         required
       },
-      species: {
-        required
-      },
       shapeProduct: {
         required
       },
       amount: {
         required
-      },
-      productLanded: {
-        required
-      },
+      },  
       nameOfficial: {
         required
       },
@@ -1131,7 +1124,6 @@ export default {
       this.form.species = null;
       this.form.shapeProduct = null;
       this.form.amount = null;
-      this.form.productLanded = null;
       this.form.nameOfficial = null;
       this.form.nameCaptain = null;
       this.form.nameBusiness = null;
@@ -1163,10 +1155,8 @@ export default {
       this.form.placeTransfer = data["placeTransfer"];
       this.form.dateTransfer = data["dateTransfer"];
       this.form.areasCapture = data["areasCapture"];
-      this.form.species = data["species"];
       this.form.shapeProduct = data["shapeProduct"];
       this.form.amount = data["amount"];
-      this.form.productLanded = data["productLanded"];
       this.form.nameOfficial = data["nameOfficial"];
       this.form.nameCaptain = data["nameCaptain"];
       this.form.nameBusiness = data["nameBusiness"];
@@ -1287,15 +1277,14 @@ export default {
         placeTransfer: this.form.placeTransfer.toUpperCase(),
         dateTransfer: this.form.dateTransfer.toUpperCase(),
         areasCapture: this.form.areasCapture.toUpperCase(),
-        species: this.form.species.toUpperCase(),
         shapeProduct: this.form.shapeProduct,
         amount: this.form.amount.toUpperCase(),
-        productLanded: this.form.productLanded.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
         nameBusiness: this.form.nameBusiness.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
         another: this.another.toUpperCase(),
+        data:this.arrayTarget,
        
         'id_port': this.arrayPt.id,
         'id_portZarpe': this.arrayPtZarpe.id,
@@ -1331,10 +1320,8 @@ export default {
         placeTransfer: this.form.placeTransfer.toUpperCase(),
         dateTransfer: this.form.dateTransfer.toUpperCase(),
         areasCapture: this.form.areasCapture.toUpperCase(),
-        species: this.form.species.toUpperCase(),
         shapeProduct: this.form.shapeProduct,
         amount: this.form.amount.toUpperCase(),
-        productLanded: this.form.productLanded.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
         nameCaptain: this.form.nameCaptain.toUpperCase(),
         nameBusiness: this.form.nameBusiness.toUpperCase(),

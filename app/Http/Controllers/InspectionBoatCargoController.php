@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\InspectionBoatCargo;
 use App\Flag;
 use App\Ports;
+use App\DetailInspectionBoat;
 
 class InspectionBoatCargoController extends Controller
 {
@@ -25,10 +26,8 @@ class InspectionBoatCargoController extends Controller
                      'inspection_boat_cargos.noIdOmi',
                      'inspection_boat_cargos.placeTransfer',
                      'inspection_boat_cargos.areasCapture',
-                     'inspection_boat_cargos.species',
                      'inspection_boat_cargos.shapeProduct',
                      'inspection_boat_cargos.amount',
-                     'inspection_boat_cargos.productLanded',
                      'inspection_boat_cargos.nameOfficial',
                      'inspection_boat_cargos.nameCaptain',
                      'inspection_boat_cargos.nameBusiness',
@@ -62,10 +61,8 @@ class InspectionBoatCargoController extends Controller
         $inspections->noIdOmi = $request->noIdOmi;
         $inspections->placeTransfer = $request->placeTransfer;
         $inspections->areasCapture = $request->areasCapture;
-        $inspections->species = $request->species;
         $inspections->shapeProduct = $request->shapeProduct;
         $inspections->amount = $request->amount;
-        $inspections->productLanded = $request->productLanded;
         $inspections->nameOfficial = $request->nameOfficial;
         $inspections->nameCaptain = $request->nameCaptain;
         $inspections->nameBusiness = $request->nameBusiness;
@@ -81,6 +78,24 @@ class InspectionBoatCargoController extends Controller
         $inspections->id_flag = $request->id_flag;   
         $inspections->id_flagDonor = $request->id_flagDonor;   
         $inspections->save();
+
+        $detailinspection = $request->data;
+        foreach($detailinspection as $ep=>$det){
+            $objeto= new DetailInspectionBoat();
+            $objeto->id_inspection = $inspections->id;
+            $objeto->nameCommon1= $det['nameCommon1'];
+            $objeto->nameScientific1= $det['nameScientific1'];
+            $objeto->nameBoat= $det['nameBoat'];
+            $objeto->flag= $det['id_flag'];
+            $objeto->noIdOmi= $det['noIdOmi'];
+            $objeto->placeTransfer= $det['placeTransfer'];
+            $objeto->dateTransfer= $det['dateTransfer'];
+            $objeto->areasCapture= $det['areasCapture'];
+            $objeto->shapeProduct= $det['shapeProduct'];
+            $objeto->amount= $det['amount'];
+            $objeto->save();
+        }
+
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'
@@ -100,10 +115,8 @@ class InspectionBoatCargoController extends Controller
         $inspections->noIdOmi = $request->noIdOmi;
         $inspections->placeTransfer = $request->placeTransfer;
         $inspections->areasCapture = $request->areasCapture;
-        $inspections->species = $request->species;
         $inspections->shapeProduct = $request->shapeProduct;
         $inspections->amount = $request->amount;
-        $inspections->productLanded = $request->productLanded;
         $inspections->nameOfficial = $request->nameOfficial;
         $inspections->nameCaptain = $request->nameCaptain;
         $inspections->nameBusiness = $request->nameBusiness;
