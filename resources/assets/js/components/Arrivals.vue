@@ -873,7 +873,7 @@
                 </div>
 
             <div class="card-body">
-                    <div class="md-layout">
+                  <div class="md-layout">
                   <div class="md-layout-item">
                       <label class="text-muted">Nombre Común (Common Name)</label>
                       <multiselect v-model="arrayCName" :options="arrayCommonName"
@@ -1419,8 +1419,8 @@ export default {
       id_arrival: 0,
 
       arrayCName: {id:0, commonname:''},
-      arrayCName2: {id:0, commonname:''},
       arrayCommonName:[],
+      arrayCName2: {id:0, commonname:''},
       arrayReg: {id:0, name:'', nameMuni:''},
 	    arrayRegion: [],
       id_region: 0,
@@ -1937,8 +1937,6 @@ export default {
         .then(function (response) {
           var respuesta = response.data;
           me.arrayCommonName = respuesta.species;
-
-
         })
         .catch(function (error) {
           console.log(error);

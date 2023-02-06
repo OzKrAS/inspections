@@ -517,32 +517,16 @@ export default {
   computed: {
 
     totalYellow: function(){
-            var total = 0;
-            for (let i = 0; i < this.arrayTarget.length; i++) {
-                total +=  parseInt(this.arrayTarget[i].yellowFin);
-            }
-            return total;
+      return this.arrayTarget.reduce((total, item) => total + parseInt(item.yellowFin), 0);
     },
     totalBarrilete: function(){
-            var total2 = 0;
-            for (let i = 0; i < this.arrayTarget.length; i++) {
-                total2 = total2 + parseInt(this.arrayTarget[i].barrilete);
-            }
-            return total2;
+      return this.arrayTarget.reduce((total, item) => total + parseInt(item.barrilete), 0);
     },
     totalPatudo: function(){
-            var total3 = 0;
-            for (let i = 0; i < this.arrayTarget.length; i++) {
-                total3 = total3 + parseInt(this.arrayTarget[i].patudo);
-            }
-            return total3;
+      return this.arrayTarget.reduce((total, item) => total + parseInt(item.patudo), 0);
     },
     totalOther: function(){
-            var total4 = 0;
-            for (let i = 0; i < this.arrayTarget.length; i++) {
-                total4 = total4 + parseInt(this.arrayTarget[i].other);
-            }
-            return total4;
+      return this.arrayTarget.reduce((total, item) => total + parseInt(item.other), 0);
     },
     totalDesemb: function(){
             var total5 = 0;

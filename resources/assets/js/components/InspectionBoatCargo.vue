@@ -110,7 +110,7 @@
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-40">
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('businessColombia')">
                       <label for="first-name">Empresa Colombia (Colombian Company)</label>
                       <md-input
@@ -127,7 +127,7 @@
                       <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-40">
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('fullCargo')">
                       <label for="first-name">Total Carga (Ton.)(Total Cargo)</label>
                       <md-input
@@ -204,19 +204,19 @@
                   </div>&nbsp;&nbsp;&nbsp;   
                 </div>
                 <div class="md-layout">
-                  <div class="md-layout-item">
-                    <md-field>
-                        <label class="text-muted">Área de Operación (Operations área)</label>
-                        <md-select v-model="areaOperation" name="areaOperation" id="areaOperation" placeholder="Área de operación">
-                          <md-option value="atlantico">Atlantico</md-option>
-                          <md-option value="pacifico - OPO">Pacifico - OPO</md-option>
-                    </md-select>
-                    </md-field>
+                    <div class="md-layout-item">
+                      <label class="text-muted">Zona de Pesca Autorizada (Fishing Zone)</label>
+                      <multiselect v-model="arrayZoneAuto" :options="arrayZoneAutoFish"
+                          placeholder="Zona de Pesca Autorizada"
+                          :custom-label="nameWithZoneAutoFish"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
                       <label for="first-name">Otra (Another)</label>
-                      <md-input
+                      <md-input                    
                         name="first-name"
                         id="first-name"
                         autocomplete="given-name"
@@ -237,6 +237,7 @@
                 </div>  
 
                 <md-divider style="background-color: #2090E8 " ></md-divider>
+                <br>
                 
                 <div>
                   <strong>INFORMACIÓN DE TRANSBORDO SOBRE EMBARCACIONES DONANTES</strong>    
@@ -292,7 +293,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('placeTransfer')">
-                      <label for="first-name">Lugra de transbordo</label>
+                      <label for="first-name">Lugar de transbordo</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -346,28 +347,32 @@
                 <div>
                   <strong>PRODUCTO POR ESPECIE (TON.)</strong>    
                 </div>
-
-                <div class="md-layout">
+                               <div class="md-layout">
                   <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('species')">
-                      <label for="first-name">Especie</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.species"
-                        :disabled="sending"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.species.required"
-                      >Olvidaste ingresar el nombre de la especie</span>
-                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                    </md-field>
+                      <label class="text-muted">Nombre Común (Common Name)</label>
+                      <multiselect v-model="arrayCName" :options="arrayCommonName"
+                          @input="setCommonName()"
+                          placeholder="Seleccione una especie"
+                          :custom-label="nameWithCommonName"
+                          label="commonname"
+                          track-by="commonname">
+                      </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
+                      <div class="md-layout-item">
+                        <md-field md-clearable>
+                          <label for="first-name">Nombre Científico (Scientific Name)</label>
+                          <md-input
+                            name="first-name"
+                            id="first-name"
+                            autocomplete="given-name"
+                            v-model="nameScientific1"                          
+                            disabled
+                          />
+                        </md-field>
+                      </div>&nbsp;&nbsp;&nbsp;
+            <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('shapeProduct')">
-                      <label for="first-name">Forma del Producto</label>
+                      <label for="first-name">Presentación del Producto</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -382,7 +387,7 @@
                       <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-15">
+                  <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('amount')">
                       <label for="first-name">Cantidad</label>
                       <md-input
@@ -399,8 +404,91 @@
                       >Olvidaste ingresar la cantidad</span>
                       <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field> 
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item md-size-21">
+                  </div>
+                  <br>
+                    <md-button
+                      type="button"
+                      class="md-dense md-raised md-primary"
+                      :disabled="sending"
+                      @click="addItemTarget()"
+                    >Agregar
+                    </md-button>
+                    </div>
+      
+                <div class="table-responsive">        
+                    <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                      <thead>    
+                        <tr>
+                          <th>NOMBRE EMBARCACIÓN</th>    
+                          <th>BANDERA</th>              
+                          <th>IDENTIFICADOR OMI</th>    
+                          <th>PUERTO O MUELLE DE TRANSBORDO</th>    
+                          <th>FECHA DE TRANSBORDO</th>    
+                          <th>ÁREA DE CAPTURA FAO</th>    
+                          <th>NOMBRE COMÚN</th>    
+                          <th>NOMBRE CIENTÍFICO</th>    
+                          <th>PRESENTACIÓN DEL PRODUCTO</th>    
+                          <th>CANTIDAD</th>    
+                          <th style="width: 90px">Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody v-if="arrayTarget.length">
+                        <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
+                          <td v-text="target.nameBoatCargo"></td>
+                          <td v-text="target.flag"></td>
+                          <td v-text="target.noIdOmi"></td>
+                          <td v-text="target.placeTransfer"></td>
+                          <td v-text="target.dateTransfer"></td>
+                          <td v-text="target.areasCapture"></td>
+                          <td v-text="target.nameCommon1"></td>
+                          <td v-text="target.nameScientific1"></td>
+                          <td v-text="target.shapeProduct"></td>
+                          <td v-text="target.amount"></td>
+  
+                          <td>                      
+                            <button
+                              type="button"
+                              class="btn btn-danger btn-sm"
+                              data-tooltip
+                              title="Eliminar"
+                              @click="deleteTarget(index)"
+                            >
+                              <i class="icon-trash"></i>
+                            </button>
+                          </td>                          
+                        </tr>
+                          <tr style="background-color: darkgray;">
+                              <td colspan="9" align="right"><strong>TOTAL PRODUCTO DESEMBARCADO Kg.</strong></td>
+                              <td align="right"><strong>{{totalOther.toLocaleString('de-DE')}}</strong></td>
+                          </tr>
+                      </tbody>
+                      <tbody v-else>
+                        <tr>
+                          <td colspan="11" class="text-center">
+                            No existen elementos agregados 
+                          </td>
+                        </tr>
+                      </tbody>
+                        <tfoot>
+                          <tr>
+                            <th>NOMBRE EMBARCACIÓN</th>    
+                            <th>BANDERA</th>              
+                            <th>IDENTIFICADOR OMI</th>    
+                            <th>PUERTO O MUELLE DE TRANSBORDO</th>    
+                            <th>FECHA DE TRANSBORDO</th>        
+                            <th>ÁREA DE CAPTURA FAO</th>  
+                            <th>NOMBRE COMÚN</th>    
+                            <th>NOMBRE CIENTÍFICO</th>    
+                            <th>PRESENTACIÓN DEL PRODUCTO</th>    
+                            <th>CANTIDAD</th>   
+                            <th style="width: 90px">Opciones</th>
+                          </tr>
+                        </tfoot>
+                        <tbody>
+                        </tbody>
+                    </table>
+                  </div> 
+                  <!-- <div class="md-layout-item md-size-21">
                     <md-field md-clearable :class="getValidationClass('productLanded')">
                       <label for="first-name">Total Producto Desembarcado</label>
                       <md-input
@@ -414,10 +502,10 @@
                         class="md-error"
                         v-if="!$v.form.productLanded.required"
                       >Olvidaste ingresar el número de identidad</span>
-                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                      <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> 
                     </md-field> 
-                  </div>&nbsp;&nbsp;&nbsp;
-                </div>
+                  </div>&nbsp;&nbsp;&nbsp; -->
+            
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameOfficial')">
@@ -711,10 +799,16 @@ export default {
       another:"",
       notification: "",
       areaOperation: "",
+      nameScientific1: "",
 
       arrayInspectionBoatCargo: [],
       id_inspectionBoatCargo: 0,
 
+      arrayCName: {id:0, commonname:''},
+      arrayCommonName:[],
+      arrayZoneAuto: {id:0, name:''},
+	    arrayZoneAutoFish: [],
+      id_zoneAutoFisher: 0,
       arrayPt: {id:0, namePort:'',name:''},
 	    arrayPort: [],
       id_port: 0,
@@ -734,6 +828,8 @@ export default {
       sending: false,
 
       arrayData: [],
+      arrayTarget: [],
+      arrayTargetAct: [],
       modal: 0,
       tipoAccion: 0,
 
@@ -817,7 +913,9 @@ export default {
   },
 
   computed: {
-
+    totalOther: function(){
+      return this.arrayTarget.reduce((total, item) => total + parseInt(item.amount), 0);
+    }
   },
   components: {
 		vSelect,
@@ -892,6 +990,9 @@ export default {
     eliminarImg(index){
       this.images.splice(index, 1);
     },
+      nameWithCommonName ({ commonname }) {
+            return `${commonname}`
+    },
     onDrop(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -960,6 +1061,40 @@ export default {
           break;
       }
     },
+    setCommonName(){
+      this.nameScientific1= this.arrayCName.scientificname;
+      this.nameCommon1= this.arrayCName.commonname;
+    },
+    addItemTarget() {
+      let me = this;
+      var total1 = me.arrayTarget.push({
+        nameCommon1:this.nameCommon1,
+        nameBoat:this.form.nameBoat,
+        flag:this.arrayFg.id,
+        noIdOmi:this.form.noIdOmi,
+        placeTransfer:this.form.placeTransfer,
+        dateTransfer:this.form.dateTransfer,
+        areasCapture:this.form.areasCapture,
+        shapeProduct:this.form.shapeProduct,
+        amount:this.form.amount,
+        nameScientific1:this.nameScientific1
+      });
+      var total2 = me.arrayTargetAct.push({
+      nameCommon1:this.nameCommon1,
+        nameBoat:this.form.nameBoatCargo,
+        flag:this.arrayFg.id,
+        noIdOmi:this.form.noIdOmi,
+        placeTransfer:this.form.placeTransfer,
+        dateTransfer:this.form.dateTransfer,
+        areasCapture:this.form.areasCapture,
+        shapeProduct:this.form.shapeProduct,
+        amount:this.form.amount,
+        nameScientific1:this.nameScientific1
+      });
+      console.log("arrayTarget " + total2);
+      // this.mensaje("Captura objetivo agregado", "success");
+      me.clearTarget();
+    },
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
       if (field) {
@@ -1000,6 +1135,7 @@ export default {
       this.form.nameBusiness = null;
       this.form.observation = null;
       this.another = null;
+      this.arrayZoneAuto = {id:0, name:''};
       
       this.arrayPt = {id:0, namePort:'',name:''};
       this.arrayPtZarpe = {id:0, namePort:'',name:''};
@@ -1044,12 +1180,20 @@ export default {
 	    this.arrayFg.name = data["nameFlag"];
       this.arrayFgDonor.id = data["id_flagDonor"];
 	    this.arrayFgDonor.name = data["nameFlag"];
+      this.arrayZoneAuto.id = data["id_zoneAutoFisher"];
+			this.arrayZoneAuto.name = data["nameZoneAutoFisher"];
     },
     nameWithPort ({ namePort,name }) {
             return `${namePort} / ${name}  `
     },
     nameWithFlag ({ name }) {
             return `${name}`
+    },
+    nameWithZoneAutoFish ({ name }) {
+        return `${name}`
+    },
+    deleteTarget(index){
+       this.arrayTarget.splice(index,1);
     },
     selectFlag() {
             let me = this;
@@ -1077,6 +1221,20 @@ export default {
       (this.tipoAccion = 1), (me.listado = 0);
       this.edo=0;
     },
+        getCommonName() {
+      let me = this;
+      var url =
+        "/species";
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.arrayCommonName = respuesta.species;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
     hideForm() {
       this.edo = 1;
       this.listado = 1;
@@ -1098,6 +1256,16 @@ export default {
           console.log(error);
         });
     }, 
+        selectZoneAutoFisher() {
+            let me = this;
+            var url = "/zarpes/selectZoneAutoFisher";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayZoneAutoFish = respuesta.autoFisher;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
     saveData() {
       let me = this;
 
@@ -1110,7 +1278,7 @@ export default {
         businessColombia: this.form.businessColombia.toUpperCase(),
         fullCargo: this.form.fullCargo,
         nameBoatCargo: this.form.nameBoatCargo.toUpperCase(),
-        areaOperation: this.areaOperation.toUpperCase(),
+        areaOperation: this.arrayZoneAuto.id,
         notification: this.notification.toUpperCase(),
         nameBoat: this.form.nameBoat.toUpperCase(),
         noIdOmi: this.form.noIdOmi.toUpperCase(),
@@ -1154,7 +1322,7 @@ export default {
         businessColombia: this.form.businessColombia.toUpperCase(),
         fullCargo: this.form.fullCargo,
         nameBoatCargo: this.form.nameBoatCargo.toUpperCase(),
-        areaOperation: this.areaOperation.toUpperCase(),
+        areaOperation: this.arrayZoneAuto.id,
         notification: this.notification.toUpperCase(),
         nameBoat: this.form.nameBoat.toUpperCase(),
         noIdOmi: this.form.noIdOmi.toUpperCase(),
@@ -1283,8 +1451,10 @@ export default {
 
   mounted() {
     this.listData();
+    this.selectZoneAutoFisher();
     this.selectPort();
     this.selectFlag();
+    this.getCommonName();
   }
 };
 </script>

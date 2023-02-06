@@ -205,10 +205,8 @@
                             type="number"
                           />
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;          
-                    </div>
-                    <div class="md-layout">
-                      <div class="md-layout-item md-size-20">
+                      </div>&nbsp;&nbsp;&nbsp;   
+                            <div class="md-layout-item md-size-20">
                         <md-field md-clearable>
                           <label for="first-name">Peso (Kg)</label>
                           <md-input
@@ -233,8 +231,9 @@
                             type="number"
                           />
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;             
+                      </div>&nbsp;&nbsp;&nbsp;          
                     </div>
+
                     <p>
                       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Subir imagen
