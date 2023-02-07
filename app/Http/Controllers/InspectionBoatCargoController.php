@@ -86,7 +86,7 @@ class InspectionBoatCargoController extends Controller
             $objeto->nameCommon1= $det['nameCommon1'];
             $objeto->nameScientific1= $det['nameScientific1'];
             $objeto->nameBoat= $det['nameBoat'];
-            $objeto->flag= $det['id_flag'];
+            $objeto->flag= $det['flag'];
             $objeto->noIdOmi= $det['noIdOmi'];
             $objeto->placeTransfer= $det['placeTransfer'];
             $objeto->dateTransfer= $det['dateTransfer'];

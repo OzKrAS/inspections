@@ -45,11 +45,11 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('/img'),
+            'root' => storage_path('/app'),
         ],
         'images'=>[ 
             'driver'=> 'local',
-            'root'=>storage_path('images')
+            'root'=>storage_path('img')
         ],
         'public' => [
             'driver' => 'local',
@@ -57,6 +57,7 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+
 
         's3' => [
             'driver' => 's3',

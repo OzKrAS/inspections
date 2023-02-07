@@ -14,6 +14,9 @@ use App\DetailFisherAutArrival;
 use App\DetTargCaptArrivals;
 use App\DetFaunaCaptArrivals;
 use App\FishingGearMaterial;
+use App\DetailImgArrival;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class ArrivalController extends Controller
 {
@@ -97,6 +100,9 @@ class ArrivalController extends Controller
     public function store(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
+        
+        try {
+            DB::beginTransaction();
         $arrivals = new Arrival();
         $arrivals->insNo = $request->insNo;
         $arrivals->radioCall = $request->radioCall;
@@ -153,6 +159,63 @@ class ArrivalController extends Controller
         $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;
         $arrivals->id_company = $request->id_company;
         $arrivals->save();
+        //   $arrivals = Arrival::create([
+               // 'insNo' => $request->insNo,
+                // 'radioCall' => $request->radioCall,
+                // 'noResolution' => $request->noResolution,
+                // 'nameBoat' => $request->nameBoat,
+                // 'enrollment' => $request->enrollment,
+                // 'noPatent' => $request->noPatent,
+                // 'eyeMesh' => $request->eyeMesh,
+                // 'netWidth' => $request->netWidth,
+                // 'eyeFlake' => $request->eyeFlake,
+                // 'typeHook' => $request->typeHook,
+                // 'longNet' => $request->longNet,
+                // 'materialArt' => $request->materialArt,
+                // 'equipDevi' => $request->equipDevi,
+                // 'captain' => $request->captain,
+                // 'noOmi' => $request->noOmi,
+                // 'legalRepre' => $request->legalRepre,
+                // 'noAllCrew' => $request->noAllCrew,
+                // 'noCrewForeign' => $request->noCrewForeign,
+                // 'noCrewNational' => $request->noCrewNational,
+                // 'idOmi' => $request->idOmi,
+                // 'other' => $request->other,
+                // 'totalLongline' => $request->totalLongline,
+                // 'noDays' => $request->noDays,
+                // 'noAllHauls' => $request->noAllHauls,
+                // 'noHaulsNacional' => $request->noHaulsNacional,
+                // 'noHaulsInter' => $request->noHaulsInter,
+                // 'landedWeight' => $request->landedWeight,
+                // 'observation' => $request->observation,
+                // 'notification' => $request->notification,
+                // 'finalityArrival' => $request->finalityArrival,
+                // 'workDone' => $request->workDone,
+                // 'locationSystem' => $request->locationSystem,
+                // 'inspectorConclusions' => $request->inspectorConclusions,
+                // 'additionalComments' => $request->additionalComments,
+                // 'dateIns' => $request->dateIns,
+                // 'dateScale' => $request->dateScale,
+                // 'dateZarpe' => $request->dateZarpe,
+                // 'dateLatestArrival' => $request->dateLatestArrival,
+                // 'dateValidityPat' => $request->dateValidityPat,
+                // 'date' => $request->date,
+                // 'dateValidity' => $request->dateValidity,
+                // 'stateRectorPort' => $request->stateRectorPort,
+                // 'observationGeneral' => $request->observationGeneral,
+
+                // 'id_region' => $request->id_region,
+                // 'id_port' => $request->id_port,
+                // 'id_portZarpe' => $request->id_portZarpe,
+                // 'id_portArrival' => $request->id_portArrival,  
+                // 'id_flag' => $request->id_flag,
+                //     'id_nationality' => $request->id_nationality,
+                //     'id_orop' => $request->id_orop,
+                //     'id_material' => $request->id_material,
+                //     'id_zoneAutoFisher' => $request->id_zoneAutoFisher,
+                //     'id_company' => $request->id_company
+                //     ]);
+        $this->savePhoto($arrivals, $request);
 
 
         $detailarrivals = $request->fishery;
@@ -180,18 +243,30 @@ class ArrivalController extends Controller
             $objeto->capture2= $det['capture2'];
             $objeto->save();
         }
+
+         
+        DB::commit();
      $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'
             );
-        return response()->json($array,201);
+            
+            
+            return response()->json($array,201);
+        
 
+        } catch (\Exception $ex) {
+            DB::rollBack();
+               return response()->json(['status' => 'fail', 'msg' => 'Ha ocurrido un error al procesar la solicitud '.$ex->getMessage()], 500);
+           
 
+    }
     }
 
     public function update(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
+        
         $arrivals = Arrival::findOrFail($request->id);
         $arrivals->insNo = $request->insNo;
         $arrivals->radioCall = $request->radioCall;
@@ -249,6 +324,7 @@ class ArrivalController extends Controller
         // $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized;
         $arrivals->id_company = $request->id_company;
         $arrivals->save();
+     
 
 
         // $detailarrivals = $request->fishery;
@@ -312,5 +388,37 @@ class ArrivalController extends Controller
         $arrivals = DetailFisherAutArrival::select('id','id_fisheryAut','name')
         ->where('id_fisheryAut', $request->id_FisheryAut)->get();
         return ['fisheryAut' =>  $arrivals];
+    }
+    public function savePhoto($solicitud, $request)
+    {
+   
+        foreach($request->images as $ep=>$det){
+        $is_update_photo = strpos($det['img1'], 'data:image');
+        //Log::debug('FishermanController->savePhoto isUpdate: ' . $is_update_photo === 0);
+            if (!empty($det['img1']) && $is_update_photo === 0) {
+                $exploded = explode(',', $det['img1']);
+                $decoded = base64_decode($exploded[1]);
+                if (Str::contains($exploded[0], 'jpeg') || Str::contains($exploded[0], 'jpg')) {
+                    $extension = 'jpg';
+                } else {
+                    $extension = 'png';
+                }
+                $fileName = 'arrivals-' . $solicitud->nameBoat . '-' . Str::random(10) . '.' . $extension;
+                $path = public_path('img-arrivals-request/') . '/' . $fileName;
+                file_put_contents($path, $decoded);
+                $arrivals = new DetailImgArrival();
+                $arrivals->path = $fileName;
+                $arrivals->id_arrival = $solicitud->id;
+                $arrivals->save();
+
+            //     $array = array(
+            //     'res' => true,
+            //     'message' => 'Registro actualizado exitosamente'
+            //     );
+            // return response()->json($array,201);
+            }
+    }
+
+
     }
 }
