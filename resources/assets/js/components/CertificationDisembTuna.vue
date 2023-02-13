@@ -513,10 +513,10 @@ export default {
 return this.arrayTarget.map(item => {
       return {
         poundRating: item.poundRating,
-        yellowFin: parseFloat(item.yellowFin ),
-        barrilete: parseFloat(item.barrilete ),
-        patudo: parseFloat(item.patudo ),
-        other: parseFloat(item.other )
+        yellowFin: parseFloat(item.yellowFin ).toFixed(2),
+        barrilete: parseFloat(item.barrilete ).toFixed(2),
+        patudo: parseFloat(item.patudo ).toFixed(2),
+        other: parseFloat(item.other ).toFixed(2)
       }
     });
    
