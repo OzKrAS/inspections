@@ -110,10 +110,10 @@
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
 
-                <div style="text-align:center">
+                <div>
                   <strong>CERTIFICA</strong>
                 </div>
-                <div style="text-align:center">
+                <div>
                   <strong>QUE LA EMBARCACIÓN EN CUESTIÓN, DESEMBARCÓ EN PUERTO COLOMBIANO EL SIGUIENTE PRODUCTO CAPTURADO DURANTE LA FAENA DESCRITA A CONTINUACIÓN:</strong>
                 </div>
 
@@ -152,6 +152,15 @@
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
+                  <div class="md-layout-item">
+                      <label class="text-muted">Zona de Pesca Autorizada (Fishing Zone)</label>
+                      <multiselect v-model="form.ZoneFisher" :options="arrayZoneAutoFish"
+                          placeholder="Zona de Pesca Autorizada"
+                          :custom-label="nameWithZoneAutoFish"
+                          label="name"
+                          track-by="name">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('ZoneFisher')">
                       <label for="first-name">Zona de Pesca (Fishing Zone)</label>
@@ -460,6 +469,9 @@ export default {
       arrayComp: {id:0, name:''},
 	    arrayCompany: [],
       id_Company: 0,
+      arrayZoneAuto: {id:0, name:''},
+      arrayZoneAutoFish: [],
+      id_zoneAutoFisher: 0,
 
       edo:1,
       tipoAccion: 1,
@@ -631,7 +643,7 @@ export default {
       this.form.date = data["date"];
       this.form.dateBeginningFaena = data["dateBeginningFaena"];
       this.form.dateEndFaena = data["dateEndFaena"];
-      this.form.ZoneFisher = data["ZoneFisher"];
+      this.arrayZoneAuto.id = data["ZoneFisher"];
       this.form.observation = data["observation"];
 
       this.arrayPt.id = data["id_port"];
@@ -718,7 +730,7 @@ export default {
         date: this.form.date,
         dateBeginningFaena: this.form.dateBeginningFaena,
         dateEndFaena: this.form.dateEndFaena,
-        ZoneFisher: this.form.ZoneFisher.toUpperCase(),
+        ZoneFisher: this.arrayZoneAuto.id,
         observation: this.form.observation.toUpperCase(),
         target:this.arrayTarget,
 
@@ -735,6 +747,16 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+    },
+      selectZoneAutoFisher() {
+            let me = this;
+            var url = "/arrivals/selectZoneAutoFisher";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayZoneAutoFish = respuesta.autoFisher;
+                }).catch(function (error) {
+                    console.log(error);
+            });
     },
     updateData() {
       let me = this;
@@ -871,6 +893,7 @@ export default {
   },
 
   mounted() {
+    this.selectZoneAutoFisher();
     this.listData();
     this.selectPort();
     this.selectFlag();
