@@ -154,30 +154,14 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                       <label class="text-muted">Zona de Pesca Autorizada (Fishing Zone)</label>
-                      <multiselect v-model="form.ZoneFisher" :options="arrayZoneAutoFish"
+                      <multiselect v-model="arrayZoneAuto" :options="arrayZoneAutoFish"
                           placeholder="Zona de Pesca Autorizada"
                           :custom-label="nameWithZoneAutoFish"
                           label="name"
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('ZoneFisher')">
-                      <label for="first-name">Zona de Pesca (Fishing Zone)</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.ZoneFisher"
-                        :disabled="sending"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.ZoneFisher.required"
-                      >Olvidaste ingresar el nombre de la zona de pesca</span>
-                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                    </md-field>
-                  </div> &nbsp;&nbsp;&nbsp;
+
                   <div class="md-layout-item">
                     <label class="text-muted">Puerto de Desembarque (Landing Port)</label>
                       <multiselect v-model="arrayPt" :options="arrayPort"
@@ -276,8 +260,8 @@
                           <th style="width: 90px">Opciones</th>
                         </tr>
                       </thead>
-                      <tbody v-if="arrayTarget.length">
-                        <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
+                      <tbody v-if="decimalData.length">
+                        <tr v-for="(target,index) in decimalData" :key="`target-${index}`">
                           <td align="right" v-text="target.poundRating"></td>
                           <td align="right" v-text="target.yellowFin"></td>
                           <td align="right" v-text="target.barrilete"></td>
@@ -440,8 +424,7 @@ export default {
 		let now = new Date();
     return {
       form: {
-          nameBoat: "",
-          ZoneFisher: "",
+          nameBoat: "",         
           // nameOfficial: "",
           observation: "",
           date: format(now, dateFormat),
@@ -495,9 +478,6 @@ export default {
         nameBoat: {
           required
         },
-        ZoneFisher: {
-          required
-        },
         // nameOfficial: {
         //   required
         // },
@@ -528,6 +508,19 @@ export default {
 
   computed: {
 
+  decimalData() {
+
+return this.arrayTarget.map(item => {
+      return {
+        poundRating: item.poundRating,
+        yellowFin: parseFloat(item.yellowFin ),
+        barrilete: parseFloat(item.barrilete ),
+        patudo: parseFloat(item.patudo ),
+        other: parseFloat(item.other )
+      }
+    });
+   
+  },
     totalYellow: function(){
       return this.arrayTarget.reduce((total, item) => total + parseInt(item.yellowFin), 0);
     },
@@ -596,7 +589,7 @@ export default {
       var total1 = me.arrayTarget.push({
         poundRating:this.poundRating,
         yellowFin:this.yellowFin,
-        barrilete:this.barrilete,
+        barrilete:this.barrilete.toLocaleString('de-DE'),
         patudo:this.patudo,
         other:this.other,
       });
@@ -625,7 +618,7 @@ export default {
       this.form.date = null;
       this.form.dateBeginningFaena = null;
       this.form.dateEndFaena = null;
-      this.form.ZoneFisher = null;
+      this.arrayZoneAuto.id = null;
       this.form.observation = null;
       this.arrayTarget = [];
       this.arrayTargetAct = [];
@@ -646,7 +639,7 @@ export default {
       this.arrayZoneAuto.id = data["ZoneFisher"];
       this.form.observation = data["observation"];
 
-      this.arrayPt.id = data["id_port"];
+      this.arrayPt.id = data["id_port"];5 
       this.arrayPt.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
 	    this.arrayFg.name = data["nameFlag"];
@@ -661,6 +654,9 @@ export default {
             return `${name}`
     },
     nameWithCompany ({ name }) {
+            return `${name}`
+    },
+    nameWithZoneAutoFish ({ name }) {
             return `${name}`
     },
     selectFlag() {
@@ -768,7 +764,7 @@ export default {
         date: this.form.date,
         dateBeginningFaena: this.form.dateBeginningFaena,
         dateEndFaena: this.form.dateEndFaena,
-        ZoneFisher: this.form.ZoneFisher.toUpperCase(),
+        ZoneFisher: this.arrayZoneAuto.id,
         observation: this.form.observation.toUpperCase(),
         'target':this.arrayTargetAct,
 
