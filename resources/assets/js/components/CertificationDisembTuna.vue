@@ -513,10 +513,10 @@ export default {
 return this.arrayTarget.map(item => {
       return {
         poundRating: item.poundRating,
-        yellowFin: parseFloat(item.yellowFin ).toFixed(2),
-        barrilete: parseFloat(item.barrilete ).toFixed(2),
-        patudo: parseFloat(item.patudo ).toFixed(2),
-        other: parseFloat(item.other ).toFixed(2)
+        yellowFin: parseFloat(item.yellowFin ).toLocaleString('de-DE'),
+        barrilete: parseFloat(item.barrilete ).toLocaleString('de-DE'),
+        patudo: parseFloat(item.patudo ).toLocaleString('de-DE'),
+        other: parseFloat(item.other ).toLocaleString('de-DE')
       }
     });
    
@@ -589,7 +589,7 @@ return this.arrayTarget.map(item => {
       var total1 = me.arrayTarget.push({
         poundRating:this.poundRating,
         yellowFin:this.yellowFin,
-        barrilete:this.barrilete.toLocaleString('de-DE'),
+        barrilete:this.barrilete,
         patudo:this.patudo,
         other:this.other,
       });
