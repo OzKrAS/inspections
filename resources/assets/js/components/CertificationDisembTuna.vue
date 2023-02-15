@@ -509,17 +509,15 @@ export default {
   computed: {
 
   decimalData() {
-
-return this.arrayTarget.map(item => {
-      return {
-        poundRating: item.poundRating,
-        yellowFin: parseFloat(item.yellowFin ).toLocaleString('de-DE'),
-        barrilete: parseFloat(item.barrilete ).toLocaleString('de-DE'),
-        patudo: parseFloat(item.patudo ).toLocaleString('de-DE'),
-        other: parseFloat(item.other ).toLocaleString('de-DE')
-      }
-    });
-   
+    return this.arrayTarget.map(item => {
+          return {
+            poundRating: item.poundRating,
+            yellowFin: parseFloat(item.yellowFin ).toLocaleString('de-DE'),
+            barrilete: parseFloat(item.barrilete ).toLocaleString('de-DE'),
+            patudo: parseFloat(item.patudo ).toLocaleString('de-DE'),
+            other: parseFloat(item.other ).toLocaleString('de-DE')
+          }
+        });   
   },
     totalYellow: function(){
       return this.arrayTarget.reduce((total, item) => total + parseInt(item.yellowFin), 0);

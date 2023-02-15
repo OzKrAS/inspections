@@ -205,9 +205,9 @@
                 </div>
                 <div class="md-layout">
                     <div class="md-layout-item">
-                      <label class="text-muted">Zona de Pesca Autorizada (Fishing Zone)</label>
+                      <label class="text-muted">Área de operación (Operations Area)</label>
                       <multiselect v-model="arrayZoneAuto" :options="arrayZoneAutoFish"
-                          placeholder="Zona de Pesca Autorizada"
+                          placeholder="Área de operación"
                           :custom-label="nameWithZoneAutoFish"
                           label="name"
                           track-by="name">
@@ -440,11 +440,11 @@
                           <td v-text="target.noIdOmi"></td>
                           <td v-text="target.placeTransfer"></td>
                           <td v-text="target.dateTransfer"></td>
-                          <td v-text="target.areasCapture"></td>
+                          <td align="right" v-text="target.areasCapture"></td>
                           <td v-text="target.nameCommon1"></td>
                           <td v-text="target.nameScientific1"></td>
                           <td v-text="target.shapeProduct"></td>
-                          <td v-text="target.amount"></td>
+                          <td align="right" v-text="target.amount"></td>
   
                           <td>                      
                             <button
@@ -470,23 +470,7 @@
                           </td>
                         </tr>
                       </tbody>
-                        <tfoot>
-                          <tr>
-                            <th>NOMBRE EMBARCACIÓN</th>    
-                            <th>BANDERA</th>              
-                            <th>IDENTIFICADOR OMI</th>    
-                            <th>PUERTO O MUELLE DE TRANSBORDO</th>    
-                            <th>FECHA DE TRANSBORDO</th>        
-                            <th>ÁREA DE CAPTURA FAO</th>  
-                            <th>NOMBRE COMÚN</th>    
-                            <th>NOMBRE CIENTÍFICO</th>    
-                            <th>PRESENTACIÓN DEL PRODUCTO</th>    
-                            <th>CANTIDAD</th>   
-                            <th style="width: 90px">Opciones</th>
-                          </tr>
-                        </tfoot>
-                        <tbody>
-                        </tbody>
+          
                     </table>
                   </div> 
                   <!-- <div class="md-layout-item md-size-21">

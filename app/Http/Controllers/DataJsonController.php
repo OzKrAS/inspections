@@ -21,6 +21,8 @@ use App\PresenVerific;
 use App\Region;
 use App\Regional;
 use App\Zarpe;
+use App\FishingGearMaterial;
+use App\Municipality;
 
 class DataJsonController extends Controller
 {
@@ -32,12 +34,15 @@ class DataJsonController extends Controller
             'docks.id', 'docks.name','docks.arrival','docks.zarpe','docks.id_port',
             'ports.name as namePort')
             ->orderBy('docks.name', 'asc')->get();
+        $municipalities = Municipality::join('regions','municipalities.id_region','=','regions.id')
+        ->select('municipalities.id', 'municipalities.name', 'municipalities.id_region','regions.name as nameReg')->get();
         $regions = Region::all();
         $orops = Orop::all();
         $company = Company::all();
         $fishery = FisheryAuthorized::all();
         $autoFisher = AutoFisher::all();
         $nationality = Nationality::all();
+        $fishingMaterial = FishingGearMaterial::all();
 
         return response() -> json(
 
@@ -69,7 +74,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayReg",
                         "cons"=>3,
-                        "data"=>$regions
+                        "data"=>$municipalities
                     ],
                     [
                         "type"=>3,
@@ -141,7 +146,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPtZarpe",
                         "cons"=>11,
-                        "data"=>$ports
+                        "data"=>$docks
                     ],
                     [
                         "type"=>4,
@@ -159,7 +164,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPtArrival",
                         "cons"=>13,
-                        "data"=>$ports
+                        "data"=>$docks
                     ],
                     [
                         "type"=>4,
@@ -412,8 +417,9 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"materialArt",
                         "cons"=>40,
-                        "data"=>null
+                        "data"=>$fishingMaterial
                     ],
+             
                     [
                         "type"=>1,
                         "title"=>"EQUIPOS O DISPOSITIVOS REQUERIDOS",
@@ -490,6 +496,9 @@ class DataJsonController extends Controller
         $fishery = FisheryAuthorized::all();
         $autoFisher = AutoFisher::all();
         $nationality = Nationality::all();
+        $municipalities = Municipality::join('regions','municipalities.id_region','=','regions.id')
+        ->select('municipalities.id', 'municipalities.name', 'municipalities.id_region','regions.name as nameReg')->get();
+         $fishingMaterial = FishingGearMaterial::all();
 
         return response() -> json(
 
@@ -512,7 +521,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayReg",
                         "cons"=>2,
-                        "data"=>$regions
+                        "data"=>$municipalities
                     ],
                     [
                         "type"=>3,
@@ -521,7 +530,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPt",
                         "cons"=>3,
-                        "data"=>$ports
+                        "data"=>$docks
                     ],
                     [
                         "type"=>4,
@@ -593,7 +602,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPtZarpe",
                         "cons"=>11,
-                        "data"=>$ports
+                        "data"=>$docks
                     ],
                     [
                         "type"=>4,
@@ -611,7 +620,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPtArrival",
                         "cons"=>13,
-                        "data"=>$ports
+                        "data"=>$docks
                     ],
                     [
                         "type"=>4,
@@ -845,7 +854,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"materialArt",
                         "cons"=>39,
-                        "data"=>null
+                        "data"=> $fishingMaterial
                     ],
                     [
                         "type"=>10,
