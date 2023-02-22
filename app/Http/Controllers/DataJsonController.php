@@ -1009,6 +1009,7 @@ class DataJsonController extends Controller
     public function jsonDetFlap(){
         $regional = Regional::all();
         $company = Company::all();
+        $fishery = FisheryAuthorized::all();
 
         return response() -> json(
 
@@ -1071,12 +1072,12 @@ class DataJsonController extends Controller
                     ],
                     [
                         "type"=>1,
-                        "title"=>"PESQUERÍA AUTORIADA",
+                        "title"=>"PESQUERÍA AUTORIZADA",
                         "value"=>"VALOR_ASIGNADO_POR_USUARIO",
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"outhFhisher",
                         "cons"=>7,
-                        "data"=>null
+                        "data"=>$fishery
                     ],
                     [
                         "type"=>1,
@@ -1196,6 +1197,8 @@ class DataJsonController extends Controller
     public function jsonDetInch(){
         $regional = Regional::all();
         $company = Company::all();
+        $fishery = FisheryAuthorized::all();
+
 
         return response() -> json(
 
@@ -1254,7 +1257,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"enrollment",
                         "cons"=>6,
-                        "data"=>null
+                        "data"=>$fishery 
                     ],
                     [
                         "type"=>1,
@@ -1920,6 +1923,13 @@ class DataJsonController extends Controller
 
         $ports = Ports::all();
         $flags = Flag::all();
+        $docks = Dock::join('ports','docks.id_port','=','ports.id')
+        ->select(
+        'docks.id', 'docks.name','docks.arrival','docks.zarpe','docks.id_port',
+        'ports.name as namePort')
+        ->orderBy('docks.name', 'asc')->get();
+        $species = CommonSpecies::select('id','commonname','scientificname')
+            ->orderBy('commonname', 'asc')->get();
 
         return response() -> json(
 
@@ -1987,7 +1997,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPt",
                         "cons"=>7,
-                        "data"=>$ports
+                        "data"=>$docks
                     ],
                     [
                         "type"=>3,
@@ -2005,7 +2015,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPtZarpe",
                         "cons"=>9,
-                        "data"=>$ports
+                        "data"=>$docks
                     ],
                     [
                         "type"=>3,
@@ -2014,7 +2024,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPtDisemb",
                         "cons"=>10,
-                        "data"=>$ports
+                        "data"=>$docks
                     ],
                     [
                         "type"=>3,
@@ -2113,7 +2123,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"species",
                         "cons"=>21,
-                        "data"=>null
+                        "data"=>$species
                     ],
                     [
                         "type"=>1,
@@ -2187,6 +2197,12 @@ class DataJsonController extends Controller
         $flags = Flag::all();
         $company = Company::all();
         $ports = Ports::all();
+        $fishery = FisheryAuthorized::all();
+        $docks = Dock::join('ports','docks.id_port','=','ports.id')
+            ->select(
+            'docks.id', 'docks.name','docks.arrival','docks.zarpe','docks.id_port',
+            'ports.name as namePort')
+            ->orderBy('docks.name', 'asc')->get();
 
         return response() -> json(
 
@@ -2263,7 +2279,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"ZoneFisher",
                         "cons"=>8,
-                        "data"=>null
+                        "data"=> $fishery
                     ],
                     [
                         "type"=>3,
@@ -2272,7 +2288,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"arrayPt",
                         "cons"=>9,
-                        "data"=>$ports
+                        "data"=>$docks
                     ],
                     [
                         "type"=>2,
