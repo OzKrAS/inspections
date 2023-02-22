@@ -23,6 +23,7 @@ use App\Regional;
 use App\Zarpe;
 use App\FishingGearMaterial;
 use App\Municipality;
+use App\CommonSpecies;
 
 class DataJsonController extends Controller
 {
