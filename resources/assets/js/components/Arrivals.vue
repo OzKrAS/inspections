@@ -1632,8 +1632,9 @@ export default {
       console.log(this.myFiles);
     },
     onProcessFile(file) {
-         console.log("Se procesaron los archivos");
+      console.log("Se procesaron los archivos");
       console.log(this.myFiles);
+      
    
     },
     OnDragEnter(e) {
