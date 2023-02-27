@@ -71,6 +71,7 @@ class InspectionBoatCargoController extends Controller
         $inspections->notification = $request->notification;
         $inspections->areaOperation = $request->areaOperation;
         $inspections->observation = $request->observation;
+        $inspections->another = $request->another;
          
         $inspections->id_port = $request->id_port; 
         $inspections->id_portZarpe = $request->id_portZarpe;  

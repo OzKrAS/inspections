@@ -3219,10 +3219,10 @@
   "resolved" "https://registry.npmjs.org/filepond/-/filepond-3.9.0.tgz"
   "version" "3.9.0"
 
-"filepond@^4.28.2", "filepond@>=1.x <5.x", "filepond@>=3.1.2 <5.x", "filepond@>=3.x <5.x", "filepond@>=4.x <5.x":
-  "integrity" "sha512-D9JLsSMwAG8imNDYCLjk9qrkM4TXA8mR9VXpgnSn9FzBu7LroS/MfmTH45zHbujxLBdEeom75u3pK5EhwkNYkA=="
-  "resolved" "https://registry.npmjs.org/filepond/-/filepond-4.28.2.tgz"
-  "version" "4.28.2"
+"filepond@^4.30.4", "filepond@>=1.x <5.x", "filepond@>=3.1.2 <5.x", "filepond@>=3.x <5.x", "filepond@>=4.x <5.x":
+  "integrity" "sha512-FCwsMvG9iiEs6uobdDrTaKsCgsqys0NuLgPPD8n37AYVYBiiDkrPkk9MSIU5rT2FahYcL1bScYI9huIPtlzqyA=="
+  "resolved" "https://registry.npmjs.org/filepond/-/filepond-4.30.4.tgz"
+  "version" "4.30.4"
 
 "fill-range@^2.1.0":
   "integrity" "sha512-cnrcCbj01+j2gTG921VZPnHbjmdAf8oQV/iGeV2kZxGSyfYjjTyY79ErsK1WJWMpw6DaApEX72binqJE+/d+5Q=="

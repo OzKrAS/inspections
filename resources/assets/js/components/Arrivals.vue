@@ -1219,17 +1219,19 @@
                   <file-pond
                     name="test"
                     ref="pond"
-                    label-idle="Arrastre sus archivos de imagen aquí ..."
-             
-                    :allow-multiple="true"
-                     
+                    label-idle="Arrastre sus archivos de imagen aquí ..."             
+                    :allow-multiple="true"   
+                    credits="false" 
+                    v-bind:files="myFiles"    
+                     v-model="currentFiles"      
+                      allowImagePreview= true    
                     accepted-file-types="image/jpeg, image/png"
-                    v-bind:files="myFiles"   
-                 
-                    @processfile="onProcessFile"    
-                    @addfile="onAddFile"                                   
+                     @onprocessfiles="handleFilePondProcessfile"
+                                         
                     />
-
+    <div v-for="(item, index)  in this.currentFiles">
+            <input asp-for="filenames[i]" v-bind="item" type="hidden" />
+        </div>
     
                         <!-- <file-pond-plugin-image-preview></file-pond-plugin-image-preview> -->
                     <!-- <file-pond-plugin-file-poster /> -->
@@ -1311,6 +1313,13 @@
 
                 @click="validateData"
               >Guardar</md-button>
+              <md-button
+                type="submit"
+      
+                class="md-dense md-raised md-primary"
+
+                @click="onFilePondReady"
+              >Demo</md-button>
               <md-button
                 type="submit"
                 v-if="tipoAccion==2"
@@ -1489,6 +1498,7 @@ export default {
       arrayTa: [],
       arrayFauna: [],
 
+      currentFiles: [],
       arrayTargetAct: [],
       arrayTaAct: [],
       arrayFaunaAct: [],
@@ -1619,12 +1629,33 @@ export default {
   },
 
   methods: {
-   
-        onAddFile(error, file) {
-          console.log(this.myFiles);
+            handleFilePondProcessfile: function (error, file) {
+            console.log("FilePond succesfully processed file " + file);
+            this.currentFiles.push(file.filename);
+       
+        },
+      onFilePondReady() {
+        const pond = this.$refs.pond.$refs.filepond;
+
+        pond.processFiles().then(files => {
           const formData = new FormData();
-          formData.append('file', file.file);
-          console.log("FormData" +formData);
+          
+          files.forEach(file => {
+            formData.append('images[]', file, file.name);
+          });
+          
+          console.log(formData);
+        });
+    },
+        onAddFile(file) {
+          //console.log(this.file);
+      // const pond = this.$refs.pond.$refs.input.pond;
+        // const formData = new FormData();
+        // for (let i = 0; i < pond.getFiles().length; i++) {
+        //   const file = pond.getFiles()[i].file;
+        //   formData.append('file[]', file);
+        // }
+        //   console.log("FormData" +formData);
     },
        handleProcessFile(file) {
       // procesar el archivo
@@ -1634,7 +1665,7 @@ export default {
     onProcessFile(file) {
       console.log("Se procesaron los archivos");
       console.log(this.myFiles);
-      
+
    
     },
     OnDragEnter(e) {
@@ -1688,6 +1719,7 @@ export default {
       formData.append("laborat", this.form.laboratorio);
       formData.append("fecCerti", this.form.fecCertifica);
 
+      console.log('form data upload a'+formData);
       axios.post("/detcerti/registrar", formData).then((response) => {
         me.mensaje("Guardado", "Todos los certificados se han almacenado ");
         // this.$toastr.s("All images uplaoded successfully");
@@ -2104,7 +2136,7 @@ export default {
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
                     me.arrayMaterialArt = respuesta.materials;
-                    console.log(me.arrayMaterialArt + " arrayMAterial")
+              
                 }).catch(function (error) {
                     console.log(error);
             });
