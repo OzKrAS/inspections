@@ -59,8 +59,9 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noForm')">
-                      <label for="first-name">No. Formulario (Form Number)</label>
+                      <label for="first-name" class="">No. Formulario (Form Number)</label>
                       <md-input
+                      class="mt-3"
                         name="first-name"
                         id="first-name"
                         autocomplete="given-name"
@@ -76,6 +77,15 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
+                    <label class="text-muted">Lugar de Inspección (Inspection Place)</label>
+                        <multiselect v-model="arrayReg" :options="arrayRegion" class="multi"
+                          placeholder="Región/Municipio"
+                          :custom-label="nameWithRegion"
+                          label="name"
+                          track-by="name">
+                        </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <!-- <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('place')">
                       <label for="first-name">Lugar de Inspección (Inspection Place)</label>
                       <md-input
@@ -89,18 +99,19 @@
                         class="md-error"
                         v-if="!$v.form.place.required"
                       >Olvidaste ingresar el lugar</span>
-                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                     <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> 
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">                 
+                  </div>&nbsp;&nbsp;&nbsp; -->
+                  <div class="md-layout-item mt-3">                 
                         <md-datepicker 
+                      
                           md-clearable :class="getValidationClass('date')"
                           v-model="form.date"
                           @input="toString"
                           md-immediately
                           :md-model-type="String"
                           >
-                          <label>Seleccione Fecha (Date)</label>
+                          <label   >Seleccione Fecha (Date)</label>
                           <span
                             class="md-error"
                             v-if="!$v.form.date.required"
@@ -293,7 +304,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('placeTransfer')">
-                      <label for="first-name">Lugar de transbordo</label>
+                      <label for="first-name">Puero o muelle de transbordo</label>
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -760,7 +771,6 @@ export default {
 		let now = new Date();
     return {
       form: {
-        place: "",
         noForm: "",
         businessColombia: "",
         fullCargo: "",
@@ -787,6 +797,8 @@ export default {
       arrayInspectionBoatCargo: [],
       id_inspectionBoatCargo: 0,
 
+      arrayReg: {id:0, name:'', nameMuni:''},
+	    arrayRegion: [],
       arrayCName: {id:0, commonname:''},
       arrayCommonName:[],
       arrayZoneAuto: {id:0, name:''},
@@ -834,9 +846,7 @@ export default {
 
   validations: {
     form: {
-      place: {
-        required
-      },
+
       noForm: {
         required
       },
@@ -1038,6 +1048,16 @@ export default {
           break;
       }
     },
+    selectRegion() {
+        let me = this;
+        var url = "/municipalities/selectMuni";
+        axios.get(url).then(function (response) {
+                var respuesta = response.data;
+                me.arrayRegion = respuesta.municipalities;
+            }).catch(function (error) {
+                console.log(error);
+        });
+    },
     setCommonName(){
       this.nameScientific1= this.arrayCName.scientificname;
       this.nameCommon1= this.arrayCName.commonname;
@@ -1072,7 +1092,7 @@ export default {
       });
       console.log("arrayTarget " + total2);
       // this.mensaje("Captura objetivo agregado", "success");
-      me.clearTarget();
+      //me.clearTarget();
     },
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
@@ -1092,7 +1112,7 @@ export default {
     },
     clearForm() {
       this.$v.$reset();
-      this.form.place = null;
+      //this.arrayReg.name = "";
       this.form.date = null;
       this.form.noForm = null;
       this.form.businessColombia = null;
@@ -1126,7 +1146,7 @@ export default {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_inspectionBoatCargo = data["id"]);
-      this.form.place = data["place"];
+      this.arrayReg.name = data["place"];
       this.form.date = data["date"];
       this.form.noForm = data["noForm"];
       this.form.businessColombia = data["businessColombia"];
@@ -1158,6 +1178,9 @@ export default {
 	    this.arrayFgDonor.name = data["nameFlag"];
       this.arrayZoneAuto.id = data["id_zoneAutoFisher"];
 			this.arrayZoneAuto.name = data["nameZoneAutoFisher"];
+    },
+       nameWithRegion ({ nameMuni,name  }) {
+            return `${nameMuni} / ${name}`
     },
     nameWithPort ({ namePort,name }) {
             return `${namePort} / ${name}  `
@@ -1248,7 +1271,7 @@ export default {
       axios
         .post("/inspectionBoatCargo/save", {
     
-        place: this.form.place.toUpperCase(),
+        place: this.arrayReg.name,
         date: this.form.date,
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
@@ -1291,7 +1314,7 @@ export default {
       axios
         .put("/inspectionBoatCargo/update", {
         id: this.id_inspectionBoatCargo,
-        place: this.form.place.toUpperCase(),
+        place: this.arrayReg.id,
         date: this.form.date,
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
@@ -1422,8 +1445,9 @@ export default {
     }
   },
 
-  mounted() {
+  mounted() {    
     this.listData();
+    this.selectRegion();
     this.selectZoneAutoFisher();
     this.selectPort();
     this.selectFlag();
@@ -1580,6 +1604,14 @@ i.fa.fa-cloud-upload {
   color: red !important;
   font-weight: bold;
 }
+/* .multi{
+    min-height: 12px;
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #e8e8e8;
+    background: #fff;
+    font-size: 12px;
+} */
 .material-icons.Color1 { color: rgb(31, 33, 34); }
 .material-icons.Color2 { color: rgba(167, 142, 5, 0.849); }
 .material-icons.Color3 { color: rgb(12, 170, 91); }

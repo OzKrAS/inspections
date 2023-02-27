@@ -1216,6 +1216,23 @@
                 <!-- FIL SUBIR IMAGEN -->
                 <!-- SUBIR PDF -->
                  <p>
+                  <file-pond
+                    name="test"
+                    ref="pond"
+                    label-idle="Arrastre sus archivos de imagen aquí ..."
+             
+                    :allow-multiple="true"
+                     
+                    accepted-file-types="image/jpeg, image/png"
+                    v-bind:files="myFiles"   
+                 
+                    @processfile="onProcessFile"    
+                    @addfile="onAddFile"                                   
+                    />
+
+    
+                        <!-- <file-pond-plugin-image-preview></file-pond-plugin-image-preview> -->
+                    <!-- <file-pond-plugin-file-poster /> -->
                   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
                     Subir PDF
                   </button>
@@ -1313,7 +1330,19 @@
 
 <script>
 
+    // Import Vue FilePond
+    import   vueFilePond   from "vue-filepond";
+  
+    import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+    import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+    import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+    import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+    // Import FilePond styles
+    import FilePondPluginFilePoster from 'filepond-plugin-file-poster';
+    import 'filepond-plugin-file-poster/dist/filepond-plugin-file-poster.css';
+    import "filepond/dist/filepond.min.css";
 
+    const FilePond = vueFilePond(FilePondPluginFileValidateSize, FilePondPluginFileValidateType,FilePondPluginImagePreview,FilePondPluginFilePoster);
     import format from "date-fns/format";
     import { validationMixin } from "vuelidate";
     import Multiselect from "vue-multiselect";
@@ -1330,6 +1359,7 @@
     MdDialog,
 		MdList
     } from "vue-material/dist/components";
+
 
     Vue.use(Toasted,  {
         iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
@@ -1349,7 +1379,6 @@ export default {
 	props: ['ruta'],
 
 	data() {
-
 		Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
 		Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
 		Vue.material.locale.shortMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul','Ago','Sep','Oct','Nov','Dic'];
@@ -1471,7 +1500,7 @@ export default {
       ],
 
       edo: 1,
-
+    
       tipoAccion: 1,
       listado: 1,
       idMcpio: 0,
@@ -1492,12 +1521,18 @@ export default {
       isDraggingPDF: false,
       dragCountPDF: 0,
       filesPDF: [],
-      pdf: []
+      myFiles: [],
+      selectedImage: null,
+      
+      pdf: [],
+      
     };
   },
   components: {
 		vSelect,
-		Multiselect
+		Multiselect,
+     FilePond,
+     FilePondPluginFilePoster,
 	},
 
   validations: {
@@ -1584,6 +1619,23 @@ export default {
   },
 
   methods: {
+   
+        onAddFile(error, file) {
+          console.log(this.myFiles);
+          const formData = new FormData();
+          formData.append('file', file.file);
+          console.log("FormData" +formData);
+    },
+       handleProcessFile(file) {
+      // procesar el archivo
+              console.log("Se procesaron los archivos");
+      console.log(this.myFiles);
+    },
+    onProcessFile(file) {
+         console.log("Se procesaron los archivos");
+      console.log(this.myFiles);
+   
+    },
     OnDragEnter(e) {
       e.preventDefault();
 
@@ -1628,7 +1680,7 @@ export default {
       const formData = new FormData();
 
       this.files.forEach((file) => {
-        formData.append("images[]", file, file.name);
+        formData.append("myFiles[]", file, file.name);
       });
       formData.append("idEquipo", this.idEquipo);
       formData.append("numCerti", this.form.numCertifica);
@@ -1703,6 +1755,11 @@ export default {
     // },
     alerta() {
        alert('test');
+    },
+        handleFilePondInit: function () {
+      console.log("FilePond has initialized");
+
+      // FilePond instance methods are available on `this.$refs.pond`
     },
     setBoats(){
       this.form.noResolution= this.arrayBt.noResolution;
@@ -2501,6 +2558,7 @@ export default {
   },
 
   mounted() {
+    
     this.listData();
     this.selectRegion();
     this.selectPort();
@@ -2517,7 +2575,9 @@ export default {
 };
 </script>
 <style>
-
+     .filepond--item {
+        width: calc(50% - 0.5em);
+      }
 .div-error {
   display: flex;
   justify-content: center;
@@ -2666,8 +2726,42 @@ i.fa.fa-cloud-upload {
   color: red !important;
   font-weight: bold;
 }
+
+.modal {
+  display: block; /* Para que se muestre el modal. */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* .filepond--wrapper .filepond--root .filepond--panel-root {
+  background-color: red !important;
+} */
+
 .material-icons.Color1 { color: rgb(31, 33, 34); }
 .material-icons.Color2 { color: rgba(167, 142, 5, 0.849); }
 .material-icons.Color3 { color: rgb(12, 170, 91); }
 .material-icons.Color4 { color: rgba(228, 54, 54, 0.863); }
+
 </style>
