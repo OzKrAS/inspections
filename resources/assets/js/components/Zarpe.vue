@@ -1578,7 +1578,7 @@ export default {
       this.arrayComp.name= this.arrayBt.nameCompany;
       this.form.nameBoat= this.arrayBt.nameBoat;
       this.form.noPatent= this.arrayBt.noPatent;
-      this.arrayFg.id= this.arrayBt.id;
+      this.arrayFg.id= this.arrayBt.id_flag;
       this.arrayFg.name= this.arrayBt.nameFlag;
     },
     showUpdate(data = []) {

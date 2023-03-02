@@ -1223,23 +1223,22 @@
                     :allow-multiple="true"   
                     credits="false" 
                     v-bind:files="myFiles"    
-                     v-model="currentFiles"      
+                        
                       allowImagePreview= true    
                     accepted-file-types="image/jpeg, image/png"
                      @onprocessfiles="handleFilePondProcessfile"
+                   
                                          
                     />
-    <div v-for="(item, index)  in this.currentFiles">
-            <input asp-for="filenames[i]" v-bind="item" type="hidden" />
-        </div>
-    
+
+   
                         <!-- <file-pond-plugin-image-preview></file-pond-plugin-image-preview> -->
                     <!-- <file-pond-plugin-file-poster /> -->
                   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
                     Subir PDF
                   </button>
                 </p>
-                <div class="collapse" id="collapseExample1">
+                <div class="collapse" id="collapseExample1">p
                   <div class="card card-body">
                     <div
                       class="uploader1"
@@ -1365,7 +1364,7 @@
 		MdMenu,
 		MdSwitch,
 		MdDatepicker,
-    MdDialog,
+    MdAutocomplete,
 		MdList
     } from "vue-material/dist/components";
 
@@ -1381,6 +1380,7 @@
     Vue.use(MdSwitch);
     Vue.use(MdList);
     Vue.use(MdDatepicker);
+    Vue.use(MdAutocomplete);
     import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
 
 export default {
@@ -1438,6 +1438,7 @@ export default {
       noCrewForeign: "",
       noCrewNational: "",
 
+      
       nameCommon1: "",
       nameScientific1: "",
       capture1: "",
@@ -1494,6 +1495,7 @@ export default {
 	    arrayMaterialArt: [],
       id_material: 0,
 
+      countryList: [],
       arrayTarget: [],
       arrayTa: [],
       arrayFauna: [],
@@ -1533,7 +1535,7 @@ export default {
       filesPDF: [],
       myFiles: [],
       selectedImage: null,
-      
+      formData: null,
       pdf: [],
       
     };
@@ -1625,13 +1627,32 @@ export default {
   },
 
   computed: {
+    fechaFormateada() {
+       let fecha= format(now, dateFormat)
+      if (this.arrayBt.dateValidityPat === '0000-00-00') {
+        return fecha
+      } else {
+        return this.arrayBt.dateValidityPat
+      }
+    }
+  
 
   },
 
   methods: {
-            handleFilePondProcessfile: function (error, file) {
-            console.log("FilePond succesfully processed file " + file);
-            this.currentFiles.push(file.filename);
+            handleFilePondProcessfile: function (files) {
+
+      for (let i = 0; i < files.length; i++) {
+        this.myFiles.push(files[i].file);
+      }
+      //              this.formData = new FormData();
+      // for (let i = 0; i < files.length; i++) {
+      //   this.formData.append('files[]', files[i].file);
+      // }
+           // console.log("FilePond succesfully processed file " + file);
+           // this.currentFiles.push(file);
+       
+   
        
         },
       onFilePondReady() {
@@ -1648,6 +1669,8 @@ export default {
         });
     },
         onAddFile(file) {
+      //           this.formData = new FormData();
+      // this.formData.append('file', file.file, file.file.name);
           //console.log(this.file);
       // const pond = this.$refs.pond.$refs.input.pond;
         // const formData = new FormData();
@@ -1794,11 +1817,25 @@ export default {
 
       // FilePond instance methods are available on `this.$refs.pond`
     },
+     getCountries (searchTerm) {
+        this.countryList = new Promise(resolve => {
+          window.setTimeout(() => {
+            if (!searchTerm) {
+              resolve(this.arrayFlag)
+            } else {
+              const term = searchTerm.toLowerCase()
+
+              resolve(this.arrayFlag.filter(({ name }) => name.toLowerCase().includes(term)))
+            }
+          }, 500)
+        })
+      }
+    ,
     setBoats(){
       this.form.noResolution= this.arrayBt.noResolution;
       this.form.enrollment= this.arrayBt.enrollment;
       this.form.dateResolution= this.arrayBt.dateResolution;
-      this.form.dateValidityPat= this.arrayBt.dateValidityPat;
+      this.form.dateValidityPat= this.fechaFormateada();
       this.form.dateValidity= this.arrayBt.dateValid;
       this.arrayComp.id= this.arrayBt.id_company;
       this.arrayComp.name= this.arrayBt.nameCompany;
@@ -1854,7 +1891,7 @@ export default {
 
       if (!this.$v.$invalid) {
         this.saveData();
-        this.clearForm();
+        
       }
     },
     addItemTarget() {
@@ -2329,8 +2366,8 @@ export default {
         })
         .then(function(response) {
           me.hideForm();
-          me.message("Guardado", "Guardo ");
-          me.listData();
+          me.message("Guardado", "Guardo ");    
+          this.clearForm();    
         })
         .catch(function(error) {
           console.log(error);
