@@ -225,24 +225,24 @@ class ArrivalController extends Controller
             $objeto->name= $det['name'];
             $objeto->save();
         }
-        // $detailarrivalstarget = $request->target;
-        // foreach($detailarrivalstarget as $ep=>$det){
-        //     $objeto= new DetTargCaptArrivals();
-        //     $objeto->id_target = $arrivals->id;
-        //     $objeto->nameCommon1= $det['nameCommon1'];
-        //     $objeto->nameScientific1= $det['nameScientific1'];
-        //     $objeto->capture1= $det['capture1'];
-        //     $objeto->save();
-        // }
-        $detailarrivalsfauna = $request->fauna;
-        foreach($detailarrivalsfauna as $ep=>$det){
-            $objeto= new DetFaunaCaptArrivals();
-            $objeto->id_fauna = $arrivals->id;
-            $objeto->nameCommon2= $det['nameCommon2'];
-            $objeto->nameScientific2= $det['nameScientific2'];
-            $objeto->capture2= $det['capture2'];
+        $detailarrivalstarget = $request->target;
+        foreach($detailarrivalstarget as $ep=>$det){
+            $objeto= new DetTargCaptArrivals();
+            $objeto->id_target = $arrivals->id;
+            $objeto->nameCommon1= $det['nameCommon1'];
+            $objeto->nameScientific1= $det['nameScientific1'];
+            $objeto->capture1= $det['capture1'];
             $objeto->save();
         }
+        // $detailarrivalsfauna = $request->fauna;
+        // foreach($detailarrivalsfauna as $ep=>$det){
+        //     $objeto= new DetFaunaCaptArrivals();
+        //     $objeto->id_fauna = $arrivals->id;
+        //     $objeto->nameCommon2= $det['nameCommon2'];
+        //     $objeto->nameScientific2= $det['nameScientific2'];
+        //     $objeto->capture2= $det['capture2'];
+        //     $objeto->save();
+        // }
 
          
         DB::commit();
