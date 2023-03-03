@@ -225,15 +225,15 @@ class ArrivalController extends Controller
             $objeto->name= $det['name'];
             $objeto->save();
         }
-        $detailarrivalstarget = $request->target;
-        foreach($detailarrivalstarget as $ep=>$det){
-            $objeto= new DetTargCaptArrivals();
-            $objeto->id_target = $arrivals->id;
-            $objeto->nameCommon1= $det['nameCommon1'];
-            $objeto->nameScientific1= $det['nameScientific1'];
-            $objeto->capture1= $det['capture1'];
-            $objeto->save();
-        }
+        // $detailarrivalstarget = $request->target;
+        // foreach($detailarrivalstarget as $ep=>$det){
+        //     $objeto= new DetTargCaptArrivals();
+        //     $objeto->id_target = $arrivals->id;
+        //     $objeto->nameCommon1= $det['nameCommon1'];
+        //     $objeto->nameScientific1= $det['nameScientific1'];
+        //     $objeto->capture1= $det['capture1'];
+        //     $objeto->save();
+        // }
         $detailarrivalsfauna = $request->fauna;
         foreach($detailarrivalsfauna as $ep=>$det){
             $objeto= new DetFaunaCaptArrivals();
