@@ -215,16 +215,16 @@ class ArrivalController extends Controller
                 //     'id_zoneAutoFisher' => $request->id_zoneAutoFisher,
                 //     'id_company' => $request->id_company
                 //     ]);
-        $this->savePhoto($arrivals, $request);
+        //$this->savePhoto($arrivals, $request);
 
 
-        // $detailarrivals = $request->fishery;
-        // foreach($detailarrivals as $ep=>$det){
-        //     $objeto= new DetailFisherAutArrival();
-        //     $objeto->id_fisheryAut = $arrivals->id;
-        //     $objeto->name= $det['name'];
-        //     $objeto->save();
-        // }
+        $detailarrivals = $request->fishery;
+        foreach($detailarrivals as $ep=>$det){
+            $objeto= new DetailFisherAutArrival();
+            $objeto->id_fisheryAut = $arrivals->id;
+            $objeto->name= $det['name'];
+            $objeto->save();
+        }
         $detailarrivalstarget = $request->target;
         foreach($detailarrivalstarget as $ep=>$det){
             $objeto= new DetTargCaptArrivals();
