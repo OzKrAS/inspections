@@ -102,6 +102,16 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
 
                 <div class="card-body">             
                   <div class="md-layout"> 
+                  <div class="md-layout-item">
+                      <label class="text-muted">Nombre Común (Common Name)</label>
+                      <multiselect v-model="arrayCName" :options="arrayCommonName"
+                          @input="setCommonName()"
+                          placeholder="Seleccione una especie"
+                          :custom-label="nameWithCommonName"
+                          label="commonname"
+                          track-by="commonname">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item">                 
                       <md-field md-clearable>
                         <label for="first-name">Nombre Científico</label>
@@ -113,8 +123,9 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                           :disabled="sending"
                         />
                       </md-field>
-                    </div>&nbsp;&nbsp;&nbsp;    
-                    <div class="md-layout-item">     
+                    </div>&nbsp;&nbsp;&nbsp;   
+                     
+                    <!-- <div class="md-layout-item">     
                       <md-field md-clearable>
                         <label for="first-name">Nombre Común</label>
                         <md-input
@@ -125,7 +136,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                           :disabled="sending"
                         />
                       </md-field>
-                    </div>&nbsp;&nbsp;&nbsp; 
+                    </div>&nbsp;&nbsp;&nbsp;  -->
                     <div class="md-layout-item"> 
                       <md-field>
                         <label class="text-muted">Estado</label>
@@ -341,7 +352,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                   </div>                
                 </div> 
                   <div class="md-layout">
-                    <div class="md-layout-item md-size-50">                 
+                    <div class="md-layout-item ">                 
                         <md-datepicker 
                           md-clearable :class="getValidationClass('date')"
                           v-model="form.date"
@@ -357,9 +368,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                           </span>
                         </md-datepicker>                   
                     </div> &nbsp;&nbsp;&nbsp;
-                  </div>
-                  <div class="md-layout">                  
-                    <div class="md-layout-item md-size-70"> 
+                          <div class="md-layout-item "> 
                       <md-field md-clearable :class="getValidationClass('nameOfficial')">
                         <label for="first-name">Nombre Funcionario AUNAP</label>
                         <md-input
@@ -393,10 +402,11 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                         >Olvidaste ingresar el número de indentidad</span>
                         <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                       </md-field>    
-                    </div>&nbsp;&nbsp;&nbsp;    
+                    </div>&nbsp;&nbsp;&nbsp;  
                   </div>
+   
                   <div class="md-layout">
-                    <div class="md-layout-item md-size-70">
+                    <div class="md-layout-item ">
                       <md-field md-clearable :class="getValidationClass('nameRepresentative')">
                         <label for="first-name">Nombre Representante Autoridad Acompañante</label>
                         <md-input
@@ -431,9 +441,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                         <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                       </md-field>      
                     </div>&nbsp;&nbsp;&nbsp;  
-                  </div>
-                  <div class="md-layout">                  
-                    <div class="md-layout-item md-size-50">
+                            <div class="md-layout-item ">
                       <md-field md-clearable :class="getValidationClass('noPlateCertificate')">
                         <label for="first-name">No. de Placa o Cédula Militar</label>
                         <md-input
@@ -451,6 +459,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                       </md-field>  
                     </div>&nbsp;&nbsp;&nbsp;
                   </div>
+  
                     
                   <div>
                     <strong>DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN</strong>    
@@ -511,7 +520,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                     </div>&nbsp;&nbsp;&nbsp;  
                   </div>
                   <div class="md-layout">                  
-                    <div class="md-layout-item md-size-70">
+                    <div class="md-layout-item ">
                       <md-field md-clearable :class="getValidationClass('representativeDonation')">
                         <label for="first-name">Representante Legal</label>
                         <md-input
@@ -729,6 +738,8 @@ export default {
       arrayDonationCertificate: [],
       id_donationCertificate: 0,
 
+      arrayCName: {id:0, commonname:''},
+      arrayCommonName:[],
       arrayRegional: {id:0, name:''},
 	    arrayRegl: [],
       id_regional: 0,
@@ -960,6 +971,10 @@ export default {
       this.dynamicByModel =
         this.dynamicByModel && format(this.dynamicByModel, this.dateFormat);
     },
+    setCommonName(){
+      this.nameScientific= this.arrayCName.scientificname;
+      this.nameCommon= this.arrayCName.commonname;
+    },
     toDate() {
       switch (this.type) {
         case "string":
@@ -971,7 +986,20 @@ export default {
           break;
       }
     },
-
+    getCommonName() {
+      let me = this;
+      var url =
+        "/species";
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.arrayCommonName = respuesta.species;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
 
     clickImg1(e) {
         this.img1 = e.target.files[0];
@@ -1086,6 +1114,9 @@ export default {
     },
     nameWithRegional ({ name }) {
             return `${name}`
+    },
+    nameWithCommonName ({ commonname }) {
+            return `${commonname}`
     },
     selectRegional() {
             let me = this;
@@ -1420,6 +1451,7 @@ condiciones organolépticas del producto pesquero donado.`, 16, 266,{align: 'jus
   },
 
   mounted() {
+    this.getCommonName();
     this.listData();
     this.selectRegional();
   }

@@ -61,7 +61,7 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-70">
+                  <div class="md-layout-item ">
                     <md-field md-clearable :class="getValidationClass('noActa')">
                       <label for="first-name">No. Acta</label>
                       <md-input
@@ -70,7 +70,7 @@
                         autocomplete="given-name"
                         v-model="form.noActa"
                         :disabled="sending"
-                        type="number"
+                        type="text"
                       />
                       <span
                         class="md-error"
@@ -78,9 +78,7 @@
                       >Olvidaste ingresar el número de acta</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;  
-                </div>
-                <div class="md-layout">
-                  <div class="md-layout-item">
+                         <div class="md-layout-item">
                     <label class="text-muted">Regional</label>
                       <multiselect v-model="arrayRegl" :options="arrayRegional"
                           placeholder="Selecciona una opción"
@@ -120,10 +118,21 @@
                         v-if="!$v.form.municipality.required"
                       >Olvidaste ingresar el nombre del municipio</span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;      
+                  </div>&nbsp;&nbsp;&nbsp;  
                 </div>
+     
                 <div class="card-body">
                     <div class="md-layout">
+                                 <div class="md-layout-item">
+                      <label class="text-muted">Nombre Común (Common Name)</label>
+                      <multiselect v-model="arrayCName" :options="arrayCommonName"
+                          @input="setCommonName()"
+                          placeholder="Seleccione una especie"
+                          :custom-label="nameWithCommonName"
+                          label="commonname"
+                          track-by="commonname">
+                      </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
                       <div class="md-layout-item">
                         <md-field md-clearable>
                             <label for="first-name">Nombre Científico</label>
@@ -136,7 +145,7 @@
                             />
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item">
+                      <!-- <div class="md-layout-item">
                         <md-field md-clearable>
                             <label for="first-name">Nombre Común</label>
                             <md-input
@@ -147,7 +156,7 @@
                               :disabled="sending"
                             />
                         </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;
+                      </div>&nbsp;&nbsp;&nbsp; -->
                     </div>  
                     <div class="md-layout">
                       <div class="md-layout-item">
@@ -206,7 +215,7 @@
                           />
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;   
-                            <div class="md-layout-item md-size-20">
+                            <div class="md-layout-item ">
                         <md-field md-clearable>
                           <label for="first-name">Peso (Kg)</label>
                           <md-input
@@ -219,7 +228,7 @@
                           />
                         </md-field> 
                       </div>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item md-size-20">
+                      <div class="md-layout-item ">
                         <md-field md-clearable>
                           <label for="first-name">Valor Comercial</label>
                           <md-input
@@ -495,7 +504,7 @@
                   </div>
 
                   <div class="md-layout">
-                    <div class="md-layout-item md-size-50">
+                    <div class="md-layout-item">
                       <label class="text-muted">Motivos del decomiso Preventivo</label>
                       <multiselect 
                         v-model="arrayReasons" 
@@ -531,7 +540,7 @@
                   <!-- <label>Para constancia se firma la presente acta por cada uno de los que intervienen en el decomiso preventivo.</label> -->
 
                   <div class="md-layout">
-                    <div class="md-layout-item md-size-40">                 
+                    <div class="md-layout-item ">                 
                         <md-datepicker 
                           md-clearable :class="getValidationClass('date')"
                           v-model="form.date"
@@ -547,9 +556,7 @@
                           </span>
                         </md-datepicker>                   
                     </div> &nbsp;&nbsp;&nbsp;
-                  </div>
-                  <div class="md-layout">
-                    <div class="md-layout-item md-size-70">
+                          <div class="md-layout-item ">
                       <md-field md-clearable :class="getValidationClass('officialName')">
                         <label for="first-name">Nombre Funcionario AUNAP</label>
                         <md-input
@@ -583,8 +590,9 @@
                       </md-field>
                     </div>&nbsp;&nbsp;&nbsp;
                   </div>
+      
                   <div class="md-layout">
-                    <div class="md-layout-item md-size-70">
+                    <div class="md-layout-item ">
                       <md-field md-clearable :class="getValidationClass('representativeName')">
                         <label for="first-name">Nombre Representante Autoridad Acompañante</label>
                         <md-input
@@ -617,9 +625,7 @@
                         >Olvidaste ingresar el documento de identidad</span>
                       </md-field>
                     </div>&nbsp;&nbsp;&nbsp;
-                  </div>
-                  <div class="md-layout">
-                    <div class="md-layout-item md-size-40">
+                           <div class="md-layout-item ">
                       <md-field md-clearable :class="getValidationClass('plateCertificate')">
                         <label for="first-name">No. Placa o Cedula</label>
                         <md-input
@@ -636,6 +642,7 @@
                       </md-field>
                     </div>&nbsp;&nbsp;&nbsp;
                   </div>
+             
                   
                   <!-- <label>DATOS DEL PRESUNTO INFRACTOR</label> -->
                   <div>
@@ -643,7 +650,7 @@
                   </div>
 
                   <div class="md-layout">
-                    <div class="md-layout-item md-size-70">
+                    <div class="md-layout-item ">
                       <md-field md-clearable :class="getValidationClass('name')">
                         <label for="first-name">Nombre</label>
                         <md-input
@@ -678,7 +685,7 @@
                     </div>&nbsp;&nbsp;&nbsp;    
                   </div>   
                   <div class="md-layout">
-                    <div class="md-layout-item md-size-30">                 
+                    <div class="md-layout-item ">                 
                         <md-datepicker 
                           md-clearable :class="getValidationClass('dateExpedition')"
                           v-model="form.dateExpedition"
@@ -981,6 +988,8 @@ export default {
       arrayConfiscationCert: [],
       id_confiscationCert: 0,
 
+      arrayCName: {id:0, commonname:''},
+      arrayCommonName:[],
       arrayRegional: {id:0, name:''},
 	    arrayRegl: [],
       id_regional: 0,
@@ -1191,6 +1200,10 @@ export default {
       this.selectedFile = event.target.files[0];
       // this.upload();
     },
+        setCommonName(){
+      this.nameScientific= this.arrayCName.scientificname;
+      this.nameCommon= this.arrayCName.commonname;
+    },
     // addTag (newTag) {
     //   const tag = {
     //     name: newTag,
@@ -1367,7 +1380,10 @@ export default {
       this.dataReasons();
     },
     nameWithRegional ({ name }) {
-            return `${name}`
+        return `${name}`
+    },
+     nameWithCommonName ({ commonname }) {
+        return `${commonname}`
     },
     showData() {
       this.clearForm();
@@ -1573,7 +1589,20 @@ export default {
           console.log(error);
         });
     },
-
+    getCommonName() {
+      let me = this;
+      var url =
+        "/species";
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.arrayCommonName = respuesta.species;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
@@ -1805,6 +1834,7 @@ liso, palangre, otro).`, 15, 165 );
   },
 
   mounted() {
+     this.getCommonName();
     this.listData();
     this.selectRegional();
   }
