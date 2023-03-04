@@ -1850,7 +1850,7 @@ export default {
     // },
     deleteData(data = []) {
       swal({
-        title: "Esta seguro de Eliminar este Zarpe " + data["name"],
+        title: "Esta seguro de Eliminar este Zarpe " + data["insNo"],
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",

@@ -1226,7 +1226,7 @@
                         
                       allowImagePreview= true    
                     accepted-file-types="image/jpeg, image/png"
-                     @onprocessfiles="handleFilePondProcessfile"
+                     onprocessfiles="handleFilePondProcessfile"
                    
                                          
                     />
@@ -1642,6 +1642,7 @@ export default {
   methods: {
             handleFilePondProcessfile: function (files) {
 
+               console.log("FilePond succesfully processed file " + files);
       for (let i = 0; i < files.length; i++) {
         this.myFiles.push(files[i].file);
       }
@@ -1649,7 +1650,6 @@ export default {
       // for (let i = 0; i < files.length; i++) {
       //   this.formData.append('files[]', files[i].file);
       // }
-           // console.log("FilePond succesfully processed file " + file);
            // this.currentFiles.push(file);
        
    
@@ -2531,7 +2531,7 @@ export default {
     },
     deleteData(data = []) {
       swal({
-        title: "Esta seguro de Eliminar este arribo " + data["name"],
+        title: "Esta seguro de Eliminar este arribo " + data["insNo"],
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",

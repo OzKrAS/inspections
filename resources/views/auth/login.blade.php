@@ -9,10 +9,10 @@
           <form class="form-horizontal was-validated" method="POST" action="{{ route('login')}}">
           {{ csrf_field() }}
               <div class="card-body ">
-              <h2 style="color:#fcfafb">Acceder</h2>
+              <h2 style="color:#fcfafb">Ingresar</h2>
               <br>
               
-              <p class="text-muted">Control de acceso al sistema</p>
+              <p style="color:#fcfafb" class="text-muted">Control de acceso al sistema</p>
               <div class="form-group mb-3{{$errors->has('usuario' ? 'is-invalid' : '')}}">
                 <span class="input-group-addon"><i class="icon-user"></i></span>
                 <input type="text" value="{{old('usuario')}}" name="usuario" id="usuario" class="form-control" placeholder="Usuario">
@@ -20,12 +20,12 @@
               </div>
               <div class="form-group mb-4{{$errors->has('password' ? 'is-invalid' : '')}}">
                 <span class="input-group-addon"><i class="icon-lock"></i></span>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
                 {!!$errors->first('password','<span class="invalid-feedback">:message</span>')!!}
               </div>
               <div class="row">
-                <div class="col-6">
-                  <button type="submit" class="btn btn-primary px-4">Acceder</button>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary px-4 w-100">Acceder</button>
                 </div>
               </div>
             </div>
@@ -42,20 +42,13 @@
               <br>
               <br>
               <br>
-              
+       
+               <h3 class="text-muted">Sistema de Inspecciones </h3> 
                 <img src="img\aunap.png" class="card-img-center" alt="Cinque Terre" width="100%" height="100%"> 
-                  <br>
-                  <br>
-                  <br>
-                <h3 class="text-muted">Sistema Inspecciones </h3> 
+             
+               
                                
-                <p class="card-subtitle mb-2 text-muted">Notificación 1</p>
-                <p class="card-subtitle mb-2 text-muted">Notificación 2</p>
-                <p class="card-subtitle mb-2 text-muted">Notificación 3</p>
-                <p class="card-subtitle mb-2 text-muted">Notificación 4</p>
-                <br>
-                <br>
-                <br>
+     
                 <p>  Sistema de Inspección a embarcaciones </p>  
             
             </div>

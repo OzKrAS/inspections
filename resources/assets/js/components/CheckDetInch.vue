@@ -1353,7 +1353,7 @@ export default {
     },
     deleteData(data = []) {
       swal({
-        title: "Esta seguro de Eliminar la Región " + data["name"],
+        title: "Esta seguro de Eliminar la inspección del bote " + data["boat"],
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
