@@ -130,8 +130,8 @@
                           <md-field>
                             <label for="notification" class="text-muted">Recibió Notificación Previa (Prior Notification)</label>
                             <md-select v-model="notification" name="notification" id="notification" placeholder="Recibió Notificación Previa (Prior Notification)">
-                              <md-option value="si">Si</md-option>
-                              <md-option value="no">No</md-option>
+                              <md-option value="Si">Si</md-option>
+                              <md-option value="No">No</md-option>
                             </md-select>
                           </md-field>
                         </div>&nbsp;&nbsp;&nbsp;
@@ -139,8 +139,8 @@
                           <md-field>
                             <label for="finalityZarpe" class="text-muted">Finalidad Zarpe (Departure’s Purpose)</label>
                             <md-select v-model="finalityZarpe" name="finalityZarpe" id="finalityZarpe" placeholder="Finalidad Zarpe (Departure’s Purpose)">
-                              <md-option value="pesca">Pesca</md-option>
-                              <md-option value="transito">Tránsito</md-option>
+                              <md-option value="Pesca">Pesca</md-option>
+                              <md-option value="Transito">Tránsito</md-option>
                               <!-- <md-option value="desembarque">Desembarque</md-option> -->
                             </md-select>
                           </md-field>
@@ -160,7 +160,7 @@
                       <md-field>
                         <label class="text-muted">Estado Rector del Puerto (Port / Port State)</label>
                         <md-select v-model="stateRectorPort" name="stateRectorPort" id="stateRectorPort" placeholder="Estado Rector del Puerto">
-                          <md-option value="colombia">Colombia</md-option>
+                          <md-option value="Colombia">Colombia</md-option>
                         </md-select>
                       </md-field>
                
@@ -249,10 +249,10 @@
                           <md-field>
                             <label for="national" class="text-muted">Nacional</label>
                             <md-select v-model="national" name="national" id="national" placeholder="Seleccione un sistema Nacional">
-                              <md-option value="no">No</md-option>
-                              <md-option value="nacional-AIS">Nacional - AIS</md-option>
-                              <md-option value="nacional-VMS">Nacional - VMS</md-option>
-                              <md-option value="nacional-AIS/VMS">Nacional - AIS/VMS</md-option>
+                              <md-option value="1">No</md-option>
+                              <md-option value="2">Nacional - AIS</md-option>
+                              <md-option value="3">Nacional - VMS</md-option>
+                              <md-option value="4">Nacional - AIS/VMS</md-option>
                             </md-select>
                           </md-field>
                         </div>&nbsp;&nbsp;&nbsp;
@@ -1600,6 +1600,7 @@ export default {
       this.typeHook = data["typeHook"];
       this.longNet = data["longNet"];
       this.totalLongline = data["totalLongline"];
+      this.stateRectorPort = "Colombia";
       this.other = data["other"];
       // this.materialArt = data["materialArt"];
       this.equipDevi = data["equipDevi"];
