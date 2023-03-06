@@ -500,6 +500,11 @@ class DataJsonController extends Controller
         $municipalities = Municipality::join('regions','municipalities.id_region','=','regions.id')
         ->select('municipalities.id', 'municipalities.name', 'municipalities.id_region','regions.name as nameReg')->get();
          $fishingMaterial = FishingGearMaterial::all();
+               $docks = Dock::join('ports','docks.id_port','=','ports.id')
+            ->select(
+            'docks.id', 'docks.name','docks.arrival','docks.zarpe','docks.id_port',
+            'ports.name as namePort')
+            ->orderBy('docks.name', 'asc')->get();
 
         return response() -> json(
 
