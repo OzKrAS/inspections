@@ -1654,14 +1654,7 @@ export default {
 
   computed: {
 
-    fechaFormateada() {
-       let fecha= format(now, dateFormat)
-      if (this.arrayBt.dateValidityPat === '0000-00-00') {
-        return fecha
-      } else {
-        return this.arrayBt.dateValidityPat
-      }
-    }
+
   
 
   },
@@ -1895,7 +1888,7 @@ export default {
       this.form.noResolution= this.arrayBt.noResolution;
       this.form.enrollment= this.arrayBt.enrollment;
       this.form.dateResolution= this.arrayBt.dateResolution;
-      this.form.dateValidityPat= this.fechaFormateada();
+      this.form.dateValidityPat= this.arrayBt.dateValidityPat;
       this.form.dateValidity= this.arrayBt.dateValid;
       this.arrayComp.id= this.arrayBt.id_company;
       this.arrayComp.name= this.arrayBt.nameCompany;
