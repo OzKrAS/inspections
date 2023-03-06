@@ -1215,21 +1215,22 @@
                 </div>
                 <!-- FIL SUBIR IMAGEN -->
                 <!-- SUBIR PDF -->
+                <!-- <li     v-for="(image, index) in myFiles" :key="index">
+                  
+                  <img :src="image.src" alt="">
+                </li> -->
                  <p>
-                  <file-pond
-                    name="test"
-                    ref="pond"
-                    label-idle="Arrastre sus archivos de imagen aquí ..."             
-                    :allow-multiple="true"   
-                    credits="false" 
-                    v-bind:files="myFiles"    
-                        
-                      allowImagePreview= true    
-                    accepted-file-types="image/jpeg, image/png"
-                     onprocessfiles="handleFilePondProcessfile"
-                   
-                                         
-                    />
+       <file-pond
+  name="test"
+  label-idle="Aquí encontrará las imágenes cargadas"
+  :allow-multiple="true"
+  credits="false"
+  :files="myFiles2"
+  allowImagePreview= true    
+  accepted-file-types="image/jpeg, image/png"
+  @onaddfile="handleProcessFile"
+/>
+
 
    
                         <!-- <file-pond-plugin-image-preview></file-pond-plugin-image-preview> -->
@@ -1312,13 +1313,13 @@
 
                 @click="validateData"
               >Guardar</md-button>
-              <md-button
+              <!-- <md-button
                 type="submit"
       
                 class="md-dense md-raised md-primary"
 
-                @click="onFilePondReady"
-              >Demo</md-button>
+                @click="saveData"
+              >Demo</md-button> -->
               <md-button
                 type="submit"
                 v-if="tipoAccion==2"
@@ -1340,11 +1341,14 @@
 
     // Import Vue FilePond
     import   vueFilePond   from "vue-filepond";
+    //import { FilePond, registerPlugin } from 'filepond';
   
     import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
     import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
     import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
     import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+
+    //registerPlugin(FilePondPluginImagePreview);
     // Import FilePond styles
     import FilePondPluginFilePoster from 'filepond-plugin-file-poster';
     import 'filepond-plugin-file-poster/dist/filepond-plugin-file-poster.css';
@@ -1395,7 +1399,26 @@ export default {
 		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
 		let now = new Date();
 
-      return {form: {
+      return {
+  //       server: {
+  //       process: (fieldName, file, metadata, load, error, progress, abort) => {
+  //             const url = `/detailarrival/img?idArrival=${me.id_arrival}`;
+
+  //        // const formData = new FormData();
+  //  load(url);
+  //        console.log('object demo demo' + formData.get('file.name'));
+
+  //         // axios.post('/api/upload', formData)
+  //         //   .then(response => {
+  //         //     load(response.data.url);
+  //         //   })
+  //         //   .catch(() => {
+  //         //     error('Error al subir el archivo');
+  //         //   });
+  //       }
+  //     },
+        
+        form: {
 
         insNo: "",
         radioCall: "",
@@ -1437,6 +1460,7 @@ export default {
       noAllCrew: "",
       noCrewForeign: "",
       noCrewNational: "",
+      idArrival: "",
 
       
       nameCommon1: "",
@@ -1528,12 +1552,14 @@ export default {
       dragCount: 0,
       files: [],
       images: [],
+      formData : new FormData(),
       //variables pdf
       selectedFilePDF: null,
       isDraggingPDF: false,
       dragCountPDF: 0,
       filesPDF: [],
       myFiles: [],
+      myFiles2: [],
       selectedImage: null,
       formData: null,
       pdf: [],
@@ -1627,6 +1653,7 @@ export default {
   },
 
   computed: {
+
     fechaFormateada() {
        let fecha= format(now, dateFormat)
       if (this.arrayBt.dateValidityPat === '0000-00-00') {
@@ -1640,35 +1667,74 @@ export default {
   },
 
   methods: {
-            handleFilePondProcessfile: function (files) {
+      getServer() {
+        console.log('object');
+      return {
+        process: (fieldName, file, metadata, load, error, progress, abort) => {
+          // Procesar archivo y obtener su URL
+          const url = `/img/${file.name}`;
 
-               console.log("FilePond succesfully processed file " + files);
-      for (let i = 0; i < files.length; i++) {
-        this.myFiles.push(files[i].file);
-      }
-      //              this.formData = new FormData();
+          // Devolver la URL al componente FilePond
+          load(url);
+        }
+      };
+    },
+    getMyFiles() {
+      return this.myFiles.map(file => {
+        const url = `${file.path}`;
+        return new File([null], url, { type: 'image/png' });
+      });
+    },
+
+         handleFilePondInit (error,file) {
+                console.log('FilePond has initialized');
+
+                // example of instance method call on pond reference
+               // this.$refs.pond.getFiles();
+            },
+      //       handleFilePondProcessfile: function (files) {
+
+      //          console.log("FilePond succesfully processed file " + files);
       // for (let i = 0; i < files.length; i++) {
-      //   this.formData.append('files[]', files[i].file);
+      //   this.myFiles.push(files[i].file);
       // }
-           // this.currentFiles.push(file);
+      // //              this.formData = new FormData();
+      // // for (let i = 0; i < files.length; i++) {
+      // //   this.formData.append('files[]', files[i].file);
+      // // }
+      //      // this.currentFiles.push(file);
        
    
        
-        },
-      onFilePondReady() {
-        const pond = this.$refs.pond.$refs.filepond;
+      //   },
+    // handleFilePondProcessfile( file,error) {
+    //   console.log('error'+error);
+    //   console.log('El archivo', file.filename, 'ha sido seleccionado y se ha iniciado su proceso de carga');
+    //   // Hacer algo con el archivo seleccionado y en proceso de carga, como mostrar una barra de progreso
+    // },
+    handleFilePondReady() {
+        console.log('inciado');
+        // const pond = this.$refs.pond.$refs.filepond;
 
-        pond.processFiles().then(files => {
-          const formData = new FormData();
+        // pond.processFiles().then(files => {
+        //   const formData = new FormData();
           
-          files.forEach(file => {
-            formData.append('images[]', file, file.name);
-          });
+        //   files.forEach(file => {
+        //     formData.append('images[]', file, file.name);
+        //   });
           
-          console.log(formData);
-        });
+        //   console.log(formData);
+        // });
     },
-        onAddFile(file) {
+    onFilePondReady(){
+      console.log(this.currentFiles[0].process)
+    },
+        onAddFile(error ,files) {
+   const formData = new FormData();
+      for (let i = 0; i < files.length; i++) {
+        formData.append("files[]", files[i].file);
+        this.myFiles.push(files[i].file); // agregamos el archivo al array
+      }
       //           this.formData = new FormData();
       // this.formData.append('file', file.file, file.file.name);
           //console.log(this.file);
@@ -1680,10 +1746,11 @@ export default {
         // }
         //   console.log("FormData" +formData);
     },
-       handleProcessFile(file) {
+    
+       handleProcessFile(e,f) {
       // procesar el archivo
-              console.log("Se procesaron los archivos");
-      console.log(this.myFiles);
+              console.log("Se procesaron los archivos " );
+      //console.log(this.myFiles);
     },
     onProcessFile(file) {
       console.log("Se procesaron los archivos");
@@ -1730,25 +1797,22 @@ export default {
 
       reader.readAsDataURL(file);
     },
-    upload() {
+    async upload(id) {
       let me = this;
       const formData = new FormData();
-
+      
       this.files.forEach((file) => {
-        formData.append("myFiles[]", file, file.name);
+        formData.append("images[]", file, file.name);
       });
-      formData.append("idEquipo", this.idEquipo);
-      formData.append("numCerti", this.form.numCertifica);
-      formData.append("laborat", this.form.laboratorio);
-      formData.append("fecCerti", this.form.fecCertifica);
+      formData.append("idArrival", id);
+      console.log('metodo upload '+JSON.stringify(formData));
 
-      console.log('form data upload a'+formData);
-      axios.post("/detcerti/registrar", formData).then((response) => {
-        me.mensaje("Guardado", "Todos los certificados se han almacenado ");
+
+      await axios.post("/arrivals/saveimg", formData).then((response) => {
         // this.$toastr.s("All images uplaoded successfully");
-        me.getDetCertifica();
-        this.images = [];
-        this.files = [];
+        //me.getDetCertifica();
+        me.images = [];
+        me.files = [];
       });
     },
     changeImg() {
@@ -1812,11 +1876,7 @@ export default {
     alerta() {
        alert('test');
     },
-        handleFilePondInit: function () {
-      console.log("FilePond has initialized");
 
-      // FilePond instance methods are available on `this.$refs.pond`
-    },
      getCountries (searchTerm) {
         this.countryList = new Promise(resolve => {
           window.setTimeout(() => {
@@ -2069,6 +2129,41 @@ export default {
           console.log(error);
         });
     },
+    //  getArrivalImg() {
+    //   let me = this;
+    //   var url =`/detailarrival/img?idArrival=${me.id_arrival}`;
+    //   axios
+    //     .get(url)
+    //     .then(function (response) {
+    //       var respuesta = response.data;
+    //       me.myFiles = respuesta.images;
+
+ 
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     });
+    // },
+getArrivalImg() {
+  let me = this;
+  const host='http://127.0.0.1:8000'
+  var url =`/detailarrival/img?idArrival=${me.id_arrival}`;
+  axios
+    .get(url)
+    .then(function (response) {
+      var respuesta = response.data;
+      me.myFiles = respuesta.images.map(function(image) {
+        return {
+          src: `${host}${image.path}`,
+          id: image.id
+        };
+      });
+      me.myFiles2= me.myFiles.map(obj=>obj.src)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+},
     listData() {
       let me = this;
       var url =
@@ -2249,6 +2344,7 @@ export default {
 			this.arrayOr.name = data["nameOrop"];
       this.arrayMaterial.id = data["id_material"];
 			this.arrayMaterial.name = data["nameMaterial"];
+      this.getArrivalImg();
       this.dataTarget();
       this.dataFauna();
       this.dataFishery();
@@ -2264,7 +2360,10 @@ export default {
       this.edo = 1;
       this.listado = 1;
     },
-    saveData() {
+    async saveData() {
+
+
+      //console.log('data '+ formData.get('file'));
       let me = this;
       if (this.eyeMesh == "") {
         this.eyeMesh = this.noApply;
@@ -2302,7 +2401,14 @@ export default {
       if (this.noCrewNational == "") {
         this.noCrewNational = this.noApply;
       }
-      axios
+      const formData = new FormData();
+
+      //console.log(this.files);
+      this.files.forEach((file) => {
+        console.log(file);
+        formData.append("images[]", file,file.name);
+      });
+      await axios
         .post("/arrivals/save", {
           insNo: this.form.insNo.toUpperCase(),
           radioCall: this.form.radioCall.toUpperCase(),
@@ -2347,6 +2453,7 @@ export default {
           date: this.form.dateResolution,
           dateValidity: this.form.dateValidity,
           observationGeneral: this.form.observationGeneral,
+          sendImg:1,
 
           'id_region': this.arrayReg.id,
           'id_port': this.arrayPt.id,
@@ -2363,11 +2470,15 @@ export default {
           'fishery': this.arrayFa,
           'fauna': this.arrayFauna,
           'target': this.arrayTarget,
+          
         })
         .then(function(response) {
           me.hideForm();
           me.message("Guardado", "Guardo ");    
-          this.clearForm();    
+          me.idArrival = response.data.id;
+
+          me.upload(me.idArrival);
+          me.clearForm();    
         })
         .catch(function(error) {
           console.log(error);
@@ -2628,7 +2739,6 @@ export default {
   },
 
   mounted() {
-    
     this.listData();
     this.selectRegion();
     this.selectPort();

@@ -94,6 +94,7 @@ Route::group(['middleware'=>['auth']],function(){
         // arribo
         Route::get('/arrivals', 'ArrivalController@index');
         Route::post('/arrivals/save', 'ArrivalController@store');
+        Route::post('/arrivals/saveimg', 'ArrivalController@storeImg');
         Route::put('/arrivals/update', 'ArrivalController@update');
         Route::post('/arrivals/delete', 'ArrivalController@destroy');
         Route::get('/arrivals/selectPorts', 'PortsController@selectPort');
@@ -106,6 +107,8 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/arrivals/target', 'ArrivalController@dataTarget');
         Route::get('/arrivals/fauna', 'ArrivalController@dataFauna');
         Route::get('/arrivals/fishery', 'ArrivalController@dataFishery');
+        //detail Imagens arrivals
+         Route::get('/detailarrival/img', 'DetailImgArrivalController@getImg');
         //verificación 71
         Route::get('/checkDetInchs', 'CheckDetInchController@index');
         Route::post('/checkDetInchs/save', 'CheckDetInchController@store');

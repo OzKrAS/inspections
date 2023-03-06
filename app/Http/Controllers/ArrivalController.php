@@ -17,6 +17,7 @@ use App\FishingGearMaterial;
 use App\DetailImgArrival;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Image;
 
 class ArrivalController extends Controller
 {
@@ -215,7 +216,7 @@ class ArrivalController extends Controller
                 //     'id_zoneAutoFisher' => $request->id_zoneAutoFisher,
                 //     'id_company' => $request->id_company
                 //     ]);
-        //$this->savePhoto($arrivals, $request);
+        
 
 
         $detailarrivals = $request->fishery;
@@ -244,10 +245,17 @@ class ArrivalController extends Controller
             $objeto->save();
         }
 
+        // if($request->sendImg==1){
+        //     $this->savePhotoIMG($arrivals, $request);
+        // }else{
+        //     $this->savePhoto($arrivals, $request);
+        // }
+
          
         DB::commit();
      $array = array(
             'res' => true,
+            'id'=>$arrivals['id'],
             'message' => 'Registro guardado exitosamente'
             );
             
@@ -392,6 +400,8 @@ class ArrivalController extends Controller
     public function savePhoto($solicitud, $request)
     {
    
+        if(empty($request->images)){
+
         foreach($request->images as $ep=>$det){
         $is_update_photo = strpos($det['img1'], 'data:image');
         //Log::debug('FishermanController->savePhoto isUpdate: ' . $is_update_photo === 0);
@@ -417,8 +427,33 @@ class ArrivalController extends Controller
             //     );
             // return response()->json($array,201);
             }
+        }
+
     }
 
+    }
+    public function storeImg(Request $request){
 
+        $img = $request->images;
+
+        $ruta = public_path('img-arrivals-request/');
+        
+        $i=0;
+        if(count($request->images)){
+
+            foreach($request->images as $image){
+
+       
+                $filename = 'arrivals-' . Str::random(10). '-'.$image->getClientOriginalName();
+                $upload_success = $image->move($ruta, $filename);
+
+                 $demo = new DetailImgArrival();
+                 $demo->path =  '/img-arrivals-request/'.$filename;
+                 $demo->id_arrival = 160;
+                 $demo->save();
+                $i++;
+
+            }
+        }
     }
 }
