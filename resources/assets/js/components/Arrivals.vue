@@ -698,9 +698,9 @@
                           track-by="name">
                         </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable>
-                      <label for="first-name md-size-20">Otro</label>
+                  <div class="md-layout-item" v-if="arrayEquipDevi.id =='3'">
+                    <md-field md-clearable >
+                      <label for="first-name">Otro</label>
                       <md-input
                         name="first-name"
                         id="first-name"
