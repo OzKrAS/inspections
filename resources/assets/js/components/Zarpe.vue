@@ -156,14 +156,14 @@
                       </div>
 
                       <div class="md-layout">
-                   
+
                       <md-field>
                         <label class="text-muted">Estado Rector del Puerto (Port / Port State)</label>
                         <md-select v-model="stateRectorPort" name="stateRectorPort" id="stateRectorPort" placeholder="Estado Rector del Puerto">
                           <md-option value="Colombia">Colombia</md-option>
                         </md-select>
                       </md-field>
-               
+
                         <!-- <div class="md-layout-item md-size-40">
                             <md-datepicker
                               md-clearable :class="getValidationClass('dateScale')"
@@ -209,7 +209,7 @@
                         </div> &nbsp;&nbsp;&nbsp;
                       </div>
                       <div class="md-layout">
-                        <div class="md-layout-item md-size-65" >
+                        <div class="md-layout-item " >
                             <label class="text-muted">Puerto de Último Arribo (Last Arrival’s Port)</label>
                             <multiselect v-model="arrayPtArrival" :options="arrayPort"
                                 placeholder="Seleccione Puerto de Último Arribo"
@@ -633,7 +633,7 @@
                         </md-select> -->
 
                     </div>&nbsp;&nbsp;&nbsp;
-                   <div class="md-layout-item md-size-20">
+                   <div class="md-layout-item" v-if="arrayEquipDevi.name=='Otro'">
                     <md-field md-clearable>
                       <label for="first-name">Otro</label>
                       <md-input
@@ -730,8 +730,8 @@
                       <md-radio v-model="autorization" value="0" >NO</md-radio>
                     </div>
                     <md-divider style="background-color: #2090E8 " ></md-divider>
-                  <br>  
-                  <br>  
+                  <br>
+                  <br>
                    <p>
                       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Subir imagen
@@ -895,7 +895,7 @@
       role="dialog"
       aria-labelledby="myModalLabel"
       style="display: none;"
-      aria-hidden="true" 
+      aria-hidden="true"
     >
       <div class="modal-dialog modal-primary modal-lg" role="document">
         <div class="modal-content">
@@ -945,7 +945,7 @@
                       />
                     </md-field>
                    </div>&nbsp;&nbsp;&nbsp;
-              
+
                  </div>
               </md-card-content>
             </form>
@@ -1026,7 +1026,7 @@ export default {
 
       return {form: {
 
-        insNo: "",  
+        insNo: "",
         radioCall: "",
         idOmi: "",
         noResolution: "",
@@ -1108,7 +1108,7 @@ export default {
       id_material: 0,
       tituloModal:"",
 
-	    arrayEquipDevi: [{name:"",id:0}],
+	    arrayEquipDevi: {name:"",id:0},
       arrayValue:[
         { name: 'Dispositivo Agregador de Peces - DAPs (FADs)', id: '1' },
         { name: 'Dispositivo Excluidor de Tortugas - DET', id: '2' },
@@ -1368,7 +1368,7 @@ export default {
 
       if (!this.$v.$invalid) {
         this.saveData();
-        this.clearForm();
+
       }
     },
     clearForm() {
@@ -1603,7 +1603,6 @@ export default {
       this.stateRectorPort = "Colombia";
       this.other = data["other"];
       // this.materialArt = data["materialArt"];
-      this.equipDevi = data["equipDevi"];
       this.captain = data["captain"];
       this.form.observation = data["observation"];
       this.form.observationGeneral = data["observationGeneral"];
@@ -1633,6 +1632,7 @@ export default {
 			this.arrayMaterial.name = data["nameMaterial"];
       this.arrayNation.id = data["id_nationality"];
 			this.arrayNation.name = data["nameNationality"];
+      this.arrayEquipDevi.name = data["equipDevi"];
       this.arrayOr.id = data["id_orop"];
 			this.arrayOr.name = data["nameOrop"];
       this.arrayZoneAuto.id = data["id_zoneAutoFisher"];
@@ -1703,7 +1703,7 @@ export default {
           typeHook: this.typeHook.toUpperCase(),
           longNet: this.longNet.toUpperCase(),
           totalLongline: this.totalLongline,
-          other: this.other.toUpperCase(),
+          other: this.other,
           // materialArt: this.materialArt.toUpperCase(),
           equipDevi: this.arrayEquipDevi.name,
           captain: this.captain.toUpperCase(),
@@ -1740,6 +1740,7 @@ export default {
           me.hideForm();
           me.message("Guardado", "Guardo ");
           me.listData();
+          me.clearForm();
         })
         .catch(function(error) {
           console.log(error);
@@ -1794,7 +1795,7 @@ export default {
           typeHook: this.typeHook.toUpperCase(),
           longNet: this.longNet.toUpperCase(),
           totalLongline: this.totalLongline,
-          other: this.other.toUpperCase(),
+          other: this.other,
           // materialArt: this.materialArt.toUpperCase(),
           equipDevi: this.arrayEquipDevi.name,
           captain: this.captain.toUpperCase(),
@@ -1894,7 +1895,7 @@ export default {
           //console.log(response);
           var respuesta = response.data;
           me.arrayFa = respuesta.fisheryAut;
-          me.form.dataFisherySelect+= me.arrayFa.map(function(element){        
+          me.form.dataFisherySelect+= me.arrayFa.map(function(element){
             return element.name
           })
         })

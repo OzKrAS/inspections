@@ -19,7 +19,7 @@ class ZarpeController extends Controller
     public function index(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-            
+
             $zarpes = Zarpe::join('regions','zarpes.id_region','=','regions.id')
             ->join('ports','zarpes.id_port','=','ports.id')
             ->join('flags','zarpes.id_flag','=','flags.id')
@@ -71,19 +71,19 @@ class ZarpeController extends Controller
                     'zarpes.id_zoneAutoFisher','auto_fishers.name as nameZoneAutoFisher',
                 //  'zarpes.id_fisheryAuthorized','fishery_authorizeds.name as nameFishery',
                     'zarpes.id_company','companies.name as nameCompany',
-                     
+
             )
-        
+
             ->paginate(9999999999999999999999999);
-        
+
         return [
             'zarpes' => $zarpes
         ];
-    }   
+    }
     public function store(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
-        $zarpes = new Zarpe(); 
+        $zarpes = new Zarpe();
         $zarpes->insNo = $request->insNo;
         $zarpes->radioCall = $request->radioCall;
         $zarpes->idOmi = $request->idOmi;
@@ -116,24 +116,24 @@ class ZarpeController extends Controller
         $zarpes->finalityZarpe = $request->finalityZarpe;
         $zarpes->national = $request->national;
 
-        $zarpes->id_region = $request->id_region;    
-        $zarpes->id_port = $request->id_port;    
-        $zarpes->id_portZarpe = $request->id_portZarpe;  
-        $zarpes->id_portArrival = $request->id_portArrival;  
-        $zarpes->id_flag = $request->id_flag;   
-        $zarpes->id_material = $request->id_material;   
-        $zarpes->id_nationality = $request->id_nationality;       
-        $zarpes->id_orop = $request->id_orop;       
-        $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;          
-        $zarpes->id_company = $request->id_company;      
-        $zarpes->autorization = $request->autorization;      
+        $zarpes->id_region = $request->id_region;
+        $zarpes->id_port = $request->id_port;
+        $zarpes->id_portZarpe = $request->id_portZarpe;
+        $zarpes->id_portArrival = $request->id_portArrival;
+        $zarpes->id_flag = $request->id_flag;
+        $zarpes->id_material = $request->id_material;
+        $zarpes->id_nationality = $request->id_nationality;
+        $zarpes->id_orop = $request->id_orop;
+        $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;
+        $zarpes->id_company = $request->id_company;
+        $zarpes->autorization = $request->autorization;
         $zarpes->save();
 
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente'
             );
-            
+
             $detailsfisheryzarpe = $request->data;
         foreach($detailsfisheryzarpe as $fs=>$deta){
             $objeto= new DetailFisherAutZarpe();
@@ -152,7 +152,7 @@ class ZarpeController extends Controller
     public function update(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
-        $zarpes = Zarpe::findOrFail($request->id);  
+        $zarpes = Zarpe::findOrFail($request->id);
         $zarpes->insNo = $request->insNo;
         // $zarpes->portArrival = $request->portArrival;
         $zarpes->radioCall = $request->radioCall;
@@ -186,16 +186,17 @@ class ZarpeController extends Controller
         $zarpes->notification = $request->notification;
         $zarpes->finalityZarpe = $request->finalityZarpe;
         $zarpes->national = $request->national;
+        $zarpes->autorization = $request->autorization;
 
-        $zarpes->id_region = $request->id_region;    
-        $zarpes->id_port = $request->id_port;    
-        $zarpes->id_flag = $request->id_flag;  
-        $zarpes->id_material = $request->id_material; 
-        $zarpes->id_nationality = $request->id_nationality;  
-        $zarpes->id_orop = $request->id_orop;  
-        $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;  
-        // $zarpes->id_fisheryAuthorized = $request->id_fisheryAuthorized;  
-        $zarpes->id_company = $request->id_company;  
+        $zarpes->id_region = $request->id_region;
+        $zarpes->id_port = $request->id_port;
+        $zarpes->id_flag = $request->id_flag;
+        $zarpes->id_material = $request->id_material;
+        $zarpes->id_nationality = $request->id_nationality;
+        $zarpes->id_orop = $request->id_orop;
+        $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;
+        // $zarpes->id_fisheryAuthorized = $request->id_fisheryAuthorized;
+        $zarpes->id_company = $request->id_company;
         $zarpes->save();
         $array = array(
             'res' => true,
@@ -214,11 +215,11 @@ class ZarpeController extends Controller
             'message' => 'Registro se elimino exitosamente'
             );
         return response()->json($array,201);
-    } 
+    }
     public function dataFishery(Request $request)
     {
         $zarpes = DetailFisherAutZarpe::select('id','id_fisheryAut','name')
         ->where('id_fisheryAut', $request->id_FisheryAut)->get();
-        return ['fisheryAut' =>  $zarpes];   
+        return ['fisheryAut' =>  $zarpes];
     }
 }
