@@ -25,10 +25,11 @@ class BoatController extends Controller
                      'boats.dateResolution',
                      'boats.id_company',
                      'companies.name as nameCompany',
+                     'boats.is_dets',
                      'boats.id_flag','flags.name as nameFlag',
             )
 
-            ->paginate(9999999999999999999999999);
+            ->paginate(99999);
 
         return [
             'data' => $boats
@@ -38,23 +39,25 @@ class BoatController extends Controller
     {
      //   if (!$request->ajax()) return redirect('/');
 
-            $boats = Boat::join('flags','boats.id_flag','=','flags.id')
-            ->join('companies','boats.id_company','=','companies.id')
-            ->select('boats.id',
-                     'boats.nameBoat',
-                     'boats.enrollment',
-                     'boats.noPatent',
-                     'boats.noResolution',
-                     'boats.nameRepresent',
-                     'boats.dateValidityPat',
-                     'boats.dateValid',
-                     'boats.dateResolution',
-                     'boats.id_company',
-                     'companies.name as nameCompany',
-                     'boats.id_flag','flags.name as nameFlag',
-            )
-
-            ->get();
+        $type = $request->type;
+        $boats = Boat::join('flags','boats.id_flag','=','flags.id')
+        ->join('companies','boats.id_company','=','companies.id')
+        ->select('boats.id',
+                    'boats.nameBoat',
+                    'boats.enrollment',
+                    'boats.noPatent',
+                    'boats.noResolution',
+                    'boats.nameRepresent',
+                    'boats.dateValidityPat',
+                    'boats.dateValid',
+                    'boats.dateResolution',
+                    'boats.id_company',
+                    'companies.name as nameCompany',
+                    'boats.is_dets',
+                    'boats.id_flag','flags.name as nameFlag',
+        )
+            ->where('boats.is_dets','=',$type)
+        ->get();
 
         return [
             'boat' => $boats
