@@ -304,7 +304,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('placeTransfer')">
-                      <label for="first-name">Puero o muelle de transbordo</label>
+                      <label for="first-name">Puerto o muelle de transbordo</label>
                       <md-input
                         name="first-name"
                         id="first-name"

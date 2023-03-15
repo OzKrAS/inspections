@@ -166,7 +166,7 @@ class CheckDetInchController extends Controller
     }
     public function dataFishery(Request $request)
     {
-        $CheckDetInchs = DetailFisherAutDetIc::select('id','id_fisheryAut','name')
+        $CheckDetInchs = DetailFisherAutDetInchs::select('id','id_fisheryAut','name')
         ->where('id_fisheryAut', $request->id_FisheryAut)->get();
         return ['fisheryAut' =>  $CheckDetInchs];   
     }

@@ -1528,7 +1528,7 @@ export default {
       arrayTargetAct: [],
       arrayTaAct: [],
       arrayFaunaAct: [],
-      arrayEquipDevi: [{name:"",id:0}],
+      arrayEquipDevi: {name:"",id:0},
       arrayValue:[
         { name: 'Dispositivo Agregado de Peces - DAPs (FADs)', id: '1' },
         { name: 'Dispositivo Excluidor de Tortugas - DET', id: '2' },
@@ -2328,6 +2328,7 @@ getArrivalImg() {
 			this.arrayFg.name = data["nameFlag"];
       this.arrayNation.id = data["id_nationality"];
 			this.arrayNation.name = data["nameNationality"];
+      this.arrayEquipDevi.name = data["equipDevi"];
       this.arrayZoneAuto.id = data["id_zoneAutoFisher"];
 			this.arrayZoneAuto.name = data["nameZoneAutoFisher"];
       this.arrayFa.id = data["arrayFa"];

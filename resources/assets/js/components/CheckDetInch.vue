@@ -143,7 +143,17 @@
                     <strong class="text-muted">DATOS DE LA EMBARCACIÓN</strong>
                 </div> 
                 <div class="md-layout">
-                  <div class="md-layout-item">
+                <div class="md-layout-item">
+                <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
+                    <multiselect v-model="arrayBt" :options="arrayBoat"
+                        @input="setBoats()"
+                        placeholder="Seleccione una embarcación"
+                        :custom-label="nameWithBoat"
+                        label="nameBoat"
+                        track-by="nameBoat">
+                    </multiselect>
+                    </div>&nbsp;&nbsp;&nbsp;
+                  <!-- <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('boat')">
                       <label for="first-name">Embarcación (Ship Name)</label>
                       <md-input
@@ -158,7 +168,7 @@
                         v-if="!$v.form.boat.required"
                       >Olvidaste ingresar el nombre de la embarcación</span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>&nbsp;&nbsp;&nbsp; -->
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('enrollment')">
                       <label for="first-name">Matrícula (Vessel Registration)</label>
@@ -749,6 +759,8 @@ export default {
 	    arrayRegl: [],
       id_regional: 0,
 
+      arrayBt: {id:0, nameBoat:''},
+	    arrayBoat: [],
       arrayFa:[],
       arrayFaAct:[],
 	    arrayFisheryAuthorized: [],
@@ -1189,6 +1201,9 @@ export default {
       this.dataFishery();
       this.listDetailFlap();
     },
+    nameWithBoat ({ nameBoat  }) {
+            return `${nameBoat}`
+    },
     nameWithCompany ({ name }) {
             return `${name}`
     },
@@ -1209,6 +1224,11 @@ export default {
       this.listado = 1;
       this.listData();
     },   
+      setBoats(){
+      this.form.enrollment= this.arrayBt.enrollment;
+      this.form.fishLicense= this.arrayBt.noPatent;
+
+    },
     listData() {
       let me = this;
       var url =
@@ -1384,6 +1404,16 @@ export default {
           result.dismiss === swal.DismissReason.cancel
         ) {
         }
+      });
+    },
+    selectBoats() {
+      let me = this;
+      var url = "/selectboats?type=1";
+      axios.get(url).then(function (response) {
+              var respuesta = response.data;
+              me.arrayBoat = respuesta.boat;
+          }).catch(function (error) {
+              console.log(error);
       });
     },
     dataFishery(){
@@ -1595,6 +1625,7 @@ export default {
   },
 
   mounted() {
+    this.selectBoats();
     this.listData();
     this.selectCompanies();  
     this.selectRegional();
