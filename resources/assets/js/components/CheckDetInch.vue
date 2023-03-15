@@ -79,12 +79,12 @@
                     <md-field>
                       <label for="office" class="text-muted">Oficina (Office)</label>
                       <md-select v-model="office" name="office" id="office" placeholder="Seleccione una oficina (Office)">
-                        <md-option value="Barranquilla">Barranquilla</md-option>
-                        <md-option value="Cartagena">Cartagena</md-option>
-                        <md-option value="Tolú">Tolú</md-option>
-                        <md-option value="Bahía Solano">Bahía Solano</md-option>
-                        <md-option value="Buenaventua">Buenaventua</md-option>
-                        <md-option value="Tumaco">Tumaco</md-option>
+                        <md-option value="BARRANQUILLA">BARRANQUILLA</md-option>
+                        <md-option value="CARTAGENA">CARTAGENA</md-option>
+                        <md-option value="TOLÚ">TOLÚ</md-option>
+                        <md-option value="BAHÍA SOLANO">BAHÍA SOLANO</md-option>
+                        <md-option value="BUENAVENTURA">BUENAVENTURA</md-option>
+                        <md-option value="TUMACO">TUMACO</md-option>
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -756,7 +756,7 @@ export default {
 	    arrayCompany: [],
       id_company: 0,
       arrayRegional: {id:0, name:''},
-	    arrayRegl: [],
+	    arrayRegl: {id:0, name:''},
       id_regional: 0,
 
       arrayBt: {id:0, nameBoat:''},
@@ -1137,7 +1137,7 @@ export default {
 
       if (!this.$v.$invalid) {
         this.saveData();
-        this.clearForm();
+       
       }
     },
     clearForm() {
@@ -1192,11 +1192,12 @@ export default {
       this.form.exit = data["exit"];
       this.form.float = data["float"];
 
+      this.office = data["office"];
       this.arrayComp.id = data["id_company"];
 			this.arrayComp.name = data["nameCompany"];
       this.arrayRegl.id = data["id_regional"];
 			this.arrayRegl.name = data["nameRegional"];
-      this.arrayFa.id = data["arrayFa"];
+      console.log('regional '+data["nameRegional"]);      this.arrayFa.id = data["arrayFa"];
       this.dataTable();
       this.dataFishery();
       this.listDetailFlap();
@@ -1227,6 +1228,7 @@ export default {
       setBoats(){
       this.form.enrollment= this.arrayBt.enrollment;
       this.form.fishLicense= this.arrayBt.noPatent;
+      this.form.boat= this.arrayBt.nameBoat;
 
     },
     listData() {
@@ -1326,6 +1328,7 @@ export default {
           me.hideForm();
           me.message("Guardado", "Guardo ");
           me.listData();
+          me.clearForm();
         })
         .catch(function(error) {
           console.log(error);
