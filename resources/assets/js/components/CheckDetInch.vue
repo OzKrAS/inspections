@@ -1176,6 +1176,7 @@ export default {
       this.office = data["office"];
       this.form.official = data["official"];
       this.form.boat = data["boat"];
+      this.arrayBt.nameBoat=data["boat"];
       this.form.enrollment = data["enrollment"];
       // this.form.outhFhisher = data["outhFhisher"];
       this.form.fishLicense = data["fishLicense"];
@@ -1197,7 +1198,7 @@ export default {
 			this.arrayComp.name = data["nameCompany"];
       this.arrayRegl.id = data["id_regional"];
 			this.arrayRegl.name = data["nameRegional"];
-      console.log('regional '+data["nameRegional"]);      this.arrayFa.id = data["arrayFa"];
+       this.arrayFa.id = data["arrayFa"];
       this.dataTable();
       this.dataFishery();
       this.listDetailFlap();
@@ -1644,7 +1645,7 @@ export default {
 .mostrar {
   display: list-item !important;
   opacity: 1 !important;
-  position: absolute !important;
+  position: absolute ;
   background-color: #3c29297a !important;
 }
 .div-error {

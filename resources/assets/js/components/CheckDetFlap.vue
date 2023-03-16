@@ -68,22 +68,7 @@
                   <!-- ESPACIO PARA LA HORA       -->
                 </div>  
                 <div class="md-layout">
-                     <div class="md-layout-item">                 
-                      <md-datepicker 
-                        md-clearable :class="getValidationClass('date')"
-                        v-model="form.date"
-                        @input="toString"
-                        md-immediately
-                        :md-model-type="String"
-                        >
-                        <label>Seleccione Fecha (Date)</label>
-                        <span
-                          class="md-error"
-                          v-if="!$v.form.date.required"
-                          >Olvidaste ingresar la fecha
-                        </span>
-                      </md-datepicker>                   
-                  </div> &nbsp;&nbsp;&nbsp;
+        
                   <div class="md-layout-item">
                       <label class="text-muted">Regional (Regional)</label>
                       <multiselect v-model="arrayRegl" :options="arrayRegional"
@@ -97,12 +82,12 @@
                     <md-field>
                       <label for="office" class="text-muted">Oficina (Office)</label>
                       <md-select v-model="office" name="office" id="office" placeholder="Seleccione una oficina (Office)">
-                        <md-option value="Barranquilla">Barranquilla</md-option>
-                        <md-option value="Cartagena">Cartagena</md-option>
-                        <md-option value="Tolú">Tolú</md-option>
-                        <md-option value="Bahía Solano">Bahía Solano</md-option>
-                        <md-option value="Buenaventua">Buenaventua</md-option>
-                        <md-option value="Tumaco">Tumaco</md-option>
+                        <md-option value="BARRANQUILLA">BARRANQUILLA</md-option>
+                        <md-option value="CARTAGENA">CARTAGENA</md-option>
+                        <md-option value="TOLÚ">TOLÚ</md-option>
+                        <md-option value="BAHÍA SOLANO">BAHÍA SOLANO</md-option>
+                        <md-option value="BUENAVENTURA">BUENAVENTURA</md-option>
+                        <md-option value="TUMACO">TUMACO</md-option>
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -138,6 +123,22 @@
                       >Olvidaste ingresar el nombre del funcionario</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">                 
+                      <md-datepicker 
+                        md-clearable :class="getValidationClass('date')"
+                        v-model="form.date"
+                        @input="toString"
+                        md-immediately
+                        :md-model-type="String"
+                        >
+                        <label>Seleccione Fecha (Date)</label>
+                        <span
+                          class="md-error"
+                          v-if="!$v.form.date.required"
+                          >Olvidaste ingresar la fecha
+                        </span>
+                      </md-datepicker>                   
+                  </div> &nbsp;&nbsp;&nbsp;
                 </div> 
                 <md-divider style="background-color: #2090E8 " ></md-divider>
                 <div>
@@ -145,7 +146,17 @@
                     <strong class="text-muted">DATOS DE LA EMBARCACIÓN</strong>
                 </div> 
                 <div class="md-layout">
-                  <div class="md-layout-item">
+                <div class="md-layout-item">
+                <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
+                    <multiselect v-model="arrayBt" :options="arrayBoat"
+                        @input="setBoats()"
+                        placeholder="Seleccione una embarcación"
+                        :custom-label="nameWithBoat"
+                        label="nameBoat"
+                        track-by="nameBoat">
+                    </multiselect>
+                    </div>&nbsp;&nbsp;&nbsp;
+                  <!-- <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('boat')">
                       <label for="first-name">Embarcación (Ship Name)</label>
                       <md-input
@@ -160,7 +171,7 @@
                         v-if="!$v.form.boat.required"
                       >Olvidaste ingresar el nombre de la embarcación</span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>&nbsp;&nbsp;&nbsp; -->
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('enrollment')">
                       <label for="first-name">Matrícula (Vessel Registration)</label>
@@ -279,19 +290,19 @@
                 <br> 
                   
                 <div class="md-layout"> 
-                   <img src="/img/img5.png" alt="Workplace" usemap="#workmap4" width="263" height="278">
-                  <map name="workmap4">
+                   <img src="/img/img5.png" alt="Workplace" usemap="#workmap" width="263" height="278">
+                  <map name="workmap">
                     <area @click="title('B')" shape="rect" coords="0,188,35,228" alt="">
                     <area @click="title('A')" class="puntoa" id="puntoa" shape="rect" coords="114,132,153,178" alt="">
                   </map>
-                  <img src="/img/img6.png" alt="Workplace" usemap="#workmap5" width="263" height="278">
-                  <map name="workmap5">
+                  <img src="/img/img6.png" alt="Workplace" usemap="#workmap2" width="263" height="278">
+                  <map name="workmap2">
                     <area @click="title('D')" shape="rect" coords="65,190,105,230" alt="">
                     <area @click="title('C')" shape="rect" coords="105,105,141,148" alt="">
                     <area @click="title('E')" shape="rect" coords="228,296,262,333" alt="">
                   </map>
-                  <img src="/img/img3.png" alt="Workplace" usemap="#workmap6" width="273" height="295">
-                  <map name="workmap6">
+                  <img src="/img/img3.png" alt="Workplace" usemap="#workmap3" width="273" height="295">
+                  <map name="workmap3">
                      <area @click="title('I')" shape="rect" coords="23,178,59,214" alt="" >
                      <area @click="title('F')" shape="rect" coords="71,124,104,160" alt="" >
                      <area @click="title('G')" shape="rect" coords="112,33,144,70" alt="" >
@@ -730,7 +741,6 @@ export default {
 	    arrayCompany: [],
       id_Company: 0,
       arrayRegional: {id:0, name:''},
-	    arrayRegl: [],
       id_regional: 0,
       tituloModal: "",
       punto: "",
@@ -744,6 +754,8 @@ export default {
       estribor4:0,
       observation: "",
 
+      arrayRegl: {id:0, name:''},
+      arrayBt: {id:0, nameBoat:''},
       arrayFa:[],
       arrayFaAct:[],
 	    arrayFisheryAuthorized: [],
@@ -1124,6 +1136,7 @@ export default {
       this.office = data["office"];
       this.form.official = data["official"];
       this.form.boat = data["boat"];
+      this.arrayBt.nameBoat=data["boat"];
       this.form.enrollment = data["enrollment"];
       // this.form.outhFhisher = data["outhFhisher"];
       this.form.fishLicense = data["fishLicense"];
@@ -1156,6 +1169,15 @@ export default {
     },
     nameWithFisheryAuthorized ({ name }) {
             return `${name}`
+    },
+    nameWithBoat ({ nameBoat  }) {
+            return `${nameBoat}`
+    },
+    setBoats(){
+      this.form.enrollment= this.arrayBt.enrollment;
+      this.form.fishLicense= this.arrayBt.noPatent;
+      this.form.boat= this.arrayBt.nameBoat;
+
     },
     selectCompanies() {
             let me = this;
@@ -1215,6 +1237,16 @@ export default {
           console.log(error);
         });
     }, 
+    selectBoats() {
+      let me = this;
+      var url = "/selectboats?type=1";
+      axios.get(url).then(function (response) {
+              var respuesta = response.data;
+              me.arrayBoat = respuesta.boat;
+          }).catch(function (error) {
+              console.log(error);
+      });
+    },
     saveData() {
       let me = this;
 
@@ -1533,8 +1565,8 @@ export default {
     });
     }
   },
-
   mounted() {
+    this.selectBoats();
     this.listData();
     this.selectCompanies();
     this.selectRegional();
