@@ -2539,7 +2539,7 @@ getArrivalImg() {
           noCrewForeign :this.noCrewForeign.toUpperCase(),
           noCrewNational :this.noCrewNational.toUpperCase(),
           idOmi :this.form.idOmi,
-          other :this.other.toUpperCase(),
+          other :this.other,
           noDays :this.form.noDays.toUpperCase(),
           noAllHauls :this.form.noAllHauls.toUpperCase(),
           noHaulsNacional :this.form.noHaulsNacional.toUpperCase(),
