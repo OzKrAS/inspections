@@ -107,6 +107,9 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/arrivals/target', 'ArrivalController@dataTarget');
         Route::get('/arrivals/fauna', 'ArrivalController@dataFauna');
         Route::get('/arrivals/fishery', 'ArrivalController@dataFishery');
+
+        Route::post('/detfaunaarrivals/delete', 'DetFaunaCaptArrivalsController@destroy');
+        Route::post('/detcaparrivals/delete', 'DetTargCaptArrivalsController@destroy');
         //detail Imagens arrivals
          Route::get('/detailarrival/img', 'DetailImgArrivalController@getImg');
         //verificación 71

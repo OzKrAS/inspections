@@ -950,7 +950,7 @@
                           class="btn btn-danger btn-sm"
                           data-tooltip
                           title="Eliminar"
-                          @click="deleteTarget(index)"
+                          @click="deleteDetTarget(target)"
                         >
                           <i class="icon-trash"></i>
                         </button>
@@ -1065,7 +1065,7 @@
                           class="btn btn-danger btn-sm"
                           data-tooltip
                           title="Eliminar"
-                          @click="deleteFauna(index)"
+                          @click="deleteDetFauna(fauna)"
                         >
                           <i class="icon-trash"></i>
                         </button>
@@ -2268,6 +2268,7 @@ getArrivalImg() {
     },
     showUpdate(data = []) {
       let me = this;
+      this.arrayTargetAct=[];
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_arrival = data["id"]);
       this.form.insNo = data["insNo"];
@@ -2659,6 +2660,78 @@ getArrivalImg() {
               me.hideForm();
               me.message("Eliminado", "Eliminó ");
               me.listData();
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        } else if (
+          // Read more about handling dismissals
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+        }
+      });
+    },
+    deleteDetFauna(data = []) {
+      swal({
+        title: "Esta seguro de Eliminar este item " + data["nameCommon2"] ,
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(result => {
+        if (result.value) {
+          let me = this;
+          axios
+            .post("/detfaunaarrivals/delete", {
+              id: data["id"],
+            })
+            .then(function(response) {
+         
+              me.message("Eliminado", "Eliminó ");
+              me.dataFauna();
+              me.listData();
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        } else if (
+          // Read more about handling dismissals
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+        }
+      });
+    },
+    deleteDetTarget(data = []) {
+      swal({
+        title: "Esta seguro de Eliminar este item " + data["nameCommon1"] ,
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(result => {
+        if (result.value) {
+          let me = this;
+          axios
+            .post("/detcaparrivals/delete", {
+              id: data["id"],
+            })
+            .then(function(response) {
+         
+              me.message("Eliminado", "Eliminó ");
+              me.listData();
+              me.dataTarget();
             })
             .catch(function(error) {
               console.log(error);
