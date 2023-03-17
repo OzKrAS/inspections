@@ -1166,11 +1166,12 @@ export default {
       this.arrayRegl = {id:0, name:''};
       this.arrayDets = [];
       this.arrayFa = [];
-      // this.arrayDetsAct = [];
+       this.arrayDetsAct = [];
     },
 
     showUpdate(data = []) {
       let me = this;
+      this.arrayDetsAct = [];
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_CheckDet = data["id"]);
       this.office = data["office"];
@@ -1370,6 +1371,7 @@ export default {
           me.hideForm();
           me.message("Actualizado", "Actualizó ");
           me.listData();
+          me.arrayDetsAct = [];
         })
         .catch(function(error) {
           console.log(error);
