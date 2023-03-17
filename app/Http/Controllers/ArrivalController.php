@@ -27,6 +27,7 @@ class ArrivalController extends Controller
 
             $arrivals = Arrival::join('regions','arrivals.id_region','=','regions.id')
             ->join('docks','arrivals.id_port','=','docks.id')
+            ->join('ports','docks.id_port','=','ports.id')
             ->join('flags','arrivals.id_flag','=','flags.id')
             ->join('nationalities','arrivals.id_nationality','=','nationalities.id')
             ->join('auto_fishers','arrivals.id_zoneAutoFisher','=','auto_fishers.id')
