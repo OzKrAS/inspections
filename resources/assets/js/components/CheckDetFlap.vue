@@ -756,7 +756,7 @@ export default {
 
       arrayRegl: {id:0, name:''},
       arrayBt: {id:0, nameBoat:''},
-      arrayFa:[],
+      arrayFa: {id:0, nameBoat:''},
       arrayFaAct:[],
 	    arrayFisheryAuthorized: [],
       id_fisheryAuthorized: 0,
