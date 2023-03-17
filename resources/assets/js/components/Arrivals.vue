@@ -2584,6 +2584,7 @@ getArrivalImg() {
           me.hideForm();
           me.message("Actualizado", "Actualizó ");
           me.listData();
+          me.arrayTargetAct=[];
         })
         .catch(function(error) {
           console.log(error);
