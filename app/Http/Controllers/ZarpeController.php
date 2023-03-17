@@ -21,7 +21,7 @@ class ZarpeController extends Controller
         if (!$request->ajax()) return redirect('/');
 
             $zarpes = Zarpe::join('regions','zarpes.id_region','=','regions.id')
-            ->join('ports','zarpes.id_port','=','ports.id')
+            ->join('docks','zarpes.id_port','=','docks.id')
             ->join('flags','zarpes.id_flag','=','flags.id')
             ->join('fishing_gear_materials','zarpes.id_material','=','fishing_gear_materials.id')
             ->join('nationalities','zarpes.id_nationality','=','nationalities.id')
