@@ -337,7 +337,7 @@
                               class="btn btn-danger btn-sm"
                               data-tooltip
                               title="Eliminar"
-                              @click="deleteDets2(index)"
+                              @click="deleteDets(dets)"
                             >
                               <i class="icon-trash"></i>
                             </button>
@@ -351,19 +351,7 @@
                           </td>
                         </tr>
                       </tbody>
-                        <tfoot>
-                          <tr>
-                            <th>PUNTO</th>              
-                            <th>DETs</th>    
-                            <th>BABOR 1</th>    
-                            <th>BABOR 2</th>    
-                            <th>ESTRIBOR 1</th>    
-                            <th>ESTRIBOR 2</th>  
-                            <th style="width: 90px">Opciones</th>
-                          </tr>
-                        </tfoot>
-                        <tbody>
-                      </tbody>
+                            
                   </table>
                   <md-divider style="background-color: #2090E8 " ></md-divider>
                 <div class="md-layout">  
@@ -756,7 +744,7 @@ export default {
 
       arrayRegl: {id:0, name:''},
       arrayBt: {id:0, nameBoat:''},
-      arrayFa: {id:0, nameBoat:''},
+      arrayFa:[],
       arrayFaAct:[],
 	    arrayFisheryAuthorized: [],
       id_fisheryAuthorized: 0,
@@ -994,54 +982,21 @@ export default {
        this.estribor3 = 0;
        this.estribor4 = 0;
     },
-    title(punto2){
-      var dets="";
-      if(punto2=='A'){ 
-        dets='Ancho solpa (>= 56 "  cuando está estirada)'    ;   
-       
-      }else if(punto2 =='B'){
-        dets='Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=20 " cuando está estirada)' ; 
-      }
-      if(punto2=='C'){ 
-        dets='Traslape no debe ser mayor a 15 " cuando está estirada';   
-       
-      }else if(punto2 =='D'){
-        dets='Dimencsión de las tapas no debe ser mayor a 58 " cuando están estirada' ; 
-      }
-      if(punto2=='E'){ 
-        dets='Longitud de la solapa no debe ser mayor a 24 " mas allá del borde posterior de la parrilla'    ;   
-       
-      }else if(punto2 =='F'){
-        dets='Ancho del DET' ; 
-      }
-      if(punto2=='G'){ 
-        dets='Alto del DET'    ;   
-       
-      }else if(punto2 =='H'){
-        dets='Distancia entre varillas' ; 
-      }
-      if (punto2 =='I'){
-         dets='Distancia entre marco y varilla' ; 
-      }
-      // if (punto2 =='J'){
-      //    dets='Tamaño de malla en la solapa' ; 
-      // }
-      // if (punto2 =='K'){
-      //    dets='Ángulo del DET' ; 
-      // }
-      // if (punto2 =='L'){
-      //    dets='Tipo de DET' ; 
-      // }
-      // if (punto2 =='M'){
-      //    dets='material del DET' ; 
-      // }
-      // if (punto2 =='N'){
-      //    dets='Salida (supeior o inferior)' ; 
-      // }
-      // if (punto2 =='O'){
-      //    dets='Flotadores (cantidad)' ; 
-      // }
-      this.abrirModal2(dets,punto2) 
+    title(punto){
+    
+      const puntos = {
+          A: 'Ancho solpa (>= 56 "  cuando está estirada)',
+          B: 'Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=20 " cuando está estirada)',
+          C: 'Traslape no debe ser mayor a 15 " cuando está estirada',
+          D: 'Dimencsión de las tapas no debe ser mayor a 58 " cuando están estirada',
+          E: 'Longitud de la solapa no debe ser mayor a 24 " mas allá del borde posterior de la parrilla',
+          F: 'Ancho del DET',
+          G: 'Alto del DET',
+          H: 'Distancia entre varillas',
+          I: 'Distancia entre marco y varilla'
+        };
+        const dets = puntos[punto];
+        this.abrirModal2(dets,punto) 
     },
     addDets2(){
       let me = this;
@@ -1064,9 +1019,7 @@ export default {
       this.clearDets();
       this.cerrarModal();
     },
-    deleteDets2(index){
-       this.arrayDets2.splice(index,1);
-    },
+
 
     toString() {
       this.toDate();
@@ -1158,8 +1111,8 @@ export default {
       this.arrayRegl.id = data["id_regional"];
 			this.arrayRegl.name = data["nameRegional"];
       this.arrayFa.id = data["arrayFa"];
-      this.dataTable();
       this.dataFishery();
+      this.dataTable();
     },
     nameWithCompany ({ name }) {
             return `${name}`
@@ -1361,6 +1314,40 @@ export default {
         }
       });
     },
+    deleteDets(data=[]){
+      swal({
+        title: "Esta seguro de Eliminar el punto  " +data["punto"]+ " " +data["tituloModal"],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(result => {
+        if (result.value) {
+          let me = this;      
+          axios
+            .post("/detcheckDetFlap/delete", {
+              id: data["id"],
+            })
+            .then(function(response) {      
+              me.mensajeToast("Punto eliminado correctamente","bubble","check","success");
+              me.dataTable();
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        } else if (
+          // Read more about handling dismissals
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+        }
+      });
+    },
     dataFishery(){
       let me = this;
 
@@ -1503,6 +1490,15 @@ export default {
       //  doc.save("FORMATO ACTA DE DONACIÓN");
       window.open(doc.output('bloburl'))
       // me.pdf = 0;
+    },
+    mensajeToast(msj,tema,icono,tp){
+      let toast = this.$toasted.show(msj, {
+      theme: tema,
+      type: tp,
+      position: "top-right",
+      icon: icono,
+      duration : 2000
+    });
     },
     myTable(datas){
       let me = this;

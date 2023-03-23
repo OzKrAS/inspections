@@ -124,6 +124,8 @@ Route::group(['middleware'=>['auth']],function(){
         //verificacion DET doble solapa
         Route::get('/DetailsFlaps', 'DetailDetFlapController@index');
         Route::get('/DetailsInchs', 'DetailDetInchController@index');
+        Route::post('/detcheckDetInchs/delete', 'DetailDetInchController@destroy');
+        Route::post('/detcheckDetFlap/delete', 'DetailDetFlapController@destroy');
 
 
         Route::get('/checkDetFlaps', 'CheckDetFlapController@index');

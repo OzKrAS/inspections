@@ -310,7 +310,7 @@
                   <img alt="Graficos" width="263" height="278" src="/img/img4.png">
                 </div>
                 <br>
-                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
+                <table class="table table-striped table-bordered display" id="dataTableDets" width="50%" cellspacing="0" >
                     <thead>         
                       <tr>
                         <th>PUNTO</th>              
@@ -336,7 +336,7 @@
                             class="btn btn-danger btn-sm"
                             data-tooltip
                             title="Eliminar"
-                            @click="deleteDets(index)"
+                            @click="deleteDets(dets)"
                           >
                             <i class="icon-trash"></i>
                           </button>
@@ -350,19 +350,7 @@
                         </td>
                       </tr>
                     </tbody>
-                      <tfoot>
-                        <tr>
-                          <th>PUNTO</th>              
-                          <th>DETs</th>    
-                          <th>BABOR 1</th>    
-                          <th>BABOR 2</th>    
-                          <th>ESTRIBOR 1</th>    
-                          <th>ESTRIBOR 2</th>  
-                          <th style="width: 90px">Opciones</th>
-                        </tr>
-                      </tfoot>
-                      <tbody>
-                    </tbody>
+                  
                 </table>
                 <md-divider style="background-color: #2090E8 " ></md-divider>
                 <div class="md-layout">  
@@ -991,52 +979,19 @@ export default {
       }
     },
     demo(punto){
-      var dets="";
-      if(punto=='A'){ 
-        dets='Ancho solpa (>= 71 "  cuando esta estirada)'    ;   
-       
-      }else if(punto =='B'){
-        dets='Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=26 " cuando esta estirada)' ; 
-      }
-      if(punto=='C'){ 
-        dets='Abertura de escape (>= 71 "  cuando esta estirada)'    ;   
-       
-      }else if(punto =='D'){
-        dets='Borde trasero de la solapa, desde el borde posterior del marco del DET (centro) al borde de la solapa (<=24 " no estirada)' ; 
-      }
-      if(punto=='E'){ 
-        dets='Desde donde la solapa va cosida mas alla del borde posterior de marco DET (centro) en posición colgante (<= 6 ")'    ;   
-       
-      }else if(punto =='F'){
-        dets='Ancho DET' ; 
-      }
-      if(punto=='G'){ 
-        dets='Alto DET'    ;   
-       
-      }else if(punto =='H'){
-        dets='Distancia entre varillas' ; 
-      }
-      if (punto =='I'){
-         dets='Distancia entre marco y varilla' ; 
-      }
-      //  if (punto2 =='J'){
-      //    dets='Tamaño de malla en la solapa' ; 
-      // }
-      // if (punto2 =='K'){
-      //    dets='Ángulo del DET' ; 
-      // }
-      // if (punto2 =='L'){
-      //    dets='Tipo de DET' ; 
-      // }
-      // if (punto2 =='M'){
-      //    dets='material del DET' ; 
-      // }
-      // if (punto2 =='N'){
-      //    dets='Salida (supeior o inferior)' ; 
-      // }
-      // if (punto2 =='O'){
-      //    dets='Flotadores (cantidad)' ; 
-      // }
+  
+      const puntos = {
+        A: 'Ancho solpa (>= 71 "  cuando esta estirada)',
+        B: 'Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=26 " cuando esta estirada)',
+        C: 'Abertura de escape (>= 71 "  cuando esta estirada)',
+        D: 'Borde trasero de la solapa, desde el borde posterior del marco del DET (centro) al borde de la solapa (<=24 " no estirada)',
+        E: 'Desde donde la solapa va cosida mas alla del borde posterior de marco DET (centro) en posición colgante (<= 6 ")',
+        F: 'Ancho DET',
+        G: 'Alto DET',
+        H: 'Distancia entre varillas',
+        I: 'Distancia entre marco y varilla'
+      };
+      const dets = puntos[punto];
       this.abrirModal(dets,punto) 
     },
     // title(punto2){
@@ -1120,10 +1075,49 @@ export default {
        this.estribor3 = 0;
        this.estribor4 = 0;
     },
-    deleteDets(index){
-       this.arrayDets.splice(index,1);
+    deleteDets(data=[]){
+      swal({
+        title: "Esta seguro de Eliminar el punto  " +data["punto"]+ " " +data["tituloModal"],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(result => {
+        if (result.value) {
+          let me = this;      
+          axios
+            .post("/detcheckDetInchs/delete", {
+              id: data["id"],
+            })
+            .then(function(response) {      
+              me.mensajeToast("Punto eliminado correctamente","bubble","check","success");
+              me.listDetailFlap();
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        } else if (
+          // Read more about handling dismissals
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+        }
+      });
     },
-
+    mensajeToast(msj,tema,icono,tp){
+      let toast = this.$toasted.show(msj, {
+      theme: tema,
+      type: tp,
+      position: "top-right",
+      icon: icono,
+      duration : 2000
+    });
+    },
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
       if (field) {
@@ -1529,7 +1523,7 @@ export default {
               { title: "Flotadores (cantidad)", dataKey: "peso" }             
             ];
             rows1 = [
-              {"nomCientifico": this.pruebaData,
+              {"nomCientifico": "this.pruebaData",
                "nomComun": this.pruebaData},
               // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
             ]; 
@@ -1550,6 +1544,7 @@ export default {
         doc.text("Firma funcionario", 135, 260 );
 
         
+    
 
         doc.autoTable(columns, rows, {
           // theme: 'grid',
@@ -1563,6 +1558,8 @@ export default {
                 didDrawPage: function () {
                 },
         });     
+
+
       //  doc.save("FORMATO ACTA DE DONACIÓN");
       window.open(doc.output('bloburl'))
       // me.pdf = 0;
