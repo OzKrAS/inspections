@@ -351,7 +351,7 @@
                               class="btn btn-danger btn-sm"
                               data-tooltip
                               title="Eliminar"
-                              @click="deleteTarget(index)"
+                              @click="deleteTarget(target)"
                             >
                               <i class="icon-trash"></i>
                             </button>
@@ -991,7 +991,7 @@ export default {
       arrayCName: {id:0, commonname:''},
       arrayCommonName:[],
       arrayRegional: {id:0, name:''},
-	    arrayRegl: [],
+      arrayRegl: {id:0, name:''},
       id_regional: 0,
 
       edo:1,
@@ -1275,8 +1275,40 @@ export default {
       console.log("arrayTarget " + total1);
       me.clearTarget2();  
     },
-    deleteTarget(index){
-       this.arrayTarget.splice(index,1);
+
+    deleteTarget(data = []) {
+      swal({
+        title: "Esta seguro de Eliminar el Acta decomiso" + data["noActa"],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(result => {
+        if (result.value) {
+          let me = this;      
+          axios
+            .post("/detconfiscation/delete", {
+              id: data["id"],
+            })
+            .then(function(response) {
+              me.message("Eliminado", "Eliminó ");
+              me.dataTable1();
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        } else if (
+          // Read more about handling dismissals
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+        }
+      });
     },
     deleteTarget2(index){
        this.arrayTarget2.splice(index,1);
@@ -1457,6 +1489,7 @@ export default {
       'id_regional': this.arrayRegl.id,
     })
         .then(function(response) {
+          me.arrayTargetAct=[];
           me.hideForm();
           me.message("Guardado", "Guardo ");
           me.listData();
@@ -1501,6 +1534,7 @@ export default {
       'target2':this.arrayTarget2Act,
       })
         .then(function(response) {
+          me.arrayTargetAct=[];
           me.listData();
           me.hideForm();
           me.message("Actualizado", "Actualizó ");

@@ -127,6 +127,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/detcheckDetInchs/delete', 'DetailDetInchController@destroy');
         Route::post('/detcheckDetFlap/delete', 'DetailDetFlapController@destroy');
         Route::post('/detdonation/delete', 'DetDonationsController@destroy');
+        Route::post('/detconfiscation/delete', 'DetConfiscationTable1Controller@destroy');
 
 
         Route::get('/checkDetFlaps', 'CheckDetFlapController@index');
