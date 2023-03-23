@@ -319,7 +319,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                                     class="btn btn-danger btn-sm"
                                     data-tooltip
                                     title="Eliminar"
-                                    @click="deleteTarget(index)"
+                                    @click="deleteDets(target)"
                                   >
                                     <i class="icon-trash"></i>
                                   </button>
@@ -460,7 +460,8 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                     </div>&nbsp;&nbsp;&nbsp;
                   </div>
   
-                    
+                  <md-divider style="background-color: #2090E8 " ></md-divider>
+
                   <div>
                     <strong>DATOS DE LA INSTITUCIÓN QUE RECIBE LA DONACIÓN</strong>    
                   </div>  
@@ -741,7 +742,7 @@ export default {
       arrayCName: {id:0, commonname:''},
       arrayCommonName:[],
       arrayRegional: {id:0, name:''},
-	    arrayRegl: [],
+      arrayRegl: {id:0, name:''},
       id_regional: 0,
 	    arrayTarget: [],
 	    arrayTargetAct: [],
@@ -1107,6 +1108,7 @@ export default {
       this.form.corregimiento = data["corregimiento"];
       this.form.place = data["place"];
       this.form.telephone = data["telephone"];
+      this.arrayRegl.name=data["nameRegional"]
     
       this.arrayRegl.id = data["id_regional"];
 	    this.arrayRegl.name = data["nameRegional"];
@@ -1155,6 +1157,15 @@ export default {
           console.log(error);
         });
     }, 
+    mensajeToast(msj,tema,icono,tp){
+      let toast = this.$toasted.show(msj, {
+      theme: tema,
+      type: tp,
+      position: "top-right",
+      icon: icono,
+      duration : 2000
+    });
+    },
     saveData() {
       let me = this;
 
@@ -1253,6 +1264,40 @@ export default {
               me.hideForm();
               me.message("Eliminado", "Eliminó ");
               me.listData();
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        } else if (
+          // Read more about handling dismissals
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+        }
+      });
+    },
+    deleteDets(data = []) {
+      swal({
+        title: "Esta seguro de Eliminar el item " + data["nameCommon"],
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(result => {
+        if (result.value) {
+          let me = this;      
+          axios
+            .post("/detdonation/delete", {
+               id: data["id"],
+            })
+            .then(function(response) {
+              me.mensajeToast("Item eliminado correctamente","bubble","check","success");
+              me.dataTable();
             })
             .catch(function(error) {
               console.log(error);

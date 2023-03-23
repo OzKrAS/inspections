@@ -155,8 +155,7 @@ class CheckDetFlapController extends Controller
             'res' => true,
             'message' => 'Registro se elimino exitosamente'
             );
-        return response()->json($array,201);
-        
+        return response()->json($array,201);        
     }
     public function dataTable(Request $request)
     {

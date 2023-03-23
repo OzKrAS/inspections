@@ -126,6 +126,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/DetailsInchs', 'DetailDetInchController@index');
         Route::post('/detcheckDetInchs/delete', 'DetailDetInchController@destroy');
         Route::post('/detcheckDetFlap/delete', 'DetailDetFlapController@destroy');
+        Route::post('/detdonation/delete', 'DetDonationsController@destroy');
 
 
         Route::get('/checkDetFlaps', 'CheckDetFlapController@index');
