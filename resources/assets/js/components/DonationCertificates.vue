@@ -1183,6 +1183,7 @@ export default {
         'id_regional': this.arrayRegl.id,
         })
         .then(function(response) {
+          me.arrayTargetAct= [];
           me.hideForm();
           me.message("Guardado", "Guardo ");
           me.listData();
@@ -1219,6 +1220,7 @@ export default {
         'target': this.arrayTargetAct
         })
         .then(function(response) {
+          me.arrayTargetAct= [];
           me.hideForm();
           me.message("Actualizado", "Actualizó ");
           me.listData();

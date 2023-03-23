@@ -59,7 +59,7 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
-                  <div class="md-layout-item">
+                  <!-- <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameShip')">
                         <label for="first-name">Nombre de la Embarcación (Ship Name)</label>
                         <md-input
@@ -75,7 +75,17 @@
                         >Olvidaste ingresar el nombre de la embarcación
                         </span>
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>&nbsp;&nbsp;&nbsp; -->
+                  <div class="md-layout-item">
+                <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
+                    <multiselect v-model="arrayBt" :options="arrayBoat"
+                        @input="setBoats()"
+                        placeholder="Seleccione una embarcación"
+                        :custom-label="nameWithBoat"
+                        label="nameBoat"
+                        track-by="nameBoat">
+                    </multiselect>
+                    </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                       <label class="text-muted">Bandera (Flag)</label>
                       <multiselect v-model="arrayFg" :options="arrayFlag"
@@ -576,6 +586,8 @@ export default {
       idMcpio: 0,
       sending: false,
 
+      arrayBt: {id:0, nameBoat:''},
+	    arrayBoat: [],
       arrayData: [],
       modal: 0,
       tipoAccion: 0,
@@ -595,9 +607,7 @@ export default {
   validations: {
     form: {
 
-      nameShip: {
-        required
-      },
+  
       cruise: {
         required
       },
@@ -782,8 +792,8 @@ export default {
     },
     clearForm() {
       this.$v.$reset();
+      this.arrayBt =[];
       this.form.insNo = null;
-      this.form.nameShip = null;
       this.form.cruise = null;
       this.form.nameFish = null;
       this.form.nameCaptain = null;
@@ -795,6 +805,23 @@ export default {
     },
     nameWithName ({ name }) {
             return `${name}`
+    },
+    nameWithBoat ({ nameBoat  }) {
+            return `${nameBoat}`
+    },
+    setBoats(){     
+      this.arrayFg.id= this.arrayBt.id_flag;
+      this.arrayFg.name= this.arrayBt.nameFlag;
+    },
+    selectBoats() {
+            let me = this;
+            var url = "/selectboats?type=0";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayBoat = respuesta.boat;
+                }).catch(function (error) {
+                    console.log(error);
+            });
     },
     addItemTarget(){
       this.arrayTarget.push({
@@ -855,7 +882,7 @@ export default {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_presenVerific = data["id"]);
-      this.form.nameShip = data["nameShip"];
+      this.arrayBt.nameBoat = data["nameShip"];
       this.form.cruise = data["cruise"];
       this.form.nameFish = data["nameFish"];
       this.form.nameCaptain = data["nameCaptain"];
@@ -882,7 +909,7 @@ export default {
       axios
         .post("/presenVerifics/save", {
 
-          nameShip: this.form.nameShip.toUpperCase(),
+          nameShip: this.arrayBt.nameBoat,
           cruise: this.form.cruise,
           nameFish: this.form.nameFish.toUpperCase(),
           nameCaptain: this.form.nameCaptain.toUpperCase(),
@@ -905,7 +932,7 @@ export default {
       axios
         .put("/presenVerifics/update", {
           id: this.id_presenVerific,
-          nameShip: this.form.nameShip.toUpperCase(),
+          nameShip: this.arrayBt.nameBoat,
           cruise: this.form.cruise.toUpperCase(),
           nameFish: this.form.nameFish.toUpperCase(),
           nameCaptain: this.form.nameCaptain.toUpperCase(),
@@ -1010,7 +1037,7 @@ export default {
 
             // { "data": "name" },
             { "data": "nameShip" },
-            { "data": "cruise" },
+            { "data": "nameFlag" },
             { "data": "nameFish" },
             { "data": "nameCaptain" },
             { "data": "dateZarpe" },
@@ -1035,6 +1062,7 @@ export default {
   },
 
   mounted() {
+    this.selectBoats();
     this.listData();
     this.selectFlag();
   }
@@ -1188,14 +1216,7 @@ i.fa.fa-cloud-upload {
   margin-right: 10px;
 }
 
-.div-error {
-  display: flex;
-  justify-content: center;
-}
-.text-error {
-  color: red !important;
-  font-weight: bold;
-}
+
 .material-icons.Color1 { color: rgb(31, 33, 34); }
 .material-icons.Color2 { color: rgba(167, 142, 5, 0.849); }
 .material-icons.Color3 { color: rgb(12, 170, 91); }
