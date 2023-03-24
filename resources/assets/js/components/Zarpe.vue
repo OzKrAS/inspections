@@ -1660,33 +1660,17 @@ export default {
     saveData() {
       let me = this;
 
-      if (this.eyeMesh == "") {
-        this.eyeMesh = this.noApply;
-      }
-      if (this.other == "") {
-        this.other = this.noApply;
-      }
-      if (this.totalLongline == "") {
-        this.totalLongline = this.noApply;
-      }
-      if (this.netWidth == "") {
-        this.netWidth = this.noApply;
-      }
-      if (this.eyeFlake == "") {
-        this.eyeFlake = this.noApply;
-      }
-      if (this.longNet == "") {
-        this.longNet = this.noApply;
-      }
-      if (this.typeHook == "") {
-        this.typeHook = this.noApply;
-      }
-      if (this.equipDevi == "") {
-        this.equipDevi = this.noApply;
-      }
-      if (this.captain == "") {
-        this.captain = this.noApply;
-      }
+      const props = ['eyeMesh', 'other', 'totalLongline', 'netWidth', 'eyeFlake', 'longNet', 'typeHook', 'equipDevi', 'captain'];
+
+        for (const prop of props) {
+          if (this[prop] === '') {
+            this[prop] = this.noApply;
+          }
+        }
+        if (this.arrayEquipDevi.name!="Otro"){
+          this.other="";
+        }
+      
       axios
         .post("/zarpes/save", {
           insNo: this.form.insNo.toUpperCase(),
@@ -1748,36 +1732,16 @@ export default {
     },
     updateData() {
       let me = this;
-      if (this.eyeMesh == "") {
-        this.eyeMesh = this.noApply;
-      }
-      if (this.totalLongline == "") {
-        this.totalLongline = this.noApply;
-      }
-      if (this.other == "") {
-        this.other = this.noApply;
-      }
-      if (this.netWidth == "") {
-        this.netWidth = this.noApply;
-      }
-      if (this.eyeFlake == "") {
-        this.eyeFlake = this.noApply;
-      }
-      if (this.typeHook == "") {
-        this.typeHook = this.noApply;
-      }
-      if (this.longNet == "") {
-        this.longNet = this.noApply;
-      }
-      // if (this.materialArt == "") {
-      //   this.materialArt = this.noApply;
-      // }
-      if (this.equipDevi == "") {
-        this.equipDevi = this.noApply;
-      }
-      if (this.captain == "") {
-        this.captain = this.noApply;
-      }
+        const props = ['eyeMesh', 'other', 'totalLongline', 'netWidth', 'eyeFlake', 'longNet', 'typeHook', 'equipDevi', 'captain'];
+
+        for (const prop of props) {
+          if (this[prop] === '') {
+            this[prop] = this.noApply;
+          }
+        }
+        if (this.arrayEquipDevi.name!="Otro"){
+          this.other="";
+        }
       axios
         .put("/zarpes/update", {
           id: this.id_zarpes,

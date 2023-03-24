@@ -159,6 +159,16 @@
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
+                <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
+                    <multiselect v-model="arrayBt" :options="arrayBoat"
+                        @input="setBoats()"
+                        placeholder="Seleccione una embarcación"
+                        :custom-label="nameWithBoat"
+                        label="nameBoat"
+                        track-by="nameBoat">
+                    </multiselect>
+                    </div>&nbsp;&nbsp;&nbsp;
+                  <!-- <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameBoatCargo')">
                       <label for="first-name">Nombre Embarcación de Carga (Cargo Ship Name)</label>
                       <md-input
@@ -172,9 +182,8 @@
                         class="md-error"
                         v-if="!$v.form.nameBoatCargo.required"
                       >Olvidaste ingresar el nombre de la embarcación</span>
-                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>&nbsp;&nbsp;&nbsp; -->
                   <div class="md-layout-item">
                     <label class="text-muted">Bandera (Flag)</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
@@ -224,8 +233,8 @@
                           track-by="name">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable>
+                  <div class="md-layout-item" v-if="arrayZoneAuto.name=='Otro'">
+                    <md-field md-clearable >
                       <label for="first-name">Otra (Another)</label>
                       <md-input                    
                         name="first-name"
@@ -240,8 +249,8 @@
                     <md-field>
                       <label class="text-muted">Notificación Previa (Prior Notification)</label>
                       <md-select v-model="notification" name="notification" id="notification" placeholder="Notificación Previa (Prior Notification)">
-                        <md-option value="si">Si</md-option>
-                        <md-option value="no">No</md-option>
+                        <md-option value="SI">SI</md-option>
+                        <md-option value="NO">NO</md-option>
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -381,7 +390,7 @@
                           />
                         </md-field>
                       </div>&nbsp;&nbsp;&nbsp;
-            <div class="md-layout-item">
+            <!-- <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('shapeProduct')">
                       <label for="first-name">Presentación del Producto</label>
                       <md-input
@@ -395,9 +404,21 @@
                         class="md-error"
                         v-if="!$v.form.shapeProduct.required"
                       >Olvidaste ingresar el número de indentidad</span>
-                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                     </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>&nbsp;&nbsp;&nbsp; -->
+                  <div class="md-layout-item">
+                      <md-field>
+                          <label class="text-muted">Presentación del Producto</label>
+                          <md-select v-model="form.shapeProduct" name="presentation" id="presentation" placeholder="presentación">
+                            <md-option value="Unidades">Unidades</md-option>
+                            <md-option value="Zartas ">Zartas</md-option>
+                            <md-option value="Bolsas o Bultos">Bolsas o Bultos </md-option>
+                            <md-option value="Canastas">Canastas</md-option>
+                            <md-option value="Grupos">Grupos</md-option>
+                            <md-option value="Otros">Otros</md-option>
+                          </md-select>
+                      </md-field> 
+                    </div>&nbsp;&nbsp;&nbsp;  
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('amount')">
                       <label for="first-name">Cantidad</label>
@@ -774,7 +795,6 @@ export default {
         noForm: "",
         businessColombia: "",
         fullCargo: "",
-        nameBoatCargo: "",
         nameBoat: "",
         noIdOmi: "",
         placeTransfer: "",
@@ -796,7 +816,9 @@ export default {
 
       arrayInspectionBoatCargo: [],
       id_inspectionBoatCargo: 0,
-
+      
+      arrayBt: {id:0, nameBoat:''},
+	    arrayBoat: [],
       arrayReg: {id:0, name:'', nameMuni:''},
 	    arrayRegion: [],
       arrayCName: {id:0, commonname:''},
@@ -856,9 +878,7 @@ export default {
       fullCargo: {
         required
       },
-      nameBoatCargo: {
-        required
-      },
+
       nameBoat: {
         required
       },
@@ -980,6 +1000,9 @@ export default {
       nameWithCommonName ({ commonname }) {
             return `${commonname}`
     },
+    nameWithBoat ({ nameBoat  }) {
+            return `${nameBoat}`
+    },
     onDrop(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -1031,6 +1054,20 @@ export default {
     // },
     alerta() {
        alert('test');
+    },
+    setBoats(){     
+      this.arrayFg.id= this.arrayBt.id_flag;
+      this.arrayFg.name= this.arrayBt.nameFlag;
+    },
+    selectBoats() {
+            let me = this;
+            var url = "/selectboats?type=0";
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayBoat = respuesta.boat;
+                }).catch(function (error) {
+                    console.log(error);
+            });
     },
     toString() {
       this.toDate();
@@ -1107,7 +1144,7 @@ export default {
 
       if (!this.$v.$invalid) {
         this.saveData();
-        this.clearForm();
+       
       }
     },
     clearForm() {
@@ -1151,8 +1188,8 @@ export default {
       this.form.noForm = data["noForm"];
       this.form.businessColombia = data["businessColombia"];
       this.form.fullCargo = data["fullCargo"];
-      this.form.nameBoatCargo = data["nameBoatCargo"];
-      this.areaOperation = data["areaOperation"];
+      this.arrayBt.nameBoat = data["nameBoatCargo"];
+      this.arrayZoneAuto.name = data["areaOperation"];
       this.notification = data["notification"];
       this.form.nameBoat = data["nameBoat"];
       this.form.noIdOmi = data["noIdOmi"];
@@ -1176,8 +1213,7 @@ export default {
 	    this.arrayFg.name = data["nameFlag"];
       this.arrayFgDonor.id = data["id_flagDonor"];
 	    this.arrayFgDonor.name = data["nameFlag"];
-      this.arrayZoneAuto.id = data["id_zoneAutoFisher"];
-			this.arrayZoneAuto.name = data["nameZoneAutoFisher"];
+
     },
        nameWithRegion ({ nameMuni,name  }) {
             return `${nameMuni} / ${name}`
@@ -1265,10 +1301,14 @@ export default {
                     console.log(error);
             });
     },
-    saveData() {
+   async saveData() {
       let me = this;
 
-      axios
+      if (this.arrayZoneAuto.name!="Otro"){
+          this.another="";
+        }
+      
+      await axios
         .post("/inspectionBoatCargo/save", {
     
         place: this.arrayReg.name,
@@ -1276,8 +1316,8 @@ export default {
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
         fullCargo: this.form.fullCargo,
-        nameBoatCargo: this.form.nameBoatCargo.toUpperCase(),
-        areaOperation: this.arrayZoneAuto.id,
+        nameBoatCargo: this.arrayBt.nameBoat,
+        areaOperation: this.arrayZoneAuto.name,
         notification: this.notification.toUpperCase(),
         nameBoat: this.form.nameBoat.toUpperCase(),
         noIdOmi: this.form.noIdOmi.toUpperCase(),
@@ -1290,7 +1330,7 @@ export default {
         nameCaptain: this.form.nameCaptain.toUpperCase(),
         nameBusiness: this.form.nameBusiness.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
-        another: this.another.toUpperCase(),
+        another: this.another,
         data:this.arrayTarget,
        
         'id_port': this.arrayPt.id,
@@ -1300,6 +1340,7 @@ export default {
         'id_flagDonor': this.arrayFgDonor.id,
         })
         .then(function(response) {
+          me.clearForm();
           me.hideForm();
           me.message("Guardado", "Guardo ");
           me.listData();
@@ -1319,8 +1360,8 @@ export default {
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
         fullCargo: this.form.fullCargo,
-        nameBoatCargo: this.form.nameBoatCargo.toUpperCase(),
-        areaOperation: this.arrayZoneAuto.id,
+        nameBoatCargo: this.arrayBt.nameBoat,
+        areaOperation: this.arrayZoneAuto.name,
         notification: this.notification.toUpperCase(),
         nameBoat: this.form.nameBoat.toUpperCase(),
         noIdOmi: this.form.noIdOmi.toUpperCase(),
@@ -1333,7 +1374,7 @@ export default {
         nameCaptain: this.form.nameCaptain.toUpperCase(),
         nameBusiness: this.form.nameBusiness.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
-        another: this.another.toUpperCase(),
+        another: this.another,
        
         'id_port': this.arrayPt.id,
         'id_portZarpe': this.arrayPtZarpe.id,
@@ -1446,6 +1487,7 @@ export default {
   },
 
   mounted() {    
+    this.selectBoats();
     this.listData();
     this.selectRegion();
     this.selectZoneAutoFisher();

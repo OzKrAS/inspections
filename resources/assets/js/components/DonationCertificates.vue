@@ -160,12 +160,12 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                       <md-field>
                           <label class="text-muted">Presentación</label>
                           <md-select v-model="presentation" name="presentation" id="presentation" placeholder="presentación">
-                            <md-option value="unidades">Unidades</md-option>
-                            <md-option value="zartas ">Zartas </md-option>
-                            <md-option value="bolsas o bultos">Bolsas o Bultos </md-option>
-                            <md-option value="canastas">Canastas</md-option>
-                            <md-option value="grupos">Grupos</md-option>
-                            <md-option value="otros">Otros</md-option>
+                            <md-option value="Unidades">Unidades</md-option>
+                            <md-option value="Zartas ">Zartas</md-option>
+                            <md-option value="Bolsas o Bultos">Bolsas o Bultos </md-option>
+                            <md-option value="Canastas">Canastas</md-option>
+                            <md-option value="Grupos">Grupos</md-option>
+                            <md-option value="Otros">Otros</md-option>
                           </md-select>
                       </md-field> 
                     </div>&nbsp;&nbsp;&nbsp;  

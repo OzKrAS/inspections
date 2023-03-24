@@ -14,8 +14,7 @@ class InspectionBoatCargoController extends Controller
     {
         if (!$request->ajax()) return redirect('/');
         
-        $inspections = InspectionBoatCargo::join('ports','inspection_boat_cargos.id_port','=','ports.id')
-            ->join('flags','inspection_boat_cargos.id_flag','=','flags.id')
+        $inspections = InspectionBoatCargo::join('flags','inspection_boat_cargos.id_flag','=','flags.id')
             ->select('inspection_boat_cargos.id',
                      'inspection_boat_cargos.place',
                      'inspection_boat_cargos.noForm',
@@ -34,15 +33,14 @@ class InspectionBoatCargoController extends Controller
                      'inspection_boat_cargos.date',
                      'inspection_boat_cargos.dateTransfer',
                      'inspection_boat_cargos.notification',
-                     'inspection_boat_cargos.areaOperation',
                      'inspection_boat_cargos.observation',
-                     
+                     'inspection_boat_cargos.areaOperation',                     
                      'inspection_boat_cargos.id_port','ports.name as namePort',
                      'inspection_boat_cargos.id_flag','flags.name as nameFlag',
                      
             )
         
-            ->paginate(9999999999999999999999999);
+            ->paginate(999999);
 
         return [     
             'inspections' => $inspections
