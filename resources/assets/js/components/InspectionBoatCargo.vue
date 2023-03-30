@@ -1216,7 +1216,7 @@ export default {
 
     },
        nameWithRegion ({ nameMuni,name  }) {
-            return `${nameMuni} / ${name}`
+          return `${nameMuni}  ${name}`
     },
     nameWithPort ({ namePort,name }) {
             return `${namePort} / ${name}  `
@@ -1311,7 +1311,7 @@ export default {
       await axios
         .post("/inspectionBoatCargo/save", {
     
-        place: this.arrayReg.name,
+        place: `${this.arrayReg.nameMuni} / ${this.arrayReg.name}`,
         date: this.form.date,
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
@@ -1355,7 +1355,7 @@ export default {
       axios
         .put("/inspectionBoatCargo/update", {
         id: this.id_inspectionBoatCargo,
-        place: this.arrayReg.id,
+        place: `${this.arrayReg.nameMuni} / ${this.arrayReg.name}`,
         date: this.form.date,
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
