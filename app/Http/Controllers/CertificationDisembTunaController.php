@@ -31,8 +31,7 @@ class CertificationDisembTunaController extends Controller
                      'certification_disemb_tunas.id_flag','flags.name as nameFlag',
                      
             )
-        
-            ->paginate(9999999999999999999999999);
+            ->paginate(99999999);
 
         return [     
             'tunas' => $tunas
