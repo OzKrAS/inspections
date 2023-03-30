@@ -2201,6 +2201,7 @@ class DataJsonController extends Controller
     }
     public function jsonCertificationDisembTuna(){
         $flags = Flag::all();
+        $autoFisher = AutoFisher::all();
         $company = Company::orderBy('name', 'asc')->get();
         $ports = Ports::all();
         $fishery = FisheryAuthorized::all();
@@ -2285,7 +2286,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"ZoneFisher",
                         "cons"=>8,
-                        "data"=> $fishery
+                        "data"=> $autoFisher
                     ],
                     [
                         "type"=>3,
