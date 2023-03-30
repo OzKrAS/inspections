@@ -39,7 +39,7 @@ class DataJsonController extends Controller
         ->select('municipalities.id', 'municipalities.name', 'municipalities.id_region','regions.name as nameReg')->get();
         $regions = Region::all();
         $orops = Orop::all();
-        $company = Company::all();
+        $company = Company::orderBy('name', 'asc')->get();
         $fishery = FisheryAuthorized::all();
         $autoFisher = AutoFisher::all();
         $nationality = Nationality::all();
@@ -493,7 +493,7 @@ class DataJsonController extends Controller
         $flags = Flag::all();
         $ports = Ports::all();
         $regions = Region::all();
-        $company = Company::all();
+        $company = Company::orderBy('name', 'asc')->get();
         $fishery = FisheryAuthorized::all();
         $autoFisher = AutoFisher::all();
         $nationality = Nationality::all();
@@ -1014,7 +1014,7 @@ class DataJsonController extends Controller
     }
     public function jsonDetFlap(){
         $regional = Regional::all();
-        $company = Company::all();
+        $company = Company::orderBy('name', 'asc')->get();
         $fishery = FisheryAuthorized::all();
 
         return response() -> json(
@@ -1202,7 +1202,7 @@ class DataJsonController extends Controller
     }
     public function jsonDetInch(){
         $regional = Regional::all();
-        $company = Company::all();
+        $company = Company::orderBy('name', 'asc')->get();
         $fishery = FisheryAuthorized::all();
 
 
