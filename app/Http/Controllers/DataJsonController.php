@@ -493,7 +493,7 @@ class DataJsonController extends Controller
         $flags = Flag::all();
         $ports = Ports::all();
         $regions = Region::all();
-        $company = Company::orderBy('name', 'asc')->all();
+        $company = Company::orderBy('name', 'asc')->get();
         $fishery = FisheryAuthorized::all();
         $autoFisher = AutoFisher::all();
         $nationality = Nationality::all();
