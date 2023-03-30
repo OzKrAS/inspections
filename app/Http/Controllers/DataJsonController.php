@@ -2285,7 +2285,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"ZoneFisher",
                         "cons"=>8,
-                        "data"=> $docks
+                        "data"=> $fishery
                     ],
                     [
                         "type"=>3,
