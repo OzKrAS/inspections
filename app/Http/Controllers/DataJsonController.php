@@ -493,7 +493,7 @@ class DataJsonController extends Controller
         $flags = Flag::all();
         $ports = Ports::all();
         $regions = Region::all();
-        $company = Company::orderBy('name', 'asc')->get();
+        $company = Company::all();
         $fishery = FisheryAuthorized::all();
         $autoFisher = AutoFisher::all();
         $nationality = Nationality::all();
@@ -2201,7 +2201,7 @@ class DataJsonController extends Controller
     }
     public function jsonCertificationDisembTuna(){
         $flags = Flag::all();
-        $company = Company::all();
+        $company = Company::orderBy('name', 'asc')->get();
         $ports = Ports::all();
         $fishery = FisheryAuthorized::all();
         $docks = Dock::join('ports','docks.id_port','=','ports.id')
