@@ -54,9 +54,12 @@ class DockController extends Controller
     
     public function selectDocks(Request $request)
     {
+        // ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as namePort, ports.name as otro")
         $port = Dock::join('ports','docks.id_port','=','ports.id')
-        ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as namePort, ports.name as otro")
-        ->orderBy('docks.name', 'asc')->get();
+            ->select(
+            'docks.id', 'docks.name','docks.arrival','docks.zarpe','docks.id_port',
+            'ports.name as namePort')
+            ->orderBy('docks.name', 'asc')->get();
         return [
             'port' => $port
         ];

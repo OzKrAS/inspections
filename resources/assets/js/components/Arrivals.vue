@@ -2157,11 +2157,11 @@ getArrivalImg() {
       console.log(error);
     });
 },
-    listData() {
+   async listData() {
       let me = this;
       var url =
         "/arrivals";
-      axios
+      await axios
         .get(url)
         .then(function (response) {
           var respuesta = response.data;
@@ -2591,11 +2591,11 @@ getArrivalImg() {
           console.log(error);
         });
     },
-    dataTarget(){
+    async dataTarget(){
       let me = this;
 
       var url = "/arrivals/target?id_Target="+this.id_arrival;
-      axios
+      await axios
         .get(url)
         .then(function(response) {
           //console.log(response);
@@ -2606,11 +2606,11 @@ getArrivalImg() {
           console.log(error);
         });
     },
-    dataFauna(){
+    async dataFauna(){
       let me = this;
 
       var url = "/arrivals/fauna?id_Fauna="+this.id_arrival;
-      axios
+      await axios
         .get(url)
         .then(function(response) {
           //console.log(response);

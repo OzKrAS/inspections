@@ -15,6 +15,8 @@ class InspectionBoatCargoController extends Controller
         if (!$request->ajax()) return redirect('/');
         
         $inspections = InspectionBoatCargo::join('flags','inspection_boat_cargos.id_flag','=','flags.id')
+        ->join('docks','inspection_boat_cargos.id_port','=','docks.id')
+        ->join('ports','docks.id_port','=','ports.id')
             ->select('inspection_boat_cargos.id',
                      'inspection_boat_cargos.place',
                      'inspection_boat_cargos.noForm',

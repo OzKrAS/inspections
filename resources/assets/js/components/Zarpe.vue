@@ -1451,11 +1451,11 @@ export default {
     nameWithCompany ({ name }) {
             return `${name}`
     },
-    listData() {
+    async listData() {
       let me = this;
       var url =
         "/zarpes";
-      axios
+      await axios
         .get(url)
         .then(function (response) {
           var respuesta = response.data;
