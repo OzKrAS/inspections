@@ -47,6 +47,7 @@ class CertificationDisembTunaController extends Controller
         $tunas->dateBeginningFaena = $request->dateBeginningFaena;
         $tunas->dateEndFaena = $request->dateEndFaena;
         $tunas->observation = $request->observation;
+        $tunas->other = $request->other;
         
         $tunas->id_company = $request->id_company;  
         $tunas->id_port = $request->id_port;  

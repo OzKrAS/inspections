@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
-          <strong class="lead">Formato Inspección Embarcación de Carga</strong>          
+          <strong class="lead">Formato Inspección Embarcación de Carga.</strong>          
           <button
             v-if="edo"
             type="button"
@@ -201,7 +201,7 @@
                           placeholder="Seleccione puerto de zarpe"
                           :custom-label="nameWithPort"
                           label="name"
-                          track-by="name">
+                          track-by="namePort">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
@@ -210,7 +210,7 @@
                           placeholder="Seleccione puerto de transbordo de la carga"
                           :custom-label="nameWithPort"
                           label="name"
-                          track-by="name">
+                          track-by="namePort">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
@@ -826,7 +826,7 @@ export default {
       arrayZoneAuto: {id:0, name:''},
 	    arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
-      arrayPt: {id:0, namePort:'',name:''},
+      arrayPt: {id:0, namePort:''},
 	    arrayPort: [],
       id_port: 0,
       arrayPtZarpe: {id:0, namePort:'',name:''},
@@ -1150,7 +1150,10 @@ export default {
     clearForm() {
       this.$v.$reset();
       //this.arrayReg.name = "";
-      this.form.date = null;
+      this.arrayReg= {id:0, name:'', nameMuni:''},
+      this.arrayPtDisemb= {id:0, namePort:'',name:''},
+      this.arrayPtZarpe= {id:0, namePort:'',name:''},
+      this.arrayPt= {id:0, namePort:'',name:''},
       this.form.noForm = null;
       this.form.businessColombia = null;
       this.form.fullCargo = null;
@@ -1203,12 +1206,9 @@ export default {
       this.form.nameBusiness = data["nameBusiness"];
       this.form.observation = data["observation"];
 
-      this.arrayPt.id = data["id_port"];
-      this.arrayPt.name = data["namePort"];
-      this.arrayPtZarpe.id = data["id_portZarpe"];
-			this.arrayPtZarpe.name = data["namePort"];
-      this.arrayPtDisemb.id = data["id_portDisemb"];
-			this.arrayPtDisemb.name = data["namePort"];
+      this.arrayPt.namePort = data["id_port"];
+			this.arrayPtZarpe.name = data["id_portZarpe"];
+			this.arrayPtDisemb.name = data["id_portDisemb"];
       this.arrayFg.id = data["id_flag"];
 	    this.arrayFg.name = data["nameFlag"];
       this.arrayFgDonor.id = data["id_flagDonor"];
@@ -1216,10 +1216,10 @@ export default {
 
     },
        nameWithRegion ({ nameMuni,name  }) {
-          return `${nameMuni}  ${name}`
+          return `${nameMuni} ${name}`
     },
-    nameWithPort ({ namePort,name }) {
-            return `${namePort} / ${name}  `
+    nameWithPort ({ namePort }) {
+            return `${namePort}`
     },
     nameWithFlag ({ name }) {
             return `${name}`
@@ -1311,7 +1311,7 @@ export default {
       await axios
         .post("/inspectionBoatCargo/save", {
     
-        place: `${this.arrayReg.nameMuni} / ${this.arrayReg.name}`,
+        place: `${this.arrayReg.nameMuni} - ${this.arrayReg.name}`,
         date: this.form.date,
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
@@ -1333,9 +1333,9 @@ export default {
         another: this.another,
         data:this.arrayTarget,
        
-        'id_port': this.arrayPt.id,
-        'id_portZarpe': this.arrayPtZarpe.id,
-        'id_portDisemb': this.arrayPtDisemb.id,
+        'id_port': `${this.arrayPt.namePort} ${this.arrayPt.name}`,
+        'id_portZarpe': `${this.arrayPtZarpe.namePort} ${this.arrayPtZarpe.name}`,
+        'id_portDisemb': `${this.arrayPtDisemb.namePort} ${this.arrayPtDisemb.name}`,
         'id_flag': this.arrayFg.id,
         'id_flagDonor': this.arrayFgDonor.id,
         })
@@ -1355,7 +1355,7 @@ export default {
       axios
         .put("/inspectionBoatCargo/update", {
         id: this.id_inspectionBoatCargo,
-        place: `${this.arrayReg.nameMuni} / ${this.arrayReg.name}`,
+        place: `${this.arrayReg.nameMuni} - ${this.arrayReg.name}`,
         date: this.form.date,
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
@@ -1375,14 +1375,15 @@ export default {
         nameBusiness: this.form.nameBusiness.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
         another: this.another,
-       
-        'id_port': this.arrayPt.id,
-        'id_portZarpe': this.arrayPtZarpe.id,
-        'id_portDisemb': this.arrayPtDisemb.id,
+
+        'id_port': `${this.arrayPt.namePort}`,
+        'id_portZarpe': `${this.arrayPtZarpe.namePort} ${this.arrayPtZarpe.name}`,
+        'id_portDisemb': `${this.arrayPtDisemb.namePort} ${this.arrayPtDisemb.name}`,
         'id_flag': this.arrayFg.id,
         'id_flagDonor': this.arrayFgDonor.id,
         })
         .then(function(response) {
+          me.clearForm();
           me.hideForm();
           me.message("Actualizado", "Actualizó ");
           me.listData();

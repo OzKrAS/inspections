@@ -36,6 +36,8 @@ class InspectionBoatCargoController extends Controller
                      'inspection_boat_cargos.observation',
                      'inspection_boat_cargos.areaOperation',                     
                      'inspection_boat_cargos.id_port',
+                     'inspection_boat_cargos.id_portZarpe',
+                     'inspection_boat_cargos.id_portDisemb',
                      'inspection_boat_cargos.id_flag','flags.name as nameFlag',
                      
             )
