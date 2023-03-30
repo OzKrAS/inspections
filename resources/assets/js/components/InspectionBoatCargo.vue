@@ -81,8 +81,8 @@
                         <multiselect v-model="arrayReg" :options="arrayRegion" class="multi"
                           placeholder="Región/Municipio"
                           :custom-label="nameWithRegion"
-                          label="name"
-                          track-by="name">
+                          label="namePlace"
+                          track-by="namePlace">
                         </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <!-- <div class="md-layout-item">
@@ -819,7 +819,7 @@ export default {
       
       arrayBt: {id:0, nameBoat:''},
 	    arrayBoat: [],
-      arrayReg: {id:0, name:'', nameMuni:''},
+      arrayReg: {namePlace:''},
 	    arrayRegion: [],
       arrayCName: {id:0, commonname:''},
       arrayCommonName:[],
@@ -1183,7 +1183,8 @@ export default {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_inspectionBoatCargo = data["id"]);
-      this.arrayReg.name = data["place"];
+      this.arrayReg.namePlace = data["place"];
+      // this.arrayReg.nameMuni = data["place"];
       this.form.date = data["date"];
       this.form.noForm = data["noForm"];
       this.form.businessColombia = data["businessColombia"];
@@ -1215,8 +1216,8 @@ export default {
 	    this.arrayFgDonor.name = data["nameFlag"];
 
     },
-       nameWithRegion ({ nameMuni,name  }) {
-            return `${nameMuni} / ${name}`
+       nameWithRegion ({ namePlace  }) {
+            return `${namePlace}`
     },
     nameWithPort ({ namePort,name }) {
             return `${namePort} / ${name}  `
@@ -1311,7 +1312,7 @@ export default {
       await axios
         .post("/inspectionBoatCargo/save", {
     
-        place: this.arrayReg.name,
+        place: this.arrayReg.namePlace,
         date: this.form.date,
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),
@@ -1355,7 +1356,7 @@ export default {
       axios
         .put("/inspectionBoatCargo/update", {
         id: this.id_inspectionBoatCargo,
-        place: this.arrayReg.id,
+        place: this.arrayReg.namePlace,
         date: this.form.date,
         noForm: this.form.noForm.toUpperCase(),
         businessColombia: this.form.businessColombia.toUpperCase(),

@@ -1937,6 +1937,11 @@ class DataJsonController extends Controller
         $species = CommonSpecies::select('id','commonname','scientificname')
             ->orderBy('commonname', 'asc')->get();
 
+            $municipalities = Municipality::join('regions','municipalities.id_region','=','regions.id')
+            ->selectRaw("CONCAT(municipalities.name, ' - ', regions.name) as namePlace,
+            municipalities.id, municipalities.name, municipalities.id_region,regions.name as nameReg")
+                ->orderBy('name', 'asc')->get();            
+
         return response() -> json(
 
                 ["idForm"=>1,
@@ -1958,7 +1963,7 @@ class DataJsonController extends Controller
                         "placeHolder"=>"PLACE HOLDER INPUT",
                         "id"=>"place",
                         "cons"=>2,
-                        "data"=>null
+                        "data"=>$municipalities
                     ],
                     [
                         "type"=>4,
