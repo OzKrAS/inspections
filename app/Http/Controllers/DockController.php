@@ -13,9 +13,8 @@ class DockController extends Controller
         if (!$request->ajax()) return redirect('/');
 
             $docks = Dock::join('ports','docks.id_port','=','ports.id')
-            ->select(
-            'docks.id', 'docks.name','docks.arrival','docks.zarpe','docks.id_port',
-            'ports.name as namePort')
+           ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as nameDock,docks.id, docks.name,docks.arrival,docks.zarpe,docks.id_port,
+            ports.name as namePort")
             ->paginate(9999999999999999);
         
         return [
@@ -56,9 +55,8 @@ class DockController extends Controller
     {
         // ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as namePort, ports.name as otro")
         $port = Dock::join('ports','docks.id_port','=','ports.id')
-            ->select(
-            'docks.id', 'docks.name','docks.arrival','docks.zarpe','docks.id_port',
-            'ports.name as namePort')
+            ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as nameDock,docks.id, docks.name,docks.arrival,docks.zarpe,docks.id_port,
+            ports.name as namePort")
             ->orderBy('docks.name', 'asc')->get();
         return [
             'port' => $port

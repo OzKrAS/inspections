@@ -14,33 +14,37 @@ class InspectionBoatCargoController extends Controller
     {
         if (!$request->ajax()) return redirect('/');
         
+            //        ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as nameDock,docks.id, docks.name,docks.arrival,docks.zarpe,docks.id_port,
+            // ports.name as namePort")
         $inspections = InspectionBoatCargo::join('flags','inspection_boat_cargos.id_flag','=','flags.id')
         ->join('docks','inspection_boat_cargos.id_port','=','docks.id')
+        ->join('docks as d','inspection_boat_cargos.id_portZarpe','=','d.id')
+        ->join('docks as dd','inspection_boat_cargos.id_portDisemb','=','dd.id')
         ->join('ports','docks.id_port','=','ports.id')
-            ->select('inspection_boat_cargos.id',
-                     'inspection_boat_cargos.place',
-                     'inspection_boat_cargos.noForm',
-                     'inspection_boat_cargos.businessColombia',
-                     'inspection_boat_cargos.fullCargo',
-                     'inspection_boat_cargos.nameBoatCargo',
-                     'inspection_boat_cargos.nameBoat',
-                     'inspection_boat_cargos.noIdOmi',
-                     'inspection_boat_cargos.placeTransfer',
-                     'inspection_boat_cargos.areasCapture',
-                     'inspection_boat_cargos.shapeProduct',
-                     'inspection_boat_cargos.amount',
-                     'inspection_boat_cargos.nameOfficial',
-                     'inspection_boat_cargos.nameCaptain',
-                     'inspection_boat_cargos.nameBusiness',
-                     'inspection_boat_cargos.date',
-                     'inspection_boat_cargos.dateTransfer',
-                     'inspection_boat_cargos.notification',
-                     'inspection_boat_cargos.observation',
-                     'inspection_boat_cargos.areaOperation',                     
-                     'inspection_boat_cargos.id_port',
-                     'inspection_boat_cargos.id_portZarpe',
-                     'inspection_boat_cargos.id_portDisemb',
-                     'inspection_boat_cargos.id_flag','flags.name as nameFlag',
+            ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as portTrans,CONCAT(ports.name, ' - ', d.name) as portZarpe,CONCAT(ports.name, ' - ', d.name) as portZarpe,CONCAT(ports.name, ' - ', dd.name) as portDisemb,inspection_boat_cargos.id,
+                     inspection_boat_cargos.place,
+                     inspection_boat_cargos.noForm,
+                     inspection_boat_cargos.businessColombia,
+                     inspection_boat_cargos.fullCargo,
+                     inspection_boat_cargos.nameBoatCargo,
+                     inspection_boat_cargos.nameBoat,
+                     inspection_boat_cargos.noIdOmi,
+                     inspection_boat_cargos.placeTransfer,
+                     inspection_boat_cargos.areasCapture,
+                     inspection_boat_cargos.shapeProduct,
+                     inspection_boat_cargos.amount,
+                     inspection_boat_cargos.nameOfficial,
+                     inspection_boat_cargos.nameCaptain,
+                     inspection_boat_cargos.nameBusiness,
+                     inspection_boat_cargos.date,
+                     inspection_boat_cargos.dateTransfer,
+                     inspection_boat_cargos.notification,
+                     inspection_boat_cargos.observation,
+                     inspection_boat_cargos.areaOperation,                     
+                     inspection_boat_cargos.id_port,
+                     inspection_boat_cargos.id_portZarpe,
+                     inspection_boat_cargos.id_portDisemb,
+                     inspection_boat_cargos.id_flag,inspection_boat_cargos.id_flagDonor,flags.name as nameFlag",
                      
             )
         
@@ -135,6 +139,24 @@ class InspectionBoatCargoController extends Controller
         $inspections->id_flag = $request->id_flag;   
         $inspections->id_flagDonor = $request->id_flagDonor;  
         $inspections->save();
+
+            $detailinspection = $request->data;
+            foreach($detailinspection as $ep=>$det){
+            $objeto= new DetailInspectionBoat();
+            $objeto->id_inspection = $inspections->id;
+            $objeto->nameCommon1= $det['nameCommon1'];
+            $objeto->nameScientific1= $det['nameScientific1'];
+            $objeto->nameBoat= $det['nameBoat'];
+            $objeto->flag= $det['id_flag'];
+            $objeto->noIdOmi= $det['noIdOmi'];
+            $objeto->placeTransfer= $det['placeTransfer'];
+            $objeto->dateTransfer= $det['dateTransfer'];
+            $objeto->areasCapture= $det['areasCapture'];
+            $objeto->shapeProduct= $det['shapeProduct'];
+            $objeto->amount= $det['amount'];
+            $objeto->save();
+        }
+
         $array = array(
             'res' => true,
             'message' => 'Registro actualizado exitosamente'

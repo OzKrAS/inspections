@@ -520,16 +520,16 @@ export default {
         });   
   },
     totalYellow: function(){
-      return this.arrayTarget.reduce((total, item) => total + parseInt(item.yellowFin), 0);
+      return this.arrayTarget.reduce((total, item) => total + parseFloat(item.yellowFin), 0).toFixed(2);
     },
     totalBarrilete: function(){
-      return this.arrayTarget.reduce((total, item) => total + parseInt(item.barrilete), 0);
+      return this.arrayTarget.reduce((total, item) => total + parseFloat(item.barrilete), 0).toFixed(2);
     },
     totalPatudo: function(){
-      return this.arrayTarget.reduce((total, item) => total + parseInt(item.patudo), 0);
+      return this.arrayTarget.reduce((total, item) => total + parseFloat(item.patudo), 0).toFixed(2);
     },
     totalOther: function(){
-      return this.arrayTarget.reduce((total, item) => total + parseInt(item.other), 0);
+      return this.arrayTarget.reduce((total, item) => total + parseFloat(item.other), 0).toFixed(2);
     },
     totalDesemb: function(){
             var total5 = 0;

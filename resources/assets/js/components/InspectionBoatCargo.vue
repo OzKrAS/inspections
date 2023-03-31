@@ -201,7 +201,7 @@
                           placeholder="Seleccione puerto de zarpe"
                           :custom-label="nameWithPort"
                           label="name"
-                          track-by="name">
+                          track-by="nameDock">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
@@ -210,7 +210,7 @@
                           placeholder="Seleccione puerto de transbordo de la carga"
                           :custom-label="nameWithPort"
                           label="name"
-                          track-by="name">
+                          track-by="nameDock">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
@@ -218,8 +218,8 @@
                       <multiselect v-model="arrayPtDisemb" :options="arrayPort"
                           placeholder="Seleccione puerto de desembarque"
                           :custom-label="nameWithPort"
-                          label="name"
-                          track-by="name">
+                          label="nameDock"
+                          track-by="nameDock">
                       </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;   
                 </div>
@@ -826,12 +826,12 @@ export default {
       arrayZoneAuto: {id:0, name:''},
 	    arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
-      arrayPt: {id:0, namePort:'',name:''},
+      arrayPt: {id:0, nameDock:'',name:''},
 	    arrayPort: [],
       id_port: 0,
-      arrayPtZarpe: {id:0, namePort:'',name:''},
+      arrayPtZarpe: {id:0, nameDock:'',name:''},
       id_portZarpe: 0,
-      arrayPtDisemb: {id:0, namePort:'',name:''},
+      arrayPtDisemb: {id:0, nameDock:'',name:''},
       id_disemb: 0,
       arrayFg: {id:0, name:''},
       arrayFgDonor: {id:0, name:''},
@@ -1172,9 +1172,9 @@ export default {
       this.another = null;
       this.arrayZoneAuto = {id:0, name:''};
       
-      this.arrayPt = {id:0, namePort:'',name:''};
-      this.arrayPtZarpe = {id:0, namePort:'',name:''};
-      this.arrayPtDisemb = {id:0, namePort:'',name:''};
+      this.arrayPt = {id:0, nameDock:'',name:''};
+      this.arrayPtZarpe = {id:0, nameDock:'',name:''};
+      this.arrayPtDisemb = {id:0, nameDock:'',name:''};
       this.arrayFg = {id:0, name:''};
       this.arrayFgDonor = {id:0, name:''};
     },
@@ -1205,23 +1205,26 @@ export default {
       this.form.observation = data["observation"];
 
       this.arrayPt.id = data["id_port"];
-      this.arrayPt.name = data["namePort"];
+      this.arrayPt.nameDock = data["portTrans"];
       this.arrayPtZarpe.id = data["id_portZarpe"];
-			this.arrayPtZarpe.name = data["namePort"];
+      this.arrayPtZarpe.nameDock = data["portZarpe"];
       this.arrayPtDisemb.id = data["id_portDisemb"];
-			this.arrayPtDisemb.name = data["namePort"];
+			this.arrayPtDisemb.nameDock = data["portDisemb"];
       this.arrayFg.id = data["id_flag"];
 	    this.arrayFg.name = data["nameFlag"];
       this.arrayFgDonor.id = data["id_flagDonor"];
 	    this.arrayFgDonor.name = data["nameFlag"];
 
+      this.selectDetailTable()
+
     },
        nameWithRegion ({ namePlace  }) {
             return `${namePlace}`
     },
-    nameWithPort ({ namePort,name }) {
-            return `${namePort} / ${name}  `
+    nameWithPort ({ nameDock}) {
+      return `${nameDock}`
     },
+
     nameWithFlag ({ name }) {
             return `${name}`
     },
@@ -1247,6 +1250,16 @@ export default {
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
                     me.arrayPort = respuesta.port;
+                }).catch(function (error) {
+                    console.log(error);
+            });
+    },
+    selectDetailTable() {
+            let me = this;
+            var url = "/detailinspection?id="+this.id_inspectionBoatCargo;
+            axios.get(url).then(function (response) {
+                    var respuesta = response.data;
+                    me.arrayTarget = respuesta.detail;
                 }).catch(function (error) {
                     console.log(error);
             });
@@ -1376,6 +1389,7 @@ export default {
         nameBusiness: this.form.nameBusiness.toUpperCase(),
         observation: this.form.observation.toUpperCase(),
         another: this.another,
+        data:this.arrayTargetAct,
        
         'id_port': this.arrayPt.id,
         'id_portZarpe': this.arrayPtZarpe.id,
@@ -1384,6 +1398,7 @@ export default {
         'id_flagDonor': this.arrayFgDonor.id,
         })
         .then(function(response) {
+          me.arrayTargetAct=[]
           me.hideForm();
           me.message("Actualizado", "Actualizó ");
           me.listData();
@@ -1394,7 +1409,7 @@ export default {
     },
     deleteData(data = []) {
       swal({
-        title: "Esta seguro de Eliminar esta Inspección " + data["name"],
+        title: "Esta seguro de Eliminar esta Inspección " + data["nameBoatCargo"],
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
