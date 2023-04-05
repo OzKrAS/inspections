@@ -35,62 +35,62 @@ class ArrivalController extends Controller
             ->join('companies','arrivals.id_company','=','companies.id')
             ->join('orops','arrivals.id_orop','=','orops.id')
             ->join('fishing_gear_materials','arrivals.id_material','=','fishing_gear_materials.id')
-            ->select('arrivals.id',
-                    'arrivals.insNo',
-                    'arrivals.radioCall',
-                    'arrivals.noResolution',
-                    'arrivals.nameBoat',
-                    'arrivals.enrollment',
-                    'arrivals.noPatent',
-                    'arrivals.eyeMesh',
-                    'arrivals.netWidth',
-                    'arrivals.eyeFlake',
-                    'arrivals.typeHook',
-                    'arrivals.longNet',
-                    'arrivals.materialArt',
-                    'arrivals.equipDevi',
-                    'arrivals.captain',
-                    'arrivals.noOmi',
-                    'arrivals.totalLongline',
-                    'arrivals.legalRepre',
-                    'arrivals.noAllCrew',
-                    'arrivals.noCrewForeign',
-                    'arrivals.noCrewNational',
-                    'arrivals.idOmi',
-                    'arrivals.other',
-                    'arrivals.noDays',
-                    'arrivals.noAllHauls',
-                    'arrivals.noHaulsNacional',
-                    'arrivals.noHaulsInter',
-                    'arrivals.landedWeight',
-                    'arrivals.observation',
-                    'arrivals.notification',
-                    'arrivals.finalityArrival',
-                    'arrivals.workDone',
-                    'arrivals.locationSystem',
-                    'arrivals.inspectorConclusions',
-                    'arrivals.additionalComments',
-                    'arrivals.dateIns',
-                    'arrivals.dateScale',
-                    'arrivals.dateZarpe',
-                    'arrivals.dateLatestArrival',
-                    'arrivals.dateValidityPat',
-                    'arrivals.date',
-                    'arrivals.dateValidity',
-                    'arrivals.stateRectorPort',
-                    'arrivals.observationGeneral',
-                    'arrivals.id_portArrival',
-                    'arrivals.id_portZarpe',
+            ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as namePlace,arrivals.id,
+                    arrivals.insNo,
+                    arrivals.radioCall,
+                    arrivals.noResolution,
+                    arrivals.nameBoat,
+                    arrivals.enrollment,
+                    arrivals.noPatent,
+                    arrivals.eyeMesh,
+                    arrivals.netWidth,
+                    arrivals.eyeFlake,
+                    arrivals.typeHook,
+                    arrivals.longNet,
+                    arrivals.materialArt,
+                    arrivals.equipDevi,
+                    arrivals.captain,
+                    arrivals.noOmi,
+                    arrivals.totalLongline,
+                    arrivals.legalRepre,
+                    arrivals.noAllCrew,
+                    arrivals.noCrewForeign,
+                    arrivals.noCrewNational,
+                    arrivals.idOmi,
+                    arrivals.other,
+                    arrivals.noDays,
+                    arrivals.noAllHauls,
+                    arrivals.noHaulsNacional,
+                    arrivals.noHaulsInter,
+                    arrivals.landedWeight,
+                    arrivals.observation,
+                    arrivals.notification,
+                    arrivals.finalityArrival,
+                    arrivals.workDone,
+                    arrivals.locationSystem,
+                    arrivals.inspectorConclusions,
+                    arrivals.additionalComments,
+                    arrivals.dateIns,
+                    arrivals.dateScale,
+                    arrivals.dateZarpe,
+                    arrivals.dateLatestArrival,
+                    arrivals.dateValidityPat,
+                    arrivals.date,
+                    arrivals.dateValidity,
+                    arrivals.stateRectorPort,
+                    arrivals.observationGeneral,
+                    arrivals.id_portArrival,
+                    arrivals.id_portZarpe,
 
-                    'arrivals.id_region','regions.name as nameReg',
-                    'arrivals.id_port','ports.name as namePort',
-                    'arrivals.id_flag','flags.name as nameFlag',
-                    'arrivals.id_material','fishing_gear_materials.name as nameMaterial',
-                    'arrivals.id_nationality','nationalities.name as nameNationality',
-                    'arrivals.id_zoneAutoFisher','auto_fishers.name as nameZoneAutoFisher',
-                    // 'arrivals.id_fisheryAuthorized','fishery_authorizeds.name as nameFishery',
-                    'arrivals.id_company','companies.name as nameCompany',
-                    'arrivals.id_orop','orops.name as nameOrop',
+                    arrivals.id_region,regions.name as nameReg,
+                    arrivals.id_port,ports.name as namePort,
+                    arrivals.id_flag,flags.name as nameFlag,
+                    arrivals.id_material,fishing_gear_materials.name as nameMaterial,
+                    arrivals.id_nationality,nationalities.name as nameNationality,
+                    arrivals.id_zoneAutoFisher,auto_fishers.name as nameZoneAutoFisher,
+                    // arrivals.id_fisheryAuthorized,fishery_authorizeds.name as nameFishery,
+                    arrivals.id_company,companies.name as nameCompany,
+                    arrivals.id_orop,orops.name as nameOrop"
             )
 
             ->paginate(9999999999999999999999999);
@@ -102,7 +102,7 @@ class ArrivalController extends Controller
     public function store(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
-        
+
         try {
             DB::beginTransaction();
         $arrivals = new Arrival();
@@ -156,7 +156,7 @@ class ArrivalController extends Controller
         $arrivals->id_portArrival = $request->id_portArrival;
         $arrivals->id_flag = $request->id_flag;
         $arrivals->id_nationality = $request->id_nationality;
-        $arrivals->id_orop = $request->id_orop; 
+        $arrivals->id_orop = $request->id_orop;
         $arrivals->id_material = $request->id_material;
         $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;
         $arrivals->id_company = $request->id_company;
@@ -209,7 +209,7 @@ class ArrivalController extends Controller
                 // 'id_region' => $request->id_region,
                 // 'id_port' => $request->id_port,
                 // 'id_portZarpe' => $request->id_portZarpe,
-                // 'id_portArrival' => $request->id_portArrival,  
+                // 'id_portArrival' => $request->id_portArrival,
                 // 'id_flag' => $request->id_flag,
                 //     'id_nationality' => $request->id_nationality,
                 //     'id_orop' => $request->id_orop,
@@ -217,7 +217,7 @@ class ArrivalController extends Controller
                 //     'id_zoneAutoFisher' => $request->id_zoneAutoFisher,
                 //     'id_company' => $request->id_company
                 //     ]);
-        
+
 
 
         $detailarrivals = $request->fishery;
@@ -252,22 +252,22 @@ class ArrivalController extends Controller
         //     $this->savePhoto($arrivals, $request);
         // }
 
-         
+
         DB::commit();
      $array = array(
             'res' => true,
             'id'=>$arrivals['id'],
             'message' => 'Registro guardado exitosamente'
             );
-            
-            
+
+
             return response()->json($array,201);
-        
+
 
         } catch (\Exception $ex) {
             DB::rollBack();
                return response()->json(['status' => 'fail', 'msg' => 'Ha ocurrido un error al procesar la solicitud '.$ex->getMessage()], 500);
-           
+
 
     }
     }
@@ -275,7 +275,7 @@ class ArrivalController extends Controller
     public function update(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
-        
+
         $arrivals = Arrival::findOrFail($request->id);
         $arrivals->insNo = $request->insNo;
         $arrivals->radioCall = $request->radioCall;
@@ -333,7 +333,7 @@ class ArrivalController extends Controller
         // $arrivals->id_fisheryAuthorized = $request->id_fisheryAuthorized;
         $arrivals->id_company = $request->id_company;
         $arrivals->save();
-     
+
 
 
         // $detailarrivals = $request->fishery;
@@ -400,7 +400,7 @@ class ArrivalController extends Controller
     }
     public function savePhoto($solicitud, $request)
     {
-   
+
         if(empty($request->images)){
 
         foreach($request->images as $ep=>$det){
@@ -438,13 +438,13 @@ class ArrivalController extends Controller
         $img = $request->images;
 
         $ruta = public_path('img-arrivals-request/');
-        
+
         $i=0;
         if(count($request->images)){
 
             foreach($request->images as $image){
 
-       
+
                 $filename = 'arrivals-' . Str::random(10). '-'.$image->getClientOriginalName();
                 $upload_success = $image->move($ruta, $filename);
 
