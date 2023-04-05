@@ -104,8 +104,8 @@
                         <multiselect v-model="arrayReg" :options="arrayRegion"
                           placeholder="Región/Municipio"
                           :custom-label="nameWithRegion"
-                          label="name"
-                          track-by="name">
+                          label="namePlace"
+                          track-by="namePlace">
                         </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
@@ -315,7 +315,7 @@
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-       
+
                        <div class="md-layout-item">
                         <label class="text-muted">OROP</label>
                         <multiselect v-model="arrayOr" :options="arrayOrop"
@@ -327,7 +327,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
-                   
+
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('radioCall')">
                       <label for="first-name">Señal Radiollamada Internacional (International Radio Call Signal)</label>
@@ -693,7 +693,7 @@
                   <div class="md-layout-item">
                        <label class="text-muted">Equipos o Dispositivos Requeridos</label>
                         <multiselect v-model="arrayEquipDevi" :options="arrayValue"
-                          placeholder="Equipos o Dispositivo"                
+                          placeholder="Equipos o Dispositivo"
                           label="name"
                           track-by="name">
                         </multiselect>
@@ -903,7 +903,7 @@
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
-                            v-model="nameScientific1"                          
+                            v-model="nameScientific1"
                             disabled
                           />
                         </md-field>
@@ -1216,7 +1216,7 @@
                 <!-- FIL SUBIR IMAGEN -->
                 <!-- SUBIR PDF -->
                 <!-- <li     v-for="(image, index) in myFiles" :key="index">
-                  
+
                   <img :src="image.src" alt="">
                 </li> -->
                  <p>
@@ -1226,13 +1226,13 @@
   :allow-multiple="true"
   credits="false"
   :files="myFiles2"
-  allowImagePreview= true    
+  allowImagePreview= true
   accepted-file-types="image/jpeg, image/png"
   @onaddfile="handleProcessFile"
 />
 
 
-   
+
                         <!-- <file-pond-plugin-image-preview></file-pond-plugin-image-preview> -->
                     <!-- <file-pond-plugin-file-poster /> -->
                   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
@@ -1315,7 +1315,7 @@
               >Guardar</md-button>
               <!-- <md-button
                 type="submit"
-      
+
                 class="md-dense md-raised md-primary"
 
                 @click="saveData"
@@ -1342,7 +1342,7 @@
     // Import Vue FilePond
     import   vueFilePond   from "vue-filepond";
     //import { FilePond, registerPlugin } from 'filepond';
-  
+
     import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
     import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
     import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
@@ -1417,7 +1417,7 @@ export default {
   //         //   });
   //       }
   //     },
-        
+
         form: {
 
           insNo: "",
@@ -1462,7 +1462,7 @@ export default {
       noCrewNational: "",
       idArrival: "",
 
-      
+
       nameCommon1: "",
       nameScientific1: "",
       capture1: "",
@@ -1484,7 +1484,7 @@ export default {
       arrayCName: {id:0, commonname:''},
       arrayCommonName:[],
       arrayCName2: {id:0, commonname:''},
-      arrayReg: {id:0, name:'', nameMuni:''},
+      arrayReg: {id:0, name:'', namePlace:''},
 	    arrayRegion: [],
       id_region: 0,
       arrayPt: {id:0, namePort:'', name:''},
@@ -1536,7 +1536,7 @@ export default {
       ],
 
       edo: 1,
-    
+
       tipoAccion: 1,
       listado: 1,
       idMcpio: 0,
@@ -1563,7 +1563,7 @@ export default {
       selectedImage: null,
       formData: null,
       pdf: [],
-      
+
     };
   },
   components: {
@@ -1655,7 +1655,7 @@ export default {
   computed: {
 
 
-  
+
 
   },
 
@@ -1696,9 +1696,9 @@ export default {
       // //   this.formData.append('files[]', files[i].file);
       // // }
       //      // this.currentFiles.push(file);
-       
-   
-       
+
+
+
       //   },
     // handleFilePondProcessfile( file,error) {
     //   console.log('error'+error);
@@ -1711,11 +1711,11 @@ export default {
 
         // pond.processFiles().then(files => {
         //   const formData = new FormData();
-          
+
         //   files.forEach(file => {
         //     formData.append('images[]', file, file.name);
         //   });
-          
+
         //   console.log(formData);
         // });
     },
@@ -1739,7 +1739,7 @@ export default {
         // }
         //   console.log("FormData" +formData);
     },
-    
+
        handleProcessFile(e,f) {
       // procesar el archivo
               console.log("Se procesaron los archivos " );
@@ -1749,7 +1749,7 @@ export default {
       console.log("Se procesaron los archivos");
       console.log(this.myFiles);
 
-   
+
     },
     OnDragEnter(e) {
       e.preventDefault();
@@ -1793,7 +1793,7 @@ export default {
     async upload(id) {
       let me = this;
       const formData = new FormData();
-      
+
       this.files.forEach((file) => {
         formData.append("images[]", file, file.name);
       });
@@ -1944,7 +1944,7 @@ export default {
 
       if (!this.$v.$invalid) {
         this.saveData();
-        
+
       }
     },
     addItemTarget() {
@@ -2062,7 +2062,7 @@ export default {
       this.form.observationGeneral = null;
       this.form.idOmi = null;
 
-      this.arrayReg = {id:0, name:'', nameMuni:''};
+      this.arrayReg = {id:0, name:'', namePlace:''};
       this.arrayPt = {id:0, namePort:'',name:''};
       this.arrayPtZarpe = {id:0, namePort:'',name:''};
       this.arrayPtArrival = {id:0, namePort:'',name:''};
@@ -2078,8 +2078,8 @@ export default {
     nameWithBoat ({ nameBoat  }) {
             return `${nameBoat}`
     },
-    nameWithRegion ({ nameMuni,name  }) {
-            return `${nameMuni} / ${name}`
+    nameWithRegion ({ namePlace }) {
+            return `${namePlace}`
     },
     nameWithPort ({ namePort,name }) {
             return `${namePort} / ${name}  `
@@ -2131,7 +2131,7 @@ export default {
     //       var respuesta = response.data;
     //       me.myFiles = respuesta.images;
 
- 
+
     //     })
     //     .catch(function (error) {
     //       console.log(error);
@@ -2261,7 +2261,7 @@ getArrivalImg() {
             axios.get(url).then(function (response) {
                     var respuesta = response.data;
                     me.arrayMaterialArt = respuesta.materials;
-              
+
                 }).catch(function (error) {
                     console.log(error);
             });
@@ -2316,7 +2316,7 @@ getArrivalImg() {
       this.stateRectorPort = data["stateRectorPort"];
 
       this.arrayReg.id = data["id_region"];
-			this.arrayReg.name = data["nameReg"];
+			this.arrayReg.namePlace = data["namePlace"];
       this.arrayPt.id = data["id_port"];
 			this.arrayPt.name = data["namePort"];
       this.arrayPtZarpe.id = data["id_portZarpe"];
@@ -2465,15 +2465,15 @@ getArrivalImg() {
           'fishery': this.arrayFa,
           'fauna': this.arrayFauna,
           'target': this.arrayTarget,
-          
+
         })
         .then(function(response) {
           me.hideForm();
-          me.message("Guardado", "Guardo ");    
+          me.message("Guardado", "Guardo ");
           me.idArrival = response.data.id;
 
           me.upload(me.idArrival);
-          me.clearForm();    
+          me.clearForm();
         })
         .catch(function(error) {
           console.log(error);
@@ -2692,7 +2692,7 @@ getArrivalImg() {
               id: data["id"],
             })
             .then(function(response) {
-         
+
               me.message("Eliminado", "Eliminó ");
               me.dataFauna();
               me.listData();
@@ -2728,7 +2728,7 @@ getArrivalImg() {
               id: data["id"],
             })
             .then(function(response) {
-         
+
               me.message("Eliminado", "Eliminó ");
               me.listData();
               me.dataTarget();

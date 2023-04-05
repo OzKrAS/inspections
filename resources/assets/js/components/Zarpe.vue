@@ -111,8 +111,8 @@
                           <multiselect v-model="arrayReg" :options="arrayRegion"
                             placeholder="Seleccione una región/municipio"
                             :custom-label="nameWithRegion"
-                            label="nameMuni"
-                            track-by="nameMuni">
+                            label="namePlace"
+                            track-by="namePlace">
                           </multiselect>
                         </div>&nbsp;&nbsp;&nbsp;
                         <div class="md-layout-item">
@@ -1074,7 +1074,7 @@ export default {
       arrayPt: {id:0, namePort:'', name:''},
 	    arrayPort: [],
       id_port: 0,
-      arrayReg: {id:0, name:'', nameMuni:''},
+      arrayReg: {id:0, name:'', namePlace:''},
 	    arrayRegion: [],
       id_region: 0,
       arrayPtZarpe: {id:0, namePort:'',name:''},
@@ -1406,7 +1406,7 @@ export default {
       this.finalityZarpe = null;
       this.national = null;
 
-      this.arrayReg = {id:0, name:'', nameMuni:''};
+      this.arrayReg = {id:0, name:'', namePlace:''};
       this.arrayPt = {id:0, namePort:'',name:''};
       this.arrayPtZarpe = {id:0, namePort:'',name:''};
       this.arrayPtArrival = {id:0, namePort:'',name:''};
@@ -1424,8 +1424,8 @@ export default {
     nameWithName ({ name  }) {
             return `${name}`
     },
-    nameWithRegion ({ nameMuni,name  }) {
-            return `${nameMuni} / ${name}`
+    nameWithRegion ({ namePlace }) {
+            return `${namePlace}`
     },
     nameWithPort ({ namePort,name }) {
             return `${namePort} / ${name}  `
@@ -1619,7 +1619,7 @@ export default {
       this.national = data["national"];
 
       this.arrayReg.id = data["id_region"];
-			this.arrayReg.name = data["nameReg"];
+			this.arrayReg.namePlace = data["namePlace"];
       this.arrayPt.id = data["id_port"];
 			this.arrayPt.name = data["namePort"];
       this.arrayPtZarpe.id = data["id_portZarpe"];
@@ -1670,7 +1670,7 @@ export default {
         if (this.arrayEquipDevi.name!="Otro"){
           this.other="";
         }
-      
+
       axios
         .post("/zarpes/save", {
           insNo: this.form.insNo.toUpperCase(),
