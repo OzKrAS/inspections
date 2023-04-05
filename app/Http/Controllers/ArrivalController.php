@@ -88,7 +88,6 @@ class ArrivalController extends Controller
                     arrivals.id_material,fishing_gear_materials.name as nameMaterial,
                     arrivals.id_nationality,nationalities.name as nameNationality,
                     arrivals.id_zoneAutoFisher,auto_fishers.name as nameZoneAutoFisher,
-                    // arrivals.id_fisheryAuthorized,fishery_authorizeds.name as nameFishery,
                     arrivals.id_company,companies.name as nameCompany,
                     arrivals.id_orop,orops.name as nameOrop"
             )
