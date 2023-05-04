@@ -19,7 +19,13 @@ class RegionalController extends Controller
     public function selectRegional(Request $request)
     {
         $regional = Regional::select('id','name')
-            ->orderBy('name', 'asc')->get();
+            ->where('id', '!=', 5)
+            ->where('id', '!=', 7)
+            ->where('id', '!=', 9)
+            ->orderBy('name', 'asc')
+            ->get();
+
+            
         return [
             'regional' => $regional
         ];
