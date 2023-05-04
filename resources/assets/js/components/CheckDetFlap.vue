@@ -25,12 +25,12 @@
                     <th>Fecha</th>
                     <th>Regional</th>
                     <th>Oficina</th>
-                    <th>Funcionario</th>
+                    <!-- <th>Funcionario</th> -->
                     <th>Embarcación</th>
                     <th>Matrícula</th>
                     <!-- <th>Pesquería Autorizada</th> -->
-                    <th>Empresa</th>
-                    <th>Capitán de Pesca</th>
+                    <!-- <th>Empresa</th> -->
+                    <!-- <th>Capitán de Pesca</th> -->
                     <th>Localización</th>
                     <th style="width: 90px">Opciones</th>    
                   </tr>
@@ -42,14 +42,14 @@
                       <th>Fecha</th>
                       <th>Regional</th>
                       <th>Oficina</th>
-                      <th>Funcionario</th>
+                      <!-- <th>Funcionario</th> -->
                       <th>Embarcación</th>
                       <th>Matrícula</th>
                       <!-- <th>Pesquería Autorizada</th> -->
-                      <th>Empresa</th>
-                      <th>Capitán de Pesca</th>
+                      <!-- <th>Empresa</th> -->
+                      <!-- <th>Capitán de Pesca</th> -->
                       <th>Localización</th>
-                      <th style="width: 90px">Opciones</th>  
+                      <th style="width: 90px">Opciones</th>   
                     </tr>
                   </tfoot>
                   <tbody>
@@ -1533,12 +1533,12 @@ export default {
             { "data": "date" },
             { "data": "nameRegional" },
             { "data": "office" },
-            { "data": "official" },
+            // { "data": "official" },
             { "data": "boat" },
             { "data": "enrollment" },
             // { "data": "outhFhisher" },
-            { "data": "nameCompany" },
-            { "data": "fishCaptain" },
+            // { "data": "nameCompany" },
+            // { "data": "fishCaptain" },
             { "data": "location" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  <button type='button'id='pdf' class='pdf btn btn-primary btn-sm' data-tooltip title='pdf' > <i class='fas fa-file-pdf'></i> </button>"},
 

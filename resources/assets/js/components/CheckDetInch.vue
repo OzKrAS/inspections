@@ -25,13 +25,13 @@
                     <th>Fecha</th>
                     <th>Regional</th>
                     <th>Oficina</th>
-                    <th>Funcionario</th>
+                    <!-- <th>Funcionario</th> -->
                     <th>Embarcación</th>
                     <th>Matrícula</th>                   
                     <th>Patente de Pesca</th>
-                    <th>Empresa</th>
-                    <th>Armador</th>
-                    <th>Capitán de Pesca</th>
+                    <!-- <th>Empresa</th> -->
+                    <!-- <th>Armador</th> -->
+                    <!-- <th>Capitán de Pesca</th> -->
                     <th>Localización</th>
                     <th style="width: 90px">Opciones</th>    
                   </tr>
@@ -43,13 +43,13 @@
                       <th>Fecha</th>
                       <th>Regional</th>
                       <th>Oficina</th>
-                      <th>Funcionario</th>
+                      <!-- <th>Funcionario</th> -->
                       <th>Embarcación</th>
-                      <th>Matrícula</th>                    
+                      <th>Matrícula</th>                   
                       <th>Patente de Pesca</th>
-                      <th>Empresa</th>
-                      <th>Armador</th>
-                      <th>Capitán de Pesca</th>
+                      <!-- <th>Empresa</th> -->
+                      <!-- <th>Armador</th> -->
+                      <!-- <th>Capitán de Pesca</th> -->
                       <th>Localización</th>
                       <th style="width: 90px">Opciones</th>  
                     </tr>
@@ -1597,13 +1597,9 @@ export default {
             { "data": "date" },
             { "data": "nameRegional" },
             { "data": "office" },
-            { "data": "official" },
             { "data": "boat" },
             { "data": "enrollment" },
             { "data": "fishLicense" },
-            { "data": "nameCompany" },
-            { "data": "owner" },
-            { "data": "fishCaptain" },
             { "data": "location" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>   <button type='button'id='pdf' class='pdf btn btn-primary btn-sm' data-tooltip title='pdf' > <i class='fas fa-file-pdf'></i> </button>"},
 
