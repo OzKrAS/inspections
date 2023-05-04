@@ -32,7 +32,6 @@
                   <tr>
                     <th>Inspección No.</th>
                     <th>Región/Municipio</th>
-                    <th>Puerto/Muelle de inspeccion</th>
                     <th>Finalidad Zarpe</th>
                     <th>Puerto de Zarpe</th>
                     <th>Fecha Zarpe</th>
@@ -1990,7 +1989,6 @@ ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
             { "data": "nameReg" },
             { "data": "namePort" },
             { "data": "finalityZarpe" },
-            { "data": "namePortZ" },
             { "data": "dateZarpe" },
             { "data": "nameBoat" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>"},
