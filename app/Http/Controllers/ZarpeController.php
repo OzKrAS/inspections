@@ -153,6 +153,7 @@ class ZarpeController extends Controller
     {
         // if (!$request->ajax()) return redirect('/');
         $zarpes = Zarpe::findOrFail($request->id);
+
         $zarpes->insNo = $request->insNo;
         // $zarpes->portArrival = $request->portArrival;
         $zarpes->radioCall = $request->radioCall;
