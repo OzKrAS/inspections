@@ -985,7 +985,7 @@ export default {
     title(punto){
     
       const puntos = {
-          A: 'Ancho solpa (>= 56 "  cuando está estirada)',
+          A: 'Ancho solapa (>= 56 "  cuando está estirada)',
           B: 'Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=20 " cuando está estirada)',
           C: 'Traslape no debe ser mayor a 15 " cuando está estirada',
           D: 'Dimencsión de las tapas no debe ser mayor a 58 " cuando están estirada',

@@ -981,7 +981,7 @@ export default {
     demo(punto){
   
       const puntos = {
-        A: 'Ancho solpa (>= 71 "  cuando esta estirada)',
+        A: 'Ancho solapa (>= 71 "  cuando esta estirada)',
         B: 'Medir el corte delantero de ambos lados de la solapa, desde el marco del DET hacia adelante (<=26 " cuando esta estirada)',
         C: 'Abertura de escape (>= 71 "  cuando esta estirada)',
         D: 'Borde trasero de la solapa, desde el borde posterior del marco del DET (centro) al borde de la solapa (<=24 " no estirada)',
