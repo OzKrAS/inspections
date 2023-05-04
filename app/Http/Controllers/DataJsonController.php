@@ -1201,7 +1201,13 @@ class DataJsonController extends Controller
 
     }
     public function jsonDetInch(){
-        $regional = Regional::all();
+        // $regional = Regional::all();
+        $regional = Regional::select('id','name')
+            ->where('id', '!=', 5)
+            ->where('id', '!=', 7)
+            ->where('id', '!=', 9)
+            ->orderBy('name', 'asc')
+            ->get();
         $company = Company::orderBy('name', 'asc')->get();
         $fishery = FisheryAuthorized::all();
 
