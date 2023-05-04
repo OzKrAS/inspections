@@ -1958,6 +1958,7 @@ ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
 },
     myTable(datas){
       let me = this;
+      console.log(datas);
 
       $(document).ready(function() {
 
