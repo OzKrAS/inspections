@@ -57,6 +57,9 @@ class BoatController extends Controller
                     'boats.id_flag','flags.name as nameFlag',
         )
             ->where('boats.is_dets','=',$type)
+
+            // CAMBIO 28/04/2034 - Agregando Order By nameBoat ASC
+            ->orderBy('nameBoat', 'asc')
         ->get();
 
         return [

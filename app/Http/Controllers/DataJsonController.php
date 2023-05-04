@@ -36,7 +36,7 @@ class DataJsonController extends Controller
             'ports.name as namePort')
             ->orderBy('docks.name', 'asc')->get();
         $municipalities = Municipality::join('regions','municipalities.id_region','=','regions.id')
-        ->select('municipalities.id', 'municipalities.name', 'municipalities.id_region','regions.name as nameReg')->get();
+        ->select('municipalities.id', 'municipalities.name', 'municipalities.id_region','regions.name as nameReg')->orderBy('municipalities.name', 'asc')->get();
         $regions = Region::all();
         $orops = Orop::all();
         $company = Company::orderBy('name', 'asc')->get();

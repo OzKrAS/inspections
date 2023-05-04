@@ -19,8 +19,10 @@ class OropController extends Controller
      }
      public function selectOrop(Request $request)
      {
-         $orops = Orop::select('id','name')
-             ->orderBy('name', 'asc')->get();
+        // $orops = Orop::select('id','name')
+        //      ->orderBy('name', 'asc')->get(); 
+        $orops = Orop::select('id','name')
+             ->orderBy('id', 'asc')->get();
          return [
              'orops' => $orops
          ];

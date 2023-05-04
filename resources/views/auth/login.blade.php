@@ -44,7 +44,7 @@
               <br>
        
                <h3 class="text-muted">Sistema de Inspecciones </h3> 
-                <img src="img\aunap.png" class="card-img-center" alt="Cinque Terre" width="100%" height="100%"> 
+                <img src="img\aunap2.png" class="card-img-center" alt="Cinque Terre" width="100%" height="100%"> 
              
                
                                
