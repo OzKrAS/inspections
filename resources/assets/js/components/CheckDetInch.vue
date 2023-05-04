@@ -571,7 +571,7 @@
               <span aria-hidden="true">X</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body bg-white">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
@@ -633,7 +633,7 @@
               </md-card-content>
             </form>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer bg-white">
             <md-card-actions>
               <md-button type="button" class="md-raised" @click="cerrarModal()">Cerrar</md-button>
             </md-card-actions>
