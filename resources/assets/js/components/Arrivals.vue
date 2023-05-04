@@ -38,16 +38,16 @@
                 </tbody>
                   <tfoot>
                      <tr>
-                        <th>Inspeccion No.</th>
-                        <th>Región/Municipio</th>
-                        <th>Puerto/Muelle de Inspección</th>
-                        <th>Fecha Inspección</th>
-                        <th>Puerto de Zarpe</th>
-                        <th>Fecha Zarpe</th>
-                        <th>Nombre Embarcación</th>
-                        <th>Nombre Capitán de Pesca</th>
-                        <th>Nacionalidad</th>
-                        <th>Opciones</th>
+                      <th>Inspeccion No.</th>
+                      <th>Región/Municipio</th>
+                      <th>Puerto/Muelle de Inspección</th>
+                      <th>Fecha Inspección</th>
+                      <!-- <th>Puerto de Zarpe</th> -->
+                      <!-- <th>Fecha Zarpe</th> -->
+                      <th>Nombre Embarcación</th>
+                      <!-- <th>Nombre Capitán de Pesca</th> -->
+                      <!-- <th>Nacionalidad</th> -->
+                      <th>Opciones</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -1219,7 +1219,7 @@
 
                   <img :src="image.src" alt="">
                 </li> -->
-                 <!-- <p> -->
+                 <p>
        <file-pond
   name="test"
   label-idle="Aquí encontrará las imágenes cargadas"
@@ -1238,8 +1238,8 @@
                   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
                     Subir PDF
                   </button>
-                <!-- </p> -->
-                <div class="collapse" id="collapseExample1">p
+                </p>
+                <div class="collapse" id="collapseExample1">
                   <div class="card card-body">
                     <div
                       class="uploader1"
