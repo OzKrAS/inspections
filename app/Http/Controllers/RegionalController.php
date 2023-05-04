@@ -24,6 +24,8 @@ class RegionalController extends Controller
             ->where('id', '!=', 9)
             ->orderBy('name', 'asc')
             ->get();
+
+            
         return [
             'regional' => $regional
         ];
