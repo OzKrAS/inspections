@@ -1990,7 +1990,7 @@ ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
             { "data": "nameReg" },
             { "data": "namePort" },
             { "data": "finalityZarpe" },
-            { "data": "namePortZ" },
+            { "data": "namePort" },
             { "data": "dateZarpe" },
             { "data": "nameBoat" },
             // { "data": "enrollment" },
