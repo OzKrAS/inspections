@@ -26,11 +26,11 @@
                     <th>Región/Municipio</th>
                     <th>Puerto/Muelle de Inspección</th>
                     <th>Fecha Inspección</th>
-                    <th>Puerto de Zarpe</th>
-                    <th>Fecha Zarpe</th>
+                    <!-- <th>Puerto de Zarpe</th> -->
+                    <!-- <th>Fecha Zarpe</th> -->
                     <th>Nombre Embarcación</th>
-                    <th>Nombre Capitán de Pesca</th>
-                    <th>Nacionalidad</th>
+                    <!-- <th>Nombre Capitán de Pesca</th> -->
+                    <!-- <th>Nacionalidad</th> -->
                     <th>Opciones</th>
                   </tr>
                 </thead>
@@ -837,7 +837,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noHaulsInter')">
-                        <label for="first-name">No. Lances Internacionales (International Sets)</label>
+                        <label for="first-name" style="font-size:10px">No. Lances Internacionales (International Sets)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -2781,13 +2781,13 @@ getArrivalImg() {
             { "data": "nameReg" },
             { "data": "namePort" },
             { "data": "dateIns" },
-            { "data": "namePort" },
-            { "data": "dateZarpe" },
+            // { "data": "namePort" },
+            // { "data": "dateZarpe" },
             { "data": "nameBoat" },
             // { "data": "nameFlag" },
             // { "data": "enrollment" },
-            { "data": "captain" },
-            { "data": "nameNationality" },
+            // { "data": "captain" },
+            // { "data": "nameNationality" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
 
         ]
