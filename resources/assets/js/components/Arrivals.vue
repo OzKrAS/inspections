@@ -972,8 +972,8 @@
                       <th style="width: 90px">OPCIONES</th>
                     </tr> -->
                     <tr>
-                      <td colspan="3">Totales</td>
-                      <td v-text="sumatotalcapturaobj"></td>
+                      <td colspan="2">Totales</td>
+                      <td colspan="2" v-text="suma1"></td>
                     </tr>
                   </tfoot>
                     <tbody>
