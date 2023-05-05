@@ -68,10 +68,11 @@
                     <a class="dropdown-item" href="{{ route('logout') }}" 
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa fa-lock"></i> Cerrar sesión</a>
-                    <a class="dropdown-item" href="{{ route('logout') }}" 
+                    {{-- <a class="dropdown-item" href="{{ route('logout') }}" 
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fa fa-user"></i> Perfil</a> --}}
+                    <a class="dropdown-item" href="#">
                     <i class="fa fa-user"></i> Perfil</a>
-
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
