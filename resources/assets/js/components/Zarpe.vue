@@ -110,9 +110,9 @@
                         <label for="first-name" class="text-muted">Municipio (Municipality)</label>
                           <multiselect v-model="arrayReg" :options="arrayRegion"
                             placeholder="Seleccione una municipio"
-                            :custom-label="nameWithRegion"
-                            label="namePlace"
-                            track-by="namePlace">
+                            :custom-label="Region"
+                            label="nameReg"
+                            track-by="nameRegi">
                           </multiselect>
                         </div>&nbsp;&nbsp;&nbsp;
                         <div class="md-layout-item">
