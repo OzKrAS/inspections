@@ -956,6 +956,10 @@
                         </button>
                       </td>
                     </tr>
+                    <tr>
+                      <td colspan="3">Totales</td>
+                      <td v-text="sumatotalcapturaobj"></td>
+                    </tr>
                   </tbody>
                   <tbody v-else>
                     <tr>
@@ -1954,6 +1958,14 @@ export default {
         nameScientific1:this.nameScientific1,
         capture1:this.capture1
       });
+
+      let suma1 = 0;
+      let sumatotalcapturaobj = 0;
+      arrayTarget.forEach(e => {
+        suma1 += JSON.parse(e.capture1);
+        sumatotalcapturaobj = suma1;
+      });
+
       var total2 = me.arrayTargetAct.push({
         nameCommon1:this.nameCommon1,
         nameScientific1:this.nameScientific1,
