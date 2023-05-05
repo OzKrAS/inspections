@@ -1965,7 +1965,7 @@ export default {
       let suma1 = 0;
       this.arrayTarget.forEach(e => {
         suma1 += JSON.parse(e.capture1);
-        sumatotalcapturaobj = suma1;
+        this.sumatotalcapturaobj = suma1;
       });
 
       var total2 = me.arrayTargetAct.push({
