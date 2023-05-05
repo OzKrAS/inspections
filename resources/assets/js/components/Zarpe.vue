@@ -107,7 +107,7 @@
                 </div>
                      <div class="md-layout">
                         <div class="md-layout-item">
-                        <label for="first-name" class="text-muted">Región/Municipio (Region / Municipality)</label>
+                        <label for="first-name" class="text-muted">Municipio (Municipality)</label>
                           <multiselect v-model="arrayReg" :options="arrayRegion"
                             placeholder="Seleccione una región/municipio"
                             :custom-label="nameWithRegion"
