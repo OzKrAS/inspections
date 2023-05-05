@@ -63,8 +63,8 @@ class ZarpeController extends Controller
                     zarpes.finalityZarpe,
                     zarpes.national,
                     zarpes.autorization,
-                    zarpes.id_region,regions.name as nameReg,
-                    zarpes.id_port,ports.name as namePort,
+                    zarpes.id_municipalities,municipalities.name as nameReg,
+                    zarpes.id_docks,docks.name as namePort,
                     zarpes.id_flag,flags.name as nameFlag,
                     zarpes.id_material,fishing_gear_materials.name as nameMaterial,
                     zarpes.id_nationality,nationalities.name as nameNationality,
@@ -75,6 +75,10 @@ class ZarpeController extends Controller
             )
 
             ->paginate(9999999999999999999999999);
+
+            // zarpes.id_region,regions.name as nameReg,
+            // zarpes.id_port,ports.name as namePort,
+
 
         return [
             'zarpes' => $zarpes
