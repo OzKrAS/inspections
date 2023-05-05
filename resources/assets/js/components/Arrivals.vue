@@ -2628,10 +2628,11 @@ getArrivalImg() {
           var respuesta = response.data;
           me.arrayTarget = respuesta.target;
 
-          console.warn(me.arrayTarget[0]);
+          let datos = me.arrayTarget[0];
+
 
           let suma1 = 0;
-          me.arrayTarget[0].forEach(e => {
+          datos.forEach(e => {
             console.log(e.capture1);
             suma1 += JSON.parse(e.capture1);
             this.sumatotalcapturaobj = suma1;
