@@ -2628,8 +2628,9 @@ getArrivalImg() {
           var respuesta = response.data;
           me.arrayTarget = respuesta.target;
 
-          let datos = me.arrayTarget[0];
+          let datos = me.arrayTarget;
 
+          console.log(datos);
 
           let suma1 = 0;
           datos.forEach(e => {
