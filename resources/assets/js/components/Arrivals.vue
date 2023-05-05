@@ -973,7 +973,7 @@
                     </tr> -->
                     <tr>
                       <td colspan="2">Totales</td>
-                      <td colspan="2" v-text="suma1"></td>
+                      <td colspan="2" v-text="sumatotalcapturaobj">{{ sumatotalcapturaobj }}</td>
                     </tr>
                   </tfoot>
                     <tbody>
