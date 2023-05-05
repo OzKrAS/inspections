@@ -1394,7 +1394,7 @@
 export default {
 	mixins: [validationMixin],
 	props: ['ruta'],
-
+  
 	data() {
 		Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
 		Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
@@ -1402,8 +1402,6 @@ export default {
 		Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
 		let now = new Date();
-    let sumatotalcapturaobj = 0;
-
 
       return {
   //       server: {
@@ -1527,6 +1525,8 @@ export default {
 
       countryList: [],
       arrayTarget: [],
+      sumatotalcapturaobj: 0,
+
       arrayTa: [],
       arrayFauna: [],
 
@@ -1666,6 +1666,7 @@ export default {
   },
 
   methods: {
+    
       getServer() {
         console.log('object');
       return {
@@ -1962,6 +1963,7 @@ export default {
       });
 
       let suma1 = 0;
+
       me.arrayTarget.forEach(e => {
         suma1 += JSON.parse(e.capture1);
         sumatotalcapturaobj = suma1;
