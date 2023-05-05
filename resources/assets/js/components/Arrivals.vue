@@ -2628,11 +2628,13 @@ getArrivalImg() {
           var respuesta = response.data;
           me.arrayTarget = respuesta.target;
 
-          let suma1 = 0;
-          me.arrayTarget.forEach(e => {
-            suma1 += JSON.parse(e.capture1);
-            this.sumatotalcapturaobj = suma1;
-          });
+          console.warn(me.arrayTarget);
+
+          // let suma1 = 0;
+          // me.arrayTarget.forEach(e => {
+          //   suma1 += JSON.parse(e.capture1);
+          //   this.sumatotalcapturaobj = suma1;
+          // });
           
         })
         .catch(function(error) {
@@ -2649,11 +2651,12 @@ getArrivalImg() {
           //console.log(response);
           var respuesta = response.data;
           me.arrayFauna = respuesta.fauna;
-          let suma2 = 0;
-          me.arrayFauna.forEach(e => {
-            suma2 += JSON.parse(e.capture1);
-            this.sumatotalcapturafauna = suma2;
-          });
+
+          // let suma2 = 0;
+          // me.arrayFauna.forEach(e => {
+          //   suma2 += JSON.parse(e.capture1);
+          //   this.sumatotalcapturafauna = suma2;
+          // });
         })
         .catch(function(error) {
           console.log(error);
