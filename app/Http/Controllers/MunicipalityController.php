@@ -26,7 +26,7 @@ class MunicipalityController extends Controller
     {
         $municipalities = Municipality::join('regions','municipalities.id_region','=','regions.id')
         ->selectRaw("CONCAT(municipalities.name, ' - ', regions.name) as namePlace,
-        municipalities.id, municipalities.name, municipalities.id_region,regions.name as nameReg")
+        municipalities.id, municipalities.name, municipalities.id_region,municipalities.name as nameReg")
             ->orderBy('name', 'asc')->get();
         return [
             'municipalities' => $municipalities
