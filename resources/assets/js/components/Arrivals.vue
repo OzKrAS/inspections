@@ -1084,11 +1084,15 @@
                     </tr>
                   </tbody>
                     <tfoot>
-                      <tr>
+                      <!-- <tr>
                         <th>NOMBRE COMÚN</th>
                         <th>NOMBRE CIENTÍFICO</th>
                         <th>CAPTURA TON.</th>
                         <th style="width: 90px">OPCIONES</th>
+                      </tr> -->
+                      <tr>
+                        <td colspan="2">Totales</td>
+                        <td colspan="2" v-text="sumatotalcapturafauna"></td>
                       </tr>
                     </tfoot>
                     <tbody>
@@ -1569,6 +1573,7 @@ export default {
       formData: null,
       pdf: [],
       sumatotalcapturaobj:0,
+      sumatotalcapturafauna: 0
 
     };
   },
@@ -1972,6 +1977,12 @@ export default {
         nameCommon1:this.nameCommon1,
         nameScientific1:this.nameScientific1,
         capture1:this.capture1
+      });
+
+      let suma2= 0;
+      this.arrayTargetAct.forEach(e => {
+        suma2 += JSON.parse(e.capture1);
+        this.sumatotalcapturafauna = suma2;
       });
       console.log("arrayTarget " + total2);
       // this.mensaje("Captura objetivo agregado", "success");
