@@ -956,12 +956,6 @@
                         </button>
                       </td>
                     </tr>
-                    <tr>
-                      <td colspan="3">Totales</td>
-                      <td v-text="sumatotalcapturaobj"></td>
-                    </tr>
-
-                    
                   </tbody>
                   <tbody v-else>
                     <tr>
@@ -971,11 +965,15 @@
                     </tr>
                   </tbody>
                   <tfoot>
-                    <tr>
+                    <!-- <tr>
                       <th>NOMBRE COMÚN</th>
                       <th>NOMBRE CIENTÍFICO</th>
                       <th>CAPTURA TON.</th>
                       <th style="width: 90px">OPCIONES</th>
+                    </tr> -->
+                    <tr>
+                      <td colspan="3">Totales</td>
+                      <td v-text="sumatotalcapturaobj"></td>
                     </tr>
                   </tfoot>
                     <tbody>
