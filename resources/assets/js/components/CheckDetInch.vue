@@ -1225,7 +1225,9 @@ export default {
       this.form.enrollment= this.arrayBt.enrollment;
       this.form.fishLicense= this.arrayBt.noPatent;
       this.form.boat= this.arrayBt.nameBoat;
-
+      // 
+      this.arrayComp.id= this.arrayBt.id_company;
+      this.arrayComp.name= this.arrayBt.nameCompany;
     },
     listData() {
       let me = this;
