@@ -1375,6 +1375,7 @@
     MdAutocomplete,
 		MdList
     } from "vue-material/dist/components";
+    let sumatotalcapturaobj= 0;
 
 
     Vue.use(Toasted,  {
@@ -1525,7 +1526,6 @@ export default {
 
       countryList: [],
       arrayTarget: [],
-      sumatotalcapturaobj: 0,
 
       arrayTa: [],
       arrayFauna: [],
