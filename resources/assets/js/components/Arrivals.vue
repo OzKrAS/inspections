@@ -973,7 +973,7 @@
                     </tr> -->
                     <tr>
                       <td colspan="2">Totales</td>
-                      <td colspan="2" v-text="sumatotalcapturaobj">{{ sumatotalcapturaobj }}</td>
+                      <td colspan="2" v-text="sumatotalcapturaobj"></td>
                     </tr>
                   </tfoot>
                     <tbody>
@@ -1402,6 +1402,8 @@ export default {
 		Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
 		let now = new Date();
+    let sumatotalcapturaobj = 0;
+
 
       return {
   //       server: {
@@ -1960,7 +1962,6 @@ export default {
       });
 
       let suma1 = 0;
-      let sumatotalcapturaobj = 0;
       me.arrayTarget.forEach(e => {
         suma1 += JSON.parse(e.capture1);
         sumatotalcapturaobj = suma1;
