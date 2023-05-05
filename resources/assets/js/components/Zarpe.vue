@@ -119,7 +119,7 @@
                           <label for="first-name" class="text-muted">Puerto/Muelle de inspección (Port / Dock)</label>
                           <multiselect v-model="arrayPt" :options="arrayPort"
                               placeholder="Seleccione un puerto/muelle de inspección"
-                              :custom-label="name"
+                              :custom-label="nameWithPort"
                               label="name"
                               track-by="name">
                           </multiselect>&nbsp;&nbsp;&nbsp;
