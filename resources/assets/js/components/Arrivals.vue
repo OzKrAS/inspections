@@ -1961,7 +1961,7 @@ export default {
 
       let suma1 = 0;
       let sumatotalcapturaobj = 0;
-      arrayTarget.forEach(e => {
+      me.arrayTarget.forEach(e => {
         suma1 += JSON.parse(e.capture1);
         sumatotalcapturaobj = suma1;
       });
