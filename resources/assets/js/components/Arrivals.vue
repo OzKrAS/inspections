@@ -1375,8 +1375,6 @@
     MdAutocomplete,
 		MdList
     } from "vue-material/dist/components";
-    let sumatotalcapturaobj= 0;
-
 
     Vue.use(Toasted,  {
         iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
@@ -1403,6 +1401,7 @@ export default {
 		Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
 		let now = new Date();
+    let sumatotalcapturaobj = 0;
 
       return {
   //       server: {
@@ -1963,8 +1962,7 @@ export default {
       });
 
       let suma1 = 0;
-
-      me.arrayTarget.forEach(e => {
+      this.arrayTarget.forEach(e => {
         suma1 += JSON.parse(e.capture1);
         sumatotalcapturaobj = suma1;
       });
