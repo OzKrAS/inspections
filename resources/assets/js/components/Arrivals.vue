@@ -2632,6 +2632,7 @@ getArrivalImg() {
 
           let suma1 = 0;
           me.arrayTarget[0].forEach(e => {
+            console.log(e.capture1);
             suma1 += JSON.parse(e.capture1);
             this.sumatotalcapturaobj = suma1;
           });
