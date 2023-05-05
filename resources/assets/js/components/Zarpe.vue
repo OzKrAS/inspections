@@ -107,9 +107,9 @@
                 </div>
                      <div class="md-layout">
                         <div class="md-layout-item">
-                        <label for="first-name" class="text-muted">Municipio (Municipality)</label>
+                        <label for="first-name" class="text-muted">Región/Municipio (Region / Municipality)</label>
                           <multiselect v-model="arrayReg" :options="arrayRegion"
-                            placeholder="Seleccione una municipio"
+                            placeholder="Seleccione una región/municipio"
                             :custom-label="nameWithRegion"
                             label="namePlace"
                             track-by="namePlace">
@@ -1368,7 +1368,7 @@ export default {
 
       if (!this.$v.$invalid) {
         this.saveData();
-        window.reload();
+
       }
     },
     clearForm() {
@@ -1988,8 +1988,8 @@ ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
           "columns": [
             { "data": "insNo" },
             { "data": "nameReg" },
-            { "data": "finalityZarpe" },
             { "data": "namePort" },
+            { "data": "finalityZarpe" },
             { "data": "dateZarpe" },
             { "data": "nameBoat" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>"},
