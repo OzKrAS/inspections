@@ -111,8 +111,8 @@
                           <multiselect v-model="arrayReg" :options="arrayRegion"
                             placeholder="Seleccione una municipio"
                             :custom-label="nameWithRegion"
-                            label="nameReg"
-                            track-by="nameRegi">
+                            label="namePlace"
+                            track-by="namePlace">
                           </multiselect>
                         </div>&nbsp;&nbsp;&nbsp;
                         <div class="md-layout-item">
