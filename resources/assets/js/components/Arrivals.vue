@@ -1449,7 +1449,6 @@ export default {
           observationGeneral: "",
         idOmi: "",
       },
-      sumatotalcapturaobj:0,
 
       totalLongline: "",
       stateRectorPort: "",
@@ -1569,6 +1568,7 @@ export default {
       selectedImage: null,
       formData: null,
       pdf: [],
+      sumatotalcapturaobj:0,
 
     };
   },
