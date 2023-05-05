@@ -2628,13 +2628,13 @@ getArrivalImg() {
           var respuesta = response.data;
           me.arrayTarget = respuesta.target;
 
-          console.warn(me.arrayTarget);
+          console.warn(me.arrayTarget[0]);
 
-          // let suma1 = 0;
-          // me.arrayTarget.forEach(e => {
-          //   suma1 += JSON.parse(e.capture1);
-          //   this.sumatotalcapturaobj = suma1;
-          // });
+          let suma1 = 0;
+          me.arrayTarget[0].forEach(e => {
+            suma1 += JSON.parse(e.capture1);
+            this.sumatotalcapturaobj = suma1;
+          });
           
         })
         .catch(function(error) {
