@@ -1967,23 +1967,18 @@ export default {
         capture1:this.capture1
       });
 
-      let suma1 = 0;
-      this.arrayTarget.forEach(e => {
-        suma1 += JSON.parse(e.capture1);
-        this.sumatotalcapturaobj = suma1;
-      });
-
       var total2 = me.arrayTargetAct.push({
         nameCommon1:this.nameCommon1,
         nameScientific1:this.nameScientific1,
         capture1:this.capture1
       });
 
-      let suma2= 0;
-      this.arrayTargetAct.forEach(e => {
-        suma2 += JSON.parse(e.capture1);
-        this.sumatotalcapturafauna = suma2;
+      let suma1 = 0;
+      this.arrayTarget.forEach(e => {
+        suma1 += JSON.parse(e.capture1);
+        this.sumatotalcapturaobj = suma1;
       });
+      
       console.log("arrayTarget " + total2);
       // this.mensaje("Captura objetivo agregado", "success");
       me.clearTarget();
@@ -1999,6 +1994,12 @@ export default {
         nameCommon2:this.nameCommon2,
         nameScientific2:this.nameScientific2,
         capture2:this.capture2
+      });
+
+      let suma2= 0;
+      this.arrayFaunaAct.forEach(e => {
+        suma2 += JSON.parse(e.capture1);
+        this.sumatotalcapturafauna = suma2;
       });
       //console.log("arrayFauna " + total2);
       // this.mensaje("Captura fauna incidental agregado", "success");
@@ -2626,6 +2627,13 @@ getArrivalImg() {
           //console.log(response);
           var respuesta = response.data;
           me.arrayTarget = respuesta.target;
+
+          let suma1 = 0;
+          me.arrayTarget.forEach(e => {
+            suma1 += JSON.parse(e.capture1);
+            this.sumatotalcapturaobj = suma1;
+          });
+          
         })
         .catch(function(error) {
           console.log(error);
@@ -2641,6 +2649,11 @@ getArrivalImg() {
           //console.log(response);
           var respuesta = response.data;
           me.arrayFauna = respuesta.fauna;
+          let suma2 = 0;
+          me.arrayFauna.forEach(e => {
+            suma2 += JSON.parse(e.capture1);
+            this.sumatotalcapturafauna = suma2;
+          });
         })
         .catch(function(error) {
           console.log(error);
