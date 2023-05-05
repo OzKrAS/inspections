@@ -1074,8 +1074,7 @@ export default {
       arrayPt: {id:0, namePort:'', name:''},
 	    arrayPort: [],
       id_port: 0,
-      // arrayReg: {id:0, name:'', namePlace:''},
-      arrayReg: {id:0, name:''},
+      arrayReg: {id:0, name:'', namePlace:''},
 	    arrayRegion: [],
       id_region: 0,
       arrayPtZarpe: {id:0, namePort:'',name:''},
@@ -1407,8 +1406,7 @@ export default {
       this.finalityZarpe = null;
       this.national = null;
 
-      // this.arrayReg = {id:0, name:'', namePlace:''};
-      this.arrayReg = {id:0, name:''};
+      this.arrayReg = {id:0, name:'', namePlace:''};
       this.arrayPt = {id:0, namePort:'',name:''};
       this.arrayPtZarpe = {id:0, namePort:'',name:''};
       this.arrayPtArrival = {id:0, namePort:'',name:''};
@@ -1620,9 +1618,8 @@ export default {
       this.finalityZarpe = data["finalityZarpe"];
       this.national = data["national"];
 
-      // this.arrayReg.id = data["id_region"];
-      this.arrayReg.id = data["id_municipalities"];
-			// this.arrayReg.namePlace = data["namePlace"];
+      this.arrayReg.id = data["id_region"];
+			this.arrayReg.namePlace = data["namePlace"];
       this.arrayPt.id = data["id_port"];
 			this.arrayPt.name = data["namePort"];
       this.arrayPtZarpe.id = data["id_portZarpe"];
