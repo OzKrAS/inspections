@@ -960,6 +960,8 @@
                       <td colspan="3">Totales</td>
                       <td v-text="sumatotalcapturaobj"></td>
                     </tr>
+
+                    
                   </tbody>
                   <tbody v-else>
                     <tr>
