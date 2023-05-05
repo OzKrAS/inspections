@@ -1401,7 +1401,6 @@ export default {
 		Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
 		let now = new Date();
-    let sumatotalcapturaobj = 0;
 
       return {
   //       server: {
@@ -1450,6 +1449,8 @@ export default {
           observationGeneral: "",
         idOmi: "",
       },
+      sumatotalcapturaobj:0,
+
       totalLongline: "",
       stateRectorPort: "",
       other: "",
