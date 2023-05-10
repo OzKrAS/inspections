@@ -2636,11 +2636,11 @@ getArrivalImg() {
 
           let suma1 = 0;
           datos.forEach(e => {
-            console.log(e.capture1);
+            // console.log(e.capture1);
             suma1 += JSON.parse(e.capture1);
-            console.log(suma1);
+            // console.log(suma1);
+            sumatotalcapturaobj = JSON.parse(suma1);
           });
-          this.sumatotalcapturaobj[0] = JSON.parse(suma1);
           
         })
         .catch(function(error) {
