@@ -2833,6 +2833,8 @@ getArrivalImg() {
             // { "data": "dateZarpe" },
             { "data": "nameBoat" },
             { "data": "date" },
+            { "data": "portsarrivalname" },
+            { "data": "finalityArrival" },
             // { "data": "nameFlag" },
             // { "data": "enrollment" },
             // { "data": "captain" },
