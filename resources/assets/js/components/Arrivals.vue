@@ -2795,6 +2795,7 @@ getArrivalImg() {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
     myTable(datas){
+      console.log(datas);
       let me = this;
 
       $(document).ready(function() {
