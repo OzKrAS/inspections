@@ -73,7 +73,8 @@ class ZarpeController extends Controller
                     zarpes.id_nationality,nationalities.name as nameNationality,
                     zarpes.id_orop,orops.name as nameOrop,
                     zarpes.id_zoneAutoFisher,auto_fishers.name as nameZoneAutoFisher,
-                    zarpes.id_company,companies.name as nameCompany"
+                    zarpes.id_company,companies.name as nameCompany
+                    zarpes.id_portZarpe,ports.name as portZarpe"
 
             )
 

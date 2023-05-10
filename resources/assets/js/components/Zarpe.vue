@@ -30,15 +30,17 @@
               <table class="table table-striped table-bordered display" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Inspección No.</th>
-                    <th>Región/Municipio</th>
-                    <th>Finalidad Zarpe</th>
-                    <th>Puerto de Zarpe</th>
-                    <th>Fecha Zarpe</th>
-                    <th>Nombre Embarcación</th>
-                    <!-- <th>Matricula</th> -->
-                    <!-- <th>Nombre Capitán de Pesca</th> -->
-                    <th>Opciones</th>
+                      <th>Inspección No.</th>
+                      <th>Región/Municipio</th>
+                      <th>Puerto/Muelle Inspeccion</th>
+                      <th>Fecha Inspeccion</th>
+                      <th>Nombre Embarcación</th>
+                      <th>Fecha Zarpe</th>
+                      <th>Puerto de Zarpe</th>
+                      <th>Finalidad Zarpe</th>
+                      <!-- <th>Matricula</th> -->
+                      <!-- <th>Nombre Capitán de Pesca</th> -->
+                      <th>Opciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -47,10 +49,12 @@
                      <tr>
                         <th>Inspección No.</th>
                         <th>Región/Municipio</th>
-                        <th>Finalidad Zarpe</th>
-                        <th>Puerto de Zarpe</th>
-                        <th>Fecha Zarpe</th>
+                        <th>Puerto/Muelle Inspeccion</th>
+                        <th>Fecha Inspeccion</th>
                         <th>Nombre Embarcación</th>
+                        <th>Fecha Zarpe</th>
+                        <th>Puerto de Zarpe</th>
+                        <th>Finalidad Zarpe</th>
                         <!-- <th>Matricula</th> -->
                         <!-- <th>Nombre Capitán de Pesca</th> -->
                         <th>Opciones</th>
@@ -1989,9 +1993,11 @@ ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
             { "data": "insNo" },
             { "data": "nameReg" },
             { "data": "namePort" },
-            { "data": "finalityZarpe" },
-            { "data": "dateZarpe" },
+            { "data": "dateIns" },
             { "data": "nameBoat" },
+            { "data": "dateZarpe" },
+            { "data": "portZarpe" },
+            { "data": "finalityZarpe" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>"},
 
         ]
