@@ -24,9 +24,9 @@ class ZarpeController extends Controller
             // join('regions','zarpes.id_region','=','regions.id')
             // ->join('docks','zarpes.id_port','=','docks.id')
             ->join('docks','zarpes.id_docks','=','docks.id')
-            ->join('ports','zarpes.id_portZarpe','=','ports.id', 'portzarpe')
+            ->join('ports','zarpes.id_portZarpe','=','ports.id')
             
-             ->join('ports','docks.id_port','=','ports.id')
+            ->join('ports','docks.id_port','=','ports.id')
             ->join('flags','zarpes.id_flag','=','flags.id')
             ->join('fishing_gear_materials','zarpes.id_material','=','fishing_gear_materials.id')
             ->join('nationalities','zarpes.id_nationality','=','nationalities.id')
@@ -76,7 +76,7 @@ class ZarpeController extends Controller
                     zarpes.id_orop,orops.name as nameOrop,
                     zarpes.id_zoneAutoFisher,auto_fishers.name as nameZoneAutoFisher,
                     zarpes.id_company,companies.name as nameCompany,
-                    zarpes.id_portZarpe,portzarpe.name as nameportZarpe"
+                    zarpes.id_portZarpe,ports.name as nameportZarpe"
 
             )
 
