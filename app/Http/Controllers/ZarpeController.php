@@ -26,7 +26,7 @@ class ZarpeController extends Controller
             ->join('docks','zarpes.id_docks','=','docks.id')
             ->join('ports','zarpes.id_portZarpe','=','ports.id')
             
-            ->join('ports','docks.id_port','=','ports.id')
+            // ->join('ports','docks.id_port','=','ports.id')
             ->join('flags','zarpes.id_flag','=','flags.id')
             ->join('fishing_gear_materials','zarpes.id_material','=','fishing_gear_materials.id')
             ->join('nationalities','zarpes.id_nationality','=','nationalities.id')
