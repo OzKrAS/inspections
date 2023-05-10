@@ -28,7 +28,7 @@
                     <th>Fecha Inspección</th>
                     <th>Nombre Embarcación</th>
                     <th>Fecha Arribo</th>
-                    <th>Puerto Arribo</th>
+                    <!-- <th>Puerto Arribo</th> -->
                     <th>Finalidad Arribo</th>
                     <!-- <th>Nombre Capitán de Pesca</th> -->
                     <!-- <th>Nacionalidad</th> -->
@@ -45,7 +45,7 @@
                       <th>Fecha Inspección</th>
                       <th>Nombre Embarcación</th>
                       <th>Fecha Arribo</th>
-                      <th>Puerto Arribo</th>
+                      <!-- <th>Puerto Arribo</th> -->
                       <th>Finalidad Arribo</th>
                       <!-- <th>Nombre Capitán de Pesca</th> -->
                       <!-- <th>Nacionalidad</th> -->
@@ -2833,7 +2833,7 @@ getArrivalImg() {
             // { "data": "dateZarpe" },
             { "data": "nameBoat" },
             { "data": "date" },
-            { "data": "portsarrivalname" },
+            // { "data": "portsarrivalname" },
             { "data": "finalityArrival" },
             // { "data": "nameFlag" },
             // { "data": "enrollment" },
