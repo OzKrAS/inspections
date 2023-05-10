@@ -29,7 +29,7 @@ class ArrivalController extends Controller
             ->join('docks','arrivals.id_port','=','docks.id')
             ->join('ports','docks.id_port','=','ports.id')
             
-            ->join('ports','arrivals.id_portArrival','=','ports.id', 'portA')
+            ->join('ports','arrivals.id_portArrival','=','ports.id', 'as portA')
 
 
             ->join('flags','arrivals.id_flag','=','flags.id')
