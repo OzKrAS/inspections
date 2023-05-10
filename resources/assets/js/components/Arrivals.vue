@@ -2640,7 +2640,7 @@ getArrivalImg() {
             suma1 += JSON.parse(e.capture1);
             console.log(suma1);
           });
-          this.sumatotalcapturaobj = JSON.parse(suma1);
+          this.sumatotalcapturaobj[0] = JSON.parse(suma1);
           
         })
         .catch(function(error) {
