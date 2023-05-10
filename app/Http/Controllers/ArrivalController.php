@@ -29,13 +29,13 @@ class ArrivalController extends Controller
             ->join('docks','arrivals.id_port','=','docks.id')
             ->join('ports','docks.id_port','=','ports.id')
             
-            // ->join('ports as portsarrival','arrivals.id_portArrival','=','ports.id')
-
+            ->rightJoin('ports as portsarrival','arrivals.id_portArrival','=','ports.id') 
+            // -- /con este llamado se duplican los resultados
 
             ->join('flags','arrivals.id_flag','=','flags.id')
             ->join('nationalities','arrivals.id_nationality','=','nationalities.id')
             ->join('auto_fishers','arrivals.id_zoneAutoFisher','=','auto_fishers.id')
-            // ->join('fishery_authorizeds','arrivals.id_fisheryAuthorized','=','fishery_authorizeds.id') //-- /con este llamado se duplican los resultados
+            // ->join('fishery_authorizeds','arrivals.id_fisheryAuthorized','=','fishery_authorizeds.id') 
             ->join('companies','arrivals.id_company','=','companies.id')
             ->join('orops','arrivals.id_orop','=','orops.id')
             ->join('fishing_gear_materials','arrivals.id_material','=','fishing_gear_materials.id')
@@ -93,7 +93,8 @@ class ArrivalController extends Controller
                     arrivals.id_nationality,nationalities.name as nameNationality,
                     arrivals.id_zoneAutoFisher,auto_fishers.name as nameZoneAutoFisher,
                     arrivals.id_company,companies.name as nameCompany,
-                    arrivals.id_orop,orops.name as nameOrop"
+                    arrivals.id_orop,orops.name as nameOrop,
+                    arrivals.id_portArrival,portsarrival.name as portsarrivalname"
                     )
                     
                     ->paginate(9999999999999999999999999);
