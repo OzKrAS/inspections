@@ -93,7 +93,8 @@ class ArrivalController extends Controller
                     arrivals.id_nationality,nationalities.name as nameNationality,
                     arrivals.id_zoneAutoFisher,auto_fishers.name as nameZoneAutoFisher,
                     arrivals.id_company,companies.name as nameCompany,
-                    arrivals.id_orop,orops.name as nameOrop"
+                    arrivals.id_orop,orops.name as nameOrop,
+                    arrivals.id_portArrival,portsarrival.name as portsarrivalname"
                     )
                     
                     ->paginate(9999999999999999999999999);
