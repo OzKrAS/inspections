@@ -1996,7 +1996,7 @@ ntranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
             { "data": "dateIns" },
             { "data": "nameBoat" },
             { "data": "dateZarpe" },
-            { "data": "namePort" },
+            { "data": "id_portZarpe" },
             { "data": "finalityZarpe" },
              {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>"},
 
