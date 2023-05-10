@@ -29,7 +29,7 @@ class ArrivalController extends Controller
             ->join('docks','arrivals.id_port','=','docks.id')
             ->join('ports','docks.id_port','=','ports.id')
             
-            ->join('ports','arrivals.id_portArrival','=','ports.id', 'as portA')
+            ->join('ports as portsarrival','arrivals.id_portArrival','=','ports.id')
 
 
             ->join('flags','arrivals.id_flag','=','flags.id')
@@ -93,7 +93,8 @@ class ArrivalController extends Controller
                     arrivals.id_nationality,nationalities.name as nameNationality,
                     arrivals.id_zoneAutoFisher,auto_fishers.name as nameZoneAutoFisher,
                     arrivals.id_company,companies.name as nameCompany,
-                    arrivals.id_orop,orops.name as nameOrop"
+                    arrivals.id_orop,orops.name as nameOrop,
+                    arrivals.id_porArrival,portsarrival.name as portsarrivalname"
                     )
                     
                     ->paginate(9999999999999999999999999);
