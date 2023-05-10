@@ -26,9 +26,10 @@
                     <th>Región/Municipio</th>
                     <th>Puerto/Muelle de Inspección</th>
                     <th>Fecha Inspección</th>
-                    <!-- <th>Puerto de Zarpe</th> -->
-                    <!-- <th>Fecha Zarpe</th> -->
                     <th>Nombre Embarcación</th>
+                    <th>Fecha Arribo</th>
+                    <th>Puerto Arribo</th>
+                    <th>Finalidad Arribo</th>
                     <!-- <th>Nombre Capitán de Pesca</th> -->
                     <!-- <th>Nacionalidad</th> -->
                     <th>Opciones</th>
@@ -42,9 +43,10 @@
                       <th>Región/Municipio</th>
                       <th>Puerto/Muelle de Inspección</th>
                       <th>Fecha Inspección</th>
-                      <!-- <th>Puerto de Zarpe</th> -->
-                      <!-- <th>Fecha Zarpe</th> -->
                       <th>Nombre Embarcación</th>
+                      <th>Fecha Arribo</th>
+                      <th>Puerto Arribo</th>
+                      <th>Finalidad Arribo</th>
                       <!-- <th>Nombre Capitán de Pesca</th> -->
                       <!-- <th>Nacionalidad</th> -->
                       <th>Opciones</th>
@@ -2829,6 +2831,7 @@ getArrivalImg() {
             // { "data": "namePort" },
             // { "data": "dateZarpe" },
             { "data": "nameBoat" },
+            { "data": "date" },
             // { "data": "nameFlag" },
             // { "data": "enrollment" },
             // { "data": "captain" },
