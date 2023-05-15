@@ -308,7 +308,7 @@
               <span aria-hidden="true">X</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body bg-white">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <div class="md-layout">
                         <label for="first-name">Equipo</label>
