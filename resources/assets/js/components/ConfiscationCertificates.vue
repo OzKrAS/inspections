@@ -244,9 +244,13 @@
                     </div>
 
                     <p>
-                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Subir imagen
-                      </button>
+                      <file-component
+                          ref="fileComponent"
+                          fileable-type="ConfiscationCertificate"
+                          :fileable-id="id_confiscationCert"
+                          :accepted-file-types="['image/png', 'image/jpeg', 'image/gif']"
+                          max-file-size="3MB"
+                      ></file-component>
                     </p>                                 
                     <div class="collapse" id="collapseExample">
                       <div class="card card-body">
@@ -910,6 +914,7 @@
     Vue.use(MdDatepicker);
     Vue.use(MdDialog);
     import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
+ import FileComponent from "./common/FileComponent";
 
 export default {
 	mixins: [validationMixin],
@@ -1087,6 +1092,7 @@ export default {
 
   },
   components: {
+    FileComponent,
 		vSelect,
 		Multiselect
 	},
@@ -1410,6 +1416,9 @@ export default {
       this.dataTable1();
       this.dataTable2();
       this.dataReasons();
+      this.$nextTick(async () => {
+        await this.$refs.fileComponent.list();
+      });
     },
     nameWithRegional ({ name }) {
         return `${name}`
@@ -1491,6 +1500,8 @@ export default {
         .then(function(response) {
           me.arrayTargetAct=[];
           me.hideForm();
+          me.id_confiscationCert = response.data.confiscation.id;
+          me.$refs.fileComponent.uploadFiles();
           me.message("Guardado", "Guardo ");
           me.listData();
         })
@@ -1535,6 +1546,7 @@ export default {
       })
         .then(function(response) {
           me.arrayTargetAct=[];
+          me.$refs.fileComponent.uploadFiles();
           me.listData();
           me.hideForm();
           me.message("Actualizado", "Actualizó ");

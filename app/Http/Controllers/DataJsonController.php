@@ -2406,7 +2406,6 @@ class DataJsonController extends Controller
     public function jsonEquipmentDolphin(){
         $flags = Flag::all();
 
-
         return response() -> json(
 
                 ["idForm"=>1,
@@ -2481,5 +2480,4 @@ class DataJsonController extends Controller
             ,200
         );
     }
-
 }
