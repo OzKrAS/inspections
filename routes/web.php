@@ -33,10 +33,6 @@ Route::group(['middleware'=>['auth']],function(){
         return view('contenido/contenido');
     })->name('main');
 
-
-
-
-
     Route::group(['middleware' => ['Administrador']], function () {
 
         // region
@@ -234,9 +230,13 @@ Route::group(['middleware'=>['auth']],function(){
         
         Route::get('/species', 'CommonSpeciesController@selectSpecie');
 
-
+        Route::prefix('file')->group(function(){
+            Route::post('/massStore', 'FileController@massStore');
+            Route::post('/delete', 'FileController@delete');
+            Route::get('/download/{id}', 'FileController@download');
+            Route::get('/list/{fileableType}/{fileableId}', 'FileController@list');
+        });
     });
-
 });
 
 //Route::get('/home', 'HomeController@index')->name('home');

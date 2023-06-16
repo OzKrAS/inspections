@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Zarpe;
-use App\Region;
-use App\Flag;
-use App\Ports;
-use App\Nationality;
-use App\AutoFisher;
-use App\FisheryAuthorized;
-use App\Company;
 use App\DetailFisherAutZarpe;
-use App\FishingGearMaterial;
+use App\Dock;
+use App\Zarpe;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ZarpeController extends Controller
 {
@@ -20,20 +14,27 @@ class ZarpeController extends Controller
     {
         if (!$request->ajax()) return redirect('/');
 
-            $zarpes = Zarpe::join('municipalities','zarpes.id_municipalities','=','municipalities.id')
-            // join('regions','zarpes.id_region','=','regions.id')
-            // ->join('docks','zarpes.id_port','=','docks.id')
-            ->join('docks','zarpes.id_docks','=','docks.id')
-            ->join('ports','zarpes.id_portZarpe','=','ports.id')
-            
-            // ->join('ports','docks.id_port','=','ports.id')
-            ->join('flags','zarpes.id_flag','=','flags.id')
-            ->join('fishing_gear_materials','zarpes.id_material','=','fishing_gear_materials.id')
-            ->join('nationalities','zarpes.id_nationality','=','nationalities.id')
-            ->join('orops','zarpes.id_orop','=','orops.id')
-            ->join('auto_fishers','zarpes.id_zoneAutoFisher','=','auto_fishers.id')
-            // ->join('fishery_authorizeds','zarpes.id_fisheryAuthorized','=','fishery_authorizeds.id')
-            ->join('companies','zarpes.id_company','=','companies.id')
+        $docks = Dock::join('ports', 'docks.id_port', '=', 'ports.id')
+            ->select(
+                'docks.id',
+                DB::raw('CONCAT(ports.name, " / ", docks.name) as fullDockName')
+            )->toSql();
+
+        $zarpes = Zarpe::join('municipalities', 'zarpes.id_municipalities', '=', 'municipalities.id')
+            ->join('regions', 'municipalities.id_region', '=', 'regions.id')
+            ->join(DB::raw("({$docks}) as docksAndPorts"), function ($join) {
+                $join->on('zarpes.id_docks', '=', 'docksAndPorts.id');
+            })
+            ->join('docks', 'zarpes.id_docks', '=', 'docks.id')
+            ->join('ports as port_zarpe', 'zarpes.id_portZarpe', '=', 'port_zarpe.id')
+            ->join('ports as port_arrival', 'zarpes.id_portArrival', '=', 'port_arrival.id')
+            ->join('ports', 'zarpes.id_portZarpe', '=', 'ports.id')
+            ->join('flags', 'zarpes.id_flag', '=', 'flags.id')
+            ->join('fishing_gear_materials', 'zarpes.id_material', '=', 'fishing_gear_materials.id')
+            ->join('nationalities', 'zarpes.id_nationality', '=', 'nationalities.id')
+            ->join('orops', 'zarpes.id_orop', '=', 'orops.id')
+            ->join('auto_fishers', 'zarpes.id_zoneAutoFisher', '=', 'auto_fishers.id')
+            ->join('companies', 'zarpes.id_company', '=', 'companies.id')
             ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as namePlace,zarpes.id,
                     zarpes.insNo,
                     zarpes.radioCall,
@@ -50,7 +51,6 @@ class ZarpeController extends Controller
                     zarpes.longNet,
                     zarpes.totalLongline,
                     zarpes.other,
-
                     zarpes.equipDevi,
                     zarpes.captain,
                     zarpes.observation,
@@ -68,28 +68,26 @@ class ZarpeController extends Controller
                     zarpes.national,
                     zarpes.autorization,
                     zarpes.id_portZarpe,
-                    zarpes.id_municipalities,municipalities.name as nameReg,
-                    zarpes.id_docks,docks.name as namePort,
+                    zarpes.id_portArrival,
+                    zarpes.id_municipalities,
+                    CONCAT(municipalities.name, ' ', regions.name) as nameReg,
+                    zarpes.id_docks, docks.name as namePort,
                     zarpes.id_flag,flags.name as nameFlag,
                     zarpes.id_material,fishing_gear_materials.name as nameMaterial,
                     zarpes.id_nationality,nationalities.name as nameNationality,
                     zarpes.id_orop,orops.name as nameOrop,
                     zarpes.id_zoneAutoFisher,auto_fishers.name as nameZoneAutoFisher,
                     zarpes.id_company,companies.name as nameCompany,
-                    zarpes.id_portZarpe,ports.name as nameportZarpe"
-
-            )
-
-            ->paginate(9999999999999999999999999);
-
-            // zarpes.id_region,regions.name as nameReg,
-            // zarpes.id_port,ports.name as namePort,
-
+                    port_zarpe.name as nameportZarpe,
+                    port_arrival.name as nameportArrival,
+                    docksAndPorts.fullDockName as nameDock"
+            )->paginate(999999999);
 
         return [
             'zarpes' => $zarpes
         ];
     }
+
     public function store(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
@@ -125,7 +123,6 @@ class ZarpeController extends Controller
         $zarpes->notification = $request->notification;
         $zarpes->finalityZarpe = $request->finalityZarpe;
         $zarpes->national = $request->national;
-
         $zarpes->id_municipalities = $request->id_region;
         $zarpes->id_docks = $request->id_port;
         $zarpes->id_portZarpe = $request->id_portZarpe;
@@ -141,17 +138,18 @@ class ZarpeController extends Controller
 
         $array = array(
             'res' => true,
+            'zarpe' => $zarpes,
             'message' => 'Registro guardado exitosamente'
-            );
+        );
 
-            $detailsfisheryzarpe = $request->data;
-        foreach($detailsfisheryzarpe as $fs=>$deta){
-            $objeto= new DetailFisherAutZarpe();
+        $detailsfisheryzarpe = $request->data;
+        foreach ($detailsfisheryzarpe as $fs => $deta) {
+            $objeto = new DetailFisherAutZarpe();
             $objeto->id_fisheryAut = $zarpes->id;
-            $objeto->name= $deta['name'];
+            $objeto->name = $deta['name'];
             $objeto->save();
         }
-        return response()->json($array,201);
+        return response()->json($array, 201);
         // $array = array(
         //     'res' => true,
         //     'message' => 'Registro guardado exitosamente'
@@ -198,7 +196,6 @@ class ZarpeController extends Controller
         $zarpes->finalityZarpe = $request->finalityZarpe;
         $zarpes->national = $request->national;
         $zarpes->autorization = $request->autorization;
-
         $zarpes->id_municipalities = $request->id_region; // Se cambio por id_region
         $zarpes->id_docks = $request->id_port; // Se cambio por id_port
         $zarpes->id_flag = $request->id_flag;
@@ -208,12 +205,14 @@ class ZarpeController extends Controller
         $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;
         // $zarpes->id_fisheryAuthorized = $request->id_fisheryAuthorized;
         $zarpes->id_company = $request->id_company;
+        $zarpes->id_portZarpe = $request->id_portZarpe;
+        $zarpes->id_portArrival = $request->id_portArrival;
         $zarpes->save();
         $array = array(
             'res' => true,
             'message' => 'Registro actualizado exitosamente'
-            );
-        return response()->json($array,201);
+        );
+        return response()->json($array, 201);
     }
 
     public function destroy(Request $request)
@@ -224,13 +223,14 @@ class ZarpeController extends Controller
         $array = array(
             'res' => true,
             'message' => 'Registro se elimino exitosamente'
-            );
-        return response()->json($array,201);
+        );
+        return response()->json($array, 201);
     }
+
     public function dataFishery(Request $request)
     {
-        $zarpes = DetailFisherAutZarpe::select('id','id_fisheryAut','name')
-        ->where('id_fisheryAut', $request->id_FisheryAut)->get();
-        return ['fisheryAut' =>  $zarpes];
+        $zarpes = DetailFisherAutZarpe::select('id', 'id_fisheryAut', 'name')
+            ->where('id_fisheryAut', $request->id_FisheryAut)->get();
+        return ['fisheryAut' => $zarpes];
     }
 }

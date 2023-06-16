@@ -888,10 +888,12 @@ export default {
       this.form.nameCaptain = data["nameCaptain"];
       this.form.dateZarpe = data["dateZarpe"];
       this.form.dateDesemb = data["dateDesemb"];
-
       this.arrayFg.id = data["id_flag"];
 			this.arrayFg.name = data["nameFlag"];
       this.dataTarget();
+      this.$nextTick(async () => {
+        await this.$refs.fileComponent.list();
+      });
     },
     showData() {
       this.clearForm();

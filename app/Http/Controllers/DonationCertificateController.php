@@ -11,37 +11,37 @@ class DonationCertificateController extends Controller
 {
     public function index(Request $request)
     {
-      //  if (!$request->ajax()) return redirect('/');
-        
-        $donations = DonationCertificate::join('regionals','donation_certificates.id_regional','=','regionals.id')
+        //  if (!$request->ajax()) return redirect('/');
+
+        $donations = DonationCertificate::join('regionals', 'donation_certificates.id_regional', '=', 'regionals.id')
             ->select('donation_certificates.id',
-                     'donation_certificates.noActa',
-                     'donation_certificates.date',
-                     'donation_certificates.nameOfficial',
-                     'donation_certificates.noDocumentId1',
-                     'donation_certificates.nameRepresentative',
-                     'donation_certificates.noDocumentId2',
-                     'donation_certificates.noPlateCertificate',
-                     'donation_certificates.name',
-                     'donation_certificates.legalStatus',
-                     'donation_certificates.address',
-                     'donation_certificates.representativeDonation',
-                     'donation_certificates.identification',
-                     'donation_certificates.municipality',
-                     'donation_certificates.corregimiento',
-                     'donation_certificates.place',
-                     'donation_certificates.telephone',
-                     
-                     'donation_certificates.id_regional','regionals.name as nameRegional',
+                'donation_certificates.noActa',
+                'donation_certificates.date',
+                'donation_certificates.nameOfficial',
+                'donation_certificates.noDocumentId1',
+                'donation_certificates.nameRepresentative',
+                'donation_certificates.noDocumentId2',
+                'donation_certificates.noPlateCertificate',
+                'donation_certificates.name',
+                'donation_certificates.legalStatus',
+                'donation_certificates.address',
+                'donation_certificates.representativeDonation',
+                'donation_certificates.identification',
+                'donation_certificates.municipality',
+                'donation_certificates.corregimiento',
+                'donation_certificates.place',
+                'donation_certificates.telephone',
+
+                'donation_certificates.id_regional', 'regionals.name as nameRegional',
                      
             )
-        
             ->paginate(9999999999999999999999999);
 
-        return [     
+        return [
             'donations' => $donations
         ];
     }
+
     public function store(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
@@ -64,33 +64,34 @@ class DonationCertificateController extends Controller
         $donations->telephone = $request->telephone;
         // $donations->img1 = $request->img1;
 
-        $donations->id_regional = $request->id_regional;  
+        $donations->id_regional = $request->id_regional;
         $donations->save();
 
         $detaildonation = $request->target;
-        foreach($detaildonation as $ep=>$det){
-            $objeto= new DetDonation();
+        foreach ($detaildonation as $ep => $det) {
+            $objeto = new DetDonation();
             $objeto->id_donation = $donations->id;
-            $objeto->nameScientific= $det['nameScientific'];
-            $objeto->nameCommon= $det['nameCommon'];
-            $objeto->state= $det['state'];
-            $objeto->presentation= $det['presentation'];
-            $objeto->amount= $det['amount'];
-            $objeto->weight= $det['weight'];
-            $objeto->commercialValue= $det['commercialValue'];
-
+            $objeto->nameScientific = $det['nameScientific'];
+            $objeto->nameCommon = $det['nameCommon'];
+            $objeto->state = $det['state'];
+            $objeto->presentation = $det['presentation'];
+            $objeto->amount = $det['amount'];
+            $objeto->weight = $det['weight'];
+            $objeto->commercialValue = $det['commercialValue'];
             $objeto->save();
         }
         $array = array(
             'res' => true,
-            'message' => 'Registro guardado exitosamente'
-            );
-        return response()->json($array,201);
+            'message' => 'Registro guardado exitosamente',
+            'donation' => $donations,
+        );
+        return response()->json($array, 201);
     }
+
     public function update(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
-        $donations = DonationCertificate::findOrFail($request->id); 
+        $donations = DonationCertificate::findOrFail($request->id);
         $donations->noActa = $request->noActa;
         $donations->date = $request->date;
         $donations->nameOfficial = $request->nameOfficial;
@@ -108,20 +109,20 @@ class DonationCertificateController extends Controller
         $donations->place = $request->place;
         $donations->telephone = $request->telephone;
 
-        $donations->id_regional = $request->id_regional;  
+        $donations->id_regional = $request->id_regional;
         $donations->save();
 
         $detaildonation = $request->target;
-        foreach($detaildonation as $ep=>$det){
-            $objeto= new DetDonation();
+        foreach ($detaildonation as $ep => $det) {
+            $objeto = new DetDonation();
             $objeto->id_donation = $donations->id;
-            $objeto->nameScientific= $det['nameScientific'];
-            $objeto->nameCommon= $det['nameCommon'];
-            $objeto->state= $det['state'];
-            $objeto->presentation= $det['presentation'];
-            $objeto->amount= $det['amount'];
-            $objeto->weight= $det['weight'];
-            $objeto->commercialValue= $det['commercialValue'];
+            $objeto->nameScientific = $det['nameScientific'];
+            $objeto->nameCommon = $det['nameCommon'];
+            $objeto->state = $det['state'];
+            $objeto->presentation = $det['presentation'];
+            $objeto->amount = $det['amount'];
+            $objeto->weight = $det['weight'];
+            $objeto->commercialValue = $det['commercialValue'];
 
             $objeto->save();
         }
@@ -129,9 +130,10 @@ class DonationCertificateController extends Controller
         $array = array(
             'res' => true,
             'message' => 'Registro actualizado exitosamente'
-            );
-        return response()->json($array,201);
+        );
+        return response()->json($array, 201);
     }
+
     public function destroy(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
@@ -140,13 +142,14 @@ class DonationCertificateController extends Controller
         $array = array(
             'res' => true,
             'message' => 'Registro eliminado exitosamente'
-            );
-        return response()->json($array,201);
+        );
+        return response()->json($array, 201);
     }
+
     public function dataTable(Request $request)
     {
-        $donations = DetDonation::select('id','id_donation','nameScientific','nameCommon','state','presentation','amount','weight','commercialValue')
-        ->where('id_donation', $request->id_Donation)->get();
-        return ['donation' =>  $donations];   
+        $donations = DetDonation::select('id', 'id_donation', 'nameScientific', 'nameCommon', 'state', 'presentation', 'amount', 'weight', 'commercialValue')
+            ->where('id_donation', $request->id_Donation)->get();
+        return ['donation' => $donations];
     }
 }

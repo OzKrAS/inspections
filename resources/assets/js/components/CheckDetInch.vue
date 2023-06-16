@@ -465,9 +465,13 @@
                   </div>    
                 </div>
                 <p>
-                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    Subir imagen
-                  </button>
+                  <file-component
+                      ref="fileComponent"
+                      fileable-type="CheckDetInch"
+                      :fileable-id="id_CheckDet"
+                      :accepted-file-types="['image/png', 'image/jpeg', 'image/gif']"
+                      max-file-size="3MB"
+                  ></file-component>
                 </p>                                 
                 <div class="collapse" id="collapseExample">
                   <div class="card card-body">
@@ -687,6 +691,7 @@
     Vue.use(MdDatepicker);
     Vue.use(MdDialog);
     import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
+ import FileComponent from "./common/FileComponent";
 
 export default {
 	mixins: [validationMixin],
@@ -838,6 +843,7 @@ export default {
 
   },
   components: {
+    FileComponent,
 		vSelect,
 		Multiselect
 	},
@@ -1197,6 +1203,11 @@ export default {
       this.dataTable();
       this.dataFishery();
       this.listDetailFlap();
+
+      this.$nextTick(async () => {
+        await this.$refs.fileComponent.list();
+      });
+
     },
     nameWithBoat ({ nameBoat  }) {
             return `${nameBoat}`
@@ -1293,7 +1304,6 @@ export default {
     },
     saveData() {
       let me = this;
-
       axios
         .post("/checkDetInchs/save", {
     
@@ -1308,14 +1318,12 @@ export default {
         location: this.form.location.toUpperCase(),
         observation: this.observation.toUpperCase(),
         date: this.form.date,
-
         flapMeshSize: this.form.flapMeshSize.toUpperCase(),
         angleDet: this.form.angleDet.toUpperCase(),
         typeDet: this.form.typeDet.toUpperCase(),
         materialDet: this.form.materialDet.toUpperCase(),
         exit: this.form.exit.toUpperCase(),
         float: this.form.float,
-
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
 
@@ -1325,16 +1333,18 @@ export default {
         .then(function(response) {
           me.hideForm();
           me.message("Guardado", "Guardo ");
+          me.id_CheckDet = response.data.check.id;
+          me.$refs.fileComponent.uploadFiles();
           me.listData();
           me.clearForm();
         })
         .catch(function(error) {
-          console.log(error);
+          me.message()
+          console.error(error);
         });
     },
     updateData() {
       let me = this;
-
       axios
         .put("/checkDetInchs/update", {
 
@@ -1366,6 +1376,7 @@ export default {
         .then(function(response) {
           me.hideForm();
           me.message("Actualizado", "Actualizó ");
+          me.$refs.fileComponent.uploadFiles();
           me.listData();
           me.arrayDetsAct = [];
         })
