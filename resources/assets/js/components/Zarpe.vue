@@ -743,8 +743,7 @@
                     ref="fileComponent"
                     fileable-type="Zarpe"
                     :fileable-id="id_zarpes"
-                    max-file-size='1MB'
-                    :accepted-file-types="['image/png', 'image/jpeg', 'image/gif']"
+                    max-file-size='3MB'
                 ></file-component>
 <!--                <p>
                   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
