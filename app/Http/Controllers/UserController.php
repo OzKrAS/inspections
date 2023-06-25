@@ -35,7 +35,7 @@ class UserController extends Controller
             $update->api_token = $this->apiToken;
             $update->save();
             
-            $headers=array('Access-Control-Allow-Origin'=>'http://192.168.0.5:8100', 'Access-Control-Allow-Methods'=>'GET, POST, PUT, DELETE', 'Access-Control-Allow-Headers'=>'X-Requested-With, Content-Type, X-Token-Auth, Authorization');
+            $headers=array('Access-Control-Allow-Origin'=>'*', 'Access-Control-Allow-Methods'=>'GET, POST, PUT, DELETE', 'Access-Control-Allow-Headers'=>'X-Requested-With, Content-Type, X-Token-Auth, Authorization');
 
 
             $array = array(
