@@ -18,7 +18,7 @@ class APIToken
         {
             if($request->header('Authorization')){
                 return $next($request)
-                    ->header("Access-Control-Allow-Origin", "http://urlfronted.example")
+                    ->header("Access-Control-Allow-Origin", "http://68.183.50.234:12345")
                     //Métodos que a los que se da acceso
                     ->header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
                     //Headers de la petición
