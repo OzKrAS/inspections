@@ -464,7 +464,7 @@ export default {
           var respuesta = response.data;
           me.arrayBoat = respuesta.data;
           me.myTable(me.arrayBoat.data);
-
+          console.log(response)
         })
         .catch(function (error) {
           console.log(error);

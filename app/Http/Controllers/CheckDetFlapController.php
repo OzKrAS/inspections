@@ -96,8 +96,9 @@ class CheckDetFlapController extends Controller
         }
         $array = array(
             'res' => true,
+            'check' => $checkDetFlaps,
             'message' => 'Registro guardado exitosamente'
-            );
+        );
         return response()->json($array,201);
     }
     public function update(Request $request)

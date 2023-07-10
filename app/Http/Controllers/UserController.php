@@ -34,14 +34,17 @@ class UserController extends Controller
             $update = User::find($usuario[0]->id);
             $update->api_token = $this->apiToken;
             $update->save();
-        
+            
+            $headers=array('Access-Control-Allow-Origin'=>'*', 'Access-Control-Allow-Methods'=>'GET, POST, PUT, DELETE', 'Access-Control-Allow-Headers'=>'X-Requested-With, Content-Type, X-Token-Auth, Authorization');
+
+
             $array = array(
             'res' => false,
             "id" => $usuario[0]->id,
             "api_token" => $update->api_token,
             'message' => 'bienvenido al json'
             );
-            return response()->json($array,201);
+            return response()->json($array,201, $headers);
         
         }
         

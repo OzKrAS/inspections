@@ -207,18 +207,16 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                           type="number"
                         />
                       </md-field> 
-                    </div>&nbsp;&nbsp;&nbsp;  
-                    
-                      
-                  
-
-                    
-                    
+                    </div>&nbsp;&nbsp;&nbsp;
                   </div> 
                    <p>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                          Subir imagen
-                        </button>
+                     <file-component
+                         ref="fileComponent"
+                         fileable-type="DonationCertificate"
+                         :fileable-id="id_donationCertificate"
+                         :accepted-file-types="['image/png', 'image/jpeg', 'image/gif']"
+                         max-file-size="3MB"
+                     ></file-component>
                       </p>
                                    
                     <div class="collapse" id="collapseExample">
@@ -695,6 +693,7 @@ import format from "date-fns/format";
     Vue.use(MdDatepicker);
     Vue.use(MdDialog);
     import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
+import FileComponent from "./common/FileComponent";
 
 export default {
 	mixins: [validationMixin],
@@ -854,6 +853,7 @@ export default {
     }     
   },
   components: {
+    FileComponent,
 		vSelect,
 		Multiselect
 	},
@@ -1113,6 +1113,9 @@ export default {
       this.arrayRegl.id = data["id_regional"];
 	    this.arrayRegl.name = data["nameRegional"];
       this.dataTable();
+      this.$nextTick(async () => {
+        await this.$refs.fileComponent.list();
+      });
     },
     nameWithRegional ({ name }) {
             return `${name}`
@@ -1195,6 +1198,8 @@ export default {
         })
         .then(function(response) {
           me.arrayTargetAct= [];
+          me.id_donationCertificate = response.data.donation.id
+          me.$refs.fileComponent.uploadFiles();
           me.hideForm();
           me.message("Guardado", "Guardo ");
           me.listData();
@@ -1233,6 +1238,7 @@ export default {
         .then(function(response) {
           me.arrayTargetAct= [];
           me.hideForm();
+          me.$refs.fileComponent.uploadFiles();
           me.message("Actualizado", "Actualizó ");
           me.listData();
         })

@@ -8,10 +8,10 @@
           <i class="m-0 font-weight-bold text-primary fa fa-ship"></i>
           <strong class="lead">Inspección a Embarcación Pesquera - Arribo</strong>
           <button
-            v-if="edo"
-            type="button"
-            @click="showData()"
-            class="btn btn-success btn-sm"
+              v-if="edo"
+              type="button"
+              @click="showData()"
+              class="btn btn-success btn-sm"
           >
             <i class="icon-plus"></i>&nbsp;Nuevo
           </button>
@@ -21,39 +21,39 @@
             <div class="table-responsive">
               <table class="table table-striped table-bordered display" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                  <tr>
-                    <th>Inspeccion No.</th>
-                    <th>Región/Municipio</th>
-                    <th>Puerto/Muelle de Inspección</th>
-                    <th>Fecha Inspección</th>
-                    <th>Nombre Embarcación</th>
-                    <th>Fecha Arribo</th>
-                    <!-- <th>Puerto Arribo</th> -->
-                    <th>Finalidad Arribo</th>
-                    <!-- <th>Nombre Capitán de Pesca</th> -->
-                    <!-- <th>Nacionalidad</th> -->
-                    <th>Opciones</th>
-                  </tr>
+                <tr>
+                  <th>Inspeccion No.</th>
+                  <th>Región/Municipio</th>
+                  <th>Puerto/Muelle de Inspección</th>
+                  <th>Fecha Inspección</th>
+                  <th>Nombre Embarcación</th>
+                  <th>Fecha Arribo</th>
+                  <!-- <th>Puerto Arribo</th> -->
+                  <th>Finalidad Arribo</th>
+                  <!-- <th>Nombre Capitán de Pesca</th> -->
+                  <!-- <th>Nacionalidad</th> -->
+                  <th>Opciones</th>
+                </tr>
                 </thead>
                 <tbody>
                 </tbody>
-                  <tfoot>
-                     <tr>
-                      <th>Inspeccion No.</th>
-                      <th>Región/Municipio</th>
-                      <th>Puerto/Muelle de Inspección</th>
-                      <th>Fecha Inspección</th>
-                      <th>Nombre Embarcación</th>
-                      <th>Fecha Arribo</th>
-                      <!-- <th>Puerto Arribo</th> -->
-                      <th>Finalidad Arribo</th>
-                      <!-- <th>Nombre Capitán de Pesca</th> -->
-                      <!-- <th>Nacionalidad</th> -->
-                      <th>Opciones</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                  </tbody>
+                <tfoot>
+                <tr>
+                  <th>Inspeccion No.</th>
+                  <th>Región/Municipio</th>
+                  <th>Puerto/Muelle de Inspección</th>
+                  <th>Fecha Inspección</th>
+                  <th>Nombre Embarcación</th>
+                  <th>Fecha Arribo</th>
+                  <!-- <th>Puerto Arribo</th> -->
+                  <th>Finalidad Arribo</th>
+                  <!-- <th>Nombre Capitán de Pesca</th> -->
+                  <!-- <th>Nacionalidad</th> -->
+                  <th>Opciones</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                </tbody>
 
               </table>
             </div>
@@ -67,57 +67,57 @@
                 <div class="md-layout">
                   <div class="md-layout-item md-size-65">
                     <md-field md-clearable :class="getValidationClass('insNo')">
-                        <label for="first-name">Inspección No. (Inspection)</label>
-                        <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.insNo"
-                        :disabled="sending"
-                        type="text"
-                        />
-                        <span
-                            class="md-error"
-                            v-if="!$v.form.insNo.required"
-                        >Olvidaste ingresar el número de inspección para el arribo
+                      <label for="first-name">Inspección No. (Inspection)</label>
+                      <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.insNo"
+                          :disabled="sending"
+                          type="text"
+                      />
+                      <span
+                          class="md-error"
+                          v-if="!$v.form.insNo.required"
+                      >Olvidaste ingresar el número de inspección para el arribo
                         </span>
                     </md-field>
                   </div>
                   <div class="md-layout-item">
-                      <md-datepicker
+                    <md-datepicker
                         md-clearable :class="getValidationClass('dateIns')"
                         v-model="form.dateIns"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
-                        >
-                        <label>Fecha de Inspección (Inspection Date)</label>
-                        <span
+                    >
+                      <label>Fecha de Inspección (Inspection Date)</label>
+                      <span
                           class="md-error"
                           v-if="!$v.form.dateIns.required"
-                          >Olvidaste ingresar la fecha de inspección
+                      >Olvidaste ingresar la fecha de inspección
                         </span>
-                      </md-datepicker>
+                    </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <label class="text-muted">Región/Municipio (Region / Municipality)</label>
-                        <multiselect v-model="arrayReg" :options="arrayRegion"
-                          placeholder="Región/Municipio"
-                          :custom-label="nameWithRegion"
-                          label="namePlace"
-                          track-by="namePlace">
-                        </multiselect>
+                    <multiselect v-model="arrayReg" :options="arrayRegion"
+                                 placeholder="Región/Municipio"
+                                 :custom-label="nameWithRegion"
+                                 label="namePlace"
+                                 track-by="namePlace">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <label class="text-muted">Puerto/Muelle de Inspección (Port / Dock)</label>
-                        <multiselect v-model="arrayPt" :options="arrayPort"
-                            placeholder="Puerto/Muelle de Inspección"
-                            :custom-label="nameWithPort"
-                            label="name"
-                            track-by="name">
-                        </multiselect>
+                    <multiselect v-model="arrayPt" :options="arrayPort"
+                                 placeholder="Puerto/Muelle de Inspección"
+                                 :custom-label="nameWithPort"
+                                 label="name"
+                                 track-by="name">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
@@ -134,24 +134,26 @@
                     </div>
                   </div> &nbsp;&nbsp;&nbsp; -->
                   <div class="md-layout-item">
-                        <md-field>
-                          <label class="text-muted">Recibió Notificación Previa (Prior Notification)</label>
-                          <md-select v-model="notification" name="notification" id="notification" placeholder="Recibió Notificación Previa (Prior Notification)">
-                            <md-option value="si">Si</md-option>
-                            <md-option value="no">No</md-option>
-                          </md-select>
-                        </md-field>
+                    <md-field>
+                      <label class="text-muted">Recibió Notificación Previa (Prior Notification)</label>
+                      <md-select v-model="notification" name="notification" id="notification"
+                                 placeholder="Recibió Notificación Previa (Prior Notification)">
+                        <md-option value="si">Si</md-option>
+                        <md-option value="no">No</md-option>
+                      </md-select>
+                    </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                        <md-field>
-                          <label class="text-muted">Finalidad Arribo (Arrival's Purpose)</label>
-                          <md-select v-model="finalityArrival" name="finalityArrival" id="finalityArrival" placeholder="Finalidad Arribo (Arrival's Purpose)">
-                            <md-option value="pesca">Pesca</md-option>
-                            <md-option value="transito">Tránsito</md-option>
-                            <md-option value="desembarque">Desembarque</md-option>
-                            <md-option value="mantenimiento">Mantenimiento</md-option>
-                          </md-select>
-                        </md-field>
+                    <md-field>
+                      <label class="text-muted">Finalidad Arribo (Arrival's Purpose)</label>
+                      <md-select v-model="finalityArrival" name="finalityArrival" id="finalityArrival"
+                                 placeholder="Finalidad Arribo (Arrival's Purpose)">
+                        <md-option value="pesca">Pesca</md-option>
+                        <md-option value="transito">Tránsito</md-option>
+                        <md-option value="desembarque">Desembarque</md-option>
+                        <md-option value="mantenimiento">Mantenimiento</md-option>
+                      </md-select>
+                    </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <!-- <div class="md-layout-item">
                         <md-field md-clearable :class="getValidationClass('stateRectorPort')">
@@ -213,87 +215,90 @@
                       </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp; -->
                 </div>
-                 <md-divider style="background-color: #2090E8 " ></md-divider>
-                 <br>
+                <md-divider style="background-color: #2090E8 "></md-divider>
+                <br>
                 <div>
-                    <strong>PUERTO, ESTADO RECTOR DE PUERTO</strong>
+                  <strong>PUERTO, ESTADO RECTOR DE PUERTO</strong>
                 </div>
                 <div class="md-layout">
                   <md-field>
                     <label class="text-muted">Estado Rector del Puerto (Port State)</label>
-                    <md-select v-model="stateRectorPort" name="stateRectorPort" id="stateRectorPort" placeholder="Estado Rector del Puerto">
+                    <md-select v-model="stateRectorPort" name="stateRectorPort" id="stateRectorPort"
+                               placeholder="Estado Rector del Puerto">
                       <md-option value="colombia">Colombia</md-option>
                     </md-select>
                   </md-field>
                 </div>&nbsp;&nbsp;&nbsp;
                 <div class="md-layout">
                   <div class="md-layout-item">
-                      <label class="text-muted">Puerto de Zarpe (Departure’s Port)</label>
-                      <multiselect v-model="arrayPtZarpe" :options="arrayPort"
-                          placeholder="Puerto de Zarpe"
-                          :custom-label="nameWithPort"
-                          label="name"
-                          track-by="name">
-                      </multiselect>
+                    <label class="text-muted">Puerto de Zarpe (Departure’s Port)</label>
+                    <multiselect v-model="arrayPtZarpe" :options="arrayPort"
+                                 placeholder="Puerto de Zarpe"
+                                 :custom-label="nameWithPort"
+                                 label="name"
+                                 track-by="name">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <md-datepicker
+                    <md-datepicker
                         md-clearable :class="getValidationClass('dateZarpe')"
                         v-model="form.dateZarpe"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
-                        >
-                        <label>Fecha de Zarpe (Departure’s Date)</label>
-                        <span
+                    >
+                      <label>Fecha de Zarpe (Departure’s Date)</label>
+                      <span
                           class="md-error"
                           v-if="!$v.form.dateZarpe.required"
-                          >Olvidaste ingresar la fecha de zarpe
+                      >Olvidaste ingresar la fecha de zarpe
                         </span>
-                      </md-datepicker>
+                    </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
-                  <div class="md-layout-item" >
-                      <label class="text-muted">Puerto de Ultimo Arribo (Last Arrival’s Port)</label>
-                      <multiselect v-model="arrayPtArrival" :options="arrayPort"
-                          placeholder="Puerto de Ultimo Arribo"
-                          :custom-label="nameWithPort"
-                          label="name"
-                          track-by="name">
-                      </multiselect>
+                  <div class="md-layout-item">
+                    <label class="text-muted">Puerto de Ultimo Arribo (Last Arrival’s Port)</label>
+                    <multiselect v-model="arrayPtArrival" :options="arrayPort"
+                                 placeholder="Puerto de Ultimo Arribo"
+                                 :custom-label="nameWithPort"
+                                 label="name"
+                                 track-by="name">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <md-datepicker
+                    <md-datepicker
                         md-clearable :class="getValidationClass('dateLatestArrival')"
                         v-model="form.dateLatestArrival"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
-                        >
-                        <label>Fecha Último Arribo (Last Arrival’s Date)</label>
-                        <span
+                    >
+                      <label>Fecha Último Arribo (Last Arrival’s Date)</label>
+                      <span
                           class="md-error"
                           v-if="!$v.form.dateLatestArrival.required"
-                          >Olvidaste ingresar la fecha de último arribo
+                      >Olvidaste ingresar la fecha de último arribo
                         </span>
-                      </md-datepicker>
+                    </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
-                    <md-field>
-                      <label class="text-muted">Faena Realizada En (Fishing Task Place)</label>
-                      <md-select v-model="workDone" name="workDone" id="workDone" placeholder="Faena Realizada En">
-                        <md-option value="Mar Caribe colombiano">Mar Caribe colombiano</md-option>
-                        <md-option value="Pacífico colombiano">Pacífico colombiano</md-option>
-                        <md-option value="OPO (atún, bandera nacional, jurisdicción CIAT)">OPO (atún, bandera nacional, jurisdicción CIAT)</md-option>
-                      </md-select>
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                 <md-divider style="background-color: #2090E8 " ></md-divider>
-                 <br>
+                  <md-field>
+                    <label class="text-muted">Faena Realizada En (Fishing Task Place)</label>
+                    <md-select v-model="workDone" name="workDone" id="workDone" placeholder="Faena Realizada En">
+                      <md-option value="Mar Caribe colombiano">Mar Caribe colombiano</md-option>
+                      <md-option value="Pacífico colombiano">Pacífico colombiano</md-option>
+                      <md-option value="OPO (atún, bandera nacional, jurisdicción CIAT)">OPO (atún, bandera nacional,
+                        jurisdicción CIAT)
+                      </md-option>
+                    </md-select>
+                  </md-field>
+                </div>&nbsp;&nbsp;&nbsp;
+                <md-divider style="background-color: #2090E8 "></md-divider>
+                <br>
                 <div>
-                    <strong>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</strong>
+                  <strong>SISTEMA DE LOCALIZACIÓN DE BUQUES/VMS</strong>
                 </div>
                 <div class="md-layout">
                   <!-- <div class="md-layout-item">
@@ -309,7 +314,8 @@
                   <div class="md-layout-item">
                     <md-field>
                       <label for="locationSystem" class="text-muted">Nacional</label>
-                      <md-select v-model="locationSystem" name="locationSystem" id="locationSystem" placeholder="Seleccione un sistema Nacional">
+                      <md-select v-model="locationSystem" name="locationSystem" id="locationSystem"
+                                 placeholder="Seleccione un sistema Nacional">
                         <md-option value="no">No</md-option>
                         <md-option value="nacional-AIS">Nacional - AIS</md-option>
                         <md-option value="nacional-VMS">Nacional - VMS</md-option>
@@ -318,14 +324,14 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
 
-                       <div class="md-layout-item">
-                        <label class="text-muted">OROP</label>
-                        <multiselect v-model="arrayOr" :options="arrayOrop"
-                            placeholder="Seleccione una opción OROP"
-                            :custom-label="nameWithOrop"
-                            label="name"
-                            track-by="name">
-                        </multiselect>
+                  <div class="md-layout-item">
+                    <label class="text-muted">OROP</label>
+                    <multiselect v-model="arrayOr" :options="arrayOrop"
+                                 placeholder="Seleccione una opción OROP"
+                                 :custom-label="nameWithOrop"
+                                 label="name"
+                                 track-by="name">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
@@ -334,15 +340,15 @@
                     <md-field md-clearable :class="getValidationClass('radioCall')">
                       <label for="first-name">Señal Radiollamada Internacional (International Radio Call Signal)</label>
                       <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.radioCall"
-                        :disabled="sending"
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.radioCall"
+                          :disabled="sending"
                       />
                       <span
-                        class="md-error"
-                        v-if="!$v.form.radioCall.required"
+                          class="md-error"
+                          v-if="!$v.form.radioCall.required"
                       >Olvidaste ingresar la señal radiollamada internacional</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -350,129 +356,129 @@
                     <md-field md-clearable :class="getValidationClass('idOmi')">
                       <label for="first-name" class="text-muted">Identificador OMI (IMO Identifier)</label>
                       <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.idOmi"
-                        :disabled="sending"
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.idOmi"
+                          :disabled="sending"
                       />
                       <span
-                        class="md-error"
-                        v-if="!$v.form.idOmi.required"
+                          class="md-error"
+                          v-if="!$v.form.idOmi.required"
                       >Olvidaste ingresar el identificador OMI</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
-            <md-divider style="background-color: #2090E8 " ></md-divider>
-          <br>
+                <md-divider style="background-color: #2090E8 "></md-divider>
+                <br>
                 <div>
                   <strong>PERMISO OTORGADO - ÚLTIMA PRORROGA</strong>
                 </div>
                 <div class="md-layout-item">
-                <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
-                    <multiselect v-model="arrayBt" :options="arrayBoat"
-                        @input="setBoats()"
-                        placeholder="Seleccione una embarcación"
-                        :custom-label="nameWithBoat"
-                        label="nameBoat"
-                        track-by="nameBoat">
-                    </multiselect>
-                    </div>
+                  <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
+                  <multiselect v-model="arrayBt" :options="arrayBoat"
+                               @input="setBoats()"
+                               placeholder="Seleccione una embarcación"
+                               :custom-label="nameWithBoat"
+                               label="nameBoat"
+                               track-by="nameBoat">
+                  </multiselect>
+                </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noResolution')">
                       <label for="first-name">No. Resolución (Resolution No.)</label>
                       <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.noResolution"
-                        :disabled="sending"
-                        type="number"
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.noResolution"
+                          :disabled="sending"
+                          type="number"
                       />
                       <span
-                        class="md-error"
-                        v-if="!$v.form.noResolution.required"
+                          class="md-error"
+                          v-if="!$v.form.noResolution.required"
                       >Olvidaste ingresar el número de resolución</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
 
 
                   <div class="md-layout-item">
-                      <md-datepicker
+                    <md-datepicker
                         md-clearable :class="getValidationClass('dateResolution')"
                         v-model="form.dateResolution"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
-                        >
-                        <label>Fecha Resolución (Resolution Date)</label>
-                        <span
+                    >
+                      <label>Fecha Resolución (Resolution Date)</label>
+                      <span
                           class="md-error"
                           v-if="!$v.form.dateResolution.required"
-                          >Olvidaste ingresar la fecha de resolución
+                      >Olvidaste ingresar la fecha de resolución
                         </span>
-                      </md-datepicker>
+                    </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <md-datepicker
+                    <md-datepicker
                         md-clearable :class="getValidationClass('dateValidity')"
                         v-model="form.dateValidity"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
-                        >
-                        <label>Fecha Vigencia (Validity Date)</label>
-                        <span
+                    >
+                      <label>Fecha Vigencia (Validity Date)</label>
+                      <span
                           class="md-error"
                           v-if="!$v.form.dateValidity.required"
-                          >Olvidaste ingresar la fecha de vigencia
+                      >Olvidaste ingresar la fecha de vigencia
                         </span>
-                      </md-datepicker>
+                    </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
-                  </div>
+                </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameBoat')">
-                        <label for="first-name">Nombre Embarcación (Ship Name)</label>
-                        <md-input
+                      <label for="first-name">Nombre Embarcación (Ship Name)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="form.nameBoat"
                           :disabled="sending"
-                        />
-                        <span
+                      />
+                      <span
                           class="md-error"
                           v-if="!$v.form.nameBoat.required"
-                        >Olvidaste ingresar un nombre para la embarcación</span>
+                      >Olvidaste ingresar un nombre para la embarcación</span>
                     </md-field>
                   </div> &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <label class="text-muted">Bandera (Flag)</label>
                     <multiselect v-model="arrayFg" :options="arrayFlag"
-                        placeholder="Seleccione una bandera"
-                        :custom-label="nameWithFlag"
-                        label="name"
-                        track-by="name">
+                                 placeholder="Seleccione una bandera"
+                                 :custom-label="nameWithFlag"
+                                 label="name"
+                                 track-by="name">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('enrollment')">
-                        <label for="first-name">Matrícula (Vessel Registration)</label>
-                        <md-input
+                      <label for="first-name">Matrícula (Vessel Registration)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="form.enrollment"
                           :disabled="sending"
-                        />
-                        <span
+                      />
+                      <span
                           class="md-error"
                           v-if="!$v.form.enrollment.required"
-                        >Olvidaste ingresar una matrícula</span>
+                      >Olvidaste ingresar una matrícula</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <!-- <div class="md-layout-item">
@@ -494,67 +500,67 @@
                   </div>&nbsp;&nbsp;&nbsp; -->
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noPatent')">
-                        <label for="first-name">No. de Patente (Patent)</label>
-                        <md-input
+                      <label for="first-name">No. de Patente (Patent)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="form.noPatent"
                           :disabled="sending"
                           type="number"
-                        />
-                        <span
+                      />
+                      <span
                           class="md-error"
                           v-if="!$v.form.noPatent.required"
-                        >Olvidaste ingresar el número de patente</span>
+                      >Olvidaste ingresar el número de patente</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <md-datepicker
+                    <md-datepicker
                         md-clearable :class="getValidationClass('dateValidityPat')"
                         v-model="form.dateValidityPat"
                         @input="toString"
                         md-immediately
                         :md-model-type="String"
-                        >
-                        <label>Fecha Vigencia Patente (Validity Name)</label>
-                        <span
+                    >
+                      <label>Fecha Vigencia Patente (Validity Name)</label>
+                      <span
                           class="md-error"
                           v-if="!$v.form.dateValidityPat.required"
-                          >Olvidaste ingresar la fecha de vigencia
+                      >Olvidaste ingresar la fecha de vigencia
                         </span>
-                      </md-datepicker>
+                    </md-datepicker>
                   </div> &nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('legalRepre')">
-                        <label for="first-name">Representante Legal (Legal Representative)</label>
-                        <md-input
+                      <label for="first-name">Representante Legal (Legal Representative)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="form.legalRepre"
                           :disabled="sending"
-                        />
-                        <span
+                      />
+                      <span
                           class="md-error"
                           v-if="!$v.form.legalRepre.required"
-                        >Olvidaste ingresar un nombre para el representante legal</span>
+                      >Olvidaste ingresar un nombre para el representante legal</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <label class="text-muted">Empresa (Company)</label>
-                      <multiselect v-model="arrayComp" :options="arrayCompany"
-                          placeholder="Seleccione una Empresa"
-                          :custom-label="nameWithCompany"
-                          label="name"
-                          track-by="name">
-                      </multiselect>
+                    <label class="text-muted">Empresa (Company)</label>
+                    <multiselect v-model="arrayComp" :options="arrayCompany"
+                                 placeholder="Seleccione una Empresa"
+                                 :custom-label="nameWithCompany"
+                                 label="name"
+                                 track-by="name">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
-                 <md-divider style="background-color: #2090E8 " ></md-divider>
-                 <br>
+                <md-divider style="background-color: #2090E8 "></md-divider>
+                <br>
                 <div>
                   <strong>PESQUERÍA Y ARTES AUTORIZADOS</strong>
                 </div>
@@ -572,29 +578,29 @@
                   <div class="md-layout-item">
                     <label class="text-muted">Pesquería Autorizada (Fishery)</label>
                     <multiselect
-                      v-model="arrayFa"
-                      :options="arrayFisheryAuthorized"
-                      :multiple="true"
-                      :close-on-select="false"
-                      :clear-on-select="false"
-                      :preserve-search="false"
-                      placeholder="Seleccione Pesquería Autorizada"
-                      label="name"
-                      track-by="name"
-                      :preselect-first="false">
+                        v-model="arrayFa"
+                        :options="arrayFisheryAuthorized"
+                        :multiple="true"
+                        :close-on-select="false"
+                        :clear-on-select="false"
+                        :preserve-search="false"
+                        placeholder="Seleccione Pesquería Autorizada"
+                        label="name"
+                        track-by="name"
+                        :preselect-first="false">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <label class="text-muted">Zona de Pesca Autorizada (Fishing Zone)</label>
-                      <multiselect v-model="arrayZoneAuto" :options="arrayZoneAutoFish"
-                          placeholder="Zona de Pesca Autorizada"
-                          :custom-label="nameWithZoneAutoFish"
-                          label="name"
-                          track-by="name">
-                      </multiselect>
+                    <label class="text-muted">Zona de Pesca Autorizada (Fishing Zone)</label>
+                    <multiselect v-model="arrayZoneAuto" :options="arrayZoneAutoFish"
+                                 placeholder="Zona de Pesca Autorizada"
+                                 :custom-label="nameWithZoneAutoFish"
+                                 label="name"
+                                 track-by="name">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
-                <md-divider style="background-color: #2090E8 " ></md-divider>
+                <md-divider style="background-color: #2090E8 "></md-divider>
                 <br>
                 <div>
                   <strong>CARACTERÍSTICAS ARTE DE PESCA</strong>
@@ -603,184 +609,184 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">Ancho de Red (Brazas)</label>
-                        <md-input
+                      <label for="first-name">Ancho de Red (Brazas)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="netWidth"
                           :disabled="sending"
                           type="number"
-                        />
+                      />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">Ojo de Malla (Pulgadas)</label>
-                        <md-input
+                      <label for="first-name">Ojo de Malla (Pulgadas)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="eyeMesh"
                           :disabled="sending"
                           type="text"
-                        />
+                      />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">Cantidad total de anzuelos del palangre</label>
-                        <md-input
+                      <label for="first-name">Cantidad total de anzuelos del palangre</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="totalLongline"
                           :disabled="sending"
                           type="number"
-                        />
-                      </md-field>
-                   </div>&nbsp;&nbsp;&nbsp;
+                      />
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">Longitud de la red (Brazas)</label>
-                        <md-input
+                      <label for="first-name">Longitud de la red (Brazas)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="longNet"
                           :disabled="sending"
                           type="number"
-                        />
+                      />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">Ojo de Malla del Copo (Pulgadas)</label>
-                        <md-input
+                      <label for="first-name">Ojo de Malla del Copo (Pulgadas)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="eyeFlake"
                           :disabled="sending"
                           type="text"
-                        />
+                      />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">Tamaño No. y tipo de Anzuelo</label>
-                        <md-input
+                      <label for="first-name">Tamaño No. y tipo de Anzuelo</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="typeHook"
                           :disabled="sending"
                           type="text"
-                        />
+                      />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
-                <div class="md-layout-item">
-                      <label>Material de Arte de Pesca</label>
-                      <multiselect v-model="arrayMaterial" :options="arrayMaterialArt"
-                          placeholder="Seleccione el material de arte de pesca"
-                          :custom-label="nameWithMaterialArt"
-                          label="name"
-                          track-by="name">
-                      </multiselect>
-                    </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                       <label class="text-muted">Equipos o Dispositivos Requeridos</label>
-                        <multiselect v-model="arrayEquipDevi" :options="arrayValue"
-                          placeholder="Equipos o Dispositivo"
-                          label="name"
-                          track-by="name">
-                        </multiselect>
+                    <label>Material de Arte de Pesca</label>
+                    <multiselect v-model="arrayMaterial" :options="arrayMaterialArt"
+                                 placeholder="Seleccione el material de arte de pesca"
+                                 :custom-label="nameWithMaterialArt"
+                                 label="name"
+                                 track-by="name">
+                    </multiselect>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
+                    <label class="text-muted">Equipos o Dispositivos Requeridos</label>
+                    <multiselect v-model="arrayEquipDevi" :options="arrayValue"
+                                 placeholder="Equipos o Dispositivo"
+                                 label="name"
+                                 track-by="name">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item" v-if="arrayEquipDevi.id =='3'">
-                    <md-field md-clearable >
+                    <md-field md-clearable>
                       <label for="first-name">Otro</label>
                       <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="other"
-                        :disabled="sending"
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="other"
+                          :disabled="sending"
                       />
                     </md-field>
-                   </div>&nbsp;&nbsp;&nbsp;
+                  </div>&nbsp;&nbsp;&nbsp;
 
                 </div>
                 <div class="md-layout">
 
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">Nombre Capitán de Pesca (Captain Name)</label>
-                        <md-input
+                      <label for="first-name">Nombre Capitán de Pesca (Captain Name)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="captain"
                           :disabled="sending"
-                        />
+                      />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                      <label class="text-muted">Nacionalidad (Nationality)</label>
-                      <multiselect v-model="arrayNation" :options="arrayNationality"
-                          placeholder="Seleccione una Nacionalidad"
-                          :custom-label="nameWithNationality"
-                          label="name"
-                          track-by="name">
-                      </multiselect>
+                    <label class="text-muted">Nacionalidad (Nationality)</label>
+                    <multiselect v-model="arrayNation" :options="arrayNationality"
+                                 placeholder="Seleccione una Nacionalidad"
+                                 :custom-label="nameWithNationality"
+                                 label="name"
+                                 track-by="name">
+                    </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">No. Total de Tripulantes (Total Crew)</label>
-                        <md-input
+                      <label for="first-name">No. Total de Tripulantes (Total Crew)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="noAllCrew"
                           :disabled="sending"
                           type="number"
-                        />
+                      />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">No. Tripulantes Extranjeros (International Crew)</label>
-                        <md-input
+                      <label for="first-name">No. Tripulantes Extranjeros (International Crew)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="noCrewForeign"
                           :disabled="sending"
                           type="number"
-                        />
+                      />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable>
-                        <label for="first-name">No. Tripulantes Nacionales (National Crew)</label>
-                        <md-input
+                      <label for="first-name">No. Tripulantes Nacionales (National Crew)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="noCrewNational"
                           :disabled="sending"
                           type="number"
-                        />
+                      />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
-                 <md-divider style="background-color: #2090E8 " ></md-divider>
-                 <br>
+                <md-divider style="background-color: #2090E8 "></md-divider>
+                <br>
                 <div>
                   <strong>LOS DATOS RELACIONADOS CON LA FAENA Y CAPTURA</strong>
                 </div>
@@ -788,304 +794,308 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noDays')">
-                        <label for="first-name">No. Días de Pesca (Fishing Days)</label>
-                        <md-input
+                      <label for="first-name">No. Días de Pesca (Fishing Days)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="form.noDays"
                           :disabled="sending"
                           type="number"
-                        />
-                        <span
+                      />
+                      <span
                           class="md-error"
                           v-if="!$v.form.noDays.required"
-                        >Olvidaste ingresar el número de días de pesca</span>
+                      >Olvidaste ingresar el número de días de pesca</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noAllHauls')">
-                        <label for="first-name">No. Total de Lances (Total Fishing Sets)</label>
-                        <md-input
+                      <label for="first-name">No. Total de Lances (Total Fishing Sets)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="form.noAllHauls"
                           :disabled="sending"
                           type="number"
-                        />
-                        <span
+                      />
+                      <span
                           class="md-error"
                           v-if="!$v.form.noAllHauls.required"
-                        >Olvidaste ingresar el número total de lances</span>
+                      >Olvidaste ingresar el número total de lances</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noHaulsNacional')">
-                        <label for="first-name">No. Lances Nacionales (National Sets)</label>
-                        <md-input
+                      <label for="first-name">No. Lances Nacionales (National Sets)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="form.noHaulsNacional"
                           :disabled="sending"
                           type="number"
-                        />
-                        <span
+                      />
+                      <span
                           class="md-error"
                           v-if="!$v.form.noHaulsNacional.required"
-                        >Olvidaste ingresar el número total de lances nacionales </span>
+                      >Olvidaste ingresar el número total de lances nacionales </span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noHaulsInter')">
-                        <label for="first-name" style="font-size:10px">No. Lances Internacionales (International Sets)</label>
-                        <md-input
+                      <label for="first-name" style="font-size:10px">No. Lances Internacionales (International
+                        Sets)</label>
+                      <md-input
                           name="first-name"
                           id="first-name"
                           autocomplete="given-name"
                           v-model="form.noHaulsInter"
                           :disabled="sending"
                           type="number"
-                        />
-                        <span
+                      />
+                      <span
                           class="md-error"
                           v-if="!$v.form.noHaulsInter.required"
-                        >Olvidaste ingresar el número de lances internacionales</span>
+                      >Olvidaste ingresar el número de lances internacionales</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('observation')">
-                            <label>Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería (Nacional-OROP's)(Observations on compliance)</label>
-                            <md-textarea v-model="form.observation"></md-textarea>
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.observation.required"
-                            >Olvidaste ingresar una observación
+                      <label>Observaciones al Cumplimiento de Medidas de Manejo Aplicables a la Pesquería
+                        (Nacional-OROP's)(Observations on compliance)</label>
+                      <md-textarea v-model="form.observation"></md-textarea>
+                      <span
+                          class="md-error"
+                          v-if="!$v.form.observation.required"
+                      >Olvidaste ingresar una observación
                             </span>
                     </md-field>
                   </div>
                 </div>
-          <md-divider style="background-color: #2090E8 " ></md-divider>
-          <br>
+                <md-divider style="background-color: #2090E8 "></md-divider>
+                <br>
                 <div style="text-align:center">
                   <strong>CAPTURA OBJETIVO (TARGET CAPTURE)</strong>
                 </div>
 
-            <div class="card-body">
+                <div class="card-body">
                   <div class="md-layout">
-                  <div class="md-layout-item">
+                    <div class="md-layout-item">
                       <label class="text-muted">Nombre Común (Common Name)</label>
                       <multiselect v-model="arrayCName" :options="arrayCommonName"
-                          @input="setCommonName()"
-                          placeholder="Seleccione una especie"
-                          :custom-label="nameWithCommonName"
-                          label="commonname"
-                          track-by="commonname">
+                                   @input="setCommonName()"
+                                   placeholder="Seleccione una especie"
+                                   :custom-label="nameWithCommonName"
+                                   label="commonname"
+                                   track-by="commonname">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-                      <!-- <div class="md-layout-item">
-                        <md-field md-clearable>
-                          <label for="first-name">Nombre Común (Common Name)</label>
-                          <md-input
-                            name="first-name"
-                            id="first-name"
-                            autocomplete="given-name"
-                            v-model="nameCommon1"
-                            :disabled="sending"
-                          />
-                        </md-field>
-                      </div>&nbsp;&nbsp;&nbsp; -->
-                      <div class="md-layout-item">
-                        <md-field md-clearable>
-                          <label for="first-name">Nombre Científico (Scientific Name)</label>
-                          <md-input
+                    </div>&nbsp;&nbsp;&nbsp;
+                    <!-- <div class="md-layout-item">
+                      <md-field md-clearable>
+                        <label for="first-name">Nombre Común (Common Name)</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="nameCommon1"
+                          :disabled="sending"
+                        />
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp; -->
+                    <div class="md-layout-item">
+                      <md-field md-clearable>
+                        <label for="first-name">Nombre Científico (Scientific Name)</label>
+                        <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
                             v-model="nameScientific1"
                             disabled
-                          />
-                        </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item md-size-25">
-                        <md-field md-clearable>
-                          <label for="first-name">Captura - Ton. (Capture - Ton)</label>
-                          <md-input
+                        />
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp;
+                    <div class="md-layout-item md-size-25">
+                      <md-field md-clearable>
+                        <label for="first-name">Captura - Ton. (Capture - Ton)</label>
+                        <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
                             v-model="capture1"
                             :disabled="sending"
                             type="number"
-                          />
-                        </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;
-                    </div>
-                    <md-button
+                        />
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp;
+                  </div>
+                  <md-button
                       type="button"
                       class="md-dense md-raised md-primary"
                       :disabled="sending"
                       @click="addItemTarget()"
-                    >Agregar
-                    </md-button>
-              <div class="table-responsive">
-                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>NOMBRE COMÚN</th>
-                      <th>NOMBRE CIENTÍFICO</th>
-                      <th>CAPTURA TON.</th>
-                      <th style="width: 90px">OPCIONES</th>
-                    </tr>
-                  </thead>
-                  <tbody v-if="arrayTarget.length">
-                    <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
-                      <td v-text="target.nameCommon1"></td>
-                      <td v-text="target.nameScientific1"></td>
-                      <td v-text="target.capture1"></td>
-                      <td>
-                        <button
-                          type="button"
-                          class="btn btn-danger btn-sm"
-                          data-tooltip
-                          title="Eliminar"
-                          @click="deleteDetTarget(target)"
-                        >
-                          <i class="icon-trash"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                  <tbody v-else>
-                    <tr>
-                      <td colspan="6" class="text-center">
-                        No existen elementos agregados
-                      </td>
-                    </tr>
-                  </tbody>
-                  <tfoot>
-                    <!-- <tr>
-                      <th>NOMBRE COMÚN</th>
-                      <th>NOMBRE CIENTÍFICO</th>
-                      <th>CAPTURA TON.</th>
-                      <th style="width: 90px">OPCIONES</th>
-                    </tr> -->
-                    <tr>
-                      <td colspan="2">Totales</td>
-                      <td colspan="2" v-text="sumatotalcapturaobj"></td>
-                    </tr>
-                  </tfoot>
-                    <tbody>
-                    </tbody>
-                </table>
-              </div>
-            </div>
-             <md-divider style="background-color: #2090E8 " ></md-divider>
-             <br>
-            <div style="text-align:center">
-              <strong>CAPTURA FAUNA INCIDENTAL (BYCATCH)</strong>
-            </div>
+                  >Agregar
+                  </md-button>
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered display" id="dataTable" width="50%"
+                           cellspacing="0">
+                      <thead>
+                      <tr>
+                        <th>NOMBRE COMÚN</th>
+                        <th>NOMBRE CIENTÍFICO</th>
+                        <th>CAPTURA TON.</th>
+                        <th style="width: 90px">OPCIONES</th>
+                      </tr>
+                      </thead>
+                      <tbody v-if="arrayTarget.length">
+                      <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
+                        <td v-text="target.nameCommon1"></td>
+                        <td v-text="target.nameScientific1"></td>
+                        <td v-text="target.capture1"></td>
+                        <td>
+                          <button
+                              type="button"
+                              class="btn btn-danger btn-sm"
+                              data-tooltip
+                              title="Eliminar"
+                              @click="deleteDetTarget(target)"
+                          >
+                            <i class="icon-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      </tbody>
+                      <tbody v-else>
+                      <tr>
+                        <td colspan="6" class="text-center">
+                          No existen elementos agregados
+                        </td>
+                      </tr>
+                      </tbody>
+                      <tfoot>
+                      <!-- <tr>
+                        <th>NOMBRE COMÚN</th>
+                        <th>NOMBRE CIENTÍFICO</th>
+                        <th>CAPTURA TON.</th>
+                        <th style="width: 90px">OPCIONES</th>
+                      </tr> -->
+                      <tr>
+                        <td colspan="2">Totales</td>
+                        <td colspan="2" v-text="sumatotalcapturaobj"></td>
+                      </tr>
+                      </tfoot>
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <md-divider style="background-color: #2090E8 "></md-divider>
+                <br>
+                <div style="text-align:center">
+                  <strong>CAPTURA FAUNA INCIDENTAL (BYCATCH)</strong>
+                </div>
 
-            <div class="card-body">
-                    <div class="md-layout">
+                <div class="card-body">
+                  <div class="md-layout">
                     <div class="md-layout-item">
                       <label class="text-muted">Nombre Común (Common Name)</label>
                       <multiselect v-model="arrayCName2" :options="arrayCommonName"
-                          @input="setCommonName2()"
-                          placeholder="Seleccione una especie"
-                          :custom-label="nameWithCommonName"
-                          label="commonname"
-                          track-by="commonname">
+                                   @input="setCommonName2()"
+                                   placeholder="Seleccione una especie"
+                                   :custom-label="nameWithCommonName"
+                                   label="commonname"
+                                   track-by="commonname">
                       </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-                      <!-- <div class="md-layout-item">
-                        <md-field md-clearable>
-                          <label for="first-name">Nombre Común (Common Name)</label>
-                          <md-input
-                            name="first-name"
-                            id="first-name"
-                            autocomplete="given-name"
-                            v-model="nameCommon2"
-                            :disabled="sending"
-                          />
-                        </md-field>
-                      </div>&nbsp;&nbsp;&nbsp; -->
-                      <div class="md-layout-item">
-                        <md-field md-clearable>
-                          <label for="first-name">Nombre Científico (Scientific Name)</label>
-                          <md-input
+                    </div>&nbsp;&nbsp;&nbsp;
+                    <!-- <div class="md-layout-item">
+                      <md-field md-clearable>
+                        <label for="first-name">Nombre Común (Common Name)</label>
+                        <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="nameCommon2"
+                          :disabled="sending"
+                        />
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp; -->
+                    <div class="md-layout-item">
+                      <md-field md-clearable>
+                        <label for="first-name">Nombre Científico (Scientific Name)</label>
+                        <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
                             v-model="nameScientific2"
                             disabled
-                          />
-                        </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;
-                      <div class="md-layout-item md-size-25">
-                        <md-field md-clearable>
-                          <label for="first-name">Captura - Ton. (Capture - Ton)</label>
-                          <md-input
+                        />
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp;
+                    <div class="md-layout-item md-size-25">
+                      <md-field md-clearable>
+                        <label for="first-name">Captura - Ton. (Capture - Ton)</label>
+                        <md-input
                             name="first-name"
                             id="first-name"
                             autocomplete="given-name"
                             v-model="capture2"
                             :disabled="sending"
                             type="number"
-                          />
-                        </md-field>
-                      </div>&nbsp;&nbsp;&nbsp;
-                    </div>
-                    <div class="md-layout">
-                      <div class="md-layout-item">
-                        <md-button
+                        />
+                      </md-field>
+                    </div>&nbsp;&nbsp;&nbsp;
+                  </div>
+                  <div class="md-layout">
+                    <div class="md-layout-item">
+                      <md-button
                           type="button"
                           class="md-dense md-raised md-primary"
                           :disabled="sending"
                           @click="addItemFauna()"
-                        >Agregar
-                        </md-button>
-                      </div>
+                      >Agregar
+                      </md-button>
                     </div>
-              <div class="table-responsive">
-                <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>NOMBRE COMÚN</th>
-                      <th>NOMBRE CIENTÍFICO</th>
-                      <th>CAPTURA TON.</th>
-                      <th style="width: 90px">OPCIONES</th>
-                    </tr>
-                  </thead>
-                  <tbody v-if="arrayFauna.length">
-                    <tr v-for="(fauna,index) in arrayFauna" :key="`fauna-${index}`">
-                      <td v-text="fauna.nameCommon2"></td>
-                      <td v-text="fauna.nameScientific2"></td>
-                      <td v-text="fauna.capture2"></td>
-                      <td>
-                        <button
-                          type="button"
-                          class="btn btn-danger btn-sm"
-                          data-tooltip
-                          title="Eliminar"
-                          @click="deleteDetFauna(fauna)"
-                        >
-                          <i class="icon-trash"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                  <tbody v-else>
-                    <tr>
-                      <td colspan="6" class="text-center">
-                        No existen elementos agregados
-                      </td>
-                    </tr>
-                  </tbody>
-                    <tfoot>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered display" id="dataTable" width="50%"
+                           cellspacing="0">
+                      <thead>
+                      <tr>
+                        <th>NOMBRE COMÚN</th>
+                        <th>NOMBRE CIENTÍFICO</th>
+                        <th>CAPTURA TON.</th>
+                        <th style="width: 90px">OPCIONES</th>
+                      </tr>
+                      </thead>
+                      <tbody v-if="arrayFauna.length">
+                      <tr v-for="(fauna,index) in arrayFauna" :key="`fauna-${index}`">
+                        <td v-text="fauna.nameCommon2"></td>
+                        <td v-text="fauna.nameScientific2"></td>
+                        <td v-text="fauna.capture2"></td>
+                        <td>
+                          <button
+                              type="button"
+                              class="btn btn-danger btn-sm"
+                              data-tooltip
+                              title="Eliminar"
+                              @click="deleteDetFauna(fauna)"
+                          >
+                            <i class="icon-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      </tbody>
+                      <tbody v-else>
+                      <tr>
+                        <td colspan="6" class="text-center">
+                          No existen elementos agregados
+                        </td>
+                      </tr>
+                      </tbody>
+                      <tfoot>
                       <!-- <tr>
                         <th>NOMBRE COMÚN</th>
                         <th>NOMBRE CIENTÍFICO</th>
@@ -1096,27 +1106,28 @@
                         <td colspan="2">Totales</td>
                         <td colspan="2" v-text="sumatotalcapturafauna"></td>
                       </tr>
-                    </tfoot>
-                    <tbody>
-                    </tbody>
-                </table>
-              </div>
-            </div>
+                      </tfoot>
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('landedWeight')">
-                      <label for="first-name">Peso Desembarcado Comprobado (ingreso planta proceso)(Ton) (Checked Unloaded Weight)</label>
+                      <label for="first-name">Peso Desembarcado Comprobado (ingreso planta proceso)(Ton) (Checked
+                        Unloaded Weight)</label>
                       <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.landedWeight"
-                        :disabled="sending"
-                        type="number"
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="form.landedWeight"
+                          :disabled="sending"
+                          type="number"
                       />
                       <span
-                        class="md-error"
-                        v-if="!$v.form.landedWeight.required"
+                          class="md-error"
+                          v-if="!$v.form.landedWeight.required"
                       >Olvidaste ingresar el peso desembarcado comprobado</span>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -1124,12 +1135,12 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('inspectorConclusions')">
-                            <label>Conclusiones Del Inspector (Inspector’s Conclusions)</label>
-                            <md-textarea v-model="form.inspectorConclusions"></md-textarea>
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.inspectorConclusions.required"
-                            >Olvidaste ingresar las conclusiones del inspector
+                      <label>Conclusiones Del Inspector (Inspector’s Conclusions)</label>
+                      <md-textarea v-model="form.inspectorConclusions"></md-textarea>
+                      <span
+                          class="md-error"
+                          v-if="!$v.form.inspectorConclusions.required"
+                      >Olvidaste ingresar las conclusiones del inspector
                             </span>
                     </md-field>
                   </div>
@@ -1137,12 +1148,13 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('additionalComments')">
-                            <label>Comentarios Adicionales (espacio disponible para el capitan) (Captain’s Additional Comments)</label>
-                            <md-textarea v-model="form.additionalComments"></md-textarea>
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.additionalComments.required"
-                            >Olvidaste ingresar los comentarios adicionales
+                      <label>Comentarios Adicionales (espacio disponible para el capitan) (Captain’s Additional
+                        Comments)</label>
+                      <md-textarea v-model="form.additionalComments"></md-textarea>
+                      <span
+                          class="md-error"
+                          v-if="!$v.form.additionalComments.required"
+                      >Olvidaste ingresar los comentarios adicionales
                             </span>
                     </md-field>
                   </div>
@@ -1150,31 +1162,28 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('observationGeneral')">
-                            <label>Observaciones (General Observations)</label>
-                            <md-textarea v-model="form.observationGeneral"></md-textarea>
-                            <span
-                              class="md-error"
-                              v-if="!$v.form.observationGeneral.required"
-                            >Olvidaste ingresar las observaciones
+                      <label>Observaciones (General Observations)</label>
+                      <md-textarea v-model="form.observationGeneral"></md-textarea>
+                      <span
+                          class="md-error"
+                          v-if="!$v.form.observationGeneral.required"
+                      >Olvidaste ingresar las observaciones
                             </span>
                     </md-field>
                   </div>
                 </div>
-                <!-- SUBIR IMAGEN -->
-                <p>
-                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    Subir imagen
-                  </button>
-                </p>
+
+                <file-component ref="fileComponent" max-file-size="5MB" fileable-type="Arrival" :fileable-id="id_arrival"></file-component>
+
                 <div class="collapse" id="collapseExample">
                   <div class="card card-body">
                     <div
-                      class="uploader"
-                      @dragenter="OnDragEnter"
-                      @dragleave="OnDragLeave"
-                      @dragover.prevent
-                      @drop="onDrop"
-                      :class="{ dragging: isDragging }"
+                        class="uploader"
+                        @dragenter="OnDragEnter"
+                        @dragleave="OnDragLeave"
+                        @dragover.prevent
+                        @drop="onDrop"
+                        :class="{ dragging: isDragging }"
                     >
                       <div class="upload-control" v-show="images.length">
                         <!-- <label for="file">Anexar otra Imágen</label> -->
@@ -1189,33 +1198,33 @@
                         <div class="file-input">
                           <label for="file">Selecciona una Imágen</label>
                           <input
-                            type="file"
-                            id="file"
-                            @change="onInputChange"
-                            multiple
+                              type="file"
+                              id="file"
+                              @change="onInputChange"
+                              multiple
                           />
                         </div>
                       </div>
 
                       <div class="images-preview" v-show="images.length">
                         <div
-                          class="img-wrapper"
-                          v-for="(image, index) in images"
-                          :key="index"
+                            class="img-wrapper"
+                            v-for="(image, index) in images"
+                            :key="index"
                         >
-                          <img :src="image" :alt="`Image Uplaoder ${index}`" />
-                            <button
+                          <img :src="image" :alt="`Image Uplaoder ${index}`"/>
+                          <button
                               type="button"
                               @click="eliminarImg(index)"
                               class="btn btn-dark btn-sm"
-                            >
-                              <i class="material-icons Color4">delete</i>
-                            </button>
+                          >
+                            <i class="material-icons Color4">delete</i>
+                          </button>
                           <div class="details">
                             <span class="name" v-text="files[index].name"></span>
                             <span
-                              class="size"
-                              v-text="getFileSize(files[index].size)"
+                                class="size"
+                                v-text="getFileSize(files[index].size)"
                             ></span>
                           </div>
                         </div>
@@ -1229,35 +1238,15 @@
 
                   <img :src="image.src" alt="">
                 </li> -->
-                 <p>
-       <file-pond
-  name="test"
-  label-idle="Aquí encontrará las imágenes cargadas"
-  :allow-multiple="true"
-  credits="false"
-  :files="myFiles2"
-  allowImagePreview= true
-  accepted-file-types="image/jpeg, image/png"
-  @onaddfile="handleProcessFile"
-/>
-
-
-
-                        <!-- <file-pond-plugin-image-preview></file-pond-plugin-image-preview> -->
-                    <!-- <file-pond-plugin-file-poster /> -->
-                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-                    Subir PDF
-                  </button>
-                </p>
                 <div class="collapse" id="collapseExample1">
                   <div class="card card-body">
                     <div
-                      class="uploader1"
-                      @dragenter="OnDragEnter"
-                      @dragleave="OnDragLeave"
-                      @dragover.prevent
-                      @drop="onDrop"
-                      :class="{ dragging: isDragging }"
+                        class="uploader1"
+                        @dragenter="OnDragEnter"
+                        @dragleave="OnDragLeave"
+                        @dragover.prevent
+                        @drop="onDrop"
+                        :class="{ dragging: isDragging }"
                     >
                       <div class="upload-control" v-show="pdf.length">
                         <!-- <label for="file">Anexar otra Imágen</label> -->
@@ -1272,33 +1261,33 @@
                         <div class="file-input">
                           <label for="file">Selecciona un PDF</label>
                           <input
-                            type="file"
-                            id="file"
-                            accept="application/pdf"
-                            @change="onInputChange"
-                            multiple
+                              type="file"
+                              id="file"
+                              accept="application/pdf"
+                              @change="onInputChange"
+                              multiple
                           />
                         </div>
                       </div>
 
                       <div class="images-preview" v-show="pdf.length">
                         <div
-                          class="img-wrapper"
-                          v-for="(image, index) in pdf" :key="index"
+                            class="img-wrapper"
+                            v-for="(image, index) in pdf" :key="index"
                         >
-                          <img :src="pdf" :alt="`Image Uplaoder ${index}`" />
-                            <button
+                          <img :src="pdf" :alt="`Image Uplaoder ${index}`"/>
+                          <button
                               type="button"
                               @click="eliminarImg(index)"
                               class="btn btn-dark btn-sm"
-                            >
-                              <i class="material-icons Color4">delete</i>
-                            </button>
+                          >
+                            <i class="material-icons Color4">delete</i>
+                          </button>
                           <div class="details">
                             <span class="name" v-text="files[index].name"></span>
                             <span
-                              class="size"
-                              v-text="getFileSize(files[index].size)"
+                                class="size"
+                                v-text="getFileSize(files[index].size)"
                             ></span>
                           </div>
                         </div>
@@ -1317,12 +1306,13 @@
 
             <md-card-actions>
               <md-button
-                type="submit"
-                v-if="tipoAccion==1"
-                class="md-dense md-raised md-primary"
+                  type="submit"
+                  v-if="tipoAccion==1"
+                  class="md-dense md-raised md-primary"
 
-                @click="validateData"
-              >Guardar</md-button>
+                  @click="validateData"
+              >Guardar
+              </md-button>
               <!-- <md-button
                 type="submit"
 
@@ -1331,12 +1321,13 @@
                 @click="saveData"
               >Demo</md-button> -->
               <md-button
-                type="submit"
-                v-if="tipoAccion==2"
-                class="md-dense md-raised md-primary"
-                :disabled="sending"
-                @click="updateData()"
-              >Actualizar</md-button>
+                  type="submit"
+                  v-if="tipoAccion==2"
+                  class="md-dense md-raised md-primary"
+                  :disabled="sending"
+                  @click="updateData()"
+              >Actualizar
+              </md-button>
             </md-card-actions>
           </div>
         </template>
@@ -1349,110 +1340,111 @@
 
 <script>
 
-    // Import Vue FilePond
-    import   vueFilePond   from "vue-filepond";
-    //import { FilePond, registerPlugin } from 'filepond';
+// Import Vue FilePond
+import vueFilePond from "vue-filepond";
+//import { FilePond, registerPlugin } from 'filepond';
 
-    import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
-    import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-    import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
-    import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
 
-    //registerPlugin(FilePondPluginImagePreview);
-    // Import FilePond styles
-    import FilePondPluginFilePoster from 'filepond-plugin-file-poster';
-    import 'filepond-plugin-file-poster/dist/filepond-plugin-file-poster.css';
-    import "filepond/dist/filepond.min.css";
+//registerPlugin(FilePondPluginImagePreview);
+// Import FilePond styles
+import FilePondPluginFilePoster from 'filepond-plugin-file-poster';
+import 'filepond-plugin-file-poster/dist/filepond-plugin-file-poster.css';
+import "filepond/dist/filepond.min.css";
 
-    const FilePond = vueFilePond(FilePondPluginFileValidateSize, FilePondPluginFileValidateType,FilePondPluginImagePreview,FilePondPluginFilePoster);
-    import format from "date-fns/format";
-    import { validationMixin } from "vuelidate";
-    import Multiselect from "vue-multiselect";
-    import Toasted from 'vue-toasted';
-    import vSelect from "vue-select";
-    import {
-		MdButton,
-		MdContent,
-		MdField,
-		MdCard,
-		MdMenu,
-		MdSwitch,
-		MdDatepicker,
-    MdAutocomplete,
-		MdList
-    } from "vue-material/dist/components";
+const FilePond = vueFilePond(FilePondPluginFileValidateSize, FilePondPluginFileValidateType, FilePondPluginImagePreview, FilePondPluginFilePoster);
+import format from "date-fns/format";
+import {validationMixin} from "vuelidate";
+import Multiselect from "vue-multiselect";
+import Toasted from 'vue-toasted';
+import vSelect from "vue-select";
+import {
+  MdButton,
+  MdContent,
+  MdField,
+  MdCard,
+  MdMenu,
+  MdSwitch,
+  MdDatepicker,
+  MdAutocomplete,
+  MdList
+} from "vue-material/dist/components";
 
-    Vue.use(Toasted,  {
-        iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
-    });
-    Vue.use(MdButton);
-    Vue.use(MdContent);
-    Vue.use(MdField);
-    Vue.use(MdCard);
-    Vue.use(MdMenu);
-    Vue.use(MdSwitch);
-    Vue.use(MdList);
-    Vue.use(MdDatepicker);
-    Vue.use(MdAutocomplete);
-    import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
+Vue.use(Toasted, {
+  iconPack: 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
+});
+Vue.use(MdButton);
+Vue.use(MdContent);
+Vue.use(MdField);
+Vue.use(MdCard);
+Vue.use(MdMenu);
+Vue.use(MdSwitch);
+Vue.use(MdList);
+Vue.use(MdDatepicker);
+Vue.use(MdAutocomplete);
+import {required, minLength, maxLength, email, sameAs} from "vuelidate/lib/validators";
+import FileComponent from "./common/FileComponent";
 
 export default {
-	mixins: [validationMixin],
-	props: ['ruta'],
-  
-	data() {
-		Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
-		Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
-		Vue.material.locale.shortMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul','Ago','Sep','Oct','Nov','Dic'];
-		Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
-		let now = new Date();
+  mixins: [validationMixin],
+  props: ['ruta'],
 
-      return {
-  //       server: {
-  //       process: (fieldName, file, metadata, load, error, progress, abort) => {
-  //             const url = `/detailarrival/img?idArrival=${me.id_arrival}`;
+  data() {
+    Vue.material.locale.shortDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+    Vue.material.locale.shorterDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+    Vue.material.locale.shortMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
+    let now = new Date();
 
-  //        // const formData = new FormData();
-  //  load(url);
-  //        console.log('object demo demo' + formData.get('file.name'));
+    return {
+      //       server: {
+      //       process: (fieldName, file, metadata, load, error, progress, abort) => {
+      //             const url = `/detailarrival/img?idArrival=${me.id_arrival}`;
 
-  //         // axios.post('/api/upload', formData)
-  //         //   .then(response => {
-  //         //     load(response.data.url);
-  //         //   })
-  //         //   .catch(() => {
-  //         //     error('Error al subir el archivo');
-  //         //   });
-  //       }
-  //     },
+      //        // const formData = new FormData();
+      //  load(url);
+      //        console.log('object demo demo' + formData.get('file.name'));
 
-        form: {
+      //         // axios.post('/api/upload', formData)
+      //         //   .then(response => {
+      //         //     load(response.data.url);
+      //         //   })
+      //         //   .catch(() => {
+      //         //     error('Error al subir el archivo');
+      //         //   });
+      //       }
+      //     },
 
-          insNo: "",
-          radioCall: "",
-          noResolution: "",
-          nameBoat: "",
-          enrollment: "",
-          noPatent: "",
-          noOmi: "",
-          legalRepre: "",
-          noDays: "",
-          noAllHauls: "",
-          noHaulsNacional: "",
-          noHaulsInter: "",
-          landedWeight: "",
-          dateScale: format(now, dateFormat),
-          dateZarpe: format(now, dateFormat),
-          dateLatestArrival: format(now, dateFormat),
-          dateResolution: format(now, dateFormat),
-          dateValidityPat: format(now, dateFormat),
-          dateValidity: format(now, dateFormat),
-          dateIns: format(now, dateFormat),
-          observation: "",
-          inspectorConclusions: "",
-          additionalComments: "",
-          observationGeneral: "",
+      form: {
+
+        insNo: "",
+        radioCall: "",
+        noResolution: "",
+        nameBoat: "",
+        enrollment: "",
+        noPatent: "",
+        noOmi: "",
+        legalRepre: "",
+        noDays: "",
+        noAllHauls: "",
+        noHaulsNacional: "",
+        noHaulsInter: "",
+        landedWeight: "",
+        dateScale: format(now, dateFormat),
+        dateZarpe: format(now, dateFormat),
+        dateLatestArrival: format(now, dateFormat),
+        dateResolution: format(now, dateFormat),
+        dateValidityPat: format(now, dateFormat),
+        dateValidity: format(now, dateFormat),
+        dateIns: format(now, dateFormat),
+        observation: "",
+        inspectorConclusions: "",
+        additionalComments: "",
+        observationGeneral: "",
         idOmi: "",
       },
 
@@ -1491,42 +1483,42 @@ export default {
       arrayArrival: [],
       id_arrival: 0,
 
-      arrayCName: {id:0, commonname:''},
-      arrayCommonName:[],
-      arrayCName2: {id:0, commonname:''},
-      arrayReg: {id:0, name:'', namePlace:''},
-	    arrayRegion: [],
+      arrayCName: {id: 0, commonname: ''},
+      arrayCommonName: [],
+      arrayCName2: {id: 0, commonname: ''},
+      arrayReg: {id: 0, name: '', namePlace: ''},
+      arrayRegion: [],
       id_region: 0,
-      arrayPt: {id:0, namePort:'', name:''},
-	    arrayPort: [],
+      arrayPt: {id: 0, namePort: '', name: ''},
+      arrayPort: [],
       id_port: 0,
-      arrayPtZarpe: {id:0, namePort:'',name:''},
+      arrayPtZarpe: {id: 0, namePort: '', name: ''},
       id_portZarpe: 0,
-      arrayPtArrival: {id:0, namePort:'',name:''},
+      arrayPtArrival: {id: 0, namePort: '', name: ''},
       id_portArrival: 0,
-      arrayFg: {id:0, name:''},
-	    arrayFlag: [],
+      arrayFg: {id: 0, name: ''},
+      arrayFlag: [],
       id_flag: 0,
-      arrayNation: {id:0, name:''},
-	    arrayNationality: [],
+      arrayNation: {id: 0, name: ''},
+      arrayNationality: [],
       id_nationality: 0,
-      arrayZoneAuto: {id:0, name:''},
-	    arrayZoneAutoFish: [],
+      arrayZoneAuto: {id: 0, name: ''},
+      arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
       arrayFa: [],
-	    arrayFisheryAuthorized: [],
+      arrayFisheryAuthorized: [],
       id_fisheryAuthorized: 0,
-      arrayComp: {id:0, name:''},
-	    arrayCompany: [],
-      arrayBt: {id:0, nameBoat:''},
-	    arrayBoat: [],
+      arrayComp: {id: 0, name: ''},
+      arrayCompany: [],
+      arrayBt: {id: 0, nameBoat: ''},
+      arrayBoat: [],
       id_Company: 0,
       orop: "",
-      arrayOr: {id:0, name:''},
-	    arrayOrop: [],
+      arrayOr: {id: 0, name: ''},
+      arrayOrop: [],
       id_orop: 0,
-      arrayMaterial: {id:0, name:''},
-	    arrayMaterialArt: [],
+      arrayMaterial: {id: 0, name: ''},
+      arrayMaterialArt: [],
       id_material: 0,
 
       countryList: [],
@@ -1539,11 +1531,11 @@ export default {
       arrayTargetAct: [],
       arrayTaAct: [],
       arrayFaunaAct: [],
-      arrayEquipDevi: {name:"",id:0},
-      arrayValue:[
-        { name: 'Dispositivo Agregado de Peces - DAPs (FADs)', id: '1' },
-        { name: 'Dispositivo Excluidor de Tortugas - DET', id: '2' },
-        { name: 'Otro', id: '3' },
+      arrayEquipDevi: {name: "", id: 0},
+      arrayValue: [
+        {name: 'Dispositivo Agregado de Peces - DAPs (FADs)', id: '1'},
+        {name: 'Dispositivo Excluidor de Tortugas - DET', id: '2'},
+        {name: 'Otro', id: '3'},
       ],
 
       edo: 1,
@@ -1563,7 +1555,7 @@ export default {
       dragCount: 0,
       files: [],
       images: [],
-      formData : new FormData(),
+      formData: new FormData(),
       //variables pdf
       selectedFilePDF: null,
       isDraggingPDF: false,
@@ -1574,17 +1566,18 @@ export default {
       selectedImage: null,
       formData: null,
       pdf: [],
-      sumatotalcapturaobj:0,
+      sumatotalcapturaobj: 0,
       sumatotalcapturafauna: 0
 
     };
   },
   components: {
-		vSelect,
-		Multiselect,
-     FilePond,
-     FilePondPluginFilePoster,
-	},
+    FileComponent,
+    vSelect,
+    Multiselect,
+    FilePond,
+    FilePondPluginFilePoster,
+  },
 
   validations: {
     form: {
@@ -1665,17 +1658,12 @@ export default {
     }
   },
 
-  computed: {
-
-
-
-
-  },
+  computed: {},
 
   methods: {
-    
-      getServer() {
-        console.log('object');
+
+    getServer() {
+      console.log('object');
       return {
         process: (fieldName, file, metadata, load, error, progress, abort) => {
           // Procesar archivo y obtener su URL
@@ -1689,74 +1677,73 @@ export default {
     getMyFiles() {
       return this.myFiles.map(file => {
         const url = `${file.path}`;
-        return new File([null], url, { type: 'image/png' });
+        return new File([null], url, {type: 'image/png'});
       });
     },
 
-         handleFilePondInit (error,file) {
-                console.log('FilePond has initialized');
+    handleFilePondInit(error, file) {
+      console.log('FilePond has initialized');
 
-                // example of instance method call on pond reference
-               // this.$refs.pond.getFiles();
-            },
-      //       handleFilePondProcessfile: function (files) {
+      // example of instance method call on pond reference
+      // this.$refs.pond.getFiles();
+    },
+    //       handleFilePondProcessfile: function (files) {
 
-      //          console.log("FilePond succesfully processed file " + files);
-      // for (let i = 0; i < files.length; i++) {
-      //   this.myFiles.push(files[i].file);
-      // }
-      // //              this.formData = new FormData();
-      // // for (let i = 0; i < files.length; i++) {
-      // //   this.formData.append('files[]', files[i].file);
-      // // }
-      //      // this.currentFiles.push(file);
+    //          console.log("FilePond succesfully processed file " + files);
+    // for (let i = 0; i < files.length; i++) {
+    //   this.myFiles.push(files[i].file);
+    // }
+    // //              this.formData = new FormData();
+    // // for (let i = 0; i < files.length; i++) {
+    // //   this.formData.append('files[]', files[i].file);
+    // // }
+    //      // this.currentFiles.push(file);
 
 
-
-      //   },
+    //   },
     // handleFilePondProcessfile( file,error) {
     //   console.log('error'+error);
     //   console.log('El archivo', file.filename, 'ha sido seleccionado y se ha iniciado su proceso de carga');
     //   // Hacer algo con el archivo seleccionado y en proceso de carga, como mostrar una barra de progreso
     // },
     handleFilePondReady() {
-        console.log('inciado');
-        // const pond = this.$refs.pond.$refs.filepond;
+      console.log('inciado');
+      // const pond = this.$refs.pond.$refs.filepond;
 
-        // pond.processFiles().then(files => {
-        //   const formData = new FormData();
+      // pond.processFiles().then(files => {
+      //   const formData = new FormData();
 
-        //   files.forEach(file => {
-        //     formData.append('images[]', file, file.name);
-        //   });
+      //   files.forEach(file => {
+      //     formData.append('images[]', file, file.name);
+      //   });
 
-        //   console.log(formData);
-        // });
+      //   console.log(formData);
+      // });
     },
-    onFilePondReady(){
+    onFilePondReady() {
       console.log(this.currentFiles[0].process)
     },
-        onAddFile(error ,files) {
-   const formData = new FormData();
+    onAddFile(error, files) {
+      const formData = new FormData();
       for (let i = 0; i < files.length; i++) {
         formData.append("files[]", files[i].file);
         this.myFiles.push(files[i].file); // agregamos el archivo al array
       }
       //           this.formData = new FormData();
       // this.formData.append('file', file.file, file.file.name);
-          //console.log(this.file);
+      //console.log(this.file);
       // const pond = this.$refs.pond.$refs.input.pond;
-        // const formData = new FormData();
-        // for (let i = 0; i < pond.getFiles().length; i++) {
-        //   const file = pond.getFiles()[i].file;
-        //   formData.append('file[]', file);
-        // }
-        //   console.log("FormData" +formData);
+      // const formData = new FormData();
+      // for (let i = 0; i < pond.getFiles().length; i++) {
+      //   const file = pond.getFiles()[i].file;
+      //   formData.append('file[]', file);
+      // }
+      //   console.log("FormData" +formData);
     },
 
-       handleProcessFile(e,f) {
+    handleProcessFile(e, f) {
       // procesar el archivo
-              console.log("Se procesaron los archivos " );
+      console.log("Se procesaron los archivos ");
       //console.log(this.myFiles);
     },
     onProcessFile(file) {
@@ -1798,7 +1785,7 @@ export default {
       this.images2.push(file);
 
       const img = new Image(),
-        reader = new FileReader();
+          reader = new FileReader();
 
       reader.onload = (e) => this.images2.push(e.target.result);
 
@@ -1812,7 +1799,7 @@ export default {
         formData.append("images[]", file, file.name);
       });
       formData.append("idArrival", id);
-      console.log('metodo upload '+JSON.stringify(formData));
+      console.log('metodo upload ' + JSON.stringify(formData));
 
 
       await axios.post("/arrivals/saveimg", formData).then((response) => {
@@ -1828,7 +1815,7 @@ export default {
     abrirList() {
       this.listado = 1;
     },
-    eliminarImg(index){
+    eliminarImg(index) {
       this.images.splice(index, 1);
     },
     onDrop(e) {
@@ -1850,7 +1837,7 @@ export default {
       this.files.push(file);
 
       const img = new Image(),
-        reader = new FileReader();
+          reader = new FileReader();
 
       reader.onload = (e) => this.images.push(e.target.result);
 
@@ -1881,66 +1868,66 @@ export default {
     //   this.arrayReasons.push(tag)
     // },
     alerta() {
-       alert('test');
+      alert('test');
     },
 
-     getCountries (searchTerm) {
-        this.countryList = new Promise(resolve => {
-          window.setTimeout(() => {
-            if (!searchTerm) {
-              resolve(this.arrayFlag)
-            } else {
-              const term = searchTerm.toLowerCase()
+    getCountries(searchTerm) {
+      this.countryList = new Promise(resolve => {
+        window.setTimeout(() => {
+          if (!searchTerm) {
+            resolve(this.arrayFlag)
+          } else {
+            const term = searchTerm.toLowerCase()
 
-              resolve(this.arrayFlag.filter(({ name }) => name.toLowerCase().includes(term)))
-            }
-          }, 500)
-        })
-      }
+            resolve(this.arrayFlag.filter(({name}) => name.toLowerCase().includes(term)))
+          }
+        }, 500)
+      })
+    }
     ,
-    setBoats(){
-      this.form.noResolution= this.arrayBt.noResolution;
-      this.form.enrollment= this.arrayBt.enrollment;
-      this.form.dateResolution= this.arrayBt.dateResolution;
-      this.form.dateValidityPat= this.arrayBt.dateValidityPat;
-      this.form.dateValidity= this.arrayBt.dateValid;
-      this.arrayComp.id= this.arrayBt.id_company;
-      this.arrayComp.name= this.arrayBt.nameCompany;
-      this.form.nameBoat= this.arrayBt.nameBoat;
-      this.form.noPatent= this.arrayBt.noPatent;
-      this.arrayFg.id= this.arrayBt.id_flag;
-      this.arrayFg.name= this.arrayBt.nameFlag;
+    setBoats() {
+      this.form.noResolution = this.arrayBt.noResolution;
+      this.form.enrollment = this.arrayBt.enrollment;
+      this.form.dateResolution = this.arrayBt.dateResolution;
+      this.form.dateValidityPat = this.arrayBt.dateValidityPat;
+      this.form.dateValidity = this.arrayBt.dateValid;
+      this.arrayComp.id = this.arrayBt.id_company;
+      this.arrayComp.name = this.arrayBt.nameCompany;
+      this.form.nameBoat = this.arrayBt.nameBoat;
+      this.form.noPatent = this.arrayBt.noPatent;
+      this.arrayFg.id = this.arrayBt.id_flag;
+      this.arrayFg.name = this.arrayBt.nameFlag;
     },
-    setCommonName(){
-      this.nameScientific1= this.arrayCName.scientificname;
-      this.nameCommon1= this.arrayCName.commonname;
+    setCommonName() {
+      this.nameScientific1 = this.arrayCName.scientificname;
+      this.nameCommon1 = this.arrayCName.commonname;
     },
-    setCommonName2(){
-      this.nameScientific2= this.arrayCName2.scientificname;
-      this.nameCommon2= this.arrayCName2.commonname;
+    setCommonName2() {
+      this.nameScientific2 = this.arrayCName2.scientificname;
+      this.nameCommon2 = this.arrayCName2.commonname;
     },
-        selectBoats() {
-            let me = this;
-            var url = "/selectboats?type=0";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayBoat = respuesta.boat;
-                }).catch(function (error) {
-                    console.log(error);
-            });
+    selectBoats() {
+      let me = this;
+      var url = "/selectboats?type=0";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayBoat = respuesta.boat;
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     toString() {
       this.toDate();
       this.dynamicByModel =
-        this.dynamicByModel && format(this.dynamicByModel, this.dateFormat);
+          this.dynamicByModel && format(this.dynamicByModel, this.dateFormat);
     },
     toDate() {
       switch (this.type) {
         case "string":
           this.dynamicByModel = parse(
-            this.dynamicByModel,
-            this.dateFormat,
-            new Date()
+              this.dynamicByModel,
+              this.dateFormat,
+              new Date()
           );
           break;
       }
@@ -1955,66 +1942,63 @@ export default {
     },
     validateData() {
       this.$v.$touch();
-
       if (!this.$v.$invalid) {
         this.saveData();
-
       }
     },
     addItemTarget() {
       let me = this;
-      var total1 = me.arrayTarget.push({
-        nameCommon1:this.nameCommon1,
-        nameScientific1:this.nameScientific1,
-        capture1:this.capture1
+      me.arrayTarget.push({
+        nameCommon1: this.nameCommon1,
+        nameScientific1: this.nameScientific1,
+        capture1: this.capture1
       });
 
-      var total2 = me.arrayTargetAct.push({
-        nameCommon1:this.nameCommon1,
-        nameScientific1:this.nameScientific1,
-        capture1:this.capture1
+      me.arrayTargetAct.push({
+        nameCommon1: this.nameCommon1,
+        nameScientific1: this.nameScientific1,
+        capture1: this.capture1
       });
 
       let suma1 = 0;
+
       this.arrayTarget.forEach(e => {
         suma1 += JSON.parse(e.capture1);
         this.sumatotalcapturaobj = suma1;
       });
-      
-      console.log("arrayTarget " + total2);
-      // this.mensaje("Captura objetivo agregado", "success");
+
       me.clearTarget();
     },
     addItemFauna() {
       let me = this;
-      var total2 = me.arrayFauna.push({
-        nameCommon2:this.nameCommon2,
-        nameScientific2:this.nameScientific2,
-        capture2:this.capture2
+      me.arrayFauna.push({
+        nameCommon2: this.nameCommon2,
+        nameScientific2: this.nameScientific2,
+        capture2: this.capture2
       });
-      var total = me.arrayFaunaAct.push({
-        nameCommon2:this.nameCommon2,
-        nameScientific2:this.nameScientific2,
-        capture2:this.capture2
+      me.arrayFaunaAct.push({
+        nameCommon2: this.nameCommon2,
+        nameScientific2: this.nameScientific2,
+        capture2: this.capture2
       });
 
-      let suma2= 0;
+      let suma2 = 0;
       this.arrayFaunaAct.forEach(e => {
-        suma2 += JSON.parse(e.capture1);
-        this.sumatotalcapturafauna = suma2;
+        suma2 += parseInt(e.capture2);
       });
+      this.sumatotalcapturafauna = suma2;
       //console.log("arrayFauna " + total2);
       // this.mensaje("Captura fauna incidental agregado", "success");
       me.clearFauna();
 
 
     },
-    deleteTarget(index){
-       this.arrayTarget.splice(index,1);
+    deleteTarget(index) {
+      this.arrayTarget.splice(index, 1);
       //  this.mensaje("Captura fauna incidental agregado", "error");
     },
-    deleteFauna(index){
-       this.arrayFauna.splice(index,1);
+    deleteFauna(index) {
+      this.arrayFauna.splice(index, 1);
     },
     clearTarget() {
       this.nameCommon1 = null;
@@ -2090,65 +2074,65 @@ export default {
       this.form.observationGeneral = null;
       this.form.idOmi = null;
 
-      this.arrayReg = {id:0, name:'', namePlace:''};
-      this.arrayPt = {id:0, namePort:'',name:''};
-      this.arrayPtZarpe = {id:0, namePort:'',name:''};
-      this.arrayPtArrival = {id:0, namePort:'',name:''};
-      this.arrayFg = {id:0, name:''};
-      this.arrayNation = {id:0, name:''};
-      this.arrayZoneAuto = {id:0, name:''};
+      this.arrayReg = {id: 0, name: '', namePlace: ''};
+      this.arrayPt = {id: 0, namePort: '', name: ''};
+      this.arrayPtZarpe = {id: 0, namePort: '', name: ''};
+      this.arrayPtArrival = {id: 0, namePort: '', name: ''};
+      this.arrayFg = {id: 0, name: ''};
+      this.arrayNation = {id: 0, name: ''};
+      this.arrayZoneAuto = {id: 0, name: ''};
       this.arrayFa = [];
-      this.arrayComp = {id:0, name:''};
+      this.arrayComp = {id: 0, name: ''};
       this.arrayTarget = [];
       this.arrayFauna = [];
-      this.arrayMaterial = {id:0, name:''};
+      this.arrayMaterial = {id: 0, name: ''};
     },
-    nameWithBoat ({ nameBoat  }) {
-            return `${nameBoat}`
+    nameWithBoat({nameBoat}) {
+      return `${nameBoat}`
     },
-    nameWithRegion ({ namePlace }) {
-            return `${namePlace}`
+    nameWithRegion({namePlace}) {
+      return `${namePlace}`
     },
-    nameWithPort ({ namePort,name }) {
-            return `${namePort} / ${name}  `
+    nameWithPort({namePort, name}) {
+      return `${namePort} / ${name}  `
     },
-    nameWithFlag ({ name }) {
-            return `${name}`
+    nameWithFlag({name}) {
+      return `${name}`
     },
-    nameWithNationality ({ name }) {
-            return `${name}`
+    nameWithNationality({name}) {
+      return `${name}`
     },
-    nameWithZoneAutoFish ({ name }) {
-            return `${name}`
+    nameWithZoneAutoFish({name}) {
+      return `${name}`
     },
-    nameWithFisheryAuthorized ({ name }) {
-            return `${name}`
+    nameWithFisheryAuthorized({name}) {
+      return `${name}`
     },
-    nameWithCompany ({ name }) {
-            return `${name}`
+    nameWithCompany({name}) {
+      return `${name}`
     },
-    nameWithOrop ({ name }) {
-            return `${name}`
+    nameWithOrop({name}) {
+      return `${name}`
     },
-    nameWithMaterialArt ({ name }) {
-            return `${name}`
+    nameWithMaterialArt({name}) {
+      return `${name}`
     },
-    nameWithCommonName ({ commonname }) {
-            return `${commonname}`
+    nameWithCommonName({commonname}) {
+      return `${commonname}`
     },
     getCommonName() {
       let me = this;
       var url =
-        "/species";
+          "/species";
       axios
-        .get(url)
-        .then(function (response) {
-          var respuesta = response.data;
-          me.arrayCommonName = respuesta.species;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+          .get(url)
+          .then(function (response) {
+            var respuesta = response.data;
+            me.arrayCommonName = respuesta.species;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     },
     //  getArrivalImg() {
     //   let me = this;
@@ -2165,138 +2149,138 @@ export default {
     //       console.log(error);
     //     });
     // },
-getArrivalImg() {
-  let me = this;
-  const host='http://127.0.0.1:8000'
-  var url =`/detailarrival/img?idArrival=${me.id_arrival}`;
-  axios
-    .get(url)
-    .then(function (response) {
-      var respuesta = response.data;
-      me.myFiles = respuesta.images.map(function(image) {
-        return {
-          src: `${host}${image.path}`,
-          id: image.id
-        };
-      });
-      me.myFiles2= me.myFiles.map(obj=>obj.src)
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-},
-   async listData() {
+    getArrivalImg() {
+      let me = this;
+      const host = 'http://127.0.0.1:8000'
+      var url = `/detailarrival/img?idArrival=${me.id_arrival}`;
+      axios
+          .get(url)
+          .then(function (response) {
+            var respuesta = response.data;
+            me.myFiles = respuesta.images.map(function (image) {
+              return {
+                src: `${host}${image.path}`,
+                id: image.id
+              };
+            });
+            me.myFiles2 = me.myFiles.map(obj => obj.src)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    },
+    async listData() {
       let me = this;
       var url =
-        "/arrivals";
+          "/arrivals";
       await axios
-        .get(url)
-        .then(function (response) {
-          var respuesta = response.data;
-          me.arrayArrival = respuesta.arrivals.data;
-          me.myTable(me.arrayArrival);
+          .get(url)
+          .then(function (response) {
+            var respuesta = response.data;
+            me.arrayArrival = respuesta.arrivals.data;
+            me.myTable(me.arrayArrival);
 
 
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     },
     selectPort() {
-            let me = this;
-            var url = "/docks/selectDocks";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayPort = respuesta.port;
-                }).catch(function (error) {
-                    console.log(error);
-            });
+      let me = this;
+      var url = "/docks/selectDocks";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayPort = respuesta.port;
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     selectRegion() {
-            let me = this;
-            var url = "/municipalities/selectMuni";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayRegion = respuesta.municipalities;
-                }).catch(function (error) {
-                    console.log(error);
-            });
+      let me = this;
+      var url = "/municipalities/selectMuni";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayRegion = respuesta.municipalities;
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     selectNationality() {
-            let me = this;
-            var url = "arrivals/selectNationality";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayNationality = respuesta.nationality;
-                }).catch(function (error) {
-                    console.log(error);
-            });
+      let me = this;
+      var url = "arrivals/selectNationality";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayNationality = respuesta.nationality;
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     selectFlag() {
-            let me = this;
-            var url = "arrivals/selectFlags";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayFlag = respuesta.flag;
-                }).catch(function (error) {
-                    console.log(error);
-            });
+      let me = this;
+      var url = "arrivals/selectFlags";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayFlag = respuesta.flag;
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     selectZoneAutoFisher() {
-            let me = this;
-            var url = "/arrivals/selectZoneAutoFisher";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayZoneAutoFish = respuesta.autoFisher;
-                }).catch(function (error) {
-                    console.log(error);
-            });
+      let me = this;
+      var url = "/arrivals/selectZoneAutoFisher";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayZoneAutoFish = respuesta.autoFisher;
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     selectFisheryAuthorized() {
-            let me = this;
-            me.arrayFa=[];
-            var url = "/arrivals/selectFisheryAuthorized";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayFisheryAuthorized= respuesta.fishery;
-                }).catch(function (error) {
-                    console.log(error);
-            });
+      let me = this;
+      me.arrayFa = [];
+      var url = "/arrivals/selectFisheryAuthorized";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayFisheryAuthorized = respuesta.fishery;
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     selectCompanies() {
-            let me = this;
-            var url = "/arrivals/selectCompanies";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayCompany= respuesta.company;
-                }).catch(function (error) {
-                    console.log(error);
-            });
+      let me = this;
+      var url = "/arrivals/selectCompanies";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayCompany = respuesta.company;
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     selectOrop() {
-            let me = this;
-            var url = "orops/selectOrops";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayOrop = respuesta.orops;
-                }).catch(function (error) {
-                    console.log(error);
-            });
+      let me = this;
+      var url = "orops/selectOrops";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayOrop = respuesta.orops;
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     selectMaterial() {
-            let me = this;
-            var url = "/materials/selectMaterials";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayMaterialArt = respuesta.materials;
+      let me = this;
+      var url = "/materials/selectMaterials";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayMaterialArt = respuesta.materials;
 
-                }).catch(function (error) {
-                    console.log(error);
-            });
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     showUpdate(data = []) {
       let me = this;
-      this.arrayTargetAct=[];
+      this.arrayTargetAct = [];
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_arrival = data["id"]);
       this.form.insNo = data["insNo"];
@@ -2313,7 +2297,7 @@ getArrivalImg() {
       this.materialArt = data["materialArt"];
       this.equipDevi = data["equipDevi"];
       this.captain = data["captain"];
-     // this.form.noOmi = data["noOmi"];
+      // this.form.noOmi = data["noOmi"];
       this.form.legalRepre = data["legalRepre"];
       this.noAllCrew = data["noAllCrew"];
       this.noCrewForeign = data["noCrewForeign"];
@@ -2342,41 +2326,45 @@ getArrivalImg() {
       this.form.dateValidity = data["dateValidity"];
       this.form.observationGeneral = data["observationGeneral"];
       this.stateRectorPort = data["stateRectorPort"];
-
       this.arrayReg.id = data["id_region"];
-			this.arrayReg.namePlace = data["namePlace"];
+      this.arrayReg.namePlace = data["namePlace"];
       this.arrayPt.id = data["id_port"];
-			this.arrayPt.name = data["namePort"];
+      this.arrayPt.name = data["namePort"];
       this.arrayPtZarpe.id = data["id_portZarpe"];
       this.id_portZarpe = data["id_portZarpe"];
-			this.arrayPtZarpe.name = data["namePort"];
+      this.arrayPtZarpe.name = data["namePort"];
       this.arrayPtArrival.id = data["id_portArrival"];
       this.id_portArrival = data["id_portArrival"];
-			this.arrayPtArrival.name = data["namePort"];
+      this.arrayPtArrival.name = data["namePort"];
       this.arrayFg.id = data["id_flag"];
-			this.arrayFg.name = data["nameFlag"];
+      this.arrayFg.name = data["nameFlag"];
       this.arrayNation.id = data["id_nationality"];
-			this.arrayNation.name = data["nameNationality"];
+      this.arrayNation.name = data["nameNationality"];
       this.arrayEquipDevi.name = data["equipDevi"];
       this.arrayZoneAuto.id = data["id_zoneAutoFisher"];
-			this.arrayZoneAuto.name = data["nameZoneAutoFisher"];
+      this.arrayZoneAuto.name = data["nameZoneAutoFisher"];
       this.arrayFa.id = data["arrayFa"];
       this.arrayComp.id = data["id_company"];
-			this.arrayComp.name = data["nameCompany"];
+      this.arrayComp.name = data["nameCompany"];
       this.arrayOr.id = data["id_orop"];
-			this.arrayOr.name = data["nameOrop"];
+      this.arrayOr.name = data["nameOrop"];
       this.arrayMaterial.id = data["id_material"];
-			this.arrayMaterial.name = data["nameMaterial"];
+      this.arrayMaterial.name = data["nameMaterial"];
       this.getArrivalImg();
       this.dataTarget();
       this.dataFauna();
       this.dataFishery();
+
+      this.$nextTick(async () => {
+        await this.$refs.fileComponent.list();
+      });
+
     },
     showData() {
       this.clearForm();
       let me = this;
       (this.tipoAccion = 1), (me.listado = 0);
-      this.edo=0;
+      this.edo = 0;
     },
     hideForm() {
       this.listData();
@@ -2384,8 +2372,6 @@ getArrivalImg() {
       this.listado = 1;
     },
     async saveData() {
-
-
       //console.log('data '+ formData.get('file'));
       let me = this;
       if (this.eyeMesh == "") {
@@ -2429,83 +2415,83 @@ getArrivalImg() {
       //console.log(this.files);
       this.files.forEach((file) => {
         console.log(file);
-        formData.append("images[]", file,file.name);
+        formData.append("images[]", file, file.name);
       });
       await axios
-        .post("/arrivals/save", {
-          insNo: this.form.insNo.toUpperCase(),
-          radioCall: this.form.radioCall.toUpperCase(),
-          noResolution: this.form.noResolution.toUpperCase(),
-          nameBoat: this.form.nameBoat.toUpperCase(),
-          enrollment: this.form.enrollment.toUpperCase(),
-          noPatent: this.form.noPatent.toUpperCase(),
-          eyeMesh: this.eyeMesh.toUpperCase(),
-          netWidth: this.netWidth.toUpperCase(),
-          eyeFlake: this.eyeFlake.toUpperCase(),
-          typeHook: this.typeHook.toUpperCase(),
-          longNet: this.longNet.toUpperCase(),
-          materialArt: this.materialArt,
-          equipDevi: this.arrayEquipDevi.name,
-          captain: this.captain.toUpperCase(),
-         // noOmi: this.form.noOmi.toUpperCase(),
-          legalRepre: this.form.legalRepre.toUpperCase(),
-          noAllCrew: this.noAllCrew.toUpperCase(),
-          noCrewForeign: this.noCrewForeign.toUpperCase(),
-          noCrewNational: this.noCrewNational.toUpperCase(),
-          idOmi: this.form.idOmi,
-          other: this.other,
-          noDays: this.form.noDays.toUpperCase(),
-          noAllHauls: this.form.noAllHauls.toUpperCase(),
-          noHaulsNacional: this.form.noHaulsNacional.toUpperCase(),
-          noHaulsInter: this.form.noHaulsInter.toUpperCase(),
-          landedWeight: this.form.landedWeight.toUpperCase(),
-          observation: this.form.observation.toUpperCase(),
-          totalLongline: this.totalLongline,
-          notification: this.notification,
-          finalityArrival: this.finalityArrival,
-          workDone: this.workDone,
-          locationSystem: this.locationSystem,
-          inspectorConclusions :this.form.inspectorConclusions.toUpperCase(),
-          additionalComments :this.form.additionalComments.toUpperCase(),
-          stateRectorPort :this.stateRectorPort,
-          dateIns :this.form.dateIns,
-          dateScale :this.form.dateScale,
-          dateZarpe :this.form.dateZarpe,
-          dateLatestArrival: this.form.dateLatestArrival,
-          dateValidityPat: this.form.dateValidityPat,
-          date: this.form.dateResolution,
-          dateValidity: this.form.dateValidity,
-          observationGeneral: this.form.observationGeneral,
-          sendImg:1,
+          .post("/arrivals/save", {
+            insNo: this.form.insNo.toUpperCase(),
+            radioCall: this.form.radioCall.toUpperCase(),
+            noResolution: this.form.noResolution.toUpperCase(),
+            nameBoat: this.form.nameBoat.toUpperCase(),
+            enrollment: this.form.enrollment.toUpperCase(),
+            noPatent: this.form.noPatent.toUpperCase(),
+            eyeMesh: this.eyeMesh.toUpperCase(),
+            netWidth: this.netWidth.toUpperCase(),
+            eyeFlake: this.eyeFlake.toUpperCase(),
+            typeHook: this.typeHook.toUpperCase(),
+            longNet: this.longNet.toUpperCase(),
+            materialArt: this.materialArt,
+            equipDevi: this.arrayEquipDevi.name,
+            captain: this.captain.toUpperCase(),
+            // noOmi: this.form.noOmi.toUpperCase(),
+            legalRepre: this.form.legalRepre.toUpperCase(),
+            noAllCrew: this.noAllCrew.toUpperCase(),
+            noCrewForeign: this.noCrewForeign.toUpperCase(),
+            noCrewNational: this.noCrewNational.toUpperCase(),
+            idOmi: this.form.idOmi,
+            other: this.other,
+            noDays: this.form.noDays.toUpperCase(),
+            noAllHauls: this.form.noAllHauls.toUpperCase(),
+            noHaulsNacional: this.form.noHaulsNacional.toUpperCase(),
+            noHaulsInter: this.form.noHaulsInter.toUpperCase(),
+            landedWeight: this.form.landedWeight.toUpperCase(),
+            observation: this.form.observation.toUpperCase(),
+            totalLongline: this.totalLongline,
+            notification: this.notification,
+            finalityArrival: this.finalityArrival,
+            workDone: this.workDone,
+            locationSystem: this.locationSystem,
+            inspectorConclusions: this.form.inspectorConclusions.toUpperCase(),
+            additionalComments: this.form.additionalComments.toUpperCase(),
+            stateRectorPort: this.stateRectorPort,
+            dateIns: this.form.dateIns,
+            dateScale: this.form.dateScale,
+            dateZarpe: this.form.dateZarpe,
+            dateLatestArrival: this.form.dateLatestArrival,
+            dateValidityPat: this.form.dateValidityPat,
+            date: this.form.dateResolution,
+            dateValidity: this.form.dateValidity,
+            observationGeneral: this.form.observationGeneral,
+            sendImg: 1,
 
-          'id_region': this.arrayReg.id,
-          'id_port': this.arrayPt.id,
-          'id_portZarpe': this.arrayPtZarpe.id,
-          'id_portArrival': this.arrayPtArrival.id,
-          'id_flag': this.arrayFg.id,
-          'id_nationality': this.arrayNation.id,
-          'id_zoneAutoFisher': this.arrayZoneAuto.id,
-          'id_fisheryAuthorized': this.arrayFa.id,
-          'id_company': this.arrayComp.id,
-          'id_orop': this.arrayOr.id,
-          'id_material': this.arrayMaterial.id,
+            'id_region': this.arrayReg.id,
+            'id_port': this.arrayPt.id,
+            'id_portZarpe': this.arrayPtZarpe.id,
+            'id_portArrival': this.arrayPtArrival.id,
+            'id_flag': this.arrayFg.id,
+            'id_nationality': this.arrayNation.id,
+            'id_zoneAutoFisher': this.arrayZoneAuto.id,
+            'id_fisheryAuthorized': this.arrayFa.id,
+            'id_company': this.arrayComp.id,
+            'id_orop': this.arrayOr.id,
+            'id_material': this.arrayMaterial.id,
 
-          'fishery': this.arrayFa,
-          'fauna': this.arrayFauna,
-          'target': this.arrayTarget,
+            'fishery': this.arrayFa,
+            'fauna': this.arrayFauna,
+            'target': this.arrayTarget,
 
-        })
-        .then(function(response) {
-          me.hideForm();
-          me.message("Guardado", "Guardo ");
-          me.idArrival = response.data.id;
-
-          me.upload(me.idArrival);
-          me.clearForm();
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+          })
+          .then(async function (response) {
+            me.hideForm();
+            me.message("Guardado", "Guardo");
+            me.idArrival = response.data.id;
+            me.id_arrival = response.data.id;
+            await me.$refs.fileComponent.uploadFiles()
+            me.clearForm();
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     },
     updateData() {
       let me = this;
@@ -2546,142 +2532,134 @@ getArrivalImg() {
         this.noCrewNational = this.noApply;
       }
       axios
-        .put("/arrivals/update", {
-          id: this.id_arrival,
-          insNo: this.form.insNo.toUpperCase(),
-          radioCall :this.form.radioCall.toUpperCase(),
-          noResolution: this.form.noResolution.toUpperCase(),
-          nameBoat :this.form.nameBoat.toUpperCase(),
-          enrollment: this.form.enrollment.toUpperCase(),
-          noPatent :this.form.noPatent.toUpperCase(),
-          eyeMesh :this.eyeMesh.toUpperCase(),
-          netWidth :this.netWidth.toUpperCase(),
-          eyeFlake :this.eyeFlake.toUpperCase(),
-          typeHook :this.typeHook.toUpperCase(),
-          longNet :this.longNet.toUpperCase(),
-          materialArt :this.materialArt,
-          equipDevi: this.arrayEquipDevi.name,
-          captain :this.captain.toUpperCase(),
-          //noOmi :this.form.noOmi.toUpperCase(),
-          legalRepre :this.form.legalRepre.toUpperCase(),
-          noAllCrew :this.noAllCrew.toUpperCase(),
-          noCrewForeign :this.noCrewForeign.toUpperCase(),
-          noCrewNational :this.noCrewNational.toUpperCase(),
-          idOmi :this.form.idOmi,
-          other :this.other,
-          noDays :this.form.noDays.toUpperCase(),
-          noAllHauls :this.form.noAllHauls.toUpperCase(),
-          noHaulsNacional :this.form.noHaulsNacional.toUpperCase(),
-          noHaulsInter :this.form.noHaulsInter.toUpperCase(),
-          landedWeight :this.form.landedWeight.toUpperCase(),
-          observation :this.form.observation.toUpperCase(),
-          totalLongline :this.totalLongline,
-          notification: this.notification,
-          finalityArrival: this.finalityArrival,
-          workDone: this.workDone,
-          locationSystem: this.locationSystem,
-          inspectorConclusions :this.form.inspectorConclusions.toUpperCase(),
-          additionalComments :this.form.additionalComments.toUpperCase(),
-          stateRectorPort :this.stateRectorPort,
-          dateIns :this.form.dateIns,
-          dateScale :this.form.dateScale,
-          dateZarpe :this.form.dateZarpe,
-          dateLatestArrival: this.form.dateLatestArrival,
-          dateValidityPat: this.form.dateValidityPat,
-          date: this.form.date,
-          dateValidity: this.form.dateValidity,
-          observationGeneral: this.form.observationGeneral,
+          .put("/arrivals/update", {
+            id: this.id_arrival,
+            insNo: this.form.insNo.toUpperCase(),
+            radioCall: this.form.radioCall.toUpperCase(),
+            noResolution: this.form.noResolution.toUpperCase(),
+            nameBoat: this.form.nameBoat.toUpperCase(),
+            enrollment: this.form.enrollment.toUpperCase(),
+            noPatent: this.form.noPatent.toUpperCase(),
+            eyeMesh: this.eyeMesh.toUpperCase(),
+            netWidth: this.netWidth.toUpperCase(),
+            eyeFlake: this.eyeFlake.toUpperCase(),
+            typeHook: this.typeHook.toUpperCase(),
+            longNet: this.longNet.toUpperCase(),
+            materialArt: this.materialArt,
+            equipDevi: this.arrayEquipDevi.name,
+            captain: this.captain.toUpperCase(),
+            //noOmi :this.form.noOmi.toUpperCase(),
+            legalRepre: this.form.legalRepre.toUpperCase(),
+            noAllCrew: this.noAllCrew.toUpperCase(),
+            noCrewForeign: this.noCrewForeign.toUpperCase(),
+            noCrewNational: this.noCrewNational.toUpperCase(),
+            idOmi: this.form.idOmi,
+            other: this.other,
+            noDays: this.form.noDays.toUpperCase(),
+            noAllHauls: this.form.noAllHauls.toUpperCase(),
+            noHaulsNacional: this.form.noHaulsNacional.toUpperCase(),
+            noHaulsInter: this.form.noHaulsInter.toUpperCase(),
+            landedWeight: this.form.landedWeight.toUpperCase(),
+            observation: this.form.observation.toUpperCase(),
+            totalLongline: this.totalLongline,
+            notification: this.notification,
+            finalityArrival: this.finalityArrival,
+            workDone: this.workDone,
+            locationSystem: this.locationSystem,
+            inspectorConclusions: this.form.inspectorConclusions.toUpperCase(),
+            additionalComments: this.form.additionalComments.toUpperCase(),
+            stateRectorPort: this.stateRectorPort,
+            dateIns: this.form.dateIns,
+            dateScale: this.form.dateScale,
+            dateZarpe: this.form.dateZarpe,
+            dateLatestArrival: this.form.dateLatestArrival,
+            dateValidityPat: this.form.dateValidityPat,
+            date: this.form.date,
+            dateValidity: this.form.dateValidity,
+            observationGeneral: this.form.observationGeneral,
 
-          'id_region': this.arrayReg.id,
-          'id_port': this.arrayPt.id,
-          'id_portZarpe': this.arrayPtZarpe.id,
-          'id_portArrival': this.arrayPtArrival.id,
-          'id_flag': this.arrayFg.id,
-          'id_nationality': this.arrayNation.id,
-          'id_zoneAutoFisher': this.arrayZoneAuto.id,
-          'id_fisheryAuthorized': this.arrayFa.id,
-          'id_company': this.arrayComp.id,
-          'id_orop': this.arrayOr.id,
-          'id_material': this.arrayMaterial.id,
-
-
-          'fishery': this.arrayFaAct,
-          'fauna': this.arrayFaunaAct,
-          'target': this.arrayTargetAct,
-        })
-        .then(function(response) {
-          me.hideForm();
-          me.message("Actualizado", "Actualizó ");
-          me.listData();
-          me.arrayTargetAct=[];
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },
-    async dataTarget(){
-      let me = this;
-
-      var url = "/arrivals/target?id_Target="+this.id_arrival;
-      await axios
-        .get(url)
-        .then(function(response) {
-          //console.log(response);
-          var respuesta = response.data;
-          me.arrayTarget = respuesta.target;
-
-          let datos = me.arrayTarget;
-
-          // console.log(datos);
-
-          let suma3 = 0;
-          datos.forEach(e => {
-            // console.log(e.capture1);
-            suma3 += JSON.parse(e.capture1);
-            // console.log(suma1);
-            this.sumatotalcapturaobj = JSON.parse(suma3);
+            'id_region': this.arrayReg.id,
+            'id_port': this.arrayPt.id,
+            'id_portZarpe': this.arrayPtZarpe.id,
+            'id_portArrival': this.arrayPtArrival.id,
+            'id_flag': this.arrayFg.id,
+            'id_nationality': this.arrayNation.id,
+            'id_zoneAutoFisher': this.arrayZoneAuto.id,
+            'id_fisheryAuthorized': this.arrayFa.id,
+            'id_company': this.arrayComp.id,
+            'id_orop': this.arrayOr.id,
+            'id_material': this.arrayMaterial.id,
+            'fishery': this.arrayFaAct,
+            'fauna': this.arrayFaunaAct,
+            'target': this.arrayTargetAct,
+          })
+          .then(function (response) {
+            me.hideForm();
+            me.message("Actualizado", "Actualizó ");
+            me.$refs.fileComponent.uploadFiles()
+            me.listData();
+            me.arrayTargetAct = [];
+          })
+          .catch(function (error) {
+            console.log(error);
           });
-          
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
     },
-    async dataFauna(){
+    async dataTarget() {
       let me = this;
 
-      var url = "/arrivals/fauna?id_Fauna="+this.id_arrival;
+      const url = "/arrivals/target?id_Target=" + this.id_arrival;
+
       await axios
-        .get(url)
-        .then(function(response) {
-          //console.log(response);
-          var respuesta = response.data;
-          me.arrayFauna = respuesta.fauna;
+          .get(url)
+          .then(function (response) {
 
-          // let suma2 = 0;
-          // me.arrayFauna.forEach(e => {
-          //   suma2 += JSON.parse(e.capture1);
-          //   this.sumatotalcapturafauna = suma2;
-          // });
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+            var respuesta = response.data;
+            me.arrayTarget = respuesta.target;
+
+            let datos = me.arrayTarget;
+
+            let suma3 = 0;
+
+            datos.forEach(e => {
+              suma3 += parseInt(e.capture1);
+            });
+
+            me.sumatotalcapturaobj = suma3;
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     },
-    dataFishery(){
+    async dataFauna() {
       let me = this;
 
-      var url = "/arrivals/fishery?id_FisheryAut="+this.id_arrival;
+      var url = "/arrivals/fauna?id_Fauna=" + this.id_arrival;
+      await axios
+          .get(url)
+          .then(function (response) {
+            var respuesta = response.data;
+            me.arrayFauna = respuesta.fauna;
+
+            me.sumatotalcapturafauna = me.arrayFauna.reduce((t, c) => t + parseInt(c.capture2), 0);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    },
+    dataFishery() {
+      let me = this;
+
+      var url = "/arrivals/fishery?id_FisheryAut=" + this.id_arrival;
       axios
-        .get(url)
-        .then(function(response) {
-          //console.log(response);
-          var respuesta = response.data;
-          me.arrayFa = respuesta.fisheryAut;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+          .get(url)
+          .then(function (response) {
+            var respuesta = response.data;
+            me.arrayFa = respuesta.fisheryAut;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     },
     deleteData(data = []) {
       swal({
@@ -2700,27 +2678,27 @@ getArrivalImg() {
         if (result.value) {
           let me = this;
           axios
-            .post("/arrivals/delete", {
-              id: data["id"],
-            })
-            .then(function(response) {
-              me.hideForm();
-              me.message("Eliminado", "Eliminó ");
-              me.listData();
-            })
-            .catch(function(error) {
-              console.log(error);
-            });
+              .post("/arrivals/delete", {
+                id: data["id"],
+              })
+              .then(function (response) {
+                me.hideForm();
+                me.message("Eliminado", "Eliminó ");
+                me.listData();
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
         } else if (
-          // Read more about handling dismissals
-          result.dismiss === swal.DismissReason.cancel
+            // Read more about handling dismissals
+            result.dismiss === swal.DismissReason.cancel
         ) {
         }
       });
     },
     deleteDetFauna(data = []) {
       swal({
-        title: "Esta seguro de Eliminar este item " + data["nameCommon2"] ,
+        title: "Esta seguro de Eliminar este item " + data["nameCommon2"],
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -2735,28 +2713,28 @@ getArrivalImg() {
         if (result.value) {
           let me = this;
           axios
-            .post("/detfaunaarrivals/delete", {
-              id: data["id"],
-            })
-            .then(function(response) {
+              .post("/detfaunaarrivals/delete", {
+                id: data["id"],
+              })
+              .then(function (response) {
 
-              me.message("Eliminado", "Eliminó ");
-              me.dataFauna();
-              me.listData();
-            })
-            .catch(function(error) {
-              console.log(error);
-            });
+                me.message("Eliminado", "Eliminó ");
+                me.dataFauna();
+                me.listData();
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
         } else if (
-          // Read more about handling dismissals
-          result.dismiss === swal.DismissReason.cancel
+            // Read more about handling dismissals
+            result.dismiss === swal.DismissReason.cancel
         ) {
         }
       });
     },
     deleteDetTarget(data = []) {
       swal({
-        title: "Esta seguro de Eliminar este item " + data["nameCommon1"] ,
+        title: "Esta seguro de Eliminar este item " + data["nameCommon1"],
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -2771,21 +2749,21 @@ getArrivalImg() {
         if (result.value) {
           let me = this;
           axios
-            .post("/detcaparrivals/delete", {
-              id: data["id"],
-            })
-            .then(function(response) {
+              .post("/detcaparrivals/delete", {
+                id: data["id"],
+              })
+              .then(function (response) {
 
-              me.message("Eliminado", "Eliminó ");
-              me.listData();
-              me.dataTarget();
-            })
-            .catch(function(error) {
-              console.log(error);
-            });
+                me.message("Eliminado", "Eliminó ");
+                me.listData();
+                me.dataTarget();
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
         } else if (
-          // Read more about handling dismissals
-          result.dismiss === swal.DismissReason.cancel
+            // Read more about handling dismissals
+            result.dismiss === swal.DismissReason.cancel
         ) {
         }
       });
@@ -2794,66 +2772,67 @@ getArrivalImg() {
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
-    myTable(datas){
+    myTable(datas) {
       console.log(datas);
       let me = this;
 
-      $(document).ready(function() {
+      $(document).ready(function () {
 
-      var table = $('#dataTable').DataTable({destroy: true,
-      stateSave: true,
-      data:datas,
-               "createdRow": function( row, data, dataIndex){
-                if( data[6] ==  `0`){
-                    $(row).addClass('redClass');
-                }
+        var table = $('#dataTable').DataTable({
+          destroy: true,
+          stateSave: true,
+          data: datas,
+          "createdRow": function (row, data, dataIndex) {
+            if (data[6] == `0`) {
+              $(row).addClass('redClass');
+            }
+          },
+          "language": {
+            "lengthMenu": "Ver _MENU_ registros por página",
+            "zeroRecords": "NO existen Datos",
+            "info": "mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "search": "Buscar:",
+            "paginate": {
+              "first": "Prim",
+              "last": "Ant",
+              "next": "Sig",
+              "previous": "Ant"
             },
-      "language": {
-                "lengthMenu": "Ver _MENU_ registros por página",
-                "zeroRecords": "NO existen Datos",
-                "info": "mostrando la página _PAGE_ de _PAGES_",
-                "infoEmpty": "No hay registros disponibles",
-                "search":         "Buscar:",
-                 "paginate": {
-                    "first":      "Prim",
-                    "last":       "Ant",
-                    "next":       "Sig",
-                    "previous":   "Ant"
-                },
-                "infoFiltered": "(filtrado de _MAX_ total registros)"
-            },
-            responsive: "true",
+            "infoFiltered": "(filtrado de _MAX_ total registros)"
+          },
+          responsive: "true",
           "columns": [
 
-            { "data": "insNo" },
-            { "data": "nameReg" },
-            { "data": "namePort" },
-            { "data": "dateIns" },
+            {"data": "insNo"},
+            {"data": "nameReg"},
+            {"data": "namePort"},
+            {"data": "dateIns"},
             // { "data": "namePort" },
             // { "data": "dateZarpe" },
-            { "data": "nameBoat" },
-            { "data": "date" },
+            {"data": "nameBoat"},
+            {"data": "date"},
             // { "data": "portsarrivalname" },
-            { "data": "finalityArrival" },
+            {"data": "finalityArrival"},
             // { "data": "nameFlag" },
             // { "data": "enrollment" },
             // { "data": "captain" },
             // { "data": "nameNationality" },
-             {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
+            {"defaultContent": "<button type='button' id='editar' class='editar btn btn-success btn-sm' data-tooltip title='Actualizar' > <i class='fas fa-edit'></i>  </button> <button type='button'id='eliminar' class='eliminar btn btn-danger btn-sm' data-tooltip title='Eliminar' > <i class='fas fa-trash-alt'></i> </button>  "},
 
-        ]
+          ]
 
         });
 
-          $('#dataTable tbody').on( 'click', '.editar', function () {
-                me.datos = table.row( $(this).parents('tr') ).data();
-                me.showUpdate(me.datos);
-            } );
-          $('#dataTable tbody').on( 'click', '.eliminar', function () {
-                me.datos= table.row( $(this).parents('tr') ).data();
-                me.deleteData(me.datos);
-            } );
-    });
+        $('#dataTable tbody').on('click', '.editar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.showUpdate(me.datos);
+        });
+        $('#dataTable tbody').on('click', '.eliminar', function () {
+          me.datos = table.row($(this).parents('tr')).data();
+          me.deleteData(me.datos);
+        });
+      });
     }
   },
 
@@ -2874,21 +2853,35 @@ getArrivalImg() {
 };
 </script>
 <style>
-     .filepond--item {
-        width: calc(50% - 0.5em);
-      }
+.filepond--item {
+  width: calc(50% - 0.5em);
+}
+
 .div-error {
   display: flex;
   justify-content: center;
 }
+
 .text-error {
   color: red !important;
   font-weight: bold;
 }
-.material-icons.Color1 { color: rgb(31, 33, 34); }
-.material-icons.Color2 { color: rgba(167, 142, 5, 0.849); }
-.material-icons.Color3 { color: rgb(12, 170, 91); }
-.material-icons.Color4 { color: rgba(228, 54, 54, 0.863); }
+
+.material-icons.Color1 {
+  color: rgb(31, 33, 34);
+}
+
+.material-icons.Color2 {
+  color: rgba(167, 142, 5, 0.849);
+}
+
+.material-icons.Color3 {
+  color: rgb(12, 170, 91);
+}
+
+.material-icons.Color4 {
+  color: rgba(228, 54, 54, 0.863);
+}
 
 .uploader {
   width: 100%;
@@ -2901,11 +2894,13 @@ getArrivalImg() {
   font-size: 20px;
   position: relative;
 }
+
 .uploader:dragging {
   background: #fff;
   color: #2196f3;
   border: 3px dashed #2196f3;
 }
+
 .uploader1 {
   width: 100%;
   background: #ff7777;
@@ -2917,6 +2912,7 @@ getArrivalImg() {
   font-size: 20px;
   position: relative;
 }
+
 .uploader1:dragging {
   background: #fff;
   color: #2196f3;
@@ -2926,12 +2922,14 @@ getArrivalImg() {
 i.fa.fa-cloud-upload {
   font-size: 58px;
 }
+
 .file-input {
   width: 200px;
   margin: auto;
   height: 68px;
   position: relative;
 }
+
 .file-input label {
   background: #fff;
   color: #2196f3;
@@ -2966,12 +2964,15 @@ i.fa.fa-cloud-upload {
   background: #fff;
   box-shadow: 5px 5px 20px #3e3737;
 }
+
 .img {
   max-height: 105px;
 }
+
 .imgNew {
   max-height: 300px;
 }
+
 .details {
   font-size: 12px;
   background: #fff;
@@ -2981,6 +2982,7 @@ i.fa.fa-cloud-upload {
   align-items: self-start;
   padding: 3px 6px;
 }
+
 .name {
   overflow: hidden;
   height: 18px;
@@ -2998,6 +3000,7 @@ i.fa.fa-cloud-upload {
   padding-bottom: 4px;
   text-align: right;
 }
+
 .upload-control button {
   background: #3ab458;
   border: 2px solid #3ab458;
@@ -3006,6 +3009,7 @@ i.fa.fa-cloud-upload {
   font-size: 15px;
   cursor: pointer;
 }
+
 .upload-control label {
   background: #F5A528;
   border: 2px solid #F5A528;
@@ -3021,6 +3025,7 @@ i.fa.fa-cloud-upload {
   display: flex;
   justify-content: center;
 }
+
 .text-error {
   color: red !important;
   font-weight: bold;
@@ -3054,13 +3059,25 @@ i.fa.fa-cloud-upload {
   font-weight: bold;
   cursor: pointer;
 }
+
 /* .filepond--wrapper .filepond--root .filepond--panel-root {
   background-color: red !important;
 } */
 
-.material-icons.Color1 { color: rgb(31, 33, 34); }
-.material-icons.Color2 { color: rgba(167, 142, 5, 0.849); }
-.material-icons.Color3 { color: rgb(12, 170, 91); }
-.material-icons.Color4 { color: rgba(228, 54, 54, 0.863); }
+.material-icons.Color1 {
+  color: rgb(31, 33, 34);
+}
+
+.material-icons.Color2 {
+  color: rgba(167, 142, 5, 0.849);
+}
+
+.material-icons.Color3 {
+  color: rgb(12, 170, 91);
+}
+
+.material-icons.Color4 {
+  color: rgba(228, 54, 54, 0.863);
+}
 
 </style>
