@@ -1882,6 +1882,7 @@ export default {
       this.modal2=0;
     },
     carta(data = []) {
+      const date = new Date();
       let me = this;
       // var demo = "Hola Demo Prueba Nombre";
       var demo = "";
@@ -1896,7 +1897,8 @@ export default {
         doc.setFont("arial");
         doc.setFontSize(11);
         // doc.text(`${demo}, ____ de ________ de 201_`, 30, 40,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
-        doc.text(` ____ de ________ de 202_`, 30, 40,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
+        // doc.text(` ____ de ________ de 202_`, 30, 40,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
+        doc.text( date.getDate() +`de`+date.getMonth()+ `de`+date.getFullYear(), 30, 40,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
 
         doc.setFont(undefined, 'bold')
         doc.text("Señor(a) (es)", 30, 60);
