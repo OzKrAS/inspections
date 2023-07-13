@@ -377,6 +377,7 @@ export default {
       id_flag: 0,
       arrayComp: { id: 0, name: '' },
       arrayCompany: [],
+      arrayBt: {id: 0, nameBoat: ''},
       arrayBoat: [],
       id_Company: 0,
       arrayZoneAuto: { id: 0, name: '' },
