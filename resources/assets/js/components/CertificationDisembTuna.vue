@@ -579,6 +579,9 @@ export default {
     nameWithFlag({ name }) {
       return `${name}`
     },
+    nameWithBoat({nameBoat}) {
+      return `${nameBoat}`
+    },
     nameWithCompany({ name }) {
       return `${name}`
     },
