@@ -67,7 +67,7 @@
                 </div>
                 <div class="md-layout">
                   <!-- <div class="md-layout-item"> -->
-                    <!-- <md-field md-clearable :class="getValidationClass('nameBoat')">
+                  <!-- <md-field md-clearable :class="getValidationClass('nameBoat')">
                       <label for="first-name">Nombre Embarcación (Ship Name)</label>
                       <md-input
                         name="first-name"
@@ -83,15 +83,12 @@
                     </md-field> -->
                   <!-- </div> -->
                   <div class="md-layout">
-                  <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
-                  <multiselect v-model="arrayBt" :options="arrayBoat"
-                               @input="setBoats()"
-                               placeholder="Seleccione una embarcación"
-                               :custom-label="nameWithBoat"
-                               label="nameBoat"
-                               track-by="nameBoat">
-                  </multiselect>
-                </div>
+                    <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
+                    <multiselect v-model="arrayBt" :options="arrayBoat" @input="setBoats()"
+                      placeholder="Seleccione una embarcación" :custom-label="nameWithBoat" label="nameBoat"
+                      track-by="nameBoat">
+                    </multiselect>
+                  </div>
                   &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <label class="text-muted">Bandera (Flag)</label>
@@ -378,8 +375,8 @@ export default {
       arrayFg: { id: 0, name: '' },
       arrayFlag: [],
       id_flag: 0,
-      arrayComp: {id:0, name:''},
-	    arrayCompany: [],
+      arrayComp: { id: 0, name: '' },
+      arrayCompany: [],
       arrayBoat: [],
       id_Company: 0,
       arrayZoneAuto: { id: 0, name: '' },
@@ -616,6 +613,10 @@ export default {
       }).catch(function (error) {
         console.log(error);
       });
+    },
+    setBoats() {
+      this.arrayFg.id = this.arrayBt.id_flag;
+      this.arrayFg.name = this.arrayBt.nameFlag;
     },
     selectBoats() {
       let me = this;
