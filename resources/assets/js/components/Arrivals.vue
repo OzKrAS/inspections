@@ -111,10 +111,9 @@
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
-                    <label class="text-muted">Puerto/Muelle de Inspección (Port / Dock)</label>
-                    <multiselect v-model="arrayPt" :options="arrayPort"
+                    <label class="text-muted">Puerto / Muelle de Inspección (Port / Dock)</label>
+                    <multiselect v-model="arrayPt" :options="arrayDocks"
                                  placeholder="Puerto/Muelle de Inspección"
-                                 :custom-label="nameWithPort"
                                  label="name"
                                  track-by="name">
                     </multiselect>
@@ -961,7 +960,7 @@
                               class="btn btn-danger btn-sm"
                               data-tooltip
                               title="Eliminar"
-                              @click="deleteDetTarget(target)"
+                              @click="deleteDetTarget(target, index)"
                           >
                             <i class="icon-trash"></i>
                           </button>
@@ -1081,7 +1080,7 @@
                               class="btn btn-danger btn-sm"
                               data-tooltip
                               title="Eliminar"
-                              @click="deleteDetFauna(fauna)"
+                              @click="deleteDetFauna(fauna, index)"
                           >
                             <i class="icon-trash"></i>
                           </button>
@@ -1491,6 +1490,7 @@ export default {
       id_region: 0,
       arrayPt: {id: 0, namePort: '', name: ''},
       arrayPort: [],
+      arrayDocks : [],
       id_port: 0,
       arrayPtZarpe: {id: 0, namePort: '', name: ''},
       id_portZarpe: 0,
@@ -2188,10 +2188,20 @@ export default {
     },
     selectPort() {
       let me = this;
+      const url = "/ports/selectPorts";
+      axios.get(url).then(function (response) {
+        const {data} = response;
+        me.arrayPort = data.port;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    selectDocks() {
+      let me = this;
       var url = "/docks/selectDocks";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
-        me.arrayPort = respuesta.port;
+        me.arrayDocks = respuesta.port;
       }).catch(function (error) {
         console.log(error);
       });
@@ -2327,9 +2337,9 @@ export default {
       this.form.observationGeneral = data["observationGeneral"];
       this.stateRectorPort = data["stateRectorPort"];
       this.arrayReg.id = data["id_region"];
-      this.arrayReg.namePlace = data["namePlace"];
-      this.arrayPt.id = data["id_port"];
-      this.arrayPt.name = data["namePort"];
+      this.arrayReg.namePlace = data["nameReg"];
+      this.arrayPt.id = data["idDock"];
+      this.arrayPt.name = data["nameDock"];
       this.arrayPtZarpe.id = data["id_portZarpe"];
       this.id_portZarpe = data["id_portZarpe"];
       this.arrayPtZarpe.name = data["namePort"];
@@ -2410,13 +2420,14 @@ export default {
       if (this.noCrewNational == "") {
         this.noCrewNational = this.noApply;
       }
+
       const formData = new FormData();
 
-      //console.log(this.files);
       this.files.forEach((file) => {
         console.log(file);
         formData.append("images[]", file, file.name);
       });
+
       await axios
           .post("/arrivals/save", {
             insNo: this.form.insNo.toUpperCase(),
@@ -2475,18 +2486,17 @@ export default {
             'id_company': this.arrayComp.id,
             'id_orop': this.arrayOr.id,
             'id_material': this.arrayMaterial.id,
-
             'fishery': this.arrayFa,
             'fauna': this.arrayFauna,
             'target': this.arrayTarget,
 
           })
           .then(async function (response) {
-            me.hideForm();
-            me.message("Guardado", "Guardo");
             me.idArrival = response.data.id;
             me.id_arrival = response.data.id;
-            await me.$refs.fileComponent.uploadFiles()
+            await me.$refs.fileComponent.uploadFiles(response.data.id)
+            me.hideForm();
+            me.message("Guardado", "Guardo");
             me.clearForm();
           })
           .catch(function (error) {
@@ -2696,7 +2706,7 @@ export default {
         }
       });
     },
-    deleteDetFauna(data = []) {
+    deleteDetFauna(data = [], index) {
       swal({
         title: "Esta seguro de Eliminar este item " + data["nameCommon2"],
         type: "warning",
@@ -2712,19 +2722,24 @@ export default {
       }).then(result => {
         if (result.value) {
           let me = this;
-          axios
-              .post("/detfaunaarrivals/delete", {
-                id: data["id"],
-              })
-              .then(function (response) {
-
-                me.message("Eliminado", "Eliminó ");
-                me.dataFauna();
-                me.listData();
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
+          if(data.id){
+            axios
+                .post("/detfaunaarrivals/delete", {
+                  id: data["id"],
+                })
+                .then(function (response) {
+                  me.message("Eliminado", "Eliminó ");
+                  me.dataFauna();
+                  me.listData();
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+          }else{
+            me.message("Eliminado", "Eliminó ");
+            me.dataFauna();
+            me.listData();
+          }
         } else if (
             // Read more about handling dismissals
             result.dismiss === swal.DismissReason.cancel
@@ -2732,7 +2747,7 @@ export default {
         }
       });
     },
-    deleteDetTarget(data = []) {
+    deleteDetTarget(data = [], index) {
       swal({
         title: "Esta seguro de Eliminar este item " + data["nameCommon1"],
         type: "warning",
@@ -2748,19 +2763,24 @@ export default {
       }).then(result => {
         if (result.value) {
           let me = this;
-          axios
-              .post("/detcaparrivals/delete", {
-                id: data["id"],
-              })
-              .then(function (response) {
-
-                me.message("Eliminado", "Eliminó ");
-                me.listData();
-                me.dataTarget();
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
+          if(data.id){
+            axios
+                .post("/detcaparrivals/delete", {
+                  id: data["id"],
+                })
+                .then(function (response) {
+                  me.message("Eliminado", "Eliminó ");
+                  me.listData();
+                  me.dataTarget();
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+          }else{
+            me.message("Eliminado", "Eliminó ");
+            me.listData();
+            me.dataTarget();
+          }
         } else if (
             // Read more about handling dismissals
             result.dismiss === swal.DismissReason.cancel
@@ -2768,7 +2788,6 @@ export default {
         }
       });
     },
-
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
@@ -2806,7 +2825,7 @@ export default {
 
             {"data": "insNo"},
             {"data": "nameReg"},
-            {"data": "namePort"},
+            {"data": "nameDock"},
             {"data": "dateIns"},
             // { "data": "namePort" },
             // { "data": "dateZarpe" },
@@ -2826,6 +2845,7 @@ export default {
 
         $('#dataTable tbody').on('click', '.editar', function () {
           me.datos = table.row($(this).parents('tr')).data();
+          console.log(me.datos);
           me.showUpdate(me.datos);
         });
         $('#dataTable tbody').on('click', '.eliminar', function () {
@@ -2840,6 +2860,7 @@ export default {
     this.listData();
     this.selectRegion();
     this.selectPort();
+    this.selectDocks();
     this.selectFlag();
     this.selectNationality();
     this.selectZoneAutoFisher();

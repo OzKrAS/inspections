@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/users', function (Request $request) {
     return $request->user();
 });
+
 Route::group(['middleware' => 'auth:api'], function (){
   
     Route::get('/donationCertificates', 'DonationCertificateController@index');
@@ -52,7 +53,6 @@ Route::group(['middleware' => 'auth:api'], function (){
     Route::post('/certificationDisembTuna/delete', 'CertificationDisembTunaController@destroy');
     Route::post('/logout', 'UserController@logout');  
     Route::get('/selectboats', 'BoatController@selectBoats');
-   
     Route::get('/zarpeJson', 'DataJsonController@jsonZarpe');
     Route::get('/ArrivalJson', 'DataJsonController@jsonArrival');
     Route::get('/detFlapJson', 'DataJsonController@jsonDetFlap');
@@ -68,4 +68,5 @@ Route::group(['middleware' => 'auth:api'], function (){
     });
 
 });
+
 Route::post('/user', 'UserController@login');

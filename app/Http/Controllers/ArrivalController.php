@@ -7,6 +7,7 @@ use App\DetailFisherAutArrival;
 use App\DetailImgArrival;
 use App\DetFaunaCaptArrivals;
 use App\DetTargCaptArrivals;
+use App\Dock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -18,11 +19,18 @@ class ArrivalController extends Controller
     {
         if (!$request->ajax()) return redirect('/');
 
+
+        $docks = Dock::join('ports', 'docks.id_port', '=', 'ports.id')
+            ->select(
+                'docks.id',
+                DB::raw('CONCAT(ports.name, " / ", docks.name) as fullDockName')
+            )->toSql();
+
         $arrivals = Arrival::join('regions', 'arrivals.id_region', '=', 'regions.id')
             ->join('docks', 'arrivals.id_port', '=', 'docks.id')
             ->join('ports', 'docks.id_port', '=', 'ports.id')
 
-            // ->leftJoin('ports as portsarrival','arrivals.id_portArrival','=','ports.id') 
+            // ->leftJoin('ports as portsarrival','arrivals.id_portArrival','=','ports.id')
             // -- /con este llamado se duplican los resultados
 
             ->join('flags', 'arrivals.id_flag', '=', 'flags.id')
@@ -32,7 +40,8 @@ class ArrivalController extends Controller
             ->join('companies', 'arrivals.id_company', '=', 'companies.id')
             ->join('orops', 'arrivals.id_orop', '=', 'orops.id')
             ->join('fishing_gear_materials', 'arrivals.id_material', '=', 'fishing_gear_materials.id')
-            ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as namePlace,arrivals.id,
+            ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as namePlace,
+                    arrivals.id,
                     arrivals.insNo,
                     arrivals.radioCall,
                     arrivals.noResolution,
@@ -78,9 +87,11 @@ class ArrivalController extends Controller
                     arrivals.observationGeneral,
                     arrivals.id_portArrival,
                     arrivals.id_portZarpe,
-
+                    docks.id as idDock,
+                    CONCAT(ports.name,' / ', docks.name) as nameDock,
                     arrivals.id_region,regions.name as nameReg,
-                    arrivals.id_port,ports.name as namePort,
+                    arrivals.id_port,
+                    ports.name as namePort,
                     arrivals.id_flag,flags.name as nameFlag,
                     arrivals.id_material,fishing_gear_materials.name as nameMaterial,
                     arrivals.id_nationality,nationalities.name as nameNationality,
@@ -99,8 +110,6 @@ class ArrivalController extends Controller
 
     public function store(Request $request)
     {
-        // if (!$request->ajax()) return redirect('/');
-
         try {
             DB::beginTransaction();
             $arrivals = new Arrival();
@@ -147,7 +156,6 @@ class ArrivalController extends Controller
             $arrivals->dateValidity = $request->dateValidity;
             $arrivals->stateRectorPort = $request->stateRectorPort;
             $arrivals->observationGeneral = $request->observationGeneral;
-
             $arrivals->id_region = $request->id_region;
             $arrivals->id_port = $request->id_port;
             $arrivals->id_portZarpe = $request->id_portZarpe;
@@ -203,7 +211,6 @@ class ArrivalController extends Controller
             // 'dateValidity' => $request->dateValidity,
             // 'stateRectorPort' => $request->stateRectorPort,
             // 'observationGeneral' => $request->observationGeneral,
-
             // 'id_region' => $request->id_region,
             // 'id_port' => $request->id_port,
             // 'id_portZarpe' => $request->id_portZarpe,
@@ -216,15 +223,17 @@ class ArrivalController extends Controller
             //     'id_company' => $request->id_company
             //     ]);
 
-
             $detailarrivals = $request->fishery;
+
             foreach ($detailarrivals as $ep => $det) {
                 $objeto = new DetailFisherAutArrival();
                 $objeto->id_fisheryAut = $arrivals->id;
                 $objeto->name = $det['name'];
                 $objeto->save();
             }
+
             $detailarrivalstarget = $request->target;
+
             foreach ($detailarrivalstarget as $ep => $det) {
                 $objeto = new DetTargCaptArrivals();
                 $objeto->id_target = $arrivals->id;
@@ -233,7 +242,9 @@ class ArrivalController extends Controller
                 $objeto->capture1 = $det['capture1'];
                 $objeto->save();
             }
+
             $detailarrivalsfauna = $request->fauna;
+
             foreach ($detailarrivalsfauna as $ep => $det) {
                 $objeto = new DetFaunaCaptArrivals();
                 $objeto->id_fauna = $arrivals->id;
@@ -249,17 +260,15 @@ class ArrivalController extends Controller
             //     $this->savePhoto($arrivals, $request);
             // }
 
-
             DB::commit();
+
             $array = array(
                 'res' => true,
                 'id' => $arrivals['id'],
                 'message' => 'Registro guardado exitosamente'
             );
 
-
             return response()->json($array, 201);
-
 
         } catch (\Exception $ex) {
             DB::rollBack();
@@ -315,7 +324,6 @@ class ArrivalController extends Controller
         $arrivals->dateValidity = $request->dateValidity;
         $arrivals->stateRectorPort = $request->stateRectorPort;
         $arrivals->observationGeneral = $request->observationGeneral;
-
         $arrivals->id_region = $request->id_region;
         $arrivals->id_port = $request->id_port;
         $arrivals->id_portZarpe = $request->id_portZarpe;
@@ -329,7 +337,6 @@ class ArrivalController extends Controller
         $arrivals->id_company = $request->id_company;
         $arrivals->save();
 
-
         // $detailarrivals = $request->fishery;
         // foreach($detailarrivals as $ep=>$det){
         //     $objeto= new DetailFisherAutArrival();
@@ -337,6 +344,7 @@ class ArrivalController extends Controller
         //     $objeto->name= $det['name'];
         //     $objeto->save();
         // }
+
         $detailarrivalstarget = $request->target;
         foreach ($detailarrivalstarget as $ep => $det) {
             $objeto = new DetTargCaptArrivals();
@@ -398,7 +406,6 @@ class ArrivalController extends Controller
 
     public function savePhoto($solicitud, $request)
     {
-
         if (empty($request->images)) {
 
             foreach ($request->images as $ep => $det) {
