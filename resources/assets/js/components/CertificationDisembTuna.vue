@@ -82,8 +82,8 @@
                   </div>
                 </div>
                 <div class="md-layout">
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('nameBoat')">
+                  <!-- <div class="md-layout-item"> -->
+                    <!-- <md-field md-clearable :class="getValidationClass('nameBoat')">
                       <label for="first-name">Nombre Embarcación (Ship Name)</label>
                       <md-input
                         name="first-name"
@@ -96,9 +96,19 @@
                         class="md-error"
                         v-if="!$v.form.nameBoat.required"
                       >Olvidaste ingresar el nombre de la embarcación</span>
-                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
+                    </md-field> -->
+                  <!-- </div> -->
+                  <div class="md-layout">
+                  <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
+                  <multiselect v-model="arrayBt" :options="arrayBoat"
+                               @input="setBoats()"
+                               placeholder="Seleccione una embarcación"
+                               :custom-label="nameWithBoat"
+                               label="nameBoat"
+                               track-by="nameBoat">
+                  </multiselect>
+                </div>
+                  &nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <label class="text-muted">Bandera (Flag)</label>
                         <multiselect v-model="arrayFg" :options="arrayFlag"
@@ -451,6 +461,7 @@ export default {
       id_flag: 0,
       arrayComp: {id:0, name:''},
 	    arrayCompany: [],
+      arrayBoat: [],
       id_Company: 0,
       arrayZoneAuto: {id:0, name:''},
       arrayZoneAutoFish: [],
@@ -686,6 +697,16 @@ export default {
                 }).catch(function (error) {
                     console.log(error);
             });
+    },
+    selectBoats() {
+      let me = this;
+      var url = "/selectboats?type=0";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayBoat = respuesta.boat;
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     showData() {
       this.clearForm();
