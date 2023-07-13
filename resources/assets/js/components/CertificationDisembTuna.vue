@@ -66,11 +66,7 @@
                   </div>
                 </div>
                 <div class="md-layout">
-<<<<<<< HEAD
-                  <div class="md-layout-item">
-=======
                   <!-- <div class="md-layout-item"> -->
->>>>>>> daniel
                     <!-- <md-field md-clearable :class="getValidationClass('nameBoat')">
                       <label for="first-name">Nombre Embarcación (Ship Name)</label>
                       <md-input
@@ -85,14 +81,6 @@
                         v-if="!$v.form.nameBoat.required"
                       >Olvidaste ingresar el nombre de la embarcación</span>
                     </md-field> -->
-<<<<<<< HEAD
-                    <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
-                    <multiselect v-model="arrayBt" :options="arrayBoat" @input="setBoats()"
-                      placeholder="Seleccione una embarcación" :custom-label="nameWithBoat" label="nameBoat"
-                      track-by="nameBoat">
-                    </multiselect>
-                  </div>&nbsp;&nbsp;&nbsp;
-=======
                   <!-- </div> -->
                   <div class="md-layout">
                   <label class="text-muted">Nombre de la embarcación (Ship Name)</label>
@@ -105,7 +93,6 @@
                   </multiselect>
                 </div>
                   &nbsp;&nbsp;&nbsp;
->>>>>>> daniel
                   <div class="md-layout-item">
                     <label class="text-muted">Bandera (Flag)</label>
                     <multiselect v-model="arrayFg" :options="arrayFlag" placeholder="Seleccione una bandera"
@@ -391,14 +378,9 @@ export default {
       arrayFg: { id: 0, name: '' },
       arrayFlag: [],
       id_flag: 0,
-<<<<<<< HEAD
-      arrayComp: { id: 0, name: '' },
-      arrayCompany: [],
-=======
       arrayComp: {id:0, name:''},
 	    arrayCompany: [],
       arrayBoat: [],
->>>>>>> daniel
       id_Company: 0,
       arrayZoneAuto: { id: 0, name: '' },
       arrayZoneAutoFish: [],
