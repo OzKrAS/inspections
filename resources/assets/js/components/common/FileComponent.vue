@@ -87,13 +87,13 @@ export default {
         return 'fas fa-file';
       }
     },
-    async uploadFiles() {
+    async uploadFiles(fileableId = null) {
 
       if(!this.files.length) return;
 
       const formData = new FormData();
       formData.append('fileable_type', this.fileableType);
-      formData.append('fileable_id', this.fileableId);
+      formData.append('fileable_id', fileableId || this.fileableId);
 
       this.files.forEach(file => {
         formData.append('files[]', file.file);
