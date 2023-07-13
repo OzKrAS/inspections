@@ -838,6 +838,7 @@ export default {
     this.selectPort();
     this.selectFlag();
     this.selectCompanies();
+    this.selectBoats();
   }
 };
 </script>
