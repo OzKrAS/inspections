@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fa fa-ship"></i>
-          <strong class="lead">Inspección a Embarcación Pesquera - Zarpe</strong>
+          <strong class="lead">Inspección a Embarcación Pesquera - Zarpe AQUI</strong>
           <button
               v-if="edo"
               type="button"

@@ -19,9 +19,10 @@ class RegionalController extends Controller
     public function selectRegional(Request $request)
     {
         $regional = Regional::select('id','name')
-            ->where('id', '!=', 5)
-            ->where('id', '!=', 7)
-            ->where('id', '!=', 9)
+            ->where('id', '!=', 3) // Barrancabermeja
+            ->where('id', '!=', 5) // Bogota
+            ->where('id', '!=', 7) // Magangue
+            ->where('id', '!=', 9) // Villavicencio
             ->orderBy('name', 'asc')
             ->get();
 
