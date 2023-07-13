@@ -1948,7 +1948,7 @@ _______________ , se constató que ${this.autorization == 1 ? 'SI' : 'NO'} CUMPL
 establecidos en la Resolución 1026 del 2014, para realizar faenas de pesca dirigida a la captura de ${this.form.dataFisherySelect} en la zona de pesca correspondiente a ${this.arrayZoneAuto.name}, por lo tanto, ${this.autorization == 1 ? 'SI' : 'NO'} Se le autoriza el zarpe.
 
 
-Por la AUNAP,`, 30, 125, {align: 'justify', lineHeightFactor: 1, maxWidth: 160});
+Por la AUNAP,`, 30, 125, {align: 'left', lineHeightFactor: 1, maxWidth: 160});
 
       doc.text(`${demo}`, 32, 188, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
       doc.line(30, 190, 104, 190);
