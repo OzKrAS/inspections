@@ -1060,7 +1060,6 @@ export default {
       this.$v.$touch();
       if (!this.$v.$invalid) {
         this.saveData();
-        location.reload();
         this.clearForm();
       }
     },

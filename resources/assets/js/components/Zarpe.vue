@@ -1380,7 +1380,6 @@ export default {
 
       if (!this.$v.$invalid) {
         this.saveData();
-        location.reload();
       }
     },
     clearForm() {
