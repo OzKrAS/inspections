@@ -1729,7 +1729,6 @@ export default {
             finalityZarpe: this.finalityZarpe,
             national: this.national,
             autorization: this.autorization,
-
             'id_region': this.arrayReg.id,
             'id_port': this.arrayPt.id,
             'id_portZarpe': this.arrayPtZarpe.id,
@@ -1743,11 +1742,11 @@ export default {
             'data': this.arrayFa,
           })
           .then(async function (response) {
-            me.hideForm();
-            me.message("Guardado", "Guardo ");
             const {data} = response;
             me.id_zarpes = data.zarpe.id;
-            await me.$refs.fileComponent.uploadFiles();
+            await me.$refs.fileComponent.uploadFiles(data.zarpe.id);
+            me.hideForm();
+            me.message("Guardado", "Guardo ");
             me.listData();
             me.clearForm();
           })
