@@ -63,10 +63,14 @@ Route::group(['middleware' => 'auth:api'], function (){
     Route::get('/InspectionBoatCargoJson', 'DataJsonController@jsonInspectionBoatCargo');
     Route::get('/CertificationDisembTunaJson', 'DataJsonController@jsonCertificationDisembTuna');
 
-    Route::prefix('file')->group(function(){
-        Route::post('/massStore', 'FileController@massStore');
-    });
+    // Route::prefix('file')->group(function(){
+    //     Route::post('/massStore', 'FileController@massStore');
+    // });
 
+});
+
+Route::prefix('file')->group(function(){
+    Route::post('/massStore', 'FileController@massStore');
 });
 
 Route::post('/user', 'UserController@login');
