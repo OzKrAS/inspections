@@ -35,7 +35,7 @@ class FileController extends Controller
 
     public function massStore(Request $request){
 
-        return response()->json($request->file('files'));
+        return response()->json($request);
 
 
         try {
