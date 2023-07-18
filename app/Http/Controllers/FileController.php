@@ -34,6 +34,10 @@ class FileController extends Controller
     }
 
     public function massStore(Request $request){
+
+        return response()->json($request);
+
+
         try {
 
             $files = $request->file('files');
@@ -42,7 +46,7 @@ class FileController extends Controller
 
             // $storedFiles = $this->fileService->massStore($files, $fileableType, $fileableId);
 
-            return response()->json($files);
+            // return response()->json($files);
 
         }catch (\Exception $e){
             return response()->json([
