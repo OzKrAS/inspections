@@ -40,7 +40,7 @@ class FileController extends Controller
         try {
             
             $files = $request->file('files');
-            return response()->json($files);
+            // return response()->json($files);
             $fileableType = 'App\\'.$request->input('fileable_type');
             $fileableId = $request->input('fileable_id');
 
