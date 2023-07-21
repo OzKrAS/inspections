@@ -188,7 +188,7 @@
                   </div> &nbsp;&nbsp;&nbsp; -->
                 </div>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-65">
+                  <div class="md-layout-item">
                     <label class="text-muted">Puerto de Zarpe (Departure’s Port)</label>
                     <multiselect v-model="arrayPtZarpe" :options="arrayPorts"
                                  placeholder="Seleccione Puerto de Zarpe"
@@ -1974,8 +1974,7 @@ Por la AUNAP,`, 30, 125, {align: 'justify', lineHeightFactor: 1, maxWidth: 160})
 
       doc.setFontSize(8);
       doc.setTextColor(100);
-      doc.text(`Nota: Si este documento se encuentra impreso se considera Copia no Controlada. La versión vigente está publicada en la 
-      intranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260);
+      doc.text(`Nota: Si este documento se encuentra impreso se considera Copia no Controlada. La versión vigente está publicada en la intranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260, {align: 'justify'});
 
 
       window.open(doc.output('bloburl'))
