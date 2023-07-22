@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/users', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'auth:api'], function (){
+// Route::group(['middleware' => 'auth:api'], function (){
   
     Route::get('/donationCertificates', 'DonationCertificateController@index');
     Route::get('/DetailsFlaps', 'DetailDetFlapController@index');
@@ -67,7 +67,7 @@ Route::group(['middleware' => 'auth:api'], function (){
     //     Route::post('/massStore', 'FileController@massStore');
     // });
 
-});
+// });
 
 Route::prefix('file')->group(function(){
     Route::post('/massStore', 'FileController@massStore');
