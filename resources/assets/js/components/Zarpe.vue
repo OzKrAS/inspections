@@ -122,8 +122,7 @@
                     <label for="first-name" class="text-muted">Puerto/Muelle de inspección (Port / Dock)</label>
                     <multiselect v-model="arrayPt" :options="arrayDocks"
                                  placeholder="Seleccione un puerto/muelle de inspección"
-                                 label="name"
-                                 track-by="name">
+                                 label="nameDock">
                     </multiselect>&nbsp;&nbsp;&nbsp;
                   </div>
                 </div>
@@ -190,10 +189,9 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <label class="text-muted">Puerto de Zarpe (Departure’s Port)</label>
-                    <multiselect v-model="arrayPtZarpe" :options="arrayPorts"
+                    <multiselect v-model="arrayPtZarpe" :options="arrayDocks"
                                  placeholder="Seleccione Puerto de Zarpe"
-                                 label="name"
-                                 track-by="name">
+                                 label="nameDock">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
@@ -216,10 +214,9 @@
                 <div class="md-layout">
                   <div class="md-layout-item ">
                     <label class="text-muted">Puerto de Último Arribo (Last Arrival’s Port)</label>
-                    <multiselect v-model="arrayPtArrival" :options="arrayPorts"
+                    <multiselect v-model="arrayPtArrival" :options="arrayDocks"
                                  placeholder="Seleccione Puerto de Último Arribo"
-                                 label="name"
-                                 track-by="name">
+                                 label="nameDock">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
@@ -317,9 +314,7 @@
                   <multiselect v-model="arrayBt" :options="arrayBoat"
                                @input="setBoats()"
                                placeholder="Seleccione una embarcación"
-                               :custom-label="nameWithBoat"
-                               label="nameBoat"
-                               track-by="nameBoat">
+                               label="nameBoat">
                   </multiselect>
                 </div>
                 <div class="md-layout">
@@ -1014,6 +1009,7 @@ import {
 } from "vue-material/dist/components";
 import {required} from "vuelidate/lib/validators";
 import FileComponent from "./common/FileComponent";
+import {methodSpread} from "lodash/fp/_mapping";
 
 Vue.use(Toasted, {
   iconPack: 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
@@ -1060,7 +1056,8 @@ export default {
         conclusions: "",
         comments: "",
         observationGeneral: "",
-        dataFisherySelect: ""
+        dataFisherySelect: "",
+        boatId : "",
       },
       autorization: "0",
       eyeMesh: "",
@@ -1083,16 +1080,16 @@ export default {
       ciudad: "",
       arrayZarpes: [],
       id_zarpes: 0,
-      arrayPt: {id: 0, namePort: '', name: ''},
+      arrayPt: {id: 0, nameDock: '', name: ''},
       arrayDocks: [],
       arrayPorts: [],
       id_port: 0,
       arrayReg: {id: 0, name: '', namePlace: ''},
       arrayRegion: [],
       id_region: 0,
-      arrayPtZarpe: {id: 0, namePort: '', name: ''},
+      arrayPtZarpe: {id: 0, nameDock: '', name: ''},
       id_portZarpe: 0,
-      arrayPtArrival: {id: 0, namePort: '', name: ''},
+      arrayPtArrival: {id: 0, nameDock: '', name: ''},
       id_portArrival: 0,
       arrayPtOrigin: {id: 0, name: ''},
       arrayFg: {id: 0, name: ''},
@@ -1418,9 +1415,9 @@ export default {
       this.national = null;
 
       this.arrayReg = {id: 0, name: '', namePlace: ''};
-      this.arrayPt = {id: 0, namePort: '', name: ''};
-      this.arrayPtZarpe = {id: 0, namePort: '', name: ''};
-      this.arrayPtArrival = {id: 0, namePort: '', name: ''};
+      this.arrayPt = {id: 0, nameDock: '', name: ''};
+      this.arrayPtZarpe = {id: 0, nameDock: '', name: ''};
+      this.arrayPtArrival = {id: 0, nameDock: '', name: ''};
       this.arrayFg = {id: 0, name: ''};
       this.arrayMaterial = {id: 0, name: ''};
       this.arrayNation = {id: 0, name: ''};
@@ -1589,7 +1586,6 @@ export default {
       });
     },
     setBoats() {
-
       this.form.noResolution = this.arrayBt.noResolution;
       this.form.enrollment = this.arrayBt.enrollment;
       this.form.dateResolution = this.arrayBt.dateResolution;
@@ -1601,6 +1597,7 @@ export default {
       this.form.noPatent = this.arrayBt.noPatent;
       this.arrayFg.id = this.arrayBt.id_flag;
       this.arrayFg.name = this.arrayBt.nameFlag;
+      this.form.boatId = this.arrayBt.id;
     },
     async showUpdate(data = []) {
       let me = this;
@@ -1635,17 +1632,19 @@ export default {
       this.form.dateValid = data["dateValid"];
       this.form.dateLatestArrival = data["dateLatestArrival"];
       this.form.dateValidityPat = data["dateValidityPat"];
+      this.arrayBt["id"] = data["id_boat"];
+      this.arrayBt['nameBoat'] = data["nameBoat"];
       this.notification = data["notification"];
       this.finalityZarpe = data["finalityZarpe"];
       this.national = data["national"];
       this.arrayReg.id = data["id_municipalities"];
       this.arrayReg.namePlace = data["nameReg"];
       this.arrayPt.id = data["id_docks"];
-      this.arrayPt.name = data["nameDock"];
+      this.arrayPt.nameDock = data["nameDock"];
       this.arrayPtZarpe.id = data["id_portZarpe"];
-      this.arrayPtZarpe.name = data["nameportZarpe"];
+      this.arrayPtZarpe.nameDock = data["nameportZarpe"];
       this.arrayPtArrival.id = data["id_portArrival"];
-      this.arrayPtArrival.name = data["nameportArrival"];
+      this.arrayPtArrival.nameDock = data["nameportArrival"];
       this.arrayFg.id = data["id_flag"];
       this.arrayFg.name = data["nameFlag"];
       this.arrayMaterial.id = data["id_material"];
@@ -1740,6 +1739,7 @@ export default {
             'id_zoneAutoFisher': this.arrayZoneAuto.id,
             'id_company': this.arrayComp.id,
             'data': this.arrayFa,
+            boatId : this.form.boatId
           })
           .then(async function (response) {
             const {data} = response;
@@ -1812,6 +1812,8 @@ export default {
             'id_orop': this.arrayOr.id,
             'id_zoneAutoFisher': this.arrayZoneAuto.id,
             'id_company': this.arrayComp.id,
+            'data': this.arrayFa,
+            boatId : this.form.boatId
           })
           .then(async function (response) {
             await me.$refs.fileComponent.uploadFiles();
@@ -2011,7 +2013,7 @@ Por la AUNAP,`, 30, 125, {align: 'justify', lineHeightFactor: 1, maxWidth: 160})
           "columns": [
             {"data": "insNo"},
             {"data": "nameReg"},
-            {"data": "namePort"},
+            {"data": "nameDock"},
             {"data": "dateIns"},
             {"data": "nameBoat"},
             {"data": "dateZarpe"},
