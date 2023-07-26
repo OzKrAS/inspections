@@ -114,8 +114,7 @@
                     <label class="text-muted">Puerto / Muelle de Inspección (Port / Dock)</label>
                     <multiselect v-model="arrayPt" :options="arrayDocks"
                                  placeholder="Puerto/Muelle de Inspección"
-                                 label="name"
-                                 track-by="name">
+                                 label="nameDock">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -231,11 +230,9 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <label class="text-muted">Puerto de Zarpe (Departure’s Port)</label>
-                    <multiselect v-model="arrayPtZarpe" :options="arrayPort"
+                    <multiselect v-model="arrayPtZarpe" :options="arrayDocks"
                                  placeholder="Puerto de Zarpe"
-                                 :custom-label="nameWithPort"
-                                 label="name"
-                                 track-by="name">
+                                 label="nameDock">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
@@ -258,11 +255,10 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <label class="text-muted">Puerto de Ultimo Arribo (Last Arrival’s Port)</label>
-                    <multiselect v-model="arrayPtArrival" :options="arrayPort"
+                    <multiselect v-model="arrayPtArrival" :options="arrayDocks"
                                  placeholder="Puerto de Ultimo Arribo"
-                                 :custom-label="nameWithPort"
-                                 label="name"
-                                 track-by="name">
+                                 label="nameDock"
+                    >
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
@@ -1488,7 +1484,7 @@ export default {
       arrayReg: {id: 0, name: '', namePlace: ''},
       arrayRegion: [],
       id_region: 0,
-      arrayPt: {id: 0, namePort: '', name: ''},
+      arrayPt: {id: 0, nameDock: '', name: ''},
       arrayPort: [],
       arrayDocks : [],
       id_port: 0,
@@ -1661,9 +1657,7 @@ export default {
   computed: {},
 
   methods: {
-
     getServer() {
-      console.log('object');
       return {
         process: (fieldName, file, metadata, load, error, progress, abort) => {
           // Procesar archivo y obtener su URL
@@ -1682,7 +1676,6 @@ export default {
     },
 
     handleFilePondInit(error, file) {
-      console.log('FilePond has initialized');
 
       // example of instance method call on pond reference
       // this.$refs.pond.getFiles();
@@ -1707,7 +1700,6 @@ export default {
     //   // Hacer algo con el archivo seleccionado y en proceso de carga, como mostrar una barra de progreso
     // },
     handleFilePondReady() {
-      console.log('inciado');
       // const pond = this.$refs.pond.$refs.filepond;
 
       // pond.processFiles().then(files => {
@@ -1721,7 +1713,6 @@ export default {
       // });
     },
     onFilePondReady() {
-      console.log(this.currentFiles[0].process)
     },
     onAddFile(error, files) {
       const formData = new FormData();
@@ -1799,7 +1790,6 @@ export default {
         formData.append("images[]", file, file.name);
       });
       formData.append("idArrival", id);
-      console.log('metodo upload ' + JSON.stringify(formData));
 
 
       await axios.post("/arrivals/saveimg", formData).then((response) => {
@@ -1913,7 +1903,7 @@ export default {
         var respuesta = response.data;
         me.arrayBoat = respuesta.boat;
       }).catch(function (error) {
-        console.log(error);
+        console.error(error);
       });
     },
     toString() {
@@ -1963,7 +1953,7 @@ export default {
       let suma1 = 0;
 
       this.arrayTarget.forEach(e => {
-        suma1 += JSON.parse(e.capture1);
+        suma1 += Number(e.capture1);
         this.sumatotalcapturaobj = suma1;
       });
 
@@ -2075,9 +2065,9 @@ export default {
       this.form.idOmi = null;
 
       this.arrayReg = {id: 0, name: '', namePlace: ''};
-      this.arrayPt = {id: 0, namePort: '', name: ''};
-      this.arrayPtZarpe = {id: 0, namePort: '', name: ''};
-      this.arrayPtArrival = {id: 0, namePort: '', name: ''};
+      this.arrayPt = {id: 0, nameDock: '', name: ''};
+      this.arrayPtZarpe = {id: 0, nameDock: '', name: ''};
+      this.arrayPtArrival = {id: 0, nameDock: '', name: ''};
       this.arrayFg = {id: 0, name: ''};
       this.arrayNation = {id: 0, name: ''};
       this.arrayZoneAuto = {id: 0, name: ''};
@@ -2131,7 +2121,7 @@ export default {
             me.arrayCommonName = respuesta.species;
           })
           .catch(function (error) {
-            console.log(error);
+            console.error(error);
           });
     },
     //  getArrivalImg() {
@@ -2166,7 +2156,7 @@ export default {
             me.myFiles2 = me.myFiles.map(obj => obj.src)
           })
           .catch(function (error) {
-            console.log(error);
+            console.error(error);
           });
     },
     async listData() {
@@ -2183,7 +2173,7 @@ export default {
 
           })
           .catch(function (error) {
-            console.log(error);
+            console.error(error);
           });
     },
     selectPort() {
@@ -2193,7 +2183,7 @@ export default {
         const {data} = response;
         me.arrayPort = data.port;
       }).catch(function (error) {
-        console.log(error);
+        console.error(error);
       });
     },
     selectDocks() {
@@ -2339,13 +2329,13 @@ export default {
       this.arrayReg.id = data["id_region"];
       this.arrayReg.namePlace = data["nameReg"];
       this.arrayPt.id = data["idDock"];
-      this.arrayPt.name = data["nameDock"];
+      this.arrayPt.nameDock = data["nameDock"];
       this.arrayPtZarpe.id = data["id_portZarpe"];
       this.id_portZarpe = data["id_portZarpe"];
-      this.arrayPtZarpe.name = data["namePort"];
+      this.arrayPtZarpe.nameDock = data["nameportZarpe"];
       this.arrayPtArrival.id = data["id_portArrival"];
       this.id_portArrival = data["id_portArrival"];
-      this.arrayPtArrival.name = data["namePort"];
+      this.arrayPtArrival.nameDock = data["nameportArrival"];
       this.arrayFg.id = data["id_flag"];
       this.arrayFg.name = data["nameFlag"];
       this.arrayNation.id = data["id_nationality"];
@@ -2424,7 +2414,6 @@ export default {
       const formData = new FormData();
 
       this.files.forEach((file) => {
-        console.log(file);
         formData.append("images[]", file, file.name);
       });
 
@@ -2587,7 +2576,6 @@ export default {
             date: this.form.date,
             dateValidity: this.form.dateValidity,
             observationGeneral: this.form.observationGeneral,
-
             'id_region': this.arrayReg.id,
             'id_port': this.arrayPt.id,
             'id_portZarpe': this.arrayPtZarpe.id,
@@ -2599,9 +2587,9 @@ export default {
             'id_company': this.arrayComp.id,
             'id_orop': this.arrayOr.id,
             'id_material': this.arrayMaterial.id,
-            'fishery': this.arrayFaAct,
-            'fauna': this.arrayFaunaAct,
-            'target': this.arrayTargetAct,
+            'fishery': this.arrayFa,
+            'fauna': this.arrayFauna,
+            'target': this.arrayTarget,
           })
           .then(function (response) {
             me.hideForm();
@@ -2616,9 +2604,7 @@ export default {
     },
     async dataTarget() {
       let me = this;
-
       const url = "/arrivals/target?id_Target=" + this.id_arrival;
-
       await axios
           .get(url)
           .then(function (response) {
@@ -2792,7 +2778,6 @@ export default {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
     myTable(datas) {
-      console.log(datas);
       let me = this;
 
       $(document).ready(function () {
@@ -2845,7 +2830,6 @@ export default {
 
         $('#dataTable tbody').on('click', '.editar', function () {
           me.datos = table.row($(this).parents('tr')).data();
-          console.log(me.datos);
           me.showUpdate(me.datos);
         });
         $('#dataTable tbody').on('click', '.eliminar', function () {

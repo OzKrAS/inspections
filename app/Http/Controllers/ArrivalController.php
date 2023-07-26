@@ -40,6 +40,12 @@ class ArrivalController extends Controller
             ->join('companies', 'arrivals.id_company', '=', 'companies.id')
             ->join('orops', 'arrivals.id_orop', '=', 'orops.id')
             ->join('fishing_gear_materials', 'arrivals.id_material', '=', 'fishing_gear_materials.id')
+            ->join(DB::raw("($docks) as port_zarpe"), function($join){
+                $join->on('arrivals.id_portZarpe', '=', 'port_zarpe.id');
+            })
+            ->join(DB::raw("($docks) as port_arrival"), function($join){
+                $join->on('arrivals.id_portArrival', '=', 'port_arrival.id');
+            })
             ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as namePlace,
                     arrivals.id,
                     arrivals.insNo,
@@ -97,7 +103,9 @@ class ArrivalController extends Controller
                     arrivals.id_nationality,nationalities.name as nameNationality,
                     arrivals.id_zoneAutoFisher,auto_fishers.name as nameZoneAutoFisher,
                     arrivals.id_company,companies.name as nameCompany,
-                    arrivals.id_orop,orops.name as nameOrop"
+                    arrivals.id_orop,orops.name as nameOrop,
+                    port_zarpe.fullDockName as nameportZarpe,
+                    port_arrival.fullDockName as nameportArrival"
             )
             ->paginate(9999999999999999999999999);
 
@@ -345,7 +353,19 @@ class ArrivalController extends Controller
         //     $objeto->save();
         // }
 
+        $detailarrivals = $request->fishery;
+        //delete all details
+        DetailFisherAutArrival::where('id_fisheryAut', $arrivals->id)->delete();
+        foreach ($detailarrivals as $ep => $det) {
+            $objeto = new DetailFisherAutArrival();
+            $objeto->id_fisheryAut = $arrivals->id;
+            $objeto->name = $det['name'];
+            $objeto->save();
+        }
+
         $detailarrivalstarget = $request->target;
+        //delete all details
+        DetTargCaptArrivals::where('id_target', $arrivals->id)->delete();
         foreach ($detailarrivalstarget as $ep => $det) {
             $objeto = new DetTargCaptArrivals();
             $objeto->id_target = $arrivals->id;
@@ -355,6 +375,8 @@ class ArrivalController extends Controller
             $objeto->save();
         }
         $detailarrivalsfauna = $request->fauna;
+        //delete all details
+        DetFaunaCaptArrivals::where('id_fauna', $arrivals->id)->delete();
         foreach ($detailarrivalsfauna as $ep => $det) {
             $objeto = new DetFaunaCaptArrivals();
             $objeto->id_fauna = $arrivals->id;

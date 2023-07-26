@@ -26,8 +26,12 @@ class ZarpeController extends Controller
                 $join->on('zarpes.id_docks', '=', 'docksAndPorts.id');
             })
             ->join('docks', 'zarpes.id_docks', '=', 'docks.id')
-            ->join('ports as port_zarpe', 'zarpes.id_portZarpe', '=', 'port_zarpe.id')
-            ->join('ports as port_arrival', 'zarpes.id_portArrival', '=', 'port_arrival.id')
+            ->join(DB::raw("($docks) as port_zarpe"), function($join){
+                $join->on('zarpes.id_portZarpe', '=', 'port_zarpe.id');
+            })
+            ->join(DB::raw("($docks) as port_arrival"), function($join){
+                $join->on('zarpes.id_portArrival', '=', 'port_arrival.id');
+            })
             ->join('ports', 'zarpes.id_portZarpe', '=', 'ports.id')
             ->join('flags', 'zarpes.id_flag', '=', 'flags.id')
             ->join('fishing_gear_materials', 'zarpes.id_material', '=', 'fishing_gear_materials.id')
@@ -78,9 +82,10 @@ class ZarpeController extends Controller
                     zarpes.id_orop,orops.name as nameOrop,
                     zarpes.id_zoneAutoFisher,auto_fishers.name as nameZoneAutoFisher,
                     zarpes.id_company,companies.name as nameCompany,
-                    port_zarpe.name as nameportZarpe,
-                    port_arrival.name as nameportArrival,
-                    docksAndPorts.fullDockName as nameDock"
+                    port_zarpe.fullDockName as nameportZarpe,
+                    port_arrival.fullDockName as nameportArrival,
+                    docksAndPorts.fullDockName as nameDock,
+                    zarpes.id_boat"
             )->paginate(999999999);
 
         return [
@@ -134,6 +139,7 @@ class ZarpeController extends Controller
         $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;
         $zarpes->id_company = $request->id_company;
         $zarpes->autorization = $request->autorization;
+        $zarpes->id_boat = $request->boatId;
         $zarpes->save();
 
         $array = array(
@@ -143,12 +149,14 @@ class ZarpeController extends Controller
         );
 
         $detailsfisheryzarpe = $request->data;
+
         foreach ($detailsfisheryzarpe as $fs => $deta) {
             $objeto = new DetailFisherAutZarpe();
             $objeto->id_fisheryAut = $zarpes->id;
             $objeto->name = $deta['name'];
             $objeto->save();
         }
+
         return response()->json($array, 201);
         // $array = array(
         //     'res' => true,
@@ -207,7 +215,20 @@ class ZarpeController extends Controller
         $zarpes->id_company = $request->id_company;
         $zarpes->id_portZarpe = $request->id_portZarpe;
         $zarpes->id_portArrival = $request->id_portArrival;
+        $zarpes->id_boat = $request->boatId;
+        $detailsfisheryzarpe = $request->data;
+
+        DetailFisherAutZarpe::where('id_fisheryAut', $zarpes->id)->delete();
+
+        foreach ($detailsfisheryzarpe as $fs => $deta) {
+            $objeto = new DetailFisherAutZarpe();
+            $objeto->id_fisheryAut = $zarpes->id;
+            $objeto->name = $deta['name'];
+            $objeto->save();
+        }
+
         $zarpes->save();
+
         $array = array(
             'res' => true,
             'message' => 'Registro actualizado exitosamente'

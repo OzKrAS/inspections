@@ -55,7 +55,7 @@ class DockController extends Controller
     {
         // ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as namePort, ports.name as otro")
         $port = Dock::join('ports','docks.id_port','=','ports.id')
-            ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as nameDock,docks.id, docks.name,docks.arrival,docks.zarpe,docks.id_port,
+            ->selectRaw("CONCAT(ports.name, ' / ', docks.name) as nameDock,docks.id, docks.name,docks.arrival,docks.zarpe,docks.id_port,
             ports.name as namePort")
             ->orderBy('docks.name', 'asc')->get();
         return [
