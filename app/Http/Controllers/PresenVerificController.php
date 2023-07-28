@@ -6,9 +6,17 @@ use Illuminate\Http\Request;
 use App\PresenVerific;
 use App\Flag;
 use App\DetPresenVerific;
+use App\Services\FileService;
 
 class PresenVerificController extends Controller
 {
+    private $fileService;
+
+    public function __construct(FileService $fileService)
+    {
+        $this->fileService = $fileService;
+    }
+
     public function index(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
@@ -46,6 +54,9 @@ class PresenVerificController extends Controller
         $presenVerifics->save();
         
         $detpresenverific = $request->target;
+
+        $idsObj = [];
+
         foreach($detpresenverific as $ep=>$det){
             $objeto= new DetPresenVerific();
             $objeto->id_presenVerific = $presenVerifics->id;
@@ -54,16 +65,25 @@ class PresenVerificController extends Controller
             $objeto->characterState = $det['characterState'];
             $objeto->regFot = $det['regFot'];
             $objeto->observation = $det['observation'];
-
             $objeto->save();
+
+            array_push( $idsObj, $objeto->id );
+            // $file = new FileService();
+            // foreach($det['images'] as $img ){
+            //     $storedFiles = $this->fileService->store($img, $objeto->element, $objeto->id);
+            // }
         }
 
         // $presenVerifics->save();
+
         $array = array(
             'res' => true,
+            'ids' => $idsObj,
             'message' => 'Registro guardado exitosamente'
-            );
+        );
+
         return response()->json($array,201);
+
     }
 
     public function update(Request $request)
