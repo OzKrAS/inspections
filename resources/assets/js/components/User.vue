@@ -657,7 +657,7 @@ export default {
           let me = this;
 
           axios
-            .delete("/user/desactivar", {
+            .post("/user/desactivar", {
               id: id
             })
             .then(function(response) {
