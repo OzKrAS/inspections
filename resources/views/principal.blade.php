@@ -120,7 +120,7 @@
                 @if (Auth::user()->idrol == 1)
                     @include('plantilla.sidebaradministrador')
                 @elseif (Auth::user()->idrol == 2)
-                    @include('plantilla.sidebarUsuario')
+                    @include('plantilla.sidebarusuario')
                 @elseif (Auth::user()->idrol == 3)
                     {{-- @include('plantilla.sidebarCoordinador') --}}
                 @else
