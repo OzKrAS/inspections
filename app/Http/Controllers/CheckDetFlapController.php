@@ -52,6 +52,8 @@ class CheckDetFlapController extends Controller
         
        // if (!$request->ajax()) return redirect('/');
         $checkDetFlaps = new CheckDetFlap();
+        $checkDetFlaps->user_id = $request->user_id;
+
         $checkDetFlaps->office = $request->office;
         $checkDetFlaps->official = $request->official;
         $checkDetFlaps->boat = $request->boat;

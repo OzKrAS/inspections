@@ -1,22 +1,24 @@
 <template>
   <main class="main">
-    <!-- Breadcrumb -->
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="/">Escritorio</a>
-      </li>
-    </ol>
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
-      <div class="card">
+      <div class="card" style="width: 100%">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Usuarios
+          <i class="fa fa-align-justify"></i> Gestión de Usuarios
           <button
             type="button"
             @click="abrirModal('persona','registrar')"
             class="btn btn-secondary"
           >
             <i class="icon-plus"></i>&nbsp;Nuevo
+          </button>
+
+          <button
+            type="button" id="btnbusqueda"
+            @click="listarPersona('','','',0)"
+            class="btn btn-danger"
+          >
+            <i class="icon-times"></i>&nbsp;Cancelar Busqueda
           </button>
         </div>
         <div class="card-body">
@@ -32,13 +34,13 @@
                 <input
                   type="text"
                   v-model="buscar"
-                  @keyup.enter="listarPersona(1,buscar,criterio)"
+                  @keyup.enter="listarPersona(1,buscar,criterio, 1)"
                   class="form-control"
                   placeholder="Texto a buscar"
                 />
                 <button
                   type="submit"
-                  @click="listarPersona(1,buscar,criterio)"
+                  @click="listarPersona(1,buscar,criterio,1)"
                   class="btn btn-primary"
                 >
                   <i class="fa fa-search"></i> Buscar
@@ -62,9 +64,9 @@
             </thead>
             <tbody>
               <tr v-for="persona in arrayPersona" :key="persona.id">
-                <td v-text="persona.nombreFull"></td>
-                <td v-text="persona.tp_doc"></td>
-                <td v-text="persona.num_doc"></td>
+                <td v-text="persona.nombre"></td>
+                <td v-text="persona.tipo_documento"></td>
+                <td v-text="persona.num_documento"></td>
                 <td v-text="persona.direccion"></td>
                 <td v-text="persona.telefono"></td>
                 <td v-text="persona.email"></td>
@@ -164,7 +166,7 @@
           <div class="modal-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input">Nombres(*)</label>
+                <label class="col-md-12 form-control-label" for="text-input">Nombres(*)</label>
                 <div class="col">
                   <input
                     type="text"
@@ -174,14 +176,14 @@
                   />
                 </div>
                 <!-- <label class="col-md-3 form-control-label" for="text-input">Apellidos(*)</label> -->
-                <div class="col">
+                <!-- <div class="col">
                   <input
                     type="text"
                     v-model="apellido"
                     class="form-control"
                     placeholder="Apellidos de la persona"
                   />
-                </div>
+                </div> -->
               </div>
            
               <div class="form-group row">
@@ -247,12 +249,8 @@
                 <div class="col-md-9">
                   <select v-model="idrol" class="form-control">
                     <option value="0" disabled>Seleccione</option>
-                    <option
-                      v-for="role in arrayRol"
-                      :key="role.id"
-                      :value="role.id"
-                      v-text="role.nombre"
-                    ></option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Usuario</option>
                   </select>
                 </div>
               </div>
@@ -430,7 +428,13 @@ export default {
       }
   },
   methods: {
-    listarPersona(page, buscar, criterio) {
+    listarPersona(page, buscar, criterio, btn) {
+      if( btn == 0 ){
+        $("#btnbusqueda").hide();
+      }
+      else {
+        $("#btnbusqueda").show();
+      }
       let me = this;
       var url =
         "/user?page=" + page + "&buscar=" + buscar + "&criterio=" + criterio;
@@ -465,7 +469,7 @@ export default {
       //Actualiza la página actual
       me.pagination.current_page = page;
       //Envia la petición para visualizar la data de esa página
-      me.listarPersona(page, buscar, criterio);
+      me.listarPersona(page, buscar, criterio, 0);
     },
     registrarPersona() {
       if (this.validarPersona()) {
@@ -473,21 +477,23 @@ export default {
       }
       let me = this;
       axios
-        .post("/user/registrar", {
+        .post("/user/store", {
           id: this.num_documento,
-          nombre: this.nombre.toUpperCase(),
-          tp_doc: this.tipo_documento,
-          num_doc: this.num_documento,
+          nombre: this.nombre,
+          tipo_documento: this.tipo_documento,
+          num_documento: this.num_documento,
           direccion: this.direccion,
           telefono: this.telefono,
-          email: this.email.toUpperCase(),
+          email: this.email,
           idrol: this.idrol,
           usuario: this.usuario,
           password: this.password
         })
         .then(function(response) {
           me.cerrarModal();
-          me.listarPersona(1, "", "nombre");
+          me.listarPersona(1, "", "nombre", 0);
+          me.mensaje("Usuario Creado", "Se creó exitosamente el usuario! ");
+
         })
         .catch(function(error) {
           console.log(error);
@@ -503,13 +509,13 @@ export default {
       axios
         .put("/user/actualizar", {
           id: this.num_documento,
-          nombre: this.nombre.toUpperCase(),
-          apellido: this.apellido.toUpperCase(),
-          tipo_doc: this.tipo_documento,
+          nombre: this.nombre,
+          // apellido: this.apellido.toUpperCase(),
+          tipo_documento: this.tipo_documento,
           num_documento: this.num_documento,
           direccion: this.direccion,
           telefono: this.telefono,
-          email: this.email.toUpperCase(),
+          email: this.email,
           idrol: this.idrol,
           usuario: this.usuario,
           password: this.password,
@@ -517,7 +523,7 @@ export default {
         })
         .then(function(response) {
           me.cerrarModal();
-          me.listarPersona(1, "", "nombre");
+          me.listarPersona(1, "", "nombre",0);
         })
         .catch(function(error) {
           console.log(error);
@@ -534,8 +540,8 @@ export default {
         })
         .then(function(response) {
           me.cerrarModal();
-          me.mensaje("Actualizado", "Actualizó ");
-          me.listarPersona(1, "", "nombre");
+          me.mensaje("Actualizado", "Se actualizó exitosamente el usuario! ");
+          me.listarPersona(1, "", "nombre",0);
         })
         .catch(function(error) {
           console.log(error);
@@ -604,10 +610,10 @@ export default {
               this.tituloModal = "Actualizar Usuario";
               this.tipoAccion = 2;
               this.persona_id = data["id"];
-              this.nombre = data["nombres"];
-              this.apellido = data["apellidos"];
-              this.tipo_documento = data["tp_doc"];
-              this.num_documento = data["num_doc"];
+              this.nombre = data["nombre"];
+              // this.apellido = data["apellidos"];
+              this.tipo_documento = data["tipo_documento"];
+              this.num_documento = data["num_documento"];
               this.direccion = data["direccion"];
               this.telefono = data["telefono"];
               this.email = data["email"];
@@ -631,7 +637,7 @@ export default {
       this.tituloModal = "";
     },
     mensaje(tipo, crud) {
-    swal(tipo, "El registro se " + crud + " con éxito.", "success");
+    swal(tipo,  crud, "success");
     },
     desactivarUsuario(id) {
       swal({
@@ -655,7 +661,7 @@ export default {
               id: id
             })
             .then(function(response) {
-              me.listarPersona(1, "", "nombre");
+              me.listarPersona(1, "", "nombre",0);
               swal(
                 "Desactivado!",
                 "El registro ha sido desactivado con éxito.",
@@ -694,7 +700,7 @@ export default {
               id: id
             })
             .then(function(response) {
-              me.listarPersona(1, "", "nombre");
+              me.listarPersona(1, "", "nombre",0);
               swal(
                 "Activado!",
                 "El registro ha sido activado con éxito.",
@@ -713,7 +719,7 @@ export default {
     }
   },
   mounted() {
-    this.listarPersona(1, this.buscar, this.criterio);
+    this.listarPersona(1, this.buscar, this.criterio, 0);
   }
 };
 </script>

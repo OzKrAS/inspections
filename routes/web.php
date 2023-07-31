@@ -30,7 +30,16 @@ Route::group(['middleware'=>['auth']],function(){
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
     Route::get('/main', function () {
-        return view('contenido/contenido');
+        $file = App\File::where('fileable_id', '=', auth()->user()->id)->get();
+
+        if( count($file) > 0 ){
+            $foto  =  storage_path('app/file/'.$file[0]->name);
+        }
+        else {
+            $foto = null;
+        }
+
+        return view('contenido/contenido', compact('foto'));
     })->name('main');
 
     Route::group(['middleware' => ['Administrador']], function () {
@@ -236,6 +245,19 @@ Route::group(['middleware'=>['auth']],function(){
             Route::get('/download/{id}', 'FileController@download');
             Route::get('/list/{fileableType}/{fileableId}', 'FileController@list');
         });
+
+        // USUARIOS
+        Route::get('/usuarios', 'UserController@listarusuarios');
+        Route::get('/user', 'UserController@index');
+        Route::put('/user/actualizar', 'UserController@update');
+        Route::post('/user/store', 'UserController@store');
+
+        // PERFIL
+        Route::get('/persona/getusuario', 'UserController@buscarUsuario')->name('buscarUsuario');
+        Route::put('/persona/actualizarPerfil', 'UserController@actualizarPerfil')->name('actualizarPerfil');
+        Route::post('/persona/checkPassword', 'UserController@checkPassword')->name('checkPassword');
+        Route::put('/persona/actualizarPw', 'UserController@actualizarPw')->name('actualizarPw');
+        Route::get('/persona/getImg', 'UserController@getImg')->name('getImg');
     });
 });
 

@@ -97,6 +97,8 @@ class ZarpeController extends Controller
     {
         // if (!$request->ajax()) return redirect('/');
         $zarpes = new Zarpe();
+        $zarpes->user_id = $request->user_id;
+
         $zarpes->insNo = $request->insNo;
         $zarpes->radioCall = $request->radioCall;
         $zarpes->idOmi = $request->idOmi;

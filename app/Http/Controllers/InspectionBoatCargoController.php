@@ -58,6 +58,8 @@ class InspectionBoatCargoController extends Controller
     {
         // if (!$request->ajax()) return redirect('/');
         $inspections = new InspectionBoatCargo();
+        $inspections->user_id = $request->user_id;
+
         $inspections->place = $request->place;
         $inspections->noForm = $request->noForm;
         $inspections->businessColombia = $request->businessColombia;

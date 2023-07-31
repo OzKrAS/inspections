@@ -8,15 +8,18 @@ use Maatwebsite\Excel\HeadingRowImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\File;
 use App\Persona;
+use Datatables;
 
 class UserController extends Controller
 {
     private $apiToken;
     public function __construct()
     {
-    $this->apiToken = uniqid(base64_encode(str_random(60)));
+        $this->apiToken = uniqid(base64_encode(str_random(60)));
     }
+
     public function login(Request $request){
         $data = $request->json()->all();
         $usuario = User::where('usuario', '=', $data['usuario'])->get();
@@ -51,6 +54,7 @@ class UserController extends Controller
         else {
         return response()->json(['error' => 'Unauthorized'], 401, []); }
     }
+
     public function logout (){
         $user = auth()->user();
         $user->api_token = null;
@@ -61,6 +65,7 @@ class UserController extends Controller
             'message' => 'sesión cerrada'
         ],200);
     }
+
     public function index(Request $request)
     {
         //if (!$request->ajax()) return redirect('/');
@@ -71,13 +76,15 @@ class UserController extends Controller
         if ($buscar==''){
             $personas = User::join('personas','users.id','=','personas.id')
             ->join('roles','users.idrol','=','roles.id')
-            ->select('personas.id','personas.nombreFull','personas.nombres','personas.apellidos','personas.tp_doc','personas.num_doc','personas.direccion','personas.telefono','personas.email','users.usuario','users.password','users.condicion','users.idrol','roles.nombre as rol')
+            // ->select('personas.id','personas.nombreFull','personas.nombres','personas.apellidos','personas.tp_doc','personas.num_doc','personas.direccion','personas.telefono','personas.email','users.usuario','users.password','users.condicion','users.idrol','roles.nombre as rol')
+            ->select('personas.id','personas.nombre','personas.num_documento', 'personas.tipo_documento', 'personas.direccion','personas.telefono','personas.email','users.usuario','users.password','users.condicion','users.idrol','roles.nombre as rol')
             ->orderBy('personas.id', 'desc')->paginate(15);
         }
         else{
             $personas = User::join('personas','users.id','=','personas.id')
             ->join('roles','users.idrol','=','roles.id')
-            ->select('personas.id','personas.nombre','personas.tp_doc','personas.num_doc','personas.direccion','personas.telefono','personas.email','users.usuario','users.password','users.condicion','users.idrol','roles.nombre as rol')
+            // ->select('personas.id','personas.nombre','personas.tp_doc','personas.num_doc','personas.direccion','personas.telefono','personas.email','users.usuario','users.password','users.condicion','users.idrol','roles.nombre as rol')
+            ->select('personas.id','personas.nombre','personas.num_documento', 'personas.tipo_documento','personas.direccion','personas.telefono','personas.email','users.usuario','users.password','users.condicion','users.idrol','roles.nombre as rol')
             ->where('personas.'.$criterio, 'like', '%'. $buscar . '%')->orderBy('id', 'desc')->paginate(15);
         }
         
@@ -98,25 +105,25 @@ class UserController extends Controller
     {
         if (!$request->ajax()) return redirect('/');
 
-        
         try{
             DB::beginTransaction();
 
             $persona = new Persona();
             $persona->id = $request->id;
-            $persona->nombres = $request->nombre;
-            $persona->apellidos = $request->apeliido;
-            $persona->tp_doc = $request->tp_doc;
-            $persona->num_doc = $request->num_doc;
+            $persona->nombre = $request->nombre;
+            $persona->tipo_documento = $request->tipo_documento;
+            $persona->num_documento = $request->num_documento;
             $persona->direccion = $request->direccion;
             $persona->telefono = $request->telefono;
             $persona->email = $request->email;
             $persona->save();
 
             $user = new User();
-            $user->id = $persona->num_doc;
+            $user->id = $persona->num_documento;
             $user->idrol = $request->idrol;
             $user->usuario = $request->usuario;
+            $user->nom = $persona->nombre;
+            $user->id_usuario = $persona->num_documento;
             $user->password = bcrypt( $request->password);
             $user->condicion = '1';            
             $user->save();
@@ -148,17 +155,17 @@ class UserController extends Controller
 
                 $user = User::findOrFail($request->id);
                 $persona = Persona::findOrFail($user->id);
-                $persona->nombres = $request->nombre;
-                $persona->apellidos = $request->apellido;
-                $persona->tp_doc = $request->tipo_doc;
-                $persona->num_doc = $request->num_documento;
+                $persona->nombre = $request->nombre;
+                // $persona->apellidos = $request->apellido;
+                $persona->tipo_documento = $request->tipo_documento;
+                $persona->num_documento = $request->num_documento;
                 $persona->direccion = $request->direccion;
                 $persona->telefono = $request->telefono;
                 $persona->email = $request->email;
                 $persona->save();
 
                 $user->usuario = $request->usuario;
-                $user->password = bcrypt( $request->password);
+                // $user->password = bcrypt( $request->password);
                 $user->condicion = '1';
                 $user->idrol = $request->idrol;
                 $user->save();
@@ -170,6 +177,7 @@ class UserController extends Controller
         }
         
     }
+
     public function updatePw(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
@@ -211,5 +219,86 @@ class UserController extends Controller
     public function export() 
     {
         return Excel::download(new UsersExport, 'users.xlsx');
+    }
+
+    // METODOS USUARIOS SISTEMA WEB REQUEST
+    public function listarusuarios(){
+        $usuarios = User::join('personas', 'personas.id', '=', 'users.id_usuario')
+        // ->select('users.id', 'personas.nombre', 'users.idrol', 'users.')
+        ->get();
+
+        // dd($usuarios);
+
+        // return Datatables::of($usuarios)
+        //     ->make(true);
+        // dd($usuarios);
+
+        return view('contenido.usuarios', compact('usuarios'));
+    }
+
+    public function buscarUsuario(Request $request)
+    {
+        
+        $personas = User::join('personas','users.id','=','personas.id')
+        ->select('users.id', 'personas.id','personas.nombre','personas.tipo_documento','personas.num_documento','personas.direccion','personas.telefono','personas.email','users.usuario','users.password','users.condicion')
+        ->where('users.id','=', auth()->user()->id)
+        ->get();
+        
+        return [
+            'personas' => $personas[0]
+        ];
+    }
+
+    public function actualizarPerfil(Request $request){
+        if (!$request->ajax()) return redirect('/');
+
+        DB::beginTransaction();
+
+        $user = User::findOrFail( auth()->user()->id );
+        $persona = Persona::findOrFail($user->id);
+        $persona->nombre = $request->nombre;
+        $persona->tipo_documento = $request->tipo_documento;
+        $persona->num_documento = $request->num_documento;
+        $persona->direccion = $request->direccion;
+        $persona->telefono = $request->telefono;
+        $persona->email = $request->email;
+        $persona->save();
+
+        $user->usuario = $request->email;
+        $user->nom = $request->nombre;
+        $user->save();
+
+        DB::commit();
+    }
+
+    public function checkPassword( Request $request){
+        if (!$request->ajax()) return redirect('/');
+        $pass = $request->password;
+
+        $user = User::findOrFail( auth()->user()->id );
+
+        if (Hash::check($request->password, $user->password)) {
+            return json_encode(true);
+        }
+        else {
+            return json_encode(false);
+        }
+    }
+
+    public function actualizarPw(Request $request){
+        if (!$request->ajax()) return redirect('/');
+
+        DB::beginTransaction();
+        $user = User::findOrFail( auth()->user()->id );
+        $user->password = Hash::make($request->password);
+        $user->save();
+        DB::commit();
+    }
+
+    public function getImg( Request $request ){
+        if (!$request->ajax()) return redirect('/');
+        
+        $file = File::where('fileable_id', '=', auth()->user()->id)->get();
+        return storage_path('app/file/'.$file[0]->name);
     }
 }

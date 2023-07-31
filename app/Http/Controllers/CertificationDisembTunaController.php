@@ -41,6 +41,7 @@ class CertificationDisembTunaController extends Controller
     {
         // if (!$request->ajax()) return redirect('/');
         $tunas = new CertificationDisembTuna();
+        $tunas->user_id = $request->user_id;
         $tunas->nameBoat = $request->nameBoat;
         $tunas->ZoneFisher = $request->ZoneFisher;
         $tunas->date = $request->date;

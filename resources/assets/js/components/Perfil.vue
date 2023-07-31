@@ -3,235 +3,178 @@
     <!-- Breadcrumb -->
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
-      <div class="card">
+      <div class="card" style="width: 100%;">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Perfil de Usuario
-          <!-- <button
-            type="button"
-            @click="mostrarDetalle()"
-            class="btn btn-success btn-sm"
-          >
-            <i class="icon-plus"></i>&nbsp;Nuevo
-          </button> -->
+          Perfil de Usuario
         </div>
-        <template v-if="listado==1">
+        <template v-if="listado == 1">
           <div class="card-body">
-            <!-- <div class="md-layout">
-              <div class="md-layout-item">
-                <md-field md-clearable>
-                  <label>Qué desea Buscar</label>
-                  <md-input v-model="buscar" @keypress="listarDatos(1,buscar,criterio)"></md-input>
-                </md-field>
-              </div>&nbsp;&nbsp;&nbsp;
-              <div class="md-layout-item">
-                <br />
-                <md-button
-                  class="md-icon-button md-dense md-raised md-primary"
-                  @click="listarDatos(1,buscar,criterio)"
-                >
-                  <md-icon>search</md-icon>
-                </md-button>
+            <div>
+              <div class="md-title">Información Personal
+                <button class="btn btn-success btn-md" @click="abrirModal()"><i class="fa fa-key"></i> Actualizar
+                  Contraseña</button>
               </div>
-            </div> -->
-            <!-- <label >Bienvenido! {{`${user}`}}</label> -->
-            <!-- <label >Bienvenido! {{doc}}</label> -->
-      <md-card>
-        <md-card-header>
-        <md-card-header-text>
-          <div class="md-title">{{nombreFull}}</div>
-        <div class="md-subhead">Usuario</div>
-        </md-card-header-text>
-         <md-menu md-size="big" md-direction="bottom-end">
-          <md-button class="md-icon-button" md-menu-trigger>
-            <md-icon>more_vert</md-icon>
-          </md-button>
 
-          <md-menu-content>
-            <md-menu-item @click="abrirModal" >
-              <span>Cambio de Clave</span>
-              <md-icon>vpn_key</md-icon>
-            </md-menu-item>
-            <md-menu-item @click="changeImg">
-              <span>Cambio de Imagen</span>
-              <md-icon>face</md-icon>
-            </md-menu-item>
+              <img src="" id="imgperfil" class="img fluid rounded" style="width: 100px; height: 100px" />
 
-          </md-menu-content>
-        </md-menu>
-           </md-card-header>
-      <md-card-media>
-        <img :src="'img/avatars/'+ this.foto" alt="People" class="imgNew">
-      </md-card-media>
-      <md-card-expand>
-        <md-card-actions md-alignment="space-between">
+              <div class="md-subhead">Actualice sus datos</div>
+            </div>
 
+            <div>
+              <div class="md-layout">
+                <div class="md-layout-item">
+                  <md-field md-clearable :class="getValidationClass('nombre')">
+                    <label for="first-name">Nombre</label>
+                    <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="form.nombre"
+                      :disabled="sending" />
+                    <span class="md-error" v-if="!$v.form.nombres.required">Es necesario ingresar un Nombre</span>
+                    <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
+                  </md-field>
+                </div>&nbsp;&nbsp;&nbsp;
+              </div>
+              <div class="md-layout">
+                <md-field md-clearable>
+                  <label>Tipo Documento</label>
+                  <md-input name="tipo_documento" id="first-name" autocomplete="given-name" v-model="form.tipo_documento"
+                    :disabled="sending" />
+                </md-field>
+              </div>
+              <div class="md-layout">
+                <md-field md-clearable>
+                  <label>Número Documento</label>
+                  <md-input class="form-control" v-model="form.num_documento" type="text"></md-input>
+                </md-field>
+              </div>
+              <div class="md-layout">
+                <div class="md-layout-item">
+                  <md-field md-clearable>
+                    <label>Teléfono</label>
+                    <md-input name="telefono" id="telefono" v-model="form.telefono" />
+                  </md-field>
+                </div>
+              </div>
+              <div class="md-layout">
+                <div class="md-layout-item">
+                  <md-field md-clearable>
+                    <label>Dirección</label>
+                    <md-input name="direccion" id="direccion" v-model="form.direccion" />
+                  </md-field>
+                </div>
+              </div>
+              <div class="md-layout">
+                <md-field md-clearable :class="getValidationClass('email')">
+                  <label>Email</label>
+                  <span class="md-prefix">
+                    <i class="material-icons">email</i>
+                  </span>
+                  <md-input v-model="form.email" md-counter="80" type="text"></md-input>
+                  <span class="md-error" v-if="!$v.form.email.email">Email incorrecto</span>
+                </md-field>
+              </div>
 
-          <md-card-expand-trigger>
-            <md-button class="md-icon-button">
-              <md-icon>keyboard_arrow_down</md-icon>
-            </md-button>
-          </md-card-expand-trigger>
-        </md-card-actions>
+              <md-input v-model="form.usuario" type="hidden"></md-input> 
 
-        <md-card-expand-content>
-          <md-card-content>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.
-          </md-card-content>
-        </md-card-expand-content>
-      </md-card-expand>
-    </md-card>
-        <md-card md-with-hover>
-      <md-ripple>
-        <md-card-header>
-          <div class="md-title">Información Personal</div>
-          <div class="md-subhead">Actualice sus datos</div>
-        </md-card-header>
+              <file-component ref="fileComponent" max-file-size="5MB" fileable-type="Perfil" :fileable-id="form.usuario"></file-component>
 
-        <md-card-content>
-
-                  <div class="md-layout">
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('nombres')">
-                      <label for="first-name">Nombres</label>
-                      <md-input
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        v-model="form.nombres"
-                        :disabled="sending"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.nombres.required"
-                      >Es necesario ingresar un Nombre</span>
-                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                    </md-field>
-                  </div>&nbsp;&nbsp;&nbsp;
-                  <div class="md-layout-item">
-                    <md-field md-clearable :class="getValidationClass('apellidos')">
-                      <label for="first-ape">Apellidos</label>
-                      <md-input
-                        name="first-ape"
-                        id="first-ape"
-                        autocomplete="given-name"
-                        v-model="form.apellidos"
-                        :disabled="sending"
-                      />
-                      <span
-                        class="md-error"
-                        v-if="!$v.form.apellidos.required"
-                      >Es necesario ingresar un Apellido</span>
-                      <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
-                    </md-field>
-                  </div>
-                  </div>
-                  <div class="md-layout">
-                  <div class="md-layout-item">
-                    <md-field md-clearable>
-                      <label>Teléfono</label>
-                      <span class="md-prefix">
-                        <i class="material-icons">phone_iphone</i>
-                      </span>
-                      <md-input v-model="telefono" md-counter="10" maxlength="10"></md-input>
-                    </md-field>
-                  </div>
-                  <div class="md-layout-item">
-                    <md-datepicker
-                      v-model="fecNac"
-                      value="fecNac"
-                      @input="toString"
-                      md-immediately
-                      :md-model-type="String"
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                    <div
+                        class="uploader"
+                        @dragenter="OnDragEnter"
+                        @dragleave="OnDragLeave"
+                        @dragover.prevent
+                        @drop="onDrop"
+                        :class="{ dragging: isDragging }"
                     >
-                      <label>Fecha de Cumpleaños</label>
-                    </md-datepicker>
-                  </div>
-                  </div>
-                     <div class="md-layout">
-                    <md-field md-clearable>
-                      <label>Cargo</label>
-                      <span class="md-prefix">
-                        <i class="material-icons">house</i>
-                      </span>
-                      <md-input v-model="cargo"></md-input>
-                    </md-field>
-                  </div>
-                  <div class="md-layout">
-                    <md-field md-clearable>
-                      <label>Dirección de Oficina</label>
-                      <span class="md-prefix">
-                        <i class="material-icons">house</i>
-                      </span>
-                      <md-input v-model="direccion"></md-input>
-                    </md-field>
-                  </div>
-                  <div class="md-layout">
-                    <md-field md-clearable :class="getValidationClass('email')">
-                      <label>Correo Institucional</label>
-                      <span class="md-prefix">
-                        <i class="material-icons">email</i>
-                      </span>
-                      <md-input v-model="form.email" md-counter="80"></md-input>
-                      <span class="md-error" v-if="!$v.form.email.email">Email incorrecto</span>
-                    </md-field>
-                  </div>
+                      <div class="upload-control" v-show="images.length">
+                        <!-- <label for="file">Anexar otra Imágen</label> -->
+                        <!-- <button @click="upload">Guardar Imágenes</button>
+                        <button @click="abrirList">Cancelar</button> -->
+                      </div>
 
-        </md-card-content>
+                      <div v-show="!images.length">
+                        <i class="fa fa-cloud-upload"></i>
+                        <p>Arrastra tu imagen de perfil</p>
+                        <div>O</div>
+                        <div class="file-input">
+                          <label for="file">Selecciona una Imágen Para tu Perfil</label>
+                          <input
+                              type="file"
+                              id="file"
+                              @change="onInputChange"
+                          />
+                        </div>
+                      </div>
 
-            <md-card-actions>
-              <md-button
-                type="submit"
-                class="md-dense md-raised md-primary"
-                :disabled="sending"
-                @click="abrirModal()"
-              >Actualizar</md-button>
-            </md-card-actions>
-      </md-ripple>
-    </md-card>
-       <!-- <h1 :text="`${user}`"></h1> -->
+                      <div class="images-preview" v-show="images.length">
+                        <div
+                            class="img-wrapper"
+                            v-for="(image, index) in images"
+                            :key="index"
+                        >
+                          <img :src="image" :alt="`Image Uplaoder ${index}`"/>
+                          <button
+                              type="button"
+                              @click="eliminarImg(index)"
+                              class="btn btn-dark btn-sm"
+                          >
+                            <i class="material-icons Color4">delete</i>
+                          </button>
+                          <div class="details">
+                            <span class="name" v-text="files[index].name"></span>
+                            <span
+                                class="size"
+                                v-text="getFileSize(files[index].size)"
+                            ></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+
+            <button type="submit" class="md-dense md- btn btn-primary" :disabled="sending"
+              @click="actualizarPersona()">Actualizar</button>
           </div>
         </template>
-        <template v-else-if="listado==0">
+
+        <template v-else-if="listado == 0">
           <div>
-               <button type="button" class="close" @click="abrirList" aria-label="Close">
+            <button type="button" class="close" @click="abrirList" aria-label="Close">
               <span aria-hidden="true">X</span>
             </button>
           </div>
-  <div
-          class="uploader"
-          @dragenter="OnDragEnter"
-          @dragleave="OnDragLeave"
-          @dragover.prevent
-          @drop="onDrop"
-          :class="{ dragging: isDragging }"
-        >
-          <div class="upload-control" v-show="images.length">
-            <!-- <label for="file">Anexar otra Imágen</label> -->
-            <button @click="upload">Cambiar</button>
-            <button @click="abrirList">Cancelar</button>
-          </div>
-
-          <div v-show="!images.length">
-            <i class="fa fa-cloud-upload"></i>
-            <p>Arrastra tus imágenes aquí</p>
-            <div>O</div>
-            <div class="file-input">
-              <label for="file">Selecciona una Imágen</label>
-              <input type="file" id="file" @change="onInputChange" multiple>
+          <div class="uploader" @dragenter="OnDragEnter" @dragleave="OnDragLeave" @dragover.prevent @drop="onDrop"
+            :class="{ dragging: isDragging }">
+            <div class="upload-control" v-show="images.length">
+              <!-- <label for="file">Anexar otra Imágen</label> -->
+              <button @click="upload">Cambiar</button>
+              <button @click="abrirList">Cancelar</button>
             </div>
 
-          </div>
+            <div v-show="!images.length">
+              <i class="fa fa-cloud-upload"></i>
+              <p>Arrastra tus imágenes aquí</p>
+              <div>O</div>
+              <div class="file-input">
+                <label for="file">Selecciona una Imágen</label>
+                <input type="file" id="file" @change="onInputChange" multiple>
+              </div>
 
-          <div class="images-preview" v-show="images.length">
-            <div class="img-wrapper" v-for="(image, index) in images" :key="index">
-              <img :src="image" :alt="`Image Uplaoder ${index}`">
-              <div class="details">
-                <span class="name" v-text="files[index].name"></span>
-                <span class="size" v-text="getFileSize(files[index].size)"></span>
+            </div>
+
+            <div class="images-preview" v-show="images.length">
+              <div class="img-wrapper" v-for="(image, index) in images" :key="index">
+                <img :src="image" :alt="`Image Uplaoder ${index}`">
+                <div class="details">
+                  <span class="name" v-text="files[index].name"></span>
+                  <span class="size" v-text="getFileSize(files[index].size)"></span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </template>
       </div>
 
@@ -240,15 +183,8 @@
     <!--Inicio del modal agregar/actualizar-->
 
     <!-- /.modal-dialog -->
-     <div
-      class="modal fade"
-      tabindex="-1"
-      :class="{'mostrar' : modal}"
-      role="dialog"
-      aria-labelledby="myModalLabel"
-      style="display: none;"
-      aria-hidden="true"
-    >
+    <div class="modal fade" tabindex="-1" :class="{ 'mostrar': modal }" role="dialog" aria-labelledby="myModalLabel"
+      style="display: none;" aria-hidden="true">
       <div class="modal-dialog modal-dark modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -260,35 +196,39 @@
           <div class="modal-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
-                <md-field>
-                <label>Password</label>
-                <md-input v-model="password" type="password" :disabled="sending"></md-input>
-                </md-field>
+                <p class="text-center">¿Estás completamente seguro de cambiar tu contraseña para iniciar sesion?, este
+                  proceso no se puede revertir.</p>
 
-                <md-field>
-                <label>Confirme su Password</label>
-                <md-input v-model="password2" type="password" :disabled="sending"></md-input>
-                </md-field>
-                <span
-                class="md-error"
-                v-if="!$v.password2.sameAspassword2"
-                >El password NO coincide</span>
+                <div id="paso1">
+                  <md-field>
+                    <label>Contraseña</label>
+                    <md-input v-model="passwordactual" type="password"></md-input>
+                  </md-field>
+                  <button type="button" class="btn btn-sm btn-outline-primary" @click="checkPassword()">Validar
+                    Contraseña</button>
+                </div>
+
+                <div class="alert alert-warning mt-3" id="msg-modal" style="display: none;"></div>
+
+                <hr>
+                <div id="npass" style="display:none">
+                  <md-field>
+                    <label>Contraseña</label>
+                    <md-input v-model="password" type="password" :disabled="sending"></md-input>
+                  </md-field>
+
+                  <md-field>
+                    <label>Confirme su Contraseña</label>
+                    <md-input v-model="password2" type="password" :disabled="sending"></md-input>
+                  </md-field>
+                  <span class="md-error" v-if="!$v.password2.sameAspassword2">El password NO coincide</span>
+                </div>
               </md-card-content>
             </form>
           </div>
-          <div class="modal-footer">
-            <md-card-actions>
-              <md-button type="button" class="md-raised" @click="cerrarModal()">Cerrar</md-button>
-            </md-card-actions>
-            <md-card-actions>
-              <md-button
-                type="submit"
-                class="md-dense md-raised md-primary"
-                :disabled="sending"
-                @click="actualizarPw()"
-              >Actualizar</md-button>
-            </md-card-actions>
-
+          <div class="modal-footer" style="display: none">
+              <button type="button" class="md-raised btn btn-white" @click="cerrarModal()">Cerrar</button>
+              <button type="submit" class="md-dense btn md-raised btn-primary" @click="actualizarPw()">Actualizar</button>
           </div>
         </div>
         <!-- /.modal-content -->
@@ -305,6 +245,7 @@ let user = document.head.querySelector('meta[name="user"]');
 import { validationMixin } from "vuelidate";
 // importar libreria
 import Multiselect from "vue-multiselect";
+import FileComponent from "./common/FileComponent";
 import {
   MdButton,
   MdContent,
@@ -327,7 +268,8 @@ import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
 
 export default {
   components: {
-    Multiselect
+    Multiselect,
+    FileComponent,
   },
   mixins: [validationMixin],
 
@@ -336,9 +278,11 @@ export default {
 
       form: {
         nombres: "",
-        apellidos: "",
+        tipo_documento: "",
+        num_documento: "",
+        telfono: "",
+        direccion: "",
         email: "",
-        email2: ""
       },
       demo: 0,
       tipoAccion: 1,
@@ -366,6 +310,7 @@ export default {
       nombreFull: "",
       password: "",
       password2: "",
+      passwordactual: "",
       fecNac: "",
 
       pagination: {
@@ -386,7 +331,7 @@ export default {
     password2: {
       sameAspassword2: sameAs("password")
     },
-form: {
+    form: {
       nombres: {
         required
       },
@@ -404,11 +349,11 @@ form: {
 
   computed: {
 
-    isActived: function() {
+    isActived: function () {
       return this.pagination.current_page;
     },
     //Calcula los elementos de la paginación
-    pagesNumber: function() {
+    pagesNumber: function () {
       if (!this.pagination.to) {
         return [];
       }
@@ -441,13 +386,13 @@ form: {
         };
       }
     },
-      changeImg() {
-        this.listado=0;
-      },
-      abrirList() {
-        this.listado=1;
-      },
-      OnDragEnter(e) {
+    changeImg() {
+      this.listado = 0;
+    },
+    abrirList() {
+      this.listado = 1;
+    },
+    OnDragEnter(e) {
       e.preventDefault();
 
       this.dragCount++;
@@ -501,7 +446,7 @@ form: {
       }
       return `${Math.round(size * 100) / 100} ${fSExt[i]}`;
     },
-      getImage(event) {
+    getImage(event) {
       //Asignamos la imagen a  nuestra data
       // console.log(event)
       this.selectedFile = event.target.files[0];
@@ -521,7 +466,7 @@ form: {
       });
 
       axios.post("/user/imagen", formData).then(response => {
-        this.listado=1;
+        this.listado = 1;
         this.getImg();
         me.mensaje("Guardado", "Todas las imagenes se han almacenado ");
 
@@ -530,62 +475,120 @@ form: {
         this.files = [];
       });
     },
-      getUsuario(buscar) {
+    getUsuario(buscar) {
       let me = this;
 
-      var url = "/persona/getusuario?buscar=" + user.content;
+      var url = "/persona/getusuario";
       axios
         .get(url)
-        .then(function(response) {
-          //console.log(response);
+        .then(function (response) {
           var respuesta = response.data;
-          me.arrayPerso = respuesta.perso;
-
-            me.nombreFull = me.arrayPerso[0]["nombreFull"];
-            me.form.nombres = me.arrayPerso[0]["nombres"];
-            me.form.apellidos = me.arrayPerso[0]["apellidos"];
-            me.telefono = me.arrayPerso[0]["telefono"];
-            me.direccion = me.arrayPerso[0]["direccion"];
-            me.form.email = me.arrayPerso[0]["email"];
+          me.arrayPerso = respuesta.personas;
+          console.log(me.arrayPerso)
+          me.form.nombre = me.arrayPerso['nombre'];
+          me.form.tipo_documento = me.arrayPerso["tipo_documento"];
+          me.form.num_documento = me.arrayPerso["num_documento"];
+          me.form.telefono = me.arrayPerso["telefono"];
+          me.form.direccion = me.arrayPerso["direccion"];
+          me.form.email = me.arrayPerso["email"];
+          me.form.usuario = me.arrayPerso["id"];
 
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     },
-      getImg() {
+    getImg() {
       let me = this;
 
-      var url = "/user/getImg?buscar=" + user.content;
+      var url = "/persona/getImg";
       axios
         .get(url)
-        .then(function(response) {
-          //console.log(response);
-          var respuesta = response.data;
-          me.arrayImg = respuesta.user;
+        .then(function (response) {
+          console.log(response);
+          me.foto = response;
+          
+          $("#imgperfil").attr('src', me.foto);
 
-            me.foto = me.arrayImg[0]["img"];
-
+          console.log(me.foto)
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     },
-      actualizarPw() {
+
+    actualizarPersona() {
       let me = this;
 
       axios
-        .put("/user/actualizarPw", {
-          id: user.content,
-          password: this.password
-
+        .put("/persona/actualizarPerfil", {
+          nombre: this.form.nombre,
+          tipo_documento: this.form.tipo_documento,
+          num_documento: this.form.num_documento,
+          direccion: this.form.direccion,
+          telefono: this.form.telefono,
+          email: this.form.email,
         })
-        .then(function(response) {
+        .then( async function (response) {
+          await me.$refs.fileComponent.uploadFiles();
           me.cerrarModal();
-          me.mensaje("Actualizado", "Actualizó ");
+          me.mensaje("Actualizado", "Se actualizó el perfil del usuario");
+          me.getUsuario('');
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+
+    checkPassword() {
+      let me = this;
+
+      axios
+        .post("/persona/checkPassword", {
+          password: this.passwordactual
+        })
+        .then(function (response) {
+          // me.cerrarModal();
+          // me.mensaje("Actualizado", "Actualizó ");
+          console.log(response.data);
+          if( response.data == true){
+            $("#msg-modal").text("La contraseña que ingresaste es la correcta, ahora se habilitará el formulario para crear la nueva contraseña!");
+            $("#paso1").hide();
+            $("#msg-modal").hide();
+            $("#npass").show();
+            $(".modal-footer").show();
+          }
+          else {
+            $("#msg-modal").show();
+            $("#msg-modal").text("La contraseña que ingresaste es incorrecta, por favor intentalo nuevamente!");
+            $("#paso1").show();
+            $("#npass").hide();
+            $(".modal-footer").hide();
+          }
           // me.listarPersona(1, "", "nombre");
         })
-        .catch(function(error) {
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+
+    actualizarPw() {
+      let me = this;
+
+      axios
+        .put("/persona/actualizarPw", {
+          password: this.password
+        })
+        .then(function (response) {
+          me.cerrarModal();
+          me.mensaje("Actualizado", "Actualizaste tu contraseña!");
+          $("#paso1").show();
+          $("#msg-modal").hide();
+          $("#npass").hide();
+          $(".modal-footer").hide();
+          // me.listarPersona(1, "", "nombre");
+        })
+        .catch(function (error) {
           console.log(error);
         });
     },
@@ -594,11 +597,11 @@ form: {
       this.$v.$reset();
       this.form.nombre = null;
     },
-       abrirModal() {
+    abrirModal() {
       // this.idRefE=data["idref"];
 
       this.modal = 1;
-      this.tituloModal = "Asigne un Password para "+ this.nombreFull;
+      this.tituloModal = "Asigne un Password para " + this.form.nombre;
     },
     cerrarModal() {
       this.modal = 0;
@@ -614,7 +617,7 @@ form: {
     },
 
     mensaje(tipo, crud) {
-      swal(tipo, "El registro se " + crud + " con éxito.", "success");
+      swal(tipo, crud, "success");
     }
   },
 
@@ -630,26 +633,31 @@ form: {
   width: 100% !important;
   position: absolute !important;
 }
-  .md-card {
-    width: 45%;
-    margin: 4px;
-    display: inline-block;
-    vertical-align: top;
-  }
+
+.md-card {
+  width: 45%;
+  margin: 4px;
+  display: inline-block;
+  vertical-align: top;
+}
+
 .mostrar {
   display: list-item !important;
   opacity: 1 !important;
   position: absolute !important;
   background-color: #3c29297a !important;
 }
+
 .div-error {
   display: flex;
   justify-content: center;
 }
+
 .text-error {
   color: red !important;
   font-weight: bold;
 }
+
 .uploader {
   width: 100%;
   background: #2196f3;
@@ -661,6 +669,7 @@ form: {
   font-size: 20px;
   position: relative;
 }
+
 .uploader:dragging {
   background: #fff;
   color: #2196f3;
@@ -670,12 +679,14 @@ form: {
 i.fa.fa-cloud-upload {
   font-size: 58px;
 }
+
 .file-input {
   width: 200px;
   margin: auto;
   height: 68px;
   position: relative;
 }
+
 .file-input label {
   background: #fff;
   color: #2196f3;
@@ -710,12 +721,15 @@ i.fa.fa-cloud-upload {
   background: #fff;
   box-shadow: 5px 5px 20px #3e3737;
 }
+
 .img {
   max-height: 105px;
 }
+
 .imgNew {
   max-height: 300px;
 }
+
 .details {
   font-size: 12px;
   background: #fff;
@@ -725,6 +739,7 @@ i.fa.fa-cloud-upload {
   align-items: self-start;
   padding: 3px 6px;
 }
+
 .name {
   overflow: hidden;
   height: 18px;
@@ -742,6 +757,7 @@ i.fa.fa-cloud-upload {
   padding-bottom: 4px;
   text-align: right;
 }
+
 .upload-control button {
   background: #3ab458;
   border: 2px solid #3ab458;
@@ -750,6 +766,7 @@ i.fa.fa-cloud-upload {
   font-size: 15px;
   cursor: pointer;
 }
+
 .upload-control label {
   background: #F5A528;
   border: 2px solid #F5A528;
@@ -760,15 +777,19 @@ i.fa.fa-cloud-upload {
   padding: 2px 5px;
   margin-right: 10px;
 }
+
 .material-icons.Color1 {
   color: rgb(31, 33, 34);
 }
+
 .material-icons.Color2 {
   color: rgba(167, 142, 5, 0.849);
 }
+
 .material-icons.Color3 {
   color: rgb(12, 170, 91);
 }
+
 .material-icons.Color4 {
   color: rgba(228, 54, 54, 0.863);
 }

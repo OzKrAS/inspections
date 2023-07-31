@@ -40,6 +40,10 @@ Vue.component('certificationtuna', require('./components/CertificationDisembTuna
 Vue.component('materials', require('./components/FishingGearMaterials.vue'));
 Vue.component('profiles', require('./components/Perfil.vue'));
 Vue.component('boats', require('./components/Boats.vue'));
+
+Vue.component('users', require('./components/Users.vue'));
+Vue.component('user', require('./components/User.vue'));
+Vue.component('perfil', require('./components/Perfil.vue'));
 // Vue.component('noticepreviouszarpe', require('./components/noticePreviousZarpe.vue'));
 // Vue.component('processingplant', require('./components/processingPlant.vue'));
 

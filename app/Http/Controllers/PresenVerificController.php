@@ -43,6 +43,8 @@ class PresenVerificController extends Controller
     {
         // if (!$request->ajax()) return redirect('/');
         $presenVerifics = new PresenVerific(); 
+        $presenVerifics->user_id = $request->user_id;
+
         $presenVerifics->nameShip = $request->nameShip;
         $presenVerifics->cruise = $request->cruise;
         $presenVerifics->nameFish = $request->nameFish;

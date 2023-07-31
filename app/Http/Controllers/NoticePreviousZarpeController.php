@@ -60,6 +60,8 @@ class NoticePreviousZarpeController extends Controller
     {
         if (!$request->ajax()) return redirect('/');
         $noticezarpes = new NoticePreviousZarpe();
+        $noticezarpes->user_id = $request->user_id;
+
         $noticezarpes->time = $request->time;
         $noticezarpes->portState = $request->portState;
         $noticezarpes->nameBoat = $request->nameBoat; 

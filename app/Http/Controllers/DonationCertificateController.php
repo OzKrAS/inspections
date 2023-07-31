@@ -46,6 +46,7 @@ class DonationCertificateController extends Controller
     {
         // if (!$request->ajax()) return redirect('/');
         $donations = new DonationCertificate();
+        $donations->user_id = $request->user_id;
         $donations->noActa = $request->noActa;
         $donations->date = $request->date;
         $donations->nameOfficial = $request->nameOfficial;
@@ -68,6 +69,7 @@ class DonationCertificateController extends Controller
         $donations->save();
 
         $detaildonation = $request->target;
+        
         foreach ($detaildonation as $ep => $det) {
             $objeto = new DetDonation();
             $objeto->id_donation = $donations->id;
@@ -80,10 +82,11 @@ class DonationCertificateController extends Controller
             $objeto->commercialValue = $det['commercialValue'];
             $objeto->save();
         }
+
         $array = array(
             'res' => true,
+            'donation' => $donations->id,
             'message' => 'Registro guardado exitosamente',
-            'donation' => $donations,
         );
         return response()->json($array, 201);
     }

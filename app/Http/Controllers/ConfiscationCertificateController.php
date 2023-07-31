@@ -54,6 +54,8 @@ class ConfiscationCertificateController extends Controller
     {
         // if (!$request->ajax()) return redirect('/');
         $confiscation = new ConfiscationCertificate();
+        $confiscation->user_id = $request->user_id;
+
         $confiscation->noActa = $request->noActa;
         $confiscation->departament = $request->departament;
         $confiscation->municipality = $request->municipality;
@@ -87,6 +89,7 @@ class ConfiscationCertificateController extends Controller
             $objeto->name = $det['name'];
             $objeto->save();
         }
+
         $detailconfiscationt1 = $request->target;
         foreach ($detailconfiscationt1 as $ep => $det) {
             $objeto = new DetConfiscationTable1();
@@ -102,7 +105,9 @@ class ConfiscationCertificateController extends Controller
 
             $objeto->save();
         }
+        
         $detaildonationt2 = $request->target2;
+
         foreach ($detaildonationt2 as $ep => $det) {
             $objeto = new DetConfiscationTable2();
             $objeto->id_confiscation = $confiscation->id;
@@ -113,10 +118,11 @@ class ConfiscationCertificateController extends Controller
 
             $objeto->save();
         }
+
         $array = array(
             'res' => true,
+            'id' => $confiscation->id,
             'message' => 'Registro guardado exitosamente',
-            'confiscation' => $confiscation
         );
         return response()->json($array, 201);
     }
