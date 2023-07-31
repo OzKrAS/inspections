@@ -641,7 +641,7 @@ export default {
     },
     desactivarUsuario(id) {
       swal({
-        title: "Esta seguro de desactivar este usuario?",
+        title: "Esta seguro de eliminar este usuario?",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -657,14 +657,14 @@ export default {
           let me = this;
 
           axios
-            .put("/user/desactivar", {
+            .delete("/user/desactivar", {
               id: id
             })
             .then(function(response) {
               me.listarPersona(1, "", "nombre",0);
               swal(
-                "Desactivado!",
-                "El registro ha sido desactivado con éxito.",
+                "Eliminado!",
+                "El registro ha sido eliminado con éxito.",
                 "success"
               );
             })
