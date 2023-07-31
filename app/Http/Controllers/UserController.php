@@ -124,7 +124,7 @@ class UserController extends Controller
             $user->usuario = $request->usuario;
             $user->nom = $persona->nombre;
             $user->id_usuario = $persona->num_documento;
-            $user->password = bcrypt( $request->password);
+            $user->password = bcrypt( $persona->tipo_documento);
             $user->condicion = '1';            
             $user->save();
 
