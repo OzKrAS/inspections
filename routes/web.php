@@ -251,7 +251,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/user', 'UserController@index');
         Route::put('/user/actualizar', 'UserController@update');
         Route::post('/user/store', 'UserController@store');
-        Route::post('/user/desactivar', 'UserController@desactivar');
+        Route::delete('/user/desactivar', 'UserController@desactivar');
 
         // PERFIL
         Route::get('/persona/getusuario', 'UserController@buscarUsuario')->name('buscarUsuario');
