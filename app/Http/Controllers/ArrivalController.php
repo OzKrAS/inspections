@@ -265,62 +265,7 @@ class ArrivalController extends Controller
             $arrivals->id_zoneAutoFisher = $request->id_zoneAutoFisher;
             $arrivals->id_company = $request->id_company;
             $arrivals->save();
-            //   $arrivals = Arrival::create([
-            // 'insNo' => $request->insNo,
-            // 'radioCall' => $request->radioCall,
-            // 'noResolution' => $request->noResolution,
-            // 'nameBoat' => $request->nameBoat,
-            // 'enrollment' => $request->enrollment,
-            // 'noPatent' => $request->noPatent,
-            // 'eyeMesh' => $request->eyeMesh,
-            // 'netWidth' => $request->netWidth,
-            // 'eyeFlake' => $request->eyeFlake,
-            // 'typeHook' => $request->typeHook,
-            // 'longNet' => $request->longNet,
-            // 'materialArt' => $request->materialArt,
-            // 'equipDevi' => $request->equipDevi,
-            // 'captain' => $request->captain,
-            // 'noOmi' => $request->noOmi,
-            // 'legalRepre' => $request->legalRepre,
-            // 'noAllCrew' => $request->noAllCrew,
-            // 'noCrewForeign' => $request->noCrewForeign,
-            // 'noCrewNational' => $request->noCrewNational,
-            // 'idOmi' => $request->idOmi,
-            // 'other' => $request->other,
-            // 'totalLongline' => $request->totalLongline,
-            // 'noDays' => $request->noDays,
-            // 'noAllHauls' => $request->noAllHauls,
-            // 'noHaulsNacional' => $request->noHaulsNacional,
-            // 'noHaulsInter' => $request->noHaulsInter,
-            // 'landedWeight' => $request->landedWeight,
-            // 'observation' => $request->observation,
-            // 'notification' => $request->notification,
-            // 'finalityArrival' => $request->finalityArrival,
-            // 'workDone' => $request->workDone,
-            // 'locationSystem' => $request->locationSystem,
-            // 'inspectorConclusions' => $request->inspectorConclusions,
-            // 'additionalComments' => $request->additionalComments,
-            // 'dateIns' => $request->dateIns,
-            // 'dateScale' => $request->dateScale,
-            // 'dateZarpe' => $request->dateZarpe,
-            // 'dateLatestArrival' => $request->dateLatestArrival,
-            // 'dateValidityPat' => $request->dateValidityPat,
-            // 'date' => $request->date,
-            // 'dateValidity' => $request->dateValidity,
-            // 'stateRectorPort' => $request->stateRectorPort,
-            // 'observationGeneral' => $request->observationGeneral,
-            // 'id_region' => $request->id_region,
-            // 'id_port' => $request->id_port,
-            // 'id_portZarpe' => $request->id_portZarpe,
-            // 'id_portArrival' => $request->id_portArrival,
-            // 'id_flag' => $request->id_flag,
-            //     'id_nationality' => $request->id_nationality,
-            //     'id_orop' => $request->id_orop,
-            //     'id_material' => $request->id_material,
-            //     'id_zoneAutoFisher' => $request->id_zoneAutoFisher,
-            //     'id_company' => $request->id_company
-            //     ]);
-
+            
             $detailarrivals = $request->fishery;
 
             foreach ($detailarrivals as $ep => $det) {
@@ -351,12 +296,6 @@ class ArrivalController extends Controller
                 $objeto->capture2 = $det['capture2'];
                 $objeto->save();
             }
-
-            // if($request->sendImg==1){
-            //     $this->savePhotoIMG($arrivals, $request);
-            // }else{
-            //     $this->savePhoto($arrivals, $request);
-            // }
 
             DB::commit();
 
