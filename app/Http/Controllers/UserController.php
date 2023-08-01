@@ -40,11 +40,13 @@ class UserController extends Controller
             
             $headers=array('Access-Control-Allow-Origin'=>'*', 'Access-Control-Allow-Methods'=>'GET, POST, PUT, DELETE', 'Access-Control-Allow-Headers'=>'X-Requested-With, Content-Type, X-Token-Auth, Authorization');
 
+            $persona = Persona::find($usuario[0]->id);
 
             $array = array(
             'res' => false,
             "id" => $usuario[0]->id,
             "usuario" => $usuario[0],
+            "persona" =>$persona[0],
             "api_token" => $update->api_token,
             'message' => 'bienvenido al json'
             );
