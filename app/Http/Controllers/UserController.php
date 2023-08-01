@@ -44,6 +44,7 @@ class UserController extends Controller
             $array = array(
             'res' => false,
             "id" => $usuario[0]->id,
+            "usuario" => $usuario[0],
             "api_token" => $update->api_token,
             'message' => 'bienvenido al json'
             );
