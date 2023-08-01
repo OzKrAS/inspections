@@ -109,8 +109,6 @@ class DonationCertificateController extends Controller
             $objeto->commercialValue = $det['commercialValue'];
             $objeto->save();
 
-            array_push( $donations_array, $objeto->id );
-
         }
 
         $array = array(
