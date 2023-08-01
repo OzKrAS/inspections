@@ -119,18 +119,11 @@ class ConfiscationCertificateController extends Controller
 
         $details = $request->data;
 
-        $array_preventivos1 = [];
-        $array_preventivos2 = [];
-        $array_preventivos3 = [];
-
         foreach ($details as $ep => $det) {
             $objeto = new DetConfiscationReasons();
             $objeto->id_confiscation = $confiscation->id;
             $objeto->name = $det['name'];
             $objeto->save();
-
-            array_push( $array_preventivos1, $objeto->id );
-            
         }
 
         $detailconfiscationt1 = $request->target;
@@ -145,11 +138,7 @@ class ConfiscationCertificateController extends Controller
             $objeto->presentation = $det['presentation'];
             $objeto->state = $det['state'];
             $objeto->weight = $det['weight'];
-
             $objeto->save();
-
-            array_push( $array_preventivos2, $objeto->id );
-
         }
         
         $detaildonationt2 = $request->target2;
@@ -163,16 +152,11 @@ class ConfiscationCertificateController extends Controller
             $objeto->element = $det['element'];
 
             $objeto->save();
-            array_push( $array_preventivos3, $objeto->id );
-
         }
 
         $array = array(
             'res' => true,
             'id' => $confiscation->id,
-            'ids1' => $array_preventivos1,
-            'ids2' => $array_preventivos2,
-            'ids3' => $array_preventivos3,
             'message' => 'Registro guardado exitosamente',
         );
         return response()->json($array, 201);
