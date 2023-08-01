@@ -108,7 +108,6 @@ class DonationCertificateController extends Controller
             $objeto->weight = $det['weight'];
             $objeto->commercialValue = $det['commercialValue'];
             $objeto->save();
-
         }
 
         $array = array(
