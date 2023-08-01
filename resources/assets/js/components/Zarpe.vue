@@ -3,7 +3,7 @@
     <!-- Breadcrumb -->
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
-      <div class="card">
+      <div class="card"  style="width: 100%">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fa fa-ship"></i>
           <strong class="lead">Inspección a Embarcación Pesquera - Zarpe</strong>
@@ -73,8 +73,9 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <!-- <div class="md-layout"> -->
-                <div class="md-layout">
-                  <div class="md-layout-item">
+                  <div class="md-layout">
+                    <div class="md-layout-item">
+                    <md-input v-model="form.user_id" type="hidden" />
                     <md-field md-clearable :class="getValidationClass('insNo')">
                       <label for="first-name">Inspección No. (Inspection)</label>
                       <md-input
@@ -1474,6 +1475,22 @@ export default {
             console.log(error);
           });
     },
+
+    getUser() {
+      let me = this;
+      var url =
+        "/user/getuser";
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.form.user_id = respuesta;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+
     selectBoats() {
       let me = this;
       var url = "/selectboats?type=0";
@@ -1484,6 +1501,7 @@ export default {
         console.log(error);
       });
     },
+
     selectDocks() {
       let me = this;
       var url = "/docks/selectDocks";
@@ -1696,6 +1714,7 @@ export default {
 
       axios
           .post("/zarpes/save", {
+            'user_id' : this.form.user_id,
             insNo: this.form.insNo.toUpperCase(),
             radioCall: this.form.radioCall.toUpperCase(),
             idOmi: this.form.idOmi.toUpperCase(),
@@ -2036,6 +2055,7 @@ Por la AUNAP,`, 30, 125, {align: 'justify', lineHeightFactor: 1, maxWidth: 160})
   },
 
   mounted() {
+    this.getUser();
     this.listData();
     this.selectRegion();
     this.selectPorts();

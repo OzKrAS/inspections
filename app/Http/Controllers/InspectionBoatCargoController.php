@@ -16,7 +16,8 @@ class InspectionBoatCargoController extends Controller
 
         //        ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as nameDock,docks.id, docks.name,docks.arrival,docks.zarpe,docks.id_port,
         // ports.name as namePort")
-        $inspections = InspectionBoatCargo::join('flags','inspection_boat_cargos.id_flag','=','flags.id')
+        if( auth()->user()->idrol == 1){
+            $inspections = InspectionBoatCargo::join('flags','inspection_boat_cargos.id_flag','=','flags.id')
             ->join('docks','inspection_boat_cargos.id_port','=','docks.id')
             ->join('docks as d','inspection_boat_cargos.id_portZarpe','=','d.id')
             ->join('docks as dd','inspection_boat_cargos.id_portDisemb','=','dd.id')
@@ -45,11 +46,44 @@ class InspectionBoatCargoController extends Controller
                      inspection_boat_cargos.id_portZarpe,
                      inspection_boat_cargos.id_portDisemb,
                      inspection_boat_cargos.id_flag,inspection_boat_cargos.id_flagDonor,flags.name as nameFlag",
-                     
             )
 
             ->paginate(999999);
-
+        }
+        else {
+            $inspections = InspectionBoatCargo::join('flags','inspection_boat_cargos.id_flag','=','flags.id')
+            ->join('docks','inspection_boat_cargos.id_port','=','docks.id')
+            ->join('docks as d','inspection_boat_cargos.id_portZarpe','=','d.id')
+            ->join('docks as dd','inspection_boat_cargos.id_portDisemb','=','dd.id')
+            ->join('ports','docks.id_port','=','ports.id')
+            ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as portTrans,CONCAT(ports.name, ' - ', d.name) as portZarpe,CONCAT(ports.name, ' - ', d.name) as portZarpe,CONCAT(ports.name, ' - ', dd.name) as portDisemb,inspection_boat_cargos.id,
+                     inspection_boat_cargos.place,
+                     inspection_boat_cargos.noForm,
+                     inspection_boat_cargos.businessColombia,
+                     inspection_boat_cargos.fullCargo,
+                     inspection_boat_cargos.nameBoatCargo,
+                     inspection_boat_cargos.nameBoat,
+                     inspection_boat_cargos.noIdOmi,
+                     inspection_boat_cargos.placeTransfer,
+                     inspection_boat_cargos.areasCapture,
+                     inspection_boat_cargos.shapeProduct,
+                     inspection_boat_cargos.amount,
+                     inspection_boat_cargos.nameOfficial,
+                     inspection_boat_cargos.nameCaptain,
+                     inspection_boat_cargos.nameBusiness,
+                     inspection_boat_cargos.date,
+                     inspection_boat_cargos.dateTransfer,
+                     inspection_boat_cargos.notification,
+                     inspection_boat_cargos.observation,
+                     inspection_boat_cargos.areaOperation,                     
+                     inspection_boat_cargos.id_port,
+                     inspection_boat_cargos.id_portZarpe,
+                     inspection_boat_cargos.id_portDisemb,
+                     inspection_boat_cargos.id_flag,inspection_boat_cargos.id_flagDonor,flags.name as nameFlag",
+            )
+            ->where('inspection_boat_cargos.user_id', '=', auth()->user()->id)
+            ->paginate(999999);
+        }
         return [
             'inspections' => $inspections
         ];
@@ -58,7 +92,7 @@ class InspectionBoatCargoController extends Controller
     {
         // if (!$request->ajax()) return redirect('/');
         $inspections = new InspectionBoatCargo();
-        $inspections->user_id = $request->user_id;
+        $inspections->user_id = $request->id;
 
         $inspections->place = $request->place;
         $inspections->noForm = $request->noForm;
@@ -89,6 +123,9 @@ class InspectionBoatCargoController extends Controller
         $inspections->save();
 
         $detailinspection = $request->data;
+
+        $array_carga = [];
+
         foreach($detailinspection as $ep=>$det){
             $objeto= new DetailInspectionBoat();
             $objeto->id_inspection = $inspections->id;
@@ -103,12 +140,14 @@ class InspectionBoatCargoController extends Controller
             $objeto->shapeProduct= $det['shapeProduct'];
             $objeto->amount= $det['amount'];
             $objeto->save();
+            array_push( $array_carga, $objeto->id );
+
         }
 
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente',
-            'inspection' => $inspections
+            'ids' => $array_carga
         );
 
         return response()->json($array,201);

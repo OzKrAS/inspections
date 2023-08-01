@@ -26,7 +26,8 @@ class ArrivalController extends Controller
                 DB::raw('CONCAT(ports.name, " / ", docks.name) as fullDockName')
             )->toSql();
 
-        $arrivals = Arrival::join('regions', 'arrivals.id_region', '=', 'regions.id')
+        if(  auth()->user()->idrol == 1 ){
+            $arrivals = Arrival::join('regions', 'arrivals.id_region', '=', 'regions.id')
             ->join('docks', 'arrivals.id_port', '=', 'docks.id')
             ->join('ports', 'docks.id_port', '=', 'ports.id')
 
@@ -111,6 +112,94 @@ class ArrivalController extends Controller
 
         // arrivals.id_portArrival,portsarrival.name as portsarrivalname -- /con este llamado se duplican los resultados
         // arrivals.id_portArrival,portA.name as portArrival
+        }else {
+            $arrivals = Arrival::join('regions', 'arrivals.id_region', '=', 'regions.id')
+            ->join('docks', 'arrivals.id_port', '=', 'docks.id')
+            ->join('ports', 'docks.id_port', '=', 'ports.id')
+
+            // ->leftJoin('ports as portsarrival','arrivals.id_portArrival','=','ports.id')
+            // -- /con este llamado se duplican los resultados
+
+            ->join('flags', 'arrivals.id_flag', '=', 'flags.id')
+            ->join('nationalities', 'arrivals.id_nationality', '=', 'nationalities.id')
+            ->join('auto_fishers', 'arrivals.id_zoneAutoFisher', '=', 'auto_fishers.id')
+            // ->join('fishery_authorizeds','arrivals.id_fisheryAuthorized','=','fishery_authorizeds.id') 
+            ->join('companies', 'arrivals.id_company', '=', 'companies.id')
+            ->join('orops', 'arrivals.id_orop', '=', 'orops.id')
+            ->join('fishing_gear_materials', 'arrivals.id_material', '=', 'fishing_gear_materials.id')
+            ->join(DB::raw("($docks) as port_zarpe"), function($join){
+                $join->on('arrivals.id_portZarpe', '=', 'port_zarpe.id');
+            })
+            ->join(DB::raw("($docks) as port_arrival"), function($join){
+                $join->on('arrivals.id_portArrival', '=', 'port_arrival.id');
+            })
+            ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as namePlace,
+                    arrivals.id,
+                    arrivals.insNo,
+                    arrivals.radioCall,
+                    arrivals.noResolution,
+                    arrivals.nameBoat,
+                    arrivals.enrollment,
+                    arrivals.noPatent,
+                    arrivals.eyeMesh,
+                    arrivals.netWidth,
+                    arrivals.eyeFlake,
+                    arrivals.typeHook,
+                    arrivals.longNet,
+                    arrivals.materialArt,
+                    arrivals.equipDevi,
+                    arrivals.captain,
+                    arrivals.noOmi,
+                    arrivals.totalLongline,
+                    arrivals.legalRepre,
+                    arrivals.noAllCrew,
+                    arrivals.noCrewForeign,
+                    arrivals.noCrewNational,
+                    arrivals.idOmi,
+                    arrivals.other,
+                    arrivals.noDays,
+                    arrivals.noAllHauls,
+                    arrivals.noHaulsNacional,
+                    arrivals.noHaulsInter,
+                    arrivals.landedWeight,
+                    arrivals.observation,
+                    arrivals.notification,
+                    arrivals.finalityArrival,
+                    arrivals.workDone,
+                    arrivals.locationSystem,
+                    arrivals.inspectorConclusions,
+                    arrivals.additionalComments,
+                    arrivals.dateIns,
+                    arrivals.dateScale,
+                    arrivals.dateZarpe,
+                    arrivals.dateLatestArrival,
+                    arrivals.dateValidityPat,
+                    arrivals.date,
+                    arrivals.dateValidity,
+                    arrivals.stateRectorPort,
+                    arrivals.observationGeneral,
+                    arrivals.id_portArrival,
+                    arrivals.id_portZarpe,
+                    docks.id as idDock,
+                    CONCAT(ports.name,' / ', docks.name) as nameDock,
+                    arrivals.id_region,regions.name as nameReg,
+                    arrivals.id_port,
+                    ports.name as namePort,
+                    arrivals.id_flag,flags.name as nameFlag,
+                    arrivals.id_material,fishing_gear_materials.name as nameMaterial,
+                    arrivals.id_nationality,nationalities.name as nameNationality,
+                    arrivals.id_zoneAutoFisher,auto_fishers.name as nameZoneAutoFisher,
+                    arrivals.id_company,companies.name as nameCompany,
+                    arrivals.id_orop,orops.name as nameOrop,
+                    port_zarpe.fullDockName as nameportZarpe,
+                    port_arrival.fullDockName as nameportArrival"
+            )
+            ->where('arrivals.user_id', auth()->user()->id)
+            ->paginate(9999999999999999999999999);
+
+        // arrivals.id_portArrival,portsarrival.name as portsarrivalname -- /con este llamado se duplican los resultados
+        // arrivals.id_portArrival,portA.name as portArrival
+        }
         return [
             'arrivals' => $arrivals
         ];
@@ -121,7 +210,7 @@ class ArrivalController extends Controller
         try {
             DB::beginTransaction();
             $arrivals = new Arrival();
-            $arrivals->user_id = $request->user_id;
+            $arrivals->user_id = auth()->user()->id;
             $arrivals->insNo = $request->insNo;
             $arrivals->radioCall = $request->radioCall;
             $arrivals->noResolution = $request->noResolution;

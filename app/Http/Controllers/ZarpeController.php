@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DetailFisherAutZarpe;
 use App\Dock;
 use App\Zarpe;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +21,8 @@ class ZarpeController extends Controller
                 DB::raw('CONCAT(ports.name, " / ", docks.name) as fullDockName')
             )->toSql();
 
-        $zarpes = Zarpe::join('municipalities', 'zarpes.id_municipalities', '=', 'municipalities.id')
+        if( auth()->user()->idrol == 1 ){
+            $zarpes = Zarpe::join('municipalities', 'zarpes.id_municipalities', '=', 'municipalities.id')
             ->join('regions', 'municipalities.id_region', '=', 'regions.id')
             ->join(DB::raw("({$docks}) as docksAndPorts"), function ($join) {
                 $join->on('zarpes.id_docks', '=', 'docksAndPorts.id');
@@ -87,6 +89,78 @@ class ZarpeController extends Controller
                     docksAndPorts.fullDockName as nameDock,
                     zarpes.id_boat"
             )->paginate(999999999);
+        }
+        else {
+            $zarpes = Zarpe::join('municipalities', 'zarpes.id_municipalities', '=', 'municipalities.id')
+            ->join('regions', 'municipalities.id_region', '=', 'regions.id')
+            ->join(DB::raw("({$docks}) as docksAndPorts"), function ($join) {
+                $join->on('zarpes.id_docks', '=', 'docksAndPorts.id');
+            })
+            ->join('docks', 'zarpes.id_docks', '=', 'docks.id')
+            ->join(DB::raw("($docks) as port_zarpe"), function($join){
+                $join->on('zarpes.id_portZarpe', '=', 'port_zarpe.id');
+            })
+            ->join(DB::raw("($docks) as port_arrival"), function($join){
+                $join->on('zarpes.id_portArrival', '=', 'port_arrival.id');
+            })
+            ->join('ports', 'zarpes.id_portZarpe', '=', 'ports.id')
+            ->join('flags', 'zarpes.id_flag', '=', 'flags.id')
+            ->join('fishing_gear_materials', 'zarpes.id_material', '=', 'fishing_gear_materials.id')
+            ->join('nationalities', 'zarpes.id_nationality', '=', 'nationalities.id')
+            ->join('orops', 'zarpes.id_orop', '=', 'orops.id')
+            ->join('auto_fishers', 'zarpes.id_zoneAutoFisher', '=', 'auto_fishers.id')
+            ->join('companies', 'zarpes.id_company', '=', 'companies.id')
+            ->selectRaw("CONCAT(ports.name, ' - ', docks.name) as namePlace,zarpes.id,
+                    zarpes.insNo,
+                    zarpes.radioCall,
+                    zarpes.idOmi,
+                    zarpes.noResolution,
+                    zarpes.nameBoat,
+                    zarpes.enrollment,
+                    zarpes.noPatent,
+                    zarpes.representative,
+                    zarpes.eyeMesh,
+                    zarpes.netWidth,
+                    zarpes.eyeFlake,
+                    zarpes.typeHook,
+                    zarpes.longNet,
+                    zarpes.totalLongline,
+                    zarpes.other,
+                    zarpes.equipDevi,
+                    zarpes.captain,
+                    zarpes.observation,
+                    zarpes.observationGeneral,
+                    zarpes.conclusions,
+                    zarpes.comments,
+                    zarpes.dateIns,
+                    zarpes.dateZarpe,
+                    zarpes.dateResolution,
+                    zarpes.dateValid,
+                    zarpes.dateLatestArrival,
+                    zarpes.dateValidityPat,
+                    zarpes.notification,
+                    zarpes.finalityZarpe,
+                    zarpes.national,
+                    zarpes.autorization,
+                    zarpes.id_portZarpe,
+                    zarpes.id_portArrival,
+                    zarpes.id_municipalities,
+                    CONCAT(municipalities.name, ' ', regions.name) as nameReg,
+                    zarpes.id_docks, docks.name as namePort,
+                    zarpes.id_flag,flags.name as nameFlag,
+                    zarpes.id_material,fishing_gear_materials.name as nameMaterial,
+                    zarpes.id_nationality,nationalities.name as nameNationality,
+                    zarpes.id_orop,orops.name as nameOrop,
+                    zarpes.id_zoneAutoFisher,auto_fishers.name as nameZoneAutoFisher,
+                    zarpes.id_company,companies.name as nameCompany,
+                    port_zarpe.fullDockName as nameportZarpe,
+                    port_arrival.fullDockName as nameportArrival,
+                    docksAndPorts.fullDockName as nameDock,
+                    zarpes.id_boat"
+            )
+            ->where('zarpes.user_id', '=', auth()->user()->id)
+            ->paginate(999999999);
+        }
 
         return [
             'zarpes' => $zarpes
@@ -95,10 +169,11 @@ class ZarpeController extends Controller
 
     public function store(Request $request)
     {
+
         // if (!$request->ajax()) return redirect('/');
+
         $zarpes = new Zarpe();
         $zarpes->user_id = $request->user_id;
-
         $zarpes->insNo = $request->insNo;
         $zarpes->radioCall = $request->radioCall;
         $zarpes->idOmi = $request->idOmi;

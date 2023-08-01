@@ -15,7 +15,8 @@ class CertificationDisembTunaController extends Controller
     {
         if (!$request->ajax()) return redirect('/');
         
-        $tunas = CertificationDisembTuna::join('companies','certification_disemb_tunas.id_company','=','companies.id') 
+        if( auth()->user()->idrol == 1 ){
+            $tunas = CertificationDisembTuna::join('companies','certification_disemb_tunas.id_company','=','companies.id') 
             ->join('ports','certification_disemb_tunas.id_port','=','ports.id') 
             ->join('flags','certification_disemb_tunas.id_flag','=','flags.id') 
             ->select('certification_disemb_tunas.id',
@@ -32,6 +33,27 @@ class CertificationDisembTunaController extends Controller
                      
             )
             ->paginate(99999999);
+        }
+        else {
+            $tunas = CertificationDisembTuna::join('companies','certification_disemb_tunas.id_company','=','companies.id') 
+            ->join('ports','certification_disemb_tunas.id_port','=','ports.id') 
+            ->join('flags','certification_disemb_tunas.id_flag','=','flags.id') 
+            ->select('certification_disemb_tunas.id',
+                     'certification_disemb_tunas.nameBoat',
+                     'certification_disemb_tunas.ZoneFisher',
+                     'certification_disemb_tunas.date',
+                     'certification_disemb_tunas.dateBeginningFaena',
+                     'certification_disemb_tunas.dateEndFaena',
+                     'certification_disemb_tunas.observation',
+                                    
+                     'certification_disemb_tunas.id_company','companies.name as nameCompany',
+                     'certification_disemb_tunas.id_port','ports.name as namePort',
+                     'certification_disemb_tunas.id_flag','flags.name as nameFlag',
+                     
+            )
+            ->where('certification_disemb_tunas.user_id', '=', auth()->user()->id)
+            ->paginate(99999999);
+        }
 
         return [     
             'tunas' => $tunas
@@ -41,7 +63,7 @@ class CertificationDisembTunaController extends Controller
     {
         // if (!$request->ajax()) return redirect('/');
         $tunas = new CertificationDisembTuna();
-        $tunas->user_id = $request->user_id;
+        $tunas->user_id = auth()->user()->id;
         $tunas->nameBoat = $request->nameBoat;
         $tunas->ZoneFisher = $request->ZoneFisher;
         $tunas->date = $request->date;

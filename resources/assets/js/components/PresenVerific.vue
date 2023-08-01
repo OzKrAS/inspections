@@ -3,7 +3,7 @@
     <!-- Breadcrumb -->
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
-      <div class="card">
+      <div class="card"  style="width: 100%">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
           <strong class="lead">Verificación Presencia del Equipo de Rescate de Delfines Abordo de Barcos Atuneros de Cerco</strong>
@@ -55,10 +55,13 @@
           </div>
         </template>
         <template v-else-if="listado==0">
+
           <div class="card-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
+                  <md-input v-model="form.user_id" type="hidden" />
+
                   <!-- <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('nameShip')">
                         <label for="first-name">Nombre de la Embarcación (Ship Name)</label>
@@ -851,6 +854,21 @@ export default {
       this.regFot = null;
       this.observation = null;
     },
+    getUser() {
+      let me = this;
+      var url =
+        "/user/getuser";
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.form.user_id = respuesta;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+
     listData() {
       let me = this;
       var url =
@@ -910,7 +928,7 @@ export default {
       let me = this;
       axios
         .post("/presenVerifics/save", {
-
+          user_id : this.form.user_id,
           nameShip: this.arrayBt.nameBoat,
           cruise: this.form.cruise,
           nameFish: this.form.nameFish.toUpperCase(),
@@ -919,6 +937,7 @@ export default {
           dateDesemb: this.form.dateDesemb,
           'id_flag': this.arrayFg.id,
           'target':this.arrayTarget,
+          'user_id': this.form.user_id
         })
         .then(function(response) {
           me.hideForm();
@@ -1064,6 +1083,7 @@ export default {
   },
 
   mounted() {
+    this.getUser();
     this.selectBoats();
     this.listData();
     this.selectFlag();

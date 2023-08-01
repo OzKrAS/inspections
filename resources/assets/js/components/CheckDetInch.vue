@@ -3,7 +3,7 @@
     <!-- Breadcrumb -->
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
-      <div class="card">
+      <div class="card"  style="width: 100%">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
           <strong class="lead">Verificación DETs 71 Pulgadas.</strong>          
@@ -105,6 +105,7 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp; -->
                   <div class="md-layout-item">
+                  <md-input v-model="form.user_id" type="hidden" />
                     <md-field md-clearable :class="getValidationClass('official')">
                       <label for="first-name">Funcionario (Official)</label>
                       <md-input
@@ -1168,6 +1169,21 @@ export default {
        this.arrayDetsAct = [];
     },
 
+    getUser() {
+      let me = this;
+      var url =
+        "/user/getuser";
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.form.user_id = respuesta;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+
     showUpdate(data = []) {
       let me = this;
       this.arrayDetsAct = [];
@@ -1305,7 +1321,8 @@ export default {
       let me = this;
       axios
         .post("/checkDetInchs/save", {
-    
+          'user_id': this.form.user_id,
+  
         office: this.office.toUpperCase(),
         official: this.form.official.toUpperCase(),
         boat: this.form.boat.toUpperCase(),
@@ -1636,6 +1653,7 @@ export default {
   },
 
   mounted() {
+    this.getUser();
     this.selectBoats();
     this.listData();
     this.selectCompanies();  

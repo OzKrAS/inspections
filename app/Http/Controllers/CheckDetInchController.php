@@ -15,7 +15,8 @@ class CheckDetInchController extends Controller
     {
         if (!$request->ajax()) return redirect('/');
         
-        $CheckDetInchs = CheckDetInch::join('companies','check_det_inches.id_company','=','companies.id')
+        if( auth()->user()->idrol == 1){
+            $CheckDetInchs = CheckDetInch::join('companies','check_det_inches.id_company','=','companies.id')
             ->join('regionals','check_det_inches.id_regional','=','regionals.id')
             ->select('check_det_inches.id',
                      'check_det_inches.office',
@@ -43,6 +44,37 @@ class CheckDetInchController extends Controller
             )
         
             ->paginate(9999999999999999999999999);
+        }
+        else {
+            $CheckDetInchs = CheckDetInch::join('companies','check_det_inches.id_company','=','companies.id')
+            ->join('regionals','check_det_inches.id_regional','=','regionals.id')
+            ->select('check_det_inches.id',
+                     'check_det_inches.office',
+                     'check_det_inches.official',
+                     'check_det_inches.boat',
+                     'check_det_inches.enrollment',
+                    //  'check_det_inches.outhFhisher',
+                     'check_det_inches.fishLicense',
+                     'check_det_inches.owner',
+                     'check_det_inches.fishCaptain',
+                     'check_det_inches.location',
+                     'check_det_inches.observation',
+                     'check_det_inches.date',
+
+                     'check_det_inches.flapMeshSize',
+                     'check_det_inches.angleDet',
+                     'check_det_inches.typeDet',
+                     'check_det_inches.materialDet',
+                     'check_det_inches.exit',
+                     'check_det_inches.float',
+                     
+                     'check_det_inches.id_company','companies.name as nameCompany',
+                     'check_det_inches.id_regional','regionals.name as nameRegional',
+                     
+            )
+            ->where('check_det_inches.user_id', '=', auth()->user()->id)
+            ->paginate(9999999999999999999999999);
+        }
 
         return [     
             'CheckDetInchs' => $CheckDetInchs
@@ -52,7 +84,7 @@ class CheckDetInchController extends Controller
     {
         // if (!$request->ajax()) return redirect('/');
         $CheckDetInchs = new CheckDetInch();
-        $CheckDetInchs->user_id = $request->user_id;
+        $CheckDetInchs->user_id = auth()->user()->id;
 
         $CheckDetInchs->office = $request->office;
         $CheckDetInchs->official = $request->official;

@@ -3,7 +3,7 @@
     <!-- Breadcrumb -->
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
-      <div class="card">
+      <div class="card"  style="width: 100%">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
           <strong class="lead">Formato Inspección Embarcación de Carga</strong>
@@ -53,6 +53,7 @@
           </div>
         </template>
         <template v-else-if="listado==0">
+          
           <div class="card-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
@@ -60,6 +61,7 @@
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noForm')">
                       <label for="first-name" class="">No. Formulario (Form Number)</label>
+                      <md-input type="hidden" v-model="form.user_id" />
                       <md-input
                           class="mt-3"
                           name="first-name"
@@ -1069,6 +1071,18 @@ export default {
         console.log(error);
       });
     },
+
+    getUser(){
+      let me = this;
+      var url = "/user/getuser";
+      axios.get(url).then(function (response) {
+        var respuesta = response;
+        form.user_id = respuesta;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+
     toString() {
       this.toDate();
       this.dynamicByModel =
@@ -1326,7 +1340,8 @@ export default {
 
       await axios
           .post("/inspectionBoatCargo/save", {
-
+            
+          'user_id': this.form.user_id,
             place: this.arrayReg.namePlace,
             date: this.form.date,
             noForm: this.form.noForm.toUpperCase(),
@@ -1514,6 +1529,7 @@ export default {
     this.selectPort();
     this.selectFlag();
     this.getCommonName();
+    this.getUser();
   }
 };
 </script>

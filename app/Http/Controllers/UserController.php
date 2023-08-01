@@ -305,4 +305,8 @@ class UserController extends Controller
         $file = File::where('fileable_id', '=', auth()->user()->id)->get();
         return storage_path('app/file/'.$file[0]->name);
     }
+
+    public function getuser(){
+        return auth()->user()->id;
+    }
 }

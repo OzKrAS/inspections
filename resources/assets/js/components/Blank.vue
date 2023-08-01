@@ -3,7 +3,7 @@
     <!-- Breadcrumb -->
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
-      <div class="card">
+      <div class="card"  style="width: 100%">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
           <strong class="lead">Gestión de Regiones</strong>          

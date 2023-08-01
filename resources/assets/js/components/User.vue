@@ -245,7 +245,7 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="email-input">Role</label>
+                <label class="col-md-3 form-control-label" for="email-input">Rol</label>
                 <div class="col-md-9">
                   <select v-model="idrol" class="form-control">
                     <option value="0" disabled>Seleccione</option>
@@ -564,7 +564,7 @@ export default {
     //       "La password del usuario no puede estar vacía."
     //     );
       if (this.idrol == 0)
-        this.errorMostrarMsjPersona.push("Seleccione una Role.");
+        this.errorMostrarMsjPersona.push("Seleccione un Rol.");
       if (this.errorMostrarMsjPersona.length) this.errorPersona = 1;
 
       return this.errorPersona;

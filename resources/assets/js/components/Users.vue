@@ -3,7 +3,7 @@
     <!-- Breadcrumb -->
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
-      <div class="card">
+      <div class="card"  style="width: 100%">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fa fa-ship"></i>
           <strong class="lead">Gestión de usuarios</strong>
@@ -254,7 +254,7 @@ export default {
       //       "La password del usuario no puede estar vacía."
       //     );
       if (this.idrol == 0)
-        this.errorMostrarMsjPersona.push("Seleccione una Role.");
+        this.errorMostrarMsjPersona.push("Seleccione un Rol.");
       if (this.errorMostrarMsjPersona.length) this.errorPersona = 1;
 
       return this.errorPersona;

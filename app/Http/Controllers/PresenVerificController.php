@@ -21,19 +21,34 @@ class PresenVerificController extends Controller
     {
         if (!$request->ajax()) return redirect('/');
 
-            $presenVerifics = PresenVerific::join('flags','presen_verifics.id_flag','=','flags.id')
-            ->select('presen_verifics.id',
-                     'presen_verifics.nameShip',
-                     'presen_verifics.cruise',
-                     'presen_verifics.nameFish',
-                     'presen_verifics.nameCaptain',
-                     'presen_verifics.dateZarpe',
-                     'presen_verifics.dateDesemb',
-                     
-                     'presen_verifics.id_flag','flags.name as nameFlag'
-            )
-        
-            ->paginate(9999999999999999999999999);
+            if( auth()->user()->idrol == 1){
+                $presenVerifics = PresenVerific::join('flags','presen_verifics.id_flag','=','flags.id')
+                ->select('presen_verifics.id',
+                        'presen_verifics.nameShip',
+                        'presen_verifics.cruise',
+                        'presen_verifics.nameFish',
+                        'presen_verifics.nameCaptain',
+                        'presen_verifics.dateZarpe',
+                        'presen_verifics.dateDesemb',
+                        'presen_verifics.id_flag','flags.name as nameFlag'
+                )
+            
+                ->paginate(9999999999999999999999999);
+            }
+            else {
+                $presenVerifics = PresenVerific::join('flags','presen_verifics.id_flag','=','flags.id')
+                ->select('presen_verifics.id',
+                        'presen_verifics.nameShip',
+                        'presen_verifics.cruise',
+                        'presen_verifics.nameFish',
+                        'presen_verifics.nameCaptain',
+                        'presen_verifics.dateZarpe',
+                        'presen_verifics.dateDesemb',
+                        'presen_verifics.id_flag','flags.name as nameFlag'
+                )
+                ->where('presen_verifics.user_id', '=', auth()->user()->id)
+                ->paginate(9999999999999999999999999);
+            }
         
         return [
             'presenVerifics' => $presenVerifics
@@ -70,10 +85,6 @@ class PresenVerificController extends Controller
             $objeto->save();
 
             array_push( $idsObj, $objeto->id );
-            // $file = new FileService();
-            // foreach($det['images'] as $img ){
-            //     $storedFiles = $this->fileService->store($img, $objeto->element, $objeto->id);
-            // }
         }
 
         // $presenVerifics->save();

@@ -6,7 +6,7 @@
             </ol>
             <div class="container-fluid">
                 <!-- Ejemplo de tabla Listado -->
-                <div class="card">
+                <div class="card"  style="width: 100%">
                     <div class="card-header">
                         <i class="fa fa-align-justify"></i> Roles
                     </div>

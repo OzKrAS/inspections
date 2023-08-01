@@ -13,7 +13,8 @@ class DonationCertificateController extends Controller
     {
         //  if (!$request->ajax()) return redirect('/');
 
-        $donations = DonationCertificate::join('regionals', 'donation_certificates.id_regional', '=', 'regionals.id')
+        if( auth()->user()->idrol == 1){
+            $donations = DonationCertificate::join('regionals', 'donation_certificates.id_regional', '=', 'regionals.id')
             ->select('donation_certificates.id',
                 'donation_certificates.noActa',
                 'donation_certificates.date',
@@ -36,7 +37,33 @@ class DonationCertificateController extends Controller
                      
             )
             ->paginate(9999999999999999999999999);
+        }
+        else {
+            $donations = DonationCertificate::join('regionals', 'donation_certificates.id_regional', '=', 'regionals.id')
+            ->select('donation_certificates.id',
+                'donation_certificates.noActa',
+                'donation_certificates.date',
+                'donation_certificates.nameOfficial',
+                'donation_certificates.noDocumentId1',
+                'donation_certificates.nameRepresentative',
+                'donation_certificates.noDocumentId2',
+                'donation_certificates.noPlateCertificate',
+                'donation_certificates.name',
+                'donation_certificates.legalStatus',
+                'donation_certificates.address',
+                'donation_certificates.representativeDonation',
+                'donation_certificates.identification',
+                'donation_certificates.municipality',
+                'donation_certificates.corregimiento',
+                'donation_certificates.place',
+                'donation_certificates.telephone',
 
+                'donation_certificates.id_regional', 'regionals.name as nameRegional',
+                     
+            )
+            ->where('donation_certificates.user_id', '=', auth()->user()->id)
+            ->paginate(9999999999999999999999999);
+        }
         return [
             'donations' => $donations
         ];
@@ -70,6 +97,8 @@ class DonationCertificateController extends Controller
 
         $detaildonation = $request->target;
         
+        $donations_array = [];
+
         foreach ($detaildonation as $ep => $det) {
             $objeto = new DetDonation();
             $objeto->id_donation = $donations->id;
@@ -81,11 +110,14 @@ class DonationCertificateController extends Controller
             $objeto->weight = $det['weight'];
             $objeto->commercialValue = $det['commercialValue'];
             $objeto->save();
+
+            array_push( $donations_array, $objeto->id );
+
         }
 
         $array = array(
             'res' => true,
-            'donation' => $donations->id,
+            'ids' => $donations_array,
             'message' => 'Registro guardado exitosamente',
         );
         return response()->json($array, 201);

@@ -14,7 +14,8 @@ class ConfiscationCertificateController extends Controller
     {
         if (!$request->ajax()) return redirect('/');
 
-        $confiscation = ConfiscationCertificate::join('regionals', 'confiscation_certificates.id_regional', '=', 'regionals.id')
+        if( auth()->user()->idrol == 1){
+            $confiscation = ConfiscationCertificate::join('regionals', 'confiscation_certificates.id_regional', '=', 'regionals.id')
             ->select('confiscation_certificates.id',
                 'confiscation_certificates.noActa',
                 'confiscation_certificates.departament',
@@ -44,6 +45,40 @@ class ConfiscationCertificateController extends Controller
                      
             )
             ->paginate(9999999999999999999999999);
+        }
+        else {
+            $confiscation = ConfiscationCertificate::join('regionals', 'confiscation_certificates.id_regional', '=', 'regionals.id')
+            ->select('confiscation_certificates.id',
+                'confiscation_certificates.noActa',
+                'confiscation_certificates.departament',
+                'confiscation_certificates.municipality',
+                //  'confiscation_certificates.nameCommon',
+                'confiscation_certificates.text4',
+                'confiscation_certificates.officialName',
+                'confiscation_certificates.documentIdOfficial',
+                'confiscation_certificates.representativeName',
+                'confiscation_certificates.documentIdRepresentative',
+                'confiscation_certificates.plateCertificate',
+                'confiscation_certificates.name',
+                'confiscation_certificates.documentIdOffender',
+                'confiscation_certificates.expeditionPlace',
+                'confiscation_certificates.homeAddress',
+                'confiscation_certificates.municipalityOffender',
+                'confiscation_certificates.corregimiento',
+                'confiscation_certificates.neighborhood',
+                'confiscation_certificates.telephone',
+                'confiscation_certificates.mobile',
+                'confiscation_certificates.email',
+                'confiscation_certificates.date',
+                'confiscation_certificates.dateExpedition',
+                'confiscation_certificates.observation',
+
+                'confiscation_certificates.id_regional', 'regionals.name as nameRegional',
+                     
+            )
+            ->where('confiscation_certificates.user_id', '=', auth()->user()->id)
+            ->paginate(9999999999999999999999999);
+        }
 
         return [
             'confiscation' => $confiscation
@@ -83,11 +118,19 @@ class ConfiscationCertificateController extends Controller
         $confiscation->save();
 
         $details = $request->data;
+
+        $array_preventivos1 = [];
+        $array_preventivos2 = [];
+        $array_preventivos3 = [];
+
         foreach ($details as $ep => $det) {
             $objeto = new DetConfiscationReasons();
             $objeto->id_confiscation = $confiscation->id;
             $objeto->name = $det['name'];
             $objeto->save();
+
+            array_push( $array_preventivos1, $objeto->id );
+            
         }
 
         $detailconfiscationt1 = $request->target;
@@ -104,6 +147,9 @@ class ConfiscationCertificateController extends Controller
             $objeto->weight = $det['weight'];
 
             $objeto->save();
+
+            array_push( $array_preventivos2, $objeto->id );
+
         }
         
         $detaildonationt2 = $request->target2;
@@ -117,11 +163,16 @@ class ConfiscationCertificateController extends Controller
             $objeto->element = $det['element'];
 
             $objeto->save();
+            array_push( $array_preventivos3, $objeto->id );
+
         }
 
         $array = array(
             'res' => true,
             'id' => $confiscation->id,
+            'ids1' => $array_preventivos1,
+            'ids2' => $array_preventivos2,
+            'ids3' => $array_preventivos3,
             'message' => 'Registro guardado exitosamente',
         );
         return response()->json($array, 201);

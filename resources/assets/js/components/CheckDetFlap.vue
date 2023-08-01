@@ -3,7 +3,7 @@
     <!-- Breadcrumb -->
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
-      <div class="card">
+      <div class="card"  style="width: 100%">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
           <strong class="lead">Verificación DET Doble Solapa</strong>
@@ -62,6 +62,8 @@
           <div class="card-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
+                <md-input v-model="form.user_id" type="hidden" />
+
                 <div class="md-layout">
 
 
@@ -1092,6 +1094,21 @@ export default {
       this.arrayRegl = {id: 0, name: ''};
     },
 
+    getUser() {
+      let me = this;
+      var url =
+        "/user/getuser";
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.form.user_id = respuesta;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
@@ -1220,7 +1237,7 @@ export default {
 
       axios
           .post("/checkDetFlaps/save", {
-
+            'user_id': this.form.user_id,
             office: this.office.toUpperCase(),
             official: this.form.official.toUpperCase(),
             boat: this.form.boat.toUpperCase(),
@@ -1591,6 +1608,7 @@ export default {
     }
   },
   mounted() {
+    this.getUser();
     this.selectBoats();
     this.listData();
     this.selectCompanies();

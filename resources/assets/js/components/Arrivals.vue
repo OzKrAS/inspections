@@ -3,7 +3,7 @@
     <!-- Breadcrumb -->
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
-      <div class="card">
+      <div class="card" style="width: 100%">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fa fa-ship"></i>
           <strong class="lead">Inspección a Embarcación Pesquera - Arribo</strong>
@@ -64,6 +64,7 @@
           <div class="card-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
+                <md-input v-model="form.user_id" type="hidden" />
                 <div class="md-layout">
                   <div class="md-layout-item md-size-65">
                     <md-field md-clearable :class="getValidationClass('insNo')">
@@ -2278,6 +2279,23 @@ export default {
         console.log(error);
       });
     },
+
+    getUser () {
+      let me = this;
+      var url =
+        "/user/getuser";
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.form.user_id = respuesta;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+
+
     showUpdate(data = []) {
       let me = this;
       this.arrayTargetAct = [];
@@ -2419,6 +2437,7 @@ export default {
 
       await axios
           .post("/arrivals/save", {
+            'user_id': this.form.user_id,
             insNo: this.form.insNo.toUpperCase(),
             radioCall: this.form.radioCall.toUpperCase(),
             noResolution: this.form.noResolution.toUpperCase(),
@@ -2841,6 +2860,7 @@ export default {
   },
 
   mounted() {
+    this.getUser();
     this.listData();
     this.selectRegion();
     this.selectPort();

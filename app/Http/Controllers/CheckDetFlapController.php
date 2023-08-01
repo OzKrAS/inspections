@@ -14,7 +14,8 @@ class CheckDetFlapController extends Controller
     public function index(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $checkDetFlaps = CheckDetFlap::join('companies','check_det_flaps.id_company','=','companies.id')
+        if( auth()->user()->idrol == 1 ){
+            $checkDetFlaps = CheckDetFlap::join('companies','check_det_flaps.id_company','=','companies.id')
             ->join('regionals','check_det_flaps.id_regional','=','regionals.id')
             ->select('check_det_flaps.id',
                      'check_det_flaps.office',
@@ -42,6 +43,37 @@ class CheckDetFlapController extends Controller
             )
         
             ->paginate(9999999999);
+        }
+        else {
+            $checkDetFlaps = CheckDetFlap::join('companies','check_det_flaps.id_company','=','companies.id')
+            ->join('regionals','check_det_flaps.id_regional','=','regionals.id')
+            ->select('check_det_flaps.id',
+                     'check_det_flaps.office',
+                     'check_det_flaps.official',
+                     'check_det_flaps.boat',
+                     'check_det_flaps.enrollment',
+                    //  'check_det_flaps.outhFhisher',
+                     'check_det_flaps.fishLicense',
+                     'check_det_flaps.owner',
+                     'check_det_flaps.fishCaptain',
+                     'check_det_flaps.location',
+                     'check_det_flaps.observation',
+                     'check_det_flaps.date',
+
+                     'check_det_flaps.flapMeshSize',
+                     'check_det_flaps.angleDet',
+                     'check_det_flaps.typeDet',
+                     'check_det_flaps.materialDet',
+                     'check_det_flaps.exit',
+                     'check_det_flaps.float',
+                     
+                     'check_det_flaps.id_company','companies.name as nameCompany',
+                     'check_det_flaps.id_regional','regionals.name as nameRegional',
+                     
+            )
+            ->where('check_det_flaps.user_id', '=', auth()->user()->id)
+            ->paginate(9999999999);
+        }
 
         return [     
             'checkDetFlaps' => $checkDetFlaps
@@ -52,7 +84,7 @@ class CheckDetFlapController extends Controller
         
        // if (!$request->ajax()) return redirect('/');
         $checkDetFlaps = new CheckDetFlap();
-        $checkDetFlaps->user_id = $request->user_id;
+        $checkDetFlaps->user_id = auth()->user()->id;
 
         $checkDetFlaps->office = $request->office;
         $checkDetFlaps->official = $request->official;

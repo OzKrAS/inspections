@@ -6,10 +6,9 @@
                     <span>Software Inspecciones</span>
                 </div>
                 <div class="sidebar-header text-center">
-                    <img class="img-avatar img-responsive img-rounded" style="width: 100px;" src="img/avatars/6.png" alt="User picture">
-                    {{-- <img class="img-avatar img-responsive img-rounded" style="width: 100px;" src="img/avatars/6.png" alt="User picture"> --}}
                     <div class="user-info">
                         <span class="user-name">
+                            {{ Auth::user()->nom }}<br> 
                             <strong>{{ Auth::user()->usuario }}</strong>
                         </span>
                         <span class="user-role">Administrator</span>

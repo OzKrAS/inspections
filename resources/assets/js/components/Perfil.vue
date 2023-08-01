@@ -14,9 +14,6 @@
                 <button class="btn btn-success btn-md" @click="abrirModal()"><i class="fa fa-key"></i> Actualizar
                   Contraseña</button>
               </div>
-
-              <img src="" id="imgperfil" class="img fluid rounded" style="width: 100px; height: 100px" />
-
               <div class="md-subhead">Actualice sus datos</div>
             </div>
 
@@ -73,107 +70,10 @@
               </div>
 
               <md-input v-model="form.usuario" type="hidden"></md-input> 
-
-              <file-component ref="fileComponent" max-file-size="5MB" fileable-type="Perfil" :fileable-id="form.usuario"></file-component>
-
-                <div class="collapse" id="collapseExample">
-                  <div class="card card-body">
-                    <div
-                        class="uploader"
-                        @dragenter="OnDragEnter"
-                        @dragleave="OnDragLeave"
-                        @dragover.prevent
-                        @drop="onDrop"
-                        :class="{ dragging: isDragging }"
-                    >
-                      <div class="upload-control" v-show="images.length">
-                        <!-- <label for="file">Anexar otra Imágen</label> -->
-                        <!-- <button @click="upload">Guardar Imágenes</button>
-                        <button @click="abrirList">Cancelar</button> -->
-                      </div>
-
-                      <div v-show="!images.length">
-                        <i class="fa fa-cloud-upload"></i>
-                        <p>Arrastra tu imagen de perfil</p>
-                        <div>O</div>
-                        <div class="file-input">
-                          <label for="file">Selecciona una Imágen Para tu Perfil</label>
-                          <input
-                              type="file"
-                              id="file"
-                              @change="onInputChange"
-                          />
-                        </div>
-                      </div>
-
-                      <div class="images-preview" v-show="images.length">
-                        <div
-                            class="img-wrapper"
-                            v-for="(image, index) in images"
-                            :key="index"
-                        >
-                          <img :src="image" :alt="`Image Uplaoder ${index}`"/>
-                          <button
-                              type="button"
-                              @click="eliminarImg(index)"
-                              class="btn btn-dark btn-sm"
-                          >
-                            <i class="material-icons Color4">delete</i>
-                          </button>
-                          <div class="details">
-                            <span class="name" v-text="files[index].name"></span>
-                            <span
-                                class="size"
-                                v-text="getFileSize(files[index].size)"
-                            ></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
             </div>
 
             <button type="submit" class="md-dense md- btn btn-primary" :disabled="sending"
               @click="actualizarPersona()">Actualizar</button>
-          </div>
-        </template>
-
-        <template v-else-if="listado == 0">
-          <div>
-            <button type="button" class="close" @click="abrirList" aria-label="Close">
-              <span aria-hidden="true">X</span>
-            </button>
-          </div>
-          <div class="uploader" @dragenter="OnDragEnter" @dragleave="OnDragLeave" @dragover.prevent @drop="onDrop"
-            :class="{ dragging: isDragging }">
-            <div class="upload-control" v-show="images.length">
-              <!-- <label for="file">Anexar otra Imágen</label> -->
-              <button @click="upload">Cambiar</button>
-              <button @click="abrirList">Cancelar</button>
-            </div>
-
-            <div v-show="!images.length">
-              <i class="fa fa-cloud-upload"></i>
-              <p>Arrastra tus imágenes aquí</p>
-              <div>O</div>
-              <div class="file-input">
-                <label for="file">Selecciona una Imágen</label>
-                <input type="file" id="file" @change="onInputChange" multiple>
-              </div>
-
-            </div>
-
-            <div class="images-preview" v-show="images.length">
-              <div class="img-wrapper" v-for="(image, index) in images" :key="index">
-                <img :src="image" :alt="`Image Uplaoder ${index}`">
-                <div class="details">
-                  <span class="name" v-text="files[index].name"></span>
-                  <span class="size" v-text="getFileSize(files[index].size)"></span>
-                </div>
-              </div>
-            </div>
           </div>
         </template>
       </div>

@@ -3,7 +3,7 @@
     <!-- Breadcrumb -->
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
-      <div class="card">
+      <div class="card"  style="width: 100%">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
           <strong class="lead">Acta de Decomiso Preventivo</strong>          
@@ -61,6 +61,8 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <div class="md-layout">
+                  <md-input v-model="form.user_id" type="hidden" />
+
                   <div class="md-layout-item ">
                     <md-field md-clearable :class="getValidationClass('noActa')">
                       <label for="first-name">No. Acta</label>
@@ -1384,6 +1386,21 @@ export default {
       this.arrayRegl = {id:0, name:''};
     },
 
+    getUser() {
+      let me = this;
+      var url =
+        "/user/getuser";
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.form.user_id = respuesta;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+
     showUpdate(data = []) {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
@@ -1468,7 +1485,7 @@ export default {
       
       axios
         .post("/confiscationCertificates/save", {
-    
+          'user_id' : this.form.user_id,
       noActa : this.form.noActa.toUpperCase(),
       departament : this.form.departament.toUpperCase(),
       municipality : this.form.municipality.toUpperCase(),
@@ -1880,6 +1897,7 @@ liso, palangre, otro).`, 15, 165 );
   },
 
   mounted() {
+    this.getUser();
      this.getCommonName();
     this.listData();
     this.selectRegional();

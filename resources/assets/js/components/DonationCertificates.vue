@@ -3,7 +3,7 @@
     <!-- Breadcrumb -->
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
-      <div class="card">
+      <div class="card"  style="width: 100%">
         <div class="card-header">
           <i class="m-0 font-weight-bold text-primary fas fa-car"></i>
           <strong class="lead">Acta de Donación</strong>          
@@ -68,8 +68,10 @@
 Por tratarse de productos altamente perecederos y que no pueden ser comercializados, se procede a la donación de los mismos, en presencia de la autoridad competente.
 </label>
                   <div class="md-layout-item md-size-50">
+                    <md-input v-model="form.user_id" type="hidden" />
                     <md-field md-clearable :class="getValidationClass('noActa')">
                       <label for="first-name">No. Acta</label>
+
                       <md-input
                         name="first-name"
                         id="first-name"
@@ -1087,6 +1089,20 @@ export default {
       
       this.arrayRegl = {id:0, name:''};
     },
+    getUser() {
+      let me = this;
+      var url =
+        "/user/getuser";
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.form.user_id = respuesta;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
 
     showUpdate(data = []) {
       let me = this;
@@ -1174,7 +1190,7 @@ export default {
 
       axios
         .post("/donationCertificates/save", {
-    
+          'user_id' : this.form.user_id,
         noActa: this.form.noActa.toUpperCase(),
         date: this.form.date.toUpperCase(),
         nameOfficial: this.form.nameOfficial.toUpperCase(),
@@ -1504,6 +1520,7 @@ condiciones organolépticas del producto pesquero donado.`, 16, 266,{align: 'jus
   },
 
   mounted() {
+    this.getUser();
     this.getCommonName();
     this.listData();
     this.selectRegional();
