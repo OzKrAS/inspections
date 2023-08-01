@@ -97,8 +97,6 @@ class DonationCertificateController extends Controller
 
         $detaildonation = $request->target;
         
-        $donations_array = [];
-
         foreach ($detaildonation as $ep => $det) {
             $objeto = new DetDonation();
             $objeto->id_donation = $donations->id;
@@ -117,7 +115,7 @@ class DonationCertificateController extends Controller
 
         $array = array(
             'res' => true,
-            'ids' => $donations_array,
+            'id' => $donations->id,
             'message' => 'Registro guardado exitosamente',
         );
         return response()->json($array, 201);
