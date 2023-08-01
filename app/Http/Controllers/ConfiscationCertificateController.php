@@ -142,7 +142,6 @@ class ConfiscationCertificateController extends Controller
         }
         
         $detaildonationt2 = $request->target2;
-
         foreach ($detaildonationt2 as $ep => $det) {
             $objeto = new DetConfiscationTable2();
             $objeto->id_confiscation = $confiscation->id;
