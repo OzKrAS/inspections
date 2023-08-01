@@ -210,7 +210,7 @@ class ArrivalController extends Controller
         try {
             DB::beginTransaction();
             $arrivals = new Arrival();
-            $arrivals->user_id = auth()->user()->id;
+            $arrivals->user_id =  $request->user_id;
             $arrivals->insNo = $request->insNo;
             $arrivals->radioCall = $request->radioCall;
             $arrivals->noResolution = $request->noResolution;
