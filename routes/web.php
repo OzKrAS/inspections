@@ -249,6 +249,7 @@ Route::group(['middleware'=>['auth']],function(){
         // USUARIOS
         Route::get('/usuarios', 'UserController@listarusuarios');
         Route::get('/user', 'UserController@index');
+        Route::put('/user/actualizar', 'UserController@update');
         Route::post('/user/store', 'UserController@store');
         Route::post('/user/desactivar', 'UserController@desactivar');
         Route::get('/user/getuser', 'UserController@getuser');
@@ -260,10 +261,6 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/persona/actualizarPw', 'UserController@actualizarPw')->name('actualizarPw');
         Route::get('/persona/getImg', 'UserController@getImg')->name('getImg');
     });
-
-    Route::put('/user/actualizar', 'UserController@update');
-    Route::post('/massStore', 'FileController@massStore');
-
 });
 
 //Route::get('/home', 'HomeController@index')->name('home');

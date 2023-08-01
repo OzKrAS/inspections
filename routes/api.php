@@ -74,3 +74,5 @@ Route::prefix('file')->group(function(){
 });
 
 Route::post('/user', 'UserController@login');
+Route::put('/user/actualizar', 'UserController@update');
+
