@@ -221,7 +221,7 @@ class ZarpeController extends Controller
 
         $array = array(
             'res' => true,
-            'zarpe' => $zarpes,
+            'zarpe' => $zarpes->id,
             'message' => 'Registro guardado exitosamente'
         );
 

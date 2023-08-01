@@ -362,7 +362,7 @@ class ArrivalController extends Controller
 
             $array = array(
                 'res' => true,
-                'id' => $arrivals['id'],
+                'id' => $arrivals->id,
                 'message' => 'Registro guardado exitosamente'
             );
 
