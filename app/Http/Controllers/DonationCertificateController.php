@@ -97,6 +97,8 @@ class DonationCertificateController extends Controller
 
         $detaildonation = $request->target;
         
+        $array_ids = [];
+
         foreach ($detaildonation as $ep => $det) {
             $objeto = new DetDonation();
             $objeto->id_donation = $donations->id;
@@ -108,11 +110,12 @@ class DonationCertificateController extends Controller
             $objeto->weight = $det['weight'];
             $objeto->commercialValue = $det['commercialValue'];
             $objeto->save();
+            array_push($array_ids,$objeto->id);
         }
 
         $array = array(
             'res' => true,
-            'id' => $donations->id,
+            'id' => $array_ids,
             'message' => 'Registro guardado exitosamente',
         );
         return response()->json($array, 201);
