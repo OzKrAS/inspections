@@ -84,7 +84,7 @@ class CheckDetInchController extends Controller
     {
         // if (!$request->ajax()) return redirect('/');
         $CheckDetInchs = new CheckDetInch();
-        $CheckDetInchs->user_id = auth()->user()->id;
+        $CheckDetInchs->user_id = $request->user_id;
 
         $CheckDetInchs->office = $request->office;
         $CheckDetInchs->official = $request->official;
