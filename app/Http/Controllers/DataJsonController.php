@@ -34,6 +34,7 @@ class DataJsonController extends Controller
             ->select(
             'docks.id', 'docks.name','docks.arrival','docks.zarpe','docks.id_port',
             'ports.name as namePort')
+            ->where('docks.id', '<', '7')
             ->orderBy('docks.name', 'asc')->get();
         $municipalities = Municipality::join('regions','municipalities.id_region','=','regions.id')
         ->select('municipalities.id', 'municipalities.name', 'municipalities.id_region','regions.name as nameReg')->orderBy('municipalities.name', 'asc')->get();
