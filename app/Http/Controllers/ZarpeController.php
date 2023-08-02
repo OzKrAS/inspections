@@ -178,7 +178,10 @@ class ZarpeController extends Controller
         $zarpes->radioCall = $request->radioCall;
         $zarpes->idOmi = $request->idOmi;
         $zarpes->noResolution = $request->noResolution;
+        
         $zarpes->nameBoat = $request->nameBoat;
+        $boats = Boat::where('nameBoat', '=', $zarpes->nameBoat)->get();
+
         $zarpes->enrollment = $request->enrollment;
         $zarpes->noPatent = $request->noPatent;
         $zarpes->representative = $request->representative;
@@ -216,7 +219,7 @@ class ZarpeController extends Controller
         $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;
         $zarpes->id_company = $request->id_company;
         $zarpes->autorization = $request->autorization;
-        $zarpes->id_boat = $request->boatId;
+        $zarpes->id_boat = $boats[0]->id;
         $zarpes->save();
 
         $array = array(
