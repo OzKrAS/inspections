@@ -51,16 +51,20 @@ class FileService
 
             $result = [];
             foreach ($files as $file){
-
                 $uuid = Uuid::uuid4()->toString();
                 $filename = "{$uuid}.{$file->extension()}";
                 $pathToFile = "file/{$filename}";
+                
+                dd($file);
+
 
                 Storage::disk('local')
-                    ->put(
-                        $pathToFile,
-                        file_get_contents($file->getRealPath())
-                    );
+                ->put(
+                    $pathToFile,
+                    file_get_contents($file->getRealPath())
+                );
+
+                  
 
                 $result[] = $this->fileRepository->create([
                     'uuid' => $uuid,
