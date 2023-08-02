@@ -219,7 +219,7 @@ class ZarpeController extends Controller
         $zarpes->id_orop = $request->id_orop;
         $zarpes->id_zoneAutoFisher = $request->id_zoneAutoFisher;
         $zarpes->id_company = $request->id_company;
-        $zarpes->autorization = $request->autorization;
+        $zarpes->autorization = 1;
         $zarpes->id_boat = $boats[0]->id;
         $zarpes->save();
 
