@@ -6,6 +6,7 @@ use App\DetailFisherAutZarpe;
 use App\Dock;
 use App\Zarpe;
 use App\User;
+use App\Boat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
