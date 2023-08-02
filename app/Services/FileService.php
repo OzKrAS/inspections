@@ -55,16 +55,13 @@ class FileService
                 $filename = "{$uuid}.{$file->extension()}";
                 $pathToFile = "file/{$filename}";
                 
-                dd($file);
-
+                // dd($file);
 
                 Storage::disk('local')
                 ->put(
                     $pathToFile,
                     file_get_contents($file->getRealPath())
                 );
-
-                  
 
                 $result[] = $this->fileRepository->create([
                     'uuid' => $uuid,
