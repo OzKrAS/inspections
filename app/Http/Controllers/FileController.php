@@ -55,6 +55,26 @@ class FileController extends Controller
         }
     }
 
+
+    public function massStoreBase64(Request $request){
+
+        try {
+
+            $files = $request->input('files');
+            $fileableType = 'App\\'.$request->input('fileable_type');
+            $fileableId = $request->input('fileable_id');
+
+            $storedFiles = $this->fileService->massStoreBase64Files($files, $fileableType, $fileableId);
+
+            return response()->json($storedFiles);
+
+        }catch (\Exception $e){
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+        }
+    }
+
     public function delete(Request $request){
         try {
 

@@ -241,6 +241,7 @@ Route::group(['middleware'=>['auth']],function(){
 
         Route::prefix('file')->group(function(){
             Route::post('/massStore', 'FileController@massStore');
+            Route::post('/massStoreAsBase64', 'FileController@massStoreBase64');
             Route::post('/delete', 'FileController@delete');
             Route::get('/download/{id}', 'FileController@download');
             Route::get('/list/{fileableType}/{fileableId}', 'FileController@list');

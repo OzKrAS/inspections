@@ -81,6 +81,44 @@ class FileService
         }
     }
 
+
+    public function massStoreBase64Files($files, $fileableType, $fileableId){
+        try {
+
+            $result = [];
+            foreach ($files as $file){
+                $uuid = Uuid::uuid4()->toString();
+                $filename = "{$uuid}.png";
+                $pathToFile = "file/{$filename}";
+
+                Storage::disk('local')
+                    ->put(
+                        $pathToFile,
+                        base64_decode($file)
+                    );
+
+                $f = finfo_open();
+
+                $mimeType = finfo_buffer($f, base64_decode($file), FILEINFO_MIME_TYPE);
+
+                $result[] = $this->fileRepository->create([
+                    'uuid' => $uuid,
+                    'name' => $filename,
+                    'path' => $pathToFile,
+                    'mime_type' => $mimeType,
+                    'fileable_type' => $fileableType,
+                    'fileable_id' => $fileableId
+                ]);
+            }
+
+            return $result;
+
+        }catch (\Exception $e){
+            Log::error($e->getMessage());
+            throw new \Exception($e->getMessage());
+        }
+    }
+
     // get file by id
 
     public function getById($id)
