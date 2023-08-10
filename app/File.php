@@ -17,8 +17,8 @@ class file extends Model
         'name',
         'path',
         'mime_type',
-        'fileable_type',//nombre del modelo
-        'fileable_id'//id del modelo
+        'fileable_type',
+        'fileable_id'
     ];
 
     protected $dates = ['delete'];
