@@ -245,6 +245,7 @@ Route::group(['middleware'=>['auth']],function(){
             Route::post('/delete', 'FileController@delete');
             Route::get('/download/{id}', 'FileController@download');
             Route::get('/list/{fileableType}/{fileableId}', 'FileController@list');
+            Route::get('stream/{id}', 'FileController@stream');
         });
 
         // USUARIOS

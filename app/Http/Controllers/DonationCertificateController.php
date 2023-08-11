@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FileService;
 use Illuminate\Http\Request;
 use App\DonationCertificate;
 use App\Regional;
@@ -9,6 +10,13 @@ use App\DetDonation;
 
 class DonationCertificateController extends Controller
 {
+    private $fileService;
+
+    public function __construct(FileService $fileService)
+    {
+        $this->fileService = $fileService;
+    }
+
     public function index(Request $request)
     {
         //  if (!$request->ajax()) return redirect('/');
@@ -69,6 +77,9 @@ class DonationCertificateController extends Controller
         ];
     }
 
+    /**
+     * @throws \Exception
+     */
     public function store(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
@@ -110,6 +121,12 @@ class DonationCertificateController extends Controller
             $objeto->weight = $det['weight'];
             $objeto->commercialValue = $det['commercialValue'];
             $objeto->save();
+
+            if( isset($det['files']) ) {
+                $class = class_basename(DetDonation::class);
+                $this->fileService->massStoreBase64Files($det['files'], "App\\{$class}", $objeto->id);
+            };
+
             array_push($array_ids,$objeto->id);
         }
 
@@ -121,6 +138,9 @@ class DonationCertificateController extends Controller
         return response()->json($array, 201);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function update(Request $request)
     {
         // if (!$request->ajax()) return redirect('/');
@@ -147,17 +167,38 @@ class DonationCertificateController extends Controller
 
         $detaildonation = $request->target;
         foreach ($detaildonation as $ep => $det) {
-            $objeto = new DetDonation();
-            $objeto->id_donation = $donations->id;
-            $objeto->nameScientific = $det['nameScientific'];
-            $objeto->nameCommon = $det['nameCommon'];
-            $objeto->state = $det['state'];
-            $objeto->presentation = $det['presentation'];
-            $objeto->amount = $det['amount'];
-            $objeto->weight = $det['weight'];
-            $objeto->commercialValue = $det['commercialValue'];
+            if(!isset($det['id'])){
+                $objeto = new DetDonation();
+                $objeto->id_donation = $donations->id;
+                $objeto->nameScientific = $det['nameScientific'];
+                $objeto->nameCommon = $det['nameCommon'];
+                $objeto->state = $det['state'];
+                $objeto->presentation = $det['presentation'];
+                $objeto->amount = $det['amount'];
+                $objeto->weight = $det['weight'];
+                $objeto->commercialValue = $det['commercialValue'];
 
-            $objeto->save();
+                $objeto->save();
+
+                if( isset($det['files']) ) {
+                    $class = class_basename(DetDonation::class);
+                    $this->fileService->massStoreBase64Files($det['files'], "App\\{$class}", $objeto->id);
+                };
+            }else{
+                $objeto = DetDonation::findOrFail($det['id']);
+                if($det['deleted']){
+                    $objeto->delete();;
+                }else{
+                    $objeto->nameScientific = $det['nameScientific'];
+                    $objeto->nameCommon = $det['nameCommon'];
+                    $objeto->state = $det['state'];
+                    $objeto->presentation = $det['presentation'];
+                    $objeto->amount = $det['amount'];
+                    $objeto->weight = $det['weight'];
+                    $objeto->commercialValue = $det['commercialValue'];
+                    $objeto->save();
+                }
+            }
         }
 
         $array = array(
@@ -182,7 +223,9 @@ class DonationCertificateController extends Controller
     public function dataTable(Request $request)
     {
         $donations = DetDonation::select('id', 'id_donation', 'nameScientific', 'nameCommon', 'state', 'presentation', 'amount', 'weight', 'commercialValue')
-            ->where('id_donation', $request->id_Donation)->get();
+            ->where('id_donation', $request->id_Donation)
+            ->with('files')
+            ->get();
         return ['donation' => $donations];
     }
 }
