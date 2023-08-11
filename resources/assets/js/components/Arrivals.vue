@@ -283,8 +283,8 @@
                   <md-field>
                     <label class="text-muted">Faena Realizada En (Fishing Task Place)</label>
                     <md-select v-model="workDone" name="workDone" id="workDone" placeholder="Faena Realizada En">
-                      <md-option value="Mar Caribe colombiano">Mar Caribe colombiano</md-option>
-                      <md-option value="Pacífico colombiano">Pacífico colombiano</md-option>
+                      <md-option value="Mar caribe colombiano">Mar Caribe Colombiano</md-option>
+                      <md-option value="Pacífico Colombiano">Pacífico Colombiano</md-option>
                       <md-option value="OPO (atún, bandera nacional, jurisdicción CIAT)">OPO (atún, bandera nacional,
                         jurisdicción CIAT)
                       </md-option>
