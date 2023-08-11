@@ -6,10 +6,17 @@ use App\ConfiscationCertificate;
 use App\DetConfiscationReasons;
 use App\DetConfiscationTable1;
 use App\DetConfiscationTable2;
+use App\Services\FileService;
 use Illuminate\Http\Request;
 
 class ConfiscationCertificateController extends Controller
 {
+    private $fileService;
+    public function __construct(FileService $fileService)
+    {
+        $this->fileService = $fileService;
+    }
+
     public function index(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
@@ -41,7 +48,7 @@ class ConfiscationCertificateController extends Controller
                 'confiscation_certificates.dateExpedition',
                 'confiscation_certificates.observation',
 
-                'confiscation_certificates.id_regional', 'regionals.name as nameRegional',
+                'confiscation_certificates.id_regional', 'regionals.name as nameRegional'
                      
             )
             ->paginate(9999999999999999999999999);
@@ -73,7 +80,7 @@ class ConfiscationCertificateController extends Controller
                 'confiscation_certificates.dateExpedition',
                 'confiscation_certificates.observation',
 
-                'confiscation_certificates.id_regional', 'regionals.name as nameRegional',
+                'confiscation_certificates.id_regional', 'regionals.name as nameRegional'
                      
             )
             ->where('confiscation_certificates.user_id', '=', auth()->user()->id)
@@ -139,6 +146,10 @@ class ConfiscationCertificateController extends Controller
             $objeto->state = $det['state'];
             $objeto->weight = $det['weight'];
             $objeto->save();
+            if( isset($det['files']) ) {
+                $class = class_basename(DetConfiscationTable1::class);
+                $this->fileService->massStoreBase64Files($det['files'], "App\\{$class}", $objeto->id);
+            };
         }
         
         $detaildonationt2 = $request->target2;
@@ -193,18 +204,42 @@ class ConfiscationCertificateController extends Controller
 
         $detailconfiscationt1 = $request->target;
         foreach ($detailconfiscationt1 as $ep => $det) {
-            $objeto = new DetConfiscationTable1();
-            $objeto->id_confiscation = $confiscation->id;
-            $objeto->amount = $det['amount'];
-            $objeto->average = $det['average'];
-            $objeto->commercialValue = $det['commercialValue'];
-            $objeto->nameCommon = $det['nameCommon'];
-            $objeto->nameScientific = $det['nameScientific'];
-            $objeto->presentation = $det['presentation'];
-            $objeto->state = $det['state'];
-            $objeto->weight = $det['weight'];
+            if(!isset($det['id'])){
+                $objeto = new DetConfiscationTable1();
+                $objeto->id_confiscation = $confiscation->id;
+                $objeto->amount = $det['amount'];
+                $objeto->average = $det['average'];
+                $objeto->commercialValue = $det['commercialValue'];
+                $objeto->nameCommon = $det['nameCommon'];
+                $objeto->nameScientific = $det['nameScientific'];
+                $objeto->presentation = $det['presentation'];
+                $objeto->state = $det['state'];
+                $objeto->weight = $det['weight'];
 
-            $objeto->save();
+                $objeto->save();
+
+                if( isset($det['files']) ) {
+                    $class = class_basename(DetConfiscationTable1::class);
+                    $this->fileService->massStoreBase64Files($det['files'], "App\\{$class}", $objeto->id);
+                };
+
+            }else{
+                $objeto = DetConfiscationTable1::findOrFail($det['id']);
+                if($det['deleted']){
+                    $objeto->delete();
+                    continue;
+                }
+                $objeto->id_confiscation = $confiscation->id;
+                $objeto->amount = $det['amount'];
+                $objeto->average = $det['average'];
+                $objeto->commercialValue = $det['commercialValue'];
+                $objeto->nameCommon = $det['nameCommon'];
+                $objeto->nameScientific = $det['nameScientific'];
+                $objeto->presentation = $det['presentation'];
+                $objeto->state = $det['state'];
+                $objeto->weight = $det['weight'];
+                $objeto->save();
+            }
         }
         $detaildonationt2 = $request->target2;
         foreach ($detaildonationt2 as $ep => $det) {
@@ -240,6 +275,7 @@ class ConfiscationCertificateController extends Controller
     public function dataTable1(Request $request)
     {
         $confiscation = DetConfiscationTable1::select('id', 'id_confiscation', 'amount', 'average', 'commercialValue', 'nameCommon', 'nameScientific', 'presentation', 'state', 'weight')
+            ->with('files')
             ->where('id_confiscation', $request->id_Confiscation)->get();
         return ['confTable1' => $confiscation];
     }

@@ -103,6 +103,27 @@ class FileController extends Controller
         }
     }
 
+    public function stream($id){
+        try {
+            $fileInfo = $this->fileService->getFileInfo($id);
+            $stream = fopen('php://memory', 'r+');
+            fwrite($stream, $this->fileService->stream($id));
+            rewind($stream);
+            return response()->stream(function() use ($stream){
+                fpassthru($stream);
+                fclose($stream);
+            },200, [
+                'Content-Type' => $fileInfo['mime_type'],
+                'MIME-Type' => $fileInfo['mime_type'],
+                'content-disposition' => 'inline; filename="'.$fileInfo['name'].'"'
+            ]);
+         }catch (\Exception $e){
+             return response()->json([
+                 'message' => $e->getMessage()
+             ], 500);
+         }
+    }
+
     public function list($fileableType, $fileableId){
         try {
 
@@ -116,4 +137,5 @@ class FileController extends Controller
             ], 500);
         }
     }
+
 }

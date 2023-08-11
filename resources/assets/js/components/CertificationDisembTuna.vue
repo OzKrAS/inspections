@@ -132,7 +132,7 @@
                   <div class="md-layout-item">
                     <label class="text-muted">Zona de Pesca Autorizada (Fishing Zone)</label>
                     <multiselect v-model="arrayZoneAuto" :options="arrayZoneAutoFish"
-                      placeholder="Zona de Pesca Autorizada" :custom-label="nameWithZoneAutoFish" label="name"
+                      placeholder="Zona de Pesca Autorizada" label="name"
                       track-by="name">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
@@ -385,16 +385,12 @@ export default {
       arrayZoneAuto: { id: 0, name: '' },
       arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
-
       edo: 1,
       tipoAccion: 1,
       listado: 1,
       sending: false,
-
       arrayData: [],
       modal: 0,
-      tipoAccion: 0,
-
       arrayYellow: [],
       arrayBarrilete: [],
       arrayPatudo: [],
@@ -547,6 +543,7 @@ export default {
       this.form.dateBeginningFaena = null;
       this.form.dateEndFaena = null;
       this.arrayZoneAuto.id = null;
+      this.arrayZoneAuto.name = null;
       this.form.observation = null;
       this.arrayTarget = [];
       this.arrayTargetAct = [];
@@ -572,6 +569,7 @@ export default {
     },
 
     showUpdate(data = []) {
+      console.log(data);
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_disembTuna = data["id"]);
@@ -580,6 +578,7 @@ export default {
       this.form.dateBeginningFaena = data["dateBeginningFaena"];
       this.form.dateEndFaena = data["dateEndFaena"];
       this.arrayZoneAuto.id = data["ZoneFisher"];
+      this.arrayZoneAuto.name = data["nameZoneFisher"];
       this.form.observation = data["observation"];
 
       this.arrayPt.id = data["id_port"]; 5
@@ -727,7 +726,6 @@ export default {
           ZoneFisher: this.arrayZoneAuto.id,
           observation: this.form.observation.toUpperCase(),
           'target': this.arrayTargetAct,
-
           'id_port': this.arrayPt.id,
           'id_flag': this.arrayFg.id,
           'id_company': this.arrayComp.id,

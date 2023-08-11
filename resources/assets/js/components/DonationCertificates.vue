@@ -214,70 +214,10 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                    <p>
                      <file-component
                          ref="fileComponent"
-                         fileable-type="DonationCertificate"
-                         :fileable-id="id_donationCertificate"
-                         :accepted-file-types="['image/png', 'image/jpeg', 'image/gif']"
+                         :accepted-file-types="['image/png', 'image/jpeg']"
                          max-file-size="3MB"
                      ></file-component>
                       </p>
-                                   
-                    <div class="collapse" id="collapseExample">
-                      <div class="card card-body">
-                        <div
-                          class="uploader"
-                          @dragenter="OnDragEnter"
-                          @dragleave="OnDragLeave"
-                          @dragover.prevent
-                          @drop="onDrop"
-                          :class="{ dragging: isDragging }"
-                        >
-                          <div class="upload-control" v-show="images.length">
-                            <!-- <label for="file">Anexar otra Imágen</label> -->
-                            <!-- <button @click="upload">Guardar Imágenes</button>
-                            <button @click="abrirList">Cancelar</button> -->
-                          </div>
-
-                          <div v-show="!images.length">
-                            <i class="fa fa-cloud-upload"></i>
-                            <p>Arrastra tus imágenes aquí</p>
-                            <div>O</div>
-                            <div class="file-input">
-                              <label for="file">Selecciona una Imágen</label>
-                              <input
-                                type="file"
-                                id="file"
-                                @change="onInputChange"
-                                multiple
-                              />
-                            </div>
-                          </div>
-
-                          <div class="images-preview" v-show="images.length">
-                            <div
-                              class="img-wrapper"
-                              v-for="(image, index) in images"
-                              :key="index"
-                            >
-                              <img :src="image" :alt="`Image Uplaoder ${index}`" />
-                                <button
-                                  type="button"
-                                  @click="eliminarImg(index)"
-                                  class="btn btn-dark btn-sm"
-                                >
-                                  <i class="material-icons Color4">delete</i>
-                                </button>
-                              <div class="details">
-                                <span class="name" v-text="files[index].name"></span>
-                                <span
-                                  class="size"
-                                  v-text="getFileSize(files[index].size)"
-                                ></span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>                      
-                      </div>
-                    </div>        
                   <md-button
                     type="button"
                     class="md-dense md-raised md-primary"
@@ -301,7 +241,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                               </tr>
                             </thead>
                             <tbody v-if="arrayTarget.length">
-                              <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
+                              <tr v-for="(target,index) in arrayTarget" v-if="!target.deleted" :key="`target-${index}`">
                                 <td v-text="target.nameScientific"></td>
                                 <td v-text="target.nameCommon"></td>
                                 <td v-text="target.state"></td>
@@ -310,7 +250,15 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                                 <td v-text="target.weight"></td>
                                 <td v-text="target.commercialValue"></td>
                                 <td>
-                                  <div v-for="(target,index) in images" :key="`target-${index}`">
+                                  <div v-for="(file, index) in target.files" :key="file.uuid">
+                                    <span v-if="file.hasOwnProperty('uuid')" @click="stream(file.uuid)">
+                                      <md-icon>camera_alt</md-icon>
+                                      <span>{{ index + 1 }}</span>
+                                    </span>
+                                        <span v-else-if="typeof file === 'string'" @click="streamBase64(file)">
+                                      <md-icon>camera_alt</md-icon>
+                                      <span>{{ index + 1 }}</span>
+                                    </span>
                                   </div>
                                 </td>
                                 <td>                      
@@ -319,7 +267,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                                     class="btn btn-danger btn-sm"
                                     data-tooltip
                                     title="Eliminar"
-                                    @click="deleteDets(target)"
+                                    @click="deleteTarget(index)"
                                   >
                                     <i class="icon-trash"></i>
                                   </button>
@@ -695,7 +643,7 @@ import format from "date-fns/format";
     Vue.use(MdDatepicker);
     Vue.use(MdDialog);
     import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
-import FileComponent from "./common/FileComponent";
+    import FileComponent from "./common/BasicFileComponent.vue";
 
 export default {
 	mixins: [validationMixin],
@@ -754,7 +702,6 @@ export default {
       // pdf: 0,
 
       edo:1,
-      tipoAccion: 1,
       listado: 1,
       sending: false,
 
@@ -1035,6 +982,7 @@ export default {
         amount:this.amount,
         weight:this.weight,
         commercialValue:this.commercialValue,
+        files : this.$refs.fileComponent.getImagesAsBase64()
       });
       var total2 = me.arrayTargetAct.push({
         nameScientific:this.nameScientific.toUpperCase(),
@@ -1044,12 +992,17 @@ export default {
         amount:this.amount,
         weight:this.weight,
         commercialValue:this.commercialValue,
+        files : this.$refs.fileComponent.getImagesAsBase64()
       });
-      console.log("arrayTarget " + total1);
-      me.clearTarget();  
+      me.clearTarget();
+      this.$refs.fileComponent.removeFiles();
     },
     deleteTarget(index){
-       this.arrayTarget.splice(index,1);
+      if(this.arrayTarget[index].hasOwnProperty('id')){
+        this.arrayTarget[index]['deleted'] = true;
+      }else{
+        this.arrayTarget.splice(index,1);
+      }
     },
     clearTarget() {
       this.nameScientific = null;
@@ -1129,9 +1082,6 @@ export default {
       this.arrayRegl.id = data["id_regional"];
 	    this.arrayRegl.name = data["nameRegional"];
       this.dataTable();
-      this.$nextTick(async () => {
-        await this.$refs.fileComponent.list();
-      });
     },
     nameWithRegional ({ name }) {
             return `${name}`
@@ -1214,8 +1164,7 @@ export default {
         })
         .then(function(response) {
           me.arrayTargetAct= [];
-          me.id_donationCertificate = response.data.donation.id
-          me.$refs.fileComponent.uploadFiles();
+          me.id_donationCertificate = response.data.donation.id;
           me.hideForm();
           me.message("Guardado", "Guardo ");
           me.listData();
@@ -1249,12 +1198,11 @@ export default {
        
         'id_regional': this.arrayRegl.id,
 
-        'target': this.arrayTargetAct
+        'target': this.arrayTarget
         })
         .then(function(response) {
-          me.arrayTargetAct= [];
+          me.arrayTarget= [];
           me.hideForm();
-          me.$refs.fileComponent.uploadFiles();
           me.message("Actualizado", "Actualizó ");
           me.listData();
         })
@@ -1333,14 +1281,17 @@ export default {
     },
     dataTable(){
       let me = this;
-
-      var url = "/donationCertificates/dataTable?id_Donation="+this.id_donationCertificate;
+      const url = "/donationCertificates/dataTable?id_Donation="+this.id_donationCertificate;
       axios
         .get(url)
         .then(function(response) {
-          //console.log(response);
-          var respuesta = response.data;
-          me.arrayTarget = respuesta.donation;
+          const respuesta = response.data;
+          me.arrayTarget = respuesta.donation.map(item => {
+            return {
+              ...item,
+              deleted : false,
+            }
+          });
         })
         .catch(function(error) {
           console.log(error);
@@ -1516,6 +1467,29 @@ condiciones organolépticas del producto pesquero donado.`, 16, 266,{align: 'jus
           //  console.log(me.datos['id'] + " prueba de datos ID");       
             } );
     });
+    },
+    async stream(uuid){
+      const url = `/file/stream/${uuid}`;
+      const {data} = await  axios.get(url, {
+        responseType: "blob"
+      });
+      const blobUrl = URL.createObjectURL(data);
+      //window open as popup
+      window.open(blobUrl, "_blank", "width=800,height=600");
+    },
+    streamBase64(base64){
+      // stream base64string to browser
+      // convert base64 to blob
+      const byteString = atob(base64);
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      const blob = new Blob([ab], { type: "image/png" });
+      const blobUrl = URL.createObjectURL(blob);
+      //window open as popup
+      window.open(blobUrl, "_blank", "width=800,height=600");
     }
   },
 
@@ -1538,11 +1512,6 @@ condiciones organolépticas del producto pesquero donado.`, 16, 266,{align: 'jus
   border: 3px dashed #fff;
   font-size: 20px;
   position: relative;
-}
-.uploader:dragging {
-  background: #fff;
-  color: #2196f3;
-  border: 3px dashed #2196f3;
 }
 
 i.fa.fa-cloud-upload {

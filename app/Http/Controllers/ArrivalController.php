@@ -19,7 +19,6 @@ class ArrivalController extends Controller
     {
         if (!$request->ajax()) return redirect('/');
 
-
         $docks = Dock::join('ports', 'docks.id_port', '=', 'ports.id')
             ->select(
                 'docks.id',
@@ -27,7 +26,8 @@ class ArrivalController extends Controller
             )->toSql();
 
         if(  auth()->user()->idrol == 1 ){
-            $arrivals = Arrival::join('regions', 'arrivals.id_region', '=', 'regions.id')
+            $arrivals = Arrival::join('municipalities', 'arrivals.id_region', '=', 'municipalities.id')
+                ->join('regions', 'municipalities.id_region', '=', 'regions.id')
             ->join('docks', 'arrivals.id_port', '=', 'docks.id')
             ->join('ports', 'docks.id_port', '=', 'ports.id')
 
@@ -96,7 +96,8 @@ class ArrivalController extends Controller
                     arrivals.id_portZarpe,
                     docks.id as idDock,
                     CONCAT(ports.name,' / ', docks.name) as nameDock,
-                    arrivals.id_region,regions.name as nameReg,
+                    arrivals.id_region,
+                    CONCAT(municipalities.name, ' ', regions.name) as nameReg,
                     arrivals.id_port,
                     ports.name as namePort,
                     arrivals.id_flag,flags.name as nameFlag,

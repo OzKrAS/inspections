@@ -203,11 +203,12 @@
                             <th>DESEMBARQUE (S/N)</th>
                             <th>REGISTRO FOTOGRAFICO (S/N)</th>
                             <th>OBSERVACIONES</th>
+                            <th>EVIDENCIAS</th>
                             <th style="width: 90px">Opciones</th>
                           </tr>
                         </thead>
                        <tbody v-if="arrayTarget.length">
-                          <tr v-for="(target,index) in arrayTarget" :key="`target-${index}`">
+                          <tr v-for="(target,index) in arrayTarget" v-if="!target.deleted" :key="`target-${index}`">
                             <td>
                               <md-field>
                                   <md-textarea v-model="target.element" md-autogrow></md-textarea>
@@ -229,6 +230,18 @@
                               <md-field>
                                   <md-textarea v-model="target.observation" md-autogrow></md-textarea>
                               </md-field>
+                            </td>
+                            <td>
+                              <div v-for="(file, index) in target.files" :key="file.uuid">
+                                <span v-if="file.hasOwnProperty('uuid')" @click="stream(file.uuid)">
+                                  <md-icon>camera_alt</md-icon>
+                                  <span>{{ index + 1 }}</span>
+                                </span>
+                                <span v-else-if="typeof file === 'string'" @click="streamBase64(file)">
+                                  <md-icon>camera_alt</md-icon>
+                                  <span>{{ index + 1 }}</span>
+                                </span>
+                              </div>
                             </td>
                             <td>
                               <button
@@ -257,6 +270,7 @@
                               <th>DESEMBARQUE (S/N)</th>
                               <th>REGISTRO FOTOGRAFICO (S/N)</th>
                               <th>OBSERVACIONES</th>
+                              <th>EVIDENCIAS</th>
                               <th style="width: 90px">Opciones</th>
                             </tr>
                           </tfoot>
@@ -303,7 +317,7 @@
       style="display: none;"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-primary modal-lg" role="document">
+      <div class="modal-dialog  modal-dialog-scrollable modal-primary modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title"></h4>
@@ -342,125 +356,17 @@
                 <div class="md-layout-item md-size-30">
                     <label for="first-name">Registro fotográfico (S/N)</label>
                     <div>
-                      <md-radio  v-model="regFot" value="1" class="md-primary"><small>SI</small></md-radio>
-                      <md-radio  v-model="regFot" value="0" ><small>NO</small></md-radio>
+                      <md-radio v-model="regFot" value="1" class="md-primary"><small>SI</small></md-radio>
+                      <md-radio v-model="regFot" value="0" ><small>NO</small></md-radio>
                     </div>
-                </div>&nbsp;&nbsp;&nbsp;
-                <v-collapse-wrapper v-if="this.regFot == 1">
-                        <div class="content" v-collapse-content>
-                            <div
-                              class="uploader"
-                              @dragenter="OnDragEnter"
-                              @dragleave="OnDragLeave"
-                              @dragover.prevent
-                              @drop="onDrop"
-                              :class="{ dragging: isDragging }"
-                            >
-                              <div class="upload-control" v-show="images.length">
-                                <!-- <label for="file">Anexar otra Imágen</label> -->
-                                <!-- <button @click="upload">Guardar Imágenes</button>
-                                <button @click="abrirList">Cancelar</button> -->
-                              </div>
-
-                              <div v-show="!images.length">
-                                <i class="fa fa-cloud-upload"></i>
-                                <p>Arrastra tus imágenes aquí</p>
-                                <div>O</div>
-                                <div class="file-input">
-                                  <label for="file">Selecciona una Imágen</label>
-                                  <input
-                                    type="file"
-                                    id="file"
-                                    @change="onInputChange"
-                                    multiple
-                                  />
-                                </div>
-                              </div>
-
-                              <div class="images-preview" v-show="images.length">
-                                <div
-                                  class="img-wrapper"
-                                  v-for="(image, index) in images"
-                                  :key="index"
-                                >
-                                  <img :src="image" :alt="`Image Uplaoder ${index}`" />
-                                    <button
-                                      type="button"
-                                      @click="eliminarImg(index)"
-                                      class="btn btn-dark btn-sm"
-                                    >
-                                      <i class="material-icons Color4">delete</i>
-                                    </button>
-                                  <div class="details">
-                                    <span class="name" v-text="files[index].name"></span>
-                                    <span
-                                      class="size"
-                                      v-text="getFileSize(files[index].size)"
-                                    ></span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                </v-collapse-wrapper>
+                </div>
               </div>
-              <!-- <div class="md-layout"> -->
-                  <!-- <div class="collapse" id="collapseExample" >
-                      <div class="card card-body">
-                        <div
-                          class="uploader"
-                          @dragenter="OnDragEnter"
-                          @dragleave="OnDragLeave"
-                          @dragover.prevent
-                          @drop="onDrop"
-                          :class="{ dragging: isDragging }"
-                        >
-                          <div class="upload-control" v-show="images.length">
-                          </div>
-
-                          <div v-show="!images.length">
-                            <i class="fa fa-cloud-upload"></i>
-                            <p>Arrastra tus imágenes aquí</p>
-                            <div>O</div>
-                            <div class="file-input">
-                              <label for="file">Selecciona una Imágen</label>
-                              <input
-                                type="file"
-                                id="file"
-                                @change="onInputChange"
-                                multiple
-                              />
-                            </div>
-                          </div>
-
-                          <div class="images-preview" v-show="images.length">
-                            <div
-                              class="img-wrapper"
-                              v-for="(image, index) in images"
-                              :key="index"
-                            >
-                              <img :src="image" :alt="`Image Uplaoder ${index}`" />
-                                <button
-                                  type="button"
-                                  @click="eliminarImg(index)"
-                                  class="btn btn-dark btn-sm"
-                                >
-                                  <i class="material-icons Color4">delete</i>
-                                </button>
-                              <div class="details">
-                                <span class="name" v-text="files[index].name"></span>
-                                <span
-                                  class="size"
-                                  v-text="getFileSize(files[index].size)"
-                                ></span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-                  </div> -->
-                <!-- </div>  -->
+              <div class="md-layout">
+                <div class="md-layout-item">
+                  <label>Imagenes</label>
+                  <basic-file-component ref="fileComponent" :accepted-file-types="['image/png']"></basic-file-component>
+                </div>
+              </div>
               <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field>
@@ -470,7 +376,7 @@
                     <span>
                       PPD: Paño Protector de Delfines de 1 ¼ pulgadas, según los criterios establecidos en el APICD, Apéndice IV.
                     </span>
-                  </div>&nbsp;&nbsp;&nbsp;
+                  </div>
               </div>
             </form>
           </div>
@@ -513,7 +419,7 @@
 		MdSwitch,
 		MdDatepicker,
     MdDialog,
-		MdList
+		MdList,
     } from "vue-material/dist/components";
 
     Vue.use(Toasted,  {
@@ -528,7 +434,9 @@
     Vue.use(MdList);
     Vue.use(MdDatepicker);
     Vue.use(MdDialog);
+
     import { required, minLength, maxLength, email, sameAs } from "vuelidate/lib/validators";
+   import BasicFileComponent from "./common/BasicFileComponent.vue";
 
 export default {
 	mixins: [validationMixin],
@@ -603,6 +511,7 @@ export default {
     };
   },
   components: {
+    BasicFileComponent,
 		vSelect,
 		Multiselect
 	},
@@ -833,6 +742,7 @@ export default {
         characterState:this.characterState,
         regFot:this.regFot,
         observation:this.observation,
+        files : this.$refs.fileComponent.getImagesAsBase64()
       });
       this.arrayTargetAct.push({
         element:this.element.name,
@@ -840,12 +750,17 @@ export default {
         characterState:this.characterState,
         regFot:this.regFot,
         observation:this.observation,
+        files : this.$refs.fileComponent.getImagesAsBase64()
       });
       this.clearTarget();
       this.cerrarModal();
     },
     deleteTarget(index){
-       this.arrayTarget.splice(index,1);
+       if(this.arrayTarget[index].hasOwnProperty('id')){
+          this.arrayTarget[index]['deleted'] = true;
+       }else{
+         this.arrayTarget.splice(index,1);
+       }
     },
     clearTarget() {
       this.element = null;
@@ -871,30 +786,27 @@ export default {
 
     listData() {
       let me = this;
-      var url =
-        "/presenVerifics";
+      var url = "/presenVerifics";
       axios
         .get(url)
         .then(function (response) {
           var respuesta = response.data;
           me.arrayPresenVerifics= respuesta.presenVerifics.data;
           me.myTable(me.arrayPresenVerifics);
-
-
         })
         .catch(function (error) {
           console.log(error);
         });
     },
     selectFlag() {
-            let me = this;
-            var url = "flags/selectFlags";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayFlag = respuesta.flag;
-                }).catch(function (error) {
-                    console.log(error);
-            });
+        let me = this;
+        var url = "flags/selectFlags";
+        axios.get(url).then(function (response) {
+                var respuesta = response.data;
+                me.arrayFlag = respuesta.flag;
+            }).catch(function (error) {
+                console.log(error);
+        });
     },
     showUpdate(data = []) {
       let me = this;
@@ -909,9 +821,6 @@ export default {
       this.arrayFg.id = data["id_flag"];
 			this.arrayFg.name = data["nameFlag"];
       this.dataTarget();
-      this.$nextTick(async () => {
-        await this.$refs.fileComponent.list();
-      });
     },
     showData() {
       this.clearForm();
@@ -928,7 +837,6 @@ export default {
       let me = this;
       axios
         .post("/presenVerifics/save", {
-          user_id : this.form.user_id,
           nameShip: this.arrayBt.nameBoat,
           cruise: this.form.cruise,
           nameFish: this.form.nameFish.toUpperCase(),
@@ -959,9 +867,8 @@ export default {
           nameCaptain: this.form.nameCaptain.toUpperCase(),
           dateZarpe: this.form.dateZarpe,
           dateDesemb: this.form.dateDesemb,
-
-          'id_flag': this.arrayFg.id,
-          'target':this.arrayTargetAct,
+          id_flag: this.arrayFg.id,
+          target:this.arrayTarget,
         })
         .then(function(response) {
           me.hideForm();
@@ -1014,15 +921,18 @@ export default {
       axios
         .get(url)
         .then(function(response) {
-          //console.log(response);
           var respuesta = response.data;
-          me.arrayTarget = respuesta.presenVerific;
+          me.arrayTarget = respuesta.presenVerific.map(item => {
+            return {
+              ...item,
+              deleted : false,
+            }
+          });
         })
         .catch(function(error) {
           console.log(error);
         });
     },
-
     message(tipo, crud) {
       swal(tipo, "El registro se " + crud + " con éxito.", "success");
     },
@@ -1079,6 +989,29 @@ export default {
                 me.deleteData(me.datos);
             } );
     });
+    },
+    async stream(uuid){
+      const url = `/file/stream/${uuid}`;
+      const {data} = await  axios.get(url, {
+        responseType: "blob"
+      });
+      const blobUrl = URL.createObjectURL(data);
+      //window open as popup
+      window.open(blobUrl, "_blank", "width=800,height=600");
+    },
+    streamBase64(base64){
+      // stream base64string to browser
+      // convert base64 to blob
+      const byteString = atob(base64);
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      const blob = new Blob([ab], { type: "image/png" });
+      const blobUrl = URL.createObjectURL(blob);
+      //window open as popup
+      window.open(blobUrl, "_blank", "width=800,height=600");
     }
   },
 

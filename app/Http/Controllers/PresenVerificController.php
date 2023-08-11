@@ -84,6 +84,11 @@ class PresenVerificController extends Controller
             $objeto->observation = $det['observation'];
             $objeto->save();
 
+            if( isset($det['files']) ) {
+                $class = class_basename(DetPresenVerific::class);
+                $this->fileService->massStoreBase64Files($det['files'], "App\\{$class}", $objeto->id);
+            };
+
             array_push( $idsObj, $objeto->id );
         }
 
@@ -115,15 +120,33 @@ class PresenVerificController extends Controller
 
         $detpresenverific = $request->target;
         foreach($detpresenverific as $ep=>$det){
-            $objeto= new DetPresenVerific();
-            $objeto->id_presenVerific = $presenVerifics->id;
-            $objeto->element = $det['element'];
-            $objeto->zarpe = $det['zarpe'];
-            $objeto->characterState = $det['characterState'];
-            $objeto->regFot = $det['regFot'];
-            $objeto->observation = $det['observation'];
-
-            $objeto->save();
+            if(!isset($det['id'])){
+                $objeto= new DetPresenVerific();
+                $objeto->id_presenVerific = $presenVerifics->id;
+                $objeto->element = $det['element'];
+                $objeto->zarpe = $det['zarpe'];
+                $objeto->characterState = $det['characterState'];
+                $objeto->regFot = $det['regFot'];
+                $objeto->observation = $det['observation'];
+                $objeto->save();
+                if( isset($det['files']) ) {
+                    $class = class_basename(DetPresenVerific::class);
+                    $this->fileService->massStoreBase64Files($det['files'], "App\\{$class}", $objeto->id);
+                };
+            }else{
+                $objeto = DetPresenVerific::findOrFail($det['id']);
+                if($det['deleted']){
+                    $objeto->delete();
+                }else{
+                    $objeto->id_presenVerific = $presenVerifics->id;
+                    $objeto->element = $det['element'];
+                    $objeto->zarpe = $det['zarpe'];
+                    $objeto->characterState = $det['characterState'];
+                    $objeto->regFot = $det['regFot'];
+                    $objeto->observation = $det['observation'];
+                    $objeto->save();
+                }
+            }
         }
 
         // $presenVerifics->save();
@@ -149,7 +172,8 @@ class PresenVerificController extends Controller
     public function dataTable(Request $request)
     {
         $presenVerifics = DetPresenVerific::select('id','id_presenVerific','element','zarpe','characterState','regFot','observation')
-        ->where('id_presenVerific', $request->id_PresenVerific)->get();
+        ->with('files')
+            ->where('id_presenVerific', $request->id_PresenVerific)->get();
         return ['presenVerific' =>  $presenVerifics];   
     }
 }
