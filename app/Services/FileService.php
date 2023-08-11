@@ -91,7 +91,8 @@ class FileService
                 $mimeType = finfo_buffer($f, base64_decode($file), FILEINFO_MIME_TYPE);
                 $extension = Str::after($mimeType, '/');
                 $uuid = Uuid::uuid4()->toString();
-                $filename = "{$uuid}.{$extension}";
+                // $filename = "{$uuid}.{$extension}";
+                $filename = "{$uuid}.png";
                 $pathToFile = "file/{$filename}";
 
                 Storage::disk('local')
