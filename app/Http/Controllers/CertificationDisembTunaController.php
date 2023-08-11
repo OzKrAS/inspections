@@ -18,18 +18,20 @@ class CertificationDisembTunaController extends Controller
         if( auth()->user()->idrol == 1 ){
             $tunas = CertificationDisembTuna::join('companies','certification_disemb_tunas.id_company','=','companies.id') 
             ->join('ports','certification_disemb_tunas.id_port','=','ports.id') 
-            ->join('flags','certification_disemb_tunas.id_flag','=','flags.id') 
+            ->join('flags','certification_disemb_tunas.id_flag','=','flags.id')
+                ->join('auto_fishers', 'certification_disemb_tunas.ZoneFisher', '=', 'auto_fishers.id')
             ->select('certification_disemb_tunas.id',
                      'certification_disemb_tunas.nameBoat',
                      'certification_disemb_tunas.ZoneFisher',
+                     'auto_fishers.name as nameZoneFisher',
+                     'certification_disemb_tunas.date',
                      'certification_disemb_tunas.date',
                      'certification_disemb_tunas.dateBeginningFaena',
                      'certification_disemb_tunas.dateEndFaena',
                      'certification_disemb_tunas.observation',
-                                    
                      'certification_disemb_tunas.id_company','companies.name as nameCompany',
                      'certification_disemb_tunas.id_port','ports.name as namePort',
-                     'certification_disemb_tunas.id_flag','flags.name as nameFlag',
+                     'certification_disemb_tunas.id_flag','flags.name as nameFlag'
                      
             )
             ->paginate(99999999);
@@ -45,10 +47,9 @@ class CertificationDisembTunaController extends Controller
                      'certification_disemb_tunas.dateBeginningFaena',
                      'certification_disemb_tunas.dateEndFaena',
                      'certification_disemb_tunas.observation',
-                                    
                      'certification_disemb_tunas.id_company','companies.name as nameCompany',
                      'certification_disemb_tunas.id_port','ports.name as namePort',
-                     'certification_disemb_tunas.id_flag','flags.name as nameFlag',
+                     'certification_disemb_tunas.id_flag','flags.name as nameFlag'
                      
             )
             ->where('certification_disemb_tunas.user_id', '=', auth()->user()->id)
