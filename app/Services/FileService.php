@@ -92,7 +92,7 @@ class FileService
                 $extension = Str::after($mimeType, '/');
                 $uuid = Uuid::uuid4()->toString();
                 // $filename = "{$uuid}.{$extension}";
-                $filename = "{$uuid}.png";
+                $filename = "{$uuid}.{$extension}";
                 $pathToFile = "file/{$filename}";
 
                 Storage::disk('local')
