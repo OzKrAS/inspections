@@ -87,8 +87,11 @@ class FileService
 
             $result = [];
             foreach ($files as $file){
+                $f = finfo_open();
+                $mimeType = finfo_buffer($f, base64_decode($file), FILEINFO_MIME_TYPE);
+                $extension = Str::after($mimeType, '/');
                 $uuid = Uuid::uuid4()->toString();
-                $filename = "{$uuid}.png";
+                $filename = "{$uuid}.{$extension}";
                 $pathToFile = "file/{$filename}";
 
                 Storage::disk('local')
@@ -96,10 +99,6 @@ class FileService
                         $pathToFile,
                         base64_decode($file)
                     );
-
-                $f = finfo_open();
-
-                $mimeType = finfo_buffer($f, base64_decode($file), FILEINFO_MIME_TYPE);
 
                 $result[] = $this->fileRepository->create([
                     'uuid' => $uuid,
@@ -112,6 +111,38 @@ class FileService
             }
 
             return $result;
+
+        }catch (\Exception $e){
+            Log::error($e->getMessage());
+            throw new \Exception($e->getMessage());
+        }
+    }
+
+
+    public function storeBase64Img($file, $fileableType, $fileableId){
+        try {
+            $uuid = Uuid::uuid4()->toString();
+            $filename = "{$uuid}.png";
+            $pathToFile = "file/{$filename}";
+
+            Storage::disk('local')
+                ->put(
+                    $pathToFile,
+                    base64_decode($file)
+                );
+
+            $f = finfo_open();
+
+            $mimeType = finfo_buffer($f, base64_decode($file), FILEINFO_MIME_TYPE);
+
+            return $this->fileRepository->create([
+                'uuid' => $uuid,
+                'name' => $filename,
+                'path' => $pathToFile,
+                'mime_type' => $mimeType,
+                'fileable_type' => $fileableType,
+                'fileable_id' => $fileableId
+            ]);
 
         }catch (\Exception $e){
             Log::error($e->getMessage());
@@ -149,6 +180,26 @@ class FileService
             ['fileable_type','=',$fileableType],
             ['fileable_id','=',$fileableId]
         ],['*'], ['*'], 'created_at', 'desc');
+    }
+
+    public function stream($id){
+        $file = $this->fileRepository->find($id);
+        return Storage::disk('local')->get($file->path);
+    }
+
+    public function getMimeType($id){
+        $file = $this->fileRepository->find($id);
+        return Storage::disk('local')->mimeType($file->path);
+    }
+
+    public function getFileInfo($id){
+        $file = $this->fileRepository->find($id);
+        return [
+            'name' => $file->name,
+            'size' => Storage::disk('local')->size($file->path),
+            'last_modified' => Storage::disk('local')->lastModified($file->path),
+            'mime_type' => Storage::disk('local')->mimeType($file->path),
+        ];
     }
 
 }
