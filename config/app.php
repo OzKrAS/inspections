@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        Yajra\Datatables\DatatablesServiceProvider::class,
     ],
 
     /*
@@ -229,6 +230,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
 
+        'Datatables' => 'Yajra\Datatables\Facades\Datatables',
     ],
 
 ];

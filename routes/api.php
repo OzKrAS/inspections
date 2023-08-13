@@ -68,10 +68,11 @@ Route::middleware('auth:api')->get('/users', function (Request $request) {
     // });
 
 // });
-
-Route::prefix('file')->group(function(){
-    Route::post('/massStore', 'FileController@massStore');
-    Route::post('/massStoreAsBase64', 'FileController@massStoreBase64');
+Route::group(['middleware' => ['cors']], function () {
+    Route::prefix('file')->group(function(){
+        Route::post('/massStore', 'FileController@massStore');
+        Route::post('/massStoreAsBase64', 'FileController@massStoreBase64');
+    });
 });
 
 Route::post('/user', 'UserController@login');
