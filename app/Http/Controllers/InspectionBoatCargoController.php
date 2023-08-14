@@ -124,7 +124,7 @@ class InspectionBoatCargoController extends Controller
 
         $detailinspection = $request->data;
 
-        $array_carga = [];
+        // $array_carga = [];
 
         foreach($detailinspection as $ep=>$det){
             $objeto= new DetailInspectionBoat();
@@ -140,7 +140,7 @@ class InspectionBoatCargoController extends Controller
             $objeto->shapeProduct= $det['shapeProduct'];
             $objeto->amount= $det['amount'];
             $objeto->save();
-            array_push( $array_carga, $objeto->id );
+            // array_push( $array_carga, $objeto->id );
 
         }
 
