@@ -1141,7 +1141,6 @@ export default {
       arrayData: [],
       modal: 0,
       modal2: 0,
-      tipoAccion: 0,
 
       //variables imagen
       selectedFile: null,
@@ -1902,7 +1901,7 @@ export default {
       await axios
           .get(url)
           .then(function (response) {
-            //console.log(response);
+            me.form.dataFisherySelect = "";
             var respuesta = response.data;
             me.arrayFa = respuesta.fisheryAut;
             me.form.dataFisherySelect += me.arrayFa.map(function (element) {
@@ -1997,8 +1996,10 @@ Por la AUNAP,`, 30, 125, {align: 'justify', lineHeightFactor: 1, maxWidth: 160})
       doc.setTextColor(100);
       doc.text(`Nota: Si este documento se encuentra impreso se considera Copia no Controlada. La versión vigente está publicada en la intranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260, {align: 'justify'});
 
-
       window.open(doc.output('bloburl'))
+      this.senor = "";
+      this.asunto = "";
+      this.ciudad = "";
     },
     myTable(datas) {
       let me = this;
