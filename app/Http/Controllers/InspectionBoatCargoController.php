@@ -124,7 +124,12 @@ class InspectionBoatCargoController extends Controller
 
         $detailinspection = $request->data;
 
-        // $array_carga = [];
+        $array = array(
+            'res' => true,
+            'message' => 'Registro guardado exitosamente',
+            'id' => $inspections->id
+        );
+
 
         foreach($detailinspection as $ep=>$det){
             $objeto= new DetailInspectionBoat();
@@ -144,13 +149,9 @@ class InspectionBoatCargoController extends Controller
 
         }
 
-        $array = array(
-            'res' => true,
-            'message' => 'Registro guardado exitosamente',
-            // 'id' => $inspections->id
-        );
-
         return response()->json($array,201);
+
+        
     }
     public function update(Request $request)
     {
