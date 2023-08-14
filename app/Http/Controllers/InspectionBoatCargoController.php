@@ -147,7 +147,7 @@ class InspectionBoatCargoController extends Controller
         $array = array(
             'res' => true,
             'message' => 'Registro guardado exitosamente',
-            'ids' => $inspections->id
+            'id' => $inspections->id
         );
 
         return response()->json($array,201);
