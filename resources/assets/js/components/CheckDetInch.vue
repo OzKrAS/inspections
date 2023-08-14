@@ -1307,15 +1307,15 @@ export default {
             });
     }, 
     selectFisheryAuthorized() {
-            let me = this;
-            me.arrayFa=[];
-            var url = "/zarpes/selectFisheryAuthorized";
-            axios.get(url).then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayFisheryAuthorized= respuesta.fishery;
-                }).catch(function (error) {
-                    console.log(error);
-            });
+        let me = this;
+        me.arrayFa=[];
+        const url = "/zarpes/selectFisheryAuthorized";
+        axios.get(url).then(function (response) {
+                var respuesta = response.data;
+                me.arrayFisheryAuthorized= respuesta.fishery;
+            }).catch(function (error) {
+                console.log(error);
+        });
     },
     saveData() {
       let me = this;
@@ -1342,7 +1342,6 @@ export default {
         float: this.form.float,
         'id_company': this.arrayComp.id,
         'id_regional': this.arrayRegl.id,
-
         'detinch': this.arrayDets,
         'data': this.arrayFa,
         })
@@ -1388,6 +1387,7 @@ export default {
           'id_regional': this.arrayRegl.id,
 
           'detinch': this.arrayDetsAct,
+          'data': this.arrayFa,
         })
         .then(function(response) {
           me.hideForm();
@@ -1452,7 +1452,7 @@ export default {
       axios
         .get(url)
         .then(function(response) {
-          //console.log(response);
+          console.log(response);
           var respuesta = response.data;
           me.arrayFa = respuesta.fisheryAut;
         })
