@@ -69,7 +69,7 @@ class CheckDetInchController extends Controller
                      'check_det_inches.float',
                      
                      'check_det_inches.id_company','companies.name as nameCompany',
-                     'check_det_inches.id_regional','regionals.name as nameRegional',
+                     'check_det_inches.id_regional','regionals.name as nameRegional'
                      
             )
             ->where('check_det_inches.user_id', '=', auth()->user()->id)
@@ -173,6 +173,16 @@ class CheckDetInchController extends Controller
             $objeto->estribor2= $det['estribor2'];
             $objeto->punto= $det['punto'];
             $objeto->tituloModal= $det['tituloModal'];
+            $objeto->save();
+        }
+
+        $detailsfisheryDet = $request->data;
+        //delete all data
+        DetailFisherAutDetInchs::where('id_fisheryAut', $CheckDetInchs->id)->delete();
+        foreach($detailsfisheryDet as $fs=>$deta){
+            $objeto= new DetailFisherAutDetInchs();
+            $objeto->id_fisheryAut = $CheckDetInchs->id;
+            $objeto->name= $deta['name'];
             $objeto->save();
         }
         

@@ -282,10 +282,9 @@
                   <md-field>
                     <label class="text-muted">Faena Realizada En (Fishing Task Place)</label>
                     <md-select v-model="workDone" name="workDone" id="workDone" placeholder="Faena Realizada En">
-                      <md-option value="Mar caribe colombiano">Mar Caribe Colombiano</md-option>
-                      <md-option value="Pacífico Colombiano">Pacífico Colombiano</md-option>
-                      <md-option value="OPO (atún, bandera nacional, jurisdicción CIAT)">OPO (atún, bandera nacional,
-                        jurisdicción CIAT)
+                      <md-option value="MAR CARIBE COLOMBIANO">Mar Caribe Colombiano</md-option>
+                      <md-option value="PACÍFICO COLOMBIANO">Pacífico Colombiano</md-option>
+                      <md-option value="OPO (ATÚN, BANDERA NACIONAL, JURISDICCIÓN CIAT)">OPO (atún, bandera nacional, jurisdicción CIAT)
                       </md-option>
                     </md-select>
                   </md-field>
@@ -2330,7 +2329,7 @@ export default {
       this.totalLongline = data["totalLongline"];
       this.notification = data["notification"];
       this.finalityArrival = data["finalityArrival"];
-      this.workDone = data["workDone"];
+      this.workDone = String(data["workDone"]).toUpperCase();
       this.locationSystem = data["locationSystem"];
       this.form.inspectorConclusions = data["inspectorConclusions"];
       this.form.additionalComments = data["additionalComments"];
@@ -2663,7 +2662,6 @@ export default {
     },
     dataFishery() {
       let me = this;
-
       var url = "/arrivals/fishery?id_FisheryAut=" + this.id_arrival;
       axios
           .get(url)

@@ -1113,7 +1113,7 @@ export default {
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_CheckDet = data["id"]);
-      this.office = data["office"];
+      this.office = String(data["office"]).toUpperCase();
       this.form.official = data["official"];
       this.form.boat = data["boat"];
       this.arrayBt.nameBoat = data["boat"];
