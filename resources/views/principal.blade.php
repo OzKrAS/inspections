@@ -17,7 +17,7 @@
         <!-- Icons -->
         <link rel="stylesheet"  href="//fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700,400italic|Material+Icons">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-        <link href="{{ asset('css/theme.css?version = 1.2') }}" rel="stylesheet">
+        <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
         <style>
             body {
