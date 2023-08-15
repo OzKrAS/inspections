@@ -2,6 +2,9 @@
     <html lang="es">
 
     <head>
+        <meta http-equiv='cache-control' content='no-cache'>
+        <meta http-equiv='expires' content='0'>
+        <meta http-equiv='pragma' content='no-cache'>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,18 +15,10 @@
         <title>Sistema Inspecciones</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Icons -->
-        <link rel="stylesheet"
-            href="//fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700,400italic|Material+Icons">
-        <!-- <link rel="stylesheet" href="../node_modules/material-design-icons-iconfont/dist/material-design-icons.css"> -->
-        {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" --}}
-
+        <link rel="stylesheet"  href="//fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700,400italic|Material+Icons">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-        {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css "> --}}
-
-        {{-- <link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css"> --}}
-        <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/theme.css?version = 1.2') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-
         <style>
             body {
                 background: #fff;
@@ -72,7 +67,6 @@
                 border-radius: 7px;
             }
         </style>
-
         @yield('styles')
     </head>
 
@@ -139,7 +133,6 @@
         </footer>
 
 
-        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
         {{-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> --}}
         {{-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> --}}
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
