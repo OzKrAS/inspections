@@ -89,7 +89,9 @@ class ZarpeController extends Controller
                     port_arrival.fullDockName as nameportArrival,
                     docksAndPorts.fullDockName as nameDock,
                     zarpes.id_boat"
-            )->paginate(999999999);
+            )
+            ->orderBy('zarpes.id', 'desc')
+            ->paginate(999999999);
         }
         else {
             $zarpes = Zarpe::join('municipalities', 'zarpes.id_municipalities', '=', 'municipalities.id')
@@ -160,6 +162,7 @@ class ZarpeController extends Controller
                     zarpes.id_boat"
             )
             ->where('zarpes.user_id', '=', auth()->user()->id)
+            ->orderBy('zarpes.id', 'desc')
             ->paginate(999999999);
         }
 

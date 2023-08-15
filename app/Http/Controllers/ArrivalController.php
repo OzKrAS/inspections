@@ -27,7 +27,7 @@ class ArrivalController extends Controller
 
         if(  auth()->user()->idrol == 1 ){
             $arrivals = Arrival::join('municipalities', 'arrivals.id_region', '=', 'municipalities.id')
-                ->join('regions', 'municipalities.id_region', '=', 'regions.id')
+            ->join('regions', 'municipalities.id_region', '=', 'regions.id')
             ->join('docks', 'arrivals.id_port', '=', 'docks.id')
             ->join('ports', 'docks.id_port', '=', 'ports.id')
 
@@ -109,6 +109,7 @@ class ArrivalController extends Controller
                     port_zarpe.fullDockName as nameportZarpe,
                     port_arrival.fullDockName as nameportArrival"
             )
+            ->orderBy('arrivals.id', 'desc')
             ->paginate(9999999999999999999999999);
 
         // arrivals.id_portArrival,portsarrival.name as portsarrivalname -- /con este llamado se duplican los resultados
@@ -196,6 +197,7 @@ class ArrivalController extends Controller
                     port_arrival.fullDockName as nameportArrival"
             )
             ->where('arrivals.user_id', auth()->user()->id)
+            ->orderBy('arrivals.id', 'desc')
             ->paginate(9999999999999999999999999);
 
         // arrivals.id_portArrival,portsarrival.name as portsarrivalname -- /con este llamado se duplican los resultados
