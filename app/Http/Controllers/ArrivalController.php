@@ -242,7 +242,7 @@ class ArrivalController extends Controller
             $arrivals->noHaulsInter = $request->noHaulsInter;
             $arrivals->landedWeight = $request->landedWeight;
             $arrivals->observation = $request->observation;
-            $arrivals->notification = 1;
+            $arrivals->notification = $request->notification;
             $arrivals->finalityArrival = $request->finalityArrival;
             $arrivals->workDone = $request->workDone;
             $arrivals->locationSystem = $request->locationSystem;
