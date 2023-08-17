@@ -375,7 +375,8 @@
                                placeholder="Seleccione una embarcación"
                                :custom-label="nameWithBoat"
                                label="nameBoat"
-                               track-by="nameBoat">
+                               track-by="nameBoat"
+                              :preselect-first="false">
                   </multiselect>
                 </div>
                 <div class="md-layout">

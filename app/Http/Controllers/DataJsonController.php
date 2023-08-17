@@ -1014,7 +1014,11 @@ class DataJsonController extends Controller
         );
     }
     public function jsonDetFlap(){
-        $regional = Regional::all();
+        $regional = Regional::where('id', '!=', 3) // Barrancabermeja
+        ->where('id', '!=', 5) // Bogota
+        ->where('id', '!=', 7) // Magangue
+        ->where('id', '!=', 9) // Villavicencio;
+        ->get();
         $company = Company::orderBy('name', 'asc')->get();
         $fishery = FisheryAuthorized::all();
 

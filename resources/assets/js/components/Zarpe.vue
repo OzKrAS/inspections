@@ -1515,8 +1515,10 @@ export default {
       let me = this;
       const url = "/ports/selectPorts";
       axios.get(url).then(function (response) {
+        console.log("PORTS", response);
         const {data} = response;
-        me.arrayPorts = data.port;
+        var respuesta = response.data;
+        me.arrayPorts = respuesta.port;
       }).catch(function (error) {
         console.log(error);
       });
