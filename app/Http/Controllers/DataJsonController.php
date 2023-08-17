@@ -1018,6 +1018,7 @@ class DataJsonController extends Controller
         ->where('id', '!=', 5) // Bogota
         ->where('id', '!=', 7) // Magangue
         ->where('id', '!=', 9) // Villavicencio;
+        ->orderBy('name', 'asc')
         ->get();
         $company = Company::orderBy('name', 'asc')->get();
         $fishery = FisheryAuthorized::all();
