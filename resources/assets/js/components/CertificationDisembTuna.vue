@@ -48,7 +48,6 @@
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
                 <md-input v-model="form.user_id" type="hidden" />
-
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-datepicker md-clearable :class="getValidationClass('date')" v-model="form.date" @input="toString"
@@ -495,8 +494,8 @@ export default {
       }
     },
     validateData() {
+      this.form.nameBoat = this.arrayBt.nameBoat;
       this.$v.$touch();
-
       if (!this.$v.$invalid) {
         this.saveData();
         this.clearForm();
@@ -574,6 +573,7 @@ export default {
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_disembTuna = data["id"]);
       this.form.nameBoat = data["nameBoat"];
+      this.arrayBt = { id: 0, nameBoat: data["nameBoat"]};
       this.form.date = data["date"];
       this.form.dateBeginningFaena = data["dateBeginningFaena"];
       this.form.dateEndFaena = data["dateEndFaena"];
@@ -715,7 +715,6 @@ export default {
     },
     updateData() {
       let me = this;
-
       axios
         .put("/certificationDisembTuna/update", {
           id: this.id_disembTuna,
