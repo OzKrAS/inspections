@@ -2061,6 +2061,7 @@ export default {
       this.form.dateLatestArrival = null;
       this.form.dateValidityPat = null;
       this.form.date = null;
+      this.form.dateResolution = null;
       this.form.dateValidity = null;
       this.form.observationGeneral = null;
       this.form.idOmi = null;
