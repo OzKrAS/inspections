@@ -840,8 +840,8 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noHaulsInter')">
-                      <label for="first-name" style="font-size:10px">No. Lances Internacionales (International
-                        Sets)</label>
+                      <label for="first-name">No. Lances Internacionales <small>(International
+                        Sets)</small></label>
                       <md-input
                           name="first-name"
                           id="first-name"
