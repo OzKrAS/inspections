@@ -806,7 +806,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noAllHauls')">
-                      <label for="first-name">No. Total de Lances (Total Fishing Sets)</label>
+                      <label for="first-name">No. Total de Lances <small>(Total Fishing Sets)</small></label>
                       <md-input
                           name="first-name"
                           id="first-name"
@@ -823,7 +823,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="md-layout-item">
                     <md-field md-clearable :class="getValidationClass('noHaulsNacional')">
-                      <label for="first-name">No. Lances Nacionales (National Sets)</label>
+                      <label for="first-name">No. Lances Nacionales <small>(National Sets)</small></label>
                       <md-input
                           name="first-name"
                           id="first-name"
