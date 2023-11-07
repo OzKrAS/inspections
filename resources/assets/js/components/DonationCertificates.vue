@@ -242,13 +242,13 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                             </thead>
                             <tbody v-if="arrayTarget.length">
                               <tr v-for="(target,index) in arrayTarget" v-if="!target.deleted" :key="`target-${index}`">
-                                <td v-text="target.nameScientific.toLowerCase()"></td>
-                                <td v-text="target.nameCommon.toLowerCase()"></td>
-                                <td v-text="target.state.toLowerCase()"></td>
-                                <td v-text="target.presentation.toLowerCase()"></td>
-                                <td v-text="target.amount"></td>
-                                <td v-text="target.weight"></td>
-                                <td v-text="target.commercialValue"></td>
+                                <td v-text="target.nameScientific.toLowerCase()" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.nameCommon.toLowerCase()" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.state.toLowerCase()" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.presentation.toLowerCase()" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.amount" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.weight" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.commercialValue" style="text-transform: capitalize !important;"></td>
                                 <td>
                                   <div v-for="(file, index) in target.files" :key="file.uuid">
                                     <span v-if="file.hasOwnProperty('uuid')" @click="stream(file.uuid)">
