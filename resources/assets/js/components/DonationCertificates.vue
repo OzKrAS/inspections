@@ -173,7 +173,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                     </div>&nbsp;&nbsp;&nbsp;  
                     <div class="md-layout-item">
                       <md-field md-clearable>
-                        <label for="first-name">Cantidad (Unidades)</label>
+                        <label for="first-name">Cantidad <small>(Unidades)</small></label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -186,7 +186,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                     </div>&nbsp;&nbsp;&nbsp;  
                     <div class="md-layout-item">
                       <md-field md-clearable>
-                        <label for="first-name">Peso (Kilogramos)</label>
+                        <label for="first-name">Peso <small>(Kilogramos)</small></label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -970,6 +970,8 @@ export default {
       if (!this.$v.$invalid) {
         this.saveData();
         this.clearForm();
+        me.message("Guardado", "Guardado ");
+        me.listData();
       }
     },
     addItemTarget() {
