@@ -1898,8 +1898,8 @@ export default {
     },
     selectBoats() {
       let me = this;
-      // var url = "/selectboats?type=0";
-      var url = "/selectboats";
+      var url = "/selectboats?type=0";
+      // var url = "/selectboats";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
         me.arrayBoat = respuesta.boat;
