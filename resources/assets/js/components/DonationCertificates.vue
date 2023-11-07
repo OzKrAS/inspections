@@ -968,6 +968,7 @@ export default {
       this.$v.$touch();
 
       if (!this.$v.$invalid) {
+        let me = this;
         me.message("Guardado", "Guardado ");
         this.clearForm();
         this.saveData();
