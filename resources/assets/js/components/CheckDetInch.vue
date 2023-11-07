@@ -79,12 +79,12 @@
                     <md-field>
                       <label for="office" class="text-muted">Oficina (Office)</label>
                       <md-select v-model="office" name="office" id="office" placeholder="Seleccione una oficina (Office)">
-                        <md-option value="BARRANQUILLA">BARRANQUILLA</md-option>
-                        <md-option value="CARTAGENA">CARTAGENA</md-option>
-                        <md-option value="TOLÚ">TOLÚ</md-option>
-                        <md-option value="BAHÍA SOLANO">BAHÍA SOLANO</md-option>
-                        <md-option value="BUENAVENTURA">BUENAVENTURA</md-option>
-                        <md-option value="TUMACO">TUMACO</md-option>
+                        <md-option value="barranquilla">BARRANQUILLA</md-option>
+                        <md-option value="cartagena">CARTAGENA</md-option>
+                        <md-option value="tolu">TOLÚ</md-option>
+                        <md-option value="bahia solano">BAHÍA SOLANO</md-option>
+                        <md-option value="buenaventura">BUENAVENTURA</md-option>
+                        <md-option value="tumaco">TUMACO</md-option>
                       </md-select>
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;

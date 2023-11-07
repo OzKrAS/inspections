@@ -131,9 +131,9 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <label class="text-muted">Zona de Pesca Autorizada (Fishing Zone)</label>
-                    <multiselect v-model="arrayZoneAuto" :options="arrayZoneAutoFish"
+                    <multiselect v-model="arrayZoneAuto.name" :options="arrayZoneAutoFish"
                       placeholder="Zona de Pesca Autorizada" label="name"
-                      track-by="name">
+                      track-by="id">
                     </multiselect>
                   </div>&nbsp;&nbsp;&nbsp;
 

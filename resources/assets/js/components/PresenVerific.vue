@@ -234,11 +234,11 @@
                             <td>
                               <div v-for="(file, index) in target.files" :key="file.uuid">
                                 <span v-if="file.hasOwnProperty('uuid')" @click="stream(file.uuid)">
-                                  <md-icon>camera_alt</md-icon>
+                                  <md-icon>camera_alt1</md-icon>
                                   <span>{{ index + 1 }}</span>
                                 </span>
                                 <span v-else-if="typeof file === 'string'" @click="streamBase64(file)">
-                                  <md-icon>camera_alt</md-icon>
+                                  <md-icon>camera_alt2</md-icon>
                                   <span>{{ index + 1 }}</span>
                                 </span>
                               </div>
