@@ -199,7 +199,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                     </div>&nbsp;&nbsp;&nbsp;  
                     <div class="md-layout-item">
                       <md-field md-clearable>
-                        <label for="first-name">Valor Comercial (Pesos Colombianos)</label>
+                        <label for="first-name">Valor Comercial <small>(Pesos Colombianos)</small></label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -488,7 +488,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                     </div>&nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item">
                       <md-field md-clearable :class="getValidationClass('identification')">
-                        <label for="first-name">C.C.</label>
+                        <label for="first-name">Documento de identidad</label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -500,7 +500,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                         <span
                           class="md-error"
                           v-if="!$v.form.identification.required"
-                        >Olvidaste ingresar la cedula de ciudadania</span>
+                        >Olvidaste ingresar el documento de identidad</span>
                         <!-- <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span> -->
                       </md-field>    
                     </div>&nbsp;&nbsp;&nbsp;    
