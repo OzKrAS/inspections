@@ -970,7 +970,8 @@ export default {
       if (!this.$v.$invalid) {
         let me = this;
         me.message("Guardado", "Guardado ");
-        this.clearForm();
+        // this.clearForm();
+        me.hideForm();
         this.saveData();
         me.listData();
       }
