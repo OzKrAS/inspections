@@ -1933,7 +1933,8 @@ export default {
       // (this.id_flag = data["id"]);
       // console.log("ID " + me.datos.id);
         var logo = new Image();
-        logo.src = '/img/logoAUNAP.png';
+        // logo.src = '/img/logoAUNAP.png';
+        logo.src = '/img/tituloImpZarpe.png';
         doc.addImage(logo, 'png', 20, 10, 33, 15);
         doc.text("FORMATO DE AUTORIZACIÓN DE ZARPE", 60, 20);
         // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
