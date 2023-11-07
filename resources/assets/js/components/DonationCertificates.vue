@@ -161,7 +161,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                     <div class="md-layout-item">
                       <md-field>
                           <label class="text-muted">Presentación</label>
-                          <md-select v-model="presentation" name="presentation" id="presentation" placeholder="presentación">
+                          <md-select v-model="presentation" name="presentation" id="presentation" placeholder="Presentación">
                             <md-option value="Unidades">Unidades</md-option>
                             <md-option value="Zartas ">Zartas</md-option>
                             <md-option value="Bolsas o Bultos">Bolsas o Bultos </md-option>
@@ -173,7 +173,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                     </div>&nbsp;&nbsp;&nbsp;  
                     <div class="md-layout-item">
                       <md-field md-clearable>
-                        <label for="first-name">Cantidad</label>
+                        <label for="first-name">Cantidad (Unidades)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -186,7 +186,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                     </div>&nbsp;&nbsp;&nbsp;  
                     <div class="md-layout-item">
                       <md-field md-clearable>
-                        <label for="first-name">Peso</label>
+                        <label for="first-name">Peso (Kilogramos)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -199,7 +199,7 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                     </div>&nbsp;&nbsp;&nbsp;  
                     <div class="md-layout-item">
                       <md-field md-clearable>
-                        <label for="first-name">Valor Comercial</label>
+                        <label for="first-name">Valor Comercial (Pesos Colombianos)</label>
                         <md-input
                           name="first-name"
                           id="first-name"
@@ -229,26 +229,26 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                     <table class="table table-striped table-bordered display" id="dataTable" width="50%" cellspacing="0">
                             <thead>
                               <tr>
-                                <th>NOMBRE CIENTÌFICO</th>    
-                                <th>NOMBRE COMÙN</th>              
+                                <th>NOMBRE CIENTÍFICO</th>    
+                                <th>NOMBRE COMÚN</th>              
                                 <th>ESTADO</th>    
                                 <th>PRESENTACIÓN</th>    
                                 <th>CANTIDAD (UN)</th>    
                                 <th>PESO (Kg)</th>    
                                 <th>VALOR COMERCIAL</th>    
                                 <th>FOTOS</th>    
-                                <th style="width: 80px">Opciones</th>
+                                <th style="width: 80px">OPCIONES</th>
                               </tr>
                             </thead>
                             <tbody v-if="arrayTarget.length">
                               <tr v-for="(target,index) in arrayTarget" v-if="!target.deleted" :key="`target-${index}`">
-                                <td v-text="target.nameScientific"></td>
-                                <td v-text="target.nameCommon"></td>
-                                <td v-text="target.state"></td>
-                                <td v-text="target.presentation"></td>
-                                <td v-text="target.amount"></td>
-                                <td v-text="target.weight"></td>
-                                <td v-text="target.commercialValue"></td>
+                                <td v-text="target.nameScientific" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.nameCommon" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.state" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.presentation" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.amount" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.weight" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.commercialValue" style="text-transform: capitalize !important;"></td>
                                 <td>
                                   <div v-for="(file, index) in target.files" :key="file.uuid">
                                     <span v-if="file.hasOwnProperty('uuid')" @click="stream(file.uuid)">
@@ -283,15 +283,15 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                             </tbody>
                               <tfoot>
                                 <tr>
-                                  <th>NOMBRE CIENTÌFICO</th>    
-                                  <th>NOMBRE COMÙN</th>              
+                                  <th>NOMBRE CIENTÍFICO</th>    
+                                  <th>NOMBRE COMÚN</th>              
                                   <th>ESTADO</th>    
                                   <th>PRESENTACIÓN</th>    
                                   <th>CANTIDAD (UN)</th>    
                                   <th>PESO (Kg)</th>    
                                   <th>VALOR COMERCIAL</th>    
                                   <th>FOTOS</th>    
-                                  <th style="width: 80px">Opciones</th>
+                                  <th style="width: 80px">OPCIONES</th>
                                 </tr>
                               </tfoot>
                               <tbody>

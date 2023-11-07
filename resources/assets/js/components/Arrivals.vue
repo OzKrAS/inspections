@@ -1432,7 +1432,7 @@ export default {
         dateScale: format(now, dateFormat),
         dateZarpe: format(now, dateFormat),
         dateLatestArrival: format(now, dateFormat),
-        dateResolution: "",
+        dateResolution: format(now, dateFormat),
         dateValidityPat: format(now, dateFormat),
         dateValidity: format(now, dateFormat),
         dateIns: format(now, dateFormat),
