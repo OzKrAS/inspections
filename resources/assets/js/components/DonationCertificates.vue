@@ -968,11 +968,11 @@ export default {
       this.$v.$touch();
 
       if (!this.$v.$invalid) {
+        this.saveData();
         let me = this;
         me.message("Guardado", "Guardado ");
         // this.clearForm();
         me.hideForm();
-        this.saveData();
         me.listData();
       }
     },
