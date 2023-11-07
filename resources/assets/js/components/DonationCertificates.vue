@@ -242,10 +242,10 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                             </thead>
                             <tbody v-if="arrayTarget.length">
                               <tr v-for="(target,index) in arrayTarget" v-if="!target.deleted" :key="`target-${index}`">
-                                <td v-text="target.nameScientific.toLowerCase()" style="text-transform: capitalize !important;"></td>
-                                <td v-text="target.nameCommon.toLowerCase()" style="text-transform: capitalize !important;"></td>
-                                <td v-text="target.state.toLowerCase()" style="text-transform: capitalize !important;"></td>
-                                <td v-text="target.presentation.toLowerCase()" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.nameScientific" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.nameCommon" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.state" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.presentation" style="text-transform: capitalize !important;"></td>
                                 <td v-text="target.amount" style="text-transform: capitalize !important;"></td>
                                 <td v-text="target.weight" style="text-transform: capitalize !important;"></td>
                                 <td v-text="target.commercialValue" style="text-transform: capitalize !important;"></td>
