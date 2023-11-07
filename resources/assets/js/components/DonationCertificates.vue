@@ -242,13 +242,13 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                             </thead>
                             <tbody v-if="arrayTarget.length">
                               <tr v-for="(target,index) in arrayTarget" v-if="!target.deleted" :key="`target-${index}`">
-                                <td v-text="target.nameScientific" style="text-transform: capitalize !important;"></td>
-                                <td v-text="target.nameCommon" style="text-transform: capitalize !important;"></td>
-                                <td v-text="target.state" style="text-transform: capitalize !important;"></td>
-                                <td v-text="target.presentation" style="text-transform: capitalize !important;"></td>
-                                <td v-text="target.amount" style="text-transform: capitalize !important;"></td>
-                                <td v-text="target.weight" style="text-transform: capitalize !important;"></td>
-                                <td v-text="target.commercialValue" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.nameScientific.toLowerCase()"></td>
+                                <td v-text="target.nameCommon.toLowerCase()"></td>
+                                <td v-text="target.state.toLowerCase()"></td>
+                                <td v-text="target.presentation.toLowerCase()"></td>
+                                <td v-text="target.amount"></td>
+                                <td v-text="target.weight"></td>
+                                <td v-text="target.commercialValue"></td>
                                 <td>
                                   <div v-for="(file, index) in target.files" :key="file.uuid">
                                     <span v-if="file.hasOwnProperty('uuid')" @click="stream(file.uuid)">
@@ -973,22 +973,23 @@ export default {
       }
     },
     addItemTarget() {
+      //Se va a cambiar a capitalize
       let me = this;
       var total1 = me.arrayTarget.push({
-        nameScientific:this.nameScientific.toUpperCase(),
-        nameCommon:this.nameCommon.toUpperCase(),
-        state:this.state.toUpperCase(),
-        presentation:this.presentation.toUpperCase(),
+        nameScientific:this.nameScientific.toLowerCase(),
+        nameCommon:this.nameCommon.toLowerCase(),
+        state:this.state.toLowerCase(),
+        presentation:this.presentation.toLowerCase(),
         amount:this.amount,
         weight:this.weight,
         commercialValue:this.commercialValue,
         files : this.$refs.fileComponent.getImagesAsBase64()
       });
       var total2 = me.arrayTargetAct.push({
-        nameScientific:this.nameScientific.toUpperCase(),
-        nameCommon:this.nameCommon.toUpperCase(),
-        state:this.state.toUpperCase(),
-        presentation:this.presentation.toUpperCase(),
+        nameScientific:this.nameScientific.toLowerCase(),
+        nameCommon:this.nameCommon.toLowerCase(),
+        state:this.state.toLowerCase(),
+        presentation:this.presentation.toLowerCase(),
         amount:this.amount,
         weight:this.weight,
         commercialValue:this.commercialValue,
