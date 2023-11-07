@@ -181,7 +181,7 @@
                     <div class="md-layout-item">
                       <md-field>
                         <label class="text-muted">Presentación</label>
-                        <md-select id="presentation" v-model="presentation" name="presentation"
+                        <md-select id="presentation" v-model="presentation" name="Presentatión"
                                    placeholder="presentación">
                           <md-option value="unidades">Unidades</md-option>
                           <md-option value="zartas ">Zartas</md-option>
@@ -194,7 +194,7 @@
                     </div>&nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item">
                       <md-field md-clearable>
-                        <label for="first-name">Cantidad (Un)</label>
+                        <label for="first-name">Cantidad (Unidades)</label>
                         <md-input
                             id="first-name"
                             v-model="amount"
@@ -220,7 +220,7 @@
                     </div>&nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item ">
                       <md-field md-clearable>
-                        <label for="first-name">Peso (Kg)</label>
+                        <label for="first-name">Peso (Kilogramos)</label>
                         <md-input
                             id="first-name"
                             v-model="weight"
@@ -233,7 +233,7 @@
                     </div>&nbsp;&nbsp;&nbsp;
                     <div class="md-layout-item ">
                       <md-field md-clearable>
-                        <label for="first-name">Valor Comercial</label>
+                        <label for="first-name">Valor Comercial (Pesos Colombianos)</label>
                         <md-input
                             id="first-name"
                             v-model="commercialValue"
@@ -322,8 +322,8 @@
                            width="50%">
                       <thead>
                       <tr>
-                        <th>NOMBRE CIENTÌFICO</th>
-                        <th>NOMBRE COMÙN</th>
+                        <th>NOMBRE CIENTÍFICO</th>
+                        <th>NOMBRE COMÚN</th>
                         <th>ESTADO</th>
                         <th>PRESENTACIÓN</th>
                         <th>CANTIDAD (UN)</th>
@@ -336,10 +336,10 @@
                       </thead>
                       <tbody v-if="arrayTarget.length">
                       <tr v-for="(target,index) in arrayTarget" v-if="!target.deleted" :key="`target-${index}`">
-                        <td v-text="target.nameScientific"></td>
-                        <td v-text="target.nameCommon"></td>
-                        <td v-text="target.state"></td>
-                        <td v-text="target.presentation"></td>
+                        <td v-text="target.nameScientific" style="text-transform: capitalize !important;"></td>
+                        <td v-text="target.nameCommon" style="text-transform: capitalize !important;"></td>
+                        <td v-text="target.state" style="text-transform: capitalize !important;"></td>
+                        <td v-text="target.presentation" style="text-transform: capitalize !important;"></td>
                         <td v-text="target.amount"></td>
                         <td v-text="target.average"></td>
                         <td v-text="target.weight"></td>
@@ -378,8 +378,8 @@
                       </tbody>
                       <tfoot>
                       <tr>
-                        <th>NOMBRE CIENTÌFICO</th>
-                        <th>NOMBRE COMÙN</th>
+                        <th>NOMBRE CIENTÍFICO</th>
+                        <th>NOMBRE COMÚN</th>
                         <th>ESTADO</th>
                         <th>PRESENTACIÓN</th>
                         <th>CANTIDAD (UN)</th>
@@ -1241,16 +1241,17 @@ export default {
       }
     },
     addItemTarget() {
+      // Se va a colocar la funcion de convertir a minusculas
       let me = this;
       me.arrayTarget.push({
-        nameScientific: this.nameScientific.toUpperCase(),
-        nameCommon: this.nameCommon.toUpperCase(),
-        state: this.state.toUpperCase(),
-        presentation: this.presentation.toUpperCase(),
-        amount: this.amount,
-        average: this.average,
-        weight: this.weight,
-        commercialValue: this.commercialValue,
+        nameScientific: this.nameScientific.toLowerCase(),
+        nameCommon: this.nameCommon.toLowerCase(),
+        state: this.state.toLowerCase(),
+        presentation: this.presentation.toLowerCase(),
+        amount: Number(this.amount),
+        average: Number(this.average),
+        weight: Number(this.weight),
+        commercialValue: Number(this.commercialValue),
         files : this.$refs.fileComponent.getImagesAsBase64()
       });
       me.clearTarget();
@@ -1259,16 +1260,16 @@ export default {
     addItemTarget2() {
       let me = this;
       var total1 = me.arrayTarget2.push({
-        element: this.element.toUpperCase(),
-        amount2: this.amount2.toUpperCase(),
-        characterState: this.characterState.toUpperCase(),
-        commercialValue2: this.commercialValue2.toUpperCase(),
+        element: this.element.toLowerCase(),
+        amount2: this.amount2.toLowerCase(),
+        characterState: this.characterState.toLowerCase(),
+        commercialValue2: this.commercialValue2.toLowerCase(),
       });
       var total2 = me.arrayTarget2Act.push({
-        element: this.element.toUpperCase(),
-        amount2: this.amount2.toUpperCase(),
-        characterState: this.characterState.toUpperCase(),
-        commercialValue2: this.commercialValue2.toUpperCase(),
+        element: this.element.toLowerCase(),
+        amount2: this.amount2.toLowerCase(),
+        characterState: this.characterState.toLowerCase(),
+        commercialValue2: this.commercialValue2.toLowerCase(),
 
       });
       me.clearTarget2();
