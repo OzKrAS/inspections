@@ -181,8 +181,8 @@
                     <div class="md-layout-item">
                       <md-field>
                         <label class="text-muted">Presentación</label>
-                        <md-select id="presentation" v-model="presentation" name="Presentatión"
-                                   placeholder="presentación">
+                        <md-select id="presentation" v-model="presentation" name="presentatión"
+                                   placeholder="Presentación">
                           <md-option value="unidades">Unidades</md-option>
                           <md-option value="zartas ">Zartas</md-option>
                           <md-option value="bolsas o bultos">Bolsas o Bultos</md-option>
@@ -1248,10 +1248,10 @@ export default {
         nameCommon: this.nameCommon.toLowerCase(),
         state: this.state.toLowerCase(),
         presentation: this.presentation.toLowerCase(),
-        amount: Number(this.amount),
-        average: Number(this.average),
-        weight: Number(this.weight),
-        commercialValue: Number(this.commercialValue),
+        amount: this.amount,
+        average: this.average,
+        weight: this.weight,
+        commercialValue: this.commercialValue,
         files : this.$refs.fileComponent.getImagesAsBase64()
       });
       me.clearTarget();
