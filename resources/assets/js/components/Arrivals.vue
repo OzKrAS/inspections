@@ -1432,7 +1432,7 @@ export default {
         dateScale: format(now, dateFormat),
         dateZarpe: format(now, dateFormat),
         dateLatestArrival: format(now, dateFormat),
-        dateResolution: format(now, dateFormat),
+        dateResolution: "",
         dateValidityPat: format(now, dateFormat),
         dateValidity: format(now, dateFormat),
         dateIns: format(now, dateFormat),
@@ -2060,7 +2060,6 @@ export default {
       this.form.dateZarpe = null;
       this.form.dateLatestArrival = null;
       this.form.dateValidityPat = null;
-      this.form.dateResolution = null;
       this.form.date = null;
       this.form.dateValidity = null;
       this.form.observationGeneral = null;
