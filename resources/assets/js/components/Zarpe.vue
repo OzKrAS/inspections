@@ -1996,7 +1996,8 @@ Por la AUNAP,`, 30, 125, {align: 'justify', lineHeightFactor: 1, maxWidth: 160})
 
       doc.setFontSize(8);
       doc.setTextColor(100);
-      doc.text(`Nota: Si este documento se encuentra impreso se considera Copia no Controlada. La versión vigente está publicada en la intranet de la Autoridad Nacional de Acuicultura y Pesca.`, 30, 260, {align: 'justify'});
+      doc.text(`Nota: Si este documento se encuentra impreso se considera Copia no Controlada. La versión vigente está publicada en la intranet de la Autoridad Nacional`, 30, 260, {align: 'justify'});
+      doc.text(`de Acuicultura y Pesca.`, 30, 260, {align: 'justify'});
 
       window.open(doc.output('bloburl'))
       this.senor = "";
