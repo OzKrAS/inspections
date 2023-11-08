@@ -469,8 +469,6 @@ export default {
       regFot: null,
       characterState: null,
       observation: "",
-      files: null,
-
 
       arrayPresenVerifics: [],
       id_presenVerific: 0,
