@@ -364,7 +364,7 @@
               <div class="md-layout">
                 <div class="md-layout-item">
                   <label>Imagenes</label>
-                  <basic-file-component ref="fileComponent" :accepted-file-types="['image/png', 'image/jpg']"></basic-file-component>
+                  <basic-file-component ref="fileComponent" :accepted-file-types="['image/png', 'image/jpeg']"></basic-file-component>
                 </div>
               </div>
               <div class="md-layout">
