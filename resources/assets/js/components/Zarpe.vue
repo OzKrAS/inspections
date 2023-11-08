@@ -1933,16 +1933,17 @@ export default {
       // (this.id_flag = data["id"]);
       // console.log("ID " + me.datos.id);
         var logo = new Image();
-        logo.src = '/img/logoAUNAP.png';
-        doc.addImage(logo, 'png', 20, 10, 33, 15);
-        doc.text("FORMATO DE AUTORIZACIÓN DE ZARPE", 60, 20);
+        //logo.src = '/img/logoAUNAP.png';
+        logo.src = '/img/tituloImpZarpe.png';
+        doc.addImage(logo, 'png', 120, 30, 33, 15);
+        //doc.text("FORMATO DE AUTORIZACIÓN DE ZARPE", 60, 20);
         // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
         doc.setFont("arial");
         doc.setFontSize(11);
         // doc.text(`${demo}, ____ de ________ de 201_`, 30, 40,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
         const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"];
 
-        doc.text(`${date.getDate()} de ${meses[date.getMonth()]} de ${date.getFullYear()}`, 30, 40,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
+        //doc.text(`${date.getDate()} de ${meses[date.getMonth()]} de ${date.getFullYear()}`, 30, 40,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
 
       doc.setFont(undefined, 'bold')
       doc.text("Señor(a) (es)", 30, 60);
