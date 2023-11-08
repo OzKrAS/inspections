@@ -246,9 +246,9 @@ Por tratarse de productos altamente perecederos y que no pueden ser comercializa
                                 <td v-text="target.nameCommon" style="text-transform: capitalize !important;"></td>
                                 <td v-text="target.state" style="text-transform: capitalize !important;"></td>
                                 <td v-text="target.presentation" style="text-transform: capitalize !important;"></td>
-                                <td v-text="target.amount" style="text-transform: capitalize !important;"></td>
-                                <td v-text="target.weight" style="text-transform: capitalize !important;"></td>
-                                <td v-text="target.commercialValue" style="text-transform: capitalize !important;"></td>
+                                <td v-text="target.amount" class="valores_num"></td>
+                                <td v-text="target.weight" class="valores_num"></td>
+                                <td v-text="target.commercialValue" class="valores_num"></td>
                                 <td>
                                   <div v-for="(file, index) in target.files" :key="file.uuid">
                                     <span v-if="file.hasOwnProperty('uuid')" @click="stream(file.uuid)">
