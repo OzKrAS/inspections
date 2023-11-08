@@ -1943,7 +1943,7 @@ export default {
         // doc.text(`${demo}, ____ de ________ de 201_`, 30, 40,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
         const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"];
 
-        //doc.text(`${date.getDate()} de ${meses[date.getMonth()]} de ${date.getFullYear()}`, 30, 40,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
+        doc.text(`${date.getDate()} de ${meses[date.getMonth()]} de ${date.getFullYear()}`, 30, 40,  {align: 'justify',lineHeightFactor: 1,maxWidth:160} );
 
       doc.setFont(undefined, 'bold')
       doc.text("Señor(a) (es)", 30, 60);
