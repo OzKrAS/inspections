@@ -1935,7 +1935,7 @@ export default {
         var logo = new Image();
         //logo.src = '/img/logoAUNAP.png';
         logo.src = '/img/tituloImpZarpe.png';
-        doc.addImage(logo, 'png', 10, 10, 160, 35);
+        doc.addImage(logo, 'png', 10, 10, 190, 35);
         //doc.text("FORMATO DE AUTORIZACIÓN DE ZARPE", 60, 20);
         // doc.text(`FORMATO ACTA DE DONACIÓN ${variable} , otro texto si necesita mas variables ${otra}`, 65, 60);
         doc.setFont("arial");
