@@ -2770,6 +2770,7 @@ export default {
         if (result.value) {
           let me = this;
           console.log("DATA => ",data);
+          console.log("INDEX => ",index);
 
 
           if(data.id){
