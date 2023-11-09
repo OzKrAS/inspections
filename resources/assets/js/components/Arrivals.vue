@@ -2769,7 +2769,7 @@ export default {
       }).then(result => {
         if (result.value) {
           let me = this;
-          if(data['id']){
+          if(data['id'] == index){
             axios
                 .post("/detcaparrivals/delete", {
                   id: data["id"],
@@ -2784,7 +2784,7 @@ export default {
                   console.log(error);
                 });
           }else{
-            me.message("Eliminado", "Eliminó ");
+            // me.message("Eliminado", "Eliminó ");
             // me.listData();
             // me.dataTarget();
           }
