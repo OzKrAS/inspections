@@ -2769,11 +2769,8 @@ export default {
       }).then(result => {
         if (result.value) {
           let me = this;
-          console.log("DATA => ",data);
-          console.log("INDEX => ",index);
 
-
-          if(data.id){
+          if(data.capture1){
             axios
                 .post("/detcaparrivals/delete", {
                   id: data["id"],
