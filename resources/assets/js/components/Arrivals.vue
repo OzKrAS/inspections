@@ -2769,7 +2769,7 @@ export default {
       }).then(result => {
         if (result.value) {
           let me = this;
-          if(data.id){
+          if(data['id']){
             axios
                 .post("/detcaparrivals/delete", {
                   id: data["id"],
@@ -2778,7 +2778,7 @@ export default {
                   console.log(response)
                   me.message("Eliminado", "Eliminó ");
                   me.listData();
-                  // me.dataTarget();
+                  me.dataTarget();
                 })
                 .catch(function (error) {
                   console.log(error);
@@ -2786,7 +2786,7 @@ export default {
           }else{
             me.message("Eliminado", "Eliminó ");
             me.listData();
-            // me.dataTarget();
+            me.dataTarget();
           }
         } else if (
             // Read more about handling dismissals
