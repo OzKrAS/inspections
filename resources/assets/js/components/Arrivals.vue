@@ -1985,6 +1985,7 @@ export default {
 
     },
     deleteTarget(index) {
+      console.log(index);
       this.arrayTarget.splice(index, 1);
       //  this.mensaje("Captura fauna incidental agregado", "error");
     },
@@ -2774,9 +2775,10 @@ export default {
                   id: data["id"],
                 })
                 .then(function (response) {
+                  console.log(response)
                   me.message("Eliminado", "Eliminó ");
                   me.listData();
-                  me.dataTarget();
+                  // me.dataTarget();
                 })
                 .catch(function (error) {
                   console.log(error);
@@ -2784,7 +2786,7 @@ export default {
           }else{
             me.message("Eliminado", "Eliminó ");
             me.listData();
-            me.dataTarget();
+            // me.dataTarget();
           }
         } else if (
             // Read more about handling dismissals
