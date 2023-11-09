@@ -2773,7 +2773,7 @@ export default {
           if(data.capture1){
             axios
                 .post("/detcaparrivals/delete", {
-                  id: data["id"],
+                  id: data.capture1,
                 })
                 .then(function (response) {
                   console.log(response)
