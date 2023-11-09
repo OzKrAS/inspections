@@ -2777,7 +2777,7 @@ export default {
                 .then(function (response) {
                   console.log(response)
                   me.message("Eliminado", "Eliminó ");
-                  // me.listData();
+                  me.listData();
                   me.dataTarget();
                 })
                 .catch(function (error) {
@@ -2786,7 +2786,7 @@ export default {
           }else{
             me.message("Eliminado", "Eliminó ");
             // me.listData();
-            me.dataTarget();
+            // me.dataTarget();
           }
         } else if (
             // Read more about handling dismissals
