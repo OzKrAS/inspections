@@ -1388,7 +1388,7 @@ export default {
           .then(function (response) {
             //console.log(response);
             var respuesta = response.data;
-            me.arrayFa = respuesta.fisheryAut;
+            // me.arrayFa = respuesta.fisheryAut;
           })
           .catch(function (error) {
             console.log(error);
