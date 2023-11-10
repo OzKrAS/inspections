@@ -767,8 +767,7 @@ export default {
       this.characterState = null;
       this.regFot = null;
       this.observation = null;
-      this.files = [];
-      this.images = [];
+      $("#filepond--browser-mhws19my1").val("");
     },
     getUser() {
       let me = this;
