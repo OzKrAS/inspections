@@ -1186,7 +1186,7 @@ export default {
     },
     selectFisheryAuthorized() {
       let me = this;
-      me.arrayFa = [];
+      // me.arrayFa = [];
       var url = "/zarpes/selectFisheryAuthorized";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
