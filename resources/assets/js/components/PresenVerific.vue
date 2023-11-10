@@ -751,7 +751,6 @@ export default {
         observation:this.observation,
         files : this.$refs.fileComponent.getImagesAsBase64()
       });
-      files: null;
       this.clearTarget();
       this.cerrarModal();
     },
@@ -768,6 +767,7 @@ export default {
       this.characterState = null;
       this.regFot = null;
       this.observation = null;
+      this.files = null;
     },
     getUser() {
       let me = this;
