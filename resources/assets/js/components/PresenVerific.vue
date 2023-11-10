@@ -751,6 +751,7 @@ export default {
         observation:this.observation,
         files : this.$refs.fileComponent.getImagesAsBase64()
       });
+      files: null;
       this.clearTarget();
       this.cerrarModal();
     },
