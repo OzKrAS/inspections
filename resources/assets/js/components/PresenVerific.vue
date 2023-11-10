@@ -767,7 +767,9 @@ export default {
       this.characterState = null;
       this.regFot = null;
       this.observation = null;
-      this.fileComponent = null;
+      
+      this.images = [];
+      this.files = [];
     },
     getUser() {
       let me = this;
