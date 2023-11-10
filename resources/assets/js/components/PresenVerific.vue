@@ -767,7 +767,6 @@ export default {
       this.characterState = null;
       this.regFot = null;
       this.observation = null;
-      this.$refs.fileComponent.getImagesAsBase64() = null;
     },
     getUser() {
       let me = this;
