@@ -1318,7 +1318,7 @@ export default {
         doc.setFont("arial");
         // doc.setFont("arial", "bold");
         doc.setFontSize(11);
-        doc.text("No. Acta: " + me.datos.noActa, 15, 35 );
+        doc.text("No. Acta: " + me.datos['noActa'], 15, 35 );
         doc.setFontSize(10);
         doc.text("Regional: " + me.datos['nameRegional'], 110, 35,);
         doc.setFontSize(10);
