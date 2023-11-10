@@ -768,11 +768,7 @@ export default {
       this.regFot = null;
       this.observation = null;
 
-      this.selectedFile= null;
-      this.isDragging= false;
-      this.dragCount= 0;
-      this.files= [];
-      this.images= [];
+      this.$refs.fileComponent.$destroy();
     },
     getUser() {
       let me = this;
