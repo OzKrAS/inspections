@@ -2769,7 +2769,6 @@ export default {
       }).then(result => {
         if (result.value) {
           let me = this;
-          console.log("DATA=> ", data);
 
           if(data.id){
             axios
@@ -2786,8 +2785,11 @@ export default {
                   console.log(error);
                 });
           }else{
+            console.log("INDEX=> ", index);
+
+
             me.message("Eliminado", "Eliminó ");
-            this.arrayTarget.splice(index, 1);
+            // this.arrayTarget.splice(index, 1);
 
             // me.listData();
             // me.dataTarget();
