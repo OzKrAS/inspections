@@ -969,11 +969,11 @@ export default {
 
       if (!this.$v.$invalid) {
         this.saveData();
-        // let me = this;
-        // me.hideForm();
-        // me.message("Guardado", "Guardado ");
+        let me = this;
+        me.hideForm();
+        me.message("Guardado", "Guardado ");
         // // this.clearForm();
-        // me.listData();
+        me.listData();
       }
     },
     addItemTarget() {
