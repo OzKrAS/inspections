@@ -2791,7 +2791,7 @@ export default {
             me.message("Eliminado", "Eliminó ");
             // this.arrayTarget.splice(index, 1);
 
-            // me.listData();
+            me.listData();
             // me.dataTarget();
           }
         } else if (
