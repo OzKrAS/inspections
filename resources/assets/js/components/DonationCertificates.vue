@@ -1161,11 +1161,11 @@ export default {
         municipality: this.form.municipality.toUpperCase(),
         corregimiento: this.form.corregimiento.toUpperCase(),
         place: this.form.place.toUpperCase(),
-        telephone: this.form.telephone.toUpperCase(),
+        telephone: this.form.telephone,
 
         target: this.arrayTarget,
+        'id_regional': this.arrayRegl.id,
        
-        // 'id_regional': this.arrayRegl.id,
         })
         .then(function(response) {
           if (response){
