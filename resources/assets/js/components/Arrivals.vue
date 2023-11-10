@@ -2787,8 +2787,10 @@ export default {
                 });
           }else{
             me.message("Eliminado", "Eliminó ");
-            me.listData();
-            me.dataTarget();
+            this.arrayTarget.splice(index, 1);
+
+            // me.listData();
+            // me.dataTarget();
           }
         } else if (
             // Read more about handling dismissals
