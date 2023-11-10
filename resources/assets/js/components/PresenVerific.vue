@@ -768,7 +768,7 @@ export default {
       this.regFot = null;
       this.observation = null;
 
-      this.$refs.fileComponent = null;
+      this.$refs.fileComponent.removeFiles();
     },
     getUser() {
       let me = this;
