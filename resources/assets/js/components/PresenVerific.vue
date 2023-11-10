@@ -847,9 +847,11 @@ export default {
           'user_id': this.form.user_id
         })
         .then(function(response) {
-          me.hideForm();
-          me.message("Guardado", "Guardo ");
-          me.listData();
+          if(response){
+            me.hideForm();
+            me.message("Guardado", "Guardo ");
+            me.listData();
+          }
         })
         .catch(function(error) {
           console.log(error);
