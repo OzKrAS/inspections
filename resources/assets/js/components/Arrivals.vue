@@ -2789,7 +2789,7 @@ export default {
 
 
             me.message("Eliminado", "Eliminó ");
-            // this.arrayTarget.splice(index, 1);
+            this.arrayTarget.splice(index, 1);
 
             me.listData();
             // me.dataTarget();
