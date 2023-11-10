@@ -970,10 +970,10 @@ export default {
       if (!this.$v.$invalid) {
         this.saveData();
         let me = this;
+        me.listData();
         me.hideForm();
         me.message("Guardado", "Guardado ");
         // // this.clearForm();
-        me.listData();
       }
     },
     addItemTarget() {
