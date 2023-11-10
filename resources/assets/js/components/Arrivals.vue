@@ -1985,7 +1985,7 @@ export default {
 
     },
     deleteTarget(index) {
-      console.log(index);
+      console.log("INDEX DELETE ", index);
       this.arrayTarget.splice(index, 1);
       //  this.mensaje("Captura fauna incidental agregado", "error");
     },
