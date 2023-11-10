@@ -1171,10 +1171,10 @@ export default {
         .then(function(response) {
           if (response){
             me.arrayTargetAct= [];
-            me.id_donationCertificate = response.data.donation.id;
             me.listData();
             me.hideForm();
             me.message("Guardado", "Guardo ");
+            me.id_donationCertificate = response.data.donation.id;
           }
         })
         .catch(function(error) {
