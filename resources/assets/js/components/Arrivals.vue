@@ -2743,8 +2743,10 @@ export default {
                 });
           }else{
             me.message("Eliminado", "Eliminó ");
-            me.dataFauna();
-            me.listData();
+            this.arrayFauna.splice(index, 1);
+
+            // me.dataFauna();
+            // me.listData();
           }
         } else if (
             // Read more about handling dismissals
