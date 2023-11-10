@@ -767,7 +767,7 @@ export default {
       this.characterState = null;
       this.regFot = null;
       this.observation = null;
-      $("#filepond--browser-mhws19my1").val("");
+      $(".filepond--browser").val("");
     },
     getUser() {
       let me = this;
