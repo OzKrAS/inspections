@@ -1171,9 +1171,9 @@ export default {
           if (response){
             me.arrayTargetAct= [];
             me.id_donationCertificate = response.data.donation.id;
+            me.listData();
             me.hideForm();
             me.message("Guardado", "Guardo ");
-            me.listData();
           }
         })
         .catch(function(error) {
