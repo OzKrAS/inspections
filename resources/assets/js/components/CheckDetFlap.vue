@@ -255,7 +255,6 @@
                   <div class="md-layout-item">
                     <label class="text-muted">Pesquería Autorizada (Fishery)</label>
                     <multiselect
-                        v-model="arrayFa"
                         :options="arrayFisheryAuthorized"
                         :multiple="true"
                         :close-on-select="false"
@@ -1186,7 +1185,7 @@ export default {
     },
     selectFisheryAuthorized() {
       let me = this;
-      // me.arrayFa = [];
+      me.arrayFa = [];
       var url = "/zarpes/selectFisheryAuthorized";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
