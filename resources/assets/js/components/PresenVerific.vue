@@ -767,6 +767,12 @@ export default {
       this.characterState = null;
       this.regFot = null;
       this.observation = null;
+
+      this.selectedFile= null;
+      this.isDragging= false;
+      this.dragCount= 0;
+      this.files= [];
+      this.images= [];
     },
     getUser() {
       let me = this;
