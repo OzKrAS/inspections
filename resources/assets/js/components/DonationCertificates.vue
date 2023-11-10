@@ -969,11 +969,11 @@ export default {
 
       if (!this.$v.$invalid) {
         this.saveData();
-        let me = this;
-        me.message("Guardado", "Guardado ");
-        // this.clearForm();
-        me.hideForm();
-        me.listData();
+        // let me = this;
+        // me.hideForm();
+        // me.message("Guardado", "Guardado ");
+        // // this.clearForm();
+        // me.listData();
       }
     },
     addItemTarget() {
@@ -1168,11 +1168,13 @@ export default {
         'id_regional': this.arrayRegl.id,
         })
         .then(function(response) {
-          me.arrayTargetAct= [];
-          me.id_donationCertificate = response.data.donation.id;
-          me.hideForm();
-          me.message("Guardado", "Guardo ");
-          me.listData();
+          if (response){
+            me.arrayTargetAct= [];
+            me.id_donationCertificate = response.data.donation.id;
+            me.hideForm();
+            me.message("Guardado", "Guardo ");
+            me.listData();
+          }
         })
         .catch(function(error) {
           console.log(error);
