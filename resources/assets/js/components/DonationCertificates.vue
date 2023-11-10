@@ -1122,6 +1122,7 @@ export default {
       axios
         .get(url)
         .then(function (response) {
+          console.log(response.data)
           var respuesta = response.data;
           me.arrayDonationCertificate = respuesta.donations.data;
           me.myTable(me.arrayDonationCertificate);
