@@ -967,8 +967,8 @@ export default {
     validateData() {
       this.$v.$touch();
 
+      this.saveData();
       if (!this.$v.$invalid) {
-        this.saveData();
         // let me = this;
         // me.hideForm();
         // me.message("Guardado", "Guardado ");
