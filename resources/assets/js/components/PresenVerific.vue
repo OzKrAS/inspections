@@ -767,7 +767,7 @@ export default {
       this.characterState = null;
       this.regFot = null;
       this.observation = null;
-      $(".filepond--browser").val("");
+      this.target.files = [];
     },
     getUser() {
       let me = this;
