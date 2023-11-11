@@ -170,7 +170,7 @@ class CheckDetFlapController extends Controller
         DetailFisherAutDetFl::where('id_fisheryAut', $request->id)->delete();
         foreach($detailsfisheryDet as $fs=>$deta){
             $objeto= new DetailFisherAutDetFl();
-            $objeto->id_fisheryAut = $CheckDetInchs->id;
+            $objeto->id_fisheryAut = $request->id;
             $objeto->name= $deta['name'];
             $objeto->save();
         }
