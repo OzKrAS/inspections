@@ -1264,10 +1264,10 @@ export default {
           })
           .then(function (response) {
             me.hideForm();
-            me.id_CheckDet = response.data.check.id;
-            me.$refs.fileComponent.uploadFiles();
             me.message("Guardado", "Guardo ");
             me.listData();
+            me.$refs.fileComponent.uploadFiles();
+            me.id_CheckDet = response.data.check.id;
           })
           .catch(function (error) {
             console.log(error);
@@ -1299,12 +1299,13 @@ export default {
             'id_company': this.arrayComp.id,
             'id_regional': this.arrayRegl.id,
             'detflap': this.arrayDetsAct,
+            'data': this.arrayFa,
           })
           .then(function (response) {
             me.hideForm();
-            me.$refs.fileComponent.uploadFiles();
             me.message("Actualizado", "Actualizó ");
             me.listData();
+            me.$refs.fileComponent.uploadFiles();
           })
           .catch(function (error) {
             console.log(error);
@@ -1386,7 +1387,7 @@ export default {
       axios
           .get(url)
           .then(function (response) {
-            console.log("RESPONSE FISHEERY AUT ", response);
+            //console.log(response);
             var respuesta = response.data;
             me.arrayFa = respuesta.fisheryAut;
           })
