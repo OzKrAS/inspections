@@ -1110,6 +1110,7 @@ export default {
     },
 
     showUpdate(data = []) {
+    console.log("DATA => ", data);
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_CheckDet = data["id"]);
