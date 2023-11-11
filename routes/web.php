@@ -143,7 +143,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/checkDetFlaps/selectCompanies', 'CompanyController@selectCompanies');
         Route::get('/checkDetFlaps/selectRegional', 'RegionalController@selectRegional');
         Route::get('/checkDetFlaps/dataTable', 'CheckDetFlapController@dataTable');
-        Route::get('/checkDetFlaps/fishery', 'CheckDetInchController@dataFishery');
+        Route::get('/checkDetFlaps/fishery', 'CheckDetFlapController@dataFishery');
         //verificacion presencia equipo de rescate
         Route::get('/presenVerifics', 'PresenVerificController@index');
         Route::post('/presenVerifics/save', 'PresenVerificController@store');
