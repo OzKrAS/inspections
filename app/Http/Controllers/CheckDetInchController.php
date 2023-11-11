@@ -179,7 +179,7 @@ class CheckDetInchController extends Controller
         $detailsfisheryDet = $request->data;
         //delete all data
         // DetailFisherAutDetInchs::where('id_fisheryAut', $CheckDetInchs->id)->delete();
-        $fishersAuth = DetailFisherAutDetInchs::where('id_fisheryAut', '=', $CheckDetInchs->id)->get();
+        $fishersAuth = DetailFisherAutDetInchs::where('id_fisheryAut', '=', $request->id)->get();
         foreach ($fishersAuth as $fisher) {
            $fisher->delete();
         }
