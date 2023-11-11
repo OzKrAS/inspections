@@ -1110,7 +1110,6 @@ export default {
     },
 
     showUpdate(data = []) {
-    console.log("DATA => ", data);
       let me = this;
       (this.tipoAccion = 2), (me.listado = 0);
       (this.id_CheckDet = data["id"]);
@@ -1191,6 +1190,7 @@ export default {
       var url = "/zarpes/selectFisheryAuthorized";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
+        console.log("RESPONSE => ", respuesta.fishery);
         me.arrayFisheryAuthorized = respuesta.fishery;
       }).catch(function (error) {
         console.log(error);
