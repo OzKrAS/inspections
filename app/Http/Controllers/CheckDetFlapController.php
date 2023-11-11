@@ -163,6 +163,18 @@ class CheckDetFlapController extends Controller
         $checkDetFlaps->save();
 
         $detaildetflap = $request->detflap;
+
+        // Array ArrayFa + Pesquerias Autorizadas
+        $detailsfisheryDet = $request->data;
+        //delete all data
+        DetailFisherAutDetFl::where('id_fisheryAut', $request->id)->delete();
+        foreach($detailsfisheryDet as $fs=>$deta){
+            $objeto= new DetailFisherAutDetFl();
+            $objeto->id_fisheryAut = $CheckDetInchs->id;
+            $objeto->name= $deta['name'];
+            $objeto->save();
+        }
+
         foreach($detaildetflap as $ep=>$det){
             $objeto= new DetailDetFlap();
             $objeto->id_detflap = $checkDetFlaps->id;
