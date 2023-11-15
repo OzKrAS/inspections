@@ -1306,6 +1306,8 @@ export default {
         });
     },
     createPdf (data = []) {
+      console.log("DATA ", data);
+
       let me = this;
       var columns = []; var rows = [];
       var doc = new jsPDF('p','mm','letter');
