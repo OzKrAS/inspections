@@ -1308,6 +1308,26 @@ export default {
     createPdf (data = []) {
       
       let me = this;
+
+      // arrayTarget axios
+      const url = "/donationCertificates/dataTable?id_Donation="+this.id_donationCertificate;
+      axios
+        .get(url)
+        .then(function(response) {
+          const respuesta = response.data;
+          me.arrayTarget = respuesta.donation.map(item => {
+            return {
+              ...item,
+              deleted : false,
+            }
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+
+      //
+
       console.log("DATA ", me);
       var columns = []; var rows = [];
       var doc = new jsPDF('p','mm','letter');
