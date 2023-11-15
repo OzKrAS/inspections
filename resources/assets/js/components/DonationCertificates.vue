@@ -1308,7 +1308,7 @@ export default {
     createPdf (data = []) {
       
       let me = this;
-      console.log("DATA ", me.datos);
+      console.log("DATA ", me);
       var columns = []; var rows = [];
       var doc = new jsPDF('p','mm','letter');
       this.id_donationCertificate = data["id"]
