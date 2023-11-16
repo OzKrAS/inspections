@@ -1681,7 +1681,7 @@ preventivo de los siguientes recursos y/o productos pesqueros:
       doc.setDrawColor(0, 0, 0);
       doc.rect(15, 50, 186, 15);
 
-      console.log("ME ", me.datos)
+      console.log("ME ", me.datos);
 
       columns = [
         {title: "Nombre científico", dataKey: "nomCientifico"},
@@ -1718,11 +1718,11 @@ preventivo de los siguientes recursos y/o productos pesqueros:
             }
             
             rows.push(arrays);
-            rows;
           }
         }
       });
-
+      
+      rows;
       console.log(rows)
 
       columns1 = [
@@ -1731,25 +1731,26 @@ preventivo de los siguientes recursos y/o productos pesqueros:
         {title: "Características y estado", dataKey: "caractEstado"},
         {title: "Valor Comercial", dataKey: "valorC"},
       ];
-      rows1 = [
-        {
-          "elemento": me.datos.nameScientific,
-          "cantidad": me.datos.nameCommon,
-          "caractEstado": me.datos.state,
-          "valorC": me.datos.state,
-        },
-        // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional},
-      ];
+
+      // rows1 = [
+      //   {
+      //     "elemento": me.datos.nameScientific,
+      //     "cantidad": me.datos.nameCommon,
+      //     "caractEstado": me.datos.state,
+      //     "valorC": me.datos.state,
+      //   },
+      //   // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional},
+      // ];
       columns2 = [
         {title: "MOTIVOS DEL DECOMISO PREVENTIVO", dataKey: "motivos"},
       ];
-      rows2 = [
-        {
-          "motivos": me.datos.nameScientific,
+      // rows2 = [
+      //   {
+      //     "motivos": me.datos.nameScientific,
 
-        },
-        // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional},
-      ];
+      //   },
+      //   // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional},
+      // ];
       doc.setFontSize(10);
       doc.text(`ESTADO: Fresco entero (FE), Fresco eviscerado (FV), Congelado entero (CE), Congelado eviscerado (CV),
 Descabezado (D), Tronco (TR), Aletas (A), Seco (S), Vivos (V), Otros (especificar). 
