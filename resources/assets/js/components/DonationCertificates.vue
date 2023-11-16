@@ -1381,9 +1381,10 @@ en presencia de la autoridad competente.
             array.forEach(elements => {
               for (let i = 0; i < elements.length; i++) {
                 const element = elements[i];
-                if( element[0].id_donation == this.id_donationCertificate){
-                  rows.push(element[0]);
-                }
+                console.log(element)
+                // if( element[0].id_donation == this.id_donationCertificate){
+                  // rows.push(element[0]);
+                // }
               }
             });
         doc.setFontSize(10);    
