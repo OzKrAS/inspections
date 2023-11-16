@@ -2052,32 +2052,32 @@ export default {
       doc.setFont("arial");
       doc.setFontSize(11);
       doc.setFontSize(11).setFont(undefined, 'normal');
-      doc.text(`Para su información y fines pertinentes, le comunico que, una vez realizada la inspección a la motonave ${this.form.nameBoat} con matrícula No. ${this.form.enrollment} vinculada al Permiso de Pesca Comercial Industrial según la Resolución No. ${this.form.noResolution} otorgado al señor ${this.form.representative} identificado con la cedula de ciudadanía No. ${this.form.cedulapermiso} , se constató que ${this.autorization == 1 ? 'SI' : 'NO'} CUMPLE con los requisitos mínimos establecidos en la Resolución 1026 del 2014, para realizar faenas de pesca dirigida a la captura de ${this.form.dataFisherySelect} en la zona de pesca correspondiente a ${this.arrayZoneAuto.name}, por lo tanto, ${this.autorization == 1 ? 'SI' : 'NO'} se le autoriza el zarpe.
+      doc.text(`Para su información y fines pertinentes, le comunico que, una vez realizada la inspección a la motonave ${this.form.nameBoat} con matrícula No. ${this.form.enrollment} vinculada al Permiso de Pesca Comercial Industrial según la Resolución No. ${this.form.noResolution} otorgado al señor ${this.form.representative} identificado con la cedula de ciudadanía No. ${this.cedulapermiso} , se constató que ${this.autorization == 1 ? 'SI' : 'NO'} CUMPLE con los requisitos mínimos establecidos en la Resolución 1026 del 2014, para realizar faenas de pesca dirigida a la captura de ${this.form.dataFisherySelect} en la zona de pesca correspondiente a ${this.arrayZoneAuto.name}, por lo tanto, ${this.autorization == 1 ? 'SI' : 'NO'} se le autoriza el zarpe.
 
 
 Por la AUNAP,`, 30, 125, {align: 'justify', lineHeightFactor: 1, maxWidth: 160});
 
-      doc.text(`${this.firmanombre}`, 32, 188, {align: 'center', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.firmanombre}`, 32, 188, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
       doc.line(30, 190, 104, 190);
       doc.setFontSize(10);
       doc.text("Nombre", 62, 193);
 
-      doc.text(`${this.cargonombre}`, 117, 188, {align: 'center', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.cargonombre}`, 117, 188, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
       doc.line(115, 190, 190, 190);
       doc.setFontSize(10);
       doc.text("Cargo", 148, 193);
 
-      doc.text(`${this.direccionOficina}`, 32, 208, {align: 'center', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.direccionOficina}`, 32, 208, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
       doc.line(30, 210, 104, 210);
       doc.setFontSize(10);
       doc.text("Dirección de la Oficina", 50, 213);
 
-      doc.text(`${this.telefonoOficina}`, 117, 208, {align: 'center', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.telefonoOficina}`, 117, 208, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
       doc.line(115, 210, 190, 210);
       doc.setFontSize(10);
       doc.text("Teléfono de la Oficina", 138, 213);
 
-      doc.text(`${this.correoelectronico}`, 32, 228, {align: 'center', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.correoelectronico}`, 32, 228, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
       doc.line(30, 230, 104, 230);
       doc.setFontSize(10);
       doc.text("Correo Electrónico", 53, 233);
