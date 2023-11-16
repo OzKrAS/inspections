@@ -1787,11 +1787,11 @@ liso, palangre, otro).`, 15, 165);
       doc.setFontSize(10);
       doc.text("Firma", 122, 236);
 
-      doc.autoTable({
-        margin: {top: 72},
-        head: [['Nombre científico', 'Nombre Común', 'Estado', 'Presentación', 'Cantidad (UN)', 'Peso (KG)', 'Valor Comercial']],
-        body: this.info
-      });
+      // doc.autoTable({
+      //   margin: {top: 72},
+      //   head: [['Nombre científico', 'Nombre Común', 'Estado', 'Presentación', 'Cantidad (UN)', 'Peso (KG)', 'Valor Comercial']],
+      //   body: this.info
+      // });
 
       // doc.autoTable(columns, rows, {
       //   // theme: 'grid',
@@ -1800,18 +1800,18 @@ liso, palangre, otro).`, 15, 165);
       //         },
       // });
 
-      doc.autoTable(columns1, rows1, {
-        margin: {top: 120},
-        didDrawPage: function () {
+      // doc.autoTable(columns1, rows1, {
+      //   margin: {top: 120},
+      //   didDrawPage: function () {
 
-        },
-      });
+      //   },
+      // });
 
-      doc.autoTable(columns2, rows2, {
-        margin: {top: 140},
-        didDrawPage: function () {
-        },
-      });
+      // doc.autoTable(columns2, rows2, {
+      //   margin: {top: 140},
+      //   didDrawPage: function () {
+      //   },
+      // });
       doc.addPage();
       doc.setFontSize(10);
       doc.text(`DATOS DEL PRESUNTO INFRACTOR`, 70, 20);
