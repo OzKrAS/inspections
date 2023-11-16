@@ -1394,12 +1394,11 @@ en presencia de la autoridad competente.
                     "valor": element.commercialValue
                   }
 
-                  arrays.push(array);
+                  rows.push(array);
                 }
               }
             });
 
-            rows = arrays;
         doc.setFontSize(10);    
         doc.text(`Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${me.datos.date}`, 15, 145,  {align: 'justify',lineHeightFactor: 1,maxWidth:180} );    
         doc.setFontSize(10);
