@@ -1376,14 +1376,13 @@ en presencia de la autoridad competente.
               });
             });
 
-            console.log("ARR ", array);
             
             let arrays = [];
             array.forEach(elements => {
               for (let i = 0; i < elements.length; i++) {
                 const element = elements[i];
-                console.log(element)
-                if( element.id_donation == this.id_donationCertificate){
+                if( element.id_donation == data["id"]){
+                  console.log(element)
                   let array = {
                     "id_donation": element.id_donation,
                     "nomCientifico": element.nameScientific,
@@ -1395,7 +1394,7 @@ en presencia de la autoridad competente.
                     "valor": element.commercialValue
                   }
 
-                  arrays.push(element);
+                  arrays.push(array);
                 }
               }
             });
