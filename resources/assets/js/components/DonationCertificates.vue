@@ -1354,8 +1354,8 @@ en presencia de la autoridad competente.
               { title: "Valor Comercial", dataKey: "valor" },
                 
             ];
-            me.arrayTargetsDonation.forEach(element => {
-              // element1.forEach(element => {
+            me.arrayTargetsDonation.forEach(element1 => {
+              element1.forEach(element => {
                 let arr = [
                   {
                     "nomCientifico": element.nameScientific,
@@ -1369,7 +1369,7 @@ en presencia de la autoridad competente.
                   // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
                 ]; 
                 rows.push(arr);
-              // });
+              });
             });
 
             console.log("ROWS ", rows);
