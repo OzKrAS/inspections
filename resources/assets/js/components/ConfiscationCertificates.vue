@@ -1703,9 +1703,8 @@ preventivo de los siguientes recursos y/o productos pesqueros:
       me.arrayDataTable1.forEach(elements => {
         for (let i = 0; i < elements.length; i++) {
           const element = elements[i];
-          if( element.id_confiscation == me.datos['id']){
+          if( element.id_confiscation == me.datos.id){
             arrays = {
-              "id_confiscation": element.id_confiscation,
               "nomCientifico": element.nameScientific,
               "nomComun": element.nameCommon,
               "estado": element.state,
@@ -1721,6 +1720,7 @@ preventivo de los siguientes recursos y/o productos pesqueros:
       });
 
       rows;
+      console.log(rows)
 
       columns1 = [
         {title: "Elemento", dataKey: "elemento"},
