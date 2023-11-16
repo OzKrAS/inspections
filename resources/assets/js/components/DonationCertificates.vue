@@ -1309,30 +1309,11 @@ export default {
       
       let me = this;
 
-      // arrayTarget axios
-      const url = "/donationCertificates/dataTable?id_Donation="+this.id_donationCertificate;
-      axios
-        .get(url)
-        .then(function(response) {
-          const respuesta = response.data;
-          me.arrayTarget = respuesta.donation.map(item => {
-            return {
-              ...item,
-              deleted : false,
-            }
-          });
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-
-      //
-
-      console.log("DATA ", me);
       var columns = []; var rows = [];
       var doc = new jsPDF('p','mm','letter');
       this.id_donationCertificate = data["id"]
-        var logo = new Image();
+      var logo = new Image();
+      console.log("DATA ", me);
         logo.src = '/img/logoAUNAP.png';
         doc.addImage(logo, 'png', 20, 10, 33, 15);
         doc.text("FORMATO ACTA DE DONACIÓN", 65, 20);
@@ -1366,11 +1347,31 @@ en presencia de la autoridad competente.
               { title: "Valor Comercial", dataKey: "valor" },
                 
             ];
-            rows = [
-              {"nomCientifico": this.pruebaData,
-               "nomComun": this.pruebaData},
-              // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
-            ]; 
+
+            const url = "/donationCertificates/dataTable?id_Donation="+this.id_donationCertificate;
+            axios
+              .get(url)
+              .then(function(response) {
+                const respuesta = response.data;
+                me.arrayTarget = respuesta.donation.map(item => {
+                  // return {
+                  //   ...item,
+                  //   deleted : false,
+                  // }
+                  rows = [
+                    {
+                      "nomCientifico": item.nameScientific,
+                      "nomComun": item.nameCommon
+                    },             
+                    // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
+                  ]; 
+                });
+              })
+              .catch(function(error) {
+                console.log(error);
+              });
+
+            
         doc.setFontSize(10);    
         doc.text(`Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${me.datos.date}`, 15, 145,  {align: 'justify',lineHeightFactor: 1,maxWidth:180} );    
         doc.setFontSize(10);
