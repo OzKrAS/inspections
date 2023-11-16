@@ -1723,7 +1723,7 @@ preventivo de los siguientes recursos y/o productos pesqueros:
       });
       
       rows;
-      console.log(rows)
+      // console.log(rows)
 
       columns1 = [
         {title: "Elemento", dataKey: "elemento"},
@@ -1741,6 +1741,26 @@ preventivo de los siguientes recursos y/o productos pesqueros:
       //   },
       //   // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional},
       // ];
+      let arrays2 = {};
+      me.arrayDataTable2.forEach(elements => {
+        for (let i = 0; i < elements.length; i++) {
+          const element = elements[i];
+          if( element.id_confiscation == me.datos.id){
+            arrays2 = {
+              "elemento": element.element,
+              "caractEstado": element.characterState,
+              "cant": element.amount2,
+              "valor": element.commercialValue2
+            }
+            
+            rows1.push(arrays2);
+          }
+        }
+      });
+      
+      rows1;
+
+
       columns2 = [
         {title: "MOTIVOS DEL DECOMISO PREVENTIVO", dataKey: "motivos"},
       ];
