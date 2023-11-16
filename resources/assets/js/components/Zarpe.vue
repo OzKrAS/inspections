@@ -922,6 +922,7 @@
           <div class="modal-body">
             <form action method="post" enctype="multipart/form-data" class="form-horizontal">
               <md-card-content>
+                <h6>Datos de la persona a quien va dirigida la autorización</h6>
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <md-field md-clearable>
@@ -959,11 +960,10 @@
                       />
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
-
                 </div>
+                <hr>
+                <h6>Cédula de la persona a la cuál se le otorgó el permiso</h6>
                 <div class="md-layout">
-                  <hr>
-                  <h6>Cédula de la persona a la cuál se le otorgó el permiso</h6>
                   <div class="md-layout-item">
                     <md-field md-clearable>
                       <label for="first-name">Cédula</label>
@@ -977,9 +977,9 @@
                     </md-field>
                   </div>&nbsp;&nbsp;&nbsp;
                 </div>
+                <hr>
+                <h6>Firmas y datos anexos</h6>
                 <div class="md-layout">
-                  <hr>
-                  <h6>Firmas y datos anexos</h6>
                   <div class="md-layout-item">
                     <md-field md-clearable>
                       <label for="first-name">Nombre</label>
