@@ -73,6 +73,7 @@ class DonationCertificateController extends Controller
             ->paginate(9999999999999999999999999);
         }
 
+        $arrayTarget = [];
 
         foreach ($donations as $value) {
             $arrayTarget = DetDonation::select('id', 'id_donation', 'nameScientific', 'nameCommon', 'state', 'presentation', 'amount', 'weight', 'commercialValue')
