@@ -1654,6 +1654,10 @@ export default {
       var doc = new jsPDF('p', 'mm', 'letter');
       this.id_donationCertificate = data["id"]
       console.log("ID " + me.datos.id);
+      console.log("Datos " + me.datos);
+      console.log("Table 1 " + me.arrayDataTable1);
+      console.log("Table 2 " + me.arrayDataTable2);
+      console.log("Motivos " + me.arrayMotivos);
       var logo = new Image();
       logo.src = '/img/logoAUNAP.png';
       doc.addImage(logo, 'png', 20, 10, 33, 15);
