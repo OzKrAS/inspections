@@ -1128,7 +1128,7 @@ export default {
         .then(function (response) {
           console.log(response.data)
           var respuesta = response.data;
-          arrayTargetsDonation = respuesta.arrayTargets;
+          me.arrayTargetsDonation = respuesta.arrayTargets;
           me.arrayDonationCertificate = respuesta.donations.data;
           me.myTable(me.arrayDonationCertificate);
 
@@ -1353,7 +1353,7 @@ en presencia de la autoridad competente.
               { title: "Valor Comercial", dataKey: "valor" },
                 
             ];
-            arrayTargetsDonation.forEach(element => {
+            me.arrayTargetsDonation.forEach(element => {
               rows = [
                 {
                   "nomCientifico": element.nomCientifico,
