@@ -1379,11 +1379,12 @@ en presencia de la autoridad competente.
             console.log("ARR ", array);
             
             array.forEach(elements => {
-              elements.forEach(element => {
+              for (let i = 0; i < elements.length; i++) {
+                const element = elements[i];
                 if( element[0].id_donation == this.id_donationCertificate){
                   rows.push(element[0]);
                 }
-              });
+              }
             });
         doc.setFontSize(10);    
         doc.text(`Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${me.datos.date}`, 15, 145,  {align: 'justify',lineHeightFactor: 1,maxWidth:180} );    
