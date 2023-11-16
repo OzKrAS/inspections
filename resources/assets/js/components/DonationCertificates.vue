@@ -1378,15 +1378,29 @@ en presencia de la autoridad competente.
 
             console.log("ARR ", array);
             
+            let arrays = [];
             array.forEach(elements => {
               for (let i = 0; i < elements.length; i++) {
                 const element = elements[i];
                 console.log(element)
-                // if( element[0].id_donation == this.id_donationCertificate){
-                  // rows.push(element[0]);
-                // }
+                if( element.id_donation == this.id_donationCertificate){
+                  let array = {
+                    "id_donation": element.id_donation,
+                    "nomCientifico": element.nameScientific,
+                    "nomComun": element.nameCommon,
+                    "estado": element.state,
+                    "presentacion": element.presentation,
+                    "cant": element.amount,
+                    "peso": element.weight,
+                    "valor": element.commercialValue
+                  }
+
+                  arrays.push(element);
+                }
               }
             });
+
+            rows = arrays;
         doc.setFontSize(10);    
         doc.text(`Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${me.datos.date}`, 15, 145,  {align: 'justify',lineHeightFactor: 1,maxWidth:180} );    
         doc.setFontSize(10);
