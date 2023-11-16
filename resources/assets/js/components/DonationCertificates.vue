@@ -1353,15 +1353,17 @@ en presencia de la autoridad competente.
               { title: "Valor Comercial", dataKey: "valor" },
                 
             ];
-            me.arrayTargetsDonation.forEach(element => {
-              rows = [
-                {
-                  "nomCientifico": element.nomCientifico,
-                  "nomComun": element.nomComun,
-                  "estado": element.state
-                },
-                // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
-              ]; 
+            me.arrayTargetsDonation.forEach(element1 => {
+              element1.forEach(element => {
+                rows = [
+                  {
+                    "nomCientifico": element.nomCientifico,
+                    "nomComun": element.nomComun,
+                    "estado": element.state
+                  },
+                  // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
+                ]; 
+              });
             });
         doc.setFontSize(10);    
         doc.text(`Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${me.datos.date}`, 15, 145,  {align: 'justify',lineHeightFactor: 1,maxWidth:180} );    
