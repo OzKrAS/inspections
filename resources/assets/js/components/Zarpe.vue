@@ -2077,7 +2077,7 @@ Por la AUNAP,`, 30, 125, {align: 'justify', lineHeightFactor: 1, maxWidth: 160})
       doc.setFontSize(10);
       doc.text("Teléfono de la Oficina", 138, 213);
 
-      doc.text(`${this.correoelectronico}`, 32, 228, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.correoelectronico}`, 32, 228);
       doc.line(30, 230, 104, 230);
       doc.setFontSize(10);
       doc.text("Correo Electrónico", 53, 233);
