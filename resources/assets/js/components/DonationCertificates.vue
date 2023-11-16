@@ -1319,7 +1319,7 @@ export default {
       var doc = new jsPDF('p','mm','letter');
       this.id_donationCertificate = data["id"]
       var logo = new Image();
-      console.log("DATA ", me.arrayTargetsDonation);
+      console.log("DATA ", me.datos['id']);
 
         logo.src = '/img/logoAUNAP.png';
         doc.addImage(logo, 'png', 20, 10, 33, 15);
@@ -1381,7 +1381,7 @@ en presencia de la autoridad competente.
             array.forEach(elements => {
               for (let i = 0; i < elements.length; i++) {
                 const element = elements[i];
-                if( element.id_donation == data["id"]){
+                if( element.id_donation == me.datos['id']){
                   console.log(element)
                   let array = {
                     "id_donation": element.id_donation,
