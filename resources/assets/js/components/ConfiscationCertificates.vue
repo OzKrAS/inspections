@@ -1793,25 +1793,25 @@ liso, palangre, otro).`, 15, 165);
       //   body: this.info
       // });
 
-      // doc.autoTable(columns, rows, {
-      //   // theme: 'grid',
-      //         margin: { top: 72 },
-      //         didDrawPage: function () {
-      //         },
-      // });
+      doc.autoTable(columns, rows, {
+        // theme: 'grid',
+              margin: { top: 72 },
+              didDrawPage: function () {
+              },
+      });
 
-      // doc.autoTable(columns1, rows1, {
-      //   margin: {top: 120},
-      //   didDrawPage: function () {
+      doc.autoTable(columns1, rows1, {
+        margin: {top: 120},
+        didDrawPage: function () {
 
-      //   },
-      // });
+        },
+      });
 
-      // doc.autoTable(columns2, rows2, {
-      //   margin: {top: 140},
-      //   didDrawPage: function () {
-      //   },
-      // });
+      doc.autoTable(columns2, rows2, {
+        margin: {top: 140},
+        didDrawPage: function () {
+        },
+      });
       doc.addPage();
       doc.setFontSize(10);
       doc.text(`DATOS DEL PRESUNTO INFRACTOR`, 70, 20);
