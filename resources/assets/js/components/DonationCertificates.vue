@@ -1313,7 +1313,7 @@ export default {
       var doc = new jsPDF('p','mm','letter');
       this.id_donationCertificate = data["id"]
       var logo = new Image();
-      console.log("DATA ", me);
+      console.log("DATA ", me.arrayTarget);
         logo.src = '/img/logoAUNAP.png';
         doc.addImage(logo, 'png', 20, 10, 33, 15);
         doc.text("FORMATO ACTA DE DONACIÓN", 65, 20);
@@ -1347,7 +1347,7 @@ en presencia de la autoridad competente.
               { title: "Valor Comercial", dataKey: "valor" },
                 
             ];
-            this.arrayTarget.forEach(element => {
+            me.arrayTarget.forEach(element => {
               rows = [
                 {
                   "nomCientifico": element.nomCientifico,
