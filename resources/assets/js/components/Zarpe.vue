@@ -961,9 +961,9 @@
                   </div>&nbsp;&nbsp;&nbsp;
 
                 </div>
-                <hr>
-                <h4>Cédula de la persona a la cuál se le otorgó el permiso</h4>
                 <div class="md-layout">
+                  <hr>
+                  <h6>Cédula de la persona a la cuál se le otorgó el permiso</h6>
                   <div class="md-layout-item">
                     <md-field md-clearable>
                       <label for="first-name">Cédula</label>
@@ -975,11 +975,11 @@
                           :disabled="sending"
                       />
                     </md-field>
-                  </div>
+                  </div>&nbsp;&nbsp;&nbsp;
                 </div>
-                <hr>
-                <h4>Firmas y datos anexos</h4>
                 <div class="md-layout">
+                  <hr>
+                  <h6>Firmas y datos anexos</h6>
                   <div class="md-layout-item">
                     <md-field md-clearable>
                       <label for="first-name">Nombre</label>
@@ -990,7 +990,9 @@
                           v-model="firmanombre"
                           :disabled="sending"
                       />
-                    </md-field>&nbsp;&nbsp;&nbsp;
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
                     <md-field md-clearable>
                       <label for="first-name">Cargo</label>
                       <md-input
@@ -1000,7 +1002,9 @@
                           v-model="cargonombre"
                           :disabled="sending"
                       />
-                    </md-field>&nbsp;&nbsp;&nbsp;
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
                     <md-field md-clearable>
                       <label for="first-name">Dirección oficina</label>
                       <md-input
@@ -1010,7 +1014,9 @@
                           v-model="direccionOficina"
                           :disabled="sending"
                       />
-                    </md-field>&nbsp;&nbsp;&nbsp;
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
                     <md-field md-clearable>
                       <label for="first-name">Teléfono oficina</label>
                       <md-input
@@ -1020,7 +1026,9 @@
                           v-model="telefonoOficina"
                           :disabled="sending"
                       />
-                    </md-field>&nbsp;&nbsp;&nbsp;
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="md-layout-item">
                     <md-field md-clearable>
                       <label for="first-name">Correo electrónico</label>
                       <md-input
@@ -1030,8 +1038,8 @@
                           v-model="correoelectronico"
                           :disabled="sending"
                       />
-                    </md-field>&nbsp;&nbsp;&nbsp;
-                  </div>
+                    </md-field>
+                  </div>&nbsp;&nbsp;&nbsp;
                 </div>
               </md-card-content>
             </form>
