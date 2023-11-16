@@ -1357,9 +1357,13 @@ en presencia de la autoridad competente.
               element1.forEach(element => {
                 rows = [
                   {
-                    "nomCientifico": element.nomCientifico,
-                    "nomComun": element.nomComun,
-                    "estado": element.state
+                    "nomCientifico": element.nameScientific,
+                    "nomComun": element.nameCommon,
+                    "estado": element.state,
+                    "presentacion": element.presentation,
+                    "cant": elemeent.amount,
+                    "peso": element.weight,
+                    "valor": element.commercialValue
                   },
                   // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
                 ]; 
