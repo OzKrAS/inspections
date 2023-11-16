@@ -1001,6 +1001,11 @@ export default {
       arrayTargetAct: [],
       arrayTarget2Act: [],
       arrayConfiscationCert: [],
+
+      arrayDataTable1: [],
+      arrayDataTable2: [],
+      arrayMotivos: [],
+
       id_confiscationCert: 0,
       arrayCName: {id: 0, commonname: ''},
       arrayCommonName: [],
@@ -1424,6 +1429,9 @@ export default {
           .then(function (response) {
             var respuesta = response.data;
             me.arrayConfiscationCert = respuesta.confiscation.data;
+            me.arrayDataTable1 = respuesta.datatable1;
+            me.arrayDataTable2 = respuesta.datatable2;
+            me.arrayMotivos = respuesta.motivos;
             me.myTable(me.arrayConfiscationCert);
 
           })
@@ -1681,14 +1689,39 @@ preventivo de los siguientes recursos y/o productos pesqueros:
         {title: "Valor Comercial", dataKey: "valor"},
 
       ];
-      rows = [
-        {
-          "nomCientifico": me.datos.nameScientific,
-          "nomComun": me.datos.nameCommon,
-          "estado": me.datos.state
-        },
-        // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional},
-      ];
+      
+      // rows = [
+      //   {
+      //     "nomCientifico": me.datos.nameScientific,
+      //     "nomComun": me.datos.nameCommon,
+      //     "estado": me.datos.state
+      //   },
+      //   // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional},
+      // ];
+
+      let arrays = {};
+      me.arrayDataTable1.forEach(elements => {
+        for (let i = 0; i < elements.length; i++) {
+          const element = elements[i];
+          if( element.id_confiscation == me.datos['id']){
+            arrays = {
+              "id_confiscation": element.id_confiscation,
+              "nomCientifico": element.nameScientific,
+              "nomComun": element.nameCommon,
+              "estado": element.state,
+              "presentacion": element.presentation,
+              "cant": element.amount,
+              "peso": element.weight,
+              "valor": element.commercialValue
+            }
+            
+            rows.push(arrays);
+          }
+        }
+      });
+
+      rows;
+
       columns1 = [
         {title: "Elemento", dataKey: "elemento"},
         {title: "Cantidad (UN)", dataKey: "cantidad"},
