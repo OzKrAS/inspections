@@ -1361,7 +1361,7 @@ en presencia de la autoridad competente.
                     "nomComun": element.nameCommon,
                     "estado": element.state,
                     "presentacion": element.presentation,
-                    "cant": elemeent.amount,
+                    "cant": element.amount,
                     "peso": element.weight,
                     "valor": element.commercialValue
                   },
