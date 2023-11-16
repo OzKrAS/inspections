@@ -1377,13 +1377,12 @@ en presencia de la autoridad competente.
             });
 
             
-            let arrays = [];
+            let arrays = {};
             array.forEach(elements => {
               for (let i = 0; i < elements.length; i++) {
                 const element = elements[i];
                 if( element.id_donation == me.datos['id']){
-                  console.log(element)
-                  let array = {
+                  arrays = {
                     "id_donation": element.id_donation,
                     "nomCientifico": element.nameScientific,
                     "nomComun": element.nameCommon,
@@ -1393,11 +1392,13 @@ en presencia de la autoridad competente.
                     "peso": element.weight,
                     "valor": element.commercialValue
                   }
-
-                  rows.push(array);
+                  
+                  rows.push(arrays);
                 }
               }
             });
+
+            console.log(rows)
 
         doc.setFontSize(10);    
         doc.text(`Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${me.datos.date}`, 15, 145,  {align: 'justify',lineHeightFactor: 1,maxWidth:180} );    
