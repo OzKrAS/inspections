@@ -1668,6 +1668,9 @@ preventivo de los siguientes recursos y/o productos pesqueros:
 `, 16, 55);
       doc.setDrawColor(0, 0, 0);
       doc.rect(15, 50, 186, 15);
+
+      console.log("ME ", me.datos)
+
       columns = [
         {title: "Nombre científico", dataKey: "nomCientifico"},
         {title: "Nombre Común", dataKey: "nomComun"},
