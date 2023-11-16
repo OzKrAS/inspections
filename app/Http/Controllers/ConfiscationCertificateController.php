@@ -87,7 +87,28 @@ class ConfiscationCertificateController extends Controller
             ->paginate(9999999999999999999999999);
         }
 
+        $dataTable1 = [];
+        $dataTable2 = [];
+        $motivos = [];
+
+        foreach ($confiscation as $value) {
+            $dataTable1 = DetConfiscationTable1::select('id', 'id_confiscation', 'amount', 'average', 'commercialValue', 'nameCommon', 'nameScientific', 'presentation', 'state', 'weight')
+            ->where('id_confiscation', $value['id'])
+            ->get();
+
+            $dataTable2 = DetConfiscationTable2::select('id', 'id_confiscation', 'amount2', 'characterState', 'commercialValue2', 'element')
+            ->where('id_confiscation', $value['id'])
+            ->get();
+
+            $motivos = DetConfiscationReasons::select('id', 'id_confiscation', 'name')
+            ->where('id_confiscation', $value['id'])
+            ->get();
+        }
+
         return [
+            'datatable1' => $dataTable1,
+            'datatable2' => $dataTable2,
+            'motivos' => $motivos,
             'confiscation' => $confiscation
         ];
     }
