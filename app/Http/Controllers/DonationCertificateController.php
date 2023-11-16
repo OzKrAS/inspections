@@ -76,7 +76,7 @@ class DonationCertificateController extends Controller
         $arrayTarget = [];
 
         foreach ($donations as $value) {
-            $arrayTarget = DetDonation::select('id', 'id_donation', 'nameScientific', 'nameCommon', 'state', 'presentation', 'amount', 'weight', 'commercialValue')
+            $arrayTarget[] = DetDonation::select('id', 'id_donation', 'nameScientific', 'nameCommon', 'state', 'presentation', 'amount', 'weight', 'commercialValue')
             ->where('id_donation', $value['id'])
             ->get();
         }
