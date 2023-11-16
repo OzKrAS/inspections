@@ -1355,30 +1355,8 @@ en presencia de la autoridad competente.
                 
             ];
 
-            let array = [];
-
-            me.arrayTargetsDonation.forEach(element1 => {
-              element1.forEach(element => {
-                let arr = [
-                  {
-                    "id_donation": element.id_donation,
-                    "nomCientifico": element.nameScientific,
-                    "nomComun": element.nameCommon,
-                    "estado": element.state,
-                    "presentacion": element.presentation,
-                    "cant": element.amount,
-                    "peso": element.weight,
-                    "valor": element.commercialValue
-                  },
-                  // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
-                ]; 
-                array.push(arr);
-              });
-            });
-
-            
             let arrays = {};
-            array.forEach(elements => {
+            me.arrayTargetsDonation.forEach(elements => {
               for (let i = 0; i < elements.length; i++) {
                 const element = elements[i];
                 if( element.id_donation == me.datos['id']){
@@ -1399,6 +1377,7 @@ en presencia de la autoridad competente.
             });
 
             console.log(rows)
+            rows;
 
         doc.setFontSize(10);    
         doc.text(`Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${me.datos.date}`, 15, 145,  {align: 'justify',lineHeightFactor: 1,maxWidth:180} );    
