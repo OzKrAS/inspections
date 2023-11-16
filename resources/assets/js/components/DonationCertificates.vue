@@ -657,6 +657,9 @@ export default {
 		Vue.material.locale.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
 		let now = new Date();
+
+    let arrayTargetsDonation = [];
+
     return {
       form: {
         noActa: "",      
@@ -1124,6 +1127,7 @@ export default {
         .then(function (response) {
           console.log(response.data)
           var respuesta = response.data;
+          arrayTargetsDonation = respuesta.arrayTargets;
           me.arrayDonationCertificate = respuesta.donations.data;
           me.myTable(me.arrayDonationCertificate);
 
@@ -1314,7 +1318,7 @@ export default {
       this.id_donationCertificate = data["id"]
       var logo = new Image();
       console.log("DATA ", me.datos);
-      
+
         logo.src = '/img/logoAUNAP.png';
         doc.addImage(logo, 'png', 20, 10, 33, 15);
         doc.text("FORMATO ACTA DE DONACIÓN", 65, 20);
@@ -1348,7 +1352,7 @@ en presencia de la autoridad competente.
               { title: "Valor Comercial", dataKey: "valor" },
                 
             ];
-            me.arrayTarget.forEach(element => {
+            arrayTargetsDonation.forEach(element => {
               rows = [
                 {
                   "nomCientifico": element.nomCientifico,
