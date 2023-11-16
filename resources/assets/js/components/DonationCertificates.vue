@@ -1313,7 +1313,8 @@ export default {
       var doc = new jsPDF('p','mm','letter');
       this.id_donationCertificate = data["id"]
       var logo = new Image();
-      console.log("DATA ", me.arrayTarget);
+      console.log("DATA ", me.datos);
+      
         logo.src = '/img/logoAUNAP.png';
         doc.addImage(logo, 'png', 20, 10, 33, 15);
         doc.text("FORMATO ACTA DE DONACIÓN", 65, 20);
