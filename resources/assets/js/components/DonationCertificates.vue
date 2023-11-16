@@ -648,6 +648,8 @@ import format from "date-fns/format";
 export default {
 	mixins: [validationMixin],
 	props: ['ruta'],
+  arrayTargetsDonation: [],
+
 	
 	data() {
 
@@ -658,7 +660,6 @@ export default {
 		let dateFormat = this.$material.locale.dateFormat || "yyyy-MM-dd";
 		let now = new Date();
 
-    let arrayTargetsDonation = [];
 
     return {
       form: {
