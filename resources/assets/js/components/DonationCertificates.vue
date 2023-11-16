@@ -1380,8 +1380,8 @@ en presencia de la autoridad competente.
             
             array.forEach(elements => {
               elements.forEach(element => {
-                if( element.id_donation == this.id_donationCertificate){
-                  rows.push(element);
+                if( element[0].id_donation == this.id_donationCertificate){
+                  rows.push(element[0]);
                 }
               });
             });
