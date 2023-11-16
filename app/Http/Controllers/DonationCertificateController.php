@@ -72,7 +72,16 @@ class DonationCertificateController extends Controller
             ->where('donation_certificates.user_id', '=', auth()->user()->id)
             ->paginate(9999999999999999999999999);
         }
+
+
+        foreach ($donations as $value) {
+            $arrayTarget = DetDonation::select('id', 'id_donation', 'nameScientific', 'nameCommon', 'state', 'presentation', 'amount', 'weight', 'commercialValue')
+            ->where('id_donation', $value->id_Donation)
+            ->get();
+        }
+
         return [
+            'arrayTargets' => $arrayTarget,
             'donations' => $donations
         ];
     }
