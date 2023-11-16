@@ -1748,9 +1748,9 @@ preventivo de los siguientes recursos y/o productos pesqueros:
           if( element.id_confiscation == me.datos.id){
             arrays2 = {
               "elemento": element.element,
+              "cantidad": element.amount2,
               "caractEstado": element.characterState,
-              "cant": element.amount2,
-              "valor": element.commercialValue2
+              "valorC": element.commercialValue2
             }
             
             rows1.push(arrays2);
@@ -1764,6 +1764,22 @@ preventivo de los siguientes recursos y/o productos pesqueros:
       columns2 = [
         {title: "MOTIVOS DEL DECOMISO PREVENTIVO", dataKey: "motivos"},
       ];
+
+      let arrays3 = {};
+      me.arrayMotivos.forEach(elements => {
+        for (let i = 0; i < elements.length; i++) {
+          const element = elements[i];
+          if( element.id_confiscation == me.datos.id){
+            arrays3 = {
+              "motivos": element.name,
+            }
+            
+            rows2.push(arrays3);
+          }
+        }
+      });
+      
+      rows2;
       // rows2 = [
       //   {
       //     "motivos": me.datos.nameScientific,
