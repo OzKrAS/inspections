@@ -961,6 +961,78 @@
                   </div>&nbsp;&nbsp;&nbsp;
 
                 </div>
+                <hr>
+                <h4>Cédula de la persona a la cuál se le otorgó el permiso</h4>
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Cédula</label>
+                      <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="cedulapermiso"
+                          :disabled="sending"
+                      />
+                    </md-field>
+                  </div>
+                </div>
+                <hr>
+                <h4>Firmas y datos anexos</h4>
+                <div class="md-layout">
+                  <div class="md-layout-item">
+                    <md-field md-clearable>
+                      <label for="first-name">Nombre</label>
+                      <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="firmanombre"
+                          :disabled="sending"
+                      />
+                    </md-field>&nbsp;&nbsp;&nbsp;
+                    <md-field md-clearable>
+                      <label for="first-name">Cargo</label>
+                      <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="cargonombre"
+                          :disabled="sending"
+                      />
+                    </md-field>&nbsp;&nbsp;&nbsp;
+                    <md-field md-clearable>
+                      <label for="first-name">Dirección oficina</label>
+                      <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="direccionOficina"
+                          :disabled="sending"
+                      />
+                    </md-field>&nbsp;&nbsp;&nbsp;
+                    <md-field md-clearable>
+                      <label for="first-name">Teléfono oficina</label>
+                      <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="telefonoOficina"
+                          :disabled="sending"
+                      />
+                    </md-field>&nbsp;&nbsp;&nbsp;
+                    <md-field md-clearable>
+                      <label for="first-name">Correo electrónico</label>
+                      <md-input
+                          name="first-name"
+                          id="first-name"
+                          autocomplete="given-name"
+                          v-model="correoelectronico"
+                          :disabled="sending"
+                      />
+                    </md-field>&nbsp;&nbsp;&nbsp;
+                  </div>
+                </div>
               </md-card-content>
             </form>
           </div>
@@ -1079,6 +1151,14 @@ export default {
       senor: "",
       asunto: "",
       ciudad: "",
+
+      cedulapermiso: "",
+      firmanombre: "",
+      cargonombre: "",
+      direccionOficina: "",
+      telefonoOficina: "",
+      correoelectronico: "",
+
       arrayZarpes: [],
       id_zarpes: 0,
       arrayPt: {id: 0, nameDock: '', name: ''},
@@ -1969,27 +2049,27 @@ export default {
 
 Por la AUNAP,`, 30, 125, {align: 'justify', lineHeightFactor: 1, maxWidth: 160});
 
-      doc.text(`${demo}`, 32, 188, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.firmanombre}`, 32, 188, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
       doc.line(30, 190, 104, 190);
       doc.setFontSize(10);
       doc.text("Nombre", 62, 193);
 
-      doc.text(`${demo}`, 117, 188, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.cargonombre}`, 117, 188, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
       doc.line(115, 190, 190, 190);
       doc.setFontSize(10);
       doc.text("Cargo", 148, 193);
 
-      doc.text(`${demo}`, 32, 208, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.direccionOficina}`, 32, 208, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
       doc.line(30, 210, 104, 210);
       doc.setFontSize(10);
       doc.text("Dirección de la Oficina", 50, 213);
 
-      doc.text(`${demo}`, 117, 208, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.telefonoOficina}`, 117, 208, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
       doc.line(115, 210, 190, 210);
       doc.setFontSize(10);
       doc.text("Teléfono de la Oficina", 138, 213);
 
-      doc.text(`${demo}`, 32, 228, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.correoelectronico}`, 32, 228, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
       doc.line(30, 230, 104, 230);
       doc.setFontSize(10);
       doc.text("Correo Electrónico", 53, 233);
@@ -2004,6 +2084,13 @@ Por la AUNAP,`, 30, 125, {align: 'justify', lineHeightFactor: 1, maxWidth: 160})
       this.senor = "";
       this.asunto = "";
       this.ciudad = "";
+
+      this.cedulapermiso = "";
+      this.firmanombre = "";
+      this.cargonombre = "";
+      this.direccionOficina = "";
+      this.telefonoOficina = "";
+      this.correoelectronico = "";
     },
     myTable(datas) {
       let me = this;
