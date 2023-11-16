@@ -2057,27 +2057,27 @@ export default {
 
 Por la AUNAP,`, 30, 125, {align: 'justify', lineHeightFactor: 1, maxWidth: 160});
 
-      doc.text(`${this.firmanombre}`, 32, 188, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.firmanombre}`, 32, 188, {align: 'center', lineHeightFactor: 1, maxWidth: 80});
       doc.line(30, 190, 104, 190);
       doc.setFontSize(10);
       doc.text("Nombre", 62, 193);
 
-      doc.text(`${this.cargonombre}`, 117, 188, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.cargonombre}`, 117, 188, {align: 'center', lineHeightFactor: 1, maxWidth: 80});
       doc.line(115, 190, 190, 190);
       doc.setFontSize(10);
       doc.text("Cargo", 148, 193);
 
-      doc.text(`${this.direccionOficina}`, 32, 208, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.direccionOficina}`, 32, 208, {align: 'center', lineHeightFactor: 1, maxWidth: 80});
       doc.line(30, 210, 104, 210);
       doc.setFontSize(10);
       doc.text("Dirección de la Oficina", 50, 213);
 
-      doc.text(`${this.telefonoOficina}`, 117, 208, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.telefonoOficina}`, 117, 208, {align: 'center', lineHeightFactor: 1, maxWidth: 80});
       doc.line(115, 210, 190, 210);
       doc.setFontSize(10);
       doc.text("Teléfono de la Oficina", 138, 213);
 
-      doc.text(`${this.correoelectronico}`, 32, 228, {align: 'justify', lineHeightFactor: 1, maxWidth: 80});
+      doc.text(`${this.correoelectronico}`, 32, 228, {align: 'center', lineHeightFactor: 1, maxWidth: 80});
       doc.line(30, 230, 104, 230);
       doc.setFontSize(10);
       doc.text("Correo Electrónico", 53, 233);
