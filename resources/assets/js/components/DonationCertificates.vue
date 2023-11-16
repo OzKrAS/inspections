@@ -1354,6 +1354,9 @@ en presencia de la autoridad competente.
               { title: "Valor Comercial", dataKey: "valor" },
                 
             ];
+
+            let array = [];
+
             me.arrayTargetsDonation.forEach(element1 => {
               element1.forEach(element => {
                 let arr = [
@@ -1369,15 +1372,14 @@ en presencia de la autoridad competente.
                   },
                   // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
                 ]; 
-                rows.push(arr);
+                array.push(arr);
               });
             });
 
             
-            rows.forEach(elements => {
+            array.forEach(elements => {
               if( elements.id_donation == this.id_donationCertificate){
-                console.log("ROWS ", elements);
-                elements
+                rows.push(elements);
               }
             });
         doc.setFontSize(10);    
