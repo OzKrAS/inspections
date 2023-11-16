@@ -1314,7 +1314,8 @@ export default {
       
       let me = this;
 
-      var columns = []; var rows = [];
+      var columns = []; 
+      var rows = [];
       var doc = new jsPDF('p','mm','letter');
       this.id_donationCertificate = data["id"]
       var logo = new Image();
@@ -1353,9 +1354,9 @@ en presencia de la autoridad competente.
               { title: "Valor Comercial", dataKey: "valor" },
                 
             ];
-            me.arrayTargetsDonation.forEach(element1 => {
-              element1.forEach(element => {
-                rows = [
+            me.arrayTargetsDonation.forEach(element => {
+              // element1.forEach(element => {
+                let arr = [
                   {
                     "nomCientifico": element.nameScientific,
                     "nomComun": element.nameCommon,
@@ -1367,7 +1368,14 @@ en presencia de la autoridad competente.
                   },
                   // {"nombre": "Nombre del proyecto", "descripcion": element.nameRegional}, 
                 ]; 
-              });
+                rows.push(arr);
+              // });
+            });
+
+            console.log("ROWS ", rows);
+
+            rows.forEach(elements => {
+              
             });
         doc.setFontSize(10);    
         doc.text(`Para constancia se firma la presente acta por cada uno de los que intervienen en la donación. Fecha: ${me.datos.date}`, 15, 145,  {align: 'justify',lineHeightFactor: 1,maxWidth:180} );    
