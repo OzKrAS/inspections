@@ -1358,6 +1358,7 @@ en presencia de la autoridad competente.
                   //   ...item,
                   //   deleted : false,
                   // }
+                  console.log("ITEMS => ", item);
                   rows = [
                     {
                       "nomCientifico": item.nameScientific,
