@@ -1691,7 +1691,6 @@ preventivo de los siguientes recursos y/o productos pesqueros:
         {title: "Cantidad (UN)", dataKey: "cant"},
         {title: "Peso (KG)", dataKey: "peso"},
         {title: "Valor Comercial", dataKey: "valor"},
-
       ];
       
       // rows = [
@@ -1719,11 +1718,11 @@ preventivo de los siguientes recursos y/o productos pesqueros:
             }
             
             rows.push(arrays);
+            rows;
           }
         }
       });
 
-      rows;
       console.log(rows)
 
       columns1 = [
