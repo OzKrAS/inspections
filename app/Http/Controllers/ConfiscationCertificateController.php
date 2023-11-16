@@ -92,15 +92,15 @@ class ConfiscationCertificateController extends Controller
         $motivos = [];
 
         foreach ($confiscation as $value) {
-            $dataTable1 = DetConfiscationTable1::select('id', 'id_confiscation', 'amount', 'average', 'commercialValue', 'nameCommon', 'nameScientific', 'presentation', 'state', 'weight')
+            $dataTable1[] = DetConfiscationTable1::select('id', 'id_confiscation', 'amount', 'average', 'commercialValue', 'nameCommon', 'nameScientific', 'presentation', 'state', 'weight')
             ->where('id_confiscation', $value['id'])
             ->get();
 
-            $dataTable2 = DetConfiscationTable2::select('id', 'id_confiscation', 'amount2', 'characterState', 'commercialValue2', 'element')
+            $dataTable2[] = DetConfiscationTable2::select('id', 'id_confiscation', 'amount2', 'characterState', 'commercialValue2', 'element')
             ->where('id_confiscation', $value['id'])
             ->get();
 
-            $motivos = DetConfiscationReasons::select('id', 'id_confiscation', 'name')
+            $motivos[] = DetConfiscationReasons::select('id', 'id_confiscation', 'name')
             ->where('id_confiscation', $value['id'])
             ->get();
         }
