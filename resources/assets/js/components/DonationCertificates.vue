@@ -648,7 +648,6 @@ import format from "date-fns/format";
 export default {
 	mixins: [validationMixin],
 	props: ['ruta'],
-  arrayTargetsDonation: [],
 
 	
 	data() {
@@ -689,6 +688,7 @@ export default {
       weight: "",
       commercialValue: "",
       
+      arrayTargetsDonation: [],
       arrayDonationCertificate: [],
       id_donationCertificate: 0,
 
