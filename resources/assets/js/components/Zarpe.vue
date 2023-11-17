@@ -1851,6 +1851,7 @@ export default {
             
           })
           .then(async function (response) {
+            console.log("RESPONSE ZARPE SAVE ", response)
             const {data} = response;
             me.id_zarpes = data.zarpe.id;
             me.hideForm();
