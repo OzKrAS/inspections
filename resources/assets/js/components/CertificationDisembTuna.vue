@@ -689,7 +689,6 @@ export default {
           observation: this.form.observation.toUpperCase(),
           target: this.arrayTarget,
 
-
           'id_port': this.arrayPt.id,
           'id_flag': this.arrayFg.id,
           'id_company': this.arrayComp.id,
