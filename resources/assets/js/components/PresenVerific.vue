@@ -728,8 +728,11 @@ export default {
             let me = this;
             var url = "/selectboats?type=0";
             axios.get(url).then(function (response) {
-                    var respuesta = response.data;
+                  console.log("BOAT ", response.data)  
+              
+                  var respuesta = response.data;
                     me.arrayBoat = respuesta.boat;
+
                 }).catch(function (error) {
                     console.log(error);
             });
