@@ -1418,7 +1418,7 @@ export default {
           .then(function(response) {
             me.arrayTargetAct=[]
             me.hideForm();
-            me.$refs.fileComponent.uploadFiles();
+            me.$refs.fileComponent.uploadFiles( response.id );
             me.message("Actualizado", "Actualizó ");
             me.listData();
           })
