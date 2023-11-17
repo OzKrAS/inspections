@@ -1373,7 +1373,7 @@ export default {
             me.clearForm();
             me.hideForm();
             const {data} = response;
-            me.id_inspectionBoatCargo = data.inspection.id;
+            me.id_inspectionBoatCargo = data.id;
             me.message("Guardado", "Guardo ");
             me.listData();
             me.$refs.fileComponent.uploadFiles(data.id);
