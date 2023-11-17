@@ -685,7 +685,7 @@ export default {
           date: this.form.date,
           dateBeginningFaena: this.form.dateBeginningFaena,
           dateEndFaena: this.form.dateEndFaena,
-          ZoneFisher: this.arrayZoneAuto.id,
+          ZoneFisher: this.arrayZoneAuto,
           observation: this.form.observation.toUpperCase(),
           target: this.arrayTarget,
 
