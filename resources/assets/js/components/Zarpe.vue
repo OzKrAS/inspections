@@ -1847,16 +1847,17 @@ export default {
             'id_zoneAutoFisher': this.arrayZoneAuto.id,
             'id_company': this.arrayComp.id,
             'data': this.arrayFa,
-            boatId : this.form.boatId
+            boatId : this.form.boatId,
+            
           })
           .then(async function (response) {
             const {data} = response;
             me.id_zarpes = data.zarpe.id;
-            await me.$refs.fileComponent.uploadFiles(data.zarpe.id);
             me.hideForm();
             me.message("Guardado", "Guardo ");
             me.listData();
             me.clearForm();
+            me.$refs.fileComponent.uploadFiles(data.zarpe.id);
           })
           .catch(function (error) {
             console.log(error);
