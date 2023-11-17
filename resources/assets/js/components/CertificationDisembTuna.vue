@@ -381,7 +381,7 @@ export default {
       arrayBt: {id: 0, nameBoat: ''},
       arrayBoat: [],
       id_Company: 0,
-      arrayZoneAuto: [],
+      arrayZoneAuto: 0,
       arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
       edo: 1,
@@ -541,8 +541,9 @@ export default {
       this.form.date = null;
       this.form.dateBeginningFaena = null;
       this.form.dateEndFaena = null;
-      this.arrayZoneAuto.id = null;
-      this.arrayZoneAuto.name = null;
+      this.arrayZoneAuto = null;
+      // this.arrayZoneAuto.id = null;
+      // this.arrayZoneAuto.name = null;
       this.form.observation = null;
       this.arrayTarget = [];
       this.arrayTargetAct = [];
@@ -577,8 +578,9 @@ export default {
       this.form.date = data["date"];
       this.form.dateBeginningFaena = data["dateBeginningFaena"];
       this.form.dateEndFaena = data["dateEndFaena"];
-      this.arrayZoneAuto.id = data["ZoneFisher"];
-      this.arrayZoneAuto.name = data["nameZoneFisher"];
+      this.arrayZoneAuto = data["ZoneFisher"];
+      // this.arrayZoneAuto.id = data["ZoneFisher"];
+      // this.arrayZoneAuto.name = data["nameZoneFisher"];
       this.form.observation = data["observation"];
 
       this.arrayPt.id = data["id_port"]; 5
@@ -700,7 +702,7 @@ export default {
         })
         .catch(function (error) {
           console.log(error);
-          console.log("ERROR ",this.arrayZoneAuto.id);
+          console.log("ERROR ",this.arrayZoneAuto);
         });
     },
     selectZoneAutoFisher() {
