@@ -1346,6 +1346,7 @@ export default {
         'data': this.arrayFa,
         })
         .then(function(response) {
+          console.log("RESPONSE DETS71 ", response)
           me.hideForm();
           me.message("Guardado", "Guardo ");
           me.id_CheckDet = response.data.check.id;
