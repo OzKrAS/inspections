@@ -1853,12 +1853,12 @@ export default {
           .then(async function (response) {
             console.log("RESPONSE ZARPE SAVE ", response)
             const {data} = response;
-            me.id_zarpes = data.zarpe.id;
+            me.id_zarpes = data.zarpe;
             me.hideForm();
             me.message("Guardado", "Guardo ");
             me.listData();
             me.clearForm();
-            me.$refs.fileComponent.uploadFiles(data.zarpe.id);
+            me.$refs.fileComponent.uploadFiles(data.zarpe);
           })
           .catch(function (error) {
             console.log(error);
