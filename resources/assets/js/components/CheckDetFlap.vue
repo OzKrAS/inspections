@@ -1263,10 +1263,11 @@ export default {
             'data': this.arrayFa,
           })
           .then(function (response) {
+            console.log("RESPONSE DOBLE SOLAPA => ", response)
             me.hideForm();
             me.message("Guardado", "Guardo ");
             me.listData();
-            me.$refs.fileComponent.uploadFiles();
+            me.$refs.fileComponent.uploadFiles(response.data.id);
             me.id_CheckDet = response.data.check.id;
           })
           .catch(function (error) {
