@@ -541,8 +541,8 @@ export default {
       this.form.date = null;
       this.form.dateBeginningFaena = null;
       this.form.dateEndFaena = null;
-      this.arrayZoneAuto.id = null;
-      this.arrayZoneAuto.name = null;
+      // this.arrayZoneAuto.id = null;
+      // this.arrayZoneAuto.name = null;
       this.form.observation = null;
       this.arrayTarget = [];
       this.arrayTargetAct = [];
