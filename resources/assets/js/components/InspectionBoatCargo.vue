@@ -1376,7 +1376,7 @@ export default {
             me.id_inspectionBoatCargo = data.inspection.id;
             me.message("Guardado", "Guardo ");
             me.listData();
-            me.$refs.fileComponent.uploadFiles(data.inspection);
+            me.$refs.fileComponent.uploadFiles(data.id);
           })
           .catch(function(error) {
             console.log(error);
