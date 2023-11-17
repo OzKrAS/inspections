@@ -381,7 +381,7 @@ export default {
       arrayBt: {id: 0, nameBoat: ''},
       arrayBoat: [],
       id_Company: 0,
-      arrayZoneAuto: { id: 0, name: '' },
+      arrayZoneAuto: [],
       arrayZoneAutoFish: [],
       id_zoneAutoFisher: 0,
       edo: 1,
