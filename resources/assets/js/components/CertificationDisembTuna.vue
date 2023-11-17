@@ -688,13 +688,12 @@ export default {
           ZoneFisher: this.arrayZoneAuto.id,
           observation: this.form.observation.toUpperCase(),
           target: this.arrayTarget,
-
-
           'id_port': this.arrayPt.id,
           'id_flag': this.arrayFg.id,
           'id_company': this.arrayComp.id,
         })
         .then(function (response) {
+          console.log("RESPONSE ATUNA ", response);
           me.hideForm();
           me.message("Guardado", "Guardo ");
           me.listData();
