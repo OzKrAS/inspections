@@ -498,7 +498,7 @@ export default {
       this.$v.$touch();
       if (!this.$v.$invalid) {
         this.saveData();
-        this.clearForm();
+        // this.clearForm();
       }
     },
     addItemTarget() {
