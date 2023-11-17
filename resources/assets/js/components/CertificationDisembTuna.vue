@@ -130,7 +130,7 @@
                 <div class="md-layout">
                   <div class="md-layout-item">
                     <label class="text-muted">Zona de Pesca Autorizada (Fishing Zone)</label>
-                    <multiselect v-model="arrayZoneAuto.id" :options="arrayZoneAutoFish"
+                    <multiselect v-model="arrayZoneAuto.name" :options="arrayZoneAutoFish"
                       placeholder="Zona de Pesca Autorizada" label="name"
                       track-by="id">
                     </multiselect>
@@ -685,7 +685,7 @@ export default {
           date: this.form.date,
           dateBeginningFaena: this.form.dateBeginningFaena,
           dateEndFaena: this.form.dateEndFaena,
-          ZoneFisher: this.arrayZoneAuto.id,
+          ZoneFisher: this.arrayZoneAuto,
           observation: this.form.observation.toUpperCase(),
           target: this.arrayTarget,
           'id_port': this.arrayPt.id,
@@ -700,6 +700,7 @@ export default {
         })
         .catch(function (error) {
           console.log(error);
+          console.log("ERROR ",this.arrayZoneAuto.id);
         });
     },
     selectZoneAutoFisher() {
