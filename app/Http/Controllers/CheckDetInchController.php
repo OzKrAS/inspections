@@ -131,7 +131,7 @@ class CheckDetInchController extends Controller
         }
         $array = array(
             'res' => true,
-            'id' => $CheckDetInchs['id'],
+            'id' => $CheckDetInchs->id,
             'message' => 'Registro guardado exitosamente'
             );
         return response()->json($array,201);
