@@ -1218,6 +1218,8 @@ export default {
           me.hideForm();
           me.message("Actualizado", "Actualizó ");
           me.listData();
+          me.id_donationCertificate = response.data.donation.id;
+
         })
         .catch(function(error) {
           console.log(error);
