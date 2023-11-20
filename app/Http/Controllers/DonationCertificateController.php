@@ -213,6 +213,7 @@ class DonationCertificateController extends Controller
 
         $array = array(
             'res' => true,
+            'id' => $request->id,
             'message' => 'Registro actualizado exitosamente'
         );
         return response()->json($array, 201);
