@@ -16,7 +16,7 @@ header("Expires: 0");
     <meta name="robots" content="index, nofollow">
 
     <title>Inspecciones</title>
-    <link rel="stylesheet" href="{{ mix('assets/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 </head>
 
 <body class="app is-collapsed">
@@ -321,8 +321,8 @@ header("Expires: 0");
         @yield('content')
     </div>
     <!-- Scripts -->
-    <script defer="" referrerpolicy="origin" src="{{ mix('assets/app.js') }}"></script>
-    <script defer="defer" src="{{ mix('assets/main.js') }}"></script>
+    <script defer="" referrerpolicy="origin" src="{{ asset('assets/app.js') }}"></script>
+    <script defer="defer" src="{{ asset('assets/main.js') }}"></script>
 </body>
 
 </html>

@@ -1,8 +1,3 @@
-<?php
-header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
-header("Pragma: no-cache"); // HTTP 1.0.
-header("Expires: 0");
-?>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
@@ -16,8 +11,8 @@ header("Expires: 0");
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-	<link href="{{ mix('/css/app.css') }}" rel="stylesheet"> 
-	{{-- <link href="{{ mix('/css/rtl.css') }}" rel="stylesheet">  --}}
+	<link href="{{ asset('/css/app.css') }}" rel="stylesheet"> 
+	{{-- <link href="{{ asset('/css/rtl.css') }}" rel="stylesheet">  --}}
 	
 	@yield('css')
 
@@ -58,7 +53,7 @@ header("Expires: 0");
         </div>
     </div>
 
-    <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{ asset('/js/app.js') }}"></script>
 
     @yield('js')
 
