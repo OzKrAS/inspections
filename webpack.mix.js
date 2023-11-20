@@ -37,3 +37,7 @@ mix.styles([
     'resources/assets/plantilla/js/sweetalert2.all.js'
 ], 'public/js/plantilla.js')
 .js(['resources/assets/js/app.js'],'public/js/app.js');
+
+if (mix.inProduction()) {
+    mix.version();
+}
