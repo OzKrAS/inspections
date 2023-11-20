@@ -41,3 +41,4 @@ mix.styles([
 if (mix.inProduction()) {
     mix.version();
 }
+
